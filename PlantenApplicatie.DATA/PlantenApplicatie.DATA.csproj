@@ -1,15 +1,6 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
-<configuration>  
-  <appSettings>  
-    <add key="employeeDB" value="Data Source=servername;Initial Catalog=employee;Persist Security Info=True;User ID=userid;Password=password;"/> 
-  </appSettings>  
-</configuration>  	<configuration>
-		<appSettings>
-			<add key="employeeDB" value="Data Source=servername;Initial Catalog=employee;Persist Security Info=True;User ID=userid;Password=password;"/>
-		</appSettings>
-	</configuration>Planten2021Planten32021
 </Project>
