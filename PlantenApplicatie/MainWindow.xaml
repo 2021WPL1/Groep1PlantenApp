@@ -7,6 +7,18 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <Label Content="Zoekscherm" HorizontalAlignment="Left" Margin="340,18,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Image x:Name="imgPlantify" HorizontalAlignment="Left" Height="75" Margin="2,0,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label Content="Familie" HorizontalAlignment="Left" Margin="207,88,0,0" VerticalAlignment="Top"/>
+        <Label Content="Soort" HorizontalAlignment="Left" Margin="5,333,0,0" VerticalAlignment="Top"/>
+        <Label Content="Type" HorizontalAlignment="Left" Margin="4,88,0,0" VerticalAlignment="Top"/>
+        <Label Content="geslacht" HorizontalAlignment="Left" Margin="429,88,0,0" VerticalAlignment="Top"/>
+        <Label Content="Variant" HorizontalAlignment="Left" Margin="234,333,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbxType" HorizontalAlignment="Left" Margin="50,88,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cbxFamilie" HorizontalAlignment="Left" Margin="270,88,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cbxGeslacht" HorizontalAlignment="Left" Margin="499,88,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cbxSoort" HorizontalAlignment="Left" Margin="53,333,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cbxVariant" HorizontalAlignment="Left" Margin="300,333,0,0" VerticalAlignment="Top" Width="120"/>
+        <ListBox x:Name="lstResult" Margin="427,119,0,0"/>
     </Grid>
 </Window>
