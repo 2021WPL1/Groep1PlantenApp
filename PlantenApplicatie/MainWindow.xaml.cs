@@ -27,13 +27,9 @@ namespace PlantenApplicatie
             InitializeComponent();
         }
         
-        public void addItemsTocbxType()
+        public void addItemsToComboBox(ComboBox plant, string item)
         {
             
-        }
-        public void addItemsTocbxFamilie()
-        {
-
         }
 
         public void addItemsTocbxSoort()
