@@ -14,8 +14,8 @@
         <Label Content="Type" HorizontalAlignment="Left" Margin="4,88,0,0" VerticalAlignment="Top"/>
         <Label Content="geslacht" HorizontalAlignment="Left" Margin="429,88,0,0" VerticalAlignment="Top"/>
         <Label Content="Variant" HorizontalAlignment="Left" Margin="234,333,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cbxType" HorizontalAlignment="Left" Margin="50,88,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="cbxFamilie" HorizontalAlignment="Left" Margin="270,88,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cbxType" HorizontalAlignment="Left" Margin="50,88,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxType_SelectionChanged"/>
+        <ComboBox x:Name="cbxFamilie" HorizontalAlignment="Left" Margin="270,88,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxFamilie_SelectionChanged"/>
         <ComboBox x:Name="cbxGeslacht" HorizontalAlignment="Left" Margin="499,88,0,0" VerticalAlignment="Top" Width="120"/>
         <ComboBox x:Name="cbxSoort" HorizontalAlignment="Left" Margin="53,333,0,0" VerticalAlignment="Top" Width="120"/>
         <ComboBox x:Name="cbxVariant" HorizontalAlignment="Left" Margin="300,333,0,0" VerticalAlignment="Top" Width="120"/>

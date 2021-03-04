@@ -24,5 +24,24 @@ namespace PlantenApplicatie
         {
             InitializeComponent();
         }
+        
+        public void addItemsTocbxType()
+        {
+            
+        }
+        public void addItemsTocbxFamilie()
+        {
+
+        }
+
+        private void cbxType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
+
+        private void cbxFamilie_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
     }
 }
