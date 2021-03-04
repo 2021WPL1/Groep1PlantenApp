@@ -6,6 +6,6 @@ namespace PlantenApplicatie.DATA
 {
     public class Connection_Database
     {
-        public static string CONNECTION_STRING = "Server=desktop-2r9tir4\\sqlexpress;Database=Planten2021;Trusted_Connection=True";
+        public static string CONNECTION_STRING = "laptop-v1ovhltu\\vives;Database=Planten2021;Trusted_Connection=True";
     }
 }
