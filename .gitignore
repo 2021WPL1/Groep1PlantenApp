@@ -11,7 +11,7 @@
 *.sln.docstates
 
 # User-specific files (MonoDevelop/Xamarin Studio)
-/PlantenApp/PlantenApplicatie.DATA/Connection_Database.cs
+/PlantenApplicatie.DATA/Connection_Database.cs
 *.userprefs
 
 # Build results
