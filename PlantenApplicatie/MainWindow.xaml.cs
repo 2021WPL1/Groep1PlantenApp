@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.EntityFrameworkCore;
+using PlantenApplicatie.DATA;
 
 namespace PlantenApplicatie
 {
@@ -34,6 +36,21 @@ namespace PlantenApplicatie
 
         }
 
+        public void addItemsTocbxSoort()
+        {
+
+        }
+
+        public void addItemsTocbGeslacht()
+        {
+
+        }
+        
+        public void addItemsTocbxVariant()
+        {
+
+        }
+
         private void cbxType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             
@@ -44,13 +61,6 @@ namespace PlantenApplicatie
             
         }
 
-        public void addItemsToSoort()
-        {
-
-            
-
-        }
-
         private void cbxSoort_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
@@ -59,6 +69,11 @@ namespace PlantenApplicatie
         private void cbxGeslacht_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
            
+        }
+
+        private void cbxVariant_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
