@@ -43,5 +43,22 @@ namespace PlantenApplicatie
         {
             
         }
+
+        public void addItemsToSoort()
+        {
+
+            
+
+        }
+
+        private void cbxSoort_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void cbxGeslacht_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+           
+        }
     }
 }
