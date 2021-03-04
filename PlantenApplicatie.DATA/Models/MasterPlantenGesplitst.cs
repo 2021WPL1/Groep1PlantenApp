@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace PlantenApplicatie.DATA.Models
 {
-    public partial class Planten2021
+    public partial class MasterPlantenGesplitst
     {
         public string Id { get; set; }
         public string Plantnaam { get; set; }
@@ -13,5 +13,9 @@ namespace PlantenApplicatie.DATA.Models
         public string Geslacht { get; set; }
         public string Soort { get; set; }
         public string Variant { get; set; }
+        public int? GroepId { get; set; }
+        public int? FamilieId { get; set; }
+        public int? GeslachtId { get; set; }
+        public int? SoortId { get; set; }
     }
 }
