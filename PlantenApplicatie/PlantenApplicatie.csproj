@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PlantenApplicatie.DATA\PlantenApplicatie.DATA.csproj" />
     <ProjectReference Include="..\PlantenApplicatie.DOMAIN\PlantenApplicatie.DOMAIN.csproj" />
   </ItemGroup>
 
