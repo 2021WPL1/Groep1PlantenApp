@@ -58,8 +58,7 @@ namespace PlantenApplicatie.DATA.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=desktop-2r9tir4\\sqlexpress;Database=Planten2021;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer(Connection_Database.CONNECTION_STRING);
             }
         }
 
