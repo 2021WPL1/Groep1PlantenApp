@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <!--<Label Content="Zoekscherm" HorizontalAlignment="Left" Margin="340,18,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label Content="Zoekscherm" HorizontalAlignment="Left" Margin="340,18,0,0" VerticalAlignment="Top" FontSize="20"/>
         <Image x:Name="imgPlantify" HorizontalAlignment="Left" Height="75" Margin="2,0,0,0" VerticalAlignment="Top" Width="75"/>
         <Label Content="Familie" HorizontalAlignment="Left" Margin="207,88,0,0" VerticalAlignment="Top"/>
         <Label Content="Soort" HorizontalAlignment="Left" Margin="5,333,0,0" VerticalAlignment="Top"/>
@@ -19,6 +19,6 @@
         <ComboBox x:Name="cbxSoort" HorizontalAlignment="Left" Margin="53,333,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxSoort_SelectionChanged"/>
         <ComboBox x:Name="cbxGeslacht" HorizontalAlignment="Left" Margin="499,88,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxGeslacht_SelectionChanged"/>
         <ComboBox x:Name="cbxVariant" HorizontalAlignment="Left" Margin="300,333,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxVariant_SelectionChanged"/>
-        <ListBox x:Name="lstResult" Margin="427,119,0,0"/>-->
+        <ListBox x:Name="lstResult" Margin="427,119,0,0"/>
     </Grid>
 </Window>
