@@ -12,8 +12,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\PlantenApplicatie\PlantenApplicatie.csproj" />
-  </ItemGroup>
-
 </Project>
