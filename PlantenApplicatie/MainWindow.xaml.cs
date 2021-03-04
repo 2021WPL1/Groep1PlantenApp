@@ -36,5 +36,10 @@ namespace PlantenApplicatie
         {
 
         }
+
+        private void cbxGeslacht_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+           
+        }
     }
 }
