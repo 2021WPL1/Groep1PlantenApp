@@ -24,5 +24,17 @@ namespace PlantenApplicatie
         {
             InitializeComponent();
         }
+
+        public void addItemsToSoort()
+        {
+
+            
+
+        }
+
+        private void cbxSoort_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
