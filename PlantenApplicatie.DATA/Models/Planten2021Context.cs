@@ -58,7 +58,7 @@ namespace PlantenApplicatie.DATA.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(Connection_Database.CONNECTION_STRING);
+                optionsBuilder.UseSqlServer(Constant.CONNECTION_STRING);
             }
         }
 

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PlantenApplicatie.DATA
 {
-    public class Connection_Database
+    public class Constant
     {
         //Jelle
         public static string CONNECTION_STRING = "Server=LAPTOP-V1OVHLTU\\VIVES;Database=Planten2021;Trusted_Connection=True";
