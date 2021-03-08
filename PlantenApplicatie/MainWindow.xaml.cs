@@ -99,7 +99,19 @@ namespace PlantenApplicatie
 
         private void cbxType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            lstResult.Items.Clear();
+            foreach (TfgsvFamilie familie in context.TfgsvFamilie.ToList())
+            {
+                var selectedType = context.TfgsvType.FirstOrDefault(s => s.Planttypenaam == cbxType.SelectedItem.ToString());
+                if (selectedType.Planttypeid == familie.TypeTypeid)
+                {
+                    lstResult.Items.Add(familie.Familienaam);
+                }
+                else
+                {
 
+                }
+            }
         }
 
         private void cbxFamilie_SelectionChanged(object sender, SelectionChangedEventArgs e)
