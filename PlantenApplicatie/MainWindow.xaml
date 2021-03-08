@@ -21,7 +21,7 @@
                 </ComboBox.Foreground>
             </ComboBox>
             <ComboBox x:Name="cbxFamilie" HorizontalAlignment="Left" Margin="120,98,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxFamilie_SelectionChanged"/>
-              <ComboBox x:Name="cbxSoort" HorizontalAlignment="Left" Margin="120,177,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxSoort_SelectionChanged"/>
+            <ComboBox x:Name="cbxSoort" HorizontalAlignment="Left" Margin="120,177,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxSoort_SelectionChanged"/>
             <ComboBox x:Name="cbxGeslacht" HorizontalAlignment="Left" Margin="120,137,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxGeslacht_SelectionChanged"/>
             <ComboBox x:Name="cbxVariant" HorizontalAlignment="Left" Margin="120,218,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxVariant_SelectionChanged" />
             <ListBox x:Name="lstResult" Margin="5,352,4,10" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" Grid.IsSharedSizeScope="True" Padding="5,0,0,0">
@@ -65,35 +65,35 @@
                             <Label x:Name="lblHabitus" Content="Habitus" HorizontalAlignment="Left" Margin="35,318,0,0" VerticalAlignment="Top"/>
                             <ComboBox x:Name="cbxHabitus" HorizontalAlignment="Left" Margin="107,322,0,0" VerticalAlignment="Top" Width="365"/>
                             <Label x:Name="lblMaxBladhoogte" Content="Maximale Bladhoogte" HorizontalAlignment="Left" Margin="35,370,0,0" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="cbxMaxBladhoogte" HorizontalAlignment="Left" Margin="174,374,0,0" VerticalAlignment="Top" Width="70" Height="22"/>
+                            <ComboBox x:Name="cbxMaxBladhoogte" HorizontalAlignment="Left" Margin="174,374,0,0" VerticalAlignment="Top" Width="70" Height="22" SelectionChanged="cbxMaxBladhoogte_SelectionChanged"/>
                             <Label x:Name="lblMaxBladhoogteMaand" Content="In Maand: " HorizontalAlignment="Left" Margin="285,370,0,0" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="cbxBladHoogteMaand" HorizontalAlignment="Left" Margin="355,374,0,0" VerticalAlignment="Top" Width="120"/>
+                            <ComboBox x:Name="cbxBladHoogteMaand" HorizontalAlignment="Left" Margin="355,374,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxBladHoogteMaand_SelectionChanged"/>
                             <Label x:Name="lblMaxBloeihoogte" Content="Maximale Bloeihoogte" HorizontalAlignment="Left" Margin="35,400,0,0" VerticalAlignment="Top"/>
                             <Label x:Name="lblMinBloeihoogte" Content="Minimum Bloeihoogte" HorizontalAlignment="Left" Margin="35,430,0,0" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="cbxMaxBloeihoogte" HorizontalAlignment="Left" Margin="174,404,0,0" VerticalAlignment="Top" Width="70" Height="22"/>
-                            <ComboBox x:Name="cbxMaxBloeihoogteMaand" HorizontalAlignment="Left" Margin="355,404,0,0" VerticalAlignment="Top" Width="120"/>
-                            <ComboBox x:Name="cbxMinBloeihoogte" HorizontalAlignment="Left" Margin="174,434,0,0" VerticalAlignment="Top" Width="70" Height="22"/>
-                            <ComboBox x:Name="cbxMinBloeihoogteMaand" HorizontalAlignment="Left" Margin="355,434,0,0" VerticalAlignment="Top" Width="120"/>
+                            <ComboBox x:Name="cbxMaxBloeihoogte" HorizontalAlignment="Left" Margin="174,404,0,0" VerticalAlignment="Top" Width="70" Height="22" SelectionChanged="cbxMaxBloeihoogte_SelectionChanged"/>
+                            <ComboBox x:Name="cbxMaxBloeihoogteMaand" HorizontalAlignment="Left" Margin="355,404,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxMaxBloeihoogteMaand_SelectionChanged"/>
+                            <ComboBox x:Name="cbxMinBloeihoogte" HorizontalAlignment="Left" Margin="174,434,0,0" VerticalAlignment="Top" Width="70" Height="22" SelectionChanged="cbxMinBloeihoogte_SelectionChanged"/>
+                            <ComboBox x:Name="cbxMinBloeihoogteMaand" HorizontalAlignment="Left" Margin="355,434,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxMinBloeihoogteMaand_SelectionChanged"/>
                             <Label x:Name="lblMaxbloeihoogteMaand" Content="In Maand: " HorizontalAlignment="Left" Margin="285,400,0,0" VerticalAlignment="Top"/>
                             <Label x:Name="lblMinBloeihoogteMaand" Content="In Maand: " HorizontalAlignment="Left" Margin="285,430,0,0" VerticalAlignment="Top"/>
                             <Label x:Name="lblBladkleur" Content="Bladkleur" HorizontalAlignment="Left" Margin="35,490,0,0" VerticalAlignment="Top"/>
                             <Label x:Name="lblBloeikleur" Content="Bloeikleur" HorizontalAlignment="Left" Margin="35,520,0,0" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="cbxBladkleur" HorizontalAlignment="Left" Margin="105,494,0,0" VerticalAlignment="Top" Width="70" Height="22"/>
-                            <ComboBox x:Name="cbxBloeikleur" HorizontalAlignment="Left" Margin="105,524,0,0" VerticalAlignment="Top" Width="70" Height="22"/>
+                            <ComboBox x:Name="cbxBladkleur" HorizontalAlignment="Left" Margin="105,494,0,0" VerticalAlignment="Top" Width="70" Height="22" SelectionChanged="cbxBladkleur_SelectionChanged"/>
+                            <ComboBox x:Name="cbxBloeikleur" HorizontalAlignment="Left" Margin="105,524,0,0" VerticalAlignment="Top" Width="70" Height="22" SelectionChanged="cbxBloeikleur_SelectionChanged"/>
                             <Label x:Name="lblBladkleurMaand" Content="In Maand: " HorizontalAlignment="Left" Margin="190,490,0,0" VerticalAlignment="Top"/>
                             <Label x:Name="lblBloeikleurMaand" Content="In Maand: " HorizontalAlignment="Left" Margin="190,520,0,0" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="cbxBladkleurMaand" HorizontalAlignment="Left" Margin="260,494,0,0" VerticalAlignment="Top" Width="120"/>
-                            <ComboBox x:Name="cbxBloeikleurMaand" HorizontalAlignment="Left" Margin="260,524,0,0" VerticalAlignment="Top" Width="120"/>
+                            <ComboBox x:Name="cbxBladkleurMaand" HorizontalAlignment="Left" Margin="260,494,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxBladkleurMaand_SelectionChanged"/>
+                            <ComboBox x:Name="cbxBloeikleurMaand" HorizontalAlignment="Left" Margin="260,524,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxBloeikleurMaand_SelectionChanged"/>
                             <Label x:Name="lblBladgrootteTot" Content="Bladgrootte tot:" HorizontalAlignment="Left" Margin="35,590,0,0" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="cbxBladgrootteTot" HorizontalAlignment="Left" Margin="130,594,0,0" VerticalAlignment="Top" Width="120"/>
-                            <ComboBox x:Name="cbxBladvorm" HorizontalAlignment="Left" Margin="330,594,0,0" VerticalAlignment="Top" Width="120"/>
+                            <ComboBox x:Name="cbxBladgrootteTot" HorizontalAlignment="Left" Margin="130,594,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxBladgrootteTot_SelectionChanged"/>
+                            <ComboBox x:Name="cbxBladvorm" HorizontalAlignment="Left" Margin="330,594,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxBladvorm_SelectionChanged"/>
                             <Label x:Name="lblBladvorm" Content="Bladvorm:" HorizontalAlignment="Left" Margin="260,590,0,0" VerticalAlignment="Top"/>
                             <Label x:Name="lblRatioBloeiBlad" Content="Ratio Bloei/Blad:" HorizontalAlignment="Left" Margin="35,640,0,0" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="cbxRatioBloeiBlad" HorizontalAlignment="Left" Margin="140,644,0,0" VerticalAlignment="Top" Width="120"/>
-                            <ComboBox HorizontalAlignment="Left" Margin="362,644,0,0" VerticalAlignment="Top" Width="120"/>
+                            <ComboBox x:Name="cbxRatioBloeiBlad" HorizontalAlignment="Left" Margin="153,642,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxRatioBloeiBlad_SelectionChanged"/>
+                            <ComboBox HorizontalAlignment="Left" Margin="362,644,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged"/>
                             <Label x:Name="lblSpruitfenologie" Content="SpruitFenologie" HorizontalAlignment="Left" Margin="260,640,0,0" VerticalAlignment="Top"/>
                             <Label x:Name="lblRaunkhiaer" Content="Levensvorm volgens Raunkhiaer" HorizontalAlignment="Left" Margin="35,680,0,0" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="cbxRaunkhiaer" HorizontalAlignment="Left" Margin="226,684,0,0" VerticalAlignment="Top" Width="120"/>
+                            <ComboBox x:Name="cbxRaunkhiaer" HorizontalAlignment="Left" Margin="226,684,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxRaunkhiaer_SelectionChanged"/>
                         </Grid>
                     </ScrollViewer>
                 </TabItem>
@@ -123,7 +123,7 @@
                             <CheckBox x:Name="checkVochtbehoefteVochtig" Content="Vochtig" HorizontalAlignment="Left" Margin="400,135,0,420"/>
                             <CheckBox x:Name="checkVochtbehoefteNat" Content="Nat" HorizontalAlignment="Left" Margin="400,155,0,0" VerticalAlignment="Top"/>
                             <Label x:Name="lblAntagonie" Content="reactie antagonistische omgeving " HorizontalAlignment="Left" Margin="30,200,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.054,0.087"/>
-                            <ComboBox HorizontalAlignment="Left" Margin="230,204,0,0" VerticalAlignment="Top" Width="234"/>
+                            <ComboBox HorizontalAlignment="Left" Margin="230,204,0,0" VerticalAlignment="Top" Width="234" SelectionChanged="ComboBox_SelectionChanged_1"/>
                             <Label x:Name="lblHabitat" Content="Habitat" HorizontalAlignment="Left" Margin="30,250,0,0" VerticalAlignment="Top"/>
                             <CheckBox x:Name="checkHabitatGB1" Content="Gemengde boord met droge bodem" HorizontalAlignment="Left" Margin="35,285,0,0" VerticalAlignment="Top"/>
                             <CheckBox x:Name="checkHabitatGB2" Content="Gemengde boord met frisse bodem" HorizontalAlignment="Left" Margin="35,305,0,0" VerticalAlignment="Top"/>
