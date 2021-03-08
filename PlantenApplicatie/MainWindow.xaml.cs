@@ -462,5 +462,45 @@ namespace PlantenApplicatie
         {
 
         }
+
+        private void cbxOntwikkelingssnelheid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void cbxNectarwaarde_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void cbxBijvriendelijk_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void cbxEetbaarKruidgebruik_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void cbxPollenwaarde_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void cbxVlindervriendelijk_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void cbxGeurend_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void cbxVorstgevoelig_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
