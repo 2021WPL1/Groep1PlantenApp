@@ -132,9 +132,7 @@ namespace PlantenApplicatie
                         lstResult.Items.Add(plant.Fgsv);
                     }
                 }
-
             }
-            
         }
         private void cbxFamilie_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -153,7 +151,6 @@ namespace PlantenApplicatie
                 {
                     if (selectedFamilie.FamileId == geslacht.FamilieFamileId)
                     {
-
                         cbxGeslacht.Items.Add(geslacht.Geslachtnaam);
                     }
 
@@ -217,8 +214,6 @@ namespace PlantenApplicatie
                 var selectedVariant = context.TfgsvVariant.First(v => v.Variantnaam == cbxVariant.SelectedItem.ToString());
             }
         }
-
-
         private void ClearItems(ComboBox comboBox)
         {
             lstResult.Items.Clear();
@@ -261,7 +256,6 @@ namespace PlantenApplicatie
             }
         }
 
-
         private void btnStartOpnieuw_Click(object sender, RoutedEventArgs e)
         {
             //jelle & maarten
@@ -277,7 +271,6 @@ namespace PlantenApplicatie
             addItemsToComboBox(cbxVariant);
             addItemsToComboBox(cbxSoort);
             addItemsToComboBox(cbxGeslacht);
-
         }
     }
 }
