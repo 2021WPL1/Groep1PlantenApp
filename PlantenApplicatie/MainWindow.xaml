@@ -161,7 +161,7 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <ComboBox HorizontalAlignment="Left" Margin="30,30,0,0" VerticalAlignment="Top" Width="120" BorderBrush="#FFFFFCFC" Background="#FFDDDDDD"/>
+                            <ComboBox x:Name="cbxNectarwaarde" HorizontalAlignment="Left" Margin="30,30,0,0" VerticalAlignment="Top" Width="120" BorderBrush="#FFFFFCFC" Background="#FFDDDDDD"/>
                             <Label x:Name="lblNectarwaarde" Content="Nectarwaarde" HorizontalAlignment="Left" Margin="47,4,0,0" VerticalAlignment="Top"/>
                             <Label x:Name="lblPollenwaarde" Content="Pollenwaarde" HorizontalAlignment="Left" Margin="49,55,0,0" VerticalAlignment="Top"/>
                             <ComboBox x:Name="cbxPollenwaarde" HorizontalAlignment="Left" Margin="30,82,0,0" VerticalAlignment="Top" Width="120"/>
