@@ -305,7 +305,7 @@ namespace PlantenApplicatie
                 searchResults.Clear();
                 foreach (Plant plant in SearchResultsCopy)
                 {
-                    if (selectedType.Planttypenaam.ToString() == plant.Type)
+                    if (selectedType.Planttypeid.ToString() == plant.Type)
                     {
                         searchResults.Add(plant);
                     }
@@ -318,7 +318,7 @@ namespace PlantenApplicatie
                 searchResults = new List<Plant>();
                 foreach (Plant plant in SearchResultsCopy)
                 {
-                    if (selectedFamilie.Familienaam.ToString() == plant.Familie)
+                    if (selectedFamilie.FamileId.ToString() == plant.Familie)
                     {
                         searchResults.Add(plant);
                     }
@@ -332,7 +332,7 @@ namespace PlantenApplicatie
                 searchResults = new List<Plant>();
                 foreach (Plant plant in SearchResultsCopy)
                 {
-                    if (selectedGeslacht.Geslachtnaam.ToString() == plant.Geslacht)
+                    if (selectedGeslacht.GeslachtId.ToString() == plant.Geslacht)
                     {
                         searchResults.Add(plant);
                     }
@@ -345,7 +345,7 @@ namespace PlantenApplicatie
                 searchResults = new List<Plant>();
                 foreach (Plant plant in SearchResultsCopy)
                 {
-                    if (selectedSoort.Soortnaam.ToString() == plant.Soort)
+                    if (selectedSoort.Soortid.ToString() == plant.Soort)
                     {
                         searchResults.Add(plant);
                     }
@@ -358,7 +358,7 @@ namespace PlantenApplicatie
                 searchResults = new List<Plant>();
                 foreach (Plant plant in SearchResultsCopy)
                 {
-                    if (selectedVariant.Variantnaam.ToString() == plant.Variant)
+                    if (selectedVariant.VariantId.ToString() == plant.Variant)
                     {
                         searchResults.Add(plant);
                     }
