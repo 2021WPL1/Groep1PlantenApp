@@ -82,21 +82,6 @@ namespace PlantenApplicatie
 
         }
 
-        public void addItemsTocbxSoort()
-        {
-
-        }
-
-        public void addItemsTocbGeslacht()
-        {
-
-        }
-
-        public void addItemsTocbxVariant()
-        {
-
-        }
-
         private void cbxType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             lstResult.Items.Clear();
@@ -113,13 +98,18 @@ namespace PlantenApplicatie
                 }
             }
         }
-
         private void cbxFamilie_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
-
         private void cbxSoort_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        
+
+        private void cbxVariant_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
@@ -129,9 +119,6 @@ namespace PlantenApplicatie
 
         }
 
-        private void cbxVariant_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
 
-        }
     }
 }

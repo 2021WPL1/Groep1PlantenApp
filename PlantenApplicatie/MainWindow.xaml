@@ -14,11 +14,11 @@
         <Label Content="Type" HorizontalAlignment="Left" Margin="22,50,0,0" VerticalAlignment="Top"/>
         <Label Content="geslacht" HorizontalAlignment="Left" Margin="22,250,0,0" VerticalAlignment="Top"/>
         <Label Content="Variant" HorizontalAlignment="Left" Margin="22,200,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cbxType" HorizontalAlignment="Left" Margin="120,50,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="cbxFamilie" HorizontalAlignment="Left" Margin="120,150,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="cbxSoort" HorizontalAlignment="Left" Margin="120,100,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="cbxGeslacht" HorizontalAlignment="Left" Margin="120,250,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="cbxVariant" HorizontalAlignment="Left" Margin="120,200,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cbxType" HorizontalAlignment="Left" Margin="120,50,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxType_SelectionChanged" />
+        <ComboBox x:Name="cbxFamilie" HorizontalAlignment="Left" Margin="120,150,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxFamilie_SelectionChanged"/>
+        <ComboBox x:Name="cbxSoort" HorizontalAlignment="Left" Margin="120,100,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxSoort_SelectionChanged"/>
+        <ComboBox x:Name="cbxGeslacht" HorizontalAlignment="Left" Margin="120,250,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxGeslacht_SelectionChanged"/>
+        <ComboBox x:Name="cbxVariant" HorizontalAlignment="Left" Margin="120,200,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxVariant_SelectionChanged"/>
         <ListBox x:Name="lstResult" Margin="4,349,10,19"/>
         <TabControl Margin="314,32,5,273" RenderTransformOrigin="0.5,0.5">
             <TabControl.RenderTransform>
