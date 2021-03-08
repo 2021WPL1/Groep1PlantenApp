@@ -152,7 +152,6 @@ namespace PlantenApplicatie
                     var selectedSoort = context.TfgsvSoort.FirstOrDefault(s => s.Soortnaam == cbxSoort.SelectedItem.ToString());
                     if (selectedSoort.Soortid == variant.SoortSoortid)
                     {
-                        lstResult.Items.Add(variant.Variantnaam);
                         cbxVariant.Items.Add(variant.Variantnaam);
                     }
                 }
@@ -187,11 +186,7 @@ namespace PlantenApplicatie
                     var selectedgeslacht = context.TfgsvGeslacht.FirstOrDefault(s => s.Geslachtnaam == cbxGeslacht.SelectedItem.ToString());
                     if (selectedgeslacht.GeslachtId == soort.GeslachtGeslachtId)
                     {
-                        lstResult.Items.Add(soort.Soortnaam);
                         cbxSoort.Items.Add(soort.Soortnaam);
-
-
-
                     }
                 }
                 //Maarten, Hermes & Jelle
@@ -208,6 +203,7 @@ namespace PlantenApplicatie
 
         private void btnStartOpnieuw_Click(object sender, RoutedEventArgs e)
         {
+            //jelle & maarten
             lstResult.Items.Clear();
             cbxType.Items.Clear();
             cbxFamilie.Items.Clear();
