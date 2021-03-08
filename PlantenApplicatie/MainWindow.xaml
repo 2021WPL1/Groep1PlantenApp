@@ -5,20 +5,62 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PlantenApplicatie"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="623" Width="898">
     <Grid>
-        <Label Content="Zoekscherm" HorizontalAlignment="Left" Margin="340,18,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label Content="Zoekscherm" HorizontalAlignment="Left" Margin="249,0,0,0" VerticalAlignment="Top" FontSize="20"/>
         <Image x:Name="imgPlantify" HorizontalAlignment="Left" Height="75" Margin="2,0,0,0" VerticalAlignment="Top" Width="75"/>
-        <Label Content="Familie" HorizontalAlignment="Left" Margin="207,88,0,0" VerticalAlignment="Top"/>
-        <Label Content="Soort" HorizontalAlignment="Left" Margin="5,333,0,0" VerticalAlignment="Top"/>
-        <Label Content="Type" HorizontalAlignment="Left" Margin="4,88,0,0" VerticalAlignment="Top"/>
-        <Label Content="geslacht" HorizontalAlignment="Left" Margin="429,88,0,0" VerticalAlignment="Top"/>
-        <Label Content="Variant" HorizontalAlignment="Left" Margin="234,333,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cbxType" HorizontalAlignment="Left" Margin="50,88,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxType_SelectionChanged"/>
-        <ComboBox x:Name="cbxFamilie" HorizontalAlignment="Left" Margin="270,88,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxFamilie_SelectionChanged"/>
-        <ComboBox x:Name="cbxSoort" HorizontalAlignment="Left" Margin="53,333,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxSoort_SelectionChanged"/>
-        <ComboBox x:Name="cbxGeslacht" HorizontalAlignment="Left" Margin="499,88,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxGeslacht_SelectionChanged"/>
-        <ComboBox x:Name="cbxVariant" HorizontalAlignment="Left" Margin="300,333,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxVariant_SelectionChanged"/>
-        <ListBox x:Name="lstResult" Margin="427,119,0,0"/>
+        <Label Content="Familie" HorizontalAlignment="Left" Margin="22,150,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.068,0.332"/>
+        <Label Content="Soort" HorizontalAlignment="Left" Margin="22,100,0,0" VerticalAlignment="Top"/>
+        <Label Content="Type" HorizontalAlignment="Left" Margin="22,50,0,0" VerticalAlignment="Top"/>
+        <Label Content="geslacht" HorizontalAlignment="Left" Margin="22,250,0,0" VerticalAlignment="Top"/>
+        <Label Content="Variant" HorizontalAlignment="Left" Margin="22,200,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbxType" HorizontalAlignment="Left" Margin="120,50,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cbxFamilie" HorizontalAlignment="Left" Margin="120,150,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cbxSoort" HorizontalAlignment="Left" Margin="120,100,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cbxGeslacht" HorizontalAlignment="Left" Margin="120,250,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cbxVariant" HorizontalAlignment="Left" Margin="120,200,0,0" VerticalAlignment="Top" Width="120"/>
+        <ListBox x:Name="lstResult" Margin="4,349,10,19"/>
+        <TabControl Margin="314,32,5,273" RenderTransformOrigin="0.5,0.5">
+            <TabControl.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.047"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TabControl.RenderTransform>
+            <TabItem Header="TabItem">
+                <ScrollViewer>
+                    <Grid Background="#FFE5E5E5" Height="530" Width="569">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="171*"/>
+                            <ColumnDefinition Width="93*"/>
+                            <ColumnDefinition Width="305*"/>
+                        </Grid.ColumnDefinitions>
+                        <RadioButton Content="Pluim&#xD;&#xA;" HorizontalAlignment="Left" Margin="42,50,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                        <RadioButton Content="Schermbloemig&#xD;&#xA;" HorizontalAlignment="Left" Margin="36,190,0,0" VerticalAlignment="Top"/>
+                        <RadioButton Content="Transparant&#xD;&#xA;" HorizontalAlignment="Left" Margin="35,190,0,0" VerticalAlignment="Top"  Grid.ColumnSpan="2" Grid.Column="1"/>
+                        <RadioButton HorizontalAlignment="Left" Margin="52,50,0,0" VerticalAlignment="Top" Width="57" Content="Aar"/>
+                        <RadioButton Content="Margrietachtig" HorizontalAlignment="Left" Margin="112,50,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+                        <RadioButton Content="Bol of knop" HorizontalAlignment="Left" Margin="122,190,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+                        <Image HorizontalAlignment="Left" Height="101" Margin="10,220,0,0" VerticalAlignment="Top" Width="126" Grid.ColumnSpan="2" Grid.Column="1"/>
+                        <Image HorizontalAlignment="Left" Height="101" Margin="10,70,0,0" VerticalAlignment="Top" Width="126" Grid.ColumnSpan="2" Grid.Column="1"/>
+                        <Image HorizontalAlignment="Left" Height="101" Margin="93,70,0,0" VerticalAlignment="Top" Width="126" Grid.Column="2"/>
+                        <Image HorizontalAlignment="Left" Height="101" Margin="26,170,0,0" VerticalAlignment="Top" Width="126"/>
+                        <Image HorizontalAlignment="Left" Height="101" Margin="26,220,0,0" VerticalAlignment="Top" Width="126"/>
+                        <Image HorizontalAlignment="Left" Height="101" Margin="117,220,0,0" VerticalAlignment="Top" Width="126" Grid.Column="2"/>
+                        <Image HorizontalAlignment="Left" Height="101" Margin="13,70,0,0" VerticalAlignment="Top" Width="126"/>
+                    </Grid>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="TabItem" HorizontalAlignment="Center" Height="20" VerticalAlignment="Center" Width="54">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="TabItem" HorizontalAlignment="Center" Height="20" VerticalAlignment="Center" Width="54">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
+        <Button Content="Zoeken" HorizontalAlignment="Left" Margin="25,0,0,0" VerticalAlignment="Center" Width="47" RenderTransformOrigin="0.5,0.5"/>
+        <Label Content="Bloeiwijze" HorizontalAlignment="Left" Margin="328,70,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
