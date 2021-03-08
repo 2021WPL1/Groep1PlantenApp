@@ -8,6 +8,9 @@
         Title="MainWindow" Height="700" Width="900">
     <Viewbox Margin="0,0,0,10">
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="654">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
             <Label Content="Zoekscherm" HorizontalAlignment="Left" Margin="249,0,0,0" VerticalAlignment="Top" FontSize="20"/>
             <Image x:Name="imgPlantify" HorizontalAlignment="Left" Height="75" Margin="2,0,0,0" VerticalAlignment="Top" Width="75"/>
             <Label Content="Familie" HorizontalAlignment="Left" Margin="22,96,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.068,0.332"/>
@@ -15,7 +18,7 @@
             <Label Content="Type" HorizontalAlignment="Left" Margin="22,50,0,0" VerticalAlignment="Top"/>
             <Label Content="Geslacht" HorizontalAlignment="Left" Margin="22,135,0,0" VerticalAlignment="Top"/>
             <Label Content="Variant" HorizontalAlignment="Left" Margin="22,216,0,0" VerticalAlignment="Top"/>
-            <ComboBox x:Name="cbxType" HorizontalAlignment="Left" Margin="120,50,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxType_SelectionChanged">
+            <ComboBox x:Name="cbxType" HorizontalAlignment="Left" Margin="120,50,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxType_SelectionChanged" Background="{x:Null}">
                 <ComboBox.Foreground>
                     <ImageBrush/>
                 </ComboBox.Foreground>
@@ -34,7 +37,7 @@
                     </TransformGroup>
                 </ListBox.RenderTransform>
             </ListBox>
-            <TabControl Margin="298,36,0,309" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left">
+            <TabControl Margin="298,36,0,304" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left">
                 <TabControl.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -45,7 +48,7 @@
                 </TabControl.RenderTransform>
                 <TabItem x:Name="tabFenotype" Header="Fenotype">
                     <ScrollViewer x:Name="scrollFenotype" Margin="6,0,-6,0">
-                        <Grid x:Name="gridFenotype" Background="#FFE5E5E5" Height="725" Width="550">
+                        <Grid x:Name="gridFenotype" Background="WhiteSmoke" Height="725" Width="550">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
@@ -99,7 +102,7 @@
                 </TabItem>
                 <TabItem x:Name="tabAbiotischeFactoren" Header="Abiotische Factoren" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,-1,0,0">
                     <ScrollViewer x:Name="scrollAbiotischeFactoren" Height="282" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <Grid Height="570" Width="550" Background="#FFE5E5E5">
+                        <Grid x:Name="gridAbiotischeFactoren" Height="570" Width="550" Background="#FFF5F5F2">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="525"/>
                             </Grid.ColumnDefinitions>
@@ -150,8 +153,39 @@
                         </Grid>
                     </ScrollViewer>
                 </TabItem>
-                <TabItem Header="TabItem" HorizontalAlignment="Center" Height="20" VerticalAlignment="Center" Width="54">
-                    <Grid Background="#FFE5E5E5"/>
+                <TabItem x:Name="tabCommensialisme" Header="Commensialisme" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <ScrollViewer x:Name="scrollCommensialisme" Height="288" VerticalAlignment="Top">
+                        <Grid x:Name="gridCommensialisme" Height="403" Width="557" Background="#FFE5E5E5">
+                            <Label x:Name="lblOntwikkelingssnelheid" Content="Ontwikkelingssnelheid" HorizontalAlignment="Left" Margin="35,25,0,0" VerticalAlignment="Top"/>
+                            <ComboBox x:Name="cbxOntwikkelingssnelheid" HorizontalAlignment="Left" Margin="180,29,0,0" VerticalAlignment="Top" Width="120"/>
+                            <Label x:Name="lblLevensduur" Content="Levensduur/Concurrentiekracht" HorizontalAlignment="Left" Margin="35,60,0,0" VerticalAlignment="Top"/>
+                            <CheckBox x:Name="checkLevensduur1" Content="Zogenaamde bodembedekker, weinig verdraagzaam met andere planten" HorizontalAlignment="Left" Margin="35,100,0,0" VerticalAlignment="Top"/>
+                            <CheckBox x:Name="checkLevensduur2" Content="Verdraagzame bodembedekker, ook voor een soortenrijke aanplant" HorizontalAlignment="Left" Margin="35,120,0,0" VerticalAlignment="Top"/>
+                            <CheckBox x:Name="checkLevensduur3" Content="Woekerende soort, worteluitlopers" HorizontalAlignment="Left" Margin="35,140,0,0" VerticalAlignment="Top"/>
+                            <CheckBox x:Name="checkLevensduur5" Content="Robuuste, meestal grote plant, ook als solitair" HorizontalAlignment="Left" Margin="35,180,0,0" VerticalAlignment="Top" Width="Auto"/>
+                            <CheckBox x:Name="checkLevensduur4" Content="Weinig of niet woekerend, goed te combineren" HorizontalAlignment="Left" Margin="35,160,0,0" VerticalAlignment="Top" Width="Auto"/>
+                            <CheckBox x:Name="checkLevensduur6" Content="Zich sterk uitzaaiende soort" HorizontalAlignment="Left" Margin="35,200,0,0" VerticalAlignment="Top" Width="Auto"/>
+                            <CheckBox x:Name="checkLevensduur7" Content="Kortlevende plant" HorizontalAlignment="Left" Margin="35,220,0,0" VerticalAlignment="Top" Width="Auto"/>
+                            <CheckBox x:Name="checkLevensduur8" Content="Geeft een goede snijbloem" HorizontalAlignment="Left" Margin="35,240,0,0" VerticalAlignment="Top" Width="Auto"/>
+                            <CheckBox x:Name="checkLevensduur9" Content="Stelt meer eisen qua 'eten en drinken' of winterbescherming" HorizontalAlignment="Left" Margin="35,260,0,0" VerticalAlignment="Top" Width="Auto"/>
+                            <Label x:Name="lblSociabiliteit" Content="Sociabiliteit" HorizontalAlignment="Left" Margin="31,310,0,0" VerticalAlignment="Top"/>
+                            <CheckBox x:Name="checkSociabiliteit1" Content="Sociabiliteit I" HorizontalAlignment="Left" Margin="35,350,0,0" VerticalAlignment="Top"/>
+                            <CheckBox x:Name="checkSociabiliteit2" Content="Sociabiliteit II" HorizontalAlignment="Left" Margin="35,370,0,0" VerticalAlignment="Top"/>
+                            <CheckBox x:Name="checkSociabiliteit3" Content="Sociabiliteit III" HorizontalAlignment="Left" Margin="150,350,0,0" VerticalAlignment="Top"/>
+                            <CheckBox x:Name="checkSociabiliteitIV" Content="Sociabiliteit IV" HorizontalAlignment="Left" Margin="150,370,0,0" VerticalAlignment="Top"/>
+                            <CheckBox x:Name="checkSociabiliteitV" Content="Sociabiliteit V" HorizontalAlignment="Left" Margin="262,350,0,0" VerticalAlignment="Top"/>
+                        </Grid>
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem Header="TabItem" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,-1,0,0">
+                    <ScrollViewer>
+                        <Grid Height="280" Width="557" Background="#FFE5E5E5"/>
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem Header="TabItem" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,-1,0,0">
+                    <ScrollViewer>
+                        <Grid Height="280" Width="557" Background="#FFE5E5E5"/>
+                    </ScrollViewer>
                 </TabItem>
             </TabControl>
             <Button x:Name="btnStartOpnieuw" Content="Clear zoekresultaat" HorizontalAlignment="Left" Margin="88,0,0,0" VerticalAlignment="Center" Click="btnStartOpnieuw_Click"/>
