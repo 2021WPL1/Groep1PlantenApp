@@ -85,12 +85,15 @@ namespace PlantenApplicatie
         private void cbxType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             lstResult.Items.Clear();
+            cbxFamilie.Items.Clear();
             foreach (TfgsvFamilie familie in context.TfgsvFamilie.ToList())
             {
                 var selectedType = context.TfgsvType.FirstOrDefault(s => s.Planttypenaam == cbxType.SelectedItem.ToString());
                 if (selectedType.Planttypeid == familie.TypeTypeid)
                 {
                     lstResult.Items.Add(familie.Familienaam);
+                    
+                    cbxFamilie.Items.Add(familie.Familienaam);
                 }
                 else
                 {
@@ -100,7 +103,7 @@ namespace PlantenApplicatie
         }
         private void cbxFamilie_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            
         }
         private void cbxSoort_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
