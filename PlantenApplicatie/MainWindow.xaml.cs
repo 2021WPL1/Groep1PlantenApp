@@ -228,18 +228,27 @@ namespace PlantenApplicatie
             {
                 lstResult.Items.Clear();
                 cbxSoort.Items.Clear();
+                cbxVariant.Items.Clear();
+
+                var selectedgeslacht = context.TfgsvGeslacht.FirstOrDefault(s => s.Geslachtnaam == cbxGeslacht.SelectedItem.ToString());
+                var selectedSoort = context.TfgsvSoort.FirstOrDefault(s => s.GeslachtGeslachtId == selectedgeslacht.GeslachtId);
                 foreach (TfgsvSoort soort in context.TfgsvSoort.ToList())
                 {
-                    var selectedgeslacht = context.TfgsvGeslacht.FirstOrDefault(s => s.Geslachtnaam == cbxGeslacht.SelectedItem.ToString());
                     if (selectedgeslacht.GeslachtId == soort.GeslachtGeslachtId)
                     {
                         cbxSoort.Items.Add(soort.Soortnaam);
                     }
                 }
+                foreach (TfgsvVariant variant in context.TfgsvVariant.ToList())
+                {
+                    if (selectedSoort.Soortid == variant.SoortSoortid)
+                    {
+                        cbxVariant.Items.Add(variant.Variantnaam);
+                    }
+                }
                 //Maarten, Hermes & Jelle
                 foreach (Plant plant in context.Plant.ToList())
                 {
-                    var selectedgeslacht = context.TfgsvGeslacht.FirstOrDefault(s => s.Geslachtnaam == cbxGeslacht.SelectedItem.ToString());
                     if (selectedgeslacht.GeslachtId.ToString() == plant.Geslacht)
                     {
                         lstResult.Items.Add(plant.Fgsv);
