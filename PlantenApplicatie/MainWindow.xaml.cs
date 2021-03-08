@@ -331,7 +331,6 @@ namespace PlantenApplicatie
                         searchResults.Add(plant);
                     }
                 }
-
             }
             if (cbxGeslacht.SelectedItem != null)
             {
