@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PlantenApplicatie"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1144" Width="900">
+        Title="MainWindow" Height="700" Width="900">
     <Viewbox Margin="0,0,0,10">
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="654">
             <Label Content="Zoekscherm" HorizontalAlignment="Left" Margin="249,0,0,0" VerticalAlignment="Top" FontSize="20"/>
@@ -30,7 +30,7 @@
                     </TransformGroup>
                 </ListBox.RenderTransform>
             </ListBox>
-            <TabControl Margin="298,36,0,-279" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="579">
+            <TabControl Margin="298,36,0,322" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left">
                 <TabControl.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -45,7 +45,7 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <Label Content="Bloeiwijze" HorizontalAlignment="Left" Margin="34,9,0,0" VerticalAlignment="Top" Height="26" Width="62"/>
+                            <Label x:Name="lblBloeiwijze" Content="Bloeiwijze" HorizontalAlignment="Left" Margin="35,9,0,0" VerticalAlignment="Top" Height="26" Width="62"/>
                             <RadioButton x:Name="rbtnPluim" Content="Pluim&#xA;" HorizontalAlignment="Left" Margin="250,50,0,0" VerticalAlignment="Top" Height="31" Width="49" GroupName="Bloeiwijze"/>
                             <RadioButton x:Name="rbtnScherm" Content="Schermbloemig&#xA;" HorizontalAlignment="Left" Margin="33,160,0,0" VerticalAlignment="Top" Height="31" Width="102" GroupName="Bloeiwijze"/>
                             <RadioButton x:Name="rbtnTransparant" Content="Transparant&#xA;" HorizontalAlignment="Left" Margin="230,160,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.443,-0.442" Height="31" Width="81" GroupName="Bloeiwijze"/>
@@ -59,21 +59,38 @@
                             <Image x:Name="imgScherm" HorizontalAlignment="Left" Height="80" Margin="40,180,0,0" VerticalAlignment="Top" Width="80" Source="/Images/scherm.jpg" MouseLeftButtonDown="imgScherm_MouseLeftButtonDown"/>
                             <Image x:Name="imgKnop" HorizontalAlignment="Left" Height="80" Margin="430,180,0,0" VerticalAlignment="Top" Width="80" Source="/Images/knop.jpg" MouseLeftButtonDown="imgKnop_MouseLeftButtonDown"/>
                             <Image x:Name="imgAar" HorizontalAlignment="Left" Height="80" Margin="40,70,0,70" VerticalAlignment="Top" Width="80" Source="/Images/aar.jpg" MouseLeftButtonDown="imgAar_MouseLeftButtonDown"/>
-                            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="40,300,0,0" VerticalAlignment="Top" GroupName="Habitus"/>
-                            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="200,300,0,0" VerticalAlignment="Top" GroupName="Habitus"/>
-                            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="400,300,0,0" VerticalAlignment="Top" GroupName="Habitus"/>
-                            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="40,400,0,0" VerticalAlignment="Top" GroupName="Habitus"/>
-                            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="200,400,0,0" VerticalAlignment="Top" GroupName="Habitus"/>
-                            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="400,400,0,0" VerticalAlignment="Top" GroupName="Habitus"/>
-                            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="40,500,0,0" VerticalAlignment="Top" GroupName="Habitus"/>
-                            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="200,500,0,0" VerticalAlignment="Top" GroupName="Habitus"/>
-                            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="400,500,0,0" VerticalAlignment="Top" GroupName="Habitus"/>
-                            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="40,600,0,0" VerticalAlignment="Top" GroupName="Habitus"/>
-                            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="200,600,0,0" VerticalAlignment="Top" GroupName="Habitus"/>
-                            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="400,600,0,0" VerticalAlignment="Top" GroupName="Habitus"/>
-                            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="40,702,0,0" VerticalAlignment="Top"/>
-                            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="200,700,0,0" VerticalAlignment="Top"/>
-                            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="400,700,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblHabitus" Content="Habitus" HorizontalAlignment="Left" Margin="35,318,0,0" VerticalAlignment="Top"/>
+                            <ComboBox x:Name="cbxHabitus" HorizontalAlignment="Left" Margin="107,322,0,0" VerticalAlignment="Top" Width="365"/>
+                            <Label x:Name="lblMaxBladhoogte" Content="Maximale Bladhoogte" HorizontalAlignment="Left" Margin="35,370,0,0" VerticalAlignment="Top"/>
+                            <ComboBox x:Name="cbxMaxBladhoogte" HorizontalAlignment="Left" Margin="174,374,0,0" VerticalAlignment="Top" Width="70" Height="22"/>
+                            <Label x:Name="lblMaxBladhoogteMaand" Content="In Maand: " HorizontalAlignment="Left" Margin="285,370,0,0" VerticalAlignment="Top"/>
+                            <ComboBox x:Name="cbxBladHoogteMaand" HorizontalAlignment="Left" Margin="355,374,0,0" VerticalAlignment="Top" Width="120"/>
+                            <Label x:Name="lblMaxBloeihoogte" Content="Maximale Bloeihoogte" HorizontalAlignment="Left" Margin="35,400,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblMinBloeihoogte" Content="Minimum Bloeihoogte" HorizontalAlignment="Left" Margin="35,430,0,0" VerticalAlignment="Top"/>
+                            <ComboBox x:Name="cbxMaxBloeihoogte" HorizontalAlignment="Left" Margin="174,404,0,0" VerticalAlignment="Top" Width="70" Height="22"/>
+                            <ComboBox x:Name="cbxMaxBloeihoogteMaand" HorizontalAlignment="Left" Margin="355,404,0,0" VerticalAlignment="Top" Width="120"/>
+                            <ComboBox x:Name="cbxMinBloeihoogte" HorizontalAlignment="Left" Margin="174,434,0,0" VerticalAlignment="Top" Width="70" Height="22"/>
+                            <ComboBox x:Name="cbxMinBloeihoogteMaand" HorizontalAlignment="Left" Margin="355,434,0,0" VerticalAlignment="Top" Width="120"/>
+                            <Label x:Name="lblMaxbloeihoogteMaand" Content="In Maand: " HorizontalAlignment="Left" Margin="285,400,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblMinBloeihoogteMaand" Content="In Maand: " HorizontalAlignment="Left" Margin="285,430,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblBladkleur" Content="Bladkleur" HorizontalAlignment="Left" Margin="35,490,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblBloeikleur" Content="Bloeikleur" HorizontalAlignment="Left" Margin="35,520,0,0" VerticalAlignment="Top"/>
+                            <ComboBox x:Name="cbxBladkleur" HorizontalAlignment="Left" Margin="105,494,0,0" VerticalAlignment="Top" Width="70" Height="22"/>
+                            <ComboBox x:Name="cbxBloeikleur" HorizontalAlignment="Left" Margin="105,524,0,0" VerticalAlignment="Top" Width="70" Height="22"/>
+                            <Label x:Name="lblBladkleurMaand" Content="In Maand: " HorizontalAlignment="Left" Margin="190,490,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblBloeikleurMaand" Content="In Maand: " HorizontalAlignment="Left" Margin="190,520,0,0" VerticalAlignment="Top"/>
+                            <ComboBox x:Name="cbxBladkleurMaand" HorizontalAlignment="Left" Margin="260,494,0,0" VerticalAlignment="Top" Width="120"/>
+                            <ComboBox x:Name="cbxBloeikleurMaand" HorizontalAlignment="Left" Margin="260,524,0,0" VerticalAlignment="Top" Width="120"/>
+                            <Label x:Name="lblBladgrootteTot" Content="Bladgrootte tot:" HorizontalAlignment="Left" Margin="35,590,0,0" VerticalAlignment="Top"/>
+                            <ComboBox x:Name="cbxBladgrootteTot" HorizontalAlignment="Left" Margin="130,594,0,0" VerticalAlignment="Top" Width="120"/>
+                            <ComboBox x:Name="cbxBladvorm" HorizontalAlignment="Left" Margin="330,594,0,0" VerticalAlignment="Top" Width="120"/>
+                            <Label x:Name="lblBladvorm" Content="Bladvorm:" HorizontalAlignment="Left" Margin="260,590,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblRatioBloeiBlad" Content="Ratio Bloei/Blad:" HorizontalAlignment="Left" Margin="35,640,0,0" VerticalAlignment="Top"/>
+                            <ComboBox x:Name="cbxRatioBloeiBlad" HorizontalAlignment="Left" Margin="140,644,0,0" VerticalAlignment="Top" Width="120"/>
+                            <ComboBox HorizontalAlignment="Left" Margin="362,644,0,0" VerticalAlignment="Top" Width="120"/>
+                            <Label x:Name="lblSpruitfenologie" Content="SpruitFenologie" HorizontalAlignment="Left" Margin="260,640,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblRaunkhiaer" Content="Levensvorm volgens Raunkhiaer" HorizontalAlignment="Left" Margin="35,680,0,0" VerticalAlignment="Top"/>
+                            <ComboBox x:Name="cbxRaunkhiaer" HorizontalAlignment="Left" Margin="226,684,0,0" VerticalAlignment="Top" Width="120"/>
                         </Grid>
                     </ScrollViewer>
                 </TabItem>
