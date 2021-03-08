@@ -60,8 +60,7 @@
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
         </TabControl>
-        <Button Content="Zoeken" HorizontalAlignment="Left" Margin="25,0,0,0" VerticalAlignment="Center" Width="47" RenderTransformOrigin="0.5,0.5"/>
         <Label Content="Bloeiwijze" HorizontalAlignment="Left" Margin="328,70,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnStartOpnieuw" Content="Clear zoekresultaat" HorizontalAlignment="Left" Margin="88,0,0,0" VerticalAlignment="Center"/>
+        <Button x:Name="btnStartOpnieuw" Content="Clear zoekresultaat" HorizontalAlignment="Left" Margin="88,0,0,0" VerticalAlignment="Center" Click="btnStartOpnieuw_Click"/>
     </Grid>
 </Window>
