@@ -99,6 +99,10 @@ namespace PlantenApplicatie
 
         private void cbxType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
+            var familylist = context.TfgsvFamilie.Where(e => e.Familienaam.ToString() == cbxType.SelectedValue.ToString());
+            lstResult.Items.Add(familylist);
+
             
         }
 
