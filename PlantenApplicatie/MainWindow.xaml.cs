@@ -37,45 +37,52 @@ namespace PlantenApplicatie
         public void addItemsToComboBox(ComboBox plant)
         {
             //Jelle
+            List<string> cboItems = new List<string>();
             switch (plant.Name)
             {
                 case "cbxType":
                     var types = context.TfgsvType.ToList();
                     foreach (TfgsvType type in types)
                     {
-                        plant.Items.Add(type.Planttypenaam);
+                        cboItems.Add(type.Planttypenaam);
                     }
                     break;
                 case "cbxFamilie":
                     var families = context.TfgsvFamilie.ToList();
                     foreach (TfgsvFamilie familie in families)
                     {
-                        plant.Items.Add(familie.Familienaam);
+                        cboItems.Add(familie.Familienaam);
                     }
                     break;
                 case "cbxVariant":
                     var varianten = context.TfgsvVariant.ToList();
                     foreach (TfgsvVariant variant in varianten)
                     {
-                        plant.Items.Add(variant.Variantnaam);
+                        cboItems.Add(variant.Variantnaam);
                     }
                     break;
                 case "cbxSoort":
                     var soorten = context.TfgsvSoort.ToList();
                     foreach (TfgsvSoort soort in soorten)
                     {
-                        plant.Items.Add(soort.Soortnaam);
+                        cboItems.Add(soort.Soortnaam);
                     }
                     break;
                 case "cbxGeslacht":
                     var geslachten = context.TfgsvGeslacht.ToList();
                     foreach (TfgsvGeslacht geslacht in geslachten)
                     {
-                        plant.Items.Add(geslacht.Geslachtnaam);
+                        cboItems.Add(geslacht.Geslachtnaam);
                     }
                     break;
                 default:
                     break;
+            }
+            cboItems.Sort();
+            cboItems = cboItems.ConvertAll(d => d.Substring(0, 1).ToUpper() + d.Substring(1).ToLower());
+            foreach (string item in cboItems)
+            {
+                plant.Items.Add(item);
             }
         }
 
@@ -127,6 +134,7 @@ namespace PlantenApplicatie
                 searchResults();
             }
         }
+
         private void cbxFamilie_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //Maarten
@@ -164,6 +172,7 @@ namespace PlantenApplicatie
                 searchResults();
             }
         }
+
         private void cbxSoort_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //Jelle
@@ -206,7 +215,6 @@ namespace PlantenApplicatie
                 lstResult.Items.Clear();
                 cbxSoort.Items.Clear();
                 cbxVariant.Items.Clear();
-
                 var selectedgeslacht = context.TfgsvGeslacht.FirstOrDefault(s => s.Geslachtnaam == cbxGeslacht.SelectedItem.ToString());
                 var selectedSoort = context.TfgsvSoort.FirstOrDefault(s => s.GeslachtGeslachtId == selectedgeslacht.GeslachtId);
                 foreach (TfgsvSoort soort in context.TfgsvSoort.ToList())
@@ -323,7 +331,7 @@ namespace PlantenApplicatie
                         searchResults.Add(plant);
                     }
                 }
-                
+
             }
             if (cbxGeslacht.SelectedItem != null)
             {
