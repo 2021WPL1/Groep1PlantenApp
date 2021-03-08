@@ -52,25 +52,25 @@
                             <RadioButton x:Name="rbtnAar" HorizontalAlignment="Left" Margin="52,50,0,0" VerticalAlignment="Top" Width="57" Content="Aar" Height="15" GroupName="Bloeiwijze"/>
                             <RadioButton x:Name="rbtnMargriet" Content="Margrietachtig" HorizontalAlignment="Left" Margin="420,50,0,0" VerticalAlignment="Top" Height="15" Width="97" GroupName="Bloeiwijze"/>
                             <RadioButton x:Name="rbtnKnop" Content="Bol of knop" HorizontalAlignment="Left" Margin="430,160,0,0" VerticalAlignment="Top" Height="15" Width="80" GroupName="Bloeiwijze"/>
-                            <Image x:Name="imgTransparant" HorizontalAlignment="Left" Height="80" Margin="250,180,0,0" VerticalAlignment="Top" Width="80" Source="/etage.jpg" MouseLeftButtonDown="imgTransparant_MouseLeftButtonDown"/>
-                            <Image x:Name="imgPluim" HorizontalAlignment="Left" Height="80" Margin="250,70,0,70" VerticalAlignment="Top" Width="80" Source="/brede pluim.jpg" MouseLeftButtonDown="imgPluim_MouseLeftButtonDown"/>
-                            <Image x:Name="imgMargriet" HorizontalAlignment="Left" Height="80" Margin="430,70,40,70" VerticalAlignment="Top" Width="80" Source="/margrietachtig.jpg" MouseLeftButtonDown="imgMargriet_MouseLeftButtonDown"/>
+                            <Image x:Name="imgTransparant" HorizontalAlignment="Left" Height="80" Margin="250,180,0,0" VerticalAlignment="Top" Width="80" Source="/Images/etage.jpg" MouseLeftButtonDown="imgTransparant_MouseLeftButtonDown"/>
+                            <Image x:Name="imgPluim" HorizontalAlignment="Left" Height="80" Margin="250,70,0,70" VerticalAlignment="Top" Width="80" Source="/Images/brede pluim.jpg" MouseLeftButtonDown="imgPluim_MouseLeftButtonDown"/>
+                            <Image x:Name="imgMargriet" HorizontalAlignment="Left" Height="80" Margin="430,70,40,70" VerticalAlignment="Top" Width="80" Source="/Images/margrietachtig.jpg" MouseLeftButtonDown="imgMargriet_MouseLeftButtonDown"/>
                             <Image HorizontalAlignment="Left" Height="101" Margin="38,222,0,0" VerticalAlignment="Top" Width="126"/>
-                            <Image x:Name="imgScherm" HorizontalAlignment="Left" Height="80" Margin="40,180,0,0" VerticalAlignment="Top" Width="80" Source="/scherm.jpg" MouseLeftButtonDown="imgScherm_MouseLeftButtonDown"/>
-                            <Image x:Name="imgKnop" HorizontalAlignment="Left" Height="80" Margin="430,180,0,0" VerticalAlignment="Top" Width="80" Source="/knop.jpg" MouseLeftButtonDown="imgKnop_MouseLeftButtonDown"/>
-                            <Image x:Name="imgAar" HorizontalAlignment="Left" Height="80" Margin="40,70,0,70" VerticalAlignment="Top" Width="80" Source="/aar.jpg" MouseLeftButtonDown="imgAar_MouseLeftButtonDown"/>
-                            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="40,300,0,0" VerticalAlignment="Top"/>
-                            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="200,300,0,0" VerticalAlignment="Top"/>
-                            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="400,300,0,0" VerticalAlignment="Top"/>
-                            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="40,400,0,0" VerticalAlignment="Top"/>
-                            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="200,400,0,0" VerticalAlignment="Top"/>
-                            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="400,400,0,0" VerticalAlignment="Top"/>
-                            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="40,500,0,0" VerticalAlignment="Top"/>
-                            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="200,500,0,0" VerticalAlignment="Top"/>
-                            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="400,500,0,0" VerticalAlignment="Top"/>
-                            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="40,600,0,0" VerticalAlignment="Top"/>
-                            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="200,600,0,0" VerticalAlignment="Top"/>
-                            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="400,600,0,0" VerticalAlignment="Top"/>
+                            <Image x:Name="imgScherm" HorizontalAlignment="Left" Height="80" Margin="40,180,0,0" VerticalAlignment="Top" Width="80" Source="/Images/scherm.jpg" MouseLeftButtonDown="imgScherm_MouseLeftButtonDown"/>
+                            <Image x:Name="imgKnop" HorizontalAlignment="Left" Height="80" Margin="430,180,0,0" VerticalAlignment="Top" Width="80" Source="/Images/knop.jpg" MouseLeftButtonDown="imgKnop_MouseLeftButtonDown"/>
+                            <Image x:Name="imgAar" HorizontalAlignment="Left" Height="80" Margin="40,70,0,70" VerticalAlignment="Top" Width="80" Source="/Images/aar.jpg" MouseLeftButtonDown="imgAar_MouseLeftButtonDown"/>
+                            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="40,300,0,0" VerticalAlignment="Top" GroupName="Habitus"/>
+                            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="200,300,0,0" VerticalAlignment="Top" GroupName="Habitus"/>
+                            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="400,300,0,0" VerticalAlignment="Top" GroupName="Habitus"/>
+                            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="40,400,0,0" VerticalAlignment="Top" GroupName="Habitus"/>
+                            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="200,400,0,0" VerticalAlignment="Top" GroupName="Habitus"/>
+                            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="400,400,0,0" VerticalAlignment="Top" GroupName="Habitus"/>
+                            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="40,500,0,0" VerticalAlignment="Top" GroupName="Habitus"/>
+                            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="200,500,0,0" VerticalAlignment="Top" GroupName="Habitus"/>
+                            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="400,500,0,0" VerticalAlignment="Top" GroupName="Habitus"/>
+                            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="40,600,0,0" VerticalAlignment="Top" GroupName="Habitus"/>
+                            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="200,600,0,0" VerticalAlignment="Top" GroupName="Habitus"/>
+                            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="400,600,0,0" VerticalAlignment="Top" GroupName="Habitus"/>
                             <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="40,702,0,0" VerticalAlignment="Top"/>
                             <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="200,700,0,0" VerticalAlignment="Top"/>
                             <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="400,700,0,0" VerticalAlignment="Top"/>

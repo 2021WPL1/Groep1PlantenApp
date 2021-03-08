@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="aar.jpg" />
     <None Remove="brede pluim.jpg" />
     <None Remove="etage.jpg" />
     <None Remove="knop.jpg" />
