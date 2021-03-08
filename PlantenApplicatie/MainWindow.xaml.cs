@@ -34,40 +34,40 @@ namespace PlantenApplicatie
             addItemsToComboBox(cbxGeslacht, "Geslacht");
         }
 
-        public void addItemsToComboBox(ComboBox plant, string item)
+        public void addItemsToComboBox(ComboBox plant)
         {
             //Jelle
-            switch (item)
+            switch (plant.Name)
             {
-                case "Type":
+                case "cbxType":
                     var types = context.TfgsvType.ToList();
                     foreach (TfgsvType type in types)
                     {
                         plant.Items.Add(type.Planttypenaam);
                     }
                     break;
-                case "Familie":
+                case "cbxFamilie":
                     var families = context.TfgsvFamilie.ToList();
                     foreach (TfgsvFamilie familie in families)
                     {
                         plant.Items.Add(familie.Familienaam);
                     }
                     break;
-                case "Variant":
+                case "cbxVariant":
                     var varianten = context.TfgsvVariant.ToList();
                     foreach (TfgsvVariant variant in varianten)
                     {
                         plant.Items.Add(variant.Variantnaam);
                     }
                     break;
-                case "Soort":
+                case "cbxSoort":
                     var soorten = context.TfgsvSoort.ToList();
                     foreach (TfgsvSoort soort in soorten)
                     {
                         plant.Items.Add(soort.Soortnaam);
                     }
                     break;
-                case "Geslacht":
+                case "cbxGeslacht":
                     var geslachten = context.TfgsvGeslacht.ToList();
                     foreach (TfgsvGeslacht geslacht in geslachten)
                     {
@@ -84,36 +84,100 @@ namespace PlantenApplicatie
             //Maarten
             if (cbxType.SelectedItem != null)
             {
-                ClearItems(cbxFamilie);
+                lstResult.Items.Clear();
+                cbxFamilie.Items.Clear();
+                cbxGeslacht.Items.Clear();
+                cbxSoort.Items.Clear();
+                cbxVariant.Items.Clear();
+
+                var selectedType = context.TfgsvType.FirstOrDefault(s => s.Planttypenaam == cbxType.SelectedItem.ToString());
+                var selectedFamilie = context.TfgsvFamilie.FirstOrDefault(s => s.TypeTypeid == selectedType.Planttypeid);
+                var selectedgeslacht = context.TfgsvGeslacht.FirstOrDefault(s => s.FamilieFamileId == selectedFamilie.FamileId);
+                var selectedSoort = context.TfgsvSoort.FirstOrDefault(s => s.GeslachtGeslachtId == selectedgeslacht.GeslachtId);
                 foreach (TfgsvFamilie familie in context.TfgsvFamilie.ToList())
                 {
-                    var selectedType = context.TfgsvType.FirstOrDefault(s => s.Planttypenaam == cbxType.SelectedItem.ToString());
                     if (selectedType.Planttypeid == familie.TypeTypeid)
                     {
-                        lstResult.Items.Add(familie.Familienaam);
                         cbxFamilie.Items.Add(familie.Familienaam);
                     }
-                    else
+                }
+                foreach (TfgsvGeslacht geslacht in context.TfgsvGeslacht.ToList())
+                {
+                    if (selectedFamilie.FamileId == geslacht.FamilieFamileId)
                     {
 
+                        cbxGeslacht.Items.Add(geslacht.Geslachtnaam);
+                    }
+
+                }
+                foreach (TfgsvSoort soort in context.TfgsvSoort.ToList())
+                {
+                    if (selectedgeslacht.GeslachtId == soort.GeslachtGeslachtId)
+                    {
+                        cbxSoort.Items.Add(soort.Soortnaam);
                     }
                 }
-            }
+                foreach (TfgsvVariant variant in context.TfgsvVariant.ToList())
+                {
+                    if (selectedSoort.Soortid == variant.SoortSoortid)
+                    {
+                        cbxVariant.Items.Add(variant.Variantnaam);
+                    }
+                }
+                //Maarten, Hermes & Jelle
+                foreach (Plant plant in context.Plant.ToList())
+                {
+                    if (selectedType.Planttypeid.ToString() == plant.Type)
+                    {
+                        lstResult.Items.Add(plant.Fgsv);
+                    }
+                }
 
+            }
+            
         }
         private void cbxFamilie_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //Maarten
             if (cbxFamilie.SelectedItem != null)
             {
-                ClearItems(cbxGeslacht);
+                lstResult.Items.Clear();
+                cbxGeslacht.Items.Clear();
+                cbxSoort.Items.Clear();
+                cbxVariant.Items.Clear();
+
+                var selectedFamilie = context.TfgsvFamilie.FirstOrDefault(s => s.Familienaam == cbxFamilie.SelectedItem.ToString());
+                var selectedgeslacht = context.TfgsvGeslacht.FirstOrDefault(s => s.FamilieFamileId == selectedFamilie.FamileId);
+                var selectedSoort = context.TfgsvSoort.FirstOrDefault(s => s.GeslachtGeslachtId == selectedgeslacht.GeslachtId);
                 foreach (TfgsvGeslacht geslacht in context.TfgsvGeslacht.ToList())
                 {
-                    var selectedFamilie = context.TfgsvFamilie.FirstOrDefault(s => s.Familienaam == cbxFamilie.SelectedItem.ToString());
                     if (selectedFamilie.FamileId == geslacht.FamilieFamileId)
                     {
-                        lstResult.Items.Add(geslacht.Geslachtnaam);
+
                         cbxGeslacht.Items.Add(geslacht.Geslachtnaam);
+                    }
+
+                }
+                foreach (TfgsvSoort soort in context.TfgsvSoort.ToList())
+                {
+                    if (selectedgeslacht.GeslachtId == soort.GeslachtGeslachtId)
+                    {
+                        cbxSoort.Items.Add(soort.Soortnaam);
+                    }
+                }
+                foreach (TfgsvVariant variant in context.TfgsvVariant.ToList())
+                {
+                    if (selectedSoort.Soortid == variant.SoortSoortid)
+                    {
+                        cbxVariant.Items.Add(variant.Variantnaam);
+                    }
+                }
+                //Maarten, Hermes & Jelle
+                foreach (Plant plant in context.Plant.ToList())
+                {
+                    if (selectedFamilie.FamileId.ToString() == plant.Familie)
+                    {
+                        lstResult.Items.Add(plant.Fgsv);
                     }
                 }
             }
@@ -129,8 +193,16 @@ namespace PlantenApplicatie
                     var selectedSoort = context.TfgsvSoort.FirstOrDefault(s => s.Soortnaam == cbxSoort.SelectedItem.ToString());
                     if (selectedSoort.Soortid == variant.SoortSoortid)
                     {
-                        lstResult.Items.Add(variant.Variantnaam);
                         cbxVariant.Items.Add(variant.Variantnaam);
+                    }
+                }
+                //Maarten, Hermes & Jelle
+                foreach (Plant plant in context.Plant.ToList())
+                {
+                    var selectedSoort = context.TfgsvSoort.FirstOrDefault(s => s.Soortnaam == cbxSoort.SelectedItem.ToString());
+                    if (selectedSoort.Soortid.ToString() == plant.Soort)
+                    {
+                        lstResult.Items.Add(plant.Fgsv);
                     }
                 }
             }
@@ -158,33 +230,54 @@ namespace PlantenApplicatie
             //Hemen
             if (cbxGeslacht.SelectedItem != null)
             {
-                ClearItems(cbxSoort);
+                lstResult.Items.Clear();
+                cbxSoort.Items.Clear();
+                cbxVariant.Items.Clear();
+
+                var selectedgeslacht = context.TfgsvGeslacht.FirstOrDefault(s => s.Geslachtnaam == cbxGeslacht.SelectedItem.ToString());
+                var selectedSoort = context.TfgsvSoort.FirstOrDefault(s => s.GeslachtGeslachtId == selectedgeslacht.GeslachtId);
                 foreach (TfgsvSoort soort in context.TfgsvSoort.ToList())
                 {
-                    var selectedgeslacht = context.TfgsvGeslacht.FirstOrDefault
-                            (s => s.Geslachtnaam == cbxGeslacht.SelectedItem.ToString());
                     if (selectedgeslacht.GeslachtId == soort.GeslachtGeslachtId)
                     {
-                        lstResult.Items.Add(soort.Soortnaam);
                         cbxSoort.Items.Add(soort.Soortnaam);
+                    }
+                }
+                foreach (TfgsvVariant variant in context.TfgsvVariant.ToList())
+                {
+                    if (selectedSoort.Soortid == variant.SoortSoortid)
+                    {
+                        cbxVariant.Items.Add(variant.Variantnaam);
+                    }
+                }
+                //Maarten, Hermes & Jelle
+                foreach (Plant plant in context.Plant.ToList())
+                {
+                    if (selectedgeslacht.GeslachtId.ToString() == plant.Geslacht)
+                    {
+                        lstResult.Items.Add(plant.Fgsv);
                     }
                 }
             }
         }
 
+
         private void btnStartOpnieuw_Click(object sender, RoutedEventArgs e)
         {
+            //jelle & maarten
             lstResult.Items.Clear();
-            cbxType.Items.Clear();
-            addItemsToComboBox(cbxType, "Type");
             cbxFamilie.Items.Clear();
-            addItemsToComboBox(cbxFamilie, "Familie");
-            cbxVariant.Items.Clear();
-            addItemsToComboBox(cbxVariant, "Variant");
-            cbxSoort.Items.Clear();
-            addItemsToComboBox(cbxSoort, "Soort");
             cbxGeslacht.Items.Clear();
-            addItemsToComboBox(cbxGeslacht, "Geslacht");
+            cbxSoort.Items.Clear();
+            cbxType.Items.Clear();
+            cbxVariant.Items.Clear();
+
+            addItemsToComboBox(cbxType);
+            addItemsToComboBox(cbxFamilie);
+            addItemsToComboBox(cbxVariant);
+            addItemsToComboBox(cbxSoort);
+            addItemsToComboBox(cbxGeslacht);
+
         }
     }
 }
