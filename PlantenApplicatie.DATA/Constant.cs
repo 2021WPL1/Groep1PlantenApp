@@ -22,6 +22,6 @@ namespace PlantenApplicatie.DATA
         //public static string CONNECTION_STRING = "Server=desktop-qehsiq6\\vives;Database=Planten2021;Trusted_Connection=True";
 
         //Hermes
-        public static string CONNECTION_STRING = "Server=msi\\vives;Database=Planten2021;Trusted_Connection=True";
+        //public static string CONNECTION_STRING = "Server=msi\\vives;Database=Planten2021;Trusted_Connection=True";
     }
 }
