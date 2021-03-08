@@ -266,6 +266,13 @@ namespace PlantenApplicatie
             cbxType.Items.Clear();
             cbxVariant.Items.Clear();
 
+            rbtnAar.IsChecked = false;
+            rbtnPluim.IsChecked = false;
+            rbtnMargriet.IsChecked = false;
+            rbtnScherm.IsChecked = false;
+            rbtnTransparant.IsChecked = false;
+            rbtnKnop.IsChecked = false;
+
             addItemsToComboBox(cbxType);
             addItemsToComboBox(cbxFamilie);
             addItemsToComboBox(cbxVariant);

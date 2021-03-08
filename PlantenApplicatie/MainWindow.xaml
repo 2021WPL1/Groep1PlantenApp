@@ -55,7 +55,6 @@
                             <Image x:Name="imgTransparant" HorizontalAlignment="Left" Height="80" Margin="250,180,0,0" VerticalAlignment="Top" Width="80" Source="/Images/etage.jpg" MouseLeftButtonDown="imgTransparant_MouseLeftButtonDown"/>
                             <Image x:Name="imgPluim" HorizontalAlignment="Left" Height="80" Margin="250,70,0,70" VerticalAlignment="Top" Width="80" Source="/Images/brede pluim.jpg" MouseLeftButtonDown="imgPluim_MouseLeftButtonDown"/>
                             <Image x:Name="imgMargriet" HorizontalAlignment="Left" Height="80" Margin="430,70,40,70" VerticalAlignment="Top" Width="80" Source="/Images/margrietachtig.jpg" MouseLeftButtonDown="imgMargriet_MouseLeftButtonDown"/>
-                            <Image HorizontalAlignment="Left" Height="101" Margin="38,222,0,0" VerticalAlignment="Top" Width="126"/>
                             <Image x:Name="imgScherm" HorizontalAlignment="Left" Height="80" Margin="40,180,0,0" VerticalAlignment="Top" Width="80" Source="/Images/scherm.jpg" MouseLeftButtonDown="imgScherm_MouseLeftButtonDown"/>
                             <Image x:Name="imgKnop" HorizontalAlignment="Left" Height="80" Margin="430,180,0,0" VerticalAlignment="Top" Width="80" Source="/Images/knop.jpg" MouseLeftButtonDown="imgKnop_MouseLeftButtonDown"/>
                             <Image x:Name="imgAar" HorizontalAlignment="Left" Height="80" Margin="40,70,0,70" VerticalAlignment="Top" Width="80" Source="/Images/aar.jpg" MouseLeftButtonDown="imgAar_MouseLeftButtonDown"/>
