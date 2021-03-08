@@ -134,6 +134,39 @@ namespace PlantenApplicatie
 
         }
 
+        private void SelectRadiobutton(RadioButton radioButton)
+        {
+            radioButton.IsChecked = true;
+        }
 
+        private void imgAar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            SelectRadiobutton(rbtnAar);
+        }
+
+        private void imgPluim_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            SelectRadiobutton(rbtnPluim);
+        }
+
+        private void imgMargriet_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            SelectRadiobutton(rbtnMargriet);
+        }
+
+        private void imgScherm_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            SelectRadiobutton(rbtnScherm);
+        }
+
+        private void imgTransparant_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            SelectRadiobutton(rbtnTransparant);
+        }
+
+        private void imgKnop_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            SelectRadiobutton(rbtnKnop);
+        }
     }
 }
