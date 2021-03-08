@@ -30,7 +30,7 @@
                     </TransformGroup>
                 </ListBox.RenderTransform>
             </ListBox>
-            <TabControl Margin="298,36,0,322" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left">
+            <TabControl Margin="298,36,0,312" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left">
                 <TabControl.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -41,7 +41,7 @@
                 </TabControl.RenderTransform>
                 <TabItem Header="Fenotype">
                     <ScrollViewer Margin="6,0,-6,0">
-                        <Grid x:Name="gridFenotype" Background="#FFE5E5E5" Height="866" Width="550">
+                        <Grid x:Name="gridFenotype" Background="#FFE5E5E5" Height="725" Width="550">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
