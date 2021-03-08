@@ -89,8 +89,7 @@ namespace PlantenApplicatie
             //Maarten
             if (cbxType.SelectedItem != null)
             {
-                lstResult.Items.Clear();
-                cbxFamilie.Items.Clear();
+                ClearItems(cbxFamilie);
                 foreach (TfgsvFamilie familie in context.TfgsvFamilie.ToList())
                 {
                     var selectedType = context.TfgsvType.FirstOrDefault(s => s.Planttypenaam == cbxType.SelectedItem.ToString());
@@ -113,8 +112,7 @@ namespace PlantenApplicatie
             //Maarten
             if (cbxFamilie.SelectedItem != null)
             {
-                cbxGeslacht.Items.Clear();
-                lstResult.Items.Clear();
+                ClearItems(cbxGeslacht);
                 foreach (TfgsvGeslacht geslacht in context.TfgsvGeslacht.ToList())
                 {
                     var selectedFamilie = context.TfgsvFamilie.FirstOrDefault(s => s.Familienaam == cbxFamilie.SelectedItem.ToString());
@@ -131,8 +129,7 @@ namespace PlantenApplicatie
             //Jelle
             if (cbxSoort.SelectedItem != null)
             {
-                cbxVariant.Items.Clear();
-                lstResult.Items.Clear();
+                ClearItems(cbxVariant);
                 foreach (TfgsvVariant variant in context.TfgsvVariant.ToList())
                 {
                     var selectedSoort = context.TfgsvSoort.FirstOrDefault(s => s.Soortnaam == cbxSoort.SelectedItem.ToString());
@@ -153,13 +150,19 @@ namespace PlantenApplicatie
 
         }
 
+
+        private void ClearItems(ComboBox comboBox)
+        {
+            lstResult.Items.Clear();
+            comboBox.Items.Clear();
+        }
+
         private void cbxGeslacht_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //Hemen
             if (cbxGeslacht.SelectedItem != null)
             {
-                lstResult.Items.Clear();
-                cbxSoort.Items.Clear();
+                ClearItems(cbxSoort);
                 foreach (TfgsvSoort soort in context.TfgsvSoort.ToList())
                 {
                     var selectedgeslacht = context.TfgsvGeslacht.FirstOrDefault
@@ -168,9 +171,6 @@ namespace PlantenApplicatie
                     {
                         lstResult.Items.Add(soort.Soortnaam);
                         cbxSoort.Items.Add(soort.Soortnaam);
-
-
-
                     }
                 }
             }
@@ -189,7 +189,6 @@ namespace PlantenApplicatie
             addItemsToComboBox(cbxSoort, "Soort");
             cbxGeslacht.Items.Clear();
             addItemsToComboBox(cbxGeslacht, "Geslacht");
-            
         }
     }
 }
