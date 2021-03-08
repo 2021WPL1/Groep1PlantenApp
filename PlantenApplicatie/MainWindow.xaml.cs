@@ -91,18 +91,47 @@ namespace PlantenApplicatie
             {
                 lstResult.Items.Clear();
                 cbxFamilie.Items.Clear();
+                cbxGeslacht.Items.Clear();
+                cbxSoort.Items.Clear();
+                cbxVariant.Items.Clear();
+
+                var selectedType = context.TfgsvType.FirstOrDefault(s => s.Planttypenaam == cbxType.SelectedItem.ToString());
+                var selectedFamilie = context.TfgsvFamilie.FirstOrDefault(s => s.TypeTypeid == selectedType.Planttypeid);
+                var selectedgeslacht = context.TfgsvGeslacht.FirstOrDefault(s => s.FamilieFamileId == selectedFamilie.FamileId);
+                var selectedSoort = context.TfgsvSoort.FirstOrDefault(s => s.GeslachtGeslachtId == selectedgeslacht.GeslachtId);
                 foreach (TfgsvFamilie familie in context.TfgsvFamilie.ToList())
                 {
-                    var selectedType = context.TfgsvType.FirstOrDefault(s => s.Planttypenaam == cbxType.SelectedItem.ToString());
                     if (selectedType.Planttypeid == familie.TypeTypeid)
                     {
                         cbxFamilie.Items.Add(familie.Familienaam);
                     }
                 }
+                foreach (TfgsvGeslacht geslacht in context.TfgsvGeslacht.ToList())
+                {
+                    if (selectedFamilie.FamileId == geslacht.FamilieFamileId)
+                    {
+
+                        cbxGeslacht.Items.Add(geslacht.Geslachtnaam);
+                    }
+
+                }
+                foreach (TfgsvSoort soort in context.TfgsvSoort.ToList())
+                {
+                    if (selectedgeslacht.GeslachtId == soort.GeslachtGeslachtId)
+                    {
+                        cbxSoort.Items.Add(soort.Soortnaam);
+                    }
+                }
+                foreach (TfgsvVariant variant in context.TfgsvVariant.ToList())
+                {
+                    if (selectedSoort.Soortid == variant.SoortSoortid)
+                    {
+                        cbxVariant.Items.Add(variant.Variantnaam);
+                    }
+                }
                 //Maarten, Hermes & Jelle
                 foreach (Plant plant in context.Plant.ToList())
                 {
-                    var selectedType = context.TfgsvType.FirstOrDefault(s => s.Planttypenaam == cbxType.SelectedItem.ToString());
                     if (selectedType.Planttypeid.ToString() == plant.Type)
                     {
                         lstResult.Items.Add(plant.Fgsv);
@@ -117,22 +146,40 @@ namespace PlantenApplicatie
             //Maarten
             if (cbxFamilie.SelectedItem != null)
             {
-                cbxGeslacht.Items.Clear();
                 lstResult.Items.Clear();
+                cbxGeslacht.Items.Clear();
+                cbxSoort.Items.Clear();
+                cbxVariant.Items.Clear();
+
+                var selectedFamilie = context.TfgsvFamilie.FirstOrDefault(s => s.Familienaam == cbxFamilie.SelectedItem.ToString());
+                var selectedgeslacht = context.TfgsvGeslacht.FirstOrDefault(s => s.FamilieFamileId == selectedFamilie.FamileId);
+                var selectedSoort = context.TfgsvSoort.FirstOrDefault(s => s.GeslachtGeslachtId == selectedgeslacht.GeslachtId);
                 foreach (TfgsvGeslacht geslacht in context.TfgsvGeslacht.ToList())
                 {
-                    var selectedFamilie = context.TfgsvFamilie.FirstOrDefault(s => s.Familienaam == cbxFamilie.SelectedItem.ToString());
                     if (selectedFamilie.FamileId == geslacht.FamilieFamileId)
                     {
-                        
+
                         cbxGeslacht.Items.Add(geslacht.Geslachtnaam);
                     }
-                   
+
+                }
+                foreach (TfgsvSoort soort in context.TfgsvSoort.ToList())
+                {
+                    if (selectedgeslacht.GeslachtId == soort.GeslachtGeslachtId)
+                    {
+                        cbxSoort.Items.Add(soort.Soortnaam);
+                    }
+                }
+                foreach (TfgsvVariant variant in context.TfgsvVariant.ToList())
+                {
+                    if (selectedSoort.Soortid == variant.SoortSoortid)
+                    {
+                        cbxVariant.Items.Add(variant.Variantnaam);
+                    }
                 }
                 //Maarten, Hermes & Jelle
                 foreach (Plant plant in context.Plant.ToList())
                 {
-                    var selectedFamilie = context.TfgsvFamilie.FirstOrDefault(s => s.Familienaam == cbxFamilie.SelectedItem.ToString());
                     if (selectedFamilie.FamileId.ToString() == plant.Familie)
                     {
                         lstResult.Items.Add(plant.Fgsv);
@@ -201,15 +248,16 @@ namespace PlantenApplicatie
             }
         }
 
+
         private void btnStartOpnieuw_Click(object sender, RoutedEventArgs e)
         {
             //jelle & maarten
             lstResult.Items.Clear();
-            cbxType.Items.Clear();
             cbxFamilie.Items.Clear();
-            cbxVariant.Items.Clear();
-            cbxSoort.Items.Clear();
             cbxGeslacht.Items.Clear();
+            cbxSoort.Items.Clear();
+            cbxType.Items.Clear();
+            cbxVariant.Items.Clear();
 
             addItemsToComboBox(cbxType);
             addItemsToComboBox(cbxFamilie);
