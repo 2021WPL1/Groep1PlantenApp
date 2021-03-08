@@ -92,7 +92,7 @@
                             <ComboBox x:Name="cbxBladvorm" HorizontalAlignment="Left" Margin="330,594,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxBladvorm_SelectionChanged"/>
                             <Label x:Name="lblBladvorm" Content="Bladvorm:" HorizontalAlignment="Left" Margin="260,590,0,0" VerticalAlignment="Top"/>
                             <Label x:Name="lblRatioBloeiBlad" Content="Ratio Bloei/Blad:" HorizontalAlignment="Left" Margin="35,640,0,0" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="cbxRatioBloeiBlad" HorizontalAlignment="Left" Margin="153,642,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxRatioBloeiBlad_SelectionChanged"/>
+                            <ComboBox x:Name="cbxRatioBloeiBlad" HorizontalAlignment="Left" Margin="140,644,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxRatioBloeiBlad_SelectionChanged"/>
                             <ComboBox HorizontalAlignment="Left" Margin="362,644,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged"/>
                             <Label x:Name="lblSpruitfenologie" Content="SpruitFenologie" HorizontalAlignment="Left" Margin="260,640,0,0" VerticalAlignment="Top"/>
                             <Label x:Name="lblRaunkhiaer" Content="Levensvorm volgens Raunkhiaer" HorizontalAlignment="Left" Margin="35,680,0,0" VerticalAlignment="Top"/>
