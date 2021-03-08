@@ -7,6 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="brede pluim.jpg" />
+    <None Remove="etage.jpg" />
+    <None Remove="knop.jpg" />
+    <None Remove="margrietachtig.jpg" />
+    <None Remove="scherm.jpg" />
+    <None Remove="smalle pluim.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.0">
       <PrivateAssets>all</PrivateAssets>
@@ -17,6 +26,16 @@
   <ItemGroup>
     <ProjectReference Include="..\PlantenApplicatie.DATA\PlantenApplicatie.DATA.csproj" />
     <ProjectReference Include="..\PlantenApplicatie.DOMAIN\PlantenApplicatie.DOMAIN.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\aar.jpg" />
+    <Resource Include="Images\brede pluim.jpg" />
+    <Resource Include="Images\etage.jpg" />
+    <Resource Include="Images\knop.jpg" />
+    <Resource Include="Images\margrietachtig.jpg" />
+    <Resource Include="Images\scherm.jpg" />
+    <Resource Include="Images\smalle pluim.jpg" />
   </ItemGroup>
 
 </Project>
