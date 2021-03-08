@@ -301,7 +301,7 @@ namespace PlantenApplicatie
             SelectRadiobutton(rbtnKnop);
         }
 
-        //Maarten, Hermes & Jelle
+        //Maarten, Hemen & Jelle
         private void searchResults()
         {
             List<Plant> searchResults = context.Plant.ToList();
