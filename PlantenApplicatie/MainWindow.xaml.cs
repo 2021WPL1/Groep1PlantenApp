@@ -143,7 +143,6 @@ namespace PlantenApplicatie
         }
 
 
-
         private void cbxVariant_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (cbxVariant.SelectedItem != null)
