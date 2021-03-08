@@ -22,7 +22,6 @@ namespace PlantenApplicatie
     /// </summary>
     public partial class MainWindow : Window
     {
-
         private static Planten2021Context context = new Planten2021Context();
         public MainWindow()
         {
@@ -33,7 +32,6 @@ namespace PlantenApplicatie
             addItemsToComboBox(cbxVariant, "Variant");
             addItemsToComboBox(cbxSoort, "Soort");
             addItemsToComboBox(cbxGeslacht, "Geslacht");
-
         }
 
         public void addItemsToComboBox(ComboBox plant, string item)
@@ -76,16 +74,9 @@ namespace PlantenApplicatie
                         plant.Items.Add(geslacht.Geslachtnaam);
                     }
                     break;
-
-
-
                 default:
                     break;
             }
-
-
-
-
         }
 
         private void cbxType_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -100,7 +91,6 @@ namespace PlantenApplicatie
                     if (selectedType.Planttypeid == familie.TypeTypeid)
                     {
                         lstResult.Items.Add(familie.Familienaam);
-
                         cbxFamilie.Items.Add(familie.Familienaam);
                     }
                     else
