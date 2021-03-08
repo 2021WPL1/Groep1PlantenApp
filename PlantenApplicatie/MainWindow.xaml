@@ -21,7 +21,7 @@
                 </ComboBox.Foreground>
             </ComboBox>
             <ComboBox x:Name="cbxFamilie" HorizontalAlignment="Left" Margin="120,98,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxFamilie_SelectionChanged"/>
-              <ComboBox x:Name="cbxSoort" HorizontalAlignment="Left" Margin="120,177,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxSoort_SelectionChanged"/>
+            <ComboBox x:Name="cbxSoort" HorizontalAlignment="Left" Margin="120,177,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxSoort_SelectionChanged"/>
             <ComboBox x:Name="cbxGeslacht" HorizontalAlignment="Left" Margin="120,137,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxGeslacht_SelectionChanged"/>
             <ComboBox x:Name="cbxVariant" HorizontalAlignment="Left" Margin="120,218,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxVariant_SelectionChanged" />
             <ListBox x:Name="lstResult" Margin="5,352,4,10" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" Grid.IsSharedSizeScope="True" Padding="5,0,0,0">
@@ -155,9 +155,27 @@
                         <Grid Height="280" Width="557" Background="#FFE5E5E5"/>
                     </ScrollViewer>
                 </TabItem>
-                <TabItem Header="TabItem" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,-1,0,0">
+                <TabItem x:Name="tabExtraEigenschappen" Header="Extra Eigenschappen" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,-1,0,0">
                     <ScrollViewer>
-                        <Grid Height="280" Width="557" Background="#FFE5E5E5"/>
+                        <Grid Height="280" Width="557" Background="#FFF5F5F7">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <ComboBox HorizontalAlignment="Left" Margin="30,30,0,0" VerticalAlignment="Top" Width="120" BorderBrush="#FFFFFCFC" Background="#FFDDDDDD"/>
+                            <Label x:Name="lblNectarwaarde" Content="Nectarwaarde" HorizontalAlignment="Left" Margin="47,4,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblPollenwaarde" Content="Pollenwaarde" HorizontalAlignment="Left" Margin="49,55,0,0" VerticalAlignment="Top"/>
+                            <ComboBox x:Name="cbxPollenwaarde" HorizontalAlignment="Left" Margin="30,82,0,0" VerticalAlignment="Top" Width="120"/>
+                            <Label x:Name="lblBijvriendelijk" Content="Bijvriendelijk" HorizontalAlignment="Center" Margin="2,4,0,0" VerticalAlignment="Top"/>
+                            <ComboBox x:Name="cbxBijvriendelijk" HorizontalAlignment="Center" Margin="0,30,0,0" VerticalAlignment="Top" Width="120"/>
+                            <Label x:Name="lblVlindervriendelijk" Content="Vlindervriendelijk" HorizontalAlignment="Center" Margin="0,56,0,0" VerticalAlignment="Top"/>
+                            <ComboBox x:Name="cbxVlindervriendelijk" HorizontalAlignment="Center" Margin="3,82,0,0" VerticalAlignment="Top" Width="120"/>
+                            <Label x:Name="lblEetbaarKruidgebruik" Content="Eetbaar/kruidgebruik" Margin="405,4,29,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblGeurend" Content="Geurend" HorizontalAlignment="Left" Margin="439,57,0,0" VerticalAlignment="Top"/>
+                            <ComboBox x:Name="cbxEetbaarKruidgebruik" Margin="406,30,30,0" VerticalAlignment="Top"/>
+                            <ComboBox x:Name="cbxGeurend" Margin="407,82,30,0" VerticalAlignment="Top"/>
+                            <ComboBox x:Name="cbxVorstgevoelig" HorizontalAlignment="Center" Margin="0,135,0,0" VerticalAlignment="Top" Width="120"/>
+                            <Label x:Name="lblVorstgevoelig" Content="Vorstgevoelig" HorizontalAlignment="Center" Margin="0,109,0,0" VerticalAlignment="Top"/>
+                        </Grid>
                     </ScrollViewer>
                 </TabItem>
                 <TabItem Header="TabItem" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,-1,0,0">
