@@ -129,14 +129,7 @@ namespace PlantenApplicatie
                         cbxVariant.Items.Add(variant.Variantnaam);
                     }
                 }
-                //Maarten, Hermes & Jelle
-                foreach (Plant plant in context.Plant.ToList())
-                {
-                    if (selectedType.Planttypeid.ToString() == plant.Type)
-                    {
-                        lstResult.Items.Add(plant.Fgsv);
-                    }
-                }
+                searchResults();
 
             }
             
@@ -177,14 +170,7 @@ namespace PlantenApplicatie
                         cbxVariant.Items.Add(variant.Variantnaam);
                     }
                 }
-                //Maarten, Hermes & Jelle
-                foreach (Plant plant in context.Plant.ToList())
-                {
-                    if (selectedFamilie.FamileId.ToString() == plant.Familie)
-                    {
-                        lstResult.Items.Add(plant.Fgsv);
-                    }
-                }
+                searchResults();
             }
         }
         private void cbxSoort_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -202,15 +188,7 @@ namespace PlantenApplicatie
                         cbxVariant.Items.Add(variant.Variantnaam);
                     }
                 }
-                //Maarten, Hermes & Jelle
-                foreach (Plant plant in context.Plant.ToList())
-                {
-                    var selectedSoort = context.TfgsvSoort.FirstOrDefault(s => s.Soortnaam == cbxSoort.SelectedItem.ToString());
-                    if (selectedSoort.Soortid.ToString() == plant.Soort)
-                    {
-                        lstResult.Items.Add(plant.Fgsv);
-                    }
-                }
+                searchResults();
             }
         }
 
@@ -218,7 +196,6 @@ namespace PlantenApplicatie
 
         private void cbxVariant_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
         }
 
         private void cbxGeslacht_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -246,14 +223,7 @@ namespace PlantenApplicatie
                         cbxVariant.Items.Add(variant.Variantnaam);
                     }
                 }
-                //Maarten, Hermes & Jelle
-                foreach (Plant plant in context.Plant.ToList())
-                {
-                    if (selectedgeslacht.GeslachtId.ToString() == plant.Geslacht)
-                    {
-                        lstResult.Items.Add(plant.Fgsv);
-                    }
-                }
+                searchResults();
             }
         }
 
@@ -274,6 +244,83 @@ namespace PlantenApplicatie
             addItemsToComboBox(cbxSoort);
             addItemsToComboBox(cbxGeslacht);
 
+        }
+
+        //Maarten, Hermes & Jelle
+        private void searchResults()
+        {
+            List<Plant> searchResults = context.Plant.ToList();
+            List<Plant> SearchResultsCopy = new List<Plant>();
+            if (cbxType.SelectedItem != null)
+            {
+                var selectedType = context.TfgsvType.FirstOrDefault(s => s.Planttypenaam == cbxType.SelectedItem.ToString());
+                SearchResultsCopy = searchResults;
+                searchResults.Clear();
+                foreach (Plant plant in SearchResultsCopy)
+                {
+                    if (selectedType.Planttypeid.ToString() == plant.Type)
+                    {
+                        searchResults.Add(plant);
+                    }
+                }
+            }
+            if (cbxFamilie.SelectedItem != null)
+            {
+                var selectedFamilie = context.TfgsvFamilie.FirstOrDefault(s => s.Familienaam == cbxFamilie.SelectedItem.ToString());
+                SearchResultsCopy = searchResults;
+                searchResults = new List<Plant>();
+                foreach (Plant plant in SearchResultsCopy)
+                {
+                    if (selectedFamilie.FamileId.ToString() == plant.Familie)
+                    {
+                        searchResults.Add(plant);
+                    }
+                }
+                
+            }
+            if (cbxGeslacht.SelectedItem != null)
+            {
+                var selectedGeslacht = context.TfgsvGeslacht.FirstOrDefault(s => s.Geslachtnaam == cbxGeslacht.SelectedItem.ToString());
+                SearchResultsCopy = searchResults;
+                searchResults = new List<Plant>();
+                foreach (Plant plant in SearchResultsCopy)
+                {
+                    if (selectedGeslacht.GeslachtId.ToString() == plant.Geslacht)
+                    {
+                        searchResults.Add(plant);
+                    }
+                }
+            }
+            if (cbxSoort.SelectedItem != null)
+            {
+                var selectedSoort = context.TfgsvSoort.FirstOrDefault(s => s.Soortnaam == cbxSoort.SelectedItem.ToString());
+                SearchResultsCopy = searchResults;
+                searchResults = new List<Plant>();
+                foreach (Plant plant in SearchResultsCopy)
+                {
+                    if (selectedSoort.Soortid.ToString() == plant.Soort)
+                    {
+                        searchResults.Add(plant);
+                    }
+                }
+            }
+            if (cbxVariant.SelectedItem != null)
+            {
+                var selectedVariant = context.TfgsvVariant.FirstOrDefault(s => s.Variantnaam == cbxVariant.SelectedItem.ToString());
+                SearchResultsCopy = searchResults;
+                searchResults = new List<Plant>();
+                foreach (Plant plant in SearchResultsCopy)
+                {
+                    if (selectedVariant.VariantId.ToString() == plant.Variant)
+                    {
+                        searchResults.Add(plant);
+                    }
+                }
+            }
+            foreach (Plant plant1 in searchResults)
+            {
+                lstResult.Items.Add(plant1.Fgsv);
+            }
         }
     }
 }
