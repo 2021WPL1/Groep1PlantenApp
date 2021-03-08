@@ -28,48 +28,48 @@ namespace PlantenApplicatie
         {
             //Jelle
             InitializeComponent();
-            addItemsToComboBox(cbxType, "Type");
-            addItemsToComboBox(cbxFamilie, "Familie");
-            addItemsToComboBox(cbxVariant, "Variant");
-            addItemsToComboBox(cbxSoort, "Soort");
-            addItemsToComboBox(cbxGeslacht, "Geslacht");
+            addItemsToComboBox(cbxType);
+            addItemsToComboBox(cbxFamilie);
+            addItemsToComboBox(cbxVariant);
+            addItemsToComboBox(cbxSoort);
+            addItemsToComboBox(cbxGeslacht);
 
         }
 
-        public void addItemsToComboBox(ComboBox plant, string item)
+        public void addItemsToComboBox(ComboBox plant)
         {
             //Jelle
-            switch (item)
+            switch (plant.Name)
             {
-                case "Type":
+                case "cbxType":
                     var types = context.TfgsvType.ToList();
                     foreach (TfgsvType type in types)
                     {
                         plant.Items.Add(type.Planttypenaam);
                     }
                     break;
-                case "Familie":
+                case "cbxFamilie":
                     var families = context.TfgsvFamilie.ToList();
                     foreach (TfgsvFamilie familie in families)
                     {
                         plant.Items.Add(familie.Familienaam);
                     }
                     break;
-                case "Variant":
+                case "cbxVariant":
                     var varianten = context.TfgsvVariant.ToList();
                     foreach (TfgsvVariant variant in varianten)
                     {
                         plant.Items.Add(variant.Variantnaam);
                     }
                     break;
-                case "Soort":
+                case "cbxSoort":
                     var soorten = context.TfgsvSoort.ToList();
                     foreach (TfgsvSoort soort in soorten)
                     {
                         plant.Items.Add(soort.Soortnaam);
                     }
                     break;
-                case "Geslacht":
+                case "cbxGeslacht":
                     var geslachten = context.TfgsvGeslacht.ToList();
                     foreach (TfgsvGeslacht geslacht in geslachten)
                     {
@@ -180,16 +180,17 @@ namespace PlantenApplicatie
         {
             lstResult.Items.Clear();
             cbxType.Items.Clear();
-            addItemsToComboBox(cbxType, "Type");
             cbxFamilie.Items.Clear();
-            addItemsToComboBox(cbxFamilie, "Familie");
             cbxVariant.Items.Clear();
-            addItemsToComboBox(cbxVariant, "Variant");
             cbxSoort.Items.Clear();
-            addItemsToComboBox(cbxSoort, "Soort");
             cbxGeslacht.Items.Clear();
-            addItemsToComboBox(cbxGeslacht, "Geslacht");
-            
+
+            addItemsToComboBox(cbxType);
+            addItemsToComboBox(cbxFamilie);
+            addItemsToComboBox(cbxVariant);
+            addItemsToComboBox(cbxSoort);
+            addItemsToComboBox(cbxGeslacht);
+
         }
     }
 }
