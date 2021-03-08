@@ -109,7 +109,7 @@ namespace PlantenApplicatie
                     }
                 }
             }
-            
+
         }
         private void cbxFamilie_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -122,7 +122,7 @@ namespace PlantenApplicatie
                     var selectedFamilie = context.TfgsvFamilie.FirstOrDefault(s => s.Familienaam == cbxFamilie.SelectedItem.ToString());
                     if (selectedFamilie.FamileId == geslacht.FamilieFamileId)
                     {
-                        lstResult.Items.Add(geslacht.Geslachtnaam);     
+                        lstResult.Items.Add(geslacht.Geslachtnaam);
                         cbxGeslacht.Items.Add(geslacht.Geslachtnaam);
                     }
                 }
@@ -142,16 +142,18 @@ namespace PlantenApplicatie
                         lstResult.Items.Add(variant.Variantnaam);
                         cbxVariant.Items.Add(variant.Variantnaam);
                     }
-                    
                 }
             }
         }
 
-        
 
         private void cbxVariant_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            if (cbxVariant.SelectedItem != null)
+            {
+                lstResult.Items.Clear();
+                var selectedVariant = context.TfgsvVariant.First(v => v.Variantnaam == cbxVariant.SelectedItem.ToString());
+            }
         }
 
 
