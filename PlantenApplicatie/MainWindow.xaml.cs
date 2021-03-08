@@ -26,6 +26,7 @@ namespace PlantenApplicatie
         private static Planten2021Context context = new Planten2021Context();
         public MainWindow()
         {
+            //Jelle
             InitializeComponent();
             addItemsToComboBox(cbxType, "Type");
             addItemsToComboBox(cbxFamilie, "Familie");
@@ -37,6 +38,7 @@ namespace PlantenApplicatie
 
         public void addItemsToComboBox(ComboBox plant, string item)
         {
+            //Jelle
             switch (item)
             {
                 case "Type":
@@ -82,58 +84,147 @@ namespace PlantenApplicatie
 
         }
 
-        public void addItemsTocbxSoort()
-        {
-
-        }
-
-        public void addItemsTocbGeslacht()
-        {
-
-        }
-
-        public void addItemsTocbxVariant()
-        {
-
-        }
-
         private void cbxType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            lstResult.Items.Clear();
-            foreach (TfgsvFamilie familie in context.TfgsvFamilie.ToList())
+            //Maarten
+            if (cbxType.SelectedItem != null)
             {
-                var selectedType = context.TfgsvType.FirstOrDefault(s => s.Planttypenaam == cbxType.SelectedItem.ToString());
-                if (selectedType.Planttypeid == familie.TypeTypeid)
+                lstResult.Items.Clear();
+                cbxFamilie.Items.Clear();
+                foreach (TfgsvFamilie familie in context.TfgsvFamilie.ToList())
                 {
-                    lstResult.Items.Add(familie.Familienaam);
-                }
-                else
-                {
+                    var selectedType = context.TfgsvType.FirstOrDefault(s => s.Planttypenaam == cbxType.SelectedItem.ToString());
+                    if (selectedType.Planttypeid == familie.TypeTypeid)
+                    {
+                        lstResult.Items.Add(familie.Familienaam);
 
+                        cbxFamilie.Items.Add(familie.Familienaam);
+                    }
+                    else
+                    {
+
+                    }
+                }
+            }
+            
+        }
+        private void cbxFamilie_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //Maarten
+            if (cbxFamilie.SelectedItem != null)
+            {
+                cbxGeslacht.Items.Clear();
+                lstResult.Items.Clear();
+                foreach (TfgsvGeslacht geslacht in context.TfgsvGeslacht.ToList())
+                {
+                    var selectedFamilie = context.TfgsvFamilie.FirstOrDefault(s => s.Familienaam == cbxFamilie.SelectedItem.ToString());
+                    if (selectedFamilie.FamileId == geslacht.FamilieFamileId)
+                    {
+                        lstResult.Items.Add(geslacht.Geslachtnaam);     
+                        cbxGeslacht.Items.Add(geslacht.Geslachtnaam);
+                    }
+                }
+            }
+        }
+        private void cbxSoort_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //Jelle
+            if (cbxSoort.SelectedItem != null)
+            {
+                cbxVariant.Items.Clear();
+                lstResult.Items.Clear();
+                foreach (TfgsvVariant variant in context.TfgsvVariant.ToList())
+                {
+                    var selectedSoort = context.TfgsvSoort.FirstOrDefault(s => s.Soortnaam == cbxSoort.SelectedItem.ToString());
+                    if (selectedSoort.Soortid == variant.SoortSoortid)
+                    {
+                        lstResult.Items.Add(variant.Variantnaam);
+                        cbxVariant.Items.Add(variant.Variantnaam);
+                    }
+                    
                 }
             }
         }
 
-        private void cbxFamilie_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void cbxSoort_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void cbxGeslacht_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
+        
 
         private void cbxVariant_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
 
+        private void cbxGeslacht_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //Hemen
+            if (cbxGeslacht.SelectedItem != null)
+            {
+                lstResult.Items.Clear();
+                cbxSoort.Items.Clear();
+                foreach (TfgsvSoort soort in context.TfgsvSoort.ToList())
+                {
+                    var selectedgeslacht = context.TfgsvGeslacht.FirstOrDefault
+                            (s => s.Geslachtnaam == cbxGeslacht.SelectedItem.ToString());
+                    if (selectedgeslacht.GeslachtId == soort.GeslachtGeslachtId)
+                    {
+                        lstResult.Items.Add(soort.Soortnaam);
+                        cbxSoort.Items.Add(soort.Soortnaam);
 
+
+
+                    }
+                }
+            }
+        }
+
+        private void btnStartOpnieuw_Click(object sender, RoutedEventArgs e)
+        {
+            lstResult.Items.Clear();
+            cbxType.Items.Clear();
+            addItemsToComboBox(cbxType, "Type");
+            cbxFamilie.Items.Clear();
+            addItemsToComboBox(cbxFamilie, "Familie");
+            cbxVariant.Items.Clear();
+            addItemsToComboBox(cbxVariant, "Variant");
+            cbxSoort.Items.Clear();
+            addItemsToComboBox(cbxSoort, "Soort");
+            cbxGeslacht.Items.Clear();
+            addItemsToComboBox(cbxGeslacht, "Geslacht");
+            
+        }
+
+        private void SelectRadiobutton(RadioButton radioButton)
+        {
+            radioButton.IsChecked = true;
+        }
+
+        private void imgAar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            SelectRadiobutton(rbtnAar);
+        }
+
+        private void imgPluim_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            SelectRadiobutton(rbtnPluim);
+        }
+
+        private void imgMargriet_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            SelectRadiobutton(rbtnMargriet);
+        }
+
+        private void imgScherm_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            SelectRadiobutton(rbtnScherm);
+        }
+
+        private void imgTransparant_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            SelectRadiobutton(rbtnTransparant);
+        }
+
+        private void imgKnop_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            SelectRadiobutton(rbtnKnop);
+        }
     }
 }

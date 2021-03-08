@@ -30,13 +30,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="aar.jpg" />
-    <Resource Include="brede pluim.jpg" />
-    <Resource Include="etage.jpg" />
-    <Resource Include="knop.jpg" />
-    <Resource Include="margrietachtig.jpg" />
-    <Resource Include="scherm.jpg" />
-    <Resource Include="smalle pluim.jpg" />
+    <Resource Include="Images\aar.jpg" />
+    <Resource Include="Images\brede pluim.jpg" />
+    <Resource Include="Images\etage.jpg" />
+    <Resource Include="Images\knop.jpg" />
+    <Resource Include="Images\margrietachtig.jpg" />
+    <Resource Include="Images\scherm.jpg" />
+    <Resource Include="Images\smalle pluim.jpg" />
   </ItemGroup>
 
 </Project>
