@@ -150,8 +150,20 @@
                         </Grid>
                     </ScrollViewer>
                 </TabItem>
-                <TabItem Header="TabItem" HorizontalAlignment="Center" Height="20" VerticalAlignment="Center" Width="54">
-                    <Grid Background="#FFE5E5E5"/>
+                <TabItem Header="TabItem" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <ScrollViewer>
+                        <Grid Height="280" Width="557" Background="#FFE5E5E5"/>
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem Header="TabItem" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,-1,0,0">
+                    <ScrollViewer>
+                        <Grid Height="280" Width="557" Background="#FFE5E5E5"/>
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem Header="TabItem" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,-1,0,0">
+                    <ScrollViewer>
+                        <Grid Height="280" Width="557" Background="#FFE5E5E5"/>
+                    </ScrollViewer>
                 </TabItem>
             </TabControl>
             <Button x:Name="btnStartOpnieuw" Content="Clear zoekresultaat" HorizontalAlignment="Left" Margin="88,0,0,0" VerticalAlignment="Center" Click="btnStartOpnieuw_Click"/>
