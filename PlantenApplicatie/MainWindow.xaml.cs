@@ -27,11 +27,11 @@ namespace PlantenApplicatie
         {
             //Jelle
             InitializeComponent();
-            addItemsToComboBox(cbxType, "Type");
-            addItemsToComboBox(cbxFamilie, "Familie");
-            addItemsToComboBox(cbxVariant, "Variant");
-            addItemsToComboBox(cbxSoort, "Soort");
-            addItemsToComboBox(cbxGeslacht, "Geslacht");
+            addItemsToComboBox(cbxType);
+            addItemsToComboBox(cbxFamilie);
+            addItemsToComboBox(cbxVariant);
+            addItemsToComboBox(cbxSoort);
+            addItemsToComboBox(cbxGeslacht);
         }
 
         public void addItemsToComboBox(ComboBox plant)
