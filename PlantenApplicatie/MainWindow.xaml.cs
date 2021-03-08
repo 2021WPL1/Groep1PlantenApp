@@ -125,7 +125,6 @@ namespace PlantenApplicatie
                     }
                 }
                 searchResults();
-
             }
         }
         private void cbxFamilie_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -147,7 +146,6 @@ namespace PlantenApplicatie
                     {
                         cbxGeslacht.Items.Add(geslacht.Geslachtnaam);
                     }
-
                 }
                 foreach (TfgsvSoort soort in context.TfgsvSoort.ToList())
                 {
@@ -184,9 +182,9 @@ namespace PlantenApplicatie
             }
         }
 
-
         private void cbxVariant_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            //Stephanie, Senne
             if (cbxVariant.SelectedItem != null)
             {
                 lstResult.Items.Clear();
@@ -195,6 +193,7 @@ namespace PlantenApplicatie
         }
         private void ClearItems(ComboBox comboBox)
         {
+            //Stephanie
             lstResult.Items.Clear();
             comboBox.Items.Clear();
         }
@@ -254,36 +253,43 @@ namespace PlantenApplicatie
 
         private void SelectRadiobutton(RadioButton radioButton)
         {
+            //Senne
             radioButton.IsChecked = true;
         }
 
         private void imgAar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            //Senne
             SelectRadiobutton(rbtnAar);
         }
 
         private void imgPluim_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            //Senne
             SelectRadiobutton(rbtnPluim);
         }
 
         private void imgMargriet_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            //Senne
             SelectRadiobutton(rbtnMargriet);
         }
 
         private void imgScherm_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            //Senne
             SelectRadiobutton(rbtnScherm);
         }
 
         private void imgTransparant_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            //Senne
             SelectRadiobutton(rbtnTransparant);
         }
 
         private void imgKnop_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            //Senne
             SelectRadiobutton(rbtnKnop);
         }
 
