@@ -103,7 +103,16 @@ namespace PlantenApplicatie
         }
         private void cbxFamilie_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+            cbxGeslacht.Items.Clear();
+            foreach (TfgsvGeslacht geslacht in context.TfgsvGeslacht.ToList())
+            {
+                var selectedFamilie = context.TfgsvFamilie.FirstOrDefault(s => s.Familienaam == cbxFamilie.SelectedItem.ToString());
+                if (selectedFamilie.FamileId == geslacht.FamilieFamileId)
+                {
+                    lstResult.Items.Add(geslacht.Geslachtnaam);
+                    cbxGeslacht.Items.Add(geslacht.Geslachtnaam);
+                }
+            }
         }
         private void cbxSoort_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
