@@ -245,18 +245,18 @@ namespace PlantenApplicatie
             cbxType.Items.Clear();
             cbxVariant.Items.Clear();
 
+            addItemsToComboBox(cbxType);
+            addItemsToComboBox(cbxFamilie);
+            addItemsToComboBox(cbxVariant);
+            addItemsToComboBox(cbxSoort);
+            addItemsToComboBox(cbxGeslacht);
+
             rbtnAar.IsChecked = false;
             rbtnPluim.IsChecked = false;
             rbtnMargriet.IsChecked = false;
             rbtnScherm.IsChecked = false;
             rbtnTransparant.IsChecked = false;
             rbtnKnop.IsChecked = false;
-
-            addItemsToComboBox(cbxType);
-            addItemsToComboBox(cbxFamilie);
-            addItemsToComboBox(cbxVariant);
-            addItemsToComboBox(cbxSoort);
-            addItemsToComboBox(cbxGeslacht);
         }
 
         private void SelectRadiobutton(RadioButton radioButton)
