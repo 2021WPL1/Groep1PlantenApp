@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.EntityFrameworkCore;
-//using PlantenApplicatie.DATA.Models;
+using PlantenApplicatie.DOMAIN.Models;
 
 namespace PlantenApplicatie
 {
@@ -22,7 +22,7 @@ namespace PlantenApplicatie
     /// </summary>
     public partial class MainWindow : Window
     {
-        //private static Planten2021Context context = new Planten2021Context();
+        private static Planten2021Context context = new Planten2021Context();
         public MainWindow()
         {
             //Jelle
@@ -37,7 +37,7 @@ namespace PlantenApplicatie
         }
         
         public void addItemsToComboBox(ComboBox plant)
-        {/*
+        {
             //Jelle
             List<string> cboItems = new List<string>();
             switch (plant.Name)
@@ -85,11 +85,11 @@ namespace PlantenApplicatie
             foreach (string item in cboItems)
             {
                 plant.Items.Add(item);
-            }*/
+            }
         }
 
         private void cbxType_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {/*
+        {
             //Maarten
             if (cbxType.SelectedItem != null)
             {
@@ -134,11 +134,11 @@ namespace PlantenApplicatie
                     }
                 }
                 searchResults();
-            }*/
+            }
         }
 
         private void cbxFamilie_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {/*
+        {
             //Maarten
             if (cbxFamilie.SelectedItem != null)
             {
@@ -172,11 +172,11 @@ namespace PlantenApplicatie
                     }
                 }
                 searchResults();
-            }*/
+            }
         }
 
         private void cbxSoort_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {/*
+        {
             //Jelle
             if (cbxSoort.SelectedItem != null)
             {
@@ -190,17 +190,17 @@ namespace PlantenApplicatie
                     }
                 }
                 searchResults();
-            }*/
+            }
         }
 
         private void cbxVariant_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {/*
+        {
             //Stephanie, Senne
             if (cbxVariant.SelectedItem != null)
             {
                 lstResult.Items.Clear();
                 var selectedVariant = context.TfgsvVariant.First(v => v.Variantnaam == cbxVariant.SelectedItem.ToString());
-            }*/
+            }
         }
         private void ClearItems(ComboBox comboBox)
         {
@@ -210,7 +210,7 @@ namespace PlantenApplicatie
         }
 
         private void cbxGeslacht_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {/*
+        {
             //Hemen
             if (cbxGeslacht.SelectedItem != null)
             {
@@ -234,7 +234,7 @@ namespace PlantenApplicatie
                     }
                 }
                 searchResults();
-            }*/
+            }
         }
 
         private void btnStartOpnieuw_Click(object sender, RoutedEventArgs e)
@@ -305,7 +305,7 @@ namespace PlantenApplicatie
 
         //Maarten, Hemen & Jelle
         private void searchResults()
-        {/*
+        {
             List<Plant> searchResults = context.Plant.ToList();
             List<Plant> SearchResultsCopy = new List<Plant>();
             if (cbxType.SelectedItem != null)
@@ -376,7 +376,7 @@ namespace PlantenApplicatie
             foreach (Plant plant1 in searchResults)
             {
                 lstResult.Items.Add(plant1.Fgsv);
-            }*/
+            }
             
         }
 
