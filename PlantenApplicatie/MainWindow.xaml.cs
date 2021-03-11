@@ -329,7 +329,13 @@ namespace PlantenApplicatie
             {
                 lstResult.Items.Add(plant1.Fgsv);
             }
-            
+            List<string> allresults = lstResult.Items.Cast<string>().ToList();
+            allresults.Sort();
+            lstResult.Items.Clear();
+            foreach (string plant in allresults)
+            {
+                lstResult.Items.Add(plant);
+            }
         }
 
         private void txtSearchbox_KeyUp(object sender, KeyEventArgs e)

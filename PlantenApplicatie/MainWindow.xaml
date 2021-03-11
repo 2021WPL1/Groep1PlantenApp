@@ -49,7 +49,7 @@
                 </ComboBox.Background>
             </ComboBox>
             <ComboBox x:Name="cbxVariant" HorizontalAlignment="Left" Margin="120,218,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxVariant_SelectionChanged" />
-            <ListBox x:Name="lstResult" Margin="4,352,4,4" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" Grid.IsSharedSizeScope="True" Padding="5,0,0,0" Background="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" BorderBrush="{x:Null}" Foreground="{x:Null}">
+            <ListBox x:Name="lstResult" Margin="4,352,4,4" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" Grid.IsSharedSizeScope="True" Padding="5,0,0,0" Background="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" >
                 <ListBox.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -61,7 +61,7 @@
             </ListBox>
 
             <Button x:Name="btnStartOpnieuw" Content="Clear zoekresultaat" HorizontalAlignment="Left" Margin="120,270,0,0" VerticalAlignment="Top" Click="btnStartOpnieuw_Click" Background="#FFD3E618"/>
-            <TextBox x:Name="txtSearchbox" HorizontalAlignment="Left" Margin="283,143,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" KeyDown="txtSearchbox_KeyUp" Background="#FFD9FF00"/>
+            <TextBox x:Name="txtSearchbox" HorizontalAlignment="Left" Margin="283,143,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" KeyUp="txtSearchbox_KeyUp" Background="#FFD9FF00"/>
         </Grid>
     </Viewbox>
 </Window>
