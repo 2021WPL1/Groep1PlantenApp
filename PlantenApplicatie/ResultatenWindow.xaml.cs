@@ -25,6 +25,8 @@ namespace PlantenApplicatie
             fillLabels(plant);
         }
 
+
+        //Stephanie en Jelle    
         private void fillLabels(Plant plant)
         {
             bool enter = false;

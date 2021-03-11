@@ -103,36 +103,10 @@ namespace PlantenApplicatie
                 var selectedFamilie = context.TfgsvFamilie.FirstOrDefault(s => s.TypeTypeid == selectedType.Planttypeid);
                 var selectedgeslacht = context.TfgsvGeslacht.FirstOrDefault(s => s.FamilieFamileId == selectedFamilie.FamileId);
                 var selectedSoort = context.TfgsvSoort.FirstOrDefault(s => s.GeslachtGeslachtId == selectedgeslacht.GeslachtId);
-                foreach (TfgsvFamilie familie in context.TfgsvFamilie.ToList())
-                {
-                    if (selectedType.Planttypeid == familie.TypeTypeid)
-                    {
-                        cbxFamilie.Items.Add(familie.Familienaam);
-                    }
-                }
-                foreach (TfgsvGeslacht geslacht in context.TfgsvGeslacht.ToList())
-                {
-                    if (selectedFamilie.FamileId == geslacht.FamilieFamileId)
-                    {
-
-                        cbxGeslacht.Items.Add(geslacht.Geslachtnaam);
-                    }
-
-                }
-                foreach (TfgsvSoort soort in context.TfgsvSoort.ToList())
-                {
-                    if (selectedgeslacht.GeslachtId == soort.GeslachtGeslachtId)
-                    {
-                        cbxSoort.Items.Add(soort.Soortnaam);
-                    }
-                }
-                foreach (TfgsvVariant variant in context.TfgsvVariant.ToList())
-                {
-                    if (selectedSoort.Soortid == variant.SoortSoortid)
-                    {
-                        cbxVariant.Items.Add(variant.Variantnaam);
-                    }
-                }
+                fillFamilieCombobox(selectedType.Planttypeid);
+                fillGeslachtCombobox(selectedFamilie.FamileId);
+                fillSoortCombobox(selectedgeslacht.GeslachtId);
+                fillVariantCombobox(selectedSoort.Soortid);
                 searchResults();
             }
         }
@@ -150,27 +124,9 @@ namespace PlantenApplicatie
                 var selectedFamilie = context.TfgsvFamilie.FirstOrDefault(s => s.Familienaam == cbxFamilie.SelectedItem.ToString());
                 var selectedgeslacht = context.TfgsvGeslacht.FirstOrDefault(s => s.FamilieFamileId == selectedFamilie.FamileId);
                 var selectedSoort = context.TfgsvSoort.FirstOrDefault(s => s.GeslachtGeslachtId == selectedgeslacht.GeslachtId);
-                foreach (TfgsvGeslacht geslacht in context.TfgsvGeslacht.ToList())
-                {
-                    if (selectedFamilie.FamileId == geslacht.FamilieFamileId)
-                    {
-                        cbxGeslacht.Items.Add(geslacht.Geslachtnaam);
-                    }
-                }
-                foreach (TfgsvSoort soort in context.TfgsvSoort.ToList())
-                {
-                    if (selectedgeslacht.GeslachtId == soort.GeslachtGeslachtId)
-                    {
-                        cbxSoort.Items.Add(soort.Soortnaam);
-                    }
-                }
-                foreach (TfgsvVariant variant in context.TfgsvVariant.ToList())
-                {
-                    if (selectedSoort.Soortid == variant.SoortSoortid)
-                    {
-                        cbxVariant.Items.Add(variant.Variantnaam);
-                    }
-                }
+                fillGeslachtCombobox(selectedFamilie.FamileId);
+                fillSoortCombobox(selectedgeslacht.GeslachtId);
+                fillVariantCombobox(selectedSoort.Soortid);
                 searchResults();
             }
         }
@@ -181,14 +137,8 @@ namespace PlantenApplicatie
             if (cbxSoort.SelectedItem != null)
             {
                 ClearItems(cbxVariant);
-                foreach (TfgsvVariant variant in context.TfgsvVariant.ToList())
-                {
-                    var selectedSoort = context.TfgsvSoort.FirstOrDefault(s => s.Soortnaam == cbxSoort.SelectedItem.ToString());
-                    if (selectedSoort.Soortid == variant.SoortSoortid)
-                    {
-                        cbxVariant.Items.Add(variant.Variantnaam);
-                    }
-                }
+                var selectedSoort = context.TfgsvSoort.FirstOrDefault(s => s.Soortnaam == cbxSoort.SelectedItem.ToString());
+                fillVariantCombobox(selectedSoort.Soortid);
                 searchResults();
             }
         }
@@ -200,6 +150,7 @@ namespace PlantenApplicatie
             {
                 lstResult.Items.Clear();
                 var selectedVariant = context.TfgsvVariant.First(v => v.Variantnaam == cbxVariant.SelectedItem.ToString());
+                searchResults();
             }
         }
         private void ClearItems(ComboBox comboBox)
@@ -219,20 +170,8 @@ namespace PlantenApplicatie
                 cbxVariant.Items.Clear();
                 var selectedgeslacht = context.TfgsvGeslacht.FirstOrDefault(s => s.Geslachtnaam == cbxGeslacht.SelectedItem.ToString());
                 var selectedSoort = context.TfgsvSoort.FirstOrDefault(s => s.GeslachtGeslachtId == selectedgeslacht.GeslachtId);
-                foreach (TfgsvSoort soort in context.TfgsvSoort.ToList())
-                {
-                    if (selectedgeslacht.GeslachtId == soort.GeslachtGeslachtId)
-                    {
-                        cbxSoort.Items.Add(soort.Soortnaam);
-                    }
-                }
-                foreach (TfgsvVariant variant in context.TfgsvVariant.ToList())
-                {
-                    if (selectedSoort.Soortid == variant.SoortSoortid)
-                    {
-                        cbxVariant.Items.Add(variant.Variantnaam);
-                    }
-                }
+                fillSoortCombobox(selectedgeslacht.GeslachtId);
+                fillVariantCombobox(selectedSoort.Soortid);
                 searchResults();
             }
         }
@@ -322,16 +261,91 @@ namespace PlantenApplicatie
                         searchResults.Add(plant);
                     }
                 }
-            }
+            }   
             foreach (Plant plant1 in searchResults)
             {
                 lstResult.Items.Add(plant1.Fgsv);
             }
             
         }
+        //Jelle & Maarten
+        private void fillFamilieCombobox(long typeId)
+        {
+            List<string> cboItems = new List<string>();
+            foreach (TfgsvFamilie familie in context.TfgsvFamilie.ToList())
+            {
+                if (typeId == familie.TypeTypeid)
+                {
+                    cboItems.Add(familie.Familienaam);
+                }
+            }
+            cboItems.Sort();
+            cboItems = cboItems.ConvertAll(d => d.Substring(0, 1).ToUpper() + d.Substring(1).ToLower());
+            foreach (string item in cboItems)
+            {
+                cbxFamilie.Items.Add(item);
+            }
+        }
+        //Jelle & Maarten
+        private void fillGeslachtCombobox(long familieId)
+        {
+            List<string> cboItems = new List<string>();
+            foreach (TfgsvGeslacht geslacht in context.TfgsvGeslacht.ToList())
+            {
+                if (familieId == geslacht.FamilieFamileId)
+                {
+                    cboItems.Add(geslacht.Geslachtnaam);
+                }
+
+            }
+            cboItems.Sort();
+            cboItems = cboItems.ConvertAll(d => d.Substring(0, 1).ToUpper() + d.Substring(1).ToLower());
+            foreach (string item in cboItems)
+            {
+                cbxGeslacht.Items.Add(item);
+            }
+        }
+        //Jelle & Maarten
+        private void fillSoortCombobox(long geslachtId)
+        {
+            List<string> cboItems = new List<string>();
+            foreach (TfgsvSoort soort in context.TfgsvSoort.ToList())
+            {
+                if (geslachtId == soort.GeslachtGeslachtId)
+                {
+                    cboItems.Add(soort.Soortnaam);
+                }
+            }
+            cboItems.Sort();
+            cboItems = cboItems.ConvertAll(d => d.Substring(0, 1).ToUpper() + d.Substring(1).ToLower());
+            foreach (string item in cboItems)
+            {
+                cbxVariant.Items.Add(item);
+            }
+        }
+        //Jelle & Maarten
+        private void fillVariantCombobox(long soortId)
+        {
+            List<string> cboItems = new List<string>();
+            foreach (TfgsvVariant variant in context.TfgsvVariant.ToList())
+            {
+                if (soortId == variant.SoortSoortid)
+                {
+                    cboItems.Add(variant.Variantnaam);
+                }
+            }
+            cboItems.Sort();
+            cboItems = cboItems.ConvertAll(d => d.Substring(0, 1).ToUpper() + d.Substring(1).ToLower());
+            foreach (string item in cboItems)
+            {
+                cbxVariant.Items.Add(item);
+            }
+        }
+     
 
         private void txtSearchbox_KeyDown(object sender, KeyEventArgs e)
         {
+            
 
         }
 
