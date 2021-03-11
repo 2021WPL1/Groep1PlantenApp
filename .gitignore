@@ -12,6 +12,7 @@
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 PlantenApplicatie.DATA/Constant.cs
+PlantenApplicatie.DOMAIN/Constant.cs
 *.userprefs
 
 # Build results
