@@ -61,7 +61,7 @@
             </ListBox>
 
             <Button x:Name="btnStartOpnieuw" Content="Clear zoekresultaat" HorizontalAlignment="Left" Margin="120,270,0,0" VerticalAlignment="Top" Click="btnStartOpnieuw_Click" Background="#FFD3E618"/>
-            <TextBox x:Name="txtSearchbox" HorizontalAlignment="Left" Margin="283,143,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" KeyDown="txtSearchbox_KeyDown" Background="#FFD9FF00"/>
+            <TextBox x:Name="txtSearchbox" HorizontalAlignment="Left" Margin="283,143,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" KeyDown="txtSearchbox_KeyUp" Background="#FFD9FF00"/>
         </Grid>
     </Viewbox>
 </Window>

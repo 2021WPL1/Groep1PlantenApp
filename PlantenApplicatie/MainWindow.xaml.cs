@@ -252,6 +252,8 @@ namespace PlantenApplicatie
             addItemsToComboBox(cbxVariant);
             addItemsToComboBox(cbxSoort);
             addItemsToComboBox(cbxGeslacht);
+
+            txtSearchbox.Clear();
         }
         //Maarten, Hemen & Jelle
         private void searchResults()
@@ -330,9 +332,66 @@ namespace PlantenApplicatie
             
         }
 
-        private void txtSearchbox_KeyDown(object sender, KeyEventArgs e)
-        {
+        private void txtSearchbox_KeyUp(object sender, KeyEventArgs e)
+        {//Hermes, Senne
+            List<string> SearchResults = new List<string>();
+            string SearchValue = txtSearchbox.Text.ToLower().Trim();
 
+            if (lstResult.Items.Count!=0)
+            {
+                SearchResults = ComboboxResult();
+            }
+            else if(cbxFamilie.SelectedItem == null && cbxGeslacht.SelectedItem == null && cbxSoort.SelectedItem == null && cbxVariant.SelectedItem == null)
+            {
+                List<Plant> AllPlants = context.Plant.ToList();
+                foreach (Plant plant in AllPlants)
+                {
+                    SearchResults.Add(plant.Fgsv);
+                }
+            }
+            else
+            {
+                lstResult.Items.Clear();
+                searchResults();
+            }
+
+            if (SearchValue.Length != 0)
+            {
+                List<string> NewSearchResults = new List<string>();
+
+                foreach (string plant in SearchResults)
+                {
+                    if (plant.ToLower().Contains(SearchValue))
+                    {
+                        NewSearchResults.Add(plant);
+                    }
+                }
+
+                NewSearchResults.Sort();
+                lstResult.Items.Clear();
+
+                foreach (string plant in NewSearchResults)
+                {
+                    lstResult.Items.Add(plant);
+                }
+            }
+            else 
+            {
+                lstResult.Items.Clear();
+                if (cbxFamilie.SelectedItem != null || cbxGeslacht.SelectedItem != null || cbxSoort.SelectedItem != null || cbxVariant.SelectedItem != null)
+                {
+                    searchResults();
+                }
+            }
+        }
+        private List<string> ComboboxResult()
+        {//Hermes, Senne
+            List<string> SearchResults;
+            lstResult.Items.Clear();
+            searchResults();
+            SearchResults = lstResult.Items.Cast<string>().ToList();
+
+            return SearchResults;
         }
     }
 }
