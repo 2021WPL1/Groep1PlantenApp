@@ -91,6 +91,8 @@ namespace PlantenApplicatie
         private void cbxType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //Maarten
+            txtSearchbox.Clear();
+
             if (cbxType.SelectedItem != null)
             {
                 lstResult.Items.Clear();
@@ -140,6 +142,8 @@ namespace PlantenApplicatie
         private void cbxFamilie_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //Maarten
+            txtSearchbox.Clear();
+
             if (cbxFamilie.SelectedItem != null)
             {
                 lstResult.Items.Clear();
@@ -178,6 +182,8 @@ namespace PlantenApplicatie
         private void cbxSoort_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //Jelle
+            txtSearchbox.Clear();
+
             if (cbxSoort.SelectedItem != null)
             {
                 ClearItems(cbxVariant);
@@ -196,6 +202,8 @@ namespace PlantenApplicatie
         private void cbxVariant_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //Stephanie, Senne
+            txtSearchbox.Clear();
+
             if (cbxVariant.SelectedItem != null)
             {
                 lstResult.Items.Clear();
@@ -212,6 +220,8 @@ namespace PlantenApplicatie
         private void cbxGeslacht_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //Hemen
+            txtSearchbox.Clear();
+
             if (cbxGeslacht.SelectedItem != null)
             {
                 lstResult.Items.Clear();
@@ -340,15 +350,12 @@ namespace PlantenApplicatie
 
         private void txtSearchbox_KeyUp(object sender, KeyEventArgs e)
         {//Hermes, Senne
-            List<string> SearchResults = new List<string>();
+            List<string> SearchResults = ComboboxResult();
             string SearchValue = txtSearchbox.Text.ToLower().Trim();
 
-            if (lstResult.Items.Count != 0 && SearchValue.Length != 0)
+            if(cbxFamilie.SelectedItem == null && cbxGeslacht.SelectedItem == null && cbxSoort.SelectedItem == null && cbxVariant.SelectedItem == null)
             {
-                SearchResults = ComboboxResult();
-            }
-            else if(cbxFamilie.SelectedItem == null && cbxGeslacht.SelectedItem == null && cbxSoort.SelectedItem == null && cbxVariant.SelectedItem == null)
-            {
+                SearchResults.Clear();
                 List<Plant> AllPlants = context.Plant.ToList();
                 foreach (Plant plant in AllPlants)
                 {
@@ -357,7 +364,6 @@ namespace PlantenApplicatie
             }
             else
             {
-                SearchResults = ComboboxResult();
                 lstResult.Items.Clear();
                 searchResults();
             }
