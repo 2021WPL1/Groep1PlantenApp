@@ -23,12 +23,30 @@ namespace PlantenApplicatie
         {
             InitializeComponent();
             fillLabels(plant);
-
         }
 
         private void fillLabels(Plant plant)
         {
-            lblLatinName.Content = plant.Fgsv;
+            bool enter = false;
+            for (int i = 0; i < plant.Fgsv.Length; i++)
+            {
+                string letter = plant.Fgsv.Substring(i, 1);
+                if (letter == " " && i >= 25 && enter == false)
+                {
+                    enter = true;
+                }
+                else
+                {
+                    if (enter != true)
+                    {
+                        lblLatinName.Content += letter;
+                    }
+                    else
+                    {
+                        lblLatinName2.Content += letter;
+                    }
+                }
+            }
             lblDutchName.Content = plant.NederlandsNaam;
             lblType.Content = plant.Type;
             lblFamily.Content = plant.Familie;
@@ -38,7 +56,6 @@ namespace PlantenApplicatie
             lblPlantdichtheidMax.Content = plant.PlantdichtheidMax;
             lblPlantdichtheidMin.Content = plant.PlantdichtheidMin;
             lblStatus.Content = plant.Status;
-
         }
 
         private void btnAddToFavorite_Click(object sender, RoutedEventArgs e)
