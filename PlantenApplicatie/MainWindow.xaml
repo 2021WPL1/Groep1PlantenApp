@@ -35,7 +35,7 @@
             </ListBox>
             
             <Button x:Name="btnStartOpnieuw" Content="Clear zoekresultaat" HorizontalAlignment="Left" Margin="88,0,0,0" VerticalAlignment="Center" Click="btnStartOpnieuw_Click"/>
-            <TextBox x:Name="txtSearchbox" HorizontalAlignment="Left" Margin="249,271,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" KeyDown="txtSearchbox_KeyDown"/>
+            <TextBox x:Name="txtSearchbox" HorizontalAlignment="Left" Margin="249,271,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" KeyUp="txtSearchbox_KeyUp"/>
         </Grid>
     </Viewbox>
 </Window>
