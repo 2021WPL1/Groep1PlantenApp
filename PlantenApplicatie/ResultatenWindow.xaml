@@ -7,13 +7,13 @@
         mc:Ignorable="d"
         Title="ResultatenWindow" Height="550" Width="800">
     <Viewbox>
-        <Grid IsEnabled="False" Height="482">
-            <Rectangle Canvas.Left="144" Stroke="Black" Canvas.Top="124" Margin="91,142,90,73">
+        <Grid Height="482">
+            <Rectangle Canvas.Left="144" Stroke="Black" Canvas.Top="124" Margin="91,142,90,108">
                 <Rectangle.Fill>
                     <SolidColorBrush Color="#FFB4B2B2" Opacity="0.1"/>
                 </Rectangle.Fill>
             </Rectangle>
-            <Label x:Name="lblLatinName" Content="" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Height="30" Width="462"  BorderBrush="Black" BorderThickness="1,1,1,0" HorizontalContentAlignment="Center" FontSize="16"/>
+            <Label x:Name="lblLatinName" Content="" HorizontalAlignment="Center" Margin="0,61,0,0" VerticalAlignment="Top" Height="30" Width="462"  BorderBrush="Black" BorderThickness="1,1,1,0" HorizontalContentAlignment="Center" FontSize="16" FontWeight="Bold"/>
             <Label Content="Type" HorizontalAlignment="Left" Margin="100,151,0,0" VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1">
                 <Label.Background>
                     <SolidColorBrush Color="#FFBFB7B7" Opacity="0.3"/>
@@ -39,18 +39,12 @@
                     <SolidColorBrush Color="#FFBFB7B7" Opacity="0.3"/>
                 </Label.Background>
             </Label>
-            <Label x:Name="lblDutchName" Content="Nederlandse naam" Margin="192,81,192,0" VerticalAlignment="Top" FontSize="24"  BorderBrush="Black" BorderThickness="1,1,1,1" HorizontalContentAlignment="Center"/>
             <Label Content="Plantdichtheid__Min" HorizontalAlignment="Left" Margin="100,337,0,0" VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1">
                 <Label.Background>
                     <SolidColorBrush Color="#FFBFB7B7" Opacity="0.3"/>
                 </Label.Background>
             </Label>
             <Label Content="Plantdichtheid__Max" HorizontalAlignment="Left" Margin="100,306,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1,1,1,1" Width="124">
-                <Label.Background>
-                    <SolidColorBrush Color="#FFBFB7B7" Opacity="0.3"/>
-                </Label.Background>
-            </Label>
-            <Label Content="Status" HorizontalAlignment="Left" Margin="100,368,0,0" VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1">
                 <Label.Background>
                     <SolidColorBrush Color="#FFBFB7B7" Opacity="0.3"/>
                 </Label.Background>
@@ -62,16 +56,20 @@
             <Label x:Name="lblVariant" Content="" HorizontalAlignment="Left" Margin="228,275,0,0" VerticalAlignment="Top" Width="374" BorderBrush="Black" BorderThickness="1,1,1,1" HorizontalContentAlignment="Center"/>
             <Label x:Name="lblPlantdichtheidMin" Content="" HorizontalAlignment="Left" Margin="228,337,0,0" VerticalAlignment="Top" Width="374" BorderBrush="Black" BorderThickness="1,1,1,1" HorizontalContentAlignment="Center"/>
             <Label x:Name="lblPlantdichtheidMax" Content="" HorizontalAlignment="Left" Margin="228,306,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1,1,1,1" Width="374" HorizontalContentAlignment="Center"/>
-            <Label x:Name="lblStatus" Content="" HorizontalAlignment="Left" Margin="228,368,0,0" VerticalAlignment="Top" Width="374" BorderBrush="Black" BorderThickness="1,1,1,1" HorizontalContentAlignment="Center"/>
-            <Button x:Name="btnAddToFavorite" Content="Add to favorite" HorizontalAlignment="Left" Margin="91,414,0,0" VerticalAlignment="Top" Height="52" Width="246" Click="btnAddToFavorite_Click"/>
-            <Button x:Name="btnClose" Content="Close" HorizontalAlignment="Left" Margin="364,414,0,0" VerticalAlignment="Top" Height="52" Width="246" Click="btnClose_Click"/>
             <Image HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" VerticalAlignment="Top" Width="100">
                 <Image.OpacityMask>
                     <ImageBrush/>
                 </Image.OpacityMask>
             </Image>
             <Image x:Name="imgPlant" Height="100" Margin="690,10,10,0" VerticalAlignment="Top"/>
-            <Label x:Name="lblLatinName2" Content="" HorizontalAlignment="Center" Margin="0,40,0,0" VerticalAlignment="Top" Height="25" Width="462"  BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalContentAlignment="Center" FontSize="16" Padding="5,0,5,0"/>
+            <Label x:Name="lblLatinName2" Content="" HorizontalAlignment="Center" Margin="0,91,0,0" VerticalAlignment="Top" Height="25" Width="462"  BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalContentAlignment="Center" FontSize="16" Padding="5,0,5,0"/>
+            <Button x:Name="btnClose" Content="Close" HorizontalAlignment="Center" Margin="0,379,0,0" VerticalAlignment="Top" Height="63" Width="519" Click="btnClose_Click"/>
+            <Label Content="Latijnse naam" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Height="37" Width="462"  BorderBrush="Black" BorderThickness="1,1,1,1" HorizontalContentAlignment="Center" FontSize="16" FontWeight="Bold">
+                <Label.Background>
+                    <SolidColorBrush Color="#FFBFB7B7" Opacity="0.3"/>
+                </Label.Background>
+            </Label>
+
         </Grid>
     </Viewbox>
 

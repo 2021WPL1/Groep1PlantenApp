@@ -341,7 +341,7 @@ namespace PlantenApplicatie
             {
                 var plant = context.Plant.FirstOrDefault(s => s.Fgsv == lstResult.SelectedItem.ToString());
                 ResultatenWindow resultatenWindow = new ResultatenWindow(plant);
-                resultatenWindow.Show();
+                resultatenWindow.ShowDialog();
             }
             catch (Exception)
             {

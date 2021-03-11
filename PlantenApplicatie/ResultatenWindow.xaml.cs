@@ -47,7 +47,6 @@ namespace PlantenApplicatie
                     }
                 }
             }
-            lblDutchName.Content = plant.NederlandsNaam;
             lblType.Content = plant.Type;
             lblFamily.Content = plant.Familie;
             lblGeslacht.Content = plant.Geslacht;
@@ -55,17 +54,11 @@ namespace PlantenApplicatie
             lblVariant.Content = plant.Variant;
             lblPlantdichtheidMax.Content = plant.PlantdichtheidMax;
             lblPlantdichtheidMin.Content = plant.PlantdichtheidMin;
-            lblStatus.Content = plant.Status;
-        }
-
-        private void btnAddToFavorite_Click(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-
+            Close();
         }
     }
 }
