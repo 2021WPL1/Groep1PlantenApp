@@ -343,7 +343,7 @@ namespace PlantenApplicatie
             List<string> SearchResults = new List<string>();
             string SearchValue = txtSearchbox.Text.ToLower().Trim();
 
-            if (lstResult.Items.Count!=0)
+            if (lstResult.Items.Count != 0 && SearchValue.Length != 0)
             {
                 SearchResults = ComboboxResult();
             }
@@ -357,6 +357,7 @@ namespace PlantenApplicatie
             }
             else
             {
+                SearchResults = ComboboxResult();
                 lstResult.Items.Clear();
                 searchResults();
             }
