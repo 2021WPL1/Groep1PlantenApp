@@ -27,13 +27,15 @@ namespace PlantenApplicatie
         {
             //Jelle
             InitializeComponent();
+            
             addItemsToComboBox(cbxType);
             addItemsToComboBox(cbxFamilie);
             addItemsToComboBox(cbxVariant);
             addItemsToComboBox(cbxSoort);
             addItemsToComboBox(cbxGeslacht);
+            
         }
-
+        
         public void addItemsToComboBox(ComboBox plant)
         {
             //Jelle
@@ -375,6 +377,7 @@ namespace PlantenApplicatie
             {
                 lstResult.Items.Add(plant1.Fgsv);
             }
+            
         }
 
         private void cbxHabitus_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -501,5 +504,6 @@ namespace PlantenApplicatie
         {
 
         }
+        
     }
 }
