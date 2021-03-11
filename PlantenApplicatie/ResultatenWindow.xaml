@@ -67,7 +67,7 @@
             <Button x:Name="btnClose" Content="Close" HorizontalAlignment="Left" Margin="408,414,0,0" VerticalAlignment="Top" Height="52" Width="246" Click="btnClose_Click"/>
             <Image HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" VerticalAlignment="Top" Width="100">
                 <Image.OpacityMask>
-                    <ImageBrush ImageSource="Images/Plantify.png"/>
+                    <ImageBrush/>
                 </Image.OpacityMask>
             </Image>
             <Image x:Name="imgPlant" Height="100" Margin="690,10,10,0" VerticalAlignment="Top"/>

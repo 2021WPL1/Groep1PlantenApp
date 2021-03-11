@@ -334,5 +334,20 @@ namespace PlantenApplicatie
         {
 
         }
+
+        private void lstResult_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                var plant = context.Plant.FirstOrDefault(s => s.Fgsv == lstResult.SelectedItem.ToString());
+                ResultatenWindow resultatenWindow = new ResultatenWindow(plant);
+                resultatenWindow.Show();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Gelieve een plant te selecteren.");
+            }
+            
+        }
     }
 }

@@ -9,6 +9,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using PlantenApplicatie.DOMAIN.Models;
+
 
 namespace PlantenApplicatie
 {
@@ -17,9 +19,26 @@ namespace PlantenApplicatie
     /// </summary>
     public partial class ResultatenWindow : Window
     {
-        public ResultatenWindow()
+        public ResultatenWindow(Plant plant)
         {
             InitializeComponent();
+            fillLabels(plant);
+
+        }
+
+        private void fillLabels(Plant plant)
+        {
+            lblLatinName.Content = plant.Fgsv;
+            lblDutchName.Content = plant.NederlandsNaam;
+            lblType.Content = plant.Type;
+            lblFamily.Content = plant.Familie;
+            lblGeslacht.Content = plant.Geslacht;
+            lblSoort.Content = plant.Soort;
+            lblVariant.Content = plant.Variant;
+            lblPlantdichtheidMax.Content = plant.PlantdichtheidMax;
+            lblPlantdichtheidMin.Content = plant.PlantdichtheidMin;
+            lblStatus.Content = plant.Status;
+
         }
 
         private void btnAddToFavorite_Click(object sender, RoutedEventArgs e)
