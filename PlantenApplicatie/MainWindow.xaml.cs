@@ -252,57 +252,7 @@ namespace PlantenApplicatie
             addItemsToComboBox(cbxVariant);
             addItemsToComboBox(cbxSoort);
             addItemsToComboBox(cbxGeslacht);
-
-            rbtnAar.IsChecked = false;
-            rbtnPluim.IsChecked = false;
-            rbtnMargriet.IsChecked = false;
-            rbtnScherm.IsChecked = false;
-            rbtnTransparant.IsChecked = false;
-            rbtnKnop.IsChecked = false;
         }
-
-        private void SelectRadiobutton(RadioButton radioButton)
-        {
-            //Senne
-            radioButton.IsChecked = true;
-        }
-
-        private void imgAar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            //Senne
-            SelectRadiobutton(rbtnAar);
-        }
-
-        private void imgPluim_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            //Senne
-            SelectRadiobutton(rbtnPluim);
-        }
-
-        private void imgMargriet_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            //Senne
-            SelectRadiobutton(rbtnMargriet);
-        }
-
-        private void imgScherm_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            //Senne
-            SelectRadiobutton(rbtnScherm);
-        }
-
-        private void imgTransparant_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            //Senne
-            SelectRadiobutton(rbtnTransparant);
-        }
-
-        private void imgKnop_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            //Senne
-            SelectRadiobutton(rbtnKnop);
-        }
-
         //Maarten, Hemen & Jelle
         private void searchResults()
         {
