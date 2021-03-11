@@ -6,23 +6,31 @@
         xmlns:local="clr-namespace:PlantenApplicatie"
         mc:Ignorable="d"
         Title="MainWindow" Height="700" Width="900">
-    <Viewbox Margin="0,0,0,10">
+    <Viewbox Margin="1,0,1,1">
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="654" Width="440">
-            
+
             <Grid.Background>
                 <ImageBrush ImageSource="/Bladren.jpg"/>
             </Grid.Background>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Label Content="Zoekscherm" HorizontalAlignment="Left" Margin="249,0,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Normal" FontFamily="Algerian" FontStyle="Italic" FontStretch="Expanded" Background="#FFC3BF95"/>
+            <Label Content="Zoek via naam" HorizontalAlignment="Left" Margin="22,276,0,0" VerticalAlignment="Top" Background="#FFF0D455"/>
+            <Border BorderThickness="5" BorderBrush="Black">
+                <Label Content="Resultaat" Margin="0,322,0,295" FontWeight="Bold" FontFamily="Century Gothic" Background="#FFC3E628"/>
+
+
+
+            </Border>
+            <Label Content="*Dubbelklik de plant voor meer info*" HorizontalAlignment="Left" Margin="98,328,0,0" VerticalAlignment="Top" Foreground="#FFFF0C0C" FontSize="10"/>
+            <Label Content="Zoekscherm" HorizontalAlignment="Center" Margin="2,9,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Normal" FontFamily="Algerian" FontStyle="Italic" FontStretch="Expanded" Background="#FFC3BF95"/>
             <Image x:Name="imgPlantify" HorizontalAlignment="Left" Height="55" Margin="2,0,0,0" VerticalAlignment="Top" Width="55" Source="/MicrosoftTeams-image.png.png"/>
             <Label Content="Familie" HorizontalAlignment="Left" Margin="22,96,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.068,0.332" Cursor="Hand" Background="#FFD1E229" Width="55"/>
             <Label Content="Soort" HorizontalAlignment="Left" Margin="22,175,0,0" VerticalAlignment="Top" BorderBrush="Black" Background="#FFDBEE24" Width="55"/>
             <Label Content="Type" HorizontalAlignment="Left" Margin="22,50,0,0" VerticalAlignment="Top" Background="#FFD7EA1D" Width="55"/>
             <Label Content="Geslacht" HorizontalAlignment="Left" Margin="22,135,0,0" VerticalAlignment="Top" Background="#FFD5E81A"/>
             <Label Content="Variant" HorizontalAlignment="Left" Margin="22,216,0,0" VerticalAlignment="Top" Background="#FFDDF020" Width="55"/>
-            <ComboBox x:Name="cbxType" HorizontalAlignment="Left" Margin="120,50,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxType_SelectionChanged"/>
+            <ComboBox x:Name="cbxType" HorizontalAlignment="Left" Margin="120,54,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxType_SelectionChanged"/>
             <ComboBox x:Name="cbxFamilie" HorizontalAlignment="Left" Margin="120,98,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxFamilie_SelectionChanged"/>
             <ComboBox x:Name="cbxSoort" HorizontalAlignment="Left" Margin="120,177,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxSoort_SelectionChanged">
                 <ComboBox.Background>
@@ -41,7 +49,7 @@
                 </ComboBox.Background>
             </ComboBox>
             <ComboBox x:Name="cbxVariant" HorizontalAlignment="Left" Margin="120,218,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxVariant_SelectionChanged" />
-            <ListBox x:Name="lstResult" Margin="-1,352,-1,-9" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" Grid.IsSharedSizeScope="True" Padding="5,0,0,0" Background="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" BorderBrush="{x:Null}" Foreground="{x:Null}">
+            <ListBox x:Name="lstResult" Margin="4,352,4,4" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" Grid.IsSharedSizeScope="True" Padding="5,0,0,0" Background="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" BorderBrush="{x:Null}" Foreground="{x:Null}">
                 <ListBox.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -52,7 +60,7 @@
                 </ListBox.RenderTransform>
             </ListBox>
 
-            <Button x:Name="btnStartOpnieuw" Content="Clear zoekresultaat" HorizontalAlignment="Left" Margin="88,0,0,0" VerticalAlignment="Center" Click="btnStartOpnieuw_Click" Background="#FFD3E618"/>
+            <Button x:Name="btnStartOpnieuw" Content="Clear zoekresultaat" HorizontalAlignment="Center" Margin="10,624,0,0" VerticalAlignment="Top" Click="btnStartOpnieuw_Click" Background="#FFD3E618"/>
             <TextBox x:Name="txtSearchbox" HorizontalAlignment="Left" Margin="249,271,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" KeyDown="txtSearchbox_KeyDown" Background="#FFCDF348"/>
         </Grid>
     </Viewbox>
