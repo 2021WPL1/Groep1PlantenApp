@@ -49,7 +49,7 @@
                 </ComboBox.Background>
             </ComboBox>
             <ComboBox x:Name="cbxVariant" HorizontalAlignment="Left" Margin="120,218,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxVariant_SelectionChanged" />
-            <ListBox x:Name="lstResult" Margin="4,352,4,4" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" Grid.IsSharedSizeScope="True" Padding="5,0,0,0" Background="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" >
+            <ListBox x:Name="lstResult" Margin="5,352,4,10" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" Grid.IsSharedSizeScope="True" Padding="5,0,0,0" MouseDoubleClick="lstResult_MouseDoubleClick">
                 <ListBox.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleX="1" ScaleY="1"/>
