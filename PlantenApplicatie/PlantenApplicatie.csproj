@@ -7,10 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Bladren.jpg" />
     <None Remove="brede pluim.jpg" />
     <None Remove="etage.jpg" />
     <None Remove="knop.jpg" />
     <None Remove="margrietachtig.jpg" />
+    <None Remove="MicrosoftTeams-image.png.png" />
     <None Remove="scherm.jpg" />
     <None Remove="smalle pluim.jpg" />
   </ItemGroup>
@@ -33,6 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Bladren.jpg" />
     <Resource Include="Images\aar.jpg" />
     <Resource Include="Images\brede pluim.jpg" />
     <Resource Include="Images\etage.jpg" />
@@ -40,6 +43,7 @@
     <Resource Include="Images\margrietachtig.jpg" />
     <Resource Include="Images\scherm.jpg" />
     <Resource Include="Images\smalle pluim.jpg" />
+    <Resource Include="MicrosoftTeams-image.png.png" />
   </ItemGroup>
 
 </Project>
