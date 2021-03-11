@@ -21,5 +21,15 @@ namespace PlantenApplicatie
         {
             InitializeComponent();
         }
+
+        private void btnAddToFavorite_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
