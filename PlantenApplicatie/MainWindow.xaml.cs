@@ -332,7 +332,10 @@ namespace PlantenApplicatie
 
         private void txtSearchbox_KeyDown(object sender, KeyEventArgs e)
         {
+            if (txtSearchbox.Text.Length>=3)
+            {
 
+            }
         }
     }
 }
