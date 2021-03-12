@@ -1,0 +1,115 @@
+﻿<Window x:Class="PlantenApplicatie.ResultatenWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PlantenApplicatie"
+        mc:Ignorable="d"
+        Title="ResultatenWindow" Height="550" Width="800">
+    <Viewbox>
+        <Grid Height="482" Width="721">
+            <Grid.Background>
+                <ImageBrush ImageSource="/ResultatenWindow/Achtergrond ResultaatScherm.jpg" Stretch="UniformToFill"/>
+            </Grid.Background>
+            <Rectangle Canvas.Left="144" Stroke="Black" Canvas.Top="124" Margin="101,141,99,109" StrokeThickness="5">
+                <Rectangle.Fill>
+                    <ImageBrush ImageSource="/ResultatenWindow/kaartenkarton-200-grams-pak-van-50-vellen-a4-wit.jpg"/>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Label x:Name="lblLatinName" Content="" HorizontalAlignment="Center" Margin="0,61,0,0" VerticalAlignment="Top" Height="30" Width="462"  BorderBrush="Black" BorderThickness="4,4,4,0" HorizontalContentAlignment="Center" FontSize="16" FontWeight="Bold">
+                <Label.Background>
+                    <ImageBrush ImageSource="/ResultatenWindow/kaartenkarton-200-grams-pak-van-50-vellen-a4-wit.jpg"/>
+                </Label.Background>
+            </Label>
+            <Label Content="Type" HorizontalAlignment="Left" Margin="110,150,0,0" VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1">
+                <Label.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                    </LinearGradientBrush>
+                </Label.Background>
+            </Label>
+            <Label Content="Familie" HorizontalAlignment="Left" Margin="110,181,0,0" VerticalAlignment="Top" Height="26" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1">
+                <Label.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                    </LinearGradientBrush>
+                </Label.Background>
+            </Label>
+            <Label Content="Geslacht" HorizontalAlignment="Left" Margin="110,212,0,0" VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1">
+                <Label.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                    </LinearGradientBrush>
+                </Label.Background>
+            </Label>
+            <Label Content="Soort" HorizontalAlignment="Left" Margin="110,243,0,0" VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1">
+                <Label.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                    </LinearGradientBrush>
+                </Label.Background>
+            </Label>
+            <Label Content="Variant" HorizontalAlignment="Left" Margin="110,274,0,0" VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1">
+                <Label.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                    </LinearGradientBrush>
+                </Label.Background>
+            </Label>
+            <Label Content="Plantdichtheid__Min" HorizontalAlignment="Left" Margin="110,336,0,0" VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1">
+                <Label.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                    </LinearGradientBrush>
+                </Label.Background>
+            </Label>
+            <Label Content="Plantdichtheid__Max" HorizontalAlignment="Left" Margin="110,305,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1,1,1,1" Width="124">
+                <Label.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                    </LinearGradientBrush>
+                </Label.Background>
+            </Label>
+            <Label x:Name="lblType" Content="" HorizontalAlignment="Left" Margin="238,150,0,0" VerticalAlignment="Top" Width="374" BorderBrush="Black" BorderThickness="1,1,1,1" HorizontalContentAlignment="Center"/>
+            <Label x:Name="lblFamily" Content="" HorizontalAlignment="Left" Margin="238,181,0,0" VerticalAlignment="Top" Height="26" Width="374" BorderBrush="Black" BorderThickness="1,1,1,1" HorizontalContentAlignment="Center"/>
+            <Label x:Name="lblGeslacht" Content="" HorizontalAlignment="Left" Margin="238,212,0,0" VerticalAlignment="Top" Width="374" BorderBrush="Black" BorderThickness="1,1,1,1" HorizontalContentAlignment="Center"/>
+            <Label x:Name="lblSoort" Content="" HorizontalAlignment="Left" Margin="238,243,0,0" VerticalAlignment="Top" Width="374" BorderBrush="Black" BorderThickness="1,1,1,1" HorizontalContentAlignment="Center"/>
+            <Label x:Name="lblVariant" Content="" HorizontalAlignment="Left" Margin="238,274,0,0" VerticalAlignment="Top" Width="374" BorderBrush="Black" BorderThickness="1,1,1,1" HorizontalContentAlignment="Center"/>
+            <Label x:Name="lblPlantdichtheidMin" Content="" HorizontalAlignment="Left" Margin="238,336,0,0" VerticalAlignment="Top" Width="374" BorderBrush="Black" BorderThickness="1,1,1,1" HorizontalContentAlignment="Center"/>
+            <Label x:Name="lblPlantdichtheidMax" Content="" HorizontalAlignment="Left" Margin="238,305,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1,1,1,1" Width="374" HorizontalContentAlignment="Center"/>
+            <Image HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" VerticalAlignment="Top" Width="100">
+                <Image.OpacityMask>
+                    <ImageBrush/>
+                </Image.OpacityMask>
+            </Image>
+            <Image x:Name="imgPlant" Height="100" Margin="690,10,10,0" VerticalAlignment="Top"/>
+            <Label x:Name="lblLatinName2" Content="" HorizontalAlignment="Center" Margin="0,91,0,0" VerticalAlignment="Top" Height="25" Width="462"  BorderBrush="Black" BorderThickness="4,0,4,4" HorizontalContentAlignment="Center" FontSize="16" Padding="5,0,5,0" FontWeight="Bold">
+                <Label.Background>
+                    <ImageBrush ImageSource="/ResultatenWindow/kaartenkarton-200-grams-pak-van-50-vellen-a4-wit.jpg"/>
+                </Label.Background>
+            </Label>
+            <Button x:Name="btnClose" Content="Close" HorizontalAlignment="Center" Margin="0,379,0,0" VerticalAlignment="Top" Height="63" Width="519" Click="btnClose_Click">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White" Offset="0"/>
+                        <GradientStop Color="#FFD9FF00" Offset="0.458"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Label Content="Latijnse naam" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Height="37" Width="462"  BorderBrush="Black" BorderThickness="4,4,4,4" HorizontalContentAlignment="Center" FontSize="16" FontWeight="Bold">
+                <Label.Background>
+                    <ImageBrush ImageSource="/ResultatenWindow/kaartenkarton-200-grams-pak-van-50-vellen-a4-wit.jpg"/>
+                </Label.Background>
+            </Label>
+
+        </Grid>
+    </Viewbox>
+
+</Window>

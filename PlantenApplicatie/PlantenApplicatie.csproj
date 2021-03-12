@@ -7,12 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Bladren.jpg" />
+    <None Remove="Achtergrond ResultaatScherm.jpg" />
+    <None Remove="Bladeren.jpg" />
     <None Remove="brede pluim.jpg" />
     <None Remove="etage.jpg" />
+    <None Remove="kaartenkarton-200-grams-pak-van-50-vellen-a4-wit.jpg" />
     <None Remove="knop.jpg" />
     <None Remove="margrietachtig.jpg" />
-    <None Remove="MicrosoftTeams-image.png.png" />
+    <None Remove="ResultatenWindow\Achtergrond ResultaatScherm.jpg" />
+    <None Remove="ResultatenWindow\kaartenkarton-200-grams-pak-van-50-vellen-a4-wit.jpg" />
     <None Remove="scherm.jpg" />
     <None Remove="smalle pluim.jpg" />
   </ItemGroup>
@@ -35,7 +38,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Bladren.jpg" />
+    <Resource Include="Images\Bladeren.jpg" />
     <Resource Include="Images\aar.jpg" />
     <Resource Include="Images\brede pluim.jpg" />
     <Resource Include="Images\etage.jpg" />
@@ -43,7 +46,8 @@
     <Resource Include="Images\margrietachtig.jpg" />
     <Resource Include="Images\scherm.jpg" />
     <Resource Include="Images\smalle pluim.jpg" />
-    <Resource Include="MicrosoftTeams-image.png.png" />
+    <Resource Include="ResultatenWindow\Achtergrond ResultaatScherm.jpg" />
+    <Resource Include="ResultatenWindow\kaartenkarton-200-grams-pak-van-50-vellen-a4-wit.jpg" />
   </ItemGroup>
 
 </Project>
