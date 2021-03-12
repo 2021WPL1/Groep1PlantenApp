@@ -10,7 +10,7 @@
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="654" Width="440">
 
             <Grid.Background>
-                <ImageBrush ImageSource="/Bladren.jpg"/>
+                <ImageBrush ImageSource="images/Bladeren.jpg"/>
             </Grid.Background>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -24,7 +24,7 @@
             </Border>
             <Label Content="*Dubbelklik de plant voor meer info*" Margin="266,328,0,0" VerticalAlignment="Top" Foreground="#FFFF0C0C" FontSize="10"/>
             <Label Content="Zoekscherm" HorizontalAlignment="Center" Margin="2,9,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Normal" FontFamily="Algerian" FontStyle="Normal" FontStretch="Expanded" Background="#FFC3BF95"/>
-            <Image x:Name="imgPlantify" HorizontalAlignment="Right" Height="55" Margin="2,0,0,0" VerticalAlignment="Top" Width="55" Source="/MicrosoftTeams-image.png.png"/>
+            <Image x:Name="imgPlantify" HorizontalAlignment="Right" Height="55" Margin="2,0,0,0" VerticalAlignment="Top" Width="55" Source="images/Plantify.png"/>
             <Label Content="Familie" HorizontalAlignment="Left" Margin="22,96,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.068,0.332" Background="#FFD9FF00" Width="55"/>
             <Label Content="Soort" HorizontalAlignment="Left" Margin="22,175,0,0" VerticalAlignment="Top" BorderBrush="Black" Background="#FFD9FF00" Width="55"/>
             <Label Content="Type" HorizontalAlignment="Left" Margin="22,50,0,0" VerticalAlignment="Top" Background="#FFD9FF00" Width="55"/>
