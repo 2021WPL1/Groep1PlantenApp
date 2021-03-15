@@ -51,6 +51,15 @@ namespace PlantenApplicatie
                     }
                 }
             }
+            if (plant.Type != null)
+            {
+                lblType.Content = plant.Type;
+            }
+            else
+            {
+                lblType.Content = " ";
+            }
+
             lblType.Content = plant.Type;
             lblFamily.Content = plant.Familie;
             lblGeslacht.Content = plant.Geslacht;
@@ -59,6 +68,7 @@ namespace PlantenApplicatie
             lblPlantdichtheidMax.Content = plant.PlantdichtheidMax;
             lblPlantdichtheidMin.Content = plant.PlantdichtheidMin;
         }
+
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
