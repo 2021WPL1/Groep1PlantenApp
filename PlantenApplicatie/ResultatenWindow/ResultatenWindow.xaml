@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PlantenApplicatie"
         mc:Ignorable="d"
-        Title="ResultatenWindow" Height="550" Width="800">
+        Title="ResultatenWindow" Height="550" Width="800" WindowState="Maximized">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/Images/AchtergrondSchermen.jpg"/>
