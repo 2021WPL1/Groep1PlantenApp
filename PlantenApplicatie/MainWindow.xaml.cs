@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.EntityFrameworkCore;
-using PlantenApplicatie.DOMAIN.Models;
+using PlantenApplicatie.DATA.Models;
 
 namespace PlantenApplicatie
 {
@@ -357,7 +357,7 @@ namespace PlantenApplicatie
             {
                 MessageBox.Show("Gelieve een plant te selecteren.");
             }
-
+            
         }
         private void fillFamilieCombobox(long typeId)
         {
