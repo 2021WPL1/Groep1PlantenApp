@@ -40,7 +40,6 @@
 
   <ItemGroup>
     <Resource Include="Images\AchtergrondSchermen.jpg" />
-    <Resource Include="Images\Bladeren.jpg" />
     <Resource Include="Images\aar.jpg" />
     <Resource Include="Images\brede pluim.jpg" />
     <Resource Include="Images\etage.jpg" />
@@ -49,7 +48,6 @@
     <Resource Include="Images\Plantify.png" />
     <Resource Include="Images\scherm.jpg" />
     <Resource Include="Images\smalle pluim.jpg" />
-    <Resource Include="ResultatenWindow\Images\Achtergrond ResultaatScherm.jpg" />
     <Resource Include="ResultatenWindow\Images\Wit.jpg" />
   </ItemGroup>
 
