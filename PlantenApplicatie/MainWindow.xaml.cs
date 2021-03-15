@@ -22,12 +22,15 @@ namespace PlantenApplicatie
     /// </summary>
     public partial class MainWindow : Window
     {
+        //Nieuwe context aanmaken
         private static Planten2021Context context = new Planten2021Context();
         public MainWindow()
         {
             //Jelle
             InitializeComponent();
             
+
+            //Items toevoegen aan comboboxen
             addItemsToComboBox(cbxType);
             addItemsToComboBox(cbxFamilie);
             addItemsToComboBox(cbxVariant);
@@ -36,6 +39,7 @@ namespace PlantenApplicatie
             
         }
         
+        //Functie om items toe te voegen aan combobox
         public void addItemsToComboBox(ComboBox plant)
         {
             //Jelle
@@ -80,6 +84,7 @@ namespace PlantenApplicatie
                 default:
                     break;
             }
+            //sort() is standaard alfabetisch, items worden gesorteerd.
             cboItems.Sort();
             cboItems = cboItems.ConvertAll(d => d.Substring(0, 1).ToUpper() + d.Substring(1).ToLower());
             foreach (string item in cboItems)
@@ -87,7 +92,7 @@ namespace PlantenApplicatie
                 plant.Items.Add(item);
             }
         }
-
+        //Resultaten weergeven aan de hand van de gelesecteerde keuze
         private void cbxType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //Maarten
@@ -95,12 +100,14 @@ namespace PlantenApplicatie
 
             if (cbxType.SelectedItem != null)
             {
+                //Alles leegmaken
                 lstResult.Items.Clear();
                 cbxFamilie.Items.Clear();
                 cbxGeslacht.Items.Clear();
                 cbxSoort.Items.Clear();
                 cbxVariant.Items.Clear();
 
+                //Alle nodige informatie met elkaar verbinden
                 var selectedType = context.TfgsvType.FirstOrDefault(s => s.Planttypenaam == cbxType.SelectedItem.ToString());
                 var selectedFamilie = context.TfgsvFamilie.FirstOrDefault(s => s.TypeTypeid == selectedType.Planttypeid);
                 var selectedgeslacht = context.TfgsvGeslacht.FirstOrDefault(s => s.FamilieFamileId == selectedFamilie.FamileId);
@@ -205,6 +212,7 @@ namespace PlantenApplicatie
             txtSearchbox.Clear();
         }
         //Maarten, Hemen & Jelle
+        //Weergave resultaten in de listbox aan de hand van de geselecteerde kenmerken
         private void searchResults()
         {
             List<Plant> searchResults = context.Plant.ToList();
@@ -214,14 +222,17 @@ namespace PlantenApplicatie
                 var selectedType = context.TfgsvType.FirstOrDefault(s => s.Planttypenaam == cbxType.SelectedItem.ToString());
                 SearchResultsCopy = searchResults;
                 searchResults.Clear();
+                //Als de geselecteerde plant hetzelfde type heeft als het geselecteerde type
                 foreach (Plant plant in SearchResultsCopy)
                 {
                     if (selectedType.Planttypenaam.ToString() == plant.Type)
                     {
+                        //Voeg de plant toe aan zoekresultaat
                         searchResults.Add(plant);
                     }
                 }
             }
+
             if (cbxFamilie.SelectedItem != null)
             {
                 var selectedFamilie = context.TfgsvFamilie.FirstOrDefault(s => s.Familienaam == cbxFamilie.SelectedItem.ToString());
@@ -291,11 +302,12 @@ namespace PlantenApplicatie
         {//Hermes, Senne
             List<string> SearchResults = ComboboxResult();
             string SearchValue = txtSearchbox.Text.ToLower().Trim();
-
+            //Indien alles leeg
             if(cbxFamilie.SelectedItem == null && cbxGeslacht.SelectedItem == null && cbxSoort.SelectedItem == null && cbxVariant.SelectedItem == null)
             {
-                SearchResults.Clear();
+                //lijst aanmaken van alle planten
                 List<Plant> AllPlants = context.Plant.ToList();
+                //elke plant wordt afzonderlijk gecontroleerd en wordt toegevoegd aan searchresults.
                 foreach (Plant plant in AllPlants)
                 {
                     SearchResults.Add(plant.Fgsv);
@@ -303,10 +315,11 @@ namespace PlantenApplicatie
             }
             else
             {
+                //Indien er wel iets geselecteerd is worden de listboxes leeg gemaakt en opnieuw gevuld met zoekresultaten adhv filters.
                 lstResult.Items.Clear();
                 searchResults();
             }
-
+            //als er iets in de tekstbox is ingevuld
             if (SearchValue.Length != 0)
             {
                 List<string> NewSearchResults = new List<string>();
@@ -315,6 +328,7 @@ namespace PlantenApplicatie
                 {
                     if (plant.ToLower().Contains(SearchValue))
                     {
+                        //Lege searchresult vullen met "naam" van plant
                         NewSearchResults.Add(plant);
                     }
                 }
@@ -324,14 +338,17 @@ namespace PlantenApplicatie
 
                 foreach (string plant in NewSearchResults)
                 {
+                    //gefilterd op alfabet plant toevoegen aan resultaten.
                     lstResult.Items.Add(plant);
                 }
             }
             else 
             {
+                //indien tekstbox leeg is wordt lstresult leeggemaakt
                 lstResult.Items.Clear();
                 if (cbxFamilie.SelectedItem != null || cbxGeslacht.SelectedItem != null || cbxSoort.SelectedItem != null || cbxVariant.SelectedItem != null)
                 {
+                    //toont de gekozen selecties.
                     searchResults();
                 }
             }
@@ -346,9 +363,10 @@ namespace PlantenApplicatie
             return SearchResults;
         }
         private void lstResult_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
+        {//Jelle & Stephanie
             try
             {
+                //Bij dubbelklikken op resultaat wordt een nieuw venster geopend met de plant en al zijn informatie
                 var plant = context.Plant.FirstOrDefault(s => s.Fgsv == lstResult.SelectedItem.ToString());
                 ResultatenWindow resultatenWindow = new ResultatenWindow(plant);
                 resultatenWindow.ShowDialog();
@@ -357,8 +375,8 @@ namespace PlantenApplicatie
             {
                 MessageBox.Show("Gelieve een plant te selecteren.");
             }
-            
         }
+        //Vull functies, als typeId overeenkomt, item toevoegen aan combobox
         private void fillFamilieCombobox(long typeId)
         {
             List<string> cboItems = new List<string>();

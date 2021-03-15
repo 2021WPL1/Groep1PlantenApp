@@ -27,6 +27,8 @@ namespace PlantenApplicatie
 
 
         //Stephanie en Jelle    
+        //Deze functie zorgt ervoor dat de labels waar de latijnse naam in moeten komen, verdeeld worden over 2 labels.
+        //om zo de volledige naam duidelijk weer te geven.
         private void fillLabels(Plant plant)
         {
             bool enter = false;
