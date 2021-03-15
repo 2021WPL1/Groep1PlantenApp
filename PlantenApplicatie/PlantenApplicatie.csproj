@@ -11,11 +11,12 @@
     <None Remove="Bladeren.jpg" />
     <None Remove="brede pluim.jpg" />
     <None Remove="etage.jpg" />
+    <None Remove="Images\AchtergrondSchermen.jpg" />
+    <None Remove="Images\Plantify.png" />
     <None Remove="kaartenkarton-200-grams-pak-van-50-vellen-a4-wit.jpg" />
     <None Remove="knop.jpg" />
     <None Remove="margrietachtig.jpg" />
     <None Remove="ResultatenWindow\Achtergrond ResultaatScherm.jpg" />
-    <None Remove="ResultatenWindow\kaartenkarton-200-grams-pak-van-50-vellen-a4-wit.jpg" />
     <None Remove="scherm.jpg" />
     <None Remove="smalle pluim.jpg" />
   </ItemGroup>
@@ -38,16 +39,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\AchtergrondSchermen.jpg" />
     <Resource Include="Images\Bladeren.jpg" />
     <Resource Include="Images\aar.jpg" />
     <Resource Include="Images\brede pluim.jpg" />
     <Resource Include="Images\etage.jpg" />
     <Resource Include="Images\knop.jpg" />
     <Resource Include="Images\margrietachtig.jpg" />
+    <Resource Include="Images\Plantify.png" />
     <Resource Include="Images\scherm.jpg" />
     <Resource Include="Images\smalle pluim.jpg" />
-    <Resource Include="ResultatenWindow\Achtergrond ResultaatScherm.jpg" />
-    <Resource Include="ResultatenWindow\kaartenkarton-200-grams-pak-van-50-vellen-a4-wit.jpg" />
+    <Resource Include="ResultatenWindow\Images\Achtergrond ResultaatScherm.jpg" />
+    <Resource Include="ResultatenWindow\Images\Wit.jpg" />
   </ItemGroup>
 
 </Project>
