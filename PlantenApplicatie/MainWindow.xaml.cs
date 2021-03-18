@@ -67,25 +67,39 @@ namespace PlantenApplicatie
                 }
 
                 //Familie
+                List<string> cboFamilieItems = new List<string>();
                 foreach (int id in typeId)
                 {
-                    fillFamilieCombobox(id);
+                    cboFamilieItems.AddRange(fillFamilieCombobox(id));
+
                     var selectedFamilie = context.TfgsvFamilie.Where(s => s.TypeTypeid == id);
                     foreach (var familie in selectedFamilie)
                     {
                         familieId.Add(familie.FamileId);
                     }
                 }
+                cboFamilieItems.Sort();
+                foreach (string  item in cboFamilieItems)
+                {
+                    cbxFamilie.Items.Add(item);
+                }
 
                 //Geslacht
+                List<string> cboGeslachtItems = new List<string>();
                 foreach (int id in familieId)
                 {
-                    fillGeslachtCombobox(id);
+                    cboGeslachtItems.AddRange(fillGeslachtCombobox(id));
+
                     var selectedGeslacht = context.TfgsvGeslacht.Where(s => s.FamilieFamileId == id);
                     foreach (var geslacht in selectedGeslacht)
                     {
                         geslachtId.Add(geslacht.GeslachtId);
                     }
+                }
+                cboGeslachtItems.Sort();
+                foreach (string item in cboGeslachtItems)
+                {
+                    cbxGeslacht.Items.Add(item);
                 }
 
                 //Soort
@@ -103,7 +117,7 @@ namespace PlantenApplicatie
                 cboSoortItems.Sort();
                 foreach (string item in cboSoortItems)
                 {
-                    cbxGeslacht.Items.Add(item);
+                    cbxSoort.Items.Add(item);
                 }
 
                 //Variant
@@ -146,14 +160,21 @@ namespace PlantenApplicatie
                 }
 
                 //Geslacht
+                List<string> cboGeslachtItems = new List<string>();
                 foreach (int id in familieId)
                 {
-                    fillGeslachtCombobox(id);
+                    cboGeslachtItems.AddRange(fillGeslachtCombobox(id));
+
                     var selectedGeslacht = context.TfgsvGeslacht.Where(s => s.FamilieFamileId == id);
                     foreach (var geslacht in selectedGeslacht)
                     {
                         geslachtId.Add(geslacht.GeslachtId);
                     }
+                }
+                cboGeslachtItems.Sort();
+                foreach (string item in cboGeslachtItems)
+                {
+                    cbxGeslacht.Items.Add(item);
                 }
 
                 //Soort
@@ -171,7 +192,7 @@ namespace PlantenApplicatie
                 cboSoortItems.Sort();
                 foreach (string item in cboSoortItems)
                 {
-                    cbxGeslacht.Items.Add(item);
+                    cbxSoort.Items.Add(item);
                 }
 
                 //Variant
@@ -225,7 +246,7 @@ namespace PlantenApplicatie
                 cboSoortItems.Sort();
                 foreach (string item in cboSoortItems)
                 {
-                    cbxGeslacht.Items.Add(item);
+                    cbxSoort.Items.Add(item);
                 }
 
                 //Variant
@@ -545,7 +566,7 @@ namespace PlantenApplicatie
         }
 
         //Vull functies, als typeId overeenkomt, item toevoegen aan combobox
-        private void fillFamilieCombobox(long typeId)
+        private List<string> fillFamilieCombobox(long typeId)
         {
             List<string> cboItems = new List<string>();
             foreach (TfgsvFamilie familie in context.TfgsvFamilie.ToList())
@@ -555,16 +576,12 @@ namespace PlantenApplicatie
                     cboItems.Add(familie.Familienaam);
                 }
             }
-            cboItems.Sort();
             cboItems = cboItems.ConvertAll(d => d.Substring(0, 1).ToUpper() + d.Substring(1).ToLower());
-            foreach (string item in cboItems)
-            {
-                cbxFamilie.Items.Add(item);
-            }
 
+            return cboItems;
         }
         //Jelle & Maarten
-        private void fillGeslachtCombobox(long familieId)
+        private List<string> fillGeslachtCombobox(long familieId)
         {
             List<string> cboItems = new List<string>();
             foreach (TfgsvGeslacht geslacht in context.TfgsvGeslacht.ToList())
@@ -575,13 +592,9 @@ namespace PlantenApplicatie
                 }
 
             }
-            cboItems.Sort();
             cboItems = cboItems.ConvertAll(d => d.Substring(0, 1).ToUpper() + d.Substring(1).ToLower());
-            foreach (string item in cboItems)
-            {
-                cbxGeslacht.Items.Add(item);
-            }
 
+            return cboItems;
         }
         //Jelle & Maarten
         private List<string> fillSoortCombobox(long geslachtId)
