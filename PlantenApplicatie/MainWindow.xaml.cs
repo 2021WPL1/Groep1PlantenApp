@@ -24,11 +24,12 @@ namespace PlantenApplicatie
     {
         //Nieuwe context aanmaken
         private static Planten2021Context context = new Planten2021Context();
+        private static List<ComboBox> AllCbx;
         public MainWindow()
         {
             //Jelle
             InitializeComponent();
-
+            AllCbx = new List<ComboBox> { cbxType, cbxFamilie, cbxGeslacht, cbxSoort, cbxVariant };
 
             //Items toevoegen aan comboboxen
             addItemsToComboBox(cbxType);
@@ -305,7 +306,14 @@ namespace PlantenApplicatie
                     var soorten = context.TfgsvSoort.ToList();
                     foreach (TfgsvSoort soort in soorten)
                     {
-                        cboItems.Add(soort.Soortnaam);
+                        if (!(soort.Soortnaam=="__"))
+                        {
+                            if (soort.Soortnaam.Substring(0,1)==" ")
+                            {
+                                soort.Soortnaam = soort.Soortnaam.Substring(1);
+                            }
+                            cboItems.Add(soort.Soortnaam);
+                        }
                     }
                     break;
                 case "cbxGeslacht":
@@ -480,19 +488,11 @@ namespace PlantenApplicatie
                     cboItems.Add(familie.Familienaam);
                 }
             }
-            if (cboItems.Count != 0)
+            cboItems.Sort();
+            cboItems = cboItems.ConvertAll(d => d.Substring(0, 1).ToUpper() + d.Substring(1).ToLower());
+            foreach (string item in cboItems)
             {
-                cbxFamilie.IsEnabled = true;
-                cboItems.Sort();
-                cboItems = cboItems.ConvertAll(d => d.Substring(0, 1).ToUpper() + d.Substring(1).ToLower());
-                foreach (string item in cboItems)
-                {
-                    cbxFamilie.Items.Add(item);
-                }
-            }
-            else
-            {
-                cbxFamilie.IsEnabled = false;
+                cbxFamilie.Items.Add(item);
             }
 
         }
@@ -508,19 +508,11 @@ namespace PlantenApplicatie
                 }
 
             }
-            if (cboItems.Count != 0)
+            cboItems.Sort();
+            cboItems = cboItems.ConvertAll(d => d.Substring(0, 1).ToUpper() + d.Substring(1).ToLower());
+            foreach (string item in cboItems)
             {
-                cbxGeslacht.IsEnabled = true;
-                cboItems.Sort();
-                cboItems = cboItems.ConvertAll(d => d.Substring(0, 1).ToUpper() + d.Substring(1).ToLower());
-                foreach (string item in cboItems)
-                {
-                    cbxGeslacht.Items.Add(item);
-                }
-            }
-            else
-            {
-                cbxGeslacht.IsEnabled = false;
+                cbxGeslacht.Items.Add(item);
             }
 
         }
@@ -535,19 +527,20 @@ namespace PlantenApplicatie
                     cboItems.Add(soort.Soortnaam);
                 }
             }
-            if (cboItems.Count != 0)
+            cbxSoort.IsEnabled = true;
+            cboItems.Sort();
+            cboItems = cboItems.ConvertAll(d => d.Substring(0, 1).ToUpper() + d.Substring(1).ToLower());
+            foreach (string item in cboItems)
             {
-                cbxSoort.IsEnabled = true;
-                cboItems.Sort();
-                cboItems = cboItems.ConvertAll(d => d.Substring(0, 1).ToUpper() + d.Substring(1).ToLower());
-                foreach (string item in cboItems)
+                if (!(item == "__"))
                 {
-                    cbxSoort.Items.Add(item);
+                    var soort = item;
+                    if (item.Substring(0, 1) == " ")
+                    {
+                        soort = item.Substring(1);
+                    }
+                    cbxSoort.Items.Add(soort);
                 }
-            }
-            else
-            {
-                cbxSoort.IsEnabled = false;
             }
         }
         //Jelle & Maarten
@@ -561,20 +554,12 @@ namespace PlantenApplicatie
                     cboItems.Add(variant.Variantnaam);
                 }
             }
-            if (cboItems.Count != 0)
-            {
-                cbxVariant.IsEnabled = true;
-                cboItems.Sort();
-                cboItems = cboItems.ConvertAll(d => d.Substring(0, 1).ToUpper() + d.Substring(1).ToLower());
+            cboItems.Sort();
+            cboItems = cboItems.ConvertAll(d => d.Substring(0, 1).ToUpper() + d.Substring(1).ToLower());
 
-                foreach (string item in cboItems)
-                {
-                    cbxVariant.Items.Add(item);
-                }
-            }
-            else
+            foreach (string item in cboItems)
             {
-                cbxVariant.IsEnabled = false;
+                cbxVariant.Items.Add(item);
             }
         }
     }
