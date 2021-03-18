@@ -68,7 +68,7 @@ namespace PlantenApplicatie
                 foreach (int id in typeId)
                 {
                     fillFamilieCombobox(id);
-                    var selectedFamilie = context.TfgsvFamilie.Where(s => s.FamileId == id);
+                    var selectedFamilie = context.TfgsvFamilie.Where(s => s.TypeTypeid == id);
                     foreach (var familie in selectedFamilie)
                     {
                         familieId.Add(familie.FamileId);
@@ -537,7 +537,7 @@ namespace PlantenApplicatie
             }
             if (cboItems.Count != 0)
             {
-                cbxVariant.IsEnabled = true;
+                cbxSoort.IsEnabled = true;
                 cboItems.Sort();
                 cboItems = cboItems.ConvertAll(d => d.Substring(0, 1).ToUpper() + d.Substring(1).ToLower());
                 foreach (string item in cboItems)
@@ -547,7 +547,7 @@ namespace PlantenApplicatie
             }
             else
             {
-                cbxVariant.IsEnabled = false;
+                cbxSoort.IsEnabled = false;
             }
         }
         //Jelle & Maarten
@@ -560,7 +560,9 @@ namespace PlantenApplicatie
                 {
                     cboItems.Add(variant.Variantnaam);
                 }
-
+            }
+            if (cboItems.Count != 0)
+            {
                 cbxVariant.IsEnabled = true;
                 cboItems.Sort();
                 cboItems = cboItems.ConvertAll(d => d.Substring(0, 1).ToUpper() + d.Substring(1).ToLower());
@@ -569,10 +571,10 @@ namespace PlantenApplicatie
                 {
                     cbxVariant.Items.Add(item);
                 }
-                if (cbxVariant.Items.Count == 0)
-                {
-                    cbxVariant.IsEnabled = false;
-                }
+            }
+            else
+            {
+                cbxVariant.IsEnabled = false;
             }
         }
     }
