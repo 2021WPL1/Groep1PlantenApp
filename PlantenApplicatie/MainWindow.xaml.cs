@@ -391,6 +391,7 @@ namespace PlantenApplicatie
             //Indien alles leeg
             if(cbxFamilie.SelectedItem == null && cbxGeslacht.SelectedItem == null && cbxSoort.SelectedItem == null && cbxVariant.SelectedItem == null)
             {
+                SearchResults.Clear();
                 //lijst aanmaken van alle planten
                 List<Plant> AllPlants = context.Plant.ToList();
                 //elke plant wordt afzonderlijk gecontroleerd en wordt toegevoegd aan searchresults.
