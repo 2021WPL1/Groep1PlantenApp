@@ -359,7 +359,7 @@ namespace PlantenApplicatie
             {
                 //indien tekstbox leeg is wordt lstresult leeggemaakt
                 lstResult.Items.Clear();
-                if (cbxType.SelectedItem != null && cbxFamilie.SelectedItem != null || cbxGeslacht.SelectedItem != null || cbxSoort.SelectedItem != null || cbxVariant.SelectedItem != null)
+                if (cbxType.SelectedItem != null || cbxFamilie.SelectedItem != null || cbxGeslacht.SelectedItem != null || cbxSoort.SelectedItem != null || cbxVariant.SelectedItem != null)
                 {
                     //toont de gekozen selecties.
                     searchResults();
