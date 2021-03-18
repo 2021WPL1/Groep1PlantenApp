@@ -66,6 +66,7 @@ namespace PlantenApplicatie
                     typeId.Add(type.Planttypeid);
                 }
 
+                //Familie
                 foreach (int id in typeId)
                 {
                     fillFamilieCombobox(id);
@@ -76,6 +77,7 @@ namespace PlantenApplicatie
                     }
                 }
 
+                //Geslacht
                 foreach (int id in familieId)
                 {
                     fillGeslachtCombobox(id);
@@ -86,19 +88,37 @@ namespace PlantenApplicatie
                     }
                 }
 
+                //Soort
+                List<string> cboSoortItems = new List<string>();
                 foreach (int id in geslachtId)
                 {
-                    fillSoortCombobox(id);
+                    cboSoortItems.AddRange(fillSoortCombobox(id));
+
                     var selectedSoort = context.TfgsvSoort.Where(s => s.GeslachtGeslachtId == id);
-                    foreach (var soort in selectedSoort)
+                    foreach (var geslacht in selectedSoort)
                     {
-                        soortId.Add(soort.Soortid);
+                        soortId.Add(id);
                     }
                 }
+                cboSoortItems.Sort();
+                foreach (string item in cboSoortItems)
+                {
+                    cbxGeslacht.Items.Add(item);
+                }
+
+                //Variant
+                List<string> cboVariantItems = new List<string>();
                 foreach (int id in soortId)
                 {
-                    fillVariantCombobox(id);
+                    cboVariantItems.AddRange(fillVariantCombobox(id));
                 }
+
+                cboVariantItems.Sort();
+                foreach (string item in cboVariantItems)
+                {
+                    cbxVariant.Items.Add(item);
+                }
+
                 searchResults();
             }
         }
@@ -124,6 +144,8 @@ namespace PlantenApplicatie
                 {
                     familieId.Add(familie.FamileId);
                 }
+
+                //Geslacht
                 foreach (int id in familieId)
                 {
                     fillGeslachtCombobox(id);
@@ -134,18 +156,35 @@ namespace PlantenApplicatie
                     }
                 }
 
+                //Soort
+                List<string> cboSoortItems = new List<string>();
                 foreach (int id in geslachtId)
                 {
-                    fillSoortCombobox(id);
+                    cboSoortItems.AddRange(fillSoortCombobox(id));
+
                     var selectedSoort = context.TfgsvSoort.Where(s => s.GeslachtGeslachtId == id);
-                    foreach (var soort in selectedSoort)
+                    foreach (var geslacht in selectedSoort)
                     {
-                        soortId.Add(soort.Soortid);
+                        soortId.Add(id);
                     }
                 }
+                cboSoortItems.Sort();
+                foreach (string item in cboSoortItems)
+                {
+                    cbxGeslacht.Items.Add(item);
+                }
+
+                //Variant
+                List<string> cboVariantItems = new List<string>();
                 foreach (int id in soortId)
                 {
-                    fillVariantCombobox(id);
+                    cboVariantItems.AddRange(fillVariantCombobox(id));
+                }
+
+                cboVariantItems.Sort();
+                foreach (string item in cboVariantItems)
+                {
+                    cbxVariant.Items.Add(item);
                 }
 
                 searchResults();
@@ -170,18 +209,36 @@ namespace PlantenApplicatie
                 {
                     geslachtId.Add(geslacht.GeslachtId);
                 }
+
+                //Soort
+                List<string> cboSoortItems = new List<string>();
                 foreach (int id in geslachtId)
                 {
-                    fillSoortCombobox(id);
+                    cboSoortItems.AddRange(fillSoortCombobox(id));
+
                     var selectedSoort = context.TfgsvSoort.Where(s => s.GeslachtGeslachtId == id);
                     foreach (var geslacht in selectedSoort)
                     {
                         soortId.Add(id);
                     }
                 }
+                cboSoortItems.Sort();
+                foreach (string item in cboSoortItems)
+                {
+                    cbxGeslacht.Items.Add(item);
+                }
+
+                //Variant
+                List<string> cboVariantItems = new List<string>();
                 foreach (int id in soortId)
                 {
-                    fillVariantCombobox(id);
+                    cboVariantItems.AddRange(fillVariantCombobox(id));
+                }
+
+                cboVariantItems.Sort();
+                foreach (string item in cboVariantItems)
+                {
+                    cbxVariant.Items.Add(item);
                 }
                 searchResults();
             }
@@ -196,10 +253,20 @@ namespace PlantenApplicatie
             {
                 ClearItems(cbxVariant);
                 var selectedSoort = context.TfgsvSoort.Where(s => s.Soortnaam == cbxSoort.SelectedItem.ToString());
+                List<string> cboItems = new List<string>();
+
+                //Variant
                 foreach (var soort in selectedSoort)
                 {
-                    fillVariantCombobox(soort.Soortid);
+                    cboItems.AddRange(fillVariantCombobox(soort.Soortid));
                 }
+
+                cboItems.Sort();
+                foreach (string item in cboItems)
+                {
+                    cbxVariant.Items.Add(item);
+                }
+
                 searchResults();
             }
         }
@@ -517,34 +584,31 @@ namespace PlantenApplicatie
 
         }
         //Jelle & Maarten
-        private void fillSoortCombobox(long geslachtId)
+        private List<string> fillSoortCombobox(long geslachtId)
         {
             List<string> cboItems = new List<string>();
             foreach (TfgsvSoort soort in context.TfgsvSoort.ToList())
             {
                 if (geslachtId == soort.GeslachtGeslachtId)
                 {
-                    cboItems.Add(soort.Soortnaam);
-                }
-            }
-            cbxSoort.IsEnabled = true;
-            cboItems.Sort();
-            cboItems = cboItems.ConvertAll(d => d.Substring(0, 1).ToUpper() + d.Substring(1).ToLower());
-            foreach (string item in cboItems)
-            {
-                if (!(item == "__"))
-                {
-                    var soort = item;
-                    if (item.Substring(0, 1) == " ")
+                    if (!(soort.Soortnaam == "__"))
                     {
-                        soort = item.Substring(1);
+                        var item = soort.Soortnaam;
+
+                        if (item.Substring(0, 1) == " ")
+                        {
+                            item = item.Substring(1);
+                        }
+                        cboItems.Add(item);
                     }
-                    cbxSoort.Items.Add(soort);
                 }
             }
+            
+            cboItems = cboItems.ConvertAll(d => d.Substring(0, 1).ToUpper() + d.Substring(1).ToLower());
+            return cboItems;
         }
         //Jelle & Maarten
-        private void fillVariantCombobox(long soortId)
+        private List<string> fillVariantCombobox(long soortId)
         {
             List<string> cboItems = new List<string>();
             foreach (TfgsvVariant variant in context.TfgsvVariant.ToList())
@@ -554,13 +618,9 @@ namespace PlantenApplicatie
                     cboItems.Add(variant.Variantnaam);
                 }
             }
-            cboItems.Sort();
             cboItems = cboItems.ConvertAll(d => d.Substring(0, 1).ToUpper() + d.Substring(1).ToLower());
 
-            foreach (string item in cboItems)
-            {
-                cbxVariant.Items.Add(item);
-            }
+            return cboItems;
         }
     }
 }
