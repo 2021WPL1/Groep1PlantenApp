@@ -233,7 +233,6 @@ namespace PlantenApplicatie
                 searchResults();
             }
         }
-
         private void ClearItems(ComboBox comboBox)
         {
             //Stephanie
@@ -300,7 +299,6 @@ namespace PlantenApplicatie
 
             txtSearchbox.Clear();
         }
-
         //Maarten, Hemen & Jelle
         //Weergave resultaten in de listbox aan de hand van de geselecteerde kenmerken
         private void searchResults()
@@ -442,7 +440,6 @@ namespace PlantenApplicatie
                 }
             }
         }
-
         private List<string> ComboboxResult()
         {//Hermes, Senne
             List<string> SearchResults;
@@ -452,7 +449,6 @@ namespace PlantenApplicatie
 
             return SearchResults;
         }
-
         private void lstResult_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {//Jelle & Stephanie
             try
@@ -467,7 +463,6 @@ namespace PlantenApplicatie
                 MessageBox.Show("Gelieve een plant te selecteren.");
             }
         }
-
         //Vull functies, als typeId overeenkomt, item toevoegen aan combobox
         private void fillFamilieCombobox(long typeId)
         {
@@ -495,7 +490,6 @@ namespace PlantenApplicatie
             }
             
         }
-
         //Jelle & Maarten
         private void fillGeslachtCombobox(long familieId)
         {
@@ -524,7 +518,6 @@ namespace PlantenApplicatie
             }
             
         }
-
         //Jelle & Maarten
         private void fillSoortCombobox(long geslachtId)
         {
@@ -551,7 +544,6 @@ namespace PlantenApplicatie
                 cbxVariant.IsEnabled = false;
             }
         }
-
         //Jelle & Maarten
         private void fillVariantCombobox(long soortId)
         {
