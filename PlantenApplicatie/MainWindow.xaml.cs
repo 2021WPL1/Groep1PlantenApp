@@ -315,7 +315,7 @@ namespace PlantenApplicatie
             List<string> SearchResults = ComboboxResult();
             string SearchValue = txtSearchbox.Text.ToLower().Trim();
             //Indien alles leeg
-            if (cbxFamilie.SelectedItem == null && cbxGeslacht.SelectedItem == null && cbxSoort.SelectedItem == null && cbxVariant.SelectedItem == null)
+            if (cbxType.SelectedItem == null && cbxFamilie.SelectedItem == null && cbxGeslacht.SelectedItem == null && cbxSoort.SelectedItem == null && cbxVariant.SelectedItem == null)
             {
                 SearchResults.Clear();
                 //lijst aanmaken van alle planten
@@ -359,7 +359,7 @@ namespace PlantenApplicatie
             {
                 //indien tekstbox leeg is wordt lstresult leeggemaakt
                 lstResult.Items.Clear();
-                if (cbxFamilie.SelectedItem != null || cbxGeslacht.SelectedItem != null || cbxSoort.SelectedItem != null || cbxVariant.SelectedItem != null)
+                if (cbxType.SelectedItem != null && cbxFamilie.SelectedItem != null || cbxGeslacht.SelectedItem != null || cbxSoort.SelectedItem != null || cbxVariant.SelectedItem != null)
                 {
                     //toont de gekozen selecties.
                     searchResults();
