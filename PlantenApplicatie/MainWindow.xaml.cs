@@ -24,12 +24,10 @@ namespace PlantenApplicatie
     {
         //Nieuwe context aanmaken
         private static Planten2021Context context = new Planten2021Context();
-        private static List<ComboBox> AllCbx;
         public MainWindow()
         {
             //Jelle
             InitializeComponent();
-            AllCbx = new List<ComboBox> { cbxType, cbxFamilie, cbxGeslacht, cbxSoort, cbxVariant };
 
             //Items toevoegen aan comboboxen
             addItemsToComboBox(cbxType);
@@ -59,7 +57,8 @@ namespace PlantenApplicatie
                 List<long> geslachtId = new List<long>();
                 List<long> soortId = new List<long>();
 
-
+                //Type
+                //Toevoegen aan combobox
                 var selectedType = context.TfgsvType.Where(s => s.Planttypenaam == cbxType.SelectedItem.ToString());
                 foreach (var type in selectedType)
                 {
@@ -67,6 +66,7 @@ namespace PlantenApplicatie
                 }
 
                 //Familie
+                //enkel die met geselecteerd type overeenkomt tonen in combobox
                 List<string> cboFamilieItems = new List<string>();
                 foreach (int id in typeId)
                 {
@@ -84,7 +84,10 @@ namespace PlantenApplicatie
                     cbxFamilie.Items.Add(item);
                 }
 
+                
+
                 //Geslacht
+                //enkel die met geselecteerd type overeenkomt tonen in combobox
                 List<string> cboGeslachtItems = new List<string>();
                 foreach (int id in familieId)
                 {
@@ -103,6 +106,7 @@ namespace PlantenApplicatie
                 }
 
                 //Soort
+                //enkel die met geselecteerd type overeenkomt tonen in combobox
                 List<string> cboSoortItems = new List<string>();
                 foreach (int id in geslachtId)
                 {
@@ -121,6 +125,7 @@ namespace PlantenApplicatie
                 }
 
                 //Variant
+                //enkel die met geselecteerd type overeenkomt tonen in combobox
                 List<string> cboVariantItems = new List<string>();
                 foreach (int id in soortId)
                 {
