@@ -78,9 +78,25 @@
                         </LinearGradientBrush>
                     </Label.Background>
                 </Label>
-                <ComboBox x:Name="cbxType" HorizontalAlignment="Left" Margin="120,54,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxType_SelectionChanged"/>
-                <ComboBox x:Name="cbxFamilie" HorizontalAlignment="Left" Margin="120,98,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxFamilie_SelectionChanged"/>
-                <ComboBox x:Name="cbxSoort" HorizontalAlignment="Left" Margin="120,177,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxSoort_SelectionChanged">
+                <ComboBox x:Name="cbxType" 
+                          ItemsSource="{Binding TfgsvTypes}"
+                          SelectedItem="{Binding SelectedType, Mode=TwoWay}"
+                          DisplayMemberPath="Planttypenaam"
+                          SelectedValuePath="Planttypeid"
+                          HorizontalAlignment="Left" Margin="120,54,0,0" VerticalAlignment="Top" Width="120"/>
+                <!--Let op van deze naamgeving: FAMILEID-->
+                <ComboBox x:Name="cbxFamilie" 
+                          ItemsSource="{Binding TfgsvFamilie}"
+                          SelectedItem="{Binding SelectedFamilie,Mode=TwoWay}"
+                          DisplayMemberPath="Familienaam"
+                          SelectedValuePath="FamileId"
+                          HorizontalAlignment="Left" Margin="120,98,0,0" VerticalAlignment="Top" Width="120"/>
+                <ComboBox x:Name="cbxSoort"
+                          ItemsSource="{Binding TfgsvSoort}"
+                          SelectedItem="{Binding SelectedSoort, Mode=TwoWay}"
+                          DisplayMemberPath="Soortnaam"
+                          SelectedValuePath="Soortid"
+                          HorizontalAlignment="Left" Margin="120,177,0,0" VerticalAlignment="Top" Width="120">
                     <ComboBox.Background>
                         <LinearGradientBrush EndPoint="0,1">
                             <GradientStop Color="#FFF0F0F0"/>
@@ -88,7 +104,12 @@
                         </LinearGradientBrush>
                     </ComboBox.Background>
                 </ComboBox>
-                <ComboBox x:Name="cbxGeslacht" HorizontalAlignment="Left" Margin="120,137,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxGeslacht_SelectionChanged">
+                <ComboBox x:Name="cbxGeslacht"
+                          ItemsSource="{Binding TfgsvGeslacht}"
+                          SelectedItem="{Binding SelectedGeslacht, Mode=TwoWay}"
+                          DisplayMemberPath="Geslachtnaam"
+                          SelectedValuePath="GeslachtId"
+                          HorizontalAlignment="Left" Margin="120,137,0,0" VerticalAlignment="Top" Width="120">
                     <ComboBox.Background>
                         <LinearGradientBrush EndPoint="0,1">
                             <GradientStop Color="#FFF0F0F0"/>
@@ -96,8 +117,13 @@
                         </LinearGradientBrush>
                     </ComboBox.Background>
                 </ComboBox>
-                <ComboBox x:Name="cbxVariant" HorizontalAlignment="Left" Margin="120,218,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxVariant_SelectionChanged" />
-                <ListBox x:Name="lstResult" Margin="5,352,4,5" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" Grid.IsSharedSizeScope="True" Padding="5,0,0,0" MouseDoubleClick="lstResult_MouseDoubleClick">
+                <ComboBox x:Name="cbxVariant" 
+                          ItemsSource="{Binding TfgsvVariant}"
+                          SelectedItem="{Binding SelectedVariant, Mode=TwoWay}"
+                          DisplayMemberPath="Variantnaam"
+                          SelectedValuePath="VariantId"
+                          HorizontalAlignment="Left" Margin="120,218,0,0" VerticalAlignment="Top" Width="120"/>
+                <ListBox x:Name="lstResult" Margin="5,352,4,5" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" Grid.IsSharedSizeScope="True" Padding="5,0,0,0">
                     <ListBox.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -109,7 +135,7 @@
                 </ListBox>
 
 
-                <Button x:Name="btnStartOpnieuw" Content="Clear zoekresultaat" HorizontalAlignment="Left" Margin="120,270,0,0" VerticalAlignment="Top" Click="btnStartOpnieuw_Click" BorderBrush="Black" BorderThickness="2">
+                <Button x:Name="btnStartOpnieuw" Content="Clear zoekresultaat" HorizontalAlignment="Left" Margin="120,270,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="2">
                     <Button.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="White"/>
@@ -117,7 +143,7 @@
                         </LinearGradientBrush>
                     </Button.Background>
                 </Button>
-                <TextBox x:Name="txtSearchbox" HorizontalAlignment="Left" Margin="283,143,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" KeyUp="txtSearchbox_KeyUp" BorderBrush="Black" BorderThickness="2">
+                <TextBox x:Name="txtSearchbox" HorizontalAlignment="Left" Margin="283,143,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" BorderBrush="Black" BorderThickness="2">
                     <TextBox.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="White"/>
