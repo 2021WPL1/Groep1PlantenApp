@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace PlantenApplicatie.ViewModels
+namespace PlantenApplicatie.UI.ViewModels
 {
     public class ViewModelBase : INotifyPropertyChanged
     {

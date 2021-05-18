@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
-using PlantenApplicatie.DATA;
-using PlantenApplicatie.DATA.Models;
+using PlantenApplicatie.Data;
+using PlantenApplicatie.Domain.Models;
 
-namespace PlantenApplicatie.ViewModels
+namespace PlantenApplicatie.UI.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {

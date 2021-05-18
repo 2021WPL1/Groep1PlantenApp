@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using PlantenApplicatie.DATA.Models;
+using PlantenApplicatie.Data;
+using PlantenApplicatie.Domain.Models;
 
-namespace PlantenApplicatie.DATA
+namespace PlantenApplicatie.Data
 {
     public class PlantenDataService
     {

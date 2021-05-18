@@ -13,11 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.EntityFrameworkCore;
-using PlantenApplicatie.DATA;
-using PlantenApplicatie.DATA.Models;
-using PlantenApplicatie.ViewModels;
+using PlantenApplicatie.Data;
+using PlantenApplicatie.UI.ViewModels;
 
-namespace PlantenApplicatie
+namespace PlantenApplicatie.UI.View
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
