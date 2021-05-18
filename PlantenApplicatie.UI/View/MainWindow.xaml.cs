@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.EntityFrameworkCore;
 using PlantenApplicatie.Data;
-using PlantenApplicatie.UI.ViewModels;
+using PlantenApplicatie.UI.ViewModel;
 
 namespace PlantenApplicatie.UI.View
 {

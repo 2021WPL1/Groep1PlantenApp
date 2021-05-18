@@ -4,8 +4,9 @@ using System.Collections.ObjectModel;
 using System.Text;
 using PlantenApplicatie.Data;
 using PlantenApplicatie.Domain.Models;
+using PlantenApplicatie.UI.ViewModel;
 
-namespace PlantenApplicatie.UI.ViewModels
+namespace PlantenApplicatie.UI.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
