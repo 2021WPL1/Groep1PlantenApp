@@ -12,7 +12,7 @@ using System.Windows.Shapes;
 using PlantenApplicatie.DATA.Models;
 
 
-namespace PlantenApplicatie
+namespace PlantenApplicatie.UI
 {
     /// <summary>
     /// Interaction logic for ResultatenWindow.xaml

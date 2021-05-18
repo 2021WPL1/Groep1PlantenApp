@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 using Microsoft.EntityFrameworkCore;
 using PlantenApplicatie.DATA.Models;
 
-namespace PlantenApplicatie
+namespace PlantenApplicatie.UI
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
