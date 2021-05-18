@@ -22,12 +22,15 @@ namespace PlantenApplicatie.UI.ViewModel
         private List<TfgsvSoort> _soorten;
         private List<TfgsvVariant> _varianten;
 
+        private List<Plant> _plantResults;
+             
         //list voor de binding
         public ObservableCollection<TfgsvType> TfgsvTypes { get; set; }
         public ObservableCollection<TfgsvFamilie> TfgsvFamilie { get; set; }
         public ObservableCollection<TfgsvGeslacht> TfgsvGeslacht { get; set; }
         public ObservableCollection<TfgsvSoort> TfgsvSoort { get; set; }
         public ObservableCollection<TfgsvVariant> TfgsvVariant { get; set; }
+        public ObservableCollection<Plant> PlantResults { get; set; }
 
         //geselecteerde filters
         private TfgsvType _selectedType;
@@ -43,6 +46,7 @@ namespace PlantenApplicatie.UI.ViewModel
             TfgsvGeslacht = new ObservableCollection<TfgsvGeslacht>();
             TfgsvSoort = new ObservableCollection<TfgsvSoort>();
             TfgsvVariant = new ObservableCollection<TfgsvVariant>();
+            PlantResults = new ObservableCollection<Plant>();
 
             this._plantenDataService = plantenDataService;
         }
@@ -78,6 +82,7 @@ namespace PlantenApplicatie.UI.ViewModel
             _geslachten = _plantenDataService.GetTfgsvGeslachten();
             _soorten = _plantenDataService.GetTfgsvSoorten();
             _varianten = _plantenDataService.GetTfgsvVarianten();
+            _plantResults = _plantenDataService.GetPlanten();
         }
 
         public void LoadTypes()
@@ -199,6 +204,7 @@ namespace PlantenApplicatie.UI.ViewModel
         private void UpdateFilters(string typefilter)
         {
             //toont enkel de filters volgens gekozen bovenstaande filters
+            ListResults();
             switch (typefilter)
             {
                 case "Type":
@@ -244,6 +250,52 @@ namespace PlantenApplicatie.UI.ViewModel
             _loadCheck = false;
             LoadAll();
             _loadCheck = true;
+        }
+
+        List<Plant> plantTypeResults;
+        List<Plant> plantFamilieResults;
+        List<Plant> plantGeslachtResults;
+        List<Plant> plantSoortResults;
+        List<Plant> plantVariantResults;
+
+        public void LoadPlanten()
+        {
+            var plantResults = _plantResults;
+            PlantResults.Clear();
+            foreach (var plantResult in plantResults)
+            {
+                PlantResults.Add(plantResult);
+            }
+        }
+        private void ListResults()
+        {
+            
+            if (_selectedType != null)
+            {
+                _plantResults = _plantenDataService.GetPlantResults("Type", _selectedType.Planttypeid, _plantResults);
+                plantTypeResults = _plantResults;
+            }
+            if (_selectedFamilie != null)
+            {
+                _plantResults = _plantenDataService.GetPlantResults("Familie", _selectedType.Planttypeid, _plantResults);
+                plantFamilieResults = _plantResults;
+            }
+            if (_selectedGeslacht != null)
+            {
+                _plantResults = _plantenDataService.GetPlantResults("Geslacht", _selectedType.Planttypeid, _plantResults);
+                plantGeslachtResults = _plantResults;
+            }
+            if (_selectedSoort != null)
+            {
+                _plantResults = _plantenDataService.GetPlantResults("Soort", _selectedType.Planttypeid, _plantResults);
+                plantSoortResults = _plantResults;
+            }
+            if (_selectedVariant != null)
+            {
+                _plantResults = _plantenDataService.GetPlantResults("Variant", _selectedType.Planttypeid, _plantResults);
+                plantVariantResults = _plantResults;
+            }
+            LoadPlanten();
         }
     }
 }

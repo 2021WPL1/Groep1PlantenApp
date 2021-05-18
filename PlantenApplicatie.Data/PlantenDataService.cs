@@ -84,5 +84,31 @@ namespace PlantenApplicatie.Data
             //Bug variant heeft geen soort om te koppelen
             return context.TfgsvVariant.ToList();
         }
+
+        public List<Plant> GetPlanten()
+        {
+            return context.Plant.ToList();
+        }
+
+        public List<Plant> GetPlantResults(string type, long id, List<Plant> plantResults)
+        {
+            switch (type)
+            {
+                case "Type":
+                    return plantResults.Where(p => p.TypeId == id).ToList();
+                case "Familie":
+                    return plantResults.Where(p => p.FamilieId == id).ToList();
+                case "Geslacht":
+                    return plantResults.Where(p => p.GeslachtId == id).ToList();
+                case "Soort":
+                    return plantResults.Where(p => p.SoortId == id).ToList();
+                case "Variant":
+                    return plantResults.Where(p => p.VariantId == id).ToList();
+
+                default:
+                    return null;
+                    
+            }
+        }
     }
 }
