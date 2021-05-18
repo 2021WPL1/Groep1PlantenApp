@@ -17,7 +17,6 @@
     <None Remove="kaartenkarton-200-grams-pak-van-50-vellen-a4-wit.jpg" />
     <None Remove="knop.jpg" />
     <None Remove="margrietachtig.jpg" />
-    <None Remove="ResultatenWindow\Achtergrond ResultaatScherm.jpg" />
     <None Remove="scherm.jpg" />
     <None Remove="smalle pluim.jpg" />
   </ItemGroup>
@@ -35,8 +34,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PlantenApplicatie.DATA\PlantenApplicatie.DATA.csproj" />
-    <ProjectReference Include="..\PlantenApplicatie.DOMAIN\PlantenApplicatie.DOMAIN.csproj" />
+    <ProjectReference Include="..\PlantenApplicatie.DATA\PlantenApplicatie.Data.csproj" />
+    <ProjectReference Include="..\PlantenApplicatie.DOMAIN\PlantenApplicatie.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -49,7 +48,7 @@
     <Resource Include="Images\Plantify.png" />
     <Resource Include="Images\scherm.jpg" />
     <Resource Include="Images\smalle pluim.jpg" />
-    <Resource Include="ResultatenWindow\Images\Wit.jpg" />
+    <Resource Include="Images\Wit.jpg" />
   </ItemGroup>
 
 </Project>
