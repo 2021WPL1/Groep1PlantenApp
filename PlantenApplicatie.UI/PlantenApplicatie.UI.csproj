@@ -12,8 +12,8 @@
     <None Remove="Bladeren.jpg" />
     <None Remove="brede pluim.jpg" />
     <None Remove="etage.jpg" />
-    <None Remove="Images\AchtergrondSchermen.jpg" />
-    <None Remove="Images\Plantify.png" />
+    <None Remove="View\Images\AchtergrondSchermen.jpg" />
+    <None Remove="View\Images\Plantify.png" />
     <None Remove="kaartenkarton-200-grams-pak-van-50-vellen-a4-wit.jpg" />
     <None Remove="knop.jpg" />
     <None Remove="margrietachtig.jpg" />
@@ -39,16 +39,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Images\AchtergrondSchermen.jpg" />
-    <Resource Include="Images\aar.jpg" />
-    <Resource Include="Images\brede pluim.jpg" />
-    <Resource Include="Images\etage.jpg" />
-    <Resource Include="Images\knop.jpg" />
-    <Resource Include="Images\margrietachtig.jpg" />
-    <Resource Include="Images\Plantify.png" />
-    <Resource Include="Images\scherm.jpg" />
-    <Resource Include="Images\smalle pluim.jpg" />
-    <Resource Include="Images\Wit.jpg" />
+    <Resource Include="View\Images\AchtergrondSchermen.jpg" />
+    <Resource Include="View\Images\aar.jpg" />
+    <Resource Include="View\Images\brede pluim.jpg" />
+    <Resource Include="View\Images\etage.jpg" />
+    <Resource Include="View\Images\knop.jpg" />
+    <Resource Include="View\Images\margrietachtig.jpg" />
+    <Resource Include="View\Images\Plantify.png" />
+    <Resource Include="View\Images\scherm.jpg" />
+    <Resource Include="View\Images\smalle pluim.jpg" />
+    <Resource Include="View\Images\Wit.jpg" />
   </ItemGroup>
 
 </Project>

@@ -8,19 +8,19 @@
         Title="ResultatenWindow" Height="550" Width="800" WindowState="Maximized">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="../Images/AchtergrondSchermen.jpg"/>
+            <ImageBrush ImageSource="Images/AchtergrondSchermen.jpg"/>
         </Grid.Background>
         <Viewbox>
             <Grid Height="482" Width="721">
 
                 <Rectangle Canvas.Left="144" Stroke="Black" Canvas.Top="124" Margin="101,141,99,109" StrokeThickness="5">
                     <Rectangle.Fill>
-                        <ImageBrush ImageSource="../Images/Wit.jpg"/>
+                        <ImageBrush ImageSource="Images/Wit.jpg"/>
                     </Rectangle.Fill>
                 </Rectangle>
                 <Label x:Name="lblLatinName" Content="" HorizontalAlignment="Center" Margin="0,61,0,0" VerticalAlignment="Top" Height="35" Width="462"  BorderBrush="Black" BorderThickness="4,4,4,0" HorizontalContentAlignment="Center" FontSize="16" FontWeight="Bold">
                     <Label.Background>
-                        <ImageBrush ImageSource="../Images/Wit.jpg"/>
+                        <ImageBrush ImageSource="Images/Wit.jpg"/>
                     </Label.Background>
                 </Label>
                 <Label Content="Type" HorizontalAlignment="Left" Margin="110,150,0,0" VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1">
@@ -94,7 +94,7 @@
                 <Image x:Name="imgPlant" Height="100" Margin="690,10,10,0" VerticalAlignment="Top"/>
                 <Label x:Name="lblLatinName2" Content="" HorizontalAlignment="Center" Margin="0,96,0,355" Width="462"  BorderBrush="Black" BorderThickness="4,0,4,4" HorizontalContentAlignment="Center" FontSize="16" Padding="5,0,5,0" FontWeight="Bold">
                     <Label.Background>
-                        <ImageBrush ImageSource="../Images/Wit.jpg"/>
+                        <ImageBrush ImageSource="Images/Wit.jpg"/>
                     </Label.Background>
                 </Label>
                 <Button x:Name="btnClose" Content="Close" HorizontalAlignment="Center" Margin="0,379,0,0" VerticalAlignment="Top" Height="63" Width="519" Click="btnClose_Click">
@@ -107,7 +107,7 @@
                 </Button>
                 <Label Content="Latijnse naam" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Height="46" Width="462"  BorderBrush="Black" BorderThickness="4,4,4,4" HorizontalContentAlignment="Center" FontSize="16" FontWeight="Bold">
                     <Label.Background>
-                        <ImageBrush ImageSource="../Images/Wit.jpg"/>
+                        <ImageBrush ImageSource="Images/Wit.jpg"/>
                     </Label.Background>
                 </Label>
             </Grid>

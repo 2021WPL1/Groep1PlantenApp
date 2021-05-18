@@ -8,7 +8,7 @@
         Title="MainWindow" Height="700" Width="900" WindowState="Maximized">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="../Images/AchtergrondSchermen.jpg"/>
+            <ImageBrush ImageSource="Images/AchtergrondSchermen.jpg"/>
         </Grid.Background>
 
 
