@@ -28,6 +28,7 @@ namespace PlantenApplicatie.UI.ViewModel
         public ObservableCollection<TfgsvGeslacht> TfgsvGeslacht { get; set; }
         public ObservableCollection<TfgsvSoort> TfgsvSoort { get; set; }
         public ObservableCollection<TfgsvVariant> TfgsvVariant { get; set; }
+        public ObservableCollection<Plant> PlantResults { get; set; }
 
         //geselecteerde filters
         private TfgsvType _selectedType;
@@ -43,6 +44,7 @@ namespace PlantenApplicatie.UI.ViewModel
             TfgsvGeslacht = new ObservableCollection<TfgsvGeslacht>();
             TfgsvSoort = new ObservableCollection<TfgsvSoort>();
             TfgsvVariant = new ObservableCollection<TfgsvVariant>();
+            PlantResults = new ObservableCollection<Plant>();
 
             this._plantenDataService = plantenDataService;
         }
