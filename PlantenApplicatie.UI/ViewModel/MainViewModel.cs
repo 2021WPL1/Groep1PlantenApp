@@ -2,14 +2,19 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Windows.Input;
 using PlantenApplicatie.Data;
 using PlantenApplicatie.Domain.Models;
 using PlantenApplicatie.UI.ViewModel;
+using Prism.Commands;
 
 namespace PlantenApplicatie.UI.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
+        //ICommand om zoekresultaat leeg te maken
+        public ICommand ClearResultCommand { get; set; }
+
         //bool die ervoor zorgt dat de selected filters niet gecleared worden
         private bool _loadCheck;
 
@@ -38,6 +43,8 @@ namespace PlantenApplicatie.UI.ViewModel
 
         public MainViewModel(PlantenDataService plantenDataService)
         {
+            ClearResultCommand = new DelegateCommand(ClearResult);
+
             TfgsvTypes = new ObservableCollection<TfgsvType>();
             TfgsvFamilie = new ObservableCollection<TfgsvFamilie>();
             TfgsvGeslacht = new ObservableCollection<TfgsvGeslacht>();
@@ -73,11 +80,26 @@ namespace PlantenApplicatie.UI.ViewModel
         public void InitializeTfgsv()
         {
             _loadCheck = true;
+
             _types = _plantenDataService.GetTfgsvTypes();
             _families = _plantenDataService.GetTfgsvFamilies();
             _geslachten = _plantenDataService.GetTfgsvGeslachten();
             _soorten = _plantenDataService.GetTfgsvSoorten();
             _varianten = _plantenDataService.GetTfgsvVarianten();
+        }
+
+        //Hermes & Stephanie
+        public void ClearResult()
+        {
+            _selectedType = null;
+            _selectedFamilie = null;
+            _selectedGeslacht = null;
+            _selectedSoort = null;
+            _selectedVariant = null;
+
+            //Alle waardes naar default zetten
+            InitializeTfgsv();
+            LoadAll();
         }
 
         public void LoadTypes()
