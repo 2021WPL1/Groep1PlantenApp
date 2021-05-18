@@ -44,6 +44,7 @@ namespace PlantenApplicatie.UI.ViewModel
 
         public MainViewModel(PlantenDataService plantenDataService)
         {
+            //Senne, Maarten, Hermes
             ClearResultCommand = new DelegateCommand(ClearResult);
 
             TfgsvTypes = new ObservableCollection<TfgsvType>();
@@ -58,6 +59,7 @@ namespace PlantenApplicatie.UI.ViewModel
 
         public void LoadAll()
         {
+            //Senne, Maarten, Hermes
             var selectedType = _selectedType;
             LoadTypes();
             SelectedType = selectedType;
@@ -81,6 +83,7 @@ namespace PlantenApplicatie.UI.ViewModel
 
         public void InitializeTfgsv()
         {
+            //Senne, Maarten, Hermes
             _loadCheck = true;
 
             _types = _plantenDataService.GetTfgsvTypes();
@@ -106,6 +109,7 @@ namespace PlantenApplicatie.UI.ViewModel
 
         public void LoadTypes()
         {
+            //Senne, Maarten, Hermes
             var types = _types;
             TfgsvTypes.Clear();
             foreach (var tfgsvType in types)
@@ -116,6 +120,7 @@ namespace PlantenApplicatie.UI.ViewModel
 
         public void LoadFamilies()
         {
+            //Senne, Maarten, Hermes
             var families = _families;
             TfgsvFamilie.Clear();
             foreach (var tfgsvFamily in families)
@@ -126,6 +131,7 @@ namespace PlantenApplicatie.UI.ViewModel
 
         public void LoadGeslachten()
         {
+            //Senne, Maarten, Hermes
             var geslachten = _geslachten;
             TfgsvGeslacht.Clear();
             foreach (var tfgsvGeslacht in geslachten)
@@ -136,6 +142,7 @@ namespace PlantenApplicatie.UI.ViewModel
 
         public void LoadSoorten()
         {
+            //Senne, Maarten, Hermes
             var soorten = _soorten;
             TfgsvSoort.Clear();
             foreach (var tfgsvSoort in soorten)
@@ -146,6 +153,7 @@ namespace PlantenApplicatie.UI.ViewModel
 
         public void LoadVarianten()
         {
+            //Senne, Maarten, Hermes
             var varianten = _varianten;
             TfgsvVariant.Clear();
             foreach (var tfgsvVariant in varianten)
@@ -156,6 +164,7 @@ namespace PlantenApplicatie.UI.ViewModel
 
         public TfgsvType SelectedType
         {
+            //Senne, Maarten, Hermes
             get { return _selectedType; }
             set
             {
@@ -169,6 +178,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public TfgsvFamilie SelectedFamilie
         {
+            //Senne, Maarten, Hermes
             get { return _selectedFamilie; }
             set
             {
@@ -182,6 +192,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public TfgsvGeslacht SelectedGeslacht
         {
+            //Senne, Maarten, Hermes
             get { return _selectedGeslacht; }
             set
             {
@@ -195,6 +206,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public TfgsvSoort SelectedSoort
         {
+            //Senne, Maarten, Hermes
             get { return _selectedSoort; }
             set
             {
@@ -208,6 +220,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public TfgsvVariant SelectedVariant
         {
+            //Senne, Maarten, Hermes
             get { return _selectedVariant; }
             set
             {
@@ -222,6 +235,7 @@ namespace PlantenApplicatie.UI.ViewModel
 
         private void UpdateFilters(string typefilter)
         {
+            //Senne, Maarten, Hermes
             //toont enkel de filters volgens gekozen bovenstaande filters
             switch (typefilter)
             {
@@ -265,6 +279,7 @@ namespace PlantenApplicatie.UI.ViewModel
                     break;
             }
 
+            //bool die ervoor zorgt dat er geen oneindige loop is
             _loadCheck = false;
             LoadAll();
             _loadCheck = true;
