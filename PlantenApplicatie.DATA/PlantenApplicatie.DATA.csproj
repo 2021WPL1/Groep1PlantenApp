@@ -20,8 +20,4 @@
     <ProjectReference Include="..\PlantenApplicatie.DOMAIN\PlantenApplicatie.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="DataService\" />
-  </ItemGroup>
-
 </Project>
