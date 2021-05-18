@@ -18,6 +18,7 @@ using PlantenApplicatie.Domain.Models;
 
 namespace PlantenApplicatie.UI.View
 {
+    //Jelle
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
