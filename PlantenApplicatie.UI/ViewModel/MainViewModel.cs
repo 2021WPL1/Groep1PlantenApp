@@ -23,6 +23,7 @@ namespace PlantenApplicatie.UI.ViewModel
         private List<TfgsvSoort> _soorten;
         private List<TfgsvVariant> _varianten;
 
+        //Lijst met alle planten
         private List<Plant> _plantResults;
              
         //list voor de binding
@@ -39,6 +40,14 @@ namespace PlantenApplicatie.UI.ViewModel
         private TfgsvGeslacht _selectedGeslacht;
         private TfgsvSoort _selectedSoort;
         private TfgsvVariant _selectedVariant;
+
+        //Jelle & Hemen
+        //Extra lijsten voor gefilterde planten, dit wordt later gebruikt in de functie "ListResults"
+        List<Plant> plantTypeResults;
+        List<Plant> plantFamilieResults;
+        List<Plant> plantGeslachtResults;
+        List<Plant> plantSoortResults;
+        //List<Plant> plantVariantResults;
 
         public MainViewModel(PlantenDataService plantenDataService)
         {
@@ -133,6 +142,18 @@ namespace PlantenApplicatie.UI.ViewModel
             foreach (var tfgsvVariant in varianten)
             {
                 TfgsvVariant.Add(tfgsvVariant);
+            }
+        }
+        //Jelle & Hemen
+        //Functie om de planten eerst te ordenen en dan in de lijst toe te voegen
+        public void LoadPlanten()
+        {
+            var plantResults = _plantResults;
+            PlantResults.Clear();
+            plantResults = plantResults.OrderBy(p => p.Fgsv).ToList();
+            foreach (var plantResult in plantResults)
+            {
+                PlantResults.Add(plantResult);
             }
         }
 
@@ -256,26 +277,15 @@ namespace PlantenApplicatie.UI.ViewModel
             LoadAll();
             _loadCheck = true;
         }
-        List<Plant> plantTypeResults;
-        List<Plant> plantFamilieResults;
-        List<Plant> plantGeslachtResults;
-        List<Plant> plantSoortResults;
-        //List<Plant> plantVariantResults;
-
-        public void LoadPlanten()
-        {
-            var plantResults = _plantResults;
-            PlantResults.Clear();
-            plantResults = plantResults.OrderBy(p => p.Fgsv).ToList();
-            foreach (var plantResult in plantResults)
-            {
-                PlantResults.Add(plantResult);
-            }
-        }
+        //Jelle & Hemen
+        //Functie voor de lijsten te ordenenen
         private void ListResults(string typefilter)
         {
+            //Switch voor te ordenenen welke combobox is aangepast (komt van Selected functies)
             switch (typefilter)
             {
+                //Functie neemt de lijst juist boven de type om mee te filteren, als de type niet bestaat kijkt hij naar het type erboven totdat er een is die bestaat,
+                //dit is voor te zorgen dat zo min mogelijk items gefilterd moeten worden
                 case "Type":
                     _plantResults = _plantenDataService.GetPlantResults("Type", _selectedType.Planttypeid, _plantenDataService.GetAllPlants());
                     plantTypeResults = _plantResults;

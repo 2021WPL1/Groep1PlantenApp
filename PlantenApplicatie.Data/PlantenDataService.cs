@@ -85,13 +85,18 @@ namespace PlantenApplicatie.Data
             return context.TfgsvVariant.ToList();
         }
 
+        //Jelle & Hemen
+        //Geeft alle planten
         public List<Plant> GetAllPlants()
         {
             return context.Plant.ToList();
         }
 
+        //Jelle & Hemen
+        //Functie filtert de planten
         public List<Plant> GetPlantResults(string type, long id, List<Plant> plantResults)
         {
+            //Switch voor de juiste id te weten waarmee gefilterd moet worden
             switch (type)
             {
                 case "Type":
