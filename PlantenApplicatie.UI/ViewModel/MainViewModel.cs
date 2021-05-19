@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using PlantenApplicatie.Data;
@@ -93,8 +94,7 @@ namespace PlantenApplicatie.UI.ViewModel
             _soorten = _plantenDataService.GetTfgsvSoorten();
             _varianten = _plantenDataService.GetTfgsvVarianten();
 
-            _allPlants = _plantenDataService.GetAllPlants();
-            _plantResults = new List<Plant>();
+            _allPlants = _plantenDataService.GetAllPlants().OrderBy(p => p.Fgsv).ToList();
         }
 
         public void LoadTypes()
@@ -278,19 +278,15 @@ namespace PlantenApplicatie.UI.ViewModel
         {//Senne, Hermes
             //output= list van <Plant> objects
             //clear functie van de filters
-
+            PlantResults.Clear();
             _zoekViaNaamInput = _zoekViaNaamInput.Trim().ToLower();
-            _plantResults.Clear();
             foreach (Plant plant in _allPlants)
             {
                 if (plant.Fgsv.Trim().ToLower().Contains(_zoekViaNaamInput))
                 {
-                    _plantResults.Add(plant);
+                    PlantResults.Add(plant);
                 }
             }
-
-            _plantResults.Sort();
-            PlantResults = new ObservableCollection<Plant>(_plantResults);
         }
     }
 }
