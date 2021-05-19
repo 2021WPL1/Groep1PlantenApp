@@ -23,17 +23,7 @@
             <ComboBox x:Name="cbxSoort" HorizontalAlignment="Left" Margin="120,177,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxSoort_SelectionChanged"/>
             <ComboBox x:Name="cbxGeslacht" HorizontalAlignment="Left" Margin="120,137,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxGeslacht_SelectionChanged"/>
             <ComboBox x:Name="cbxVariant" HorizontalAlignment="Left" Margin="120,218,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxVariant_SelectionChanged" />
-            <ListBox x:Name="lstResult" Margin="5,352,4,10" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" Grid.IsSharedSizeScope="True" Padding="5,0,0,0">
-                <ListBox.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform ScaleX="1" ScaleY="1"/>
-                        <SkewTransform/>
-                        <RotateTransform/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </ListBox.RenderTransform>
-            </ListBox>
-            <TabControl Margin="298,36,0,304" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left">
+            <TabControl Margin="298,36,0,-6" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left">
                 <TabControl.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -97,7 +87,7 @@
                     </ScrollViewer>
                 </TabItem>
                 <TabItem x:Name="tabAbiotischeFactoren" Header="Abiotische Factoren" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,-1,0,0">
-                    <ScrollViewer x:Name="scrollAbiotischeFactoren" Height="282" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <ScrollViewer x:Name="scrollAbiotischeFactoren" Height="602" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <Grid x:Name="gridAbiotischeFactoren" Height="570" Width="550" Background="#FFF5F5F2">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="525"/>
@@ -150,8 +140,8 @@
                     </ScrollViewer>
                 </TabItem>
                 <TabItem x:Name="tabCommensialisme" Header="Commensialisme" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <ScrollViewer x:Name="scrollCommensialisme" Height="288" VerticalAlignment="Top">
-                        <Grid x:Name="gridCommensialisme" Height="403" Width="557" Background="#FFE5E5E5">
+                    <ScrollViewer x:Name="scrollCommensialisme" Height="594" VerticalAlignment="Top">
+                        <Grid x:Name="gridCommensialisme" Height="574" Width="557" Background="#FFE5E5E5">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="308*"/>
                                 <ColumnDefinition Width="25*"/>
@@ -180,7 +170,7 @@
                 </TabItem>
                 <TabItem x:Name="tabExtraEigenschappen" Header="Extra Eigenschappen" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,-1,0,0">
                     <ScrollViewer>
-                        <Grid Height="280" Width="557" Background="#FFF5F5F7">
+                        <Grid Height="563" Width="557" Background="#FFE5E5E5">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
@@ -203,7 +193,7 @@
                 </TabItem>
                 <TabItem Header="eigenschappen met betrekking tot beheer" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,-1,0,0" FontSize="11">
                     <ScrollViewer>
-                        <Grid Height="280" Width="566" Background="WhiteSmoke">
+                        <Grid Height="565" Width="566" Background="#FFE5E5E5">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
@@ -214,7 +204,7 @@
                             <Rectangle HorizontalAlignment="Center" Height="1" Margin="0,37,0,0" Stroke="Black" VerticalAlignment="Top" Width="562"/>
                             <Label Content="BeheerHandeling" HorizontalAlignment="Left" Margin="29,39,0,0" VerticalAlignment="Top"/>
                             <ComboBox x:Name="cbxBeheerHandeling" HorizontalAlignment="Left" Margin="15,62,0,0" VerticalAlignment="Top" Width="120"/>
-                            <TextBox x:Name="txtOpmerking" HorizontalAlignment="Left" Margin="15,193,0,15" TextWrapping="Wrap" Width="208"/>
+                            <TextBox x:Name="txtOpmerking" HorizontalAlignment="Left" Margin="15,193,0,22" TextWrapping="Wrap" Width="539"/>
                             <Label Content="Opmerking" HorizontalAlignment="Left" Margin="15,169,0,0" VerticalAlignment="Top"/>
                             <CheckBox x:Name="CheckJan" Content="" HorizontalAlignment="Left" Margin="152,65,0,0" VerticalAlignment="Top"/>
                             <CheckBox x:Name="CheckFeb" Content="" HorizontalAlignment="Left" Margin="172,65,0,0" VerticalAlignment="Top"/>
@@ -248,7 +238,8 @@
                     </ScrollViewer>
                 </TabItem>
             </TabControl>
-            <Button x:Name="btnStartOpnieuw" Content="Clear zoekresultaat" HorizontalAlignment="Left" Margin="88,0,0,0" VerticalAlignment="Center" Click="btnStartOpnieuw_Click"/>
+            <Button x:Name="btnStartOpnieuw" Content="Back" HorizontalAlignment="Left" Margin="10,269,0,0" VerticalAlignment="Top" Click="btnStartOpnieuw_Click"/>
+            <Button Content="Opslaan" HorizontalAlignment="Left" Margin="111,269,0,0" VerticalAlignment="Top"/>
         </Grid>
     </Viewbox>
 </Window>
