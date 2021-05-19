@@ -18,7 +18,7 @@
                         <ImageBrush ImageSource="Images/Wit.jpg"/>
                     </Rectangle.Fill>
                 </Rectangle>
-                <Label x:Name="lblLatinName" Content="" HorizontalAlignment="Center" Margin="0,61,0,0" VerticalAlignment="Top" Height="35" Width="462"  BorderBrush="Black" BorderThickness="4,4,4,0" HorizontalContentAlignment="Center" FontSize="16" FontWeight="Bold">
+                <Label x:Name="lblLatinName" Content="{Binding Path=PlantenResultaat.Fgsv}" HorizontalAlignment="Center" Margin="0,74,0,0" VerticalAlignment="Top" Height="46" Width="462"  BorderBrush="Black" BorderThickness="4,4,4,4" HorizontalContentAlignment="Center" FontSize="16" FontWeight="Bold">
                     <Label.Background>
                         <ImageBrush ImageSource="Images/Wit.jpg"/>
                     </Label.Background>
@@ -79,24 +79,19 @@
                         </LinearGradientBrush>
                     </Label.Background>
                 </Label>
-                <Label x:Name="lblType" Content="" HorizontalAlignment="Left" Margin="238,150,0,304" Width="374" BorderBrush="Black" BorderThickness="1,1,1,1" HorizontalContentAlignment="Center" Height="28"/>
-                <Label x:Name="lblFamily" Content="" HorizontalAlignment="Left" Margin="238,181,0,273" Height="28" Width="374" BorderBrush="Black" BorderThickness="1,1,1,1" HorizontalContentAlignment="Center" />
-                <Label x:Name="lblGeslacht" Content="" HorizontalAlignment="Left" Margin="238,212,0,242" Height="28"  Width="374" BorderBrush="Black" BorderThickness="1,1,1,1" HorizontalContentAlignment="Center"/>
-                <Label x:Name="lblSoort" Content="" HorizontalAlignment="Left" Margin="238,243,0,211" Height="28" Width="374" BorderBrush="Black" BorderThickness="1,1,1,1" HorizontalContentAlignment="Center"/>
-                <Label Content="" x:Name="lblVariant" BorderThickness=" 1,1,1,1"  BorderBrush="Black"  Margin="238,274,109,0" VerticalAlignment="Top" Width="374" Height="28" HorizontalContentAlignment="Center" />
-                <Label x:Name="lblPlantdichtheidMin" Content="" HorizontalAlignment="Left" Margin="238,305,0,149" Height="28" Width="374" BorderBrush="Black" BorderThickness="1,1,1,1" HorizontalContentAlignment="Center"/>
-                <Label x:Name="lblPlantdichtheidMax" Content="" HorizontalAlignment="Left" Margin="238,336,0,118" Height="28" BorderBrush="Black" BorderThickness="1,1,1,1" Width="374" HorizontalContentAlignment="Center"/>
+                <Label x:Name="lblType" Content="{Binding Path=PlantenResultaat.Type}" HorizontalAlignment="Left" Margin="238,150,0,304" Width="374" BorderBrush="Black" BorderThickness="1,1,1,1" HorizontalContentAlignment="Center" Height="28"/>
+                <Label x:Name="lblFamily" Content="{Binding Path=PlantenResultaat.Familie}" HorizontalAlignment="Left" Margin="238,181,0,273" Height="28" Width="374" BorderBrush="Black" BorderThickness="1,1,1,1" HorizontalContentAlignment="Center" />
+                <Label x:Name="lblGeslacht" Content="{Binding Path=PlantenResultaat.Geslacht}" HorizontalAlignment="Left" Margin="238,212,0,242" Height="28"  Width="374" BorderBrush="Black" BorderThickness="1,1,1,1" HorizontalContentAlignment="Center"/>
+                <Label x:Name="lblSoort" Content="{Binding Path=PlantenResultaat.Soort}" HorizontalAlignment="Left" Margin="238,243,0,211" Height="28" Width="374" BorderBrush="Black" BorderThickness="1,1,1,1" HorizontalContentAlignment="Center"/>
+                <Label x:Name="lblVariant" Content="{Binding Path=PlantenResultaat.Variant}" BorderThickness=" 1,1,1,1"  BorderBrush="Black"  Margin="238,274,109,0" VerticalAlignment="Top" Width="374" Height="28" HorizontalContentAlignment="Center" />
+                <Label x:Name="lblPlantdichtheidMin" Content="{Binding Path=PlantenResultaat.PlantdichtheidMin}" HorizontalAlignment="Left" Margin="238,305,0,149" Height="28" Width="374" BorderBrush="Black" BorderThickness="1,1,1,1" HorizontalContentAlignment="Center"/>
+                <Label x:Name="lblPlantdichtheidMax" Content="{Binding Path=PlantenResultaat.PlantdichtheidMax}" HorizontalAlignment="Left" Margin="238,336,0,118" Height="28" BorderBrush="Black" BorderThickness="1,1,1,1" Width="374" HorizontalContentAlignment="Center"/>
                 <Image HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" VerticalAlignment="Top" Width="100">
                     <Image.OpacityMask>
                         <ImageBrush/>
                     </Image.OpacityMask>
                 </Image>
                 <Image x:Name="imgPlant" Height="100" Margin="690,10,10,0" VerticalAlignment="Top"/>
-                <Label x:Name="lblLatinName2" Content="" HorizontalAlignment="Center" Margin="0,96,0,355" Width="462"  BorderBrush="Black" BorderThickness="4,0,4,4" HorizontalContentAlignment="Center" FontSize="16" Padding="5,0,5,0" FontWeight="Bold">
-                    <Label.Background>
-                        <ImageBrush ImageSource="Images/Wit.jpg"/>
-                    </Label.Background>
-                </Label>
                 <Button x:Name="btnClose" Content="Close" HorizontalAlignment="Center" Margin="0,379,0,0" VerticalAlignment="Top" Height="63" Width="519" Click="btnClose_Click">
                     <Button.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
