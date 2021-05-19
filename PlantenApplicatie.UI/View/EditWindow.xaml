@@ -62,7 +62,7 @@
                             <ComboBox x:Name="cbxMaxBloeihoogte" HorizontalAlignment="Left" Margin="174,404,0,0" VerticalAlignment="Top" Width="70" Height="22"/>
                             <ComboBox x:Name="cbxMaxBloeihoogteMaand" HorizontalAlignment="Left" Margin="355,404,0,0" VerticalAlignment="Top" Width="120"/>
                             <ComboBox x:Name="cbxMinBloeihoogte" HorizontalAlignment="Left" Margin="174,434,0,0" VerticalAlignment="Top" Width="70" Height="22"/>
-                            <ComboBox x:Name="cbxMinBloeihoogteMaand" HorizontalAlignment="Left" Margin="355,434,0,0" VerticalAlignment="Top" Width="120"
+                            <ComboBox x:Name="cbxMinBloeihoogteMaand" HorizontalAlignment="Left" Margin="355,434,0,0" VerticalAlignment="Top" Width="120"/>
                             <Label x:Name="lblMaxbloeihoogteMaand" Content="In Maand: " HorizontalAlignment="Left" Margin="285,400,0,0" VerticalAlignment="Top"/>
                             <Label x:Name="lblMinBloeihoogteMaand" Content="In Maand: " HorizontalAlignment="Left" Margin="285,430,0,0" VerticalAlignment="Top"/>
                             <Label x:Name="lblBladkleur" Content="Bladkleur" HorizontalAlignment="Left" Margin="35,490,0,0" VerticalAlignment="Top"/>
@@ -112,7 +112,7 @@
                             <CheckBox x:Name="checkVochtbehoefteVochtig" Content="Vochtig" HorizontalAlignment="Left" Margin="400,135,0,420"/>
                             <CheckBox x:Name="checkVochtbehoefteNat" Content="Nat" HorizontalAlignment="Left" Margin="400,155,0,0" VerticalAlignment="Top"/>
                             <Label x:Name="lblAntagonie" Content="reactie antagonistische omgeving " HorizontalAlignment="Left" Margin="30,200,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.054,0.087"/>
-                            <ComboBox HorizontalAlignment="Left" Margin="230,204,0,0" VerticalAlignment="Top" Width="234" SelectionChanged="ComboBox_SelectionChanged_1"/>
+                            <ComboBox HorizontalAlignment="Left" Margin="230,204,0,0" VerticalAlignment="Top" Width="234"/>
                             <Label x:Name="lblHabitat" Content="Habitat" HorizontalAlignment="Left" Margin="30,250,0,0" VerticalAlignment="Top"/>
                             <CheckBox x:Name="checkHabitatGB1" Content="Gemengde boord met droge bodem" HorizontalAlignment="Left" Margin="35,285,0,0" VerticalAlignment="Top"/>
                             <CheckBox x:Name="checkHabitatGB2" Content="Gemengde boord met frisse bodem" HorizontalAlignment="Left" Margin="35,305,0,0" VerticalAlignment="Top"/>
