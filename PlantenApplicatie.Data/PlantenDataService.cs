@@ -85,7 +85,7 @@ namespace PlantenApplicatie.Data
             return context.TfgsvVariant.ToList();
         }
 
-        public List<Plant> GetPlanten()
+        public List<Plant> GetAllPlants()
         {
             return context.Plant.ToList();
         }
