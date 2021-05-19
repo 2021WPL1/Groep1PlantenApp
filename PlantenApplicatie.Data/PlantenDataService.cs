@@ -85,7 +85,6 @@ namespace PlantenApplicatie.Data
             return context.TfgsvVariant.ToList();
         }
 
-        //Jelle & Hemen
         //Geeft alle planten
         public List<Plant> GetAllPlants()
         {
@@ -109,10 +108,8 @@ namespace PlantenApplicatie.Data
                     return plantResults.Where(p => p.SoortId == id).ToList();
                 case "Variant":
                     return plantResults.Where(p => p.VariantId == id).ToList();
-
                 default:
                     return null;
-                    
             }
         }
     }
