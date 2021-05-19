@@ -11,5 +11,10 @@ namespace PlantenApplicatie.UI.ViewModel
         public ResultaatViewModel(PlantenDataService plantenDataService)
         {
         }
+
+        public void FillLabels()
+        {
+            
+        }
     }
 }
