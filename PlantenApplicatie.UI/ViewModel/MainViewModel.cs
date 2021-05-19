@@ -53,10 +53,10 @@ namespace PlantenApplicatie.UI.ViewModel
 
         //Jelle & Hemen
         //Extra lijsten voor gefilterde planten, dit wordt later gebruikt in de functie "ListResults"
-        List<Plant> plantTypeResults;
-        List<Plant> plantFamilieResults;
-        List<Plant> plantGeslachtResults;
-        List<Plant> plantSoortResults;
+        List<Plant> _plantTypeResults;
+        List<Plant> _plantFamilieResults;
+        List<Plant> _plantGeslachtResults;
+        List<Plant> _plantSoortResults;
         //List<Plant> plantVariantResults;
 
         private string _zoekViaNaamInput ="";
@@ -114,6 +114,8 @@ namespace PlantenApplicatie.UI.ViewModel
             _varianten = _plantenDataService.GetTfgsvVarianten();
 
             _allPlants = _plantenDataService.GetAllPlants().OrderBy(p => p.Fgsv).ToList();
+
+            _plantResults = _allPlants;
         }
 
         //Hermes & Stephanie
@@ -346,74 +348,74 @@ namespace PlantenApplicatie.UI.ViewModel
                 //Functie neemt de lijst juist boven de type om mee te filteren, als de type niet bestaat kijkt hij naar het type erboven totdat er een is die bestaat,
                 //dit is voor te zorgen dat zo min mogelijk items gefilterd moeten worden
                 case "Type":
-                    _plantResults = _plantenDataService.GetPlantResults("Type", _selectedType.Planttypeid, _plantenDataService.GetAllPlants());
-                    plantTypeResults = _plantResults;
+                    _plantResults = _plantenDataService.GetPlantResults("Type", _selectedType.Planttypeid, _allPlants);
+                    _plantTypeResults = _plantResults;
                     break;
                 case "Familie":
-                    if (plantTypeResults != null)
+                    if (_plantTypeResults != null)
                     {
-                        _plantResults = _plantenDataService.GetPlantResults("Familie", _selectedFamilie.FamileId, plantTypeResults);
+                        _plantResults = _plantenDataService.GetPlantResults("Familie", _selectedFamilie.FamileId, _plantTypeResults);
                     }
                     else
                     {
-                        _plantResults = _plantenDataService.GetPlantResults("Familie", _selectedFamilie.FamileId, _plantenDataService.GetAllPlants());
+                        _plantResults = _plantenDataService.GetPlantResults("Familie", _selectedFamilie.FamileId, _allPlants);
                     }
-                    plantFamilieResults = _plantResults;
+                    _plantFamilieResults = _plantResults;
                     break;
                 case "Geslacht":
-                    if (plantFamilieResults != null)
+                    if (_plantFamilieResults != null)
                     {
-                        _plantResults = _plantenDataService.GetPlantResults("Geslacht", _selectedGeslacht.GeslachtId, plantFamilieResults);
+                        _plantResults = _plantenDataService.GetPlantResults("Geslacht", _selectedGeslacht.GeslachtId, _plantFamilieResults);
                     }
-                    else if (plantTypeResults != null)
+                    else if (_plantTypeResults != null)
                     {
-                        _plantResults = _plantenDataService.GetPlantResults("Geslacht", _selectedGeslacht.GeslachtId, plantTypeResults);
+                        _plantResults = _plantenDataService.GetPlantResults("Geslacht", _selectedGeslacht.GeslachtId, _plantTypeResults);
                     }
                     else
                     {
-                        _plantResults = _plantenDataService.GetPlantResults("Geslacht", _selectedGeslacht.GeslachtId, _plantenDataService.GetAllPlants());
+                        _plantResults = _plantenDataService.GetPlantResults("Geslacht", _selectedGeslacht.GeslachtId, _allPlants);
                     }
-                    plantGeslachtResults = _plantResults;
+                    _plantGeslachtResults = _plantResults;
                     break;
                 case "Soort":
-                    if (plantGeslachtResults != null)
+                    if (_plantGeslachtResults != null)
                     {
-                        _plantResults = _plantenDataService.GetPlantResults("Soort", _selectedSoort.Soortid, plantGeslachtResults);
+                        _plantResults = _plantenDataService.GetPlantResults("Soort", _selectedSoort.Soortid, _plantGeslachtResults);
                     }
-                    else if (plantFamilieResults != null)
+                    else if (_plantFamilieResults != null)
                     {
-                        _plantResults = _plantenDataService.GetPlantResults("Soort", _selectedSoort.Soortid, plantFamilieResults);
+                        _plantResults = _plantenDataService.GetPlantResults("Soort", _selectedSoort.Soortid, _plantFamilieResults);
                     }
-                    else if (plantTypeResults != null)
+                    else if (_plantTypeResults != null)
                     {
-                        _plantResults = _plantenDataService.GetPlantResults("Soort", _selectedSoort.Soortid, plantTypeResults);
+                        _plantResults = _plantenDataService.GetPlantResults("Soort", _selectedSoort.Soortid, _plantTypeResults);
                     }
                     else
                     {
-                        _plantResults = _plantenDataService.GetPlantResults("Soort", _selectedSoort.Soortid, _plantenDataService.GetAllPlants());
+                        _plantResults = _plantenDataService.GetPlantResults("Soort", _selectedSoort.Soortid, _allPlants);
                     }
-                    plantSoortResults = _plantResults;
+                    _plantSoortResults = _plantResults;
                     break;
                 case "Variant":
-                    if (plantSoortResults != null)
+                    if (_plantSoortResults != null)
                     {
-                        _plantResults = _plantenDataService.GetPlantResults("Variant", _selectedVariant.VariantId, plantSoortResults);
+                        _plantResults = _plantenDataService.GetPlantResults("Variant", _selectedVariant.VariantId, _plantSoortResults);
                     }
-                    else if (plantGeslachtResults != null)
+                    else if (_plantGeslachtResults != null)
                     {
-                        _plantResults = _plantenDataService.GetPlantResults("Variant", _selectedVariant.VariantId, plantGeslachtResults);
+                        _plantResults = _plantenDataService.GetPlantResults("Variant", _selectedVariant.VariantId, _plantGeslachtResults);
                     }
-                    else if (plantFamilieResults != null)
+                    else if (_plantFamilieResults != null)
                     {
-                        _plantResults = _plantenDataService.GetPlantResults("Variant", _selectedVariant.VariantId, plantFamilieResults);
+                        _plantResults = _plantenDataService.GetPlantResults("Variant", _selectedVariant.VariantId, _plantFamilieResults);
                     }
-                    else if (plantTypeResults != null)
+                    else if (_plantTypeResults != null)
                     {
-                        _plantResults = _plantenDataService.GetPlantResults("Variant", _selectedVariant.VariantId, plantTypeResults);
+                        _plantResults = _plantenDataService.GetPlantResults("Variant", _selectedVariant.VariantId, _plantTypeResults);
                     }
                     else
                     {
-                        _plantResults = _plantenDataService.GetPlantResults("Variant", _selectedVariant.VariantId, _plantenDataService.GetAllPlants());
+                        _plantResults = _plantenDataService.GetPlantResults("Variant", _selectedVariant.VariantId, _allPlants);
                     }
                     //plantVariantResults = _plantResults;
                     break;
