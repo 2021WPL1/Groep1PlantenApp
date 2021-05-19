@@ -18,11 +18,11 @@
             <Label Content="Type" HorizontalAlignment="Left" Margin="22,50,0,0" VerticalAlignment="Top"/>
             <Label Content="Geslacht" HorizontalAlignment="Left" Margin="22,135,0,0" VerticalAlignment="Top"/>
             <Label Content="Variant" HorizontalAlignment="Left" Margin="22,216,0,0" VerticalAlignment="Top"/>
-            <ComboBox x:Name="cbxType" HorizontalAlignment="Left" Margin="120,50,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxType_SelectionChanged"/>
-            <ComboBox x:Name="cbxFamilie" HorizontalAlignment="Left" Margin="120,98,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxFamilie_SelectionChanged"/>
-            <ComboBox x:Name="cbxSoort" HorizontalAlignment="Left" Margin="120,177,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxSoort_SelectionChanged"/>
-            <ComboBox x:Name="cbxGeslacht" HorizontalAlignment="Left" Margin="120,137,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxGeslacht_SelectionChanged"/>
-            <ComboBox x:Name="cbxVariant" HorizontalAlignment="Left" Margin="120,218,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxVariant_SelectionChanged" />
+            <ComboBox x:Name="cbxType" HorizontalAlignment="Left" Margin="120,50,0,0" VerticalAlignment="Top" Width="120"/>
+            <ComboBox x:Name="cbxFamilie" HorizontalAlignment="Left" Margin="120,98,0,0" VerticalAlignment="Top" Width="120"/>
+            <ComboBox x:Name="cbxSoort" HorizontalAlignment="Left" Margin="120,177,0,0" VerticalAlignment="Top" Width="120"/>
+            <ComboBox x:Name="cbxGeslacht" HorizontalAlignment="Left" Margin="120,137,0,0" VerticalAlignment="Top" Width="120"/>
+            <ComboBox x:Name="cbxVariant" HorizontalAlignment="Left" Margin="120,218,0,0" VerticalAlignment="Top" Width="120"/>
             <TabControl Margin="298,36,0,-6" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left">
                 <TabControl.RenderTransform>
                     <TransformGroup>
@@ -45,16 +45,16 @@
                             <RadioButton x:Name="rbtnAar" HorizontalAlignment="Left" Margin="52,50,0,0" VerticalAlignment="Top" Width="57" Content="Aar" Height="15" GroupName="Bloeiwijze"/>
                             <RadioButton x:Name="rbtnMargriet" Content="Margrietachtig" HorizontalAlignment="Left" Margin="420,50,0,0" VerticalAlignment="Top" Height="15" Width="97" GroupName="Bloeiwijze"/>
                             <RadioButton x:Name="rbtnKnop" Content="Bol of knop" HorizontalAlignment="Left" Margin="430,160,0,0" VerticalAlignment="Top" Height="15" Width="80" GroupName="Bloeiwijze"/>
-                            <Image x:Name="imgTransparant" HorizontalAlignment="Left" Height="80" Margin="250,180,0,0" VerticalAlignment="Top" Width="80" Source="/View/Images/etage.jpg" MouseLeftButtonDown="imgTransparant_MouseLeftButtonDown"/>
-                            <Image x:Name="imgPluim" HorizontalAlignment="Left" Height="80" Margin="250,70,0,0" VerticalAlignment="Top" Width="80" Source="/View/Images/brede pluim.jpg" MouseLeftButtonDown="imgPluim_MouseLeftButtonDown"/>
-                            <Image x:Name="imgMargriet" HorizontalAlignment="Left" Height="80" Margin="430,70,0,0" VerticalAlignment="Top" Width="80" Source="/View/Images/margrietachtig.jpg" MouseLeftButtonDown="imgMargriet_MouseLeftButtonDown"/>
-                            <Image x:Name="imgScherm" HorizontalAlignment="Left" Height="80" Margin="40,180,0,0" VerticalAlignment="Top" Width="80" Source="/View/Images/scherm.jpg" MouseLeftButtonDown="imgScherm_MouseLeftButtonDown"/>
-                            <Image x:Name="imgKnop" HorizontalAlignment="Left" Height="80" Margin="430,180,0,0" VerticalAlignment="Top" Width="80" Source="/View/Images/knop.jpg" MouseLeftButtonDown="imgKnop_MouseLeftButtonDown"/>
-                            <Image x:Name="imgAar" HorizontalAlignment="Left" Height="80" Margin="40,70,0,0" VerticalAlignment="Top" Width="80" Source="/View/Images/aar.jpg" MouseLeftButtonDown="imgAar_MouseLeftButtonDown"/>
+                            <Image x:Name="imgTransparant" HorizontalAlignment="Left" Height="80" Margin="250,180,0,0" VerticalAlignment="Top" Width="80" Source="/View/Images/etage.jpg" />
+                            <Image x:Name="imgPluim" HorizontalAlignment="Left" Height="80" Margin="250,70,0,0" VerticalAlignment="Top" Width="80" Source="/View/Images/brede pluim.jpg" />
+                            <Image x:Name="imgMargriet" HorizontalAlignment="Left" Height="80" Margin="430,70,0,0" VerticalAlignment="Top" Width="80" Source="/View/Images/margrietachtig.jpg" />
+                            <Image x:Name="imgScherm" HorizontalAlignment="Left" Height="80" Margin="40,180,0,0" VerticalAlignment="Top" Width="80" Source="/View/Images/scherm.jpg" />
+                            <Image x:Name="imgKnop" HorizontalAlignment="Left" Height="80" Margin="430,180,0,0" VerticalAlignment="Top" Width="80" Source="/View/Images/knop.jpg" />
+                            <Image x:Name="imgAar" HorizontalAlignment="Left" Height="80" Margin="40,70,0,0" VerticalAlignment="Top" Width="80" Source="/View/Images/aar.jpg" />
                             <Label x:Name="lblHabitus" Content="Habitus" HorizontalAlignment="Left" Margin="35,318,0,0" VerticalAlignment="Top"/>
                             <ComboBox x:Name="cbxHabitus" HorizontalAlignment="Left" Margin="107,322,0,0" VerticalAlignment="Top" Width="365"/>
                             <Label x:Name="lblMaxBladhoogte" Content="Maximale Bladhoogte" HorizontalAlignment="Left" Margin="35,370,0,0" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="cbxMaxBladhoogte" HorizontalAlignment="Left" Margin="174,374,0,0" VerticalAlignment="Top" Width="70" Height="22" SelectionChanged="cbxMaxBladhoogte_SelectionChanged"/>
+                            <ComboBox x:Name="cbxMaxBladhoogte" HorizontalAlignment="Left" Margin="174,374,0,0" VerticalAlignment="Top" Width="70" Height="22" />
                             <Label x:Name="lblMaxBladhoogteMaand" Content="In Maand: " HorizontalAlignment="Left" Margin="285,370,0,0" VerticalAlignment="Top"/>
                             <ComboBox x:Name="cbxBladHoogteMaand" HorizontalAlignment="Left" Margin="355,374,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxBladHoogteMaand_SelectionChanged"/>
                             <Label x:Name="lblMaxBloeihoogte" Content="Maximale Bloeihoogte" HorizontalAlignment="Left" Margin="35,400,0,0" VerticalAlignment="Top"/>
