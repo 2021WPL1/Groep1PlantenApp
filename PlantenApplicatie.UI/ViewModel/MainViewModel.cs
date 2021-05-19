@@ -46,7 +46,7 @@ namespace PlantenApplicatie.UI.ViewModel
         private TfgsvSoort _selectedSoort;
         private TfgsvVariant _selectedVariant;
 
-        private string _zoekViaNaamInput;
+        private string _zoekViaNaamInput ="";
 
         public MainViewModel(PlantenDataService plantenDataService)
         {//DAO
@@ -280,11 +280,13 @@ namespace PlantenApplicatie.UI.ViewModel
             //clear functie van de filters
             PlantResults.Clear();
             _zoekViaNaamInput = _zoekViaNaamInput.Trim().ToLower();
-            foreach (Plant plant in _allPlants)
-            {
-                if (plant.Fgsv.Trim().ToLower().Contains(_zoekViaNaamInput))
+            if(_zoekViaNaamInput != "") {
+                foreach (Plant plant in _allPlants)
                 {
-                    PlantResults.Add(plant);
+                    if (plant.Fgsv.Trim().ToLower().Contains(_zoekViaNaamInput))
+                    {
+                        PlantResults.Add(plant);
+                    }
                 }
             }
         }
