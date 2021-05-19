@@ -84,5 +84,10 @@ namespace PlantenApplicatie.Data
             //Bug variant heeft geen soort om te koppelen
             return context.TfgsvVariant.ToList();
         }
+
+        public Plant GetPlantWithId(long Id)
+        {
+            return context.Plant.SingleOrDefault(p => p.PlantId == Id);
+        }
     }
 }
