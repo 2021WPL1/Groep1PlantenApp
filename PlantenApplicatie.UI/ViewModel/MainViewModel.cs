@@ -28,7 +28,6 @@ namespace PlantenApplicatie.UI.ViewModel
         private List<TfgsvSoort> _soorten;
         private List<TfgsvVariant> _varianten;
 
-        private List<Plant> _plantResults;
         private List<Plant> _allPlants;
 
         //list voor de binding
