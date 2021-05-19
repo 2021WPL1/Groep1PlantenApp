@@ -33,6 +33,9 @@ namespace PlantenApplicatie.UI.ViewModel
 
         private List<Plant> _allPlants;
 
+        //Lijst met alle planten
+        private List<Plant> _plantResults;
+             
         //list voor de binding
         public ObservableCollection<TfgsvType> TfgsvTypes { get; set; }
         public ObservableCollection<TfgsvFamilie> TfgsvFamilie { get; set; }
@@ -47,6 +50,14 @@ namespace PlantenApplicatie.UI.ViewModel
         private TfgsvGeslacht _selectedGeslacht;
         private TfgsvSoort _selectedSoort;
         private TfgsvVariant _selectedVariant;
+
+        //Jelle & Hemen
+        //Extra lijsten voor gefilterde planten, dit wordt later gebruikt in de functie "ListResults"
+        List<Plant> plantTypeResults;
+        List<Plant> plantFamilieResults;
+        List<Plant> plantGeslachtResults;
+        List<Plant> plantSoortResults;
+        //List<Plant> plantVariantResults;
 
         private string _zoekViaNaamInput ="";
 
@@ -173,6 +184,18 @@ namespace PlantenApplicatie.UI.ViewModel
                 TfgsvVariant.Add(tfgsvVariant);
             }
         }
+        //Jelle & Hemen
+        //Functie om de planten eerst te ordenen en dan in de lijst toe te voegen
+        public void LoadPlanten()
+        {
+            var plantResults = _plantResults;
+            PlantResults.Clear();
+            plantResults = plantResults.OrderBy(p => p.Fgsv).ToList();
+            foreach (var plantResult in plantResults)
+            {
+                PlantResults.Add(plantResult);
+            }
+        }
 
         //selected values binding
         //Senne, Hermes, Maarten
@@ -186,6 +209,7 @@ namespace PlantenApplicatie.UI.ViewModel
                 OnPropertyChanged();
                 if (_selectedType != null && _loadCheck)
                 {
+                    ListResults("Type");
                     UpdateFilters("Type");
                 }
             }
@@ -200,6 +224,7 @@ namespace PlantenApplicatie.UI.ViewModel
                 OnPropertyChanged();
                 if (_selectedFamilie != null && _loadCheck)
                 {
+                    ListResults("Familie");
                     UpdateFilters("Familie");
                 }
             }
@@ -214,6 +239,7 @@ namespace PlantenApplicatie.UI.ViewModel
                 OnPropertyChanged();
                 if (_selectedGeslacht != null && _loadCheck)
                 {
+                    ListResults("Geslacht");
                     UpdateFilters("Geslacht");
                 }
             }
@@ -228,6 +254,7 @@ namespace PlantenApplicatie.UI.ViewModel
                 OnPropertyChanged();
                 if (_selectedSoort != null && _loadCheck)
                 {
+                    ListResults("Soort");
                     UpdateFilters("Soort");
                 }
             }
@@ -242,6 +269,7 @@ namespace PlantenApplicatie.UI.ViewModel
                 OnPropertyChanged();
                 if (_selectedVariant != null && _loadCheck)
                 {
+                    ListResults("Variant");
                     UpdateFilters("Variant");
                 }
             }
@@ -307,6 +335,90 @@ namespace PlantenApplicatie.UI.ViewModel
             _loadCheck = false;
             LoadAll();
             _loadCheck = true;
+        }
+        //Jelle & Hemen
+        //Functie voor de lijsten te ordenenen
+        private void ListResults(string typefilter)
+        {
+            //Switch voor te ordenenen welke combobox is aangepast (komt van Selected functies)
+            switch (typefilter)
+            {
+                //Functie neemt de lijst juist boven de type om mee te filteren, als de type niet bestaat kijkt hij naar het type erboven totdat er een is die bestaat,
+                //dit is voor te zorgen dat zo min mogelijk items gefilterd moeten worden
+                case "Type":
+                    _plantResults = _plantenDataService.GetPlantResults("Type", _selectedType.Planttypeid, _plantenDataService.GetAllPlants());
+                    plantTypeResults = _plantResults;
+                    break;
+                case "Familie":
+                    if (plantTypeResults != null)
+                    {
+                        _plantResults = _plantenDataService.GetPlantResults("Familie", _selectedFamilie.FamileId, plantTypeResults);
+                    }
+                    else
+                    {
+                        _plantResults = _plantenDataService.GetPlantResults("Familie", _selectedFamilie.FamileId, _plantenDataService.GetAllPlants());
+                    }
+                    plantFamilieResults = _plantResults;
+                    break;
+                case "Geslacht":
+                    if (plantFamilieResults != null)
+                    {
+                        _plantResults = _plantenDataService.GetPlantResults("Geslacht", _selectedGeslacht.GeslachtId, plantFamilieResults);
+                    }
+                    else if (plantTypeResults != null)
+                    {
+                        _plantResults = _plantenDataService.GetPlantResults("Geslacht", _selectedGeslacht.GeslachtId, plantTypeResults);
+                    }
+                    else
+                    {
+                        _plantResults = _plantenDataService.GetPlantResults("Geslacht", _selectedGeslacht.GeslachtId, _plantenDataService.GetAllPlants());
+                    }
+                    plantGeslachtResults = _plantResults;
+                    break;
+                case "Soort":
+                    if (plantGeslachtResults != null)
+                    {
+                        _plantResults = _plantenDataService.GetPlantResults("Soort", _selectedSoort.Soortid, plantGeslachtResults);
+                    }
+                    else if (plantFamilieResults != null)
+                    {
+                        _plantResults = _plantenDataService.GetPlantResults("Soort", _selectedSoort.Soortid, plantFamilieResults);
+                    }
+                    else if (plantTypeResults != null)
+                    {
+                        _plantResults = _plantenDataService.GetPlantResults("Soort", _selectedSoort.Soortid, plantTypeResults);
+                    }
+                    else
+                    {
+                        _plantResults = _plantenDataService.GetPlantResults("Soort", _selectedSoort.Soortid, _plantenDataService.GetAllPlants());
+                    }
+                    plantSoortResults = _plantResults;
+                    break;
+                case "Variant":
+                    if (plantSoortResults != null)
+                    {
+                        _plantResults = _plantenDataService.GetPlantResults("Variant", _selectedVariant.VariantId, plantSoortResults);
+                    }
+                    else if (plantGeslachtResults != null)
+                    {
+                        _plantResults = _plantenDataService.GetPlantResults("Variant", _selectedVariant.VariantId, plantGeslachtResults);
+                    }
+                    else if (plantFamilieResults != null)
+                    {
+                        _plantResults = _plantenDataService.GetPlantResults("Variant", _selectedVariant.VariantId, plantFamilieResults);
+                    }
+                    else if (plantTypeResults != null)
+                    {
+                        _plantResults = _plantenDataService.GetPlantResults("Variant", _selectedVariant.VariantId, plantTypeResults);
+                    }
+                    else
+                    {
+                        _plantResults = _plantenDataService.GetPlantResults("Variant", _selectedVariant.VariantId, _plantenDataService.GetAllPlants());
+                    }
+                    //plantVariantResults = _plantResults;
+                    break;
+            }
+            LoadPlanten();
         }
         private void ZoekViaNaam()
         {//Senne, Hermes
