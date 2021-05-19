@@ -129,6 +129,9 @@ namespace PlantenApplicatie.UI.ViewModel
             _selectedSoort = null;
             _selectedVariant = null;
 
+            PlantResults.Clear();
+
+
             //Alle waardes naar default zetten
             InitializeTfgsv();
             LoadAll();
