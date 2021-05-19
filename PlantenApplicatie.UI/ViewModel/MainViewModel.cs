@@ -63,11 +63,13 @@ namespace PlantenApplicatie.UI.ViewModel
 
         public MainViewModel(PlantenDataService plantenDataService)
         {//DAO
+            //Senne, Hermes
             ZoekViaNaamCommand = new DelegateCommand(ZoekViaNaam);
 
-            //Senne, Maarten, Hermes
+            //Stephanie, Hermes
             ClearResultCommand = new DelegateCommand(ClearResult);
 
+            //Senne, Maarten, Hermes
             TfgsvTypes = new ObservableCollection<TfgsvType>();
             TfgsvFamilie = new ObservableCollection<TfgsvFamilie>();
             TfgsvGeslacht = new ObservableCollection<TfgsvGeslacht>();
