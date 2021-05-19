@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using PlantenApplicatie.Data;
@@ -15,6 +16,9 @@ namespace PlantenApplicatie.UI.ViewModel
         //ICommand om zoekresultaat leeg te maken
         public ICommand ClearResultCommand { get; set; }
 
+        //Senne, Hermes
+        public ICommand ZoekViaNaamCommand { get; set; }
+
         //bool die ervoor zorgt dat de selected filters niet gecleared worden
         private bool _loadCheck;
 
@@ -26,6 +30,8 @@ namespace PlantenApplicatie.UI.ViewModel
         private List<TfgsvGeslacht> _geslachten;
         private List<TfgsvSoort> _soorten;
         private List<TfgsvVariant> _varianten;
+
+        private List<Plant> _allPlants;
 
         //list voor de binding
         public ObservableCollection<TfgsvType> TfgsvTypes { get; set; }
@@ -42,8 +48,12 @@ namespace PlantenApplicatie.UI.ViewModel
         private TfgsvSoort _selectedSoort;
         private TfgsvVariant _selectedVariant;
 
+        private string _zoekViaNaamInput ="";
+
         public MainViewModel(PlantenDataService plantenDataService)
-        {
+        {//DAO
+            ZoekViaNaamCommand = new DelegateCommand(ZoekViaNaam);
+
             //Senne, Maarten, Hermes
             ClearResultCommand = new DelegateCommand(ClearResult);
 
@@ -53,7 +63,7 @@ namespace PlantenApplicatie.UI.ViewModel
             TfgsvSoort = new ObservableCollection<TfgsvSoort>();
             TfgsvVariant = new ObservableCollection<TfgsvVariant>();
             PlantResults = new ObservableCollection<Plant>();
-
+            
             this._plantenDataService = plantenDataService;
         }
 
@@ -91,6 +101,8 @@ namespace PlantenApplicatie.UI.ViewModel
             _geslachten = _plantenDataService.GetTfgsvGeslachten();
             _soorten = _plantenDataService.GetTfgsvSoorten();
             _varianten = _plantenDataService.GetTfgsvVarianten();
+
+            _allPlants = _plantenDataService.GetAllPlants().OrderBy(p => p.Fgsv).ToList();
         }
 
         //Hermes & Stephanie
@@ -162,6 +174,8 @@ namespace PlantenApplicatie.UI.ViewModel
             }
         }
 
+        //selected values binding
+        //Senne, Hermes, Maarten
         public TfgsvType SelectedType
         {
             //Senne, Maarten, Hermes
@@ -232,6 +246,16 @@ namespace PlantenApplicatie.UI.ViewModel
                 }
             }
         }
+        
+        public string ZoekViaNaamInput
+        {//Senne, Hermes
+            get { return _zoekViaNaamInput; }
+            set
+            {
+                _zoekViaNaamInput = value;
+                OnPropertyChanged();
+            }
+        }
 
         private void UpdateFilters(string typefilter)
         {
@@ -283,6 +307,22 @@ namespace PlantenApplicatie.UI.ViewModel
             _loadCheck = false;
             LoadAll();
             _loadCheck = true;
+        }
+        private void ZoekViaNaam()
+        {//Senne, Hermes
+            //output= list van <Plant> objects
+            //clear functie van de filters
+            PlantResults.Clear();
+            _zoekViaNaamInput = _zoekViaNaamInput.Trim().ToLower();
+            if(_zoekViaNaamInput != "") {
+                foreach (Plant plant in _allPlants)
+                {
+                    if (plant.Fgsv.Trim().ToLower().Contains(_zoekViaNaamInput))
+                    {
+                        PlantResults.Add(plant);
+                    }
+                }
+            }
         }
     }
 }

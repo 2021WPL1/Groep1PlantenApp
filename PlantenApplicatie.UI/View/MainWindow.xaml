@@ -148,14 +148,30 @@
                         </LinearGradientBrush>
                     </Button.Background>
                 </Button>
-                <TextBox x:Name="txtSearchbox" HorizontalAlignment="Left" Margin="283,143,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" BorderBrush="Black" BorderThickness="2">
+                <TextBox x:Name="txtSearchbox"
+                         Text="{Binding Path=ZoekViaNaamInput, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         HorizontalAlignment="Left" Margin="283,143,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" BorderBrush="Black" BorderThickness="2">
                     <TextBox.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="White"/>
                             <GradientStop Color="#FFC7FF00" Offset="1"/>
                         </LinearGradientBrush>
                     </TextBox.Background>
+                    <TextBox.InputBindings>
+                        <KeyBinding
+                            Key="Return" Command="{Binding Path=ZoekViaNaamCommand}"/>
+                    </TextBox.InputBindings>
                 </TextBox>
+                <Button x:Name="btnSearch"
+                        Command="{Binding Path=ZoekViaNaamCommand}"
+                        Content="Zoeken" HorizontalAlignment="Left" Margin="320,177,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="2">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="White"/>
+                            <GradientStop Color="#FFC7FF00" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
             </Grid>
         </Viewbox>
     </Grid>
