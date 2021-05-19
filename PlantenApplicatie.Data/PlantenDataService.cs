@@ -84,5 +84,10 @@ namespace PlantenApplicatie.Data
             //Bug variant heeft geen soort om te koppelen
             return context.TfgsvVariant.ToList();
         }
+
+        public List<Plant> GetAllPlants()
+        {
+            return context.Plant.ToList();
+        }
     }
 }

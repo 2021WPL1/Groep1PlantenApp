@@ -146,7 +146,9 @@
                         </LinearGradientBrush>
                     </Button.Background>
                 </Button>
-                <TextBox x:Name="txtSearchbox" HorizontalAlignment="Left" Margin="283,143,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" BorderBrush="Black" BorderThickness="2">
+                <TextBox x:Name="txtSearchbox"
+                         Text="{Binding Path=ZoekViaNaamInput, Mode=TwoWay}"
+                         HorizontalAlignment="Left" Margin="283,143,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" BorderBrush="Black" BorderThickness="2">
                     <TextBox.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="White"/>
