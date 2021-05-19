@@ -123,6 +123,12 @@ namespace PlantenApplicatie.UI.ViewModel
         //Hermes & Stephanie
         public void ClearResult()
         {
+            ClearFilters();
+            ClearZoekViaNaam();
+        }
+
+        public void ClearFilters()
+        {
             _selectedType = null;
             _selectedFamilie = null;
             _selectedGeslacht = null;
@@ -131,10 +137,13 @@ namespace PlantenApplicatie.UI.ViewModel
 
             PlantResults.Clear();
 
-
             //Alle waardes naar default zetten
             InitializeTfgsv();
             LoadAll();
+        }
+        public void ClearZoekViaNaam()
+        {//Senne, Hermes
+            ZoekViaNaamInput = "";
         }
 
         public void LoadTypes()
@@ -295,6 +304,9 @@ namespace PlantenApplicatie.UI.ViewModel
         private void UpdateFilters(string typefilter)
         {
             //Senne, Maarten, Hermes
+
+            ClearZoekViaNaam();
+
             //toont enkel de filters volgens gekozen bovenstaande filters
             switch (typefilter)
             {
@@ -429,9 +441,11 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         private void ZoekViaNaam()
         {//Senne, Hermes
-            //output= list van <Plant> objects
             //clear functie van de filters
+            ClearFilters();
+
             PlantResults.Clear();
+
             _zoekViaNaamInput = _zoekViaNaamInput.Trim().ToLower();
             if(_zoekViaNaamInput != "") {
                 foreach (Plant plant in _allPlants)
