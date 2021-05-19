@@ -9,8 +9,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using PlantenApplicatie.Data;
 using PlantenApplicatie.Domain.Models;
-
+using PlantenApplicatie.UI.ViewModel;
 
 namespace PlantenApplicatie.UI.View
 {
@@ -19,10 +20,12 @@ namespace PlantenApplicatie.UI.View
     /// </summary>
     public partial class ResultatenWindow : Window
     {
+        private ResultaatViewModel viewModel;
         public ResultatenWindow(Plant plant)
         {
             InitializeComponent();
-            fillLabels(plant);
+            viewModel = new ResultaatViewModel(PlantenDataService.Instance());
+            DataContext = viewModel;
         }
 
 

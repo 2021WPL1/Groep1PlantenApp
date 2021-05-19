@@ -6,6 +6,7 @@ using System.Text;
 using System.Windows.Input;
 using PlantenApplicatie.Data;
 using PlantenApplicatie.Domain.Models;
+using PlantenApplicatie.UI.View;
 using PlantenApplicatie.UI.ViewModel;
 using Prism.Commands;
 
@@ -19,10 +20,13 @@ namespace PlantenApplicatie.UI.ViewModel
         //Senne, Hermes
         public ICommand ZoekViaNaamCommand { get; set; }
 
+        public ICommand ResultaatSchermCommand { get; set; }
+
         //bool die ervoor zorgt dat de selected filters niet gecleared worden
         private bool _loadCheck;
 
         private PlantenDataService _plantenDataService;
+        private Plant _selectedPlant;
 
         //lists met alle tfgsv in
         private List<TfgsvType> _types;
@@ -69,6 +73,8 @@ namespace PlantenApplicatie.UI.ViewModel
             //Stephanie, Hermes
             ClearResultCommand = new DelegateCommand(ClearResult);
 
+            ResultaatSchermCommand = new DelegateCommand(ResultaatScherm);
+
             //Senne, Maarten, Hermes
             TfgsvTypes = new ObservableCollection<TfgsvType>();
             TfgsvFamilie = new ObservableCollection<TfgsvFamilie>();
@@ -78,6 +84,22 @@ namespace PlantenApplicatie.UI.ViewModel
             PlantResults = new ObservableCollection<Plant>();
             
             this._plantenDataService = plantenDataService;
+        }
+
+        public Plant SelectedPlant
+        {
+            get { return _selectedPlant; }
+            set
+            {
+                _selectedPlant = value;
+                OnPropertyChanged();
+            }
+        }
+        
+        public void ResultaatScherm()
+        {
+            ResultatenWindow window = new ResultatenWindow(_selectedPlant);
+            window.ShowDialog();
         }
 
         public void LoadAll()
