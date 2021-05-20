@@ -22,7 +22,7 @@
             <ComboBox x:Name="cbxSoort" HorizontalAlignment="Left" Margin="120,177,0,0" VerticalAlignment="Top" Width="120"/>
             <ComboBox x:Name="cbxGeslacht" HorizontalAlignment="Left" Margin="120,137,0,0" VerticalAlignment="Top" Width="120"/>
             <ComboBox x:Name="cbxVariant" HorizontalAlignment="Left" Margin="120,218,0,0" VerticalAlignment="Top" Width="120"/>
-            <TabControl Margin="298,36,0,-6" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left">
+            <TabControl Margin="298,36,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Height="615" VerticalAlignment="Top">
                 <TabControl.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -32,8 +32,8 @@
                     </TransformGroup>
                 </TabControl.RenderTransform>
                 <TabItem x:Name="tabFenotype" Header="Fenotype">
-                    <ScrollViewer x:Name="scrollFenotype" Margin="6,0,-6,0">
-                        <Grid x:Name="gridFenotype" Background="WhiteSmoke" Height="725" Width="550">
+                    <ScrollViewer x:Name="scrollFenotype" Margin="6,0,-6,0" Height="590">
+                        <Grid x:Name="gridFenotype" Background="WhiteSmoke" Height="750" Width="550">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
@@ -86,56 +86,57 @@
                     </ScrollViewer>
                 </TabItem>
                 <TabItem x:Name="tabAbiotischeFactoren" Header="Abiotische Factoren" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,-1,0,0">
-                    <ScrollViewer x:Name="scrollAbiotischeFactoren" Height="602" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <Grid x:Name="gridAbiotischeFactoren" Height="570" Width="550" Background="#FFF5F5F2">
+                    <ScrollViewer x:Name="scrollAbiotischeFactoren" Height="584" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Grid x:Name="gridAbiotischeFactoren" Height="900" Width="550" Background="#FFF5F5F2">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="525"/>
                             </Grid.ColumnDefinitions>
                             <Label x:Name="lblBezonning" Content="Bezonning" HorizontalAlignment="Left" Margin="30,15,0,0" VerticalAlignment="Top" Height="26" Width="66"/>
                             <Label x:Name="lblGrondsoort" Content="Grondsoort" HorizontalAlignment="Left" Margin="300,15,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkGrondsoortZand" Content="Zand" HorizontalAlignment="Left" Margin="320,50,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkGrondsoortLeem" Content="Leem" HorizontalAlignment="Left" Margin="320,70,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkGrondsoortKlei" Content="Klei" HorizontalAlignment="Left" Margin="400,50,0,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lblVoedingsbehoefte" Content="Voedingsbehoefte" HorizontalAlignment="Left" Margin="30,100,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkVoedingsbehoefteArm" Content="Arm" HorizontalAlignment="Left" Margin="50,135,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkVoedingsbehoefteMatig" Content="Matig" HorizontalAlignment="Left" Margin="50,155,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkVoedingsbehoefteVoedselrijk" Content="Voedselrijk" HorizontalAlignment="Left" Margin="140,135,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkVoedingsbehoefteIndifferent" Content="Indifferent" HorizontalAlignment="Left" Margin="140,155,0,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lblVochtbehoefte" Content="Vochtbehoefte" HorizontalAlignment="Left" Margin="300,100,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkVochtbehoefteDroog" Content="Droog" HorizontalAlignment="Left" Margin="320,135,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkVochtbehoefteFris" Content="Fris" HorizontalAlignment="Left" Margin="320,155,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkVochtbehoefteVochtig" Content="Vochtig" HorizontalAlignment="Left" Margin="400,135,0,420"/>
-                            <CheckBox x:Name="checkVochtbehoefteNat" Content="Nat" HorizontalAlignment="Left" Margin="400,155,0,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lblAntagonie" Content="reactie antagonistische omgeving " HorizontalAlignment="Left" Margin="30,200,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.054,0.087"/>
-                            <ComboBox HorizontalAlignment="Left" Margin="230,204,0,0" VerticalAlignment="Top" Width="234"/>
-                            <Label x:Name="lblHabitat" Content="Habitat" HorizontalAlignment="Left" Margin="30,250,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkHabitatGB1" Content="Gemengde boord met droge bodem" HorizontalAlignment="Left" Margin="35,285,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkHabitatGB2" Content="Gemengde boord met frisse bodem" HorizontalAlignment="Left" Margin="35,305,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkHabitatGB3" Content="Gemengde boord met vochtige bodem" HorizontalAlignment="Left" Margin="35,325,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkHabitatOP2" Content="Open plaats met frisse bodem" HorizontalAlignment="Left" Margin="35,375,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkHabitatOP3" Content="Open plaats met vochtige bodem" HorizontalAlignment="Left" Margin="35,395,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkHabitatOP1" Content="Open plaats met droge bodem" HorizontalAlignment="Left" Margin="35,355,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkHabitatSH1" Content="Steppe met droge bodem" HorizontalAlignment="Left" Margin="290,285,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkHabitatSH2" Content="Steppe met frisse bodem" HorizontalAlignment="Left" Margin="290,305,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkHabitatB1" Content="Bos onder bomen met droge bodem" HorizontalAlignment="Left" Margin="290,335,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkHabitatB2" Content="Bos onder bomen met frisse bodem" HorizontalAlignment="Left" Margin="290,355,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkHabitatB3" Content="Bos onder bomen met vochtige bodem" HorizontalAlignment="Left" Margin="290,375,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkHabitatGR1" Content="Bodem met grind met droge bodem" HorizontalAlignment="Left" Margin="290,405,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkHabitatGR2" Content="Bodem met grind met frisse bodem" HorizontalAlignment="Left" Margin="290,425,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkHabitatH1" Content="Heide met droge bodem" HorizontalAlignment="Left" Margin="35,425,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkHabitatH2" Content="Heide met frisse bodem" HorizontalAlignment="Left" Margin="35,445,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkHabitatST1" Content="Stenige droge bodem" HorizontalAlignment="Left" Margin="35,475,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkHabitatST2" Content="Stenige frisse bodem" HorizontalAlignment="Left" Margin="35,495,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkHabitatBR1" Content="Bosrand met droge bodem" HorizontalAlignment="Left" Margin="290,455,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkHabitatBR2" Content="Bosrand met frisse bodem" HorizontalAlignment="Left" Margin="290,475,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkHabitatBR3" Content="Bosrand met vochtige bodem" HorizontalAlignment="Left" Margin="290,495,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkHabitatOB1" Content="Ondiepe droge bodem" HorizontalAlignment="Left" Margin="35,525,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkHabitatOB2" Content="Ondiepe frisse bodem" HorizontalAlignment="Left" Margin="35,545,0,0" VerticalAlignment="Top"/>
-                            <ListBox x:Name="BezonningListBox" Margin="22,42,278,464"
+                            <Label x:Name="lblVoedingsbehoefte" Content="Voedingsbehoefte" HorizontalAlignment="Left" Margin="23,195,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblVochtbehoefte" Content="Vochtbehoefte" HorizontalAlignment="Left" Margin="300,195,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblAntagonie" Content="reactie antagonistische omgeving " HorizontalAlignment="Left" Margin="22,409,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.054,0.087"/>
+                            <ComboBox HorizontalAlignment="Left" Margin="254,409,0,0" VerticalAlignment="Top" Width="234"/>
+                            <Label x:Name="lblHabitat" Content="Habitat" HorizontalAlignment="Left" Margin="25,456,0,0" VerticalAlignment="Top"/>
+                            <ListBox x:Name="BezonningListBox" Margin="22,42,364,0"
                                 SelectedItem="{Binding Path=SelectedBezonning, UpdateSourceTrigger=PropertyChanged}"
-                                ItemsSource="{Binding Bezonning, NotifyOnSourceUpdated=True}"
                                 DisplayMemberPath="Naam"
-                                SelectedValuePath="Naam"/>
+                                SelectedValuePath="Naam" Height="138" VerticalAlignment="Top">
+                                <ListBox Height="100" Width="100"/>
+                                <ListBox x:Name="BezonningListBox1" Height="100" Width="100"/>
+                            </ListBox>
+                            <ListBox x:Name="GrondsoortListBox" Margin="302,42,0,0"
+                                SelectedItem="{Binding SelectedBezonning, UpdateSourceTrigger=PropertyChanged}"
+                                DisplayMemberPath="Naam"
+                                SelectedValuePath="Naam" HorizontalAlignment="Left" Width="139" Height="138" VerticalAlignment="Top">
+                                <ListBox Height="100" Width="100"/>
+                            </ListBox>
+                            <ListBox x:Name="VoedingsbehoefteListBox" Margin="22,230,0,0"
+                                SelectedItem="{Binding SelectedBezonning, UpdateSourceTrigger=PropertyChanged}"
+                                DisplayMemberPath="Naam"
+                                SelectedValuePath="Naam" HorizontalAlignment="Left" Width="139" Height="138" VerticalAlignment="Top">
+                                <ListBox Height="100" Width="100"/>
+                            </ListBox>
+                            <ListBox x:Name="VochtbehoefteListBox" Margin="302,230,84,0"
+                                SelectedItem="{Binding SelectedBezonning, UpdateSourceTrigger=PropertyChanged}"
+                                DisplayMemberPath="Naam"
+                                SelectedValuePath="Naam" Height="138" VerticalAlignment="Top" Width="139">
+                                <ListBox Height="100" Width="100"/>
+                            </ListBox>
+                            <ListBox x:Name="ListBoxAllHabitat" Margin="25,504,0,0"
+                                SelectedItem="{Binding SelectedBezonning, UpdateSourceTrigger=PropertyChanged}"
+                                DisplayMemberPath="Naam"
+                                SelectedValuePath="Naam" HorizontalAlignment="Left" Width="388" Height="138" VerticalAlignment="Top">
+                                <ListBox Height="100" Width="100"/>
+                            </ListBox>
+                            <ListBox x:Name="ListBoxAddedHabitat" Margin="25,694,0,0"
+                                SelectedItem="{Binding SelectedBezonning, UpdateSourceTrigger=PropertyChanged}"
+                                DisplayMemberPath="Naam"
+                                SelectedValuePath="Naam" HorizontalAlignment="Left" Width="388" Height="138" VerticalAlignment="Top">
+                                <ListBox Height="100" Width="100"/>
+                            </ListBox>
+                            <Button x:Name="btnVoegHabitatToe" Content="Voeg Habitat Toe" Margin="418,516,-5,0" Height="31" VerticalAlignment="Top"/>
+                            <Button x:Name="btnVerwijderHabitat" Content="Verwijder Habitat" Margin="424,707,-11,0" Height="34" VerticalAlignment="Top"/>
                         </Grid>
                     </ScrollViewer>
                 </TabItem>
