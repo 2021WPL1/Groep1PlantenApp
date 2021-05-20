@@ -25,11 +25,11 @@ namespace PlantenApplicatie.UI.ViewModel
 
         //Observable collections voor de binding
         //Filters
-        public ObservableCollection<TfgsvType> TfgsvTypes { get; set; }
-        public ObservableCollection<TfgsvFamilie> TfgsvFamilie { get; set; }
-        public ObservableCollection<TfgsvGeslacht> TfgsvGeslacht { get; set; }
-        public ObservableCollection<TfgsvSoort> TfgsvSoort { get; set; }
-        public ObservableCollection<TfgsvVariant> TfgsvVariant { get; set; }
+        public ObservableCollection<TfgsvType> FilterTfgsvTypes { get; set; }
+        public ObservableCollection<TfgsvFamilie> FilterTfgsvFamilie { get; set; }
+        public ObservableCollection<TfgsvGeslacht> FilterTfgsvGeslacht { get; set; }
+        public ObservableCollection<TfgsvSoort> FilterTfgsvSoort { get; set; }
+        public ObservableCollection<TfgsvVariant> FilterTfgsvVariant { get; set; }
         //Fenotype
         //Abio
         public ObservableCollection<AbioBezonning> AbioBezonning { get; set; }
@@ -45,11 +45,11 @@ namespace PlantenApplicatie.UI.ViewModel
 
         //Lists om de observable collections op te vullen
         //Filters
-        private List<TfgsvType> _types;
-        private List<TfgsvFamilie> _families;
-        private List<TfgsvGeslacht> _geslachten;
-        private List<TfgsvSoort> _soorten;
-        private List<TfgsvVariant> _varianten;
+        private List<TfgsvType> _filtertypes;
+        private List<TfgsvFamilie> _filterfamilies;
+        private List<TfgsvGeslacht> _filtergeslachten;
+        private List<TfgsvSoort> _filtersoorten;
+        private List<TfgsvVariant> _filtervarianten;
         //Fenotype
         //Abio
         private List<AbioBezonning> _abiobezonning;
@@ -65,11 +65,11 @@ namespace PlantenApplicatie.UI.ViewModel
 
         //Geselecteerde waardes
         //Filters
-        private TfgsvType _selectedType;
-        private TfgsvFamilie _selectedFamilie;
-        private TfgsvGeslacht _selectedGeslacht;
-        private TfgsvSoort _selectedSoort;
-        private TfgsvVariant _selectedVariant;
+        private TfgsvType _filterselectedType;
+        private TfgsvFamilie _filterselectedFamilie;
+        private TfgsvGeslacht _filterselectedGeslacht;
+        private TfgsvSoort _filterselectedSoort;
+        private TfgsvVariant _filterselectedVariant;
         //Fenotype
         //Abio
         private AbioBezonning _abioselectedBezonning;
@@ -93,11 +93,11 @@ namespace PlantenApplicatie.UI.ViewModel
             HabitatVerwijderenCommand = new DelegateCommand(HabitatVerwijderen);
 
             //Filters
-            TfgsvTypes = new ObservableCollection<TfgsvType>();
-            TfgsvFamilie = new ObservableCollection<TfgsvFamilie>();
-            TfgsvGeslacht = new ObservableCollection<TfgsvGeslacht>();
-            TfgsvSoort = new ObservableCollection<TfgsvSoort>();
-            TfgsvVariant = new ObservableCollection<TfgsvVariant>();
+            FilterTfgsvTypes = new ObservableCollection<TfgsvType>();
+            FilterTfgsvFamilie = new ObservableCollection<TfgsvFamilie>();
+            FilterTfgsvGeslacht = new ObservableCollection<TfgsvGeslacht>();
+            FilterTfgsvSoort = new ObservableCollection<TfgsvSoort>();
+            FilterTfgsvVariant = new ObservableCollection<TfgsvVariant>();
             //Fenotype
             //Abio
             AbioBezonning = new ObservableCollection<AbioBezonning>();
@@ -123,7 +123,6 @@ namespace PlantenApplicatie.UI.ViewModel
             var abioselectedVochtbehoefte = AbioSelectedVochtbehoefte.Vochtbehoefte;
             var abioselectedReactie = AbioSelectedReactie.Antagonie;
             var abioselectedHabitats = AbioAddedHabitats.Select(x => x.Afkorting).ToList();
-            
             //Commersialisme
             //Extra Eigenschappen
             //Beheer Eigenschappen
@@ -162,11 +161,11 @@ namespace PlantenApplicatie.UI.ViewModel
         public void InitializeAll()
         {
             //Filters
-            _types = _plantenDataService.GetTfgsvTypes();
-            _families = _plantenDataService.GetTfgsvFamilies();
-            _geslachten = _plantenDataService.GetTfgsvGeslachten();
-            _soorten = _plantenDataService.GetTfgsvSoorten();
-            _varianten = _plantenDataService.GetTfgsvVarianten();
+            _filtertypes = _plantenDataService.GetTfgsvTypes();
+            _filterfamilies = _plantenDataService.GetTfgsvFamilies();
+            _filtergeslachten = _plantenDataService.GetTfgsvGeslachten();
+            _filtersoorten = _plantenDataService.GetTfgsvSoorten();
+            _filtervarianten = _plantenDataService.GetTfgsvVarianten();
             //Fenotype
             //Abio
             _abiobezonning = _plantenDataService.GetAbioBezonning();
@@ -196,36 +195,36 @@ namespace PlantenApplicatie.UI.ViewModel
 
         public void LoadFilters()
         {
-            TfgsvTypes.Clear();
-            TfgsvFamilie.Clear();
-            TfgsvGeslacht.Clear();
-            TfgsvSoort.Clear();
-            TfgsvVariant.Clear();
+            FilterTfgsvTypes.Clear();
+            FilterTfgsvFamilie.Clear();
+            FilterTfgsvGeslacht.Clear();
+            FilterTfgsvSoort.Clear();
+            FilterTfgsvVariant.Clear();
 
             //Families
-            foreach (var tfgsvType in _types)
+            foreach (var tfgsvType in _filtertypes)
             {
-                TfgsvTypes.Add(tfgsvType);
+                FilterTfgsvTypes.Add(tfgsvType);
             }
             //Families
-            foreach (var tfgsvFamily in _families)
+            foreach (var tfgsvFamily in _filterfamilies)
             {
-                TfgsvFamilie.Add(tfgsvFamily);
+                FilterTfgsvFamilie.Add(tfgsvFamily);
             }
             //Geslacht
-            foreach (var tfgsvGeslacht in _geslachten)
+            foreach (var tfgsvGeslacht in _filtergeslachten)
             {
-                TfgsvGeslacht.Add(tfgsvGeslacht);
+                FilterTfgsvGeslacht.Add(tfgsvGeslacht);
             }
             //Soorten
-            foreach (var tfgsvSoort in _soorten)
+            foreach (var tfgsvSoort in _filtersoorten)
             {
-                TfgsvSoort.Add(tfgsvSoort);
+                FilterTfgsvSoort.Add(tfgsvSoort);
             }
             //Varianten
-            foreach (var tfgsvVariant in _varianten)
+            foreach (var tfgsvVariant in _filtervarianten)
             {
-                TfgsvVariant.Add(tfgsvVariant);
+                FilterTfgsvVariant.Add(tfgsvVariant);
             }
         }
 
@@ -301,48 +300,48 @@ namespace PlantenApplicatie.UI.ViewModel
 
         //Binding voor geselecteerde waardes
         //Filters
-        public TfgsvType SelectedType
+        public TfgsvType FilterSelectedType
         {
-            get { return _selectedType; }
+            get { return _filterselectedType; }
             set
             {
-                _selectedType = value;
+                _filterselectedType = value;
                 OnPropertyChanged();
             }
         }
-        public TfgsvFamilie SelectedFamilie
+        public TfgsvFamilie FilterSelectedFamilie
         {
-            get { return _selectedFamilie; }
+            get { return _filterselectedFamilie; }
             set
             {
-                _selectedFamilie = value;
+                _filterselectedFamilie = value;
                 OnPropertyChanged();
             }
         }
-        public TfgsvGeslacht SelectedGeslacht
+        public TfgsvGeslacht FilterSelectedGeslacht
         {
-            get { return _selectedGeslacht; }
+            get { return _filterselectedGeslacht; }
             set
             {
-                _selectedGeslacht = value;
+                _filterselectedGeslacht = value;
                 OnPropertyChanged();
             }
         }
-        public TfgsvSoort SelectedSoort
+        public TfgsvSoort FilterSelectedSoort
         {
-            get { return _selectedSoort; }
+            get { return _filterselectedSoort; }
             set
             {
-                _selectedSoort = value;
+                _filterselectedSoort = value;
                 OnPropertyChanged();
             }
         }
-        public TfgsvVariant SelectedVariant
+        public TfgsvVariant FilterSelectedVariant
         {
-            get { return _selectedVariant; }
+            get { return _filterselectedVariant; }
             set
             {
-                _selectedVariant = value;
+                _filterselectedVariant = value;
                 OnPropertyChanged();
             }
         }
