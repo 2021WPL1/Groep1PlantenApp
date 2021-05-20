@@ -14,14 +14,21 @@ namespace PlantenApplicatie.UI.ViewModel
 {
     class ResultaatViewModel : ViewModelBase
     {
+        //Jelle & Hemen
+        //Plant voor in labels
         public Plant _plantenResultaat;
+        //Command maken voor form te sluiten
         public RelayCommand<Window> CloseResultCommand { get; private set; }
         public ResultaatViewModel(PlantenDataService plantenDataService)
-        {
+        {//DAO
+
             PlantenResultaat = new Plant();
             this.CloseResultCommand = new RelayCommand<Window>(this.CloseResult);
         }
 
+
+        //Jelle & Hemen
+        //Command die gelinkt is aan close button om form te sluiten
         public void CloseResult(Window window)
         {
             if (window != null)
@@ -30,10 +37,14 @@ namespace PlantenApplicatie.UI.ViewModel
             }
         }
 
+
+        //Command om labels op te vullen
         public void fillLabels(Plant plant)
         {
             PlantenResultaat = plant;
         }
+
+        //Geeft de data van de plant door
         public Plant PlantenResultaat
         {
             get { return _plantenResultaat; }
