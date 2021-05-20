@@ -16,7 +16,7 @@ namespace PlantenApplicatie.UI.ViewModel
         private Abiotiek _abiotiek;
         private Commensalisme _commensalisme;
         private ExtraEigenschap _extraEigenschap;
-        //Hier moet beheer komen maar die vind ik niet.
+        private BeheerMaand _beheerMaand;
 
         public ResultatenViewModel(PlantenDataService plantenDataService)
         {
