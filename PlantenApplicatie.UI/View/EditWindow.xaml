@@ -133,7 +133,9 @@
                             <CheckBox x:Name="checkHabitatOB2" Content="Ondiepe frisse bodem" HorizontalAlignment="Left" Margin="35,545,0,0" VerticalAlignment="Top"/>
                             <ListBox x:Name="BezonningListBox" Margin="22,42,278,464"
                                 SelectedItem="{Binding Path=SelectedBezonning, UpdateSourceTrigger=PropertyChanged}"
-                                ItemsSource="{Binding Bezonnning, NotifyOnSourceUpdated=True}"/>
+                                ItemsSource="{Binding Bezonning, NotifyOnSourceUpdated=True}"
+                                DisplayMemberPath="Naam"
+                                SelectedValuePath="Naam"/>
                         </Grid>
                     </ScrollViewer>
                 </TabItem>

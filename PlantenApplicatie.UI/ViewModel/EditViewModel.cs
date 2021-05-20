@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Windows.Input;
 using PlantenApplicatie.Data;
@@ -18,6 +19,8 @@ namespace PlantenApplicatie.UI.ViewModel
 
         public ObservableCollection<AbioBezonning> Bezonning { get; set; }
 
+        private List<AbioBezonning> _bezonning;
+
         private AbioBezonning _selectedBezonning;
 
         public EditViewModel(PlantenDataService plantenDataService)
@@ -31,7 +34,24 @@ namespace PlantenApplicatie.UI.ViewModel
 
         private void Opslaan()
         {
-            
+            var selectedBezonning = SelectedBezonning.Naam;
+
+        }
+
+        public void InitializeAll()
+        {
+            _bezonning = _plantenDataService.GetAbioBezonning();
+
+            LoadAll();
+        }
+
+        public void LoadAll()
+        {
+            Bezonning.Clear();
+            foreach (var bezonning in _bezonning)
+            {
+                Bezonning.Add(bezonning);
+            }
         }
 
         public AbioBezonning SelectedBezonning

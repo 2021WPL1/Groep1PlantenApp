@@ -22,6 +22,7 @@ namespace PlantenApplicatie.Data
             this.context = new Planten2021Context();
         }
 
+        //Mainwindow
         public List<TfgsvType> GetTfgsvTypes()
         {
             return context.TfgsvType.ToList();
@@ -111,6 +112,13 @@ namespace PlantenApplicatie.Data
                 default:
                     return null;
             }
+        }
+
+
+        //Editwindow
+        public List<AbioBezonning> GetAbioBezonning()
+        {
+            return context.AbioBezonning.ToList();
         }
     }
 }
