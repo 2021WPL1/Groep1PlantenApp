@@ -22,7 +22,7 @@
             <ComboBox x:Name="cbxSoort" HorizontalAlignment="Left" Margin="120,177,0,0" VerticalAlignment="Top" Width="120"/>
             <ComboBox x:Name="cbxGeslacht" HorizontalAlignment="Left" Margin="120,137,0,0" VerticalAlignment="Top" Width="120"/>
             <ComboBox x:Name="cbxVariant" HorizontalAlignment="Left" Margin="120,218,0,0" VerticalAlignment="Top" Width="120"/>
-            <TabControl Margin="298,36,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Height="615" VerticalAlignment="Top">
+            <TabControl Margin="298,36,0,16" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left">
                 <TabControl.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -86,8 +86,8 @@
                     </ScrollViewer>
                 </TabItem>
                 <TabItem x:Name="tabAbiotischeFactoren" Header="Abiotische Factoren" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,-1,0,0">
-                    <ScrollViewer x:Name="scrollAbiotischeFactoren" Height="584" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <Grid x:Name="gridAbiotischeFactoren" Height="900" Width="550" Background="#FFF5F5F2">
+                    <ScrollViewer x:Name="scrollAbiotischeFactoren" Height="562" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Grid x:Name="gridAbiotischeFactoren" Height="981" Width="550" Background="#FFF5F5F2">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="525"/>
                             </Grid.ColumnDefinitions>
@@ -96,54 +96,76 @@
                             <Label x:Name="lblVoedingsbehoefte" Content="Voedingsbehoefte" HorizontalAlignment="Left" Margin="23,195,0,0" VerticalAlignment="Top"/>
                             <Label x:Name="lblVochtbehoefte" Content="Vochtbehoefte" HorizontalAlignment="Left" Margin="300,195,0,0" VerticalAlignment="Top"/>
                             <Label x:Name="lblAntagonie" Content="reactie antagonistische omgeving " HorizontalAlignment="Left" Margin="22,409,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.054,0.087"/>
-                            <ComboBox x:Name="cbxAntagonie" 
-                                      ItemsSource="{Binding AbioReactieAntagonischeOmg}"
-                                      SelectedItem="{Binding AbioSelectedReactie, Mode=TwoWay}"
-                                      DisplayMemberPath="Antagonie"
-                                      SelectedValuePath="Id"
-                                      HorizontalAlignment="Left" Margin="254,409,0,0" VerticalAlignment="Top" Width="234"/>
-                            <Label x:Name="lblHabitat" Content="Habitat" HorizontalAlignment="Left" Margin="25,456,0,0" VerticalAlignment="Top"/>
-                            <ListBox x:Name="BezonningListBox" Margin="22,42,327,0"
+                            <Label x:Name="lblHabitat" Content="Habitat" HorizontalAlignment="Left" Margin="25,620,0,0" VerticalAlignment="Top"/>
+                            <ListBox x:Name="BezonningListBox" Margin="22,42,0,0"
                                 ItemsSource="{Binding AbioBezonning}"
                                 SelectedItem="{Binding AbioSelectedBezonning, Mode=TwoWay}"
                                 DisplayMemberPath="Naam"
-                                Height="138" VerticalAlignment="Top" Width="160" HorizontalAlignment="Left">
-                            </ListBox>
+                                Height="150" VerticalAlignment="Top" HorizontalAlignment="Left" Width="180"/>
                             <ListBox x:Name="GrondsoortListBox" Margin="302,42,0,0"
                                 ItemsSource="{Binding AbioGrondsoort}"
                                 SelectedItem="{Binding AbioSelectedGrondsoort, Mode=TwoWay}"
                                 DisplayMemberPath="Grondsoort"
-                                HorizontalAlignment="Left" Width="160" Height="138" VerticalAlignment="Top">
+                                HorizontalAlignment="Left" Width="180" Height="150" VerticalAlignment="Top">
                             </ListBox>
                             <ListBox x:Name="VoedingsbehoefteListBox" Margin="22,230,0,0"
                                 ItemsSource="{Binding AbioVoedingsbehoefte}"     
                                 SelectedItem="{Binding AbioSelectedVoedingsbehoefte, Mode=TwoWay}"
                                 DisplayMemberPath="Voedingsbehoefte"
-                                HorizontalAlignment="Left" Width="160" Height="138" VerticalAlignment="Top">
+                                HorizontalAlignment="Left" Width="180" Height="150" VerticalAlignment="Top">
                             </ListBox>
-                            <ListBox x:Name="VochtbehoefteListBox" Margin="302,230,63,0"
+                            <ListBox x:Name="VochtbehoefteListBox" Margin="302,230,43,0"
                                 ItemsSource="{Binding AbioVochtbehoefte}"     
                                 SelectedItem="{Binding AbioSelectedVochtbehoefte, Mode=TwoWay}"
                                 DisplayMemberPath="Vochtbehoefte"
-                                Height="138" VerticalAlignment="Top"/>
-                            <ListBox x:Name="ListBoxAllHabitat" Margin="25,504,0,0"
+                                Height="150" VerticalAlignment="Top" HorizontalAlignment="Left" Width="180"/>
+                            <ListBox x:Name="ListBoxAllHabitat" Margin="25,651,0,0"
                                 ItemsSource="{Binding AbioAllHabitats}"     
                                 SelectedItem="{Binding AbioSelectedAllHabitat, Mode=TwoWay}"
-                                DisplayMemberPath="Waarde"
                                 HorizontalAlignment="Left" Width="388" Height="138" VerticalAlignment="Top">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock>
+                                            <TextBlock.Text>
+                                                <MultiBinding StringFormat="{}{0} - {1}">
+                                                    <Binding Path="Waarde"/>
+                                                    <Binding Path="Afkorting"/>
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
                             </ListBox>
-                            <ListBox x:Name="ListBoxAddedHabitat" Margin="25,694,0,0"
+                            <ListBox 
+                                x:Name="ListBoxAddedHabitat" Margin="25,813,0,0"
                                 ItemsSource="{Binding AbioAddedHabitats}"     
                                 SelectedItem="{Binding AbioSelectedAddedHabitat, Mode=TwoWay}"
-                                DisplayMemberPath="Waarde"
                                 HorizontalAlignment="Left" Width="388" Height="138" VerticalAlignment="Top">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock>
+                                            <TextBlock.Text>
+                                                <MultiBinding StringFormat="{}{0} - {1}">
+                                                    <Binding Path="Waarde"/>
+                                                    <Binding Path="Afkorting"/>
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
                             </ListBox>
                             <Button x:Name="btnVoegHabitatToe" 
                                     Command="{Binding HabitatToevoegenCommand}"
-                                    Content="Voeg Habitat Toe" Margin="418,516,-5,0" Height="31" VerticalAlignment="Top"/>
+                                    Content="Voeg Habitat Toe" Margin="428,700,-15,0" Height="31" VerticalAlignment="Top"/>
                             <Button x:Name="btnVerwijderHabitat" 
                                     Command="{Binding HabitatVerwijderenCommand}"
-                                    Content="Verwijder Habitat" Margin="424,707,-11,0" Height="34" VerticalAlignment="Top"/>
+                                    Content="Verwijder Habitat" Margin="429,864,-16,0" Height="34" VerticalAlignment="Top"/>
+                            <ListBox x:Name="ListBoxAntagonie" 
+                                     Margin="25,446,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Height="150"
+                                     ItemsSource="{Binding AbioReactieAntagonischeOmg}"
+                                      SelectedItem="{Binding AbioSelectedReactie, Mode=TwoWay}"
+                                      DisplayMemberPath="Antagonie"
+                                      SelectedValuePath="Id"/>
                         </Grid>
                     </ScrollViewer>
                 </TabItem>
