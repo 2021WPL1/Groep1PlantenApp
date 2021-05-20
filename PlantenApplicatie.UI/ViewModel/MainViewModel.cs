@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Windows;
 using System.Windows.Input;
 using PlantenApplicatie.Data;
 using PlantenApplicatie.Domain.Models;
@@ -98,8 +99,16 @@ namespace PlantenApplicatie.UI.ViewModel
         
         public void ResultaatScherm()
         {
-            ResultatenWindow window = new ResultatenWindow(_selectedPlant);
-            window.ShowDialog();
+            if (_selectedPlant != null)
+            {
+                ResultatenWindow window = new ResultatenWindow(_selectedPlant);
+                window.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Please select a plant first");
+            }
+            
         }
 
         public void LoadAll()

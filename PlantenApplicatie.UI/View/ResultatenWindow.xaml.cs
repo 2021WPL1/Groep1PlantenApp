@@ -28,9 +28,5 @@ namespace PlantenApplicatie.UI.View
             DataContext = viewModel;
             viewModel.fillLabels(plant);
         }
-        private void btnClose_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
     }
 }

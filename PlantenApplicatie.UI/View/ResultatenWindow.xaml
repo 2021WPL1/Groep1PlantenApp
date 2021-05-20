@@ -97,7 +97,10 @@
                         <ImageBrush ImageSource="Images/Wit.jpg"/>
                     </Label.Background>
                 </Label>
-                <Button x:Name="btnClose" Content="Close" HorizontalAlignment="Center" Margin="0,379,0,0" VerticalAlignment="Top" Height="63" Width="519" Click="btnClose_Click">
+                <Button x:Name="btnClose" 
+                        Command="{Binding Path=CloseResultCommand}"
+                        CommandParameter="{Binding ElementName=ResultatenWindow}"
+                        Content="Close" HorizontalAlignment="Center" Margin="0,379,0,0" VerticalAlignment="Top" Height="63" Width="519">
                     <Button.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="White" Offset="0"/>
