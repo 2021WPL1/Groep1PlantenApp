@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using PlantenApplicatie.Data;
+using PlantenApplicatie.Domain.Models;
 using Prism.Commands;
 
 namespace PlantenApplicatie.UI.ViewModel
@@ -15,12 +16,9 @@ namespace PlantenApplicatie.UI.ViewModel
 
         public ICommand OpslaanCommand { get; set; }
 
-        public ObservableCollection<bool> BezonningSchaduw { get; set; }
-        public ObservableCollection<bool> BezonningZon { get; set; }
-        public ObservableCollection<bool> BezonningHalfSchaduw { get; set; }
-        public ObservableCollection<bool> BezonningHalfZon { get; set; }
+        public ObservableCollection<AbioBezonning> Bezonning { get; set; }
 
-        private object[] _listBezonning;
+        private AbioBezonning _selectedBezonning;
 
         public EditViewModel(PlantenDataService plantenDataService)
         {
@@ -28,39 +26,22 @@ namespace PlantenApplicatie.UI.ViewModel
 
             OpslaanCommand = new DelegateCommand(Opslaan);
 
-            BezonningSchaduw=new ObservableCollection<bool>();
-            BezonningZon = new ObservableCollection<bool>();
-            BezonningHalfSchaduw = new ObservableCollection<bool>();
-            BezonningHalfZon = new ObservableCollection<bool>();
-
+            Bezonning = new ObservableCollection<AbioBezonning>();
         }
 
         private void Opslaan()
         {
-            string result = "";
-            string[] listbezonning = new[] {"Schaduw", "Zon", "Half-Schaduw", "Half-Zon"};
-
-            if (BezonningSchaduw.First())
-            {
-                result += "Schaduw - ";
-            }
-            if (BezonningZon.First())
-            {
-                result += "Zon - ";
-            }
-            if (BezonningHalfSchaduw.First())
-            {
-                result += "Half Schaduw - ";
-            }
-            if (BezonningHalfZon.First())
-            {
-                result += "Half Zon - ";
-            }
-
-
-            result = result.Substring(0, result.Length - 3);
-
             
+        }
+
+        public AbioBezonning SelectedBezonning
+        {
+            get { return _selectedBezonning; }
+            set
+            {
+                _selectedBezonning = value;
+                OnPropertyChanged();
+            }
         }
     }
 }
