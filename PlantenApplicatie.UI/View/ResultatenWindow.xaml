@@ -1,4 +1,5 @@
 ﻿<Window x:Class="PlantenApplicatie.UI.View.ResultatenWindow"
+        x:Name="TestWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -99,7 +100,7 @@
                 </Label>
                 <Button x:Name="btnClose" 
                         Command="{Binding Path=CloseResultCommand}"
-                        CommandParameter="{Binding ElementName=ResultatenWindow}"
+                        CommandParameter="{Binding ElementName=TestWindow}"
                         Content="Close" HorizontalAlignment="Center" Margin="0,379,0,0" VerticalAlignment="Top" Height="63" Width="519">
                     <Button.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">

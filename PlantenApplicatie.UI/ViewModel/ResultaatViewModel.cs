@@ -24,7 +24,10 @@ namespace PlantenApplicatie.UI.ViewModel
 
         public void CloseResult(Window window)
         {
-            window.ShowDialog();
+            if (window != null)
+            {
+                window.Close();
+            }
         }
 
         public void fillLabels(Plant plant)
