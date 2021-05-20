@@ -97,60 +97,53 @@
                             <Label x:Name="lblVochtbehoefte" Content="Vochtbehoefte" HorizontalAlignment="Left" Margin="300,195,0,0" VerticalAlignment="Top"/>
                             <Label x:Name="lblAntagonie" Content="reactie antagonistische omgeving " HorizontalAlignment="Left" Margin="22,409,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.054,0.087"/>
                             <ComboBox x:Name="cbxAntagonie" 
-                                      ItemsSource="{Binding AbioReactieAntagonischeOmg, NotifyOnSourceUpdated=True}"
-                                      SelectedItem="{Binding Path=AbioSelectedReactie, UpdateSourceTrigger=PropertyChanged}"
+                                      ItemsSource="{Binding AbioReactieAntagonischeOmg}"
+                                      SelectedItem="{Binding AbioSelectedReactie, Mode=TwoWay}"
                                       DisplayMemberPath="Antagonie"
                                       SelectedValuePath="Id"
                                       HorizontalAlignment="Left" Margin="254,409,0,0" VerticalAlignment="Top" Width="234"/>
                             <Label x:Name="lblHabitat" Content="Habitat" HorizontalAlignment="Left" Margin="25,456,0,0" VerticalAlignment="Top"/>
                             <ListBox x:Name="BezonningListBox" Margin="22,42,364,0"
-                                ItemsSource="{Binding AbioBezonning, NotifyOnSourceUpdated=True}"
-                                SelectedItem="{Binding Path=AbioSelectedBezonning, UpdateSourceTrigger=PropertyChanged}"
+                                ItemsSource="{Binding AbioBezonning}"
+                                SelectedItem="{Binding AbioSelectedBezonning, Mode=TwoWay}"
                                 DisplayMemberPath="Naam"
-                                SelectedValuePath="Id" Height="138" VerticalAlignment="Top">
-                                <ListBox Height="100" Width="100"/>
-                                <ListBox x:Name="BezonningListBox1" Height="100" Width="100"/>
+                                Height="138" VerticalAlignment="Top">
                             </ListBox>
                             <ListBox x:Name="GrondsoortListBox" Margin="302,42,0,0"
-                                ItemsSource="{Binding AbioGrondsoort, NotifyOnSourceUpdated=True}"
-                                SelectedItem="{Binding Path=AbioSelectedGrondsoort, UpdateSourceTrigger=PropertyChanged}"
+                                ItemsSource="{Binding AbioGrondsoort}"
+                                SelectedItem="{Binding AbioSelectedGrondsoort, Mode=TwoWay}"
                                 DisplayMemberPath="Grondsoort"
-                                SelectedValuePath="Id" HorizontalAlignment="Left" Width="139" Height="138" VerticalAlignment="Top">
-                                <ListBox Height="100" Width="100"/>
+                                HorizontalAlignment="Left" Width="139" Height="138" VerticalAlignment="Top">
                             </ListBox>
                             <ListBox x:Name="VoedingsbehoefteListBox" Margin="22,230,0,0"
-                                ItemsSource="{Binding AbioVoedingsbehoefte, NotifyOnSourceUpdated=True}"     
-                                SelectedItem="{Binding Path=AbioSelectedVoedingsbehoefte, UpdateSourceTrigger=PropertyChanged}"
+                                ItemsSource="{Binding AbioVoedingsbehoefte}"     
+                                SelectedItem="{Binding AbioSelectedVoedingsbehoefte, Mode=TwoWay}"
                                 DisplayMemberPath="Voedingsbehoefte"
-                                SelectedValuePath="Id" HorizontalAlignment="Left" Width="139" Height="138" VerticalAlignment="Top">
-                                <ListBox Height="100" Width="100"/>
+                                HorizontalAlignment="Left" Width="139" Height="138" VerticalAlignment="Top">
                             </ListBox>
                             <ListBox x:Name="VochtbehoefteListBox" Margin="302,230,84,0"
-                                ItemsSource="{Binding AbioVochtbehoefte, NotifyOnSourceUpdated=True}"     
-                                SelectedItem="{Binding Path=AbioSelectedVochtbehoefte, UpdateSourceTrigger=PropertyChanged}"
+                                ItemsSource="{Binding AbioVochtbehoefte}"     
+                                SelectedItem="{Binding AbioSelectedVochtbehoefte, Mode=TwoWay}"
                                 DisplayMemberPath="Vochtbehoefte"
-                                SelectedValuePath="Id" Height="138" VerticalAlignment="Top" Width="139">
-                                <ListBox Height="100" Width="100"/>
+                                Height="138" VerticalAlignment="Top" Width="139">
                             </ListBox>
                             <ListBox x:Name="ListBoxAllHabitat" Margin="25,504,0,0"
-                                ItemsSource="{Binding AbioAllHabitats, NotifyOnSourceUpdated=True}"     
-                                SelectedItem="{Binding Path=AbioSelectedAllHabitat, UpdateSourceTrigger=PropertyChanged}"
+                                ItemsSource="{Binding AbioAllHabitats}"     
+                                SelectedItem="{Binding AbioSelectedAllHabitat, Mode=TwoWay}"
                                 DisplayMemberPath="Waarde"
-                                SelectedValuePath="Id" HorizontalAlignment="Left" Width="388" Height="138" VerticalAlignment="Top">
-                                <ListBox Height="100" Width="100"/>
+                                HorizontalAlignment="Left" Width="388" Height="138" VerticalAlignment="Top">
                             </ListBox>
                             <ListBox x:Name="ListBoxAddedHabitat" Margin="25,694,0,0"
-                                ItemsSource="{Binding AbioAddedHabitats, NotifyOnSourceUpdated=True}"     
-                                SelectedItem="{Binding Path=AbioSelectedAddedHabitat, UpdateSourceTrigger=PropertyChanged}"
+                                ItemsSource="{Binding AbioAddedHabitats}"     
+                                SelectedItem="{Binding AbioSelectedAddedHabitat, Mode=TwoWay}"
                                 DisplayMemberPath="Waarde"
-                                SelectedValuePath="Id" HorizontalAlignment="Left" Width="388" Height="138" VerticalAlignment="Top">
-                                <ListBox Height="100" Width="100"/>
+                                HorizontalAlignment="Left" Width="388" Height="138" VerticalAlignment="Top">
                             </ListBox>
                             <Button x:Name="btnVoegHabitatToe" 
-                                    Command="{Binding Path=HabitatToevoegenCommand}"
+                                    Command="{Binding HabitatToevoegenCommand}"
                                     Content="Voeg Habitat Toe" Margin="418,516,-5,0" Height="31" VerticalAlignment="Top"/>
                             <Button x:Name="btnVerwijderHabitat" 
-                                    Command="{Binding Path=HabitatVerwijderenCommand}"
+                                    Command="{Binding HabitatVerwijderenCommand}"
                                     Content="Verwijder Habitat" Margin="424,707,-11,0" Height="34" VerticalAlignment="Top"/>
                         </Grid>
                     </ScrollViewer>
