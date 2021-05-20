@@ -116,9 +116,36 @@ namespace PlantenApplicatie.Data
 
 
         //Editwindow
+
+        //Filters
+        //Fenotype
+        //Abio
         public List<AbioBezonning> GetAbioBezonning()
         {
             return context.AbioBezonning.ToList();
         }
+        public List<AbioGrondsoort> GetAbioGrondsoort()
+        {
+            return context.AbioGrondsoort.ToList();
+        }
+        public List<AbioVoedingsbehoefte> GetAbioVoedingsbehoefte()
+        {
+            return context.AbioVoedingsbehoefte.ToList();
+        }
+        public List<AbioVochtbehoefte> GetAbioVochtbehoefte()
+        {
+            return context.AbioVochtbehoefte.ToList();
+        }
+        public List<AbioReactieAntagonischeOmg> GetAbioReactieAntagonischeOmg()
+        {
+            return context.AbioReactieAntagonischeOmg.ToList();
+        }
+        public List<AbioHabitat> GetHabitats()
+        {
+            return context.AbioHabitat.ToList();
+        }
+        //Commersialisme
+        //Extra Eigenschappen
+        //Beheer Eigenschappen
     }
 }

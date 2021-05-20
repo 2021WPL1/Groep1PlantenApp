@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Windows.Input;
@@ -15,53 +16,281 @@ namespace PlantenApplicatie.UI.ViewModel
     {
         private PlantenDataService _plantenDataService;
 
+        //Command voor opslaan
         public ICommand OpslaanCommand { get; set; }
+        public ICommand BackCommand { get; set; }
+        public ICommand HabitatToevoegenCommand { get; set; }
+        public ICommand HabitatVerwijderenCommand { get; set; }
 
-        public ObservableCollection<AbioBezonning> Bezonning { get; set; }
+        //Observable collections voor de binding
+        //Filters
+        //Fenotype
+        //Abio
+        public ObservableCollection<AbioBezonning> AbioBezonning { get; set; }
+        public ObservableCollection<AbioGrondsoort> AbioGrondsoort { get; set; }
+        public ObservableCollection<AbioVoedingsbehoefte> AbioVoedingsbehoefte { get; set; }
+        public ObservableCollection<AbioVochtbehoefte> AbioVochtbehoefte { get; set; }
+        public ObservableCollection<AbioReactieAntagonischeOmg> AbioReactieAntagonischeOmg { get; set; }
+        public ObservableCollection<AbioHabitat> AbioAllHabitats { get; set; }
+        public ObservableCollection<AbioHabitat> AbioAddedHabitats { get; set; }
+        //Commersialisme
+        //Extra Eigenschappen
+        //Beheer Eigenschappen
 
-        private List<AbioBezonning> _bezonning;
+        //Lists om de observable collections op te vullen
+        //Filters
+        //Fenotype
+        //Abio
+        private List<AbioBezonning> _abiobezonning;
+        private List<AbioGrondsoort> _abiogrondsoort;
+        private List<AbioVoedingsbehoefte> _abiovoedingsbehoefte;
+        private List<AbioVochtbehoefte> _abiovochtbehoefte;
+        private List<AbioReactieAntagonischeOmg> _abioReactie;
+        private List<AbioHabitat> _abioAllHabitats;
+        private List<AbioHabitat> _abioAddedHabitats;
+        //Commersialisme
+        //Extra Eigenschappen
+        //Beheer Eigenschappen
 
-        private AbioBezonning _selectedBezonning;
+        //Geselecteerde waardes
+        //Filters
+        //Fenotype
+        //Abio
+        private AbioBezonning _abioselectedBezonning;
+        private AbioGrondsoort _abioselectedGrondsoort;
+        private AbioVoedingsbehoefte _abioselectedVoedingsbehoefte;
+        private AbioVochtbehoefte _abioselectedVochtbehoefte;
+        private AbioReactieAntagonischeOmg _abioselectedReactie;
+        private AbioHabitat _abioselectedAllHabitat;
+        private AbioHabitat _abioselectedAddedHabitat;
+        //Commersialisme
+        //Extra Eigenschappen
+        //Beheer Eigenschappen
 
         public EditViewModel(PlantenDataService plantenDataService)
         {
             this._plantenDataService = plantenDataService;
 
             OpslaanCommand = new DelegateCommand(Opslaan);
+            BackCommand = new DelegateCommand(Back);
+            HabitatToevoegenCommand = new DelegateCommand(HabitatToevoegen);
+            HabitatVerwijderenCommand = new DelegateCommand(HabitatVerwijderen);
 
-            Bezonning = new ObservableCollection<AbioBezonning>();
+            //Filters
+            //Fenotype
+            //Abio
+            AbioBezonning = new ObservableCollection<AbioBezonning>();
+            AbioGrondsoort = new ObservableCollection<AbioGrondsoort>();
+            AbioVoedingsbehoefte = new ObservableCollection<AbioVoedingsbehoefte>();
+            AbioVochtbehoefte = new ObservableCollection<AbioVochtbehoefte>();
+            AbioReactieAntagonischeOmg = new ObservableCollection<AbioReactieAntagonischeOmg>();
+            AbioAllHabitats = new ObservableCollection<AbioHabitat>();
+            AbioAddedHabitats = new ObservableCollection<AbioHabitat>();
+            //Commersialisme
+            //Extra Eigenschappen
+            //Beheer Eigenschappen
         }
 
         private void Opslaan()
         {
-            var selectedBezonning = SelectedBezonning.Naam;
+            //Filters
+            //Fenotype
+            //Abio
+            var abioselectedBezonning = AbioSelectedBezonning.Naam;
+            var abioselectedGrondsoort = AbioSelectedGrondsoort.Grondsoort;
+            var abioselectedVoedingbehoefte = AbioSelectedVoedingsbehoefte.Voedingsbehoefte;
+            var abioselectedVochtbehoefte = AbioSelectedVochtbehoefte.Vochtbehoefte;
+            var abioselectedReactie = AbioSelectedReactie.Antagonie;
+            List<string> abioselectedHabitats = AbioAddedHabitats.Select(x => x.Afkorting).ToList();
+            //Commersialisme
+            //Extra Eigenschappen
+            //Beheer Eigenschappen
+        }
+        private void Back()
+        {
+
+        }
+        //Habitat toevoegen aan listbox (die moeten toegevoegd worden aan de plant)
+        private void HabitatToevoegen()
+        {
+
+        }
+        //habitat verwijderen uit de listbox van geselecteerde
+        private void HabitatVerwijderen()
+        {
 
         }
 
         public void InitializeAll()
         {
-            _bezonning = _plantenDataService.GetAbioBezonning();
+            //Filters
+            //Fenotype
+            //Abio
+            _abiobezonning = _plantenDataService.GetAbioBezonning();
+            _abiogrondsoort = _plantenDataService.GetAbioGrondsoort();
+            _abiovoedingsbehoefte = _plantenDataService.GetAbioVoedingsbehoefte();
+            _abiovochtbehoefte = _plantenDataService.GetAbioVochtbehoefte();
+            _abioReactie = _plantenDataService.GetAbioReactieAntagonischeOmg();
+            _abioAllHabitats = _plantenDataService.GetHabitats();
+            //Commersialisme
+            //Extra Eigenschappen
+            //Beheer Eigenschappen
+
 
             LoadAll();
         }
 
         public void LoadAll()
         {
-            Bezonning.Clear();
-            foreach (var bezonning in _bezonning)
+            LoadFilters();
+            LoadFenotype();
+            LoadAbio();
+            LoadCommersialisme();
+            LoadExtraEigenschappen();
+            LoadBeheerEigenschappen();
+        }
+
+        public void LoadFilters()
+        {
+
+        }
+
+        public void LoadFenotype()
+        {
+
+        }
+
+        public void LoadAbio()
+        {
+            AbioBezonning.Clear();
+            AbioGrondsoort.Clear();
+            AbioVoedingsbehoefte.Clear();
+            AbioVochtbehoefte.Clear();
+            AbioReactieAntagonischeOmg.Clear();
+            AbioAllHabitats.Clear();
+
+            //Bezonning
+            foreach (var bezonning in _abiobezonning)
             {
-                Bezonning.Add(bezonning);
+                AbioBezonning.Add(bezonning);
+            }
+            //Grondsoort
+            foreach (var grondsoort in _abiogrondsoort)
+            {
+                AbioGrondsoort.Add(grondsoort);
+            }
+            //Voeding
+            foreach (var voedingsbehoefte in _abiovoedingsbehoefte)
+            {
+                AbioVoedingsbehoefte.Add(voedingsbehoefte);
+            }
+            //Vochtigheid
+            foreach (var vochtbehoefte in _abiovochtbehoefte)
+            {
+                AbioVochtbehoefte.Add(vochtbehoefte);
+            }
+            //antagonistische omgeving
+            foreach (var reactie in _abioReactie)
+            {
+                AbioReactieAntagonischeOmg.Add(reactie);
+            }
+            //Habitat
+            foreach (var habitat in _abioAllHabitats)
+            {
+                AbioAllHabitats.Add(habitat);
             }
         }
 
-        public AbioBezonning SelectedBezonning
+        public void LoadCommersialisme()
         {
-            get { return _selectedBezonning; }
+
+        }
+
+        public void LoadExtraEigenschappen()
+        {
+
+        }
+
+        public void LoadBeheerEigenschappen()
+        {
+
+        }
+
+        //Binding voor geselecteerde waardes
+        //Filters
+        //Fenotype
+        //Abio
+        public AbioBezonning AbioSelectedBezonning
+        {
+            get { return _abioselectedBezonning; }
             set
             {
-                _selectedBezonning = value;
+                _abioselectedBezonning = value;
                 OnPropertyChanged();
             }
         }
+
+        public AbioGrondsoort AbioSelectedGrondsoort
+        {
+            get { return _abioselectedGrondsoort; }
+            set
+            {
+                _abioselectedGrondsoort = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public AbioVoedingsbehoefte AbioSelectedVoedingsbehoefte
+        {
+            get { return _abioselectedVoedingsbehoefte; }
+            set
+            {
+                _abioselectedVoedingsbehoefte = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public AbioVochtbehoefte AbioSelectedVochtbehoefte
+        {
+            get { return _abioselectedVochtbehoefte; }
+            set
+            {
+                _abioselectedVochtbehoefte = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public AbioReactieAntagonischeOmg AbioSelectedReactie
+        {
+            get { return _abioselectedReactie; }
+            set
+            {
+                _abioselectedReactie = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public AbioHabitat AbioSelectedAllHabitat
+        {
+            get { return _abioselectedAllHabitat; }
+            set
+            {
+                _abioselectedAllHabitat = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public AbioHabitat AbioSelectedAddedHabitat
+        {
+            get { return _abioselectedAddedHabitat; }
+            set
+            {
+                _abioselectedAddedHabitat = value;
+                OnPropertyChanged();
+            }
+        }
+        //Commersialisme
+        //Extra Eigenschappen
+        //Beheer Eigenschappen
     }
 }
