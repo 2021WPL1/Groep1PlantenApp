@@ -92,19 +92,6 @@
                                 <ColumnDefinition Width="525"/>
                             </Grid.ColumnDefinitions>
                             <Label x:Name="lblBezonning" Content="Bezonning" HorizontalAlignment="Left" Margin="30,15,0,0" VerticalAlignment="Top" Height="26" Width="66"/>
-                            <CheckBox x:Name="checkBezonningSchaduw" 
-                                      IsChecked="{Binding Path=BezonningSchaduw,UpdateSourceTrigger=PropertyChanged}"
-                                      Command="{Binding OpslaanCommand}"
-                                      Content="Schaduw" HorizontalAlignment="Left" Margin="50,50,0,0" VerticalAlignment="Top" Height="15" Width="67"/>
-                            <CheckBox x:Name="checkBezonningZon"
-                                      IsChecked="{Binding Path=BezonningZon,UpdateSourceTrigger=PropertyChanged}"
-                                      Content="Zon" HorizontalAlignment="Left" Margin="50,70,0,0" VerticalAlignment="Top" Height="15" Width="71"/>
-                            <CheckBox x:Name="checkHalfSchaduw"
-                                      IsChecked="{Binding Path=BezonningHalfSchaduw,UpdateSourceTrigger=PropertyChanged}"
-                                      Content="Half Schaduw" Margin="140,50,281,501"/>
-                            <CheckBox x:Name="checkHalfZon"
-                                      IsChecked="{Binding Path=BezonningHalfZon,UpdateSourceTrigger=PropertyChanged}"
-                                      Content="Half Zon" HorizontalAlignment="Left" Margin="140,70,0,0" VerticalAlignment="Top"/>
                             <Label x:Name="lblGrondsoort" Content="Grondsoort" HorizontalAlignment="Left" Margin="300,15,0,0" VerticalAlignment="Top"/>
                             <CheckBox x:Name="checkGrondsoortZand" Content="Zand" HorizontalAlignment="Left" Margin="320,50,0,0" VerticalAlignment="Top"/>
                             <CheckBox x:Name="checkGrondsoortLeem" Content="Leem" HorizontalAlignment="Left" Margin="320,70,0,0" VerticalAlignment="Top"/>
@@ -144,6 +131,9 @@
                             <CheckBox x:Name="checkHabitatBR3" Content="Bosrand met vochtige bodem" HorizontalAlignment="Left" Margin="290,495,0,0" VerticalAlignment="Top"/>
                             <CheckBox x:Name="checkHabitatOB1" Content="Ondiepe droge bodem" HorizontalAlignment="Left" Margin="35,525,0,0" VerticalAlignment="Top"/>
                             <CheckBox x:Name="checkHabitatOB2" Content="Ondiepe frisse bodem" HorizontalAlignment="Left" Margin="35,545,0,0" VerticalAlignment="Top"/>
+                            <ListBox x:Name="BezonningListBox" Margin="22,42,278,464"
+                                SelectedItem="{Binding Path=SelectedBezonning, UpdateSourceTrigger=PropertyChanged}"
+                                ItemsSource="{Binding Bezonnning, NotifyOnSourceUpdated=True}"/>
                         </Grid>
                     </ScrollViewer>
                 </TabItem>
