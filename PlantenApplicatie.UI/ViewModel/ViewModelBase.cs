@@ -16,44 +16,6 @@ namespace PlantenApplicatie.UI.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
         }
 
-        public void fillLabels(Plant plant)
-        {
-            bool enter = false;
-            for (int i = 0; i < plant.Fgsv.Length; i++)
-            {
-                string letter = plant.Fgsv.Substring(i, 1);
-                if (letter == " " && i >= 25 && enter == false)
-                {
-                    enter = true;
-                }
-                else
-                {
-                    if (enter != true)
-                    {
-                        lblLatinName.Content += letter;
-                    }
-                    else
-                    {
-                        lblLatinName2.Content += letter;
-                    }
-                }
-            }
-            if (plant.Type != null)
-            {
-                lblType.Content = plant.Type;
-            }
-            else
-            {
-                lblType.Content = " ";
-            }
-
-            lblType.Content = plant.Type;
-            lblFamily.Content = plant.Familie;
-            lblGeslacht.Content = plant.Geslacht;
-            lblSoort.Content = plant.Soort;
-            lblVariant.Content = plant.Variant;
-            lblPlantdichtheidMax.Content = plant.PlantdichtheidMax;
-            lblPlantdichtheidMin.Content = plant.PlantdichtheidMin;
-        }
+      
     }
 }

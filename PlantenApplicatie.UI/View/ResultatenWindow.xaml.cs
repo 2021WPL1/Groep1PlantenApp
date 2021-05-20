@@ -33,7 +33,7 @@ namespace PlantenApplicatie.UI.View
         //Stephanie en Jelle    
         //Deze functie zorgt ervoor dat de labels waar de latijnse naam in moeten komen, verdeeld worden over 2 labels.
         //om zo de volledige naam duidelijk weer te geven.
-        private void fillLabels(Plant plant)
+        /*private void fillLabels(Plant plant)
         {
             bool enter = false;
             for (int i = 0; i < plant.Fgsv.Length; i++)
@@ -71,7 +71,7 @@ namespace PlantenApplicatie.UI.View
             lblVariant.Content = plant.Variant;
             lblPlantdichtheidMax.Content = plant.PlantdichtheidMax;
             lblPlantdichtheidMin.Content = plant.PlantdichtheidMin;
-        }
+        }*/
 
 
         private void btnClose_Click(object sender, RoutedEventArgs e)

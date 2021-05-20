@@ -9,8 +9,10 @@ namespace PlantenApplicatie.UI.ViewModel
 {
     class ResultaatViewModel : ViewModelBase
     {
+        public Plant PlantenResultaat;
         public ResultaatViewModel(PlantenDataService plantenDataService)
         {
+            PlantenResultaat = new Plant();
         }
 
         //Stephanie en Maarten
@@ -21,7 +23,8 @@ namespace PlantenApplicatie.UI.ViewModel
         }*/
         public void fillLabels(Plant plant)
         {
-            bool enter = false;
+            PlantenResultaat = plant;
+            /*bool enter = false;
             for (int i = 0; i < plant.Fgsv.Length; i++)
             {
                 string letter = plant.Fgsv.Substring(i, 1);
@@ -56,7 +59,7 @@ namespace PlantenApplicatie.UI.ViewModel
             lblSoort.Content = plant.Soort;
             lblVariant.Content = plant.Variant;
             lblPlantdichtheidMax.Content = plant.PlantdichtheidMax;
-            lblPlantdichtheidMin.Content = plant.PlantdichtheidMin;
+            lblPlantdichtheidMin.Content = plant.PlantdichtheidMin;*/
         }
     }
 }
