@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Windows;
 using System.Windows.Input;
 using PlantenApplicatie.Data;
 using PlantenApplicatie.Domain.Models;
@@ -120,18 +121,18 @@ namespace PlantenApplicatie.UI.ViewModel
         //Habitat toevoegen aan listbox (die moeten toegevoegd worden aan de plant)
         private void HabitatToevoegen()
         {
-            if (AbioSelectedAllHabitat!=null)
+            if (_abioselectedAllHabitat!=null)
             {
-                AbioAddedHabitats.Add(AbioSelectedAllHabitat);
+                _abioAddedHabitats.Add(_abioselectedAllHabitat);
             }
             ReloadHabitatlist();
         }
         //habitat verwijderen uit de listbox van geselecteerde
         private void HabitatVerwijderen()
         {
-            if (AbioSelectedAddedHabitat!=null)
+            if (_abioselectedAddedHabitat!=null)
             {
-                AbioAddedHabitats.Remove(AbioSelectedAddedHabitat);
+                _abioAddedHabitats.Remove(_abioselectedAddedHabitat);
             }
             ReloadHabitatlist();
         }
