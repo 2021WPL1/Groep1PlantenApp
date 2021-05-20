@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows;
+using GalaSoft.MvvmLight.Command;
 using PlantenApplicatie.Data;
 using PlantenApplicatie.Domain.Models;
 
@@ -10,8 +12,15 @@ namespace PlantenApplicatie.UI.ViewModel
     //Maarten & Stephanie
     class ResultatenViewModel : ViewModelBase
     {
-        private PlantenDataService _plantenDataService;
+        //Jelle & Hemen
+        //Command maken voor form te sluiten
+        public RelayCommand<Window> CloseResultCommand { get; private set; }
+
+        //Jelle & Hemen
+        //Plant voor in labels
         private Plant _plantenResultaat;
+
+        private PlantenDataService _plantenDataService;
         private Fenotype _fenotype;
         private Abiotiek _abiotiek;
         private Commensalisme _commensalisme;
@@ -21,8 +30,11 @@ namespace PlantenApplicatie.UI.ViewModel
         public ResultatenViewModel(PlantenDataService plantenDataService)
         {
             this._plantenDataService = plantenDataService;
+            this.CloseResultCommand = new RelayCommand<Window>(this.CloseResult);
         }
 
+        //Stephanie & Maarten
+        //Geeft de data van de plant door
         public Fenotype Fenotype
         {
             get { return _fenotype; }
@@ -68,7 +80,7 @@ namespace PlantenApplicatie.UI.ViewModel
                 _beheerMaand = value;
             }
         }
-        
+
         public Plant PlantenResultaat
         {
             get { return _plantenResultaat; }
@@ -78,35 +90,30 @@ namespace PlantenApplicatie.UI.ViewModel
             }
         }
 
-        //Geeft elke keer de gevraagde informatie per opgezochte plant
-        public void GetPlant()
+        //Jelle & Hemen
+        //Command die gelinkt is aan close button om form te sluiten
+        public void CloseResult(Window window)
         {
-            PlantenResultaat = _plantenDataService.GetPlantWithId(3);
+            if (window != null)
+            {
+                window.Close();
+            }
         }
 
-        public void GetFenotype()
+        //Command om labels op te vullen
+        public void fillLabels(Plant plant)
         {
+            PlantenResultaat = plant;
+            //Geeft elke keer de gevraagde informatie per opgezochte plant
             Fenotype = _plantenDataService.GetFenotype(3);
-        }
-
-        public void GetAbiotiek()
-        {
             Abiotiek = _plantenDataService.GetAbiotiek(3);
-        }
-
-        public void GetCommensalisme()
-        {
             Commensalisme = _plantenDataService.GetCommensalisme(3);
-        }
-
-        public void GetExtraEigenschap()
-        {
             ExtraEigenschap = _plantenDataService.GetExtraEigenschap(3);
-        }
-
-        public void GetBeheerMaand()
-        {
             BeheerMaand = _plantenDataService.GetBeheerMaand(3);
         }
+
+        
+
+       
     }
 }

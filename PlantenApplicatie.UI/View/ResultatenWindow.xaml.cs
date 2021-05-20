@@ -15,14 +15,14 @@ using PlantenApplicatie.UI.ViewModel;
 
 namespace PlantenApplicatie.UI.View
 {
-    //Maarten & Stephanie
+    //Jelle & Hemen
     public partial class ResultatenWindow : Window
     {
-        private ResultaatViewModel viewModel;
+        private ResultatenViewModel viewModel;
         public ResultatenWindow(Plant plant)
         {
             InitializeComponent();
-            viewModel = new ResultaatViewModel(PlantenDataService.Instance());
+            viewModel = new ResultatenViewModel(PlantenDataService.Instance());
             DataContext = viewModel;
             viewModel.fillLabels(plant);
         }
