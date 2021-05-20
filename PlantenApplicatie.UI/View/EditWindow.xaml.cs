@@ -9,6 +9,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using PlantenApplicatie.Data;
+using PlantenApplicatie.UI.ViewModel;
 
 namespace PlantenApplicatie.UI.View
 {
@@ -17,9 +19,15 @@ namespace PlantenApplicatie.UI.View
     /// </summary>
     public partial class EditWindow : Window
     {
+        private static Planten2021Context context = new Planten2021Context();
+        private EditViewModel viewModel;
+
         public EditWindow()
         {
             InitializeComponent();
+
+            viewModel = new EditViewModel(PlantenDataService.Instance());
+            DataContext = viewModel;
         }
     }
 }

@@ -1,9 +1,8 @@
-﻿<Window x:Class="Zoekscherm.MainWindow"
+﻿<Window x:Class="PlantenApplicatie.UI.View.EditWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Zoekscherm"
         mc:Ignorable="d"
         Title="MainWindow" Height="623" Width="898">
     <Viewbox Margin="0,0,0,10">
@@ -93,10 +92,19 @@
                                 <ColumnDefinition Width="525"/>
                             </Grid.ColumnDefinitions>
                             <Label x:Name="lblBezonning" Content="Bezonning" HorizontalAlignment="Left" Margin="30,15,0,0" VerticalAlignment="Top" Height="26" Width="66"/>
-                            <CheckBox x:Name="checkBezonningSchaduw" Content="Schaduw" HorizontalAlignment="Left" Margin="50,50,0,0" VerticalAlignment="Top" Height="15" Width="67"/>
-                            <CheckBox x:Name="checkBezonningZon" Content="Zon" HorizontalAlignment="Left" Margin="50,70,0,0" VerticalAlignment="Top" Height="15" Width="71"/>
-                            <CheckBox x:Name="checkHalfSchaduw" Content="Half Schaduw" Margin="140,50,281,501"/>
-                            <CheckBox x:Name="checkHalfZon" Content="Half Zon" HorizontalAlignment="Left" Margin="140,70,0,0" VerticalAlignment="Top"/>
+                            <CheckBox x:Name="checkBezonningSchaduw" 
+                                      IsChecked="{Binding Path=BezonningSchaduw,UpdateSourceTrigger=PropertyChanged}"
+                                      Command="{Binding OpslaanCommand}"
+                                      Content="Schaduw" HorizontalAlignment="Left" Margin="50,50,0,0" VerticalAlignment="Top" Height="15" Width="67"/>
+                            <CheckBox x:Name="checkBezonningZon"
+                                      IsChecked="{Binding Path=BezonningZon,UpdateSourceTrigger=PropertyChanged}"
+                                      Content="Zon" HorizontalAlignment="Left" Margin="50,70,0,0" VerticalAlignment="Top" Height="15" Width="71"/>
+                            <CheckBox x:Name="checkHalfSchaduw"
+                                      IsChecked="{Binding Path=BezonningHalfSchaduw,UpdateSourceTrigger=PropertyChanged}"
+                                      Content="Half Schaduw" Margin="140,50,281,501"/>
+                            <CheckBox x:Name="checkHalfZon"
+                                      IsChecked="{Binding Path=BezonningHalfZon,UpdateSourceTrigger=PropertyChanged}"
+                                      Content="Half Zon" HorizontalAlignment="Left" Margin="140,70,0,0" VerticalAlignment="Top"/>
                             <Label x:Name="lblGrondsoort" Content="Grondsoort" HorizontalAlignment="Left" Margin="300,15,0,0" VerticalAlignment="Top"/>
                             <CheckBox x:Name="checkGrondsoortZand" Content="Zand" HorizontalAlignment="Left" Margin="320,50,0,0" VerticalAlignment="Top"/>
                             <CheckBox x:Name="checkGrondsoortLeem" Content="Leem" HorizontalAlignment="Left" Margin="320,70,0,0" VerticalAlignment="Top"/>
@@ -239,7 +247,9 @@
                 </TabItem>
             </TabControl>
             <Button x:Name="btnStartOpnieuw" Content="Back" HorizontalAlignment="Left" Margin="10,269,0,0" VerticalAlignment="Top"/>
-            <Button Content="Opslaan" HorizontalAlignment="Left" Margin="111,269,0,0" VerticalAlignment="Top"/>
+            <Button x:Name="btnOpslaan"  Content="Opslaan"
+                    Command="{Binding Path=OpslaanCommand}"
+                    HorizontalAlignment="Left" Margin="111,269,0,0" VerticalAlignment="Top"/>
         </Grid>
     </Viewbox>
 </Window>
