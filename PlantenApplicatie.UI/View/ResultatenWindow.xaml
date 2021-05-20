@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PlantenApplicatie"
+        xmlns:local="clr-namespace:PlantenApplicatie" xmlns:viewmodel="clr-namespace:PlantenApplicatie.UI.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:ResultaatViewModel}"
         mc:Ignorable="d"
         Title="ResultatenWindow" Height="550" Width="800" WindowState="Maximized">
     <Grid>
@@ -18,7 +18,7 @@
                         <ImageBrush ImageSource="Images/Wit.jpg"/>
                     </Rectangle.Fill>
                 </Rectangle>
-                <Label x:Name="lblLatinName" Content="{Binding Path=PlantenResultaat.Fgsv}" HorizontalAlignment="Center" Margin="0,61,0,0" VerticalAlignment="Top" Height="35" Width="462"  BorderBrush="Black" BorderThickness="4,4,4,0" HorizontalContentAlignment="Center" FontSize="16" FontWeight="Bold">
+                <Label x:Name="lblLatinName" Content="{Binding Path=PlantenResultaat.Fgsv, Mode=TwoWay}" HorizontalAlignment="Center" Margin="0,61,0,0" VerticalAlignment="Top" Height="35" Width="462"  BorderBrush="Black" BorderThickness="4,4,4,0" HorizontalContentAlignment="Center" FontSize="16" FontWeight="Bold">
                     <Label.Background>
                         <ImageBrush ImageSource="Images/Wit.jpg"/>
                     </Label.Background>

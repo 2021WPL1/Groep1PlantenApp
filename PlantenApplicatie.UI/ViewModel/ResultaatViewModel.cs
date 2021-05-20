@@ -19,5 +19,13 @@ namespace PlantenApplicatie.UI.ViewModel
         {
             PlantenResultaat = plant;
         }
+        /*public Plant PlantenResultaat
+        {
+            get { return _plantenResultaat; }
+            set
+            {
+                _plantenResultaat = value;
+            }
+        }*/
     }
 }
