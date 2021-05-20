@@ -18,11 +18,56 @@
             <Label Content="Type" HorizontalAlignment="Left" Margin="22,50,0,0" VerticalAlignment="Top"/>
             <Label Content="Geslacht" HorizontalAlignment="Left" Margin="22,135,0,0" VerticalAlignment="Top"/>
             <Label Content="Variant" HorizontalAlignment="Left" Margin="22,216,0,0" VerticalAlignment="Top"/>
-            <ComboBox x:Name="cbxType" HorizontalAlignment="Left" Margin="120,50,0,0" VerticalAlignment="Top" Width="120"/>
-            <ComboBox x:Name="cbxFamilie" HorizontalAlignment="Left" Margin="120,98,0,0" VerticalAlignment="Top" Width="120"/>
-            <ComboBox x:Name="cbxSoort" HorizontalAlignment="Left" Margin="120,177,0,0" VerticalAlignment="Top" Width="120"/>
-            <ComboBox x:Name="cbxGeslacht" HorizontalAlignment="Left" Margin="120,137,0,0" VerticalAlignment="Top" Width="120"/>
-            <ComboBox x:Name="cbxVariant" HorizontalAlignment="Left" Margin="120,218,0,0" VerticalAlignment="Top" Width="120"/>
+            <ComboBox 
+                x:Name="cbxType" 
+                HorizontalAlignment="Left" 
+                Margin="120,50,0,0" 
+                VerticalAlignment="Top" 
+                Width="120"
+                ItemsSource="{Binding FilterTfgsvTypes}"
+                SelectedItem="{Binding FilterSelectedType, Mode=TwoWay}"
+                DisplayMemberPath="Planttypenaam"
+                SelectedValuePath="Planttypeid"/>
+            <ComboBox 
+                x:Name="cbxFamilie" 
+                HorizontalAlignment="Left" 
+                Margin="120,98,0,0" 
+                VerticalAlignment="Top"
+                Width="120"
+                ItemsSource="{Binding FilterTfgsvFamilie}"
+                SelectedItem="{Binding FilterSelectedFamilie, Mode=TwoWay}"
+                DisplayMemberPath="Familienaam"
+                SelectedValuePath="FamileiId"/>
+            <ComboBox
+                x:Name="cbxSoort"
+                HorizontalAlignment="Left" 
+                Margin="120,177,0,0" 
+                VerticalAlignment="Top" 
+                Width="120"
+                ItemsSource="{Binding FilterTfgsvSoort}"
+                SelectedItem="{Binding FilterSelectedSoort, Mode=TwoWay}"
+                DisplayMemberPath="Soortnaam"
+                SelectedValuePath="Soortid"/>
+            <ComboBox 
+                x:Name="cbxGeslacht"
+                HorizontalAlignment="Left" 
+                Margin="120,137,0,0" 
+                VerticalAlignment="Top" 
+                Width="120"
+                ItemsSource="{Binding FilterTfgsvGeslacht}"
+                SelectedItem="{Binding FilterSelectedGeslacht, Mode=TwoWay}"
+                DisplayMemberPath="Gelachtnaam"
+                SelectedValuePath="GeslachtId"/>
+            <ComboBox 
+                x:Name="cbxVariant" 
+                HorizontalAlignment="Left" 
+                Margin="120,218,0,0" 
+                VerticalAlignment="Top" 
+                Width="120"
+                ItemsSource="{Binding FilterTfgsvVariant}"
+                SelectedItem="{Binding FilterSelectedVariant, Mode=TwoWay}"
+                DisplayMemberPath="Variantnaam"
+                SelectedValuePath="VariantId"/>
             <TabControl Margin="298,36,0,16" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left">
                 <TabControl.RenderTransform>
                     <TransformGroup>
