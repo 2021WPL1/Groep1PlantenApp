@@ -25,6 +25,11 @@ namespace PlantenApplicatie.UI.ViewModel
 
         //Observable collections voor de binding
         //Filters
+        public ObservableCollection<TfgsvType> TfgsvTypes { get; set; }
+        public ObservableCollection<TfgsvFamilie> TfgsvFamilie { get; set; }
+        public ObservableCollection<TfgsvGeslacht> TfgsvGeslacht { get; set; }
+        public ObservableCollection<TfgsvSoort> TfgsvSoort { get; set; }
+        public ObservableCollection<TfgsvVariant> TfgsvVariant { get; set; }
         //Fenotype
         //Abio
         public ObservableCollection<AbioBezonning> AbioBezonning { get; set; }
@@ -40,6 +45,11 @@ namespace PlantenApplicatie.UI.ViewModel
 
         //Lists om de observable collections op te vullen
         //Filters
+        private List<TfgsvType> _types;
+        private List<TfgsvFamilie> _families;
+        private List<TfgsvGeslacht> _geslachten;
+        private List<TfgsvSoort> _soorten;
+        private List<TfgsvVariant> _varianten;
         //Fenotype
         //Abio
         private List<AbioBezonning> _abiobezonning;
@@ -55,6 +65,11 @@ namespace PlantenApplicatie.UI.ViewModel
 
         //Geselecteerde waardes
         //Filters
+        private TfgsvType _selectedType;
+        private TfgsvFamilie _selectedFamilie;
+        private TfgsvGeslacht _selectedGeslacht;
+        private TfgsvSoort _selectedSoort;
+        private TfgsvVariant _selectedVariant;
         //Fenotype
         //Abio
         private AbioBezonning _abioselectedBezonning;
@@ -78,6 +93,11 @@ namespace PlantenApplicatie.UI.ViewModel
             HabitatVerwijderenCommand = new DelegateCommand(HabitatVerwijderen);
 
             //Filters
+            TfgsvTypes = new ObservableCollection<TfgsvType>();
+            TfgsvFamilie = new ObservableCollection<TfgsvFamilie>();
+            TfgsvGeslacht = new ObservableCollection<TfgsvGeslacht>();
+            TfgsvSoort = new ObservableCollection<TfgsvSoort>();
+            TfgsvVariant = new ObservableCollection<TfgsvVariant>();
             //Fenotype
             //Abio
             AbioBezonning = new ObservableCollection<AbioBezonning>();
@@ -142,6 +162,11 @@ namespace PlantenApplicatie.UI.ViewModel
         public void InitializeAll()
         {
             //Filters
+            _types = _plantenDataService.GetTfgsvTypes();
+            _families = _plantenDataService.GetTfgsvFamilies();
+            _geslachten = _plantenDataService.GetTfgsvGeslachten();
+            _soorten = _plantenDataService.GetTfgsvSoorten();
+            _varianten = _plantenDataService.GetTfgsvVarianten();
             //Fenotype
             //Abio
             _abiobezonning = _plantenDataService.GetAbioBezonning();
@@ -171,7 +196,37 @@ namespace PlantenApplicatie.UI.ViewModel
 
         public void LoadFilters()
         {
+            TfgsvTypes.Clear();
+            TfgsvFamilie.Clear();
+            TfgsvGeslacht.Clear();
+            TfgsvSoort.Clear();
+            TfgsvVariant.Clear();
 
+            //Families
+            foreach (var tfgsvType in _types)
+            {
+                TfgsvTypes.Add(tfgsvType);
+            }
+            //Families
+            foreach (var tfgsvFamily in _families)
+            {
+                TfgsvFamilie.Add(tfgsvFamily);
+            }
+            //Geslacht
+            foreach (var tfgsvGeslacht in _geslachten)
+            {
+                TfgsvGeslacht.Add(tfgsvGeslacht);
+            }
+            //Soorten
+            foreach (var tfgsvSoort in _soorten)
+            {
+                TfgsvSoort.Add(tfgsvSoort);
+            }
+            //Varianten
+            foreach (var tfgsvVariant in _varianten)
+            {
+                TfgsvVariant.Add(tfgsvVariant);
+            }
         }
 
         public void LoadFenotype()
@@ -246,6 +301,51 @@ namespace PlantenApplicatie.UI.ViewModel
 
         //Binding voor geselecteerde waardes
         //Filters
+        public TfgsvType SelectedType
+        {
+            get { return _selectedType; }
+            set
+            {
+                _selectedType = value;
+                OnPropertyChanged();
+            }
+        }
+        public TfgsvFamilie SelectedFamilie
+        {
+            get { return _selectedFamilie; }
+            set
+            {
+                _selectedFamilie = value;
+                OnPropertyChanged();
+            }
+        }
+        public TfgsvGeslacht SelectedGeslacht
+        {
+            get { return _selectedGeslacht; }
+            set
+            {
+                _selectedGeslacht = value;
+                OnPropertyChanged();
+            }
+        }
+        public TfgsvSoort SelectedSoort
+        {
+            get { return _selectedSoort; }
+            set
+            {
+                _selectedSoort = value;
+                OnPropertyChanged();
+            }
+        }
+        public TfgsvVariant SelectedVariant
+        {
+            get { return _selectedVariant; }
+            set
+            {
+                _selectedVariant = value;
+                OnPropertyChanged();
+            }
+        }
         //Fenotype
         //Abio
         public AbioBezonning AbioSelectedBezonning
