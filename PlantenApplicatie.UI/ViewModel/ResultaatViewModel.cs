@@ -10,7 +10,7 @@ namespace PlantenApplicatie.UI.ViewModel
 {
     class ResultaatViewModel : ViewModelBase
     {
-        public Plant PlantenResultaat;
+        public Plant _plantenResultaat;
         public ResultaatViewModel(PlantenDataService plantenDataService)
         {
             PlantenResultaat = new Plant();
@@ -19,13 +19,13 @@ namespace PlantenApplicatie.UI.ViewModel
         {
             PlantenResultaat = plant;
         }
-        /*public Plant PlantenResultaat
+        public Plant PlantenResultaat
         {
             get { return _plantenResultaat; }
             set
             {
                 _plantenResultaat = value;
             }
-        }*/
+        }
     }
 }
