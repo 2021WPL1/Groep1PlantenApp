@@ -12,6 +12,7 @@ using System.Windows.Shapes;
 using PlantenApplicatie.Data;
 using PlantenApplicatie.UI.ViewModel;
 
+
 namespace PlantenApplicatie.UI.View
 {
     /// <summary>

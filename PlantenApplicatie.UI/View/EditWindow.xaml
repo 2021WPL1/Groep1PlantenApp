@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
         Title="MainWindow" Height="623" Width="898">
     <Viewbox Margin="0,0,0,10">
@@ -132,6 +133,10 @@
                                                     <Binding Path="Afkorting"/>
                                                 </MultiBinding>
                                             </TextBlock.Text>
+                                            <TextBlock.InputBindings>
+                                                <MouseBinding Gesture="LeftDoubleClick"
+                                                              Command="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.HabitatToevoegenCommand}"></MouseBinding>
+                                            </TextBlock.InputBindings>
                                         </TextBlock>
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
@@ -150,6 +155,10 @@
                                                     <Binding Path="Afkorting"/>
                                                 </MultiBinding>
                                             </TextBlock.Text>
+                                            <TextBlock.InputBindings>
+                                                <MouseBinding Gesture="LeftDoubleClick"
+                                                              Command="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.HabitatVerwijderenCommand}"></MouseBinding>
+                                            </TextBlock.InputBindings>
                                         </TextBlock>
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
