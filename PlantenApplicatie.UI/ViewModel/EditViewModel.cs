@@ -101,7 +101,14 @@ namespace PlantenApplicatie.UI.ViewModel
             var abioselectedVoedingbehoefte = AbioSelectedVoedingsbehoefte.Voedingsbehoefte;
             var abioselectedVochtbehoefte = AbioSelectedVochtbehoefte.Vochtbehoefte;
             var abioselectedReactie = AbioSelectedReactie.Antagonie;
-            List<string> abioselectedHabitats = AbioAddedHabitats.Select(x => x.Afkorting).ToList();
+            List<string> abioselectedHabitats = new List<string>();
+            foreach (var habitat in _abioAddedHabitats)
+            {
+                if (!abioselectedHabitats.Contains(habitat.Afkorting))
+                {
+                    abioselectedHabitats.Add(habitat.Afkorting);
+                }
+            }
             //Commersialisme
             //Extra Eigenschappen
             //Beheer Eigenschappen
@@ -113,12 +120,20 @@ namespace PlantenApplicatie.UI.ViewModel
         //Habitat toevoegen aan listbox (die moeten toegevoegd worden aan de plant)
         private void HabitatToevoegen()
         {
-
+            if (_abioselectedAllHabitat!=null)
+            {
+                _abioAddedHabitats.Add(_abioselectedAllHabitat);
+            }
+            ReloadHabitatlist();
         }
         //habitat verwijderen uit de listbox van geselecteerde
         private void HabitatVerwijderen()
         {
-
+            if (_abioselectedAddedHabitat!=null)
+            {
+                _abioAddedHabitats.Remove(_abioselectedAddedHabitat);
+            }
+            ReloadHabitatlist();
         }
 
         public void InitializeAll()
@@ -198,6 +213,15 @@ namespace PlantenApplicatie.UI.ViewModel
             foreach (var habitat in _abioAllHabitats)
             {
                 AbioAllHabitats.Add(habitat);
+            }
+        }
+
+        public void ReloadHabitatlist()
+        {
+            AbioAddedHabitats.Clear();
+            foreach (var habitat in _abioAddedHabitats)
+            {
+                AbioAddedHabitats.Add(habitat);
             }
         }
 
