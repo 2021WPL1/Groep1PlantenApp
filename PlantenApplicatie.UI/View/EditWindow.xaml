@@ -135,7 +135,7 @@
                                             </TextBlock.Text>
                                             <TextBlock.InputBindings>
                                                 <MouseBinding Gesture="LeftDoubleClick"
-                                                              Command="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.HabitatToevoegenCommand}"></MouseBinding>
+                                                              Command="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.HabitatToevoegenCommand}"/>
                                             </TextBlock.InputBindings>
                                         </TextBlock>
                                     </DataTemplate>
@@ -157,7 +157,7 @@
                                             </TextBlock.Text>
                                             <TextBlock.InputBindings>
                                                 <MouseBinding Gesture="LeftDoubleClick"
-                                                              Command="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.HabitatVerwijderenCommand}"></MouseBinding>
+                                                              Command="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.HabitatVerwijderenCommand}"/>
                                             </TextBlock.InputBindings>
                                         </TextBlock>
                                     </DataTemplate>
