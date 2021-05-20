@@ -131,12 +131,19 @@
                         </ScrollViewer>
                     </Grid>
                 </TabItem>
-                <TabItem Header="Maand">
+                <TabItem Header="Onderhoud plant">
                     <Grid>
                         <ScrollViewer>
-
-
-
+                            <Grid>
+                                <Label Content="Beheerbehandeling" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,15,0,0"></Label>
+                                <Label Content="Opmerking" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,50,0,0"></Label>
+                                <Label Content="Maand" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,85,0,0"></Label>
+                                <Label Content="Frequentie per jaar" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,120,0,0"></Label>
+                                <Label Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,15,0,0" Height="28"></Label>
+                                <Label Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,50,0,0" Height="28"></Label>
+                                <Label Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,85,0,0" Height="28"></Label>
+                                <Label Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,120,0,0" Height="28"></Label>
+                               </Grid>
                         </ScrollViewer>
                     </Grid>
                 </TabItem>
