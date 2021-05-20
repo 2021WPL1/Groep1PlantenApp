@@ -12,6 +12,11 @@ namespace PlantenApplicatie.UI.ViewModel
     {
         private PlantenDataService _plantenDataService;
         private Plant _plantenResultaat;
+        private Fenotype _fenotype;
+        private Abiotiek _abiotiek;
+        private Commensalisme _commensalisme;
+        private ExtraEigenschap _extraEigenschap;
+        //Hier moet beheer komen maar die vind ik niet.
 
         public ResultatenViewModel(PlantenDataService plantenDataService)
         {
