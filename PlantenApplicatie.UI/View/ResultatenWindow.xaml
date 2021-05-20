@@ -13,21 +13,35 @@
         <Viewbox Margin="0,219,0,0">
             <TabControl Height="166">
                 <TabItem Header="Hoofdinfo">
-                <ScrollViewer>
-
-                    <Label Content="Type" HorizontalAlignment="Left" Margin="110,150,0,0" VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1">
-                    </Label>
-
+                    <ScrollViewer>
+                        <Grid>
+                            <Label Content="Type" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,15,0,0"></Label>
+                            <Label Content="Familie" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,50,0,0"></Label>
+                            <Label Content="Geslacht" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,85,0,0"></Label>
+                            <Label Content="Soort" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,120,0,0"></Label>
+                            <Label Content="Variant" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,150,0,0"></Label>
+                            <Label Content="PlantdichtheidMin" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,185,0,0"></Label>
+                            <Label Content="PlantdichtheidMax" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,220,0,0"></Label>
+                            <Label Content="{Binding Path=PlantenResultaat.Type, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,15,0,0" Height="28"></Label>
+                            <Label Content="{Binding Path=PlantenResultaat.Familie, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,50,0,0" Height="28"></Label>
+                            <Label Content="{Binding Path=PlantenResultaat.Geslacht, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,85,0,0" Height="28"></Label>
+                            <Label Content="{Binding Path=PlantenResultaat.Soort, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,120,0,0" Height="28"></Label>
+                            <Label Content="{Binding Path=PlantenResultaat.Variant, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,150,0,0" Height="28"></Label>
+                            <Label Content="{Binding Path=PlantenResultaat.PlantdichtheidMin, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,185,0,0" Height="28"></Label>
+                            <Label Content="{Binding Path=PlantenResultaat.PlantdichtheidMax, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,220,0,0" Height="28"></Label>
+                        </Grid>
                     </ScrollViewer>
                 </TabItem>
                 <TabItem Header="Fenotype">
-                 <Grid>
-                     <ScrollViewer>
-
-
-
-                     </ScrollViewer>
-                 </Grid>
+                    <Grid>
+                        <ScrollViewer>
+                            <Grid>
+                                
+                                
+                                
+                            </Grid>
+                        </ScrollViewer>
+                    </Grid>
                 </TabItem>
                 <TabItem Header="Abiotiek">
                     <Grid>
