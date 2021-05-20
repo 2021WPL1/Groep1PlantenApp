@@ -84,34 +84,6 @@ namespace PlantenApplicatie.Data
             //Bug variant heeft geen soort om te koppelen
             return context.TfgsvVariant.ToList();
         }
-
-        //Geeft alle planten
-        public List<Plant> GetAllPlants()
-        {
-            return context.Plant.ToList();
-        }
-
-        //Jelle & Hemen
-        //Functie filtert de planten
-        public List<Plant> GetPlantResults(string type, long id, List<Plant> plantResults)
-        {
-            //Switch voor de juiste id te weten waarmee gefilterd moet worden
-            switch (type)
-            {
-                case "Type":
-                    return plantResults.Where(p => p.TypeId == id).ToList();
-                case "Familie":
-                    return plantResults.Where(p => p.FamilieId == id).ToList();
-                case "Geslacht":
-                    return plantResults.Where(p => p.GeslachtId == id).ToList();
-                case "Soort":
-                    return plantResults.Where(p => p.SoortId == id).ToList();
-                case "Variant":
-                    return plantResults.Where(p => p.VariantId == id).ToList();
-                default:
-                    return null;
-            }
-        }
         //Geeft de plant en al zijn informatie
         public Plant GetPlantWithId(long Id)
         {

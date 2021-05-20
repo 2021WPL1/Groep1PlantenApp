@@ -15,9 +15,7 @@ using PlantenApplicatie.UI.ViewModel;
 
 namespace PlantenApplicatie.UI.View
 {
-    /// <summary>
-    /// Interaction logic for ResultatenWindow.xaml
-    /// </summary>
+    //Maarten & Stephanie
     public partial class ResultatenWindow : Window
     {
         private ResultaatViewModel viewModel;
