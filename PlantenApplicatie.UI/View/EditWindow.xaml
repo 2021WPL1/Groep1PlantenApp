@@ -99,44 +99,48 @@
                             <ComboBox HorizontalAlignment="Left" Margin="254,409,0,0" VerticalAlignment="Top" Width="234"/>
                             <Label x:Name="lblHabitat" Content="Habitat" HorizontalAlignment="Left" Margin="25,456,0,0" VerticalAlignment="Top"/>
                             <ListBox x:Name="BezonningListBox" Margin="22,42,364,0"
-                                SelectedItem="{Binding Path=SelectedBezonning, UpdateSourceTrigger=PropertyChanged}"
+                                SelectedItem="{Binding Path=AbioSelectedBezonning, UpdateSourceTrigger=PropertyChanged}"
                                 DisplayMemberPath="Naam"
                                 SelectedValuePath="Naam" Height="138" VerticalAlignment="Top">
                                 <ListBox Height="100" Width="100"/>
                                 <ListBox x:Name="BezonningListBox1" Height="100" Width="100"/>
                             </ListBox>
                             <ListBox x:Name="GrondsoortListBox" Margin="302,42,0,0"
-                                SelectedItem="{Binding SelectedBezonning, UpdateSourceTrigger=PropertyChanged}"
-                                DisplayMemberPath="Naam"
-                                SelectedValuePath="Naam" HorizontalAlignment="Left" Width="139" Height="138" VerticalAlignment="Top">
+                                SelectedItem="{Binding Path=AbioSelectedGrondsoort, UpdateSourceTrigger=PropertyChanged}"
+                                DisplayMemberPath="Grondsoort"
+                                SelectedValuePath="Id" HorizontalAlignment="Left" Width="139" Height="138" VerticalAlignment="Top">
                                 <ListBox Height="100" Width="100"/>
                             </ListBox>
                             <ListBox x:Name="VoedingsbehoefteListBox" Margin="22,230,0,0"
-                                SelectedItem="{Binding SelectedBezonning, UpdateSourceTrigger=PropertyChanged}"
-                                DisplayMemberPath="Naam"
-                                SelectedValuePath="Naam" HorizontalAlignment="Left" Width="139" Height="138" VerticalAlignment="Top">
+                                SelectedItem="{Binding Path=AbioSelectedVoedingsbehoefte, UpdateSourceTrigger=PropertyChanged}"
+                                DisplayMemberPath="Voedingsbehoefte"
+                                SelectedValuePath="Id" HorizontalAlignment="Left" Width="139" Height="138" VerticalAlignment="Top">
                                 <ListBox Height="100" Width="100"/>
                             </ListBox>
                             <ListBox x:Name="VochtbehoefteListBox" Margin="302,230,84,0"
-                                SelectedItem="{Binding SelectedBezonning, UpdateSourceTrigger=PropertyChanged}"
-                                DisplayMemberPath="Naam"
-                                SelectedValuePath="Naam" Height="138" VerticalAlignment="Top" Width="139">
+                                SelectedItem="{Binding Path=AbioSelectedVochtbehoefte, UpdateSourceTrigger=PropertyChanged}"
+                                DisplayMemberPath="Vochtbehoefte"
+                                SelectedValuePath="Id" Height="138" VerticalAlignment="Top" Width="139">
                                 <ListBox Height="100" Width="100"/>
                             </ListBox>
                             <ListBox x:Name="ListBoxAllHabitat" Margin="25,504,0,0"
-                                SelectedItem="{Binding SelectedBezonning, UpdateSourceTrigger=PropertyChanged}"
-                                DisplayMemberPath="Naam"
-                                SelectedValuePath="Naam" HorizontalAlignment="Left" Width="388" Height="138" VerticalAlignment="Top">
+                                SelectedItem="{Binding Path=AbioSelectedAllHabitat, UpdateSourceTrigger=PropertyChanged}"
+                                DisplayMemberPath="Waarde"
+                                SelectedValuePath="Id" HorizontalAlignment="Left" Width="388" Height="138" VerticalAlignment="Top">
                                 <ListBox Height="100" Width="100"/>
                             </ListBox>
                             <ListBox x:Name="ListBoxAddedHabitat" Margin="25,694,0,0"
-                                SelectedItem="{Binding SelectedBezonning, UpdateSourceTrigger=PropertyChanged}"
-                                DisplayMemberPath="Naam"
-                                SelectedValuePath="Naam" HorizontalAlignment="Left" Width="388" Height="138" VerticalAlignment="Top">
+                                SelectedItem="{Binding Path=AbioSelectedAddedHabitat, UpdateSourceTrigger=PropertyChanged}"
+                                DisplayMemberPath="Waarde"
+                                SelectedValuePath="Id" HorizontalAlignment="Left" Width="388" Height="138" VerticalAlignment="Top">
                                 <ListBox Height="100" Width="100"/>
                             </ListBox>
-                            <Button x:Name="btnVoegHabitatToe" Content="Voeg Habitat Toe" Margin="418,516,-5,0" Height="31" VerticalAlignment="Top"/>
-                            <Button x:Name="btnVerwijderHabitat" Content="Verwijder Habitat" Margin="424,707,-11,0" Height="34" VerticalAlignment="Top"/>
+                            <Button x:Name="btnVoegHabitatToe" 
+                                    Command="{Binding Path=HabitatToevoegenCommand}"
+                                    Content="Voeg Habitat Toe" Margin="418,516,-5,0" Height="31" VerticalAlignment="Top"/>
+                            <Button x:Name="btnVerwijderHabitat" 
+                                    Command="{Binding Path=HabitatVerwijderenCommand}"
+                                    Content="Verwijder Habitat" Margin="424,707,-11,0" Height="34" VerticalAlignment="Top"/>
                         </Grid>
                     </ScrollViewer>
                 </TabItem>
@@ -239,7 +243,9 @@
                     </ScrollViewer>
                 </TabItem>
             </TabControl>
-            <Button x:Name="btnStartOpnieuw" Content="Back" HorizontalAlignment="Left" Margin="10,269,0,0" VerticalAlignment="Top"/>
+            <Button x:Name="btnStartOpnieuw" 
+                    Command="{Binding Path=BackCommand}"
+                    Content="Back" HorizontalAlignment="Left" Margin="10,269,0,0" VerticalAlignment="Top"/>
             <Button x:Name="btnOpslaan"  Content="Opslaan"
                     Command="{Binding Path=OpslaanCommand}"
                     HorizontalAlignment="Left" Margin="111,269,0,0" VerticalAlignment="Top"/>
