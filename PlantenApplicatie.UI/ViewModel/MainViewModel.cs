@@ -22,6 +22,7 @@ namespace PlantenApplicatie.UI.ViewModel
         public ICommand ZoekViaNaamCommand { get; set; }
 
         public ICommand ResultaatSchermCommand { get; set; }
+        public ICommand CreatePlantCommand { get; set; }
 
         //bool die ervoor zorgt dat de selected filters niet gecleared worden
         private bool _loadCheck;
@@ -70,6 +71,7 @@ namespace PlantenApplicatie.UI.ViewModel
         {//DAO
             //Senne, Hermes
             ZoekViaNaamCommand = new DelegateCommand(ZoekViaNaam);
+            CreatePlantCommand = new DelegateCommand(CreatePlant);
 
             //Stephanie, Hermes
             ClearResultCommand = new DelegateCommand(ClearResult);
@@ -85,6 +87,12 @@ namespace PlantenApplicatie.UI.ViewModel
             PlantResults = new ObservableCollection<Plant>();
 
             this._plantenDataService = plantenDataService;
+        }
+
+        private void CreatePlant()
+        {
+            EditWindow window = new EditWindow();
+            window.ShowDialog();
         }
 
         public Plant SelectedPlant

@@ -40,13 +40,10 @@ namespace PlantenApplicatie.UI.View
         {//voor create -> alles wordt leeg getoond, moet ingevuld worden door de gebruiker
             //Senne & Hermes
             InitializeComponent();
-            _dataService = PlantenDataService.Instance(); //test
-            var plant = _dataService.GetPlantWithId(18); //test
 
             viewModel = new EditViewModel(PlantenDataService.Instance());
             DataContext = viewModel;
             viewModel.InitializeAll();
-            viewModel.FillDataFromPlant(plant); //test
         }
     }
 }

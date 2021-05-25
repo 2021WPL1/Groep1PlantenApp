@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
+using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
 using PlantenApplicatie.Data;
 using PlantenApplicatie.Domain.Models;
+using PlantenApplicatie.UI.View;
+using Prism.Commands;
 
 namespace PlantenApplicatie.UI.ViewModel
 {
@@ -12,7 +15,9 @@ namespace PlantenApplicatie.UI.ViewModel
     //Maarten & Stephanie
     class ResultatenViewModel : ViewModelBase
     {
-        //Jelle & Hemen
+        //Senne & Hermes
+        public ICommand EditSchermCommand { get; set; }
+        //Jelle & Hemen 
         //Command maken voor form te sluiten
         public RelayCommand<Window> CloseResultCommand { get; private set; }
 
@@ -29,8 +34,19 @@ namespace PlantenApplicatie.UI.ViewModel
 
         public ResultatenViewModel(PlantenDataService plantenDataService)
         {
+            
+
             this._plantenDataService = plantenDataService;
             this.CloseResultCommand = new RelayCommand<Window>(this.CloseResult);
+
+            //Senne & Hermes
+            this.EditSchermCommand = new DelegateCommand(EditScherm);
+        }
+
+        private void EditScherm()
+        {
+            EditWindow window = new EditWindow(_plantenResultaat);
+            window.ShowDialog();
         }
 
         //Stephanie & Maarten
