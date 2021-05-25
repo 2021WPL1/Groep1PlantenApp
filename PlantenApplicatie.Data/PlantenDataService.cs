@@ -162,12 +162,12 @@ namespace PlantenApplicatie.Data
 
         public TfgsvFamilie GetFilterFamilie(int? plantId)
         {
-            return context.TfgsvFamilie.SingleOrDefault(p => p.FamileId == plantId);
+            return context.TfgsvFamilie.FirstOrDefault(p => p.FamileId == plantId);
         }
 
         public TfgsvGeslacht GetFilterGeslacht(int? plantId)
         {
-            return context.TfgsvGeslacht.SingleOrDefault(p => p.GeslachtId == plantId);
+            return context.TfgsvGeslacht.FirstOrDefault(p => p.GeslachtId == plantId);
         }
 
         public TfgsvSoort GetFilterSoort(int? plantId)
@@ -177,7 +177,7 @@ namespace PlantenApplicatie.Data
 
         public TfgsvVariant GetFilterVariant(int? plantId)
         {
-            return context.TfgsvVariant.SingleOrDefault(p => p.VariantId == plantId);
+            return context.TfgsvVariant.FirstOrDefault(p => p.VariantId == plantId);
         }
         //Fenotype
         //Abio
