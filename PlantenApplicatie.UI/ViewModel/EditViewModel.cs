@@ -16,6 +16,7 @@ namespace PlantenApplicatie.UI.ViewModel
     public class EditViewModel :ViewModelBase
     {
         private PlantenDataService _plantenDataService;
+        private Planten2021Context _context;
 
         //Command voor opslaan
         public ICommand OpslaanCommand { get; set; }
@@ -89,9 +90,10 @@ namespace PlantenApplicatie.UI.ViewModel
         //Extra Eigenschappen
         //Beheer Eigenschappen
 
-        public EditViewModel(PlantenDataService plantenDataService)
+        public EditViewModel(PlantenDataService plantenDataService, Planten2021Context context)
         {
             this._plantenDataService = plantenDataService;
+            this._context = context;
 
             OpslaanCommand = new DelegateCommand(Opslaan);
             BackCommand = new DelegateCommand(Back);
@@ -118,6 +120,43 @@ namespace PlantenApplicatie.UI.ViewModel
             //Beheer Eigenschappen
         }
 
+        public void FillDataFromPlant(Plant plant)
+        {
+            //Filters
+            FilterSelectedType = _filtertypes.SingleOrDefault(f =>
+                f.Planttypenaam == _context.TfgsvType.SingleOrDefault(p => p.Planttypeid == plant.TypeId).Planttypenaam);
+            FilterSelectedFamilie = _filterfamilies.SingleOrDefault(f =>
+                f.Familienaam == _context.TfgsvFamilie.SingleOrDefault(p => p.FamileId == plant.FamilieId).Familienaam);
+            FilterSelectedGeslacht = _filtergeslachten.SingleOrDefault(f =>
+                f.Geslachtnaam == _context.TfgsvGeslacht.SingleOrDefault(p => p.GeslachtId == plant.GeslachtId)
+                    .Geslachtnaam);
+            FilterSelectedSoort = _filtersoorten.FirstOrDefault(f =>
+                f.Soortnaam == _context.TfgsvSoort.FirstOrDefault(p => p.Soortid == plant.SoortId).Soortnaam);
+            FilterSelectedVariant = _filtervarianten.SingleOrDefault(f =>
+                f.Variantnaam == _context.TfgsvVariant.SingleOrDefault(p => p.VariantId == plant.VariantId)
+                    .Variantnaam);
+            //Fenotype
+            //Abio
+            AbioSelectedBezonning =
+                _abiobezonning.SingleOrDefault(a => a.Naam == _plantenDataService.GetAbiotiek(plant.PlantId).Bezonning);
+            AbioSelectedGrondsoort = _abiogrondsoort.SingleOrDefault(a =>
+                a.Grondsoort == _plantenDataService.GetAbiotiek(plant.PlantId).Grondsoort);
+            AbioSelectedVoedingsbehoefte = _abiovoedingsbehoefte.SingleOrDefault(a =>
+                a.Voedingsbehoefte == _plantenDataService.GetAbiotiek(plant.PlantId).Voedingsbehoefte);
+            AbioSelectedVochtbehoefte = _abiovochtbehoefte.SingleOrDefault(a =>
+                a.Vochtbehoefte == _plantenDataService.GetAbiotiek(plant.PlantId).Vochtbehoefte);
+            AbioSelectedReactie = _abioReactie.SingleOrDefault(a =>
+                a.Antagonie == _plantenDataService.GetAbiotiek(plant.PlantId).AntagonischeOmgeving);
+
+            foreach (var abiotiekMulti in _plantenDataService.GetAbiotiekMulti(plant.PlantId))
+            {
+                _abioAddedHabitats.Add(_abioAllHabitats.FirstOrDefault(a => a.Afkorting == abiotiekMulti.Waarde));
+            }
+            ReloadHabitatlist();
+            //Commersialisme
+            //Extra Eigenschappen
+            //Beheer Eigenschappen
+        }
         private void Opslaan()
         {
             //Filters
@@ -140,7 +179,6 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         private void Back()
         {
-
         }
         //Habitat toevoegen aan listbox (die moeten toegevoegd worden aan de plant)
         private void HabitatToevoegen()

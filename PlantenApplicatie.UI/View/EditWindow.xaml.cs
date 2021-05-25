@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using PlantenApplicatie.Data;
+using PlantenApplicatie.Domain.Models;
 using PlantenApplicatie.UI.ViewModel;
 
 
@@ -22,14 +24,18 @@ namespace PlantenApplicatie.UI.View
     {
         private static Planten2021Context context = new Planten2021Context();
         private EditViewModel viewModel;
+        private PlantenDataService _dataService;
 
         public EditWindow()
         {
             InitializeComponent();
+            _dataService = PlantenDataService.Instance();
+            var plant = _dataService.GetPlantWithId(18);//test
 
-            viewModel = new EditViewModel(PlantenDataService.Instance());
+            viewModel = new EditViewModel(PlantenDataService.Instance(),context);
             DataContext = viewModel;
             viewModel.InitializeAll();
+            viewModel.FillDataFromPlant(plant);
         }
     }
 }

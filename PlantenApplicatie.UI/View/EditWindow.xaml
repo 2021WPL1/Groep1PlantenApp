@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
-        Title="MainWindow" Height="623" Width="898">
+        Title="MainWindow" Height="623" Width="898" WindowState="Maximized">
     <Viewbox Margin="0,0,0,10">
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="654">
             <Grid.ColumnDefinitions>
@@ -37,7 +37,7 @@
                 ItemsSource="{Binding FilterTfgsvFamilie}"
                 SelectedItem="{Binding FilterSelectedFamilie, Mode=TwoWay}"
                 DisplayMemberPath="Familienaam"
-                SelectedValuePath="FamileiId"/>
+                SelectedValuePath="FamileId"/>
             <ComboBox
                 x:Name="cbxSoort" 
                 Margin="-9,318,552,0" 

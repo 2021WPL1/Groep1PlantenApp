@@ -114,6 +114,42 @@ namespace PlantenApplicatie.Data
             }
         }
 
+        //Geeft de plant en al zijn informatie
+        public Plant GetPlantWithId(long Id)
+        {
+            return context.Plant.SingleOrDefault(p => p.PlantId == Id);
+        }
+        //Geeft de plant en zijn uiterlijke kenmerken + habitus
+        public Fenotype GetFenotype(long Id)
+        {
+            return context.Fenotype.SingleOrDefault(f => f.PlantId == Id);
+        }
+        //Geeft de plant en zijn behoeftes
+        public Abiotiek GetAbiotiek(long Id)
+        {
+            return context.Abiotiek.SingleOrDefault(a => a.PlantId == Id);
+        }
+
+        public List<AbiotiekMulti> GetAbiotiekMulti(long Id)
+        {
+            return context.AbiotiekMulti.Where(a => a.PlantId == Id).ToList();
+        }
+
+        //Geeft de plant en zijn ontwikkelsnelheid & strategie
+        public Commensalisme GetCommensalisme(long Id)
+        {
+            return context.Commensalisme.SingleOrDefault(c => c.PlantId == Id);
+        }
+        //Geeft de plant & zijn specifieke eigenschappen
+        public ExtraEigenschap GetExtraEigenschap(long Id)
+        {
+            return context.ExtraEigenschap.SingleOrDefault(e => e.PlantId == Id);
+        }
+        //Geeft de plant en de het onnderhoud per maand
+        public BeheerMaand GetBeheerMaand(long Id)
+        {
+            return context.BeheerMaand.SingleOrDefault(b => b.PlantId == Id);
+        }
 
         //Editwindow
 
