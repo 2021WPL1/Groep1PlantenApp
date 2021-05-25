@@ -12,7 +12,6 @@
     <None Remove="Bladeren.jpg" />
     <None Remove="brede pluim.jpg" />
     <None Remove="etage.jpg" />
-    <None Remove="View\187129768_176661034367604_4652345930169632531_n.jpg" />
     <None Remove="View\Images\AchtergrondSchermen.jpg" />
     <None Remove="View\Images\Plantify.png" />
     <None Remove="kaartenkarton-200-grams-pak-van-50-vellen-a4-wit.jpg" />
@@ -42,7 +41,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="View\187129768_176661034367604_4652345930169632531_n.jpg" />
     <Resource Include="View\Images\AchtergrondSchermen.jpg" />
     <Resource Include="View\Images\aar.jpg" />
     <Resource Include="View\Images\brede pluim.jpg" />
