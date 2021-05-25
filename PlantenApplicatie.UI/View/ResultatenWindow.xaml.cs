@@ -26,5 +26,10 @@ namespace PlantenApplicatie.UI.View
             DataContext = viewModel;
             viewModel.fillLabels(plant);
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
