@@ -20,7 +20,7 @@
         <Viewbox Margin="98,132,196,106" Grid.Row="1">
             <Grid>
                 <TabControl Height="331" Margin="-16,0,-88,0">
-                    <TabItem Header="Hoofdinfo" Margin="-2,-2,-9,0">
+                    <TabItem Header="Hoofdinfo" Margin="-2,-2,-12,-1">
                         <TabItem.Background>
                             <LinearGradientBrush EndPoint="0,1">
                                 <GradientStop Color="#FFF0F0F0"/>
@@ -99,7 +99,7 @@
                             <Label Content="{Binding PlantenResultaat.PlantdichtheidMax, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="41,225,0,0" Height="28" Grid.Column="2"/>
                         </Grid>
                     </TabItem>
-                    <TabItem Header="Fenotype" Margin="9,-2,-12,0">
+                    <TabItem Header="Fenotype" Margin="9,-2,-8,-1">
                         <TabItem.Background>
                             <LinearGradientBrush EndPoint="0,1">
                                 <GradientStop Color="White"/>
@@ -231,7 +231,7 @@
                             </ScrollViewer>
                         </Grid>
                     </TabItem>
-                    <TabItem Header="Abiotiek" Margin="7,-2,-23,0">
+                    <TabItem Header="Abiotiek" Margin="7,-2,-23,-1">
                         <TabItem.Background>
                             <LinearGradientBrush EndPoint="0,1">
                                 <GradientStop Color="White"/>
@@ -295,7 +295,7 @@
                             <Label Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,190,0,0" Height="28"/>
                         </Grid>
                     </TabItem>
-                    <TabItem Header="Commensalisme" Margin="21,-1,-34,-1">
+                    <TabItem Header="Commensalisme" Margin="21,-2,-34,-1">
                         <TabItem.Background>
                             <LinearGradientBrush EndPoint="0,1">
                                 <GradientStop Color="White"/>
@@ -344,7 +344,7 @@
                             </Grid>
                         </Grid>
                     </TabItem>
-                    <TabItem Header="Extra Eigenschappen" Margin="34,-3,-51,-2">
+                    <TabItem Header="Extra Eigenschappen" Margin="31,-2,-51,-1">
                         <TabItem.Background>
                             <LinearGradientBrush EndPoint="0,1">
                                 <GradientStop Color="White" Offset="0.003"/>
@@ -353,6 +353,10 @@
                         </TabItem.Background>
                         <Grid Margin="0,0,112,0">
                             <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="259*"/>
+                                    <ColumnDefinition Width="201*"/>
+                                </Grid.ColumnDefinitions>
                                 <Label Content="Nectarwaarde" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,15,0,0">
                                     <Label.Background>
                                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -417,18 +421,18 @@
                                         </LinearGradientBrush>
                                     </Label.Background>
                                 </Label>
-                                <Label Content="{Binding ExtraEigenschap.Nectarwaarde, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,15,0,0" Height="28"/>
-                                <Label Content="{Binding ExtraEigenschap.Pollenwaarde, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,50,0,0" Height="28"/>
-                                <Label Content="{Binding ExtraEigenschap.Bijvriendelijke, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,85,0,0" Height="28"/>
-                                <Label Content="{Binding ExtraEigenschap.Vlindervriendelijk, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,120,0,0" Height="28"/>
-                                <Label Content="{Binding ExtraEigenschap.Eetbaar, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,155,0,0" Height="28"/>
-                                <Label Content="{Binding ExtraEigenschap.Kruidgebruik, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,190,0,0" Height="28"/>
-                                <Label Content="{Binding ExtraEigenschap.Geurend, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,225,0,0" Height="28"/>
-                                <Label Content="{Binding ExtraEigenschap.Vorstgevoelig, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,255,0,0" Height="28"/>
+                                <Label Content="{Binding ExtraEigenschap.Nectarwaarde, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,15,0,0" Height="28" Grid.ColumnSpan="2"/>
+                                <Label Content="{Binding ExtraEigenschap.Pollenwaarde, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,50,0,0" Height="28" Grid.ColumnSpan="2"/>
+                                <Label Content="{Binding ExtraEigenschap.Bijvriendelijke, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,85,0,0" Height="28" Grid.ColumnSpan="2"/>
+                                <Label Content="{Binding ExtraEigenschap.Vlindervriendelijk, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,120,0,0" Height="28" Grid.ColumnSpan="2"/>
+                                <Label Content="{Binding ExtraEigenschap.Eetbaar, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,155,0,0" Height="28" Grid.ColumnSpan="2"/>
+                                <Label Content="{Binding ExtraEigenschap.Kruidgebruik, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,190,0,0" Height="28" Grid.ColumnSpan="2"/>
+                                <Label Content="{Binding ExtraEigenschap.Geurend, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,225,0,0" Height="28" Grid.ColumnSpan="2"/>
+                                <Label Content="{Binding ExtraEigenschap.Vorstgevoelig, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,255,0,0" Height="28" Grid.ColumnSpan="2"/>
                             </Grid>
                         </Grid>
                     </TabItem>
-                    <TabItem Header="Onderhoud plant" Margin="51,-2,-70,-1">
+                    <TabItem Header="Onderhoud plant" Margin="47,-2,-70,-1">
                         <TabItem.Background>
                             <LinearGradientBrush EndPoint="0,1">
                                 <GradientStop Color="White"/>
@@ -476,7 +480,7 @@
                     </TabItem>
 
                 </TabControl>
-                <Button Content="Back" Margin="459,290,-74,12" >
+                <Button Content="Back" Margin="459,290,-63,12" >
                     <Button.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="White"/>
@@ -484,7 +488,7 @@
                         </LinearGradientBrush>
                     </Button.Background>
                 </Button>
-                <Button Content="Edit" Margin="354,290,0,12" HorizontalAlignment="Left" Width="89" >
+                <Button Content="Edit" Margin="354,290,0,12" HorizontalAlignment="Left" Width="80" >
                     <Button.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="White"/>
