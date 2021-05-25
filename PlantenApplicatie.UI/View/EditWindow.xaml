@@ -67,7 +67,7 @@
                 SelectedItem="{Binding FilterSelectedVariant, Mode=TwoWay}"
                 DisplayMemberPath="Variantnaam"
                 SelectedValuePath="VariantId"/>
-            <TabControl Margin="298,36,0,16" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left">
+            <TabControl Margin="298,36,0,1" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left">
                 <TabControl.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -83,18 +83,7 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <Label x:Name="lblBloeiwijze" Content="Bloeiwijze" HorizontalAlignment="Left" Margin="35,9,0,0" VerticalAlignment="Top" Height="26" Width="62"/>
-                            <RadioButton x:Name="rbtnPluim" Content="Pluim&#xA;" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top" Height="31" Width="49" GroupName="Bloeiwijze"/>
-                            <RadioButton x:Name="rbtnScherm" Content="Schermbloemig&#xA;" HorizontalAlignment="Left" Margin="33,160,0,0" VerticalAlignment="Top" Height="31" Width="102" GroupName="Bloeiwijze"/>
-                            <RadioButton x:Name="rbtnTransparant" Content="Transparant&#xA;" HorizontalAlignment="Left" Margin="230,160,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.443,-0.442" Height="31" Width="81" GroupName="Bloeiwijze"/>
-                            <RadioButton x:Name="rbtnAar" HorizontalAlignment="Left" Margin="52,50,0,0" VerticalAlignment="Top" Width="57" Content="Aar" Height="15" GroupName="Bloeiwijze"/>
-                            <RadioButton x:Name="rbtnMargriet" Content="Margrietachtig" HorizontalAlignment="Left" Margin="420,50,0,0" VerticalAlignment="Top" Height="15" Width="97" GroupName="Bloeiwijze"/>
-                            <RadioButton x:Name="rbtnKnop" Content="Bol of knop" HorizontalAlignment="Left" Margin="430,160,0,0" VerticalAlignment="Top" Height="15" Width="80" GroupName="Bloeiwijze"/>
-                            <Image x:Name="imgTransparant" HorizontalAlignment="Left" Height="80" Margin="250,180,0,0" VerticalAlignment="Top" Width="80" Source="/View/Images/etage.jpg" />
-                            <Image x:Name="imgPluim" HorizontalAlignment="Left" Height="80" Margin="250,70,0,0" VerticalAlignment="Top" Width="80" Source="/View/Images/brede pluim.jpg" />
-                            <Image x:Name="imgMargriet" HorizontalAlignment="Left" Height="80" Margin="430,70,0,0" VerticalAlignment="Top" Width="80" Source="/View/Images/margrietachtig.jpg" />
-                            <Image x:Name="imgScherm" HorizontalAlignment="Left" Height="80" Margin="40,180,0,0" VerticalAlignment="Top" Width="80" Source="/View/Images/scherm.jpg" />
-                            <Image x:Name="imgKnop" HorizontalAlignment="Left" Height="80" Margin="430,180,0,0" VerticalAlignment="Top" Width="80" Source="/View/Images/knop.jpg" />
-                            <Image x:Name="imgAar" HorizontalAlignment="Left" Height="80" Margin="40,70,0,0" VerticalAlignment="Top" Width="80" Source="/View/Images/aar.jpg" />
+                            <Image x:Name="ImgBloeiwijze" HorizontalAlignment="Left" Height="117" Margin="291,46,0,0" VerticalAlignment="Top" Width="116" Source="/View/187129768_176661034367604_4652345930169632531_n.jpg" />
                             <Label x:Name="lblHabitus" Content="Habitus" HorizontalAlignment="Left" Margin="35,318,0,0" VerticalAlignment="Top"/>
                             <ComboBox x:Name="cbxHabitus" HorizontalAlignment="Left" Margin="107,322,0,0" VerticalAlignment="Top" Width="365"/>
                             <Label x:Name="lblMaxBladhoogte" Content="Maximale Bladhoogte" HorizontalAlignment="Left" Margin="35,370,0,0" VerticalAlignment="Top"/>
@@ -127,11 +116,12 @@
                             <Label x:Name="lblSpruitfenologie" Content="SpruitFenologie" HorizontalAlignment="Left" Margin="260,640,0,0" VerticalAlignment="Top"/>
                             <Label x:Name="lblRaunkhiaer" Content="Levensvorm volgens Raunkhiaer" HorizontalAlignment="Left" Margin="35,680,0,0" VerticalAlignment="Top"/>
                             <ComboBox x:Name="cbxRaunkhiaer" HorizontalAlignment="Left" Margin="226,684,0,0" VerticalAlignment="Top" Width="120"/>
+                            <ListBox x:Name="ListBoxBloeiWijze" Margin="30,45,307,449"/>
                         </Grid>
                     </ScrollViewer>
                 </TabItem>
                 <TabItem x:Name="tabAbiotischeFactoren" Header="Abiotische Factoren" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,-1,0,0">
-                    <ScrollViewer x:Name="scrollAbiotischeFactoren" Height="562" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <ScrollViewer x:Name="scrollAbiotischeFactoren" Height="590" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <Grid x:Name="gridAbiotischeFactoren" Height="981" Width="550" Background="#FFF5F5F2">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="525"/>
@@ -141,7 +131,7 @@
                             <Label x:Name="lblVoedingsbehoefte" Content="Voedingsbehoefte" HorizontalAlignment="Left" Margin="23,195,0,0" VerticalAlignment="Top"/>
                             <Label x:Name="lblVochtbehoefte" Content="Vochtbehoefte" HorizontalAlignment="Left" Margin="300,195,0,0" VerticalAlignment="Top"/>
                             <Label x:Name="lblAntagonie" Content="reactie antagonistische omgeving " HorizontalAlignment="Left" Margin="22,409,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.054,0.087"/>
-                            <Label x:Name="lblHabitat" Content="Habitat" HorizontalAlignment="Left" Margin="25,620,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblHabitat" Content="Alle mogelijke Habitats" HorizontalAlignment="Left" Margin="25,620,0,0" VerticalAlignment="Top"/>
                             <ListBox x:Name="BezonningListBox" Margin="22,42,0,0"
                                 ItemsSource="{Binding AbioBezonning}"
                                 SelectedItem="{Binding AbioSelectedBezonning, Mode=TwoWay}"
@@ -186,7 +176,7 @@
                                 </ListBox.ItemTemplate>
                             </ListBox>
                             <ListBox 
-                                x:Name="ListBoxAddedHabitat" Margin="25,813,0,0"
+                                x:Name="ListBoxAddedHabitat" Margin="25,832,0,0"
                                 ItemsSource="{Binding AbioAddedHabitats}"     
                                 SelectedItem="{Binding AbioSelectedAddedHabitat, Mode=TwoWay}"
                                 HorizontalAlignment="Left" Width="388" Height="138" VerticalAlignment="Top">
@@ -219,6 +209,7 @@
                                       SelectedItem="{Binding AbioSelectedReactie, Mode=TwoWay}"
                                       DisplayMemberPath="Antagonie"
                                       SelectedValuePath="Id"/>
+                            <Label Content="Habitat eigen aan de plant" HorizontalAlignment="Left" Margin="28,800,0,0" VerticalAlignment="Top"/>
                         </Grid>
                     </ScrollViewer>
                 </TabItem>
