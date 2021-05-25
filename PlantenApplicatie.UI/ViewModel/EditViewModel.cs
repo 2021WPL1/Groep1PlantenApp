@@ -70,6 +70,12 @@ namespace PlantenApplicatie.UI.ViewModel
         private TfgsvGeslacht _filterselectedGeslacht;
         private TfgsvSoort _filterselectedSoort;
         private TfgsvVariant _filterselectedVariant;
+
+        private string _filterNewType;
+        private string _filterNewFamilie;
+        private string _filterNewGeslacht;
+        private string _filterNewSoort;
+        private string _filterNewVariant;
         //Fenotype
         //Abio
         private AbioBezonning _abioselectedBezonning;
@@ -311,6 +317,7 @@ namespace PlantenApplicatie.UI.ViewModel
             set
             {
                 _filterselectedType = value;
+                FilterNewType = string.Empty;
                 OnPropertyChanged();
             }
         }
@@ -320,6 +327,7 @@ namespace PlantenApplicatie.UI.ViewModel
             set
             {
                 _filterselectedFamilie = value;
+                FilterNewFamilie = string.Empty;
                 OnPropertyChanged();
             }
         }
@@ -329,6 +337,7 @@ namespace PlantenApplicatie.UI.ViewModel
             set
             {
                 _filterselectedGeslacht = value;
+                FilterNewGeslacht = string.Empty;
                 OnPropertyChanged();
             }
         }
@@ -338,6 +347,7 @@ namespace PlantenApplicatie.UI.ViewModel
             set
             {
                 _filterselectedSoort = value;
+                FilterNewSoort = string.Empty;
                 OnPropertyChanged();
             }
         }
@@ -347,6 +357,58 @@ namespace PlantenApplicatie.UI.ViewModel
             set
             {
                 _filterselectedVariant = value;
+                FilterNewVariant = string.Empty;
+                OnPropertyChanged();
+            }
+        }
+
+        public string FilterNewType
+        {
+            get { return _filterNewType; }
+            set
+            {
+                _filterNewType = value;
+                FilterSelectedType = null;
+                OnPropertyChanged();
+            }
+        }
+        public string FilterNewFamilie
+        {
+            get { return _filterNewFamilie; }
+            set
+            {
+                _filterNewFamilie = value;
+                FilterSelectedFamilie = null;
+                OnPropertyChanged();
+            }
+        }
+        public string FilterNewGeslacht
+        {
+            get { return _filterNewGeslacht; }
+            set
+            {
+                _filterNewGeslacht = value;
+                FilterSelectedGeslacht = null;
+                OnPropertyChanged();
+            }
+        }
+        public string FilterNewSoort
+        {
+            get { return _filterNewSoort; }
+            set
+            {
+                _filterNewSoort = value;
+                FilterSelectedSoort = null;
+                OnPropertyChanged();
+            }
+        }
+        public string FilterNewVariant
+        {
+            get { return _filterNewVariant; }
+            set
+            {
+                _filterNewVariant = value;
+                FilterSelectedVariant = null;
                 OnPropertyChanged();
             }
         }
