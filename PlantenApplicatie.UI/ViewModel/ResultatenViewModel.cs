@@ -105,15 +105,11 @@ namespace PlantenApplicatie.UI.ViewModel
         {
             PlantenResultaat = plant;
             //Geeft elke keer de gevraagde informatie per opgezochte plant
-            Fenotype = _plantenDataService.GetFenotype(3);
-            Abiotiek = _plantenDataService.GetAbiotiek(3);
-            Commensalisme = _plantenDataService.GetCommensalisme(3);
-            ExtraEigenschap = _plantenDataService.GetExtraEigenschap(3);
-            BeheerMaand = _plantenDataService.GetBeheerMaand(3);
+            Fenotype = _plantenDataService.GetFenotype(plant.PlantId);
+            Abiotiek = _plantenDataService.GetAbiotiek(plant.PlantId);
+            Commensalisme = _plantenDataService.GetCommensalisme(plant.PlantId);
+            ExtraEigenschap = _plantenDataService.GetExtraEigenschap(plant.PlantId);
+            BeheerMaand = _plantenDataService.GetBeheerMaand(plant.PlantId);
         }
-
-        
-
-       
     }
 }

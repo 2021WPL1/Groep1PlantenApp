@@ -40,7 +40,7 @@ namespace PlantenApplicatie.UI.ViewModel
 
         //Lijst met alle planten
         private List<Plant> _plantResults;
-             
+
         //list voor de binding
         public ObservableCollection<TfgsvType> TfgsvTypes { get; set; }
         public ObservableCollection<TfgsvFamilie> TfgsvFamilie { get; set; }
@@ -64,7 +64,7 @@ namespace PlantenApplicatie.UI.ViewModel
         List<Plant> _plantSoortResults;
         //List<Plant> plantVariantResults;
 
-        private string _zoekViaNaamInput ="";
+        private string _zoekViaNaamInput = "";
 
         public MainViewModel(PlantenDataService plantenDataService)
         {//DAO
@@ -83,7 +83,7 @@ namespace PlantenApplicatie.UI.ViewModel
             TfgsvSoort = new ObservableCollection<TfgsvSoort>();
             TfgsvVariant = new ObservableCollection<TfgsvVariant>();
             PlantResults = new ObservableCollection<Plant>();
-            
+
             this._plantenDataService = plantenDataService;
         }
 
@@ -96,7 +96,7 @@ namespace PlantenApplicatie.UI.ViewModel
                 OnPropertyChanged();
             }
         }
-        
+
         public void ResultaatScherm()
         {
             if (_selectedPlant != null)
@@ -108,7 +108,7 @@ namespace PlantenApplicatie.UI.ViewModel
             {
                 MessageBox.Show("Please select a plant first");
             }
-            
+
         }
 
         public void LoadAll()
@@ -321,7 +321,7 @@ namespace PlantenApplicatie.UI.ViewModel
                 }
             }
         }
-        
+
         public string ZoekViaNaamInput
         {//Senne, Hermes
             get { return _zoekViaNaamInput; }
@@ -478,7 +478,8 @@ namespace PlantenApplicatie.UI.ViewModel
             PlantResults.Clear();
 
             _zoekViaNaamInput = _zoekViaNaamInput.Trim().ToLower();
-            if(_zoekViaNaamInput != "") {
+            if (_zoekViaNaamInput != "")
+            {
                 foreach (Plant plant in _allPlants)
                 {
                     if (plant.Fgsv.Trim().ToLower().Contains(_zoekViaNaamInput))
