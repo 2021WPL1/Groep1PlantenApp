@@ -19,21 +19,77 @@
         </Grid.Background>
         <Viewbox Margin="98,132,196,106" Grid.Row="1">
             <Grid>
-                <TabControl Height="331" Margin="-16,0,-52,0">
+                <TabControl Height="331" Margin="-16,0,-88,0">
                     <TabItem Header="Hoofdinfo" Margin="-2,-2,-9,0">
+                        <TabItem.Background>
+                            <LinearGradientBrush EndPoint="0,1">
+                                <GradientStop Color="#FFF0F0F0"/>
+                                <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                <GradientStop Color="#FFEFEFEF" Offset="0.081"/>
+                            </LinearGradientBrush>
+                        </TabItem.Background>
                         <Grid Margin="0,0,128,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="88*"/>
                                 <ColumnDefinition Width="21*"/>
                                 <ColumnDefinition Width="378*"/>
                             </Grid.ColumnDefinitions>
-                            <Label Content="Type" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="110" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,15,0,0" Grid.ColumnSpan="3" Height="28"/>
-                            <Label Content="Familie" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="110" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,50,0,0" Grid.ColumnSpan="3" Height="28"/>
-                            <Label Content="Geslacht" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="110" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,85,0,0" Grid.ColumnSpan="3" Height="28"/>
-                            <Label Content="Soort" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="110" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,120,0,0" Grid.ColumnSpan="3" Height="28"/>
-                            <Label Content="Variant" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="110" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,155,0,0" Grid.ColumnSpan="3" Height="28"/>
-                            <Label Content="PlantdichtheidMin" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="110" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,190,0,0" Grid.ColumnSpan="3" Height="28"/>
-                            <Label Content="PlantdichtheidMax" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="110" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,225,0,0" Grid.ColumnSpan="3" Height="28"/>
+                            <Label Content="Type" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="110" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,15,0,0" Grid.ColumnSpan="3" Height="28">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
+                            <Label Content="Familie" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="110" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,50,0,0" Grid.ColumnSpan="3" Height="28">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
+                            <Label Content="Geslacht" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="110" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,85,0,0" Grid.ColumnSpan="3" Height="28">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
+                            <Label Content="Soort" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="110" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,120,0,0" Grid.ColumnSpan="3" Height="28">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
+                            <Label Content="Variant" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="110" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,155,0,0" Grid.ColumnSpan="3" Height="28">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White" Offset="0.017"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
+                            <Label Content="PlantdichtheidMin" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="110" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,190,0,0" Grid.ColumnSpan="3" Height="28">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White" Offset="0.003"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
+                            <Label Content="PlantdichtheidMax" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="110" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,225,0,0" Grid.ColumnSpan="3" Height="28">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
                             <Label Content="{Binding PlantenResultaat.Type, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="41,15,0,0" Height="28" Grid.Column="2"/>
                             <Label Content="{Binding PlantenResultaat.Familie, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="41,50,0,0" Height="28" Grid.Column="2"/>
                             <Label Content="{Binding PlantenResultaat.Geslacht, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="41,85,0,0" Height="28" Grid.Column="2"/>
@@ -43,7 +99,13 @@
                             <Label Content="{Binding PlantenResultaat.PlantdichtheidMax, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="41,225,0,0" Height="28" Grid.Column="2"/>
                         </Grid>
                     </TabItem>
-                    <TabItem Header="Fenotype" Margin="-2,-2,-12,0">
+                    <TabItem Header="Fenotype" Margin="9,-2,-12,0">
+                        <TabItem.Background>
+                            <LinearGradientBrush EndPoint="0,1">
+                                <GradientStop Color="White"/>
+                                <GradientStop Color="#FFC7FF00" Offset="1"/>
+                            </LinearGradientBrush>
+                        </TabItem.Background>
                         <Grid Margin="0,0,95,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="17*"/>
@@ -57,18 +119,102 @@
                                         <ColumnDefinition Width="379*"/>
                                         <ColumnDefinition Width="54*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Label Content="Max Bladhoogte" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,15,0,0"/>
-                                    <Label Content="Min Bloeihoogte" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,50,0,0"/>
-                                    <Label Content="Max Bloeihoogte" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,85,0,0"/>
-                                    <Label Content="Bladkleur" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,120,0,0"/>
-                                    <Label Content="Bloeikleur" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,155,0,0"/>
-                                    <Label Content="Bladgrootte tot" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,190,0,0"/>
-                                    <Label Content="Bladvorm" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,225,0,0"/>
-                                    <Label Content="Ratio Bloei/blad" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,260,0,0"/>
-                                    <Label Content="Spruitfenologie" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,295,0,0"/>
-                                    <Label Content="Bloeiwijze" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,330,0,0"/>
-                                    <Label Content="Habitus" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,365,0,0"/>
-                                    <Label Content="Levensvorm volgens raunkhiaer" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,400,0,0"/>
+                                    <Label Content="Max Bladhoogte" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,15,0,0">
+                                        <Label.Background>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="White"/>
+                                                <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Label.Background>
+                                    </Label>
+                                    <Label Content="Min Bloeihoogte" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,50,0,0">
+                                        <Label.Background>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="White"/>
+                                                <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Label.Background>
+                                    </Label>
+                                    <Label Content="Max Bloeihoogte" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,85,0,0">
+                                        <Label.Background>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="White"/>
+                                                <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Label.Background>
+                                    </Label>
+                                    <Label Content="Bladkleur" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,120,0,0">
+                                        <Label.Background>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="White"/>
+                                                <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Label.Background>
+                                    </Label>
+                                    <Label Content="Bloeikleur" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,155,0,0">
+                                        <Label.Background>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="White"/>
+                                                <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Label.Background>
+                                    </Label>
+                                    <Label Content="Bladgrootte tot" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,190,0,0">
+                                        <Label.Background>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="White" Offset="0"/>
+                                                <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Label.Background>
+                                    </Label>
+                                    <Label Content="Bladvorm" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,225,0,0">
+                                        <Label.Background>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="White" Offset="0"/>
+                                                <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Label.Background>
+                                    </Label>
+                                    <Label Content="Ratio Bloei/blad" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,260,0,0">
+                                        <Label.Background>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="White"/>
+                                                <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Label.Background>
+                                    </Label>
+                                    <Label Content="Spruitfenologie" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,295,0,0">
+                                        <Label.Background>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="White"/>
+                                                <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Label.Background>
+                                    </Label>
+                                    <Label Content="Bloeiwijze" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,330,0,0">
+                                        <Label.Background>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="White"/>
+                                                <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Label.Background>
+                                    </Label>
+                                    <Label Content="Habitus" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,365,0,0">
+                                        <Label.Background>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="White"/>
+                                                <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Label.Background>
+                                    </Label>
+                                    <Label Content="Levensvorm volgens raunkhiaer" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,400,0,0">
+                                        <Label.Background>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="White"/>
+                                                <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Label.Background>
+                                    </Label>
                                     <Label Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,15,0,0" Height="28"/>
                                     <Label Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,50,0,0" Height="28"/>
                                     <Label Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,85,0,0" Height="28"/>
@@ -86,13 +232,61 @@
                         </Grid>
                     </TabItem>
                     <TabItem Header="Abiotiek" Margin="7,-2,-23,0">
+                        <TabItem.Background>
+                            <LinearGradientBrush EndPoint="0,1">
+                                <GradientStop Color="White"/>
+                                <GradientStop Color="#FFC7FF00" Offset="1"/>
+                            </LinearGradientBrush>
+                        </TabItem.Background>
                         <Grid>
-                            <Label Content="Bezonning" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,15,0,0"/>
-                            <Label Content="Grondsoort" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,50,0,0"/>
-                            <Label Content="Vochtbehoefte" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,85,0,0"/>
-                            <Label Content="Voedingsbehoefte" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,120,0,0"/>
-                            <Label Content="Reactie antagonistische omgeving" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,155,0,0"/>
-                            <Label Content="Habitat" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,190,0,0"/>
+                            <Label Content="Bezonning" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,15,0,0">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
+                            <Label Content="Grondsoort" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,50,0,0">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
+                            <Label Content="Vochtbehoefte" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,85,0,0">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
+                            <Label Content="Voedingsbehoefte" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,120,0,0">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
+                            <Label Content="Reactie antagonistische omgeving" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,155,0,0">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
+                            <Label Content="Habitat" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,190,0,0">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
                             <Label Content="{Binding Abiotiek.Bezonning, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,15,0,0" Height="28"/>
                             <Label Content="{Binding Abiotiek.Grondsoort, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,50,0,0" Height="28"/>
                             <Label Content="{Binding Abiotiek.Vochtbehoefte, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,85,0,0" Height="28"/>
@@ -102,13 +296,47 @@
                         </Grid>
                     </TabItem>
                     <TabItem Header="Commensalisme" Margin="21,-1,-34,-1">
+                        <TabItem.Background>
+                            <LinearGradientBrush EndPoint="0,1">
+                                <GradientStop Color="White"/>
+                                <GradientStop Color="#FFC7FF00" Offset="1"/>
+                            </LinearGradientBrush>
+                        </TabItem.Background>
                         <Grid Margin="0,0,99,0">
                             <Grid>
 
-                                <Label Content="Ontwikkelingssnelheid" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,15,0,0" Height="28"/>
-                                <Label Content="Levensduur/Concurrentiekracht" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,50,0,0" Height="28"/>
-                                <Label Content="Sociabiliteit" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,85,0,0" Height="28"/>
-                                <Label Content="Strategie" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,120,0,0" Height="28"/>
+                                <Label Content="Ontwikkelingssnelheid" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,15,0,0" Height="28">
+                                    <Label.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="White"/>
+                                            <GradientStop Color="#FFC7FF00" Offset="0.997"/>
+                                        </LinearGradientBrush>
+                                    </Label.Background>
+                                </Label>
+                                <Label Content="Levensduur/Concurrentiekracht" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,50,0,0" Height="28">
+                                    <Label.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="White"/>
+                                            <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Label.Background>
+                                </Label>
+                                <Label Content="Sociabiliteit" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,85,0,0" Height="28">
+                                    <Label.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="White"/>
+                                            <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Label.Background>
+                                </Label>
+                                <Label Content="Strategie" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,120,0,0" Height="28">
+                                    <Label.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="White"/>
+                                            <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Label.Background>
+                                </Label>
                                 <Label Content="{Binding Commensalisme.Ontwikkelsnelheid, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,15,0,0" Height="28" Grid.ColumnSpan="3"/>
                                 <Label Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,50,0,0" Height="28" Grid.ColumnSpan="3"/>
                                 <Label Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,85,0,0" Height="28" Grid.ColumnSpan="3"/>
@@ -117,16 +345,78 @@
                         </Grid>
                     </TabItem>
                     <TabItem Header="Extra Eigenschappen" Margin="34,-3,-51,-2">
+                        <TabItem.Background>
+                            <LinearGradientBrush EndPoint="0,1">
+                                <GradientStop Color="White" Offset="0.003"/>
+                                <GradientStop Color="#FFC7FF00" Offset="1"/>
+                            </LinearGradientBrush>
+                        </TabItem.Background>
                         <Grid Margin="0,0,112,0">
                             <Grid>
-                                <Label Content="Nectarwaarde" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,15,0,0"/>
-                                <Label Content="Pollenwaarde" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,50,0,0"/>
-                                <Label Content="Bijvriendelijk" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,85,0,0"/>
-                                <Label Content="Vlindervriendelijk" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,120,0,0"/>
-                                <Label Content="Eetbaar" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,155,0,0"/>
-                                <Label Content="Kruidgebruik" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,190,0,0"/>
-                                <Label Content="Geurend" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,225,0,0"/>
-                                <Label Content="vorstgevoelig" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,255,0,0"/>
+                                <Label Content="Nectarwaarde" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,15,0,0">
+                                    <Label.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="White"/>
+                                            <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Label.Background>
+                                </Label>
+                                <Label Content="Pollenwaarde" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,50,0,0">
+                                    <Label.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="White"/>
+                                            <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Label.Background>
+                                </Label>
+                                <Label Content="Bijvriendelijk" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,85,0,0">
+                                    <Label.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="White"/>
+                                            <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Label.Background>
+                                </Label>
+                                <Label Content="Vlindervriendelijk" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,120,0,0">
+                                    <Label.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="White"/>
+                                            <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Label.Background>
+                                </Label>
+                                <Label Content="Eetbaar" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,155,0,0">
+                                    <Label.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="White"/>
+                                            <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Label.Background>
+                                </Label>
+                                <Label Content="Kruidgebruik" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,190,0,0">
+                                    <Label.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="White"/>
+                                            <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Label.Background>
+                                </Label>
+                                <Label Content="Geurend" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,225,0,0">
+                                    <Label.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="White"/>
+                                            <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Label.Background>
+                                </Label>
+                                <Label Content="vorstgevoelig" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,255,0,0">
+                                    <Label.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="White"/>
+                                            <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Label.Background>
+                                </Label>
                                 <Label Content="{Binding ExtraEigenschap.Nectarwaarde, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,15,0,0" Height="28"/>
                                 <Label Content="{Binding ExtraEigenschap.Pollenwaarde, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,50,0,0" Height="28"/>
                                 <Label Content="{Binding ExtraEigenschap.Bijvriendelijke, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,85,0,0" Height="28"/>
@@ -139,11 +429,45 @@
                         </Grid>
                     </TabItem>
                     <TabItem Header="Onderhoud plant" Margin="51,-2,-70,-1">
+                        <TabItem.Background>
+                            <LinearGradientBrush EndPoint="0,1">
+                                <GradientStop Color="White"/>
+                                <GradientStop Color="#FFC7FF00" Offset="1"/>
+                            </LinearGradientBrush>
+                        </TabItem.Background>
                         <Grid Margin="0,0,80,0">
-                            <Label Content="Beheerbehandeling" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,15,0,0"/>
-                            <Label Content="Opmerking" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,50,0,0"/>
-                            <Label Content="Maand" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,85,0,0"/>
-                            <Label Content="Frequentie per jaar" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,120,0,0"/>
+                            <Label Content="Beheerbehandeling" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,15,0,0">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
+                            <Label Content="Opmerking" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,50,0,0">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
+                            <Label Content="Maand" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,85,0,0">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
+                            <Label Content="Frequentie per jaar" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,120,0,0">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
                             <Label Content="{Binding BeheerMaand.Beheerdaad, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,15,0,0" Height="28"/>
                             <Label Content="{Binding BeheerMaand.Omschrijving, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,50,0,0" Height="28"/>
                             <Label Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,85,0,0" Height="28"/>
@@ -152,7 +476,22 @@
                     </TabItem>
 
                 </TabControl>
-                <Button Content="Back" Width="120" Margin="381,292,10,10" />
+                <Button Content="Back" Margin="459,290,-74,12" >
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="White"/>
+                            <GradientStop Color="#FFC7FF00" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button Content="Edit" Margin="354,290,0,12" HorizontalAlignment="Left" Width="89" >
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="White"/>
+                            <GradientStop Color="#FFC7FF00" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
                 <Image HorizontalAlignment="Left" Height="67" VerticalAlignment="Top" Width="74" Source="/View/Images/brede pluim.jpg" Margin="400,38,0,0"/>
                 <Image HorizontalAlignment="Left" Height="67" VerticalAlignment="Top" Width="74" Source="/View/Images/brede pluim.jpg" Margin="400,119,0,0"/>
                 <Image HorizontalAlignment="Left" Height="67" VerticalAlignment="Top" Width="74" Source="/View/Images/brede pluim.jpg" Margin="400,207,0,0"/>
