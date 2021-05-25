@@ -4,98 +4,109 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PlantenApplicatie" xmlns:viewmodel="clr-namespace:PlantenApplicatie.UI.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:ResultatenViewModel}"
+        xmlns:local="clr-namespace:PlantenApplicatie" xmlns:viewmodel="clr-namespace:PlantenApplicatie.UI.ViewModel" 
         mc:Ignorable="d"
         Title="ResultatenWindow" Height="696" Width="800" WindowState="Maximized">
-    <Grid>
+    <Grid Margin="0,0,0,0" RenderTransformOrigin="0.951,0.501">
+
         <Grid.Background>
             <ImageBrush ImageSource="Images/AchtergrondSchermen.jpg"/>
         </Grid.Background>
-        <Viewbox Margin="0,2,0,2">
-            <TabControl Height="298">
+        <Viewbox Margin="122,132,148,163">
+            <TabControl Height="331" Width="641" >
                 <TabItem Header="Hoofdinfo">
-                    <ScrollViewer Height="340">
+                    <ScrollViewer Height="270" RenderTransformOrigin="0.504,0.434" Margin="0,0,-4,0">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="88*"/>
                                 <ColumnDefinition Width="21*"/>
                                 <ColumnDefinition Width="378*"/>
                             </Grid.ColumnDefinitions>
-                            <Label Content="Type" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,15,0,0" Grid.ColumnSpan="3"></Label>
-                            <Label Content="Familie" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,50,0,0" Grid.ColumnSpan="3"></Label>
-                            <Label Content="Geslacht" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,85,0,0" Grid.ColumnSpan="3"></Label>
-                            <Label Content="Soort" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,120,0,0" Grid.ColumnSpan="3"></Label>
-                            <Label Content="Variant" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,155,0,0" Grid.ColumnSpan="3"></Label>
-                            <Label Content="PlantdichtheidMin" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,190,0,0" Grid.ColumnSpan="3"></Label>
-                            <Label Content="PlantdichtheidMax" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,225,0,0" Grid.ColumnSpan="3"></Label>
-                            <Label Content="{Binding Path=PlantenResultaat.Type, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="41,15,0,0" Height="28" Grid.Column="2"></Label>
-                            <Label Content="{Binding Path=PlantenResultaat.Familie, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="41,50,0,0" Height="28" Grid.Column="2"></Label>
-                            <Label Content="{Binding Path=PlantenResultaat.Geslacht, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="41,85,0,0" Height="28" Grid.Column="2"></Label>
-                            <Label Content="{Binding Path=PlantenResultaat.Soort, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="41,120,0,0" Height="28" Grid.Column="2"></Label>
-                            <Label Content="{Binding Path=PlantenResultaat.Variant, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="41,155,0,0" Height="28" Grid.Column="2"></Label>
-                            <Label Content="{Binding Path=PlantenResultaat.PlantdichtheidMin, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="41,190,0,0" Height="28" Grid.Column="2"></Label>
-                            <Label Content="{Binding Path=PlantenResultaat.PlantdichtheidMax, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="41,225,0,0" Height="28" Grid.Column="2"></Label>
+                            <Label Content="Type" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="110" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,15,0,0" Grid.ColumnSpan="3" Height="28"/>
+                            <Label Content="Familie" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="110" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,50,0,0" Grid.ColumnSpan="3" Height="28"/>
+                            <Label Content="Geslacht" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="110" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,85,0,0" Grid.ColumnSpan="3" Height="28"/>
+                            <Label Content="Soort" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="110" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,120,0,0" Grid.ColumnSpan="3" Height="28"/>
+                            <Label Content="Variant" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="110" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,155,0,0" Grid.ColumnSpan="3" Height="28"/>
+                            <Label Content="PlantdichtheidMin" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="110" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,190,0,0" Grid.ColumnSpan="3" Height="28"/>
+                            <Label Content="PlantdichtheidMax" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="110" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,225,0,0" Grid.ColumnSpan="3" Height="28"/>
+                            <Label Content="{Binding Path=PlantenResultaat.Type, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="41,15,0,0" Height="28" Grid.Column="2"/>
+                            <Label Content="{Binding Path=PlantenResultaat.Familie, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="41,50,0,0" Height="28" Grid.Column="2"/>
+                            <Label Content="{Binding Path=PlantenResultaat.Geslacht, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="41,85,0,0" Height="28" Grid.Column="2"/>
+                            <Label Content="{Binding Path=PlantenResultaat.Soort, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="41,120,0,0" Height="28" Grid.Column="2"/>
+                            <Label Content="{Binding Path=PlantenResultaat.Variant, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="41,155,0,0" Height="28" Grid.Column="2"/>
+                            <Label Content="{Binding Path=PlantenResultaat.PlantdichtheidMin, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="41,190,0,0" Height="28" Grid.Column="2"/>
+                            <Label Content="{Binding Path=PlantenResultaat.PlantdichtheidMax, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="41,225,0,0" Height="28" Grid.Column="2"/>
                         </Grid>
                     </ScrollViewer>
                 </TabItem>
                 <TabItem Header="Fenotype">
-                    <Grid>
-                        <ScrollViewer>
+                    <Grid Margin="0,0,95,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="25*"/>
+                            <ColumnDefinition Width="132*"/>
+                            <ColumnDefinition Width="445*"/>
+                        </Grid.ColumnDefinitions>
+                        <ScrollViewer Grid.ColumnSpan="3">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="379*"/>
                                     <ColumnDefinition Width="54*"/>
                                 </Grid.ColumnDefinitions>
-                                <Label Content="Max Bladhoogte" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,15,0,0"></Label>
-                                <Label Content="Min Bloeihoogte" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,50,0,0"></Label>
-                                <Label Content="Max Bloeihoogte" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,85,0,0"></Label>
-                                <Label Content="Bladkleur" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,120,0,0"></Label>
-                                <Label Content="Bloeikleur" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,155,0,0"></Label>
-                                <Label Content="Bladgrootte tot" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,190,0,0"></Label>
-                                <Label Content="Bladvorm" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,225,0,0"></Label>
-                                <Label Content="Ratio Bloei/blad" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,260,0,0"></Label>
-                                <Label Content="Spruitfenologie" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,295,0,0"></Label>
-                                <Label Content="Bloeiwijze" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,330,0,0"></Label>
-                                <Label Content="Habitus" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,365,0,0"></Label>
-                                <Label Content="Levensvorm volgens raunkhiaer" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,400,0,0"></Label>
-                                <Label Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,15,0,0" Height="28"></Label>
-                                <Label Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,50,0,0" Height="28"></Label>
-                                <Label Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,85,0,0" Height="28"></Label>
-                                <Label Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,120,0,0" Height="28"></Label>
-                                <Label Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,155,0,0" Height="28"></Label>
-                                <Label Content="{Binding Path= Fenotype.Bladgrootte, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,190,0,0" Height="28"></Label>
-                                <Label Content="{Binding Path= Fenotype.Bladvorm, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,225,0,0" Height="28"></Label>
-                                <Label Content="{Binding Path= Fenotype.RatioBloeiBlad, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,260,0,0" Height="28"></Label>
-                                <Label Content="{Binding Path= Fenotype.Spruitfenologie, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,295,0,0" Height="28"></Label>
-                                <Label Content="{Binding Path= Fenotype.Bloeiwijze, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,330,0,0" Height="28"></Label>
-                                <Label Content="{Binding Path= Fenotype.Habitus, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,365,0,0" Height="28"></Label>
-                                <Label Content="{Binding Path= Fenotype.Levensvorm, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,400,0,0" Height="28"></Label>
+                                <Label Content="Max Bladhoogte" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,15,0,0"/>
+                                <Label Content="Min Bloeihoogte" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,50,0,0"/>
+                                <Label Content="Max Bloeihoogte" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,85,0,0"/>
+                                <Label Content="Bladkleur" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,120,0,0"/>
+                                <Label Content="Bloeikleur" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,155,0,0"/>
+                                <Label Content="Bladgrootte tot" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,190,0,0"/>
+                                <Label Content="Bladvorm" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,225,0,0"/>
+                                <Label Content="Ratio Bloei/blad" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,260,0,0"/>
+                                <Label Content="Spruitfenologie" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,295,0,0"/>
+                                <Label Content="Bloeiwijze" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,330,0,0"/>
+                                <Label Content="Habitus" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,365,0,0"/>
+                                <Label Content="Levensvorm volgens raunkhiaer" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,400,0,0"/>
+                                <Label Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,15,0,0" Height="28"/>
+                                <Label Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,50,0,0" Height="28"/>
+                                <Label Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,85,0,0" Height="28"/>
+                                <Label Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,120,0,0" Height="28"/>
+                                <Label Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,155,0,0" Height="28"/>
+                                <Label Content="{Binding Path= Fenotype.Bladgrootte, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,190,0,0" Height="28"/>
+                                <Label Content="{Binding Path= Fenotype.Bladvorm, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,225,0,0" Height="28"/>
+                                <Label Content="{Binding Path= Fenotype.RatioBloeiBlad, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,260,0,0" Height="28"/>
+                                <Label Content="{Binding Path= Fenotype.Spruitfenologie, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,295,0,0" Height="28"/>
+                                <Label Content="{Binding Path= Fenotype.Bloeiwijze, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,330,0,0" Height="28"/>
+                                <Label Content="{Binding Path= Fenotype.Habitus, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,365,0,0" Height="28"/>
+                                <Label Content="{Binding Path= Fenotype.Levensvorm, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,400,0,0" Height="28"/>
                             </Grid>
                         </ScrollViewer>
                     </Grid>
                 </TabItem>
                 <TabItem Header="Abiotiek">
-                    <Grid>
-                        <ScrollViewer>
+                    <Grid Margin="0,0,98,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="28*"/>
+                            <ColumnDefinition Width="193*"/>
+                            <ColumnDefinition Width="300*"/>
+                        </Grid.ColumnDefinitions>
+                        <ScrollViewer Grid.ColumnSpan="3">
                             <Grid>
-                                <Label Content="Bezonning" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,15,0,0"></Label>
-                                <Label Content="Grondsoort" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,50,0,0"></Label>
-                                <Label Content="Vochtbehoefte" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,85,0,0"></Label>
-                                <Label Content="Voedingsbehoefte" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,120,0,0"></Label>
-                                <Label Content="Reactie antagonistische omgeving" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,155,0,0"></Label>
-                                <Label Content="Habitat" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,190,0,0"></Label>
-                                <Label Content="{Binding Path= Abiotiek.Bezonning, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,15,0,0" Height="28"></Label>
-                                <Label Content="{Binding Path= Abiotiek.Grondsoort, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,50,0,0" Height="28"></Label>
-                                <Label Content="{Binding Path= Abiotiek.Vochtbehoefte, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,85,0,0" Height="28"></Label>
-                                <Label Content="{Binding Path= Abiotiek.Voedingsbehoefte, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,120,0,0" Height="28"></Label>
-                                <Label Content="{Binding Path= Abiotiek.AntagonischeOmgeving, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,155,0,0" Height="28"></Label>
-                                <Label Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,190,0,0" Height="28"></Label>
+                                <Label Content="Bezonning" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,15,0,0"/>
+                                <Label Content="Grondsoort" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,50,0,0"/>
+                                <Label Content="Vochtbehoefte" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,85,0,0"/>
+                                <Label Content="Voedingsbehoefte" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,120,0,0"/>
+                                <Label Content="Reactie antagonistische omgeving" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,155,0,0"/>
+                                <Label Content="Habitat" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,190,0,0"/>
+                                <Label Content="{Binding Path= Abiotiek.Bezonning, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,15,0,0" Height="28"/>
+                                <Label Content="{Binding Path= Abiotiek.Grondsoort, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,50,0,0" Height="28"/>
+                                <Label Content="{Binding Path= Abiotiek.Vochtbehoefte, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,85,0,0" Height="28"/>
+                                <Label Content="{Binding Path= Abiotiek.Voedingsbehoefte, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,120,0,0" Height="28"/>
+                                <Label Content="{Binding Path= Abiotiek.AntagonischeOmgeving, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,155,0,0" Height="28"/>
+                                <Label Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,190,0,0" Height="28"/>
                             </Grid>
                         </ScrollViewer>
                     </Grid>
                 </TabItem>
                 <TabItem Header="Commensalisme">
-                    <Grid>
+                    <Grid Margin="0,0,99,0">
                         <ScrollViewer>
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -103,59 +114,72 @@
                                     <ColumnDefinition Width="10*"/>
                                     <ColumnDefinition Width="111*"/>
                                 </Grid.ColumnDefinitions>
-                                <Label Content="Ontwikkelingssnelheid" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,15,0,0"></Label>
-                                <Label Content="Levensduur/Concurrentiekracht" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,50,0,0"></Label>
-                                <Label Content="Sociabiliteit" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,85,0,0"></Label>
-                                <Label Content="Strategie" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,120,0,0"></Label>
-                                <Label Content="{Binding Path= Commensalisme.Ontwikkelsnelheid, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,15,0,0" Height="28" Grid.ColumnSpan="3"></Label>
-                                <Label Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,50,0,0" Height="28" Grid.ColumnSpan="3"></Label>
-                                <Label Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,85,0,0" Height="28" Grid.ColumnSpan="3"></Label>
-                                <Label Content="{Binding Path= Commensalisme.Strategie, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,120,0,0" Height="28" Grid.ColumnSpan="3"></Label>
+                                <Label Content="Ontwikkelingssnelheid" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,15,0,0"/>
+                                <Label Content="Levensduur/Concurrentiekracht" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,50,0,0"/>
+                                <Label Content="Sociabiliteit" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,85,0,0"/>
+                                <Label Content="Strategie" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,120,0,0"/>
+                                <Label Content="{Binding Path= Commensalisme.Ontwikkelsnelheid, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,15,0,0" Height="28" Grid.ColumnSpan="3"/>
+                                <Label Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,50,0,0" Height="28" Grid.ColumnSpan="3"/>
+                                <Label Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,85,0,0" Height="28" Grid.ColumnSpan="3"/>
+                                <Label Content="{Binding Path= Commensalisme.Strategie, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,120,0,0" Height="28" Grid.ColumnSpan="3"/>
                             </Grid>
                         </ScrollViewer>
                     </Grid>
                 </TabItem>
                 <TabItem Header="Extra Eigenschappen">
-                    <Grid>
+                    <Grid Margin="0,0,99,0">
                         <ScrollViewer>
                             <Grid>
-                                <Label Content="Nectarwaarde" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,15,0,0"></Label>
-                                <Label Content="Pollenwaarde" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,50,0,0"></Label>
-                                <Label Content="Bijvriendelijk" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,85,0,0"></Label>
-                                <Label Content="Vlindervriendelijk" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,120,0,0"></Label>
-                                <Label Content="Eetbaar" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,155,0,0"></Label>
-                                <Label Content="Kruidgebruik" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,190,0,0"></Label>
-                                <Label Content="Geurend" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,225,0,0"></Label>
-                                <Label Content="vorstgevoelig" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,255,0,0"></Label>
-                                <Label Content="{Binding Path= ExtraEigenschap.Nectarwaarde, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,15,0,0" Height="28"></Label>
-                                <Label Content="{Binding Path= ExtraEigenschap.Pollenwaarde, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,50,0,0" Height="28"></Label>
-                                <Label Content="{Binding Path= ExtraEigenschap.Bijvriendelijke, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,85,0,0" Height="28"></Label>
-                                <Label Content="{Binding Path= ExtraEigenschap.Vlindervriendelijk, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,120,0,0" Height="28"></Label>
-                                <Label Content="{Binding Path= ExtraEigenschap.Eetbaar, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,155,0,0" Height="28"></Label>
-                                <Label Content="{Binding Path= ExtraEigenschap.Kruidgebruik, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,190,0,0" Height="28"></Label>
-                                <Label Content="{Binding Path= ExtraEigenschap.Geurend, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,225,0,0" Height="28"></Label>
-                                <Label Content="{Binding Path= ExtraEigenschap.Vorstgevoelig, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,255,0,0" Height="28"></Label>
+                                <Label Content="Nectarwaarde" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,15,0,0"/>
+                                <Label Content="Pollenwaarde" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,50,0,0"/>
+                                <Label Content="Bijvriendelijk" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,85,0,0"/>
+                                <Label Content="Vlindervriendelijk" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,120,0,0"/>
+                                <Label Content="Eetbaar" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,155,0,0"/>
+                                <Label Content="Kruidgebruik" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,190,0,0"/>
+                                <Label Content="Geurend" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,225,0,0"/>
+                                <Label Content="vorstgevoelig" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,255,0,0"/>
+                                <Label Content="{Binding Path= ExtraEigenschap.Nectarwaarde, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,15,0,0" Height="28"/>
+                                <Label Content="{Binding Path= ExtraEigenschap.Pollenwaarde, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,50,0,0" Height="28"/>
+                                <Label Content="{Binding Path= ExtraEigenschap.Bijvriendelijke, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,85,0,0" Height="28"/>
+                                <Label Content="{Binding Path= ExtraEigenschap.Vlindervriendelijk, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,120,0,0" Height="28"/>
+                                <Label Content="{Binding Path= ExtraEigenschap.Eetbaar, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,155,0,0" Height="28"/>
+                                <Label Content="{Binding Path= ExtraEigenschap.Kruidgebruik, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,190,0,0" Height="28"/>
+                                <Label Content="{Binding Path= ExtraEigenschap.Geurend, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,225,0,0" Height="28"/>
+                                <Label Content="{Binding Path= ExtraEigenschap.Vorstgevoelig, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,255,0,0" Height="28"/>
                             </Grid>
                         </ScrollViewer>
                     </Grid>
                 </TabItem>
                 <TabItem Header="Onderhoud plant">
-                    <Grid>
-                        <ScrollViewer>
+                    <Grid Margin="0,0,80,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="35*"/>
+                            <ColumnDefinition Width="11*"/>
+                            <ColumnDefinition Width="118*"/>
+                            <ColumnDefinition Width="490*"/>
+
+                        </Grid.ColumnDefinitions>
+
+                        <ScrollViewer Grid.ColumnSpan="4">
                             <Grid>
-                                <Label Content="Beheerbehandeling" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,15,0,0"></Label>
-                                <Label Content="Opmerking" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,50,0,0"></Label>
-                                <Label Content="Maand" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,85,0,0"></Label>
-                                <Label Content="Frequentie per jaar" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,120,0,0"></Label>
-                                <Label Content="{Binding Path=BeheerMaand.Beheerdaad, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,15,0,0" Height="28"></Label>
-                                <Label Content="{Binding Path=BeheerMaand.Omschrijving, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,50,0,0" Height="28"></Label>
-                                <Label Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,85,0,0" Height="28"></Label>
-                                <Label Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,120,0,0" Height="28"></Label>
+                                <Label Content="Beheerbehandeling" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,15,0,0"/>
+                                <Label Content="Opmerking" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,50,0,0"/>
+                                <Label Content="Maand" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,85,0,0"/>
+                                <Label Content="Frequentie per jaar" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,120,0,0"/>
+                                <Label Content="{Binding Path=BeheerMaand.Beheerdaad, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,15,0,0" Height="28"/>
+                                <Label Content="{Binding Path=BeheerMaand.Omschrijving, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,50,0,0" Height="28"/>
+                                <Label Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,85,0,0" Height="28"/>
+                                <Label Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,120,0,0" Height="28"/>
                             </Grid>
                         </ScrollViewer>
                     </Grid>
                 </TabItem>
+
             </TabControl>
+
         </Viewbox>
+        <Image HorizontalAlignment="Center" Height="91" VerticalAlignment="Top" Width="80" Source="/View/Images/brede pluim.jpg" Margin="0,33,0,0"/>
+        <Button x:Name="btnBack" Content="Back" HorizontalAlignment="Left" Margin="276,544,0,0" VerticalAlignment="Top" Height="38" Width="136"/>
+
     </Grid>
 </Window>
