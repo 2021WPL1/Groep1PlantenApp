@@ -213,27 +213,27 @@ namespace PlantenApplicatie.UI.ViewModel
             FilterTfgsvVariant.Clear();
 
             //Families
-            foreach (var tfgsvType in _filtertypes)
+            foreach (var tfgsvType in _filtertypes.OrderBy(f => f.Planttypenaam))
             {
                 FilterTfgsvTypes.Add(tfgsvType);
             }
             //Families
-            foreach (var tfgsvFamily in _filterfamilies)
+            foreach (var tfgsvFamily in _filterfamilies.OrderBy(f=>f.Familienaam))
             {
                 FilterTfgsvFamilie.Add(tfgsvFamily);
             }
             //Geslacht
-            foreach (var tfgsvGeslacht in _filtergeslachten)
+            foreach (var tfgsvGeslacht in _filtergeslachten.OrderBy(f=>f.Geslachtnaam))
             {
                 FilterTfgsvGeslacht.Add(tfgsvGeslacht);
             }
             //Soorten
-            foreach (var tfgsvSoort in _filtersoorten)
+            foreach (var tfgsvSoort in _filtersoorten.OrderBy(f=>f.Soortnaam))
             {
                 FilterTfgsvSoort.Add(tfgsvSoort);
             }
             //Varianten
-            foreach (var tfgsvVariant in _filtervarianten)
+            foreach (var tfgsvVariant in _filtervarianten.OrderBy(f=>f.Variantnaam))
             {
                 FilterTfgsvVariant.Add(tfgsvVariant);
             }
