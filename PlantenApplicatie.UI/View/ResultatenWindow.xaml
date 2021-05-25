@@ -17,7 +17,7 @@
         <Grid.Background>
             <ImageBrush ImageSource="Images/AchtergrondSchermen.jpg"/>
         </Grid.Background>
-        <Viewbox Margin="98,132,196,106" Grid.Row="1">
+        <Viewbox Margin="98,132,196,82" Grid.Row="1">
             <Grid>
                 <TabControl Height="331" Margin="-16,0,-88,0">
                     <TabItem Header="Hoofdinfo" Margin="-2,-2,-12,-1">
