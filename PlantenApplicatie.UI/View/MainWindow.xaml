@@ -34,18 +34,7 @@
                         </LinearGradientBrush>
                     </Label.Background>
                 </Label>
-                <Border BorderThickness="5" BorderBrush="Black">
-                    <Button x:Name="btnStartOpnieuw_Copy" 
-                            Command="{Binding Path=ResultaatSchermCommand}"
-                            Content="Meer info" HorizontalAlignment="Center" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="2" Height="76" Width="420" Margin="0,563,0,0">
-                        <Button.Background>
-                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="White"/>
-                                <GradientStop Color="#FFC7FF00" Offset="1"/>
-                            </LinearGradientBrush>
-                        </Button.Background>
-                    </Button>
-                </Border>
+                <Border BorderThickness="5" BorderBrush="Black"/>
                 <Label Content="Zoekscherm" HorizontalAlignment="Center" Margin="2,9,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Normal" FontFamily="Algerian" FontStyle="Normal" FontStretch="Expanded" BorderBrush="Black" BorderThickness="0">
                     <Label.Background>
                         <RadialGradientBrush>
@@ -145,7 +134,7 @@
                 <ListBox x:Name="lstResult" 
                          ItemsSource="{Binding PlantResults}"
                          SelectedItem="{Binding SelectedPlant, Mode=TwoWay}"
-                         Margin="5,352,4,10" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" Grid.IsSharedSizeScope="True" Padding="5,0,0,0">
+                         Margin="5,357,5,0" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" Grid.IsSharedSizeScope="True" Padding="5,0,0,0" Height="292" VerticalAlignment="Top">
                     <ListBox.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -155,18 +144,18 @@
                         </TransformGroup>
                     </ListBox.RenderTransform>
                     <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock>
-                                    <TextBlock.Text>
+                        <DataTemplate>
+                            <TextBlock>
+                                <TextBlock.Text>
                                     <MultiBinding StringFormat="{}{0}">
                                         <Binding Path="Fgsv"/>
                                     </MultiBinding>
-                                    </TextBlock.Text>
-                                    <TextBlock.InputBindings>
+                                </TextBlock.Text>
+                                <TextBlock.InputBindings>
                                     <MouseBinding Gesture="LeftDoubleClick"
                                                   Command="{Binding RelativeSource={RelativeSource AncestorType=Window},Path=DataContext.ResultaatSchermCommand}"/>
                                 </TextBlock.InputBindings>
-                                </TextBlock>
+                            </TextBlock>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
