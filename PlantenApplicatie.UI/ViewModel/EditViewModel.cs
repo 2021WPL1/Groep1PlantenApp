@@ -316,8 +316,12 @@ namespace PlantenApplicatie.UI.ViewModel
             get { return _filterselectedType; }
             set
             {
+                if (_filterselectedType==null)
+                {
+                    _filterNewType = "Empty";//zorgen dat hij niet null is
+                    FilterNewType = null;
+                }
                 _filterselectedType = value;
-                FilterNewType = string.Empty;
                 OnPropertyChanged();
             }
         }
@@ -326,8 +330,12 @@ namespace PlantenApplicatie.UI.ViewModel
             get { return _filterselectedFamilie; }
             set
             {
+                if (_filterselectedFamilie == null)
+                {
+                    _filterNewFamilie = "Empty";//zorgen dat hij niet null is
+                    FilterNewFamilie = null;
+                }
                 _filterselectedFamilie = value;
-                FilterNewFamilie = string.Empty;
                 OnPropertyChanged();
             }
         }
@@ -336,8 +344,12 @@ namespace PlantenApplicatie.UI.ViewModel
             get { return _filterselectedGeslacht; }
             set
             {
+                if (_filterselectedGeslacht == null)
+                {
+                    _filterNewGeslacht = "Empty";//zorgen dat hij niet null is
+                    FilterNewGeslacht = null;
+                }
                 _filterselectedGeslacht = value;
-                FilterNewGeslacht = string.Empty;
                 OnPropertyChanged();
             }
         }
@@ -346,8 +358,12 @@ namespace PlantenApplicatie.UI.ViewModel
             get { return _filterselectedSoort; }
             set
             {
+                if (_filterselectedSoort == null)
+                {
+                    _filterNewSoort = "Empty";//zorgen dat hij niet null is
+                    FilterNewSoort = null;
+                }
                 _filterselectedSoort = value;
-                FilterNewSoort = string.Empty;
                 OnPropertyChanged();
             }
         }
@@ -356,8 +372,12 @@ namespace PlantenApplicatie.UI.ViewModel
             get { return _filterselectedVariant; }
             set
             {
+                if (_filterselectedVariant == null)
+                {
+                    _filterNewVariant = "Empty";//zorgen dat hij niet null is
+                    FilterNewVariant = null;
+                }
                 _filterselectedVariant = value;
-                FilterNewVariant = string.Empty;
                 OnPropertyChanged();
             }
         }
@@ -367,8 +387,12 @@ namespace PlantenApplicatie.UI.ViewModel
             get { return _filterNewType; }
             set
             {
+                if (_filterNewType==null)
+                {
+                    _filterselectedType = new TfgsvType(){Planttypenaam = "Empty"};//zorgen dat hij niet null is
+                    FilterSelectedType = null;
+                }
                 _filterNewType = value;
-                FilterSelectedType = null;
                 OnPropertyChanged();
             }
         }
@@ -377,8 +401,12 @@ namespace PlantenApplicatie.UI.ViewModel
             get { return _filterNewFamilie; }
             set
             {
+                if (_filterNewFamilie == null)
+                {
+                    _filterselectedFamilie = new TfgsvFamilie() { Familienaam = "Empty" };//zorgen dat hij niet null is
+                    FilterSelectedFamilie = null;
+                }
                 _filterNewFamilie = value;
-                FilterSelectedFamilie = null;
                 OnPropertyChanged();
             }
         }
@@ -387,8 +415,12 @@ namespace PlantenApplicatie.UI.ViewModel
             get { return _filterNewGeslacht; }
             set
             {
+                if (_filterNewGeslacht == null)
+                {
+                    _filterselectedGeslacht = new TfgsvGeslacht() { Geslachtnaam = "Empty" };//zorgen dat hij niet null is
+                    FilterSelectedGeslacht = null;
+                }
                 _filterNewGeslacht = value;
-                FilterSelectedGeslacht = null;
                 OnPropertyChanged();
             }
         }
@@ -397,8 +429,12 @@ namespace PlantenApplicatie.UI.ViewModel
             get { return _filterNewSoort; }
             set
             {
+                if (_filterNewSoort == null)
+                {
+                    _filterselectedSoort = new TfgsvSoort() { Soortnaam = "Empty" };//zorgen dat hij niet null is
+                    FilterSelectedSoort = null;
+                }
                 _filterNewSoort = value;
-                FilterSelectedSoort = null;
                 OnPropertyChanged();
             }
         }
@@ -407,8 +443,12 @@ namespace PlantenApplicatie.UI.ViewModel
             get { return _filterNewVariant; }
             set
             {
+                if (_filterNewVariant == null)
+                {
+                    _filterselectedVariant = new TfgsvVariant() { Variantnaam = "Empty" };//zorgen dat hij niet null is
+                    FilterSelectedVariant = null;
+                }
                 _filterNewVariant = value;
-                FilterSelectedVariant = null;
                 OnPropertyChanged();
             }
         }
