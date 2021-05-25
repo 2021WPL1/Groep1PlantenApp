@@ -7,6 +7,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
+using GalaSoft.MvvmLight.Command;
 using PlantenApplicatie.Data;
 using PlantenApplicatie.Domain.Models;
 using Prism.Commands;
@@ -19,7 +20,7 @@ namespace PlantenApplicatie.UI.ViewModel
 
         //Command voor opslaan
         public ICommand OpslaanCommand { get; set; }
-        public ICommand BackCommand { get; set; }
+        public RelayCommand<Window> BackCommand { get; private set; }
         public ICommand HabitatToevoegenCommand { get; set; }
         public ICommand HabitatVerwijderenCommand { get; set; }
 
@@ -95,7 +96,7 @@ namespace PlantenApplicatie.UI.ViewModel
             this._plantenDataService = plantenDataService;
 
             OpslaanCommand = new DelegateCommand(Opslaan);
-            BackCommand = new DelegateCommand(Back);
+            BackCommand = new RelayCommand<Window>(Back);
             HabitatToevoegenCommand = new DelegateCommand(HabitatToevoegen);
             HabitatVerwijderenCommand = new DelegateCommand(HabitatVerwijderen);
 
@@ -179,9 +180,12 @@ namespace PlantenApplicatie.UI.ViewModel
             //Beheer Eigenschappen
             */
         }
-        private void Back()
-        {//window sluiten
-
+        private void Back(Window window)
+        {
+            if (window != null)
+            {
+                window.Close();
+            }
         }
         //Habitat toevoegen aan listbox (die moeten toegevoegd worden aan de plant)
         private void HabitatToevoegen()

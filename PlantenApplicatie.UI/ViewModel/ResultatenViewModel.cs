@@ -43,6 +43,7 @@ namespace PlantenApplicatie.UI.ViewModel
             this.EditSchermCommand = new DelegateCommand(EditScherm);
         }
 
+
         private void EditScherm()
         {
             EditWindow window = new EditWindow(_plantenResultaat);
