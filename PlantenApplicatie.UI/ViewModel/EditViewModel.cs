@@ -115,6 +115,11 @@ namespace PlantenApplicatie.UI.ViewModel
         private void Opslaan()
         {
             //Filters
+            var filterselectedType = FilterSelectedType.Planttypenaam;
+            var filterselectedFamilie = FilterSelectedFamilie.Familienaam;
+            var filterselectedGeslacht = FilterSelectedGeslacht.Geslachtnaam;
+            var filterselectedSoort = FilterSelectedSoort.Soortnaam;
+            var filterselectedVariant = FilterSelectedVariant.Variantnaam;
             //Fenotype
             //Abio
             var abioselectedBezonning = AbioSelectedBezonning.Naam;
