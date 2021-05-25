@@ -124,29 +124,33 @@ namespace PlantenApplicatie.UI.ViewModel
         {
             //Senne & Hermes
             //Filters
-            FilterSelectedType = _filtertypes.SingleOrDefault(f =>
+            FilterSelectedType = _filtertypes.FirstOrDefault(f =>
                 f.Planttypenaam == _plantenDataService.GetFilterType(plant.TypeId).Planttypenaam);
             FilterSelectedFamilie = _filterfamilies.FirstOrDefault(f =>
                 f.Familienaam == _plantenDataService.GetFilterFamilie(plant.FamilieId).Familienaam);
-            FilterSelectedGeslacht = _filtergeslachten.SingleOrDefault(f =>
+            FilterSelectedGeslacht = _filtergeslachten.FirstOrDefault(f =>
                 f.Geslachtnaam == _plantenDataService.GetFilterGeslacht(plant.GeslachtId)
                     .Geslachtnaam);
             FilterSelectedSoort = _filtersoorten.FirstOrDefault(f =>
                 f.Soortnaam == _plantenDataService.GetFilterSoort(plant.SoortId).Soortnaam);
-            FilterSelectedVariant = _filtervarianten.SingleOrDefault(f =>
-                f.Variantnaam == _plantenDataService.GetFilterVariant(plant.VariantId)
-                    .Variantnaam);
+
+            if ( _plantenDataService.GetFilterVariant(plant.VariantId) != null)
+            {
+                FilterSelectedVariant = _filtervarianten.FirstOrDefault(f =>
+                    f.Variantnaam == _plantenDataService.GetFilterVariant(plant.VariantId)
+                        .Variantnaam);
+            }
             //Fenotype
             //Abio
             AbioSelectedBezonning =
-                _abiobezonning.SingleOrDefault(a => a.Naam == _plantenDataService.GetAbiotiek(plant.PlantId).Bezonning);
-            AbioSelectedGrondsoort = _abiogrondsoort.SingleOrDefault(a =>
+                _abiobezonning.FirstOrDefault(a => a.Naam == _plantenDataService.GetAbiotiek(plant.PlantId).Bezonning);
+            AbioSelectedGrondsoort = _abiogrondsoort.FirstOrDefault(a =>
                 a.Grondsoort == _plantenDataService.GetAbiotiek(plant.PlantId).Grondsoort);
-            AbioSelectedVoedingsbehoefte = _abiovoedingsbehoefte.SingleOrDefault(a =>
+            AbioSelectedVoedingsbehoefte = _abiovoedingsbehoefte.FirstOrDefault(a =>
                 a.Voedingsbehoefte == _plantenDataService.GetAbiotiek(plant.PlantId).Voedingsbehoefte);
-            AbioSelectedVochtbehoefte = _abiovochtbehoefte.SingleOrDefault(a =>
+            AbioSelectedVochtbehoefte = _abiovochtbehoefte.FirstOrDefault(a =>
                 a.Vochtbehoefte == _plantenDataService.GetAbiotiek(plant.PlantId).Vochtbehoefte);
-            AbioSelectedReactie = _abioReactie.SingleOrDefault(a =>
+            AbioSelectedReactie = _abioReactie.FirstOrDefault(a =>
                 a.Antagonie == _plantenDataService.GetAbiotiek(plant.PlantId).AntagonischeOmgeving);
 
             foreach (var abiotiekMulti in _plantenDataService.GetAbiotiekMulti(plant.PlantId))
