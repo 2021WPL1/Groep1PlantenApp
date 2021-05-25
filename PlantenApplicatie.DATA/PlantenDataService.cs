@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
 using PlantenApplicatie.Data;
 using PlantenApplicatie.Domain.Models;
 
@@ -22,6 +23,7 @@ namespace PlantenApplicatie.Data
             this.context = new Planten2021Context();
         }
 
+        //Mainwindow
         public List<TfgsvType> GetTfgsvTypes()
         {
             return context.TfgsvType.ToList();
@@ -112,6 +114,7 @@ namespace PlantenApplicatie.Data
                     return null;
             }
         }
+
         //Geeft de plant en al zijn informatie
         public Plant GetPlantWithId(long Id)
         {
@@ -120,13 +123,19 @@ namespace PlantenApplicatie.Data
         //Geeft de plant en zijn uiterlijke kenmerken + habitus
         public Fenotype GetFenotype(long Id)
         {
-            return context.Fenotype.SingleOrDefault(f => f.PlantId == Id);
+            return context.Fenotype.SingleOrDefault(p => p.PlantId == Id);
         }
         //Geeft de plant en zijn behoeftes
         public Abiotiek GetAbiotiek(long Id)
         {
             return context.Abiotiek.SingleOrDefault(a => a.PlantId == Id);
         }
+
+        public List<AbiotiekMulti> GetAbiotiekMulti(long Id)
+        {
+            return context.AbiotiekMulti.Where(a => a.PlantId == Id).ToList();
+        }
+
         //Geeft de plant en zijn ontwikkelsnelheid & strategie
         public Commensalisme GetCommensalisme(long Id)
         {
@@ -142,5 +151,62 @@ namespace PlantenApplicatie.Data
         {
             return context.BeheerMaand.SingleOrDefault(b => b.PlantId == Id);
         }
+
+        //Editwindow
+
+        //Filters
+        public TfgsvType GetFilterType(int? plantId)
+        {
+            return context.TfgsvType.FirstOrDefault(f => f.Planttypeid == plantId);
+        }
+
+        public TfgsvFamilie GetFilterFamilie(int? plantId)
+        {
+            return context.TfgsvFamilie.SingleOrDefault(p => p.FamileId == plantId);
+        }
+
+        public TfgsvGeslacht GetFilterGeslacht(int? plantId)
+        {
+            return context.TfgsvGeslacht.SingleOrDefault(p => p.GeslachtId == plantId);
+        }
+
+        public TfgsvSoort GetFilterSoort(int? plantId)
+        {
+            return context.TfgsvSoort.FirstOrDefault(p => p.Soortid == plantId);
+        }
+
+        public TfgsvVariant GetFilterVariant(int? plantId)
+        {
+            return context.TfgsvVariant.SingleOrDefault(p => p.VariantId == plantId);
+        }
+        //Fenotype
+        //Abio
+        public List<AbioBezonning> GetAbioBezonning()
+        {
+            return context.AbioBezonning.ToList();
+        }
+        public List<AbioGrondsoort> GetAbioGrondsoort()
+        {
+            return context.AbioGrondsoort.ToList();
+        }
+        public List<AbioVoedingsbehoefte> GetAbioVoedingsbehoefte()
+        {
+            return context.AbioVoedingsbehoefte.ToList();
+        }
+        public List<AbioVochtbehoefte> GetAbioVochtbehoefte()
+        {
+            return context.AbioVochtbehoefte.ToList();
+        }
+        public List<AbioReactieAntagonischeOmg> GetAbioReactieAntagonischeOmg()
+        {
+            return context.AbioReactieAntagonischeOmg.ToList();
+        }
+        public List<AbioHabitat> GetHabitats()
+        {
+            return context.AbioHabitat.ToList();
+        }
+        //Commersialisme
+        //Extra Eigenschappen
+        //Beheer Eigenschappen
     }
 }
