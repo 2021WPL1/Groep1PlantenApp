@@ -177,11 +177,6 @@ namespace PlantenApplicatie.Data
 
         public TfgsvVariant GetFilterVariant(int? plantId)
         {
-            if (context.TfgsvVariant.FirstOrDefault(p => p.VariantId == plantId)==null)
-            {
-                return null;
-            }
-
             return context.TfgsvVariant.FirstOrDefault(p => p.VariantId == plantId);
         }
         //Fenotype
