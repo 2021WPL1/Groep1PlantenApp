@@ -11,13 +11,13 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Label Content="Zoekscherm" HorizontalAlignment="Left" Margin="249,0,0,0" VerticalAlignment="Top" FontSize="20"/>
+            <Label x:Name="lblZoekscherm" Content="Zoekscherm" HorizontalAlignment="Left" Margin="249,0,0,0" VerticalAlignment="Top" FontSize="20"/>
             <Image x:Name="imgPlantify" HorizontalAlignment="Left" Height="75" Margin="2,0,0,0" VerticalAlignment="Top" Width="75"/>
-            <Label Content="Familie" HorizontalAlignment="Left" Margin="22,96,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.068,0.332"/>
-            <Label Content="Soort" HorizontalAlignment="Left" Margin="22,175,0,0" VerticalAlignment="Top"/>
-            <Label Content="Type" HorizontalAlignment="Left" Margin="22,50,0,0" VerticalAlignment="Top"/>
-            <Label Content="Geslacht" HorizontalAlignment="Left" Margin="22,135,0,0" VerticalAlignment="Top"/>
-            <Label Content="Variant" HorizontalAlignment="Left" Margin="22,216,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lblFamilie" Content="Familie" HorizontalAlignment="Left" Margin="22,137,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.068,0.332"/>
+            <Label x:Name="lblSoort" Content="Soort" HorizontalAlignment="Left" Margin="34,318,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lblType" Content="Type" HorizontalAlignment="Left" Margin="22,50,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lblGeslacht" Content="Geslacht" HorizontalAlignment="Left" Margin="22,228,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lblVariant" Content="Variant" HorizontalAlignment="Left" Margin="30,408,0,0" VerticalAlignment="Top"/>
             <ComboBox 
                 x:Name="cbxType" 
                 HorizontalAlignment="Left" 
@@ -31,7 +31,7 @@
             <ComboBox 
                 x:Name="cbxFamilie" 
                 HorizontalAlignment="Left" 
-                Margin="120,98,0,0" 
+                Margin="120,140,0,0" 
                 VerticalAlignment="Top"
                 Width="120"
                 ItemsSource="{Binding FilterTfgsvFamilie}"
@@ -39,19 +39,17 @@
                 DisplayMemberPath="Familienaam"
                 SelectedValuePath="FamileiId"/>
             <ComboBox
-                x:Name="cbxSoort"
-                HorizontalAlignment="Left" 
-                Margin="120,177,0,0" 
-                VerticalAlignment="Top" 
-                Width="120"
+                x:Name="cbxSoort" 
+                Margin="-9,318,552,0" 
+                VerticalAlignment="Top"
                 ItemsSource="{Binding FilterTfgsvSoort}"
                 SelectedItem="{Binding FilterSelectedSoort, Mode=TwoWay}"
                 DisplayMemberPath="Soortnaam"
-                SelectedValuePath="Soortid"/>
+                SelectedValuePath="Soortid" Width="120"/>
             <ComboBox 
                 x:Name="cbxGeslacht"
                 HorizontalAlignment="Left" 
-                Margin="120,137,0,0" 
+                Margin="120,230,0,0" 
                 VerticalAlignment="Top" 
                 Width="120"
                 ItemsSource="{Binding FilterTfgsvGeslacht}"
@@ -61,7 +59,7 @@
             <ComboBox 
                 x:Name="cbxVariant" 
                 HorizontalAlignment="Left" 
-                Margin="120,218,0,0" 
+                Margin="120,410,0,0" 
                 VerticalAlignment="Top" 
                 Width="120"
                 ItemsSource="{Binding FilterTfgsvVariant}"
@@ -324,10 +322,52 @@
             </TabControl>
             <Button x:Name="btnStartOpnieuw" 
                     Command="{Binding Path=BackCommand}"
-                    Content="Back" HorizontalAlignment="Left" Margin="10,269,0,0" VerticalAlignment="Top"/>
+                    Content="Back" HorizontalAlignment="Left" Margin="14,602,0,0" VerticalAlignment="Top" Width="50" Height="20"/>
             <Button x:Name="btnOpslaan"  Content="Opslaan"
                     Command="{Binding Path=OpslaanCommand}"
-                    HorizontalAlignment="Left" Margin="111,269,0,0" VerticalAlignment="Top"/>
+                    HorizontalAlignment="Left" Margin="209,602,0,0" VerticalAlignment="Top" Width="50" Height="20"/>
+            <TextBox x:Name="TxtBoxType"
+                     HorizontalAlignment="Left"
+                     Margin="120,90,0,0"
+                     TextWrapping="Wrap"
+                     VerticalAlignment="Top"
+                     Width="120"
+                     Text="{Binding FilterNewType, Mode=TwoWay}"/>
+            <TextBox
+                Text="{Binding FilterNewFamilie, Mode=TwoWay}"
+                x:Name="TxtBoxFamilie" 
+                HorizontalAlignment="Left" 
+                Margin="120,180,0,0" 
+                TextWrapping="Wrap" 
+                VerticalAlignment="Top" Width="120"/>
+            <TextBox 
+                Text="{Binding FilterNewGeslacht, Mode=TwoWay}"
+                x:Name="TxtBoxGeslacht"
+                HorizontalAlignment="Left"
+                Margin="120,270,0,0"
+                TextWrapping="Wrap" 
+                VerticalAlignment="Top" Width="120"/>
+            <TextBox 
+                Text="{Binding FilterNewSoort, Mode=TwoWay}"
+                x:Name="TxtBoxSoort" 
+                HorizontalAlignment="Left" 
+                Margin="120,360,0,0" 
+                TextWrapping="Wrap" 
+                VerticalAlignment="Top" 
+                Width="120"/>
+            <TextBox 
+                Text="{Binding FilterNewVariant, Mode=TwoWay}"
+                x:Name="TxtBoxVariant"
+                HorizontalAlignment="Left"
+                Margin="120,450,0,0" 
+                TextWrapping="Wrap" 
+                VerticalAlignment="Top" 
+                Width="120"/>
+            <Label x:Name="lblNieuwType" Content="Nieuw Type" HorizontalAlignment="Left" Margin="14,86,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lblNieuweFamilie" Content="Nieuwe Familie" HorizontalAlignment="Left" Margin="14,176,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lblNieuwGeslacht" Content="Nieuw Geslacht" HorizontalAlignment="Left" Margin="14,266,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lblNieuweSoort" Content="Nieuwe Soort" HorizontalAlignment="Left" Margin="22,356,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lblNieuweVariant" Content="Nieuwe Variant" HorizontalAlignment="Left" Margin="22,446,0,0" VerticalAlignment="Top"/>
         </Grid>
     </Viewbox>
 </Window>
