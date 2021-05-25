@@ -182,7 +182,7 @@ namespace PlantenApplicatie.UI.ViewModel
             //Senne, Maarten, Hermes
             var types = _types;
             TfgsvTypes.Clear();
-            foreach (var tfgsvType in types)
+            foreach (var tfgsvType in types.OrderBy(p=>p.Planttypenaam))
             {
                 TfgsvTypes.Add(tfgsvType);
             }
@@ -193,7 +193,7 @@ namespace PlantenApplicatie.UI.ViewModel
             //Senne, Maarten, Hermes
             var families = _families;
             TfgsvFamilie.Clear();
-            foreach (var tfgsvFamily in families)
+            foreach (var tfgsvFamily in families.OrderBy(p=>p.Familienaam))
             {
                 TfgsvFamilie.Add(tfgsvFamily);
             }
@@ -204,7 +204,7 @@ namespace PlantenApplicatie.UI.ViewModel
             //Senne, Maarten, Hermes
             var geslachten = _geslachten;
             TfgsvGeslacht.Clear();
-            foreach (var tfgsvGeslacht in geslachten)
+            foreach (var tfgsvGeslacht in geslachten.OrderBy(p=>p.Geslachtnaam))
             {
                 TfgsvGeslacht.Add(tfgsvGeslacht);
             }
@@ -215,7 +215,7 @@ namespace PlantenApplicatie.UI.ViewModel
             //Senne, Maarten, Hermes
             var soorten = _soorten;
             TfgsvSoort.Clear();
-            foreach (var tfgsvSoort in soorten)
+            foreach (var tfgsvSoort in soorten.OrderBy(p=>p.Soortnaam))
             {
                 TfgsvSoort.Add(tfgsvSoort);
             }
@@ -226,7 +226,7 @@ namespace PlantenApplicatie.UI.ViewModel
             //Senne, Maarten, Hermes
             var varianten = _varianten;
             TfgsvVariant.Clear();
-            foreach (var tfgsvVariant in varianten)
+            foreach (var tfgsvVariant in varianten.OrderBy(p=>p.Variantnaam))
             {
                 TfgsvVariant.Add(tfgsvVariant);
             }
