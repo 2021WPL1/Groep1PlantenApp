@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PlantenApplicatie.Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -14,5 +15,7 @@ namespace PlantenApplicatie.UI.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
         }
+
+      
     }
 }
