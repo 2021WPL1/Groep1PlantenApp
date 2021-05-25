@@ -32,6 +32,20 @@ namespace PlantenApplicatie.UI.ViewModel
         public ObservableCollection<TfgsvSoort> FilterTfgsvSoort { get; set; }
         public ObservableCollection<TfgsvVariant> FilterTfgsvVariant { get; set; }
         //Fenotype
+        /*
+         * Bloeiwijze
+         * Habitus
+         * max bladhoogte - maand
+         * max bloeihoogte - maand
+         * min bloeihoogte - maand
+         * bladkleur - maand
+         * bloeikleur - maand
+         * bladgrootte tot
+         * bladvorm
+         * ratio Bloei/blad
+         * spruitfen
+         * levensvorm volgens R.
+         */
         //Abio
         public ObservableCollection<AbioBezonning> AbioBezonning { get; set; }
         public ObservableCollection<AbioGrondsoort> AbioGrondsoort { get; set; }
