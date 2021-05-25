@@ -14,7 +14,7 @@ using Prism.Commands;
 namespace PlantenApplicatie.UI.ViewModel
 {
     public class EditViewModel :ViewModelBase
-    {
+    {//Senne & Hermes
         private PlantenDataService _plantenDataService;
 
         //Command voor opslaan
@@ -91,6 +91,7 @@ namespace PlantenApplicatie.UI.ViewModel
 
         public EditViewModel(PlantenDataService plantenDataService)
         {
+            //Senne & Hermes
             this._plantenDataService = plantenDataService;
 
             OpslaanCommand = new DelegateCommand(Opslaan);
@@ -120,6 +121,7 @@ namespace PlantenApplicatie.UI.ViewModel
 
         public void FillDataFromPlant(Plant plant)
         {
+            //Senne & Hermes
             //Filters
             FilterSelectedType = _filtertypes.SingleOrDefault(f =>
                 f.Planttypenaam == _plantenDataService.GetFilterType(plant.TypeId).Planttypenaam);
@@ -156,7 +158,8 @@ namespace PlantenApplicatie.UI.ViewModel
             //Beheer Eigenschappen
         }
         private void Opslaan()
-        {
+        {//Senne & Hermes
+            /* TEST -> werkt nog niet
             //Filters
             var filterselectedType = FilterSelectedType.Planttypenaam;
             var filterselectedFamilie = FilterSelectedFamilie.Familienaam;
@@ -174,18 +177,22 @@ namespace PlantenApplicatie.UI.ViewModel
             //Commersialisme
             //Extra Eigenschappen
             //Beheer Eigenschappen
+            */
         }
         private void Back()
-        {
+        {//window sluiten
+
         }
         //Habitat toevoegen aan listbox (die moeten toegevoegd worden aan de plant)
         private void HabitatToevoegen()
         {
-            if (_abioselectedAllHabitat!=null)
+            //Senne & Hermes
+
+            if (_abioAddedHabitats!=null)
             {
-                if (!_abioAddedHabitats.Contains(_abioselectedAllHabitat))
+                if (!_abioAddedHabitats.Contains(AbioSelectedAllHabitat))
                 {
-                    _abioAddedHabitats.Add(_abioselectedAllHabitat);
+                    _abioAddedHabitats.Add(AbioSelectedAllHabitat);
 
                 }
                 else
@@ -198,6 +205,8 @@ namespace PlantenApplicatie.UI.ViewModel
         //habitat verwijderen uit de listbox van geselecteerde
         private void HabitatVerwijderen()
         {
+            //Senne & Hermes
+
             if (_abioselectedAddedHabitat!=null)
             {
                 _abioAddedHabitats.Remove(_abioselectedAddedHabitat);
@@ -207,6 +216,8 @@ namespace PlantenApplicatie.UI.ViewModel
 
         public void InitializeAll()
         {
+            //Senne & Hermes
+
             //Filters
             _filtertypes = _plantenDataService.GetTfgsvTypes();
             _filterfamilies = _plantenDataService.GetTfgsvFamilies();
@@ -232,6 +243,8 @@ namespace PlantenApplicatie.UI.ViewModel
 
         public void LoadAll()
         {
+            //Senne & Hermes
+
             LoadFilters();
             LoadFenotype();
             LoadAbio();
@@ -242,6 +255,8 @@ namespace PlantenApplicatie.UI.ViewModel
 
         public void LoadFilters()
         {
+            //Senne & Hermes
+
             FilterTfgsvTypes.Clear();
             FilterTfgsvFamilie.Clear();
             FilterTfgsvGeslacht.Clear();
@@ -277,11 +292,14 @@ namespace PlantenApplicatie.UI.ViewModel
 
         public void LoadFenotype()
         {
+            //Senne & Hermes
 
         }
 
         public void LoadAbio()
         {
+            //Senne & Hermes
+
             AbioBezonning.Clear();
             AbioGrondsoort.Clear();
             AbioVoedingsbehoefte.Clear();
@@ -323,6 +341,8 @@ namespace PlantenApplicatie.UI.ViewModel
 
         public void ReloadHabitatlist()
         {
+            //Senne & Hermes
+
             AbioAddedHabitats.Clear();
             foreach (var habitat in _abioAddedHabitats)
             {
@@ -349,6 +369,8 @@ namespace PlantenApplicatie.UI.ViewModel
         //Filters
         public TfgsvType FilterSelectedType
         {
+            //Senne & Hermes
+
             get { return _filterselectedType; }
             set
             {
@@ -363,6 +385,8 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public TfgsvFamilie FilterSelectedFamilie
         {
+            //Senne & Hermes
+
             get { return _filterselectedFamilie; }
             set
             {
@@ -377,6 +401,8 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public TfgsvGeslacht FilterSelectedGeslacht
         {
+            //Senne & Hermes
+
             get { return _filterselectedGeslacht; }
             set
             {
@@ -391,6 +417,8 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public TfgsvSoort FilterSelectedSoort
         {
+            //Senne & Hermes
+
             get { return _filterselectedSoort; }
             set
             {
@@ -405,6 +433,8 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public TfgsvVariant FilterSelectedVariant
         {
+            //Senne & Hermes
+
             get { return _filterselectedVariant; }
             set
             {
@@ -420,6 +450,8 @@ namespace PlantenApplicatie.UI.ViewModel
 
         public string FilterNewType
         {
+            //Senne & Hermes
+
             get { return _filterNewType; }
             set
             {
@@ -434,6 +466,8 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public string FilterNewFamilie
         {
+            //Senne & Hermes
+
             get { return _filterNewFamilie; }
             set
             {
@@ -448,6 +482,8 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public string FilterNewGeslacht
         {
+            //Senne & Hermes
+
             get { return _filterNewGeslacht; }
             set
             {
@@ -462,6 +498,8 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public string FilterNewSoort
         {
+            //Senne & Hermes
+
             get { return _filterNewSoort; }
             set
             {
@@ -476,7 +514,12 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public string FilterNewVariant
         {
-            get { return _filterNewVariant; }
+            //Senne & Hermes
+
+            get
+            {
+                return _filterNewVariant;
+            }
             set
             {
                 if (_filterNewVariant == null)
@@ -492,6 +535,8 @@ namespace PlantenApplicatie.UI.ViewModel
         //Abio
         public AbioBezonning AbioSelectedBezonning
         {
+            //Senne & Hermes
+
             get { return _abioselectedBezonning; }
             set
             {
@@ -502,6 +547,8 @@ namespace PlantenApplicatie.UI.ViewModel
 
         public AbioGrondsoort AbioSelectedGrondsoort
         {
+            //Senne & Hermes
+
             get { return _abioselectedGrondsoort; }
             set
             {
@@ -512,6 +559,8 @@ namespace PlantenApplicatie.UI.ViewModel
 
         public AbioVoedingsbehoefte AbioSelectedVoedingsbehoefte
         {
+            //Senne & Hermes
+
             get { return _abioselectedVoedingsbehoefte; }
             set
             {
@@ -522,6 +571,8 @@ namespace PlantenApplicatie.UI.ViewModel
 
         public AbioVochtbehoefte AbioSelectedVochtbehoefte
         {
+            //Senne & Hermes
+
             get { return _abioselectedVochtbehoefte; }
             set
             {
@@ -532,6 +583,8 @@ namespace PlantenApplicatie.UI.ViewModel
 
         public AbioReactieAntagonischeOmg AbioSelectedReactie
         {
+            //Senne & Hermes
+
             get { return _abioselectedReactie; }
             set
             {
@@ -542,6 +595,8 @@ namespace PlantenApplicatie.UI.ViewModel
 
         public AbioHabitat AbioSelectedAllHabitat
         {
+            //Senne & Hermes
+
             get { return _abioselectedAllHabitat; }
             set
             {
@@ -552,6 +607,8 @@ namespace PlantenApplicatie.UI.ViewModel
 
         public AbioHabitat AbioSelectedAddedHabitat
         {
+            //Senne & Hermes
+
             get { return _abioselectedAddedHabitat; }
             set
             {
