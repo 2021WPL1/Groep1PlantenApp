@@ -122,16 +122,16 @@ namespace PlantenApplicatie.UI.ViewModel
         {
             //Filters
             FilterSelectedType = _filtertypes.SingleOrDefault(f =>
-                f.Planttypenaam == _plantenDataService.GetFilterType(plant.PlantId).Planttypenaam);
-            FilterSelectedFamilie = _filterfamilies.SingleOrDefault(f =>
-                f.Familienaam == _plantenDataService.GetFilterFamilie(plant.PlantId).Familienaam);
+                f.Planttypenaam == _plantenDataService.GetFilterType(plant.TypeId).Planttypenaam);
+            FilterSelectedFamilie = _filterfamilies.FirstOrDefault(f =>
+                f.Familienaam == _plantenDataService.GetFilterFamilie(plant.FamilieId).Familienaam);
             FilterSelectedGeslacht = _filtergeslachten.SingleOrDefault(f =>
-                f.Geslachtnaam == _plantenDataService.GetFilterGeslacht(plant.PlantId)
+                f.Geslachtnaam == _plantenDataService.GetFilterGeslacht(plant.GeslachtId)
                     .Geslachtnaam);
             FilterSelectedSoort = _filtersoorten.FirstOrDefault(f =>
-                f.Soortnaam == _plantenDataService.GetFilterSoort(plant.PlantId).Soortnaam);
+                f.Soortnaam == _plantenDataService.GetFilterSoort(plant.SoortId).Soortnaam);
             FilterSelectedVariant = _filtervarianten.SingleOrDefault(f =>
-                f.Variantnaam == _plantenDataService.GetFilterVariant(plant.PlantId)
+                f.Variantnaam == _plantenDataService.GetFilterVariant(plant.VariantId)
                     .Variantnaam);
             //Fenotype
             //Abio

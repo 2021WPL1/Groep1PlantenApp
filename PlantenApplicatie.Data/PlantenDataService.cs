@@ -155,27 +155,27 @@ namespace PlantenApplicatie.Data
         //Editwindow
 
         //Filters
-        public TfgsvType GetFilterType(long plantId)
+        public TfgsvType GetFilterType(int? plantId)
         {
             return context.TfgsvType.FirstOrDefault(f => f.Planttypeid == plantId);
         }
 
-        public TfgsvFamilie GetFilterFamilie(long plantId)
+        public TfgsvFamilie GetFilterFamilie(int? plantId)
         {
             return context.TfgsvFamilie.SingleOrDefault(p => p.FamileId == plantId);
         }
 
-        public TfgsvGeslacht GetFilterGeslacht(long plantId)
+        public TfgsvGeslacht GetFilterGeslacht(int? plantId)
         {
             return context.TfgsvGeslacht.SingleOrDefault(p => p.GeslachtId == plantId);
         }
 
-        public TfgsvSoort GetFilterSoort(long plantId)
+        public TfgsvSoort GetFilterSoort(int? plantId)
         {
             return context.TfgsvSoort.FirstOrDefault(p => p.Soortid == plantId);
         }
 
-        public TfgsvVariant GetFilterVariant(long plantId)
+        public TfgsvVariant GetFilterVariant(int? plantId)
         {
             return context.TfgsvVariant.SingleOrDefault(p => p.VariantId == plantId);
         }
