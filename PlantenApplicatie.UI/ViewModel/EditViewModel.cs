@@ -224,7 +224,7 @@ namespace PlantenApplicatie.UI.ViewModel
             }
             ReloadHabitatlist();
         }
-        //habitat verwijderen uit de listbox van geselecteerde
+        //habitat verwijderen uit de listbox van geselecteerde habitus
         private void HabitatVerwijderen()
         {
             //Senne & Hermes
