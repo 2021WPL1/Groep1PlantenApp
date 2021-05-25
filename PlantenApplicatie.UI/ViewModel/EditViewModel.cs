@@ -16,7 +16,6 @@ namespace PlantenApplicatie.UI.ViewModel
     public class EditViewModel :ViewModelBase
     {
         private PlantenDataService _plantenDataService;
-        private Planten2021Context _context;
 
         //Command voor opslaan
         public ICommand OpslaanCommand { get; set; }
@@ -90,10 +89,9 @@ namespace PlantenApplicatie.UI.ViewModel
         //Extra Eigenschappen
         //Beheer Eigenschappen
 
-        public EditViewModel(PlantenDataService plantenDataService, Planten2021Context context)
+        public EditViewModel(PlantenDataService plantenDataService)
         {
             this._plantenDataService = plantenDataService;
-            this._context = context;
 
             OpslaanCommand = new DelegateCommand(Opslaan);
             BackCommand = new DelegateCommand(Back);
@@ -124,16 +122,16 @@ namespace PlantenApplicatie.UI.ViewModel
         {
             //Filters
             FilterSelectedType = _filtertypes.SingleOrDefault(f =>
-                f.Planttypenaam == _context.TfgsvType.SingleOrDefault(p => p.Planttypeid == plant.TypeId).Planttypenaam);
+                f.Planttypenaam == _plantenDataService.GetFilterType(plant.PlantId).Planttypenaam);
             FilterSelectedFamilie = _filterfamilies.SingleOrDefault(f =>
-                f.Familienaam == _context.TfgsvFamilie.SingleOrDefault(p => p.FamileId == plant.FamilieId).Familienaam);
+                f.Familienaam == _plantenDataService.GetFilterFamilie(plant.PlantId).Familienaam);
             FilterSelectedGeslacht = _filtergeslachten.SingleOrDefault(f =>
-                f.Geslachtnaam == _context.TfgsvGeslacht.SingleOrDefault(p => p.GeslachtId == plant.GeslachtId)
+                f.Geslachtnaam == _plantenDataService.GetFilterGeslacht(plant.PlantId)
                     .Geslachtnaam);
             FilterSelectedSoort = _filtersoorten.FirstOrDefault(f =>
-                f.Soortnaam == _context.TfgsvSoort.FirstOrDefault(p => p.Soortid == plant.SoortId).Soortnaam);
+                f.Soortnaam == _plantenDataService.GetFilterSoort(plant.PlantId).Soortnaam);
             FilterSelectedVariant = _filtervarianten.SingleOrDefault(f =>
-                f.Variantnaam == _context.TfgsvVariant.SingleOrDefault(p => p.VariantId == plant.VariantId)
+                f.Variantnaam == _plantenDataService.GetFilterVariant(plant.PlantId)
                     .Variantnaam);
             //Fenotype
             //Abio

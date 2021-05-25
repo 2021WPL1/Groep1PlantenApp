@@ -22,7 +22,6 @@ namespace PlantenApplicatie.UI.View
     /// </summary>
     public partial class EditWindow : Window
     {
-        private static Planten2021Context context = new Planten2021Context();
         private EditViewModel viewModel;
         private PlantenDataService _dataService;
 
@@ -32,7 +31,7 @@ namespace PlantenApplicatie.UI.View
             _dataService = PlantenDataService.Instance();
             var plant = _dataService.GetPlantWithId(18);//test
 
-            viewModel = new EditViewModel(PlantenDataService.Instance(),context);
+            viewModel = new EditViewModel(PlantenDataService.Instance());
             DataContext = viewModel;
             viewModel.InitializeAll();
             viewModel.FillDataFromPlant(plant);

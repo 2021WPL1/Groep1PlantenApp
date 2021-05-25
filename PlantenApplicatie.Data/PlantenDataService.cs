@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
 using PlantenApplicatie.Data;
 using PlantenApplicatie.Domain.Models;
 
@@ -122,7 +123,7 @@ namespace PlantenApplicatie.Data
         //Geeft de plant en zijn uiterlijke kenmerken + habitus
         public Fenotype GetFenotype(long Id)
         {
-            return context.Fenotype.SingleOrDefault(f => f.PlantId == Id);
+            return context.Fenotype.SingleOrDefault(p => p.PlantId == Id);
         }
         //Geeft de plant en zijn behoeftes
         public Abiotiek GetAbiotiek(long Id)
@@ -154,6 +155,30 @@ namespace PlantenApplicatie.Data
         //Editwindow
 
         //Filters
+        public TfgsvType GetFilterType(long plantId)
+        {
+            return context.TfgsvType.FirstOrDefault(f => f.Planttypeid == plantId);
+        }
+
+        public TfgsvFamilie GetFilterFamilie(long plantId)
+        {
+            return context.TfgsvFamilie.SingleOrDefault(p => p.FamileId == plantId);
+        }
+
+        public TfgsvGeslacht GetFilterGeslacht(long plantId)
+        {
+            return context.TfgsvGeslacht.SingleOrDefault(p => p.GeslachtId == plantId);
+        }
+
+        public TfgsvSoort GetFilterSoort(long plantId)
+        {
+            return context.TfgsvSoort.FirstOrDefault(p => p.Soortid == plantId);
+        }
+
+        public TfgsvVariant GetFilterVariant(long plantId)
+        {
+            return context.TfgsvVariant.SingleOrDefault(p => p.VariantId == plantId);
+        }
         //Fenotype
         //Abio
         public List<AbioBezonning> GetAbioBezonning()
