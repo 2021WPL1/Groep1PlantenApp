@@ -207,9 +207,9 @@ namespace PlantenApplicatie.UI.ViewModel
         {
             //Senne & Hermes
 
-            if (_abioselectedAddedHabitat!=null)
+            if (AbioSelectedAddedHabitat!=null)
             {
-                _abioAddedHabitats.Remove(_abioselectedAddedHabitat);
+                _abioAddedHabitats.Remove(AbioSelectedAddedHabitat);
             }
             ReloadHabitatlist();
         }
