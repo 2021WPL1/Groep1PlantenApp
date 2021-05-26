@@ -208,5 +208,11 @@ namespace PlantenApplicatie.Data
         //Commersialisme
         //Extra Eigenschappen
         //Beheer Eigenschappen
+
+
+        public List<CommensalismeMulti> GetCommMulti(long plantId)
+        {
+            return context.CommensalismeMulti.Where(p => p.PlantId == plantId).ToList();
+        }
     }
 }
