@@ -325,7 +325,14 @@ namespace PlantenApplicatie.UI.ViewModel
                 new BitmapImage(new Uri(Path.Combine(Environment.CurrentDirectory.Substring(0,Environment.CurrentDirectory.IndexOf("\\bin")),@"View\\Images\\etage.jpg")))
             };
             _fenoBloeiwijze = _plantenDataService.GetFenoBloeiwijze();
-            
+            _fenoHabitus = _plantenDataService.GetFenoHabitus();
+            _fenoBladgrootte = _plantenDataService.GetFenoBladgrootte();
+            _fenoKleur = _plantenDataService.GetFenoKleur();
+            _fenoMaand = _plantenDataService.GetFenoMaand();
+            _fenoBladvorm = _plantenDataService.GetFenoBladvorm();
+            _fenoRatio = _plantenDataService.GetFenoRatio();
+            _fenoSpruit = _plantenDataService.GetFenoSpruit();
+            _fenoLevensvorm = _plantenDataService.GetFenoLevensvorm();
             //Abio
             _abiobezonning = _plantenDataService.GetAbioBezonning();
             _abiogrondsoort = _plantenDataService.GetAbioGrondsoort();
