@@ -27,21 +27,9 @@ namespace PlantenApplicatie.UI.ViewModel
         public ObservableCollection<string> GetSelectedPlantLevensvorm { get; set; }
         public ObservableCollection<string> GetSelectedPlantSociabiliteit { get; set; }
         public ObservableCollection<string> GetSelectedPlantLevensduurConcurrentiekracht { get; set; }
-
-
-        //Stephanie
         public ObservableCollection<string> SelectedPlantBladKleur { get; set; }
         public ObservableCollection<string> SelectedPlantBloeiKleur { get; set; }
-
-        private List<string> _selectedPlantBladKleur = new List<string>();
-        private List<string> _selectedPlantBloeiKleur = new List<string>();
-        private List<FenotypeMulti> _fenotypeMulti = new List<FenotypeMulti>();
-        //Stephanie
         public ObservableCollection<string> SelectedPlantAbioHabitats { get; set; }
-
-
-        private List<string> _selectedPlantAbioHabitat = new List<string>();
-        private List<AbiotiekMulti> _abiotiekMulti = new List<AbiotiekMulti>();
 
         //Jelle & Hemen
         //Plant voor in labels
@@ -59,8 +47,16 @@ namespace PlantenApplicatie.UI.ViewModel
         private List<string> _beheerAllSelectedPlantMonths = new List<string>();
         private List<string> _getSelecteedPlantLevensvorm = new List<string>();
         private List<string> _getSelecteedPlantSociabiliteit = new List<string>();
+        private List<string> _selectedPlantBladKleur = new List<string>();
+        private List<string> _selectedPlantBloeiKleur = new List<string>();
         private List<string> _getSelectedPlantLevensduurConcurrentiekracht = new List<string>();
+        private List<string> _selectedPlantAbioHabitat = new List<string>();
+
+        //Jelle & Stephanie
+        //Lists om multi data in te stoppen, dit is voor de plantgegevens met meerdere waarden te gebruiken om juiste waarden te krijgen
         private List<CommensalismeMulti> _getSelectedPlantCommMulti = new List<CommensalismeMulti>();
+        private List<FenotypeMulti> _fenotypeMulti = new List<FenotypeMulti>();
+        private List<AbiotiekMulti> _abiotiekMulti = new List<AbiotiekMulti>();
 
         public ResultatenViewModel(PlantenDataService plantenDataService)
         {
@@ -214,7 +210,7 @@ namespace PlantenApplicatie.UI.ViewModel
             BeheerMaand = _plantenDataService.GetBeheerMaand(plant.PlantId);
 
             //Jelle & Stephanie
-            //Filters voor lists
+            //controleert of de beheermaand maand true is, als dat is komt hij in de lijst, anders niet
             if (BeheerMaand.Jan == true) { _beheerAllSelectedPlantMonths.Add("Januari"); }
             if (BeheerMaand.Feb == true) { _beheerAllSelectedPlantMonths.Add("Februari"); }
             if (BeheerMaand.Mrt == true) { _beheerAllSelectedPlantMonths.Add("Maart"); }
@@ -229,7 +225,7 @@ namespace PlantenApplicatie.UI.ViewModel
             if (BeheerMaand.Dec == true) { _beheerAllSelectedPlantMonths.Add("December"); }
 
             //Jelle & Stephanie
-            //Filtered alle getcommmulti rijen die het plantid bevattet
+            //Filtered alle getcommmulti rijen die het plantid bevat
             _getSelectedPlantCommMulti = _plantenDataService.GetCommMulti(plant.PlantId);
             //Foreach vervolg door een switch om op te splitsen in juiste tabellen
             foreach (var commMulti in _getSelectedPlantCommMulti)
