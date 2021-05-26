@@ -1,4 +1,5 @@
-﻿using PlantenApplicatie.Data;
+﻿using GalaSoft.MvvmLight.Command;
+using PlantenApplicatie.Data;
 using PlantenApplicatie.UI.View;
 using Prism.Commands;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Windows;
 using System.Windows.Input;
 
 namespace PlantenApplicatie.UI.ViewModel
@@ -14,14 +16,14 @@ namespace PlantenApplicatie.UI.ViewModel
     {
 
         //Maarten &Hemen 
-        public ICommand LoginCommand { get; set; }
+        public RelayCommand<Window> CloseWindowCommand { get; set; }
         private PlantenDataService _plantenDataService;
         private string _emailInput;
         private string _wachtwoordInput;
         private string _selectedError;
         public LoginSchermViewModel(PlantenDataService plantenDataService)
         {
-            LoginCommand = new DelegateCommand(LogIn);
+            this.CloseWindowCommand = new RelayCommand<Window>(this.CloseWindow);
             this._plantenDataService = plantenDataService;
         }
         public string EmailInput
@@ -50,7 +52,7 @@ namespace PlantenApplicatie.UI.ViewModel
             }
         }
         //Maarten &Hemen 
-        private void LogIn()
+        private void CloseWindow(Window windowClose)
         {
             try
             {
@@ -66,6 +68,7 @@ namespace PlantenApplicatie.UI.ViewModel
                             if (hashedBytes.SequenceEqual(gebruiker.HashPaswoord))
                             {
                                 MainWindow window = new MainWindow();
+                                windowClose.Close();
                                 window.ShowDialog();
                             }
                             else
