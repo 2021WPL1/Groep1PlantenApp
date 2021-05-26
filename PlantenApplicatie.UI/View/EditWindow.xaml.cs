@@ -11,7 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using PlantenApplicatie.Data;
-using PlantenApplicatie.UI.Models;
+using PlantenApplicatie.Domain.Models;
 using PlantenApplicatie.UI.ViewModel;
 
 

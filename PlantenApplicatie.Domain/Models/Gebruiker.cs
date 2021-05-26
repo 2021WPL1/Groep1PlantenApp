@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PlantenApplicatie.UI.Models
+namespace PlantenApplicatie.Domain.Models
 {
     public partial class Gebruiker
     {

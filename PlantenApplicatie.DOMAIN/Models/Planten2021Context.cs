@@ -1,8 +1,6 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore;
 
-namespace PlantenApplicatie.UI.Models
+namespace PlantenApplicatie.Domain.Models
 {
     public partial class Planten2021Context : DbContext
     {
