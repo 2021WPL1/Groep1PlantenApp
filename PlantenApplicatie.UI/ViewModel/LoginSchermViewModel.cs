@@ -16,6 +16,7 @@ namespace PlantenApplicatie.UI.ViewModel
         private PlantenDataService _plantenDataService;
         private string _emailInput;
         private string _wachtwoordInput;
+        private string _selectedError;
         public LoginSchermViewModel(PlantenDataService plantenDataService)
         {
             LoginCommand = new DelegateCommand(LogIn);
@@ -37,30 +38,48 @@ namespace PlantenApplicatie.UI.ViewModel
                 _wachtwoordInput = value;
             }
         }
+        public string SelectedError
+        {
+            get { return _selectedError; }
+            set
+            {
+                _selectedError = value;
+                OnPropertyChanged();
+            }
+        }
 
         private void LogIn()
         {
             try
             {
 
-            
-           
-            using (var sha256 = SHA256.Create())
-            {
-                var gebruiker = _plantenDataService.getGebruikerViaEmail(EmailInput);
-                var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(WachtwoordInput));
-                if (hashedBytes.SequenceEqual(gebruiker.HashPaswoord))
+
+                if (EmailInput != null && WachtwoordInput != null)
                 {
-                    MainWindow window = new MainWindow();
-                    window.ShowDialog();
+                    using (var sha256 = SHA256.Create())
+                    {
+                        var gebruiker = _plantenDataService.getGebruikerViaEmail(EmailInput);
+                        if (gebruiker != null)
+                        {
+                            var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(WachtwoordInput));
+                            if (hashedBytes.SequenceEqual(gebruiker.HashPaswoord))
+                            {
+                                MainWindow window = new MainWindow();
+                                window.ShowDialog();
+                            }
+                            else
+                            {
+                                SelectedError = "Wachtwoord is onjuist";
+                            }
+                        }
+                    }
                 }
-                
+            
             }
-        }
             catch (Exception e)
             {
 
-                throw e;
+                SelectedError = "er is iets mis. Check uw paswoord of emailadres";
             }
         }
     }
