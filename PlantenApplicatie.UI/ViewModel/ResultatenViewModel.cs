@@ -25,6 +25,9 @@ namespace PlantenApplicatie.UI.ViewModel
         //Jelle & Stephanie
         //Lists voor boxen met meerdere waarden
         public ObservableCollection<string> BeheerAllSelectedPlantMonths { get; set; }
+        public ObservableCollection<string> GetSelectedPlantLevensvorm { get; set; }
+        public ObservableCollection<string> GetSelectedPlantSociabiliteit { get; set; }
+        public ObservableCollection<string> GetSelectedPlantLevensduurConcurrentiekracht { get; set; }
 
 
         //Jelle & Hemen
@@ -41,11 +44,13 @@ namespace PlantenApplicatie.UI.ViewModel
         //Jelle & Stephanie
         //Private lists voor observable collections op te vullen
         private List<string> _beheerAllSelectedPlantMonths = new List<string>();
+        private List<string> _getSelecteedPlantLevensvorm = new List<string>();
+        private List<string> _getSelecteedPlantSociabiliteit = new List<string>();
+        private List<string> _getSelectedPlantLevensduurConcurrentiekracht = new List<string>();
+        private List<CommensalismeMulti> _getSelectedPlantCommMulti = new List<CommensalismeMulti>();
 
         public ResultatenViewModel(PlantenDataService plantenDataService)
         {
-            
-
             this._plantenDataService = plantenDataService;
             this.CloseResultCommand = new RelayCommand<Window>(this.CloseResult);
 
@@ -54,6 +59,9 @@ namespace PlantenApplicatie.UI.ViewModel
 
             //Jelle & Stephanie
             BeheerAllSelectedPlantMonths = new ObservableCollection<string>();
+            GetSelectedPlantLevensvorm = new ObservableCollection<string>();
+            GetSelectedPlantSociabiliteit = new ObservableCollection<string>();
+            GetSelectedPlantLevensduurConcurrentiekracht = new ObservableCollection<string>();
         }
 
 
@@ -129,6 +137,21 @@ namespace PlantenApplicatie.UI.ViewModel
             {
                 BeheerAllSelectedPlantMonths.Add(month);
             }
+            GetSelectedPlantLevensvorm.Clear();
+            GetSelectedPlantSociabiliteit.Clear();
+            GetSelectedPlantLevensduurConcurrentiekracht.Clear();
+            foreach (var text in _getSelecteedPlantLevensvorm)
+            {
+                GetSelectedPlantLevensvorm.Add(text);
+            }
+            foreach (var text in _getSelecteedPlantSociabiliteit)
+            {
+                GetSelectedPlantSociabiliteit.Add(text);
+            }
+            foreach (var text in _getSelectedPlantLevensduurConcurrentiekracht)
+            {
+                GetSelectedPlantLevensduurConcurrentiekracht.Add(text);
+            }
         }
 
 
@@ -167,6 +190,30 @@ namespace PlantenApplicatie.UI.ViewModel
             if (BeheerMaand.Okt == true) { _beheerAllSelectedPlantMonths.Add("Oktober"); }
             if (BeheerMaand.Nov == true) { _beheerAllSelectedPlantMonths.Add("November"); }
             if (BeheerMaand.Dec == true) { _beheerAllSelectedPlantMonths.Add("December"); }
+
+            //Jelle & Stephanie
+            //Filtered alle getcommmulti rijen die het plantid bevattet
+            _getSelectedPlantCommMulti = _plantenDataService.GetCommMulti(plant.PlantId);
+            //Foreach vervolg door een switch om op te splitsen in juiste tabellen
+            foreach (var commMulti in _getSelectedPlantCommMulti)
+            {
+                switch (commMulti.Eigenschap)
+                {
+                    case "Socialibiteit":
+                        _getSelecteedPlantSociabiliteit.Add(commMulti.Waarde);
+                        break;
+                    case "Levensvorm":
+                        _getSelecteedPlantLevensvorm.Add(commMulti.Waarde);
+                        break;
+                    case "Levensduur/Concurrentiekracht":
+                        _getSelectedPlantLevensduurConcurrentiekracht.Add(commMulti.Waarde);
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+
         }
     }
 }

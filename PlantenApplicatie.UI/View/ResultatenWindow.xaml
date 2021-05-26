@@ -326,10 +326,11 @@
                                         </LinearGradientBrush>
                                     </Label.Background>
                                 </Label>
-                                <ListBox x:Name="listboxSociabiliteit" Margin="150,86,123,186" BorderThickness="1,1,1,1" BorderBrush="#FF01040E" RenderTransformOrigin="0.5,0.5">
+                                <ListBox x:Name="listboxSociabiliteit" 
+                                         ItemsSource="{Binding GetSelectedPlantSociabiliteit}"
+                                         Margin="150,86,123,186" BorderThickness="1,1,1,1" BorderBrush="#FF01040E" RenderTransformOrigin="0.5,0.5">
                                     <ListBox.RenderTransform>
                                         <TransformGroup>
-                                            <ScaleTransform ScaleY="-1"/>
                                             <SkewTransform/>
                                             <RotateTransform/>
                                             <TranslateTransform/>
@@ -355,10 +356,11 @@
                                 </Label>
                                 <Label Content="{Binding Commensalisme.Ontwikkelsnelheid, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,15,0,0" Height="28" Grid.ColumnSpan="3"/>
                                 <Label Content="{Binding Commensalisme.Strategie, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,122,0,0" Height="28"/>
-                                <ListBox x:Name="listboxLevensDuur" Margin="150,50,123,222" BorderThickness="1,1,1,1" BorderBrush="#FF01040E" RenderTransformOrigin="0.5,0.5">
+                                <ListBox x:Name="listboxLevensDuur" 
+                                         ItemsSource="{Binding GetSelectedPlantLevensduurConcurrentiekracht}"
+                                         Margin="150,50,123,222" BorderThickness="1,1,1,1" BorderBrush="#FF01040E" RenderTransformOrigin="0.5,0.5">
                                     <ListBox.RenderTransform>
                                         <TransformGroup>
-                                            <ScaleTransform ScaleY="-1"/>
                                             <SkewTransform/>
                                             <RotateTransform/>
                                             <TranslateTransform/>
@@ -373,10 +375,11 @@
                                         </LinearGradientBrush>
                                     </Label.Background>
                                 </Label>
-                                <ListBox x:Name="listboxLevensVorm" Margin="150,155,123,117" BorderThickness="1,1,1,1" BorderBrush="#FF01040E" RenderTransformOrigin="0.5,0.5">
+                                <ListBox x:Name="listboxLevensVorm" 
+                                         ItemsSource="{Binding GetSelectedPlantLevensvorm}"
+                                         Margin="150,155,123,117" BorderThickness="1,1,1,1" BorderBrush="#FF01040E" RenderTransformOrigin="0.5,0.5">
                                     <ListBox.RenderTransform>
                                         <TransformGroup>
-                                            <ScaleTransform ScaleY="-1"/>
                                             <SkewTransform/>
                                             <RotateTransform/>
                                             <TranslateTransform/>
