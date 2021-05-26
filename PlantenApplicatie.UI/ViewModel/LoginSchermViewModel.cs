@@ -1,7 +1,9 @@
 ﻿using PlantenApplicatie.Data;
+using PlantenApplicatie.UI.View;
 using Prism.Commands;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Input;
@@ -42,9 +44,10 @@ namespace PlantenApplicatie.UI.ViewModel
             {
                 var gebruiker = _plantenDataService.getGebruikerViaEmail(EmailInput);
                 var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(WachtwoordInput));
-                if (gebruiker.HashPaswoord == hashedBytes)
+                if (hashedBytes.SequenceEqual(gebruiker.HashPaswoord))
                 {
-                    //open zoekscherm
+                    MainWindow window = new MainWindow();
+                    window.ShowDialog();
                 }
             }
         }

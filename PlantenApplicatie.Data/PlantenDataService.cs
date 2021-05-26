@@ -208,5 +208,28 @@ namespace PlantenApplicatie.Data
         //Commersialisme
         //Extra Eigenschappen
         //Beheer Eigenschappen
+
+        public Gebruiker addGebruiker(string rol, string email, byte[] HashPaswoord)
+        {
+            Gebruiker gebruiker = new Gebruiker
+            {
+                Rol = rol,
+                Emailadres = email,
+                HashPaswoord = HashPaswoord
+
+            };
+            context.Gebruiker.Add(gebruiker);
+            context.SaveChanges();
+            return gebruiker;
+        }
+        public List<Rol> GetRollen()
+        {
+            return context.Rol.ToList();
+        }
+        public Gebruiker getGebruikerViaEmail(string email)
+        {
+            return context.Gebruiker.SingleOrDefault(g => g.Emailadres == email);
+        }
+
     }
 }
