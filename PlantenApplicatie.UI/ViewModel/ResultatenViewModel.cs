@@ -145,21 +145,6 @@ namespace PlantenApplicatie.UI.ViewModel
             }
         }
 
-        //Stephanie
-        public void LoadList()
-        {
-           SelectedPlantBladKleur.Clear();
-           SelectedPlantBloeiKleur.Clear();
-           foreach (var bladkleur in _selectedPlantBladKleur)
-           {
-               SelectedPlantBladKleur.Add(bladkleur);
-           }
-
-           foreach (var bloeikleur in _selectedPlantBloeiKleur)
-           {
-               SelectedPlantBloeiKleur.Add(bloeikleur);
-           }
-
         //Jelle & Stephanie
         //Laad lijsten voor listboxes
         public void LoadLists()
@@ -184,16 +169,28 @@ namespace PlantenApplicatie.UI.ViewModel
             {
                 GetSelectedPlantLevensduurConcurrentiekracht.Add(text);
             }
+            SelectedPlantBladKleur.Clear();
+            SelectedPlantBloeiKleur.Clear();
+            foreach (var bladkleur in _selectedPlantBladKleur)
+            {
+                SelectedPlantBladKleur.Add(bladkleur);
+            }
+
+            foreach (var bloeikleur in _selectedPlantBloeiKleur)
+            {
+                SelectedPlantBloeiKleur.Add(bloeikleur);
+            }
+
+            SelectedPlantAbioHabitats.Clear();
+
+            foreach (var habitat in _selectedPlantAbioHabitat)
+            {
+                SelectedPlantAbioHabitats.Add(habitat);
+            }
         }
 
-
-           SelectedPlantAbioHabitats.Clear();
-
-           foreach (var habitat in _selectedPlantAbioHabitat)
-           {
-               SelectedPlantAbioHabitats.Add(habitat);
-           }
-        }
+            
+        
 
         //Jelle & Hemen
         //Command die gelinkt is aan close button om form te sluiten
