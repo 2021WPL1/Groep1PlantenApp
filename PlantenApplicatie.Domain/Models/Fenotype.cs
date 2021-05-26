@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PlantenApplicatie.Domain.Models
+namespace PlantenApplicatie.UI.Models
 {
     public partial class Fenotype
     {
@@ -14,6 +14,9 @@ namespace PlantenApplicatie.Domain.Models
         public string Bloeiwijze { get; set; }
         public string Habitus { get; set; }
         public string Levensvorm { get; set; }
+        public int? MaxBladhoogte { get; set; }
+        public int? MinBloeihoogte { get; set; }
+        public int? MaxBloeihoogte { get; set; }
 
         public virtual Plant Plant { get; set; }
     }

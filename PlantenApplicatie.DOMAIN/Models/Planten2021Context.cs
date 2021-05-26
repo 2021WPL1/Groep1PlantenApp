@@ -1,10 +1,8 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using PlantenApplicatie.UI.Models;
 
-
-namespace PlantenApplicatie.Data
+namespace PlantenApplicatie.UI.Models
 {
     public partial class Planten2021Context : DbContext
     {
@@ -41,6 +39,8 @@ namespace PlantenApplicatie.Data
         public virtual DbSet<FenoHabitus> FenoHabitus { get; set; }
         public virtual DbSet<FenoKleur> FenoKleur { get; set; }
         public virtual DbSet<FenoLevensvorm> FenoLevensvorm { get; set; }
+        public virtual DbSet<FenoMaand> FenoMaand { get; set; }
+        public virtual DbSet<FenoRatioBloeiBlad> FenoRatioBloeiBlad { get; set; }
         public virtual DbSet<FenoSpruitfenologie> FenoSpruitfenologie { get; set; }
         public virtual DbSet<Fenotype> Fenotype { get; set; }
         public virtual DbSet<FenotypeMulti> FenotypeMulti { get; set; }
@@ -60,7 +60,7 @@ namespace PlantenApplicatie.Data
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer(Constant.CONNECTION_STRING);
+                optionsBuilder.UseSqlServer("Server=LAPTOP-8DEK2824\\VIVES;Database=Planten2021;Trusted_Connection=True;");
             }
         }
 
@@ -289,23 +289,26 @@ namespace PlantenApplicatie.Data
 
             modelBuilder.Entity<Commensalisme>(entity =>
             {
-                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.Ontwikkelsnelheid)
+                    .IsRequired()
                     .HasColumnName("ontwikkelsnelheid")
                     .HasMaxLength(10);
 
                 entity.Property(e => e.PlantId).HasColumnName("plant_id");
 
                 entity.Property(e => e.Strategie)
+                    .IsRequired()
                     .HasColumnName("strategie")
                     .HasMaxLength(10);
 
                 entity.HasOne(d => d.Plant)
                     .WithMany(p => p.Commensalisme)
                     .HasForeignKey(d => d.PlantId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("commensalisme_multiplev2_plant_FK");
+                    .HasConstraintName("FK_Commensalisme_Plant");
             });
 
             modelBuilder.Entity<CommensalismeMulti>(entity =>
@@ -480,6 +483,32 @@ namespace PlantenApplicatie.Data
                     .HasMaxLength(500);
             });
 
+            modelBuilder.Entity<FenoMaand>(entity =>
+            {
+                entity.ToTable("Feno_Maand");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .ValueGeneratedNever();
+
+                entity.Property(e => e.Maand)
+                    .HasColumnName("maand")
+                    .HasMaxLength(3);
+            });
+
+            modelBuilder.Entity<FenoRatioBloeiBlad>(entity =>
+            {
+                entity.ToTable("Feno_RatioBloeiBlad");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .ValueGeneratedNever();
+
+                entity.Property(e => e.Waarde)
+                    .HasColumnName("waarde")
+                    .HasMaxLength(50);
+            });
+
             modelBuilder.Entity<FenoSpruitfenologie>(entity =>
             {
                 entity.ToTable("Feno_Spruitfenologie");
@@ -512,6 +541,12 @@ namespace PlantenApplicatie.Data
                 entity.Property(e => e.Levensvorm)
                     .HasColumnName("levensvorm")
                     .HasMaxLength(50);
+
+                entity.Property(e => e.MaxBladhoogte).HasColumnName("maxBladhoogte");
+
+                entity.Property(e => e.MaxBloeihoogte).HasColumnName("maxBloeihoogte");
+
+                entity.Property(e => e.MinBloeihoogte).HasColumnName("minBloeihoogte");
 
                 entity.Property(e => e.PlantId).HasColumnName("plant_id");
 

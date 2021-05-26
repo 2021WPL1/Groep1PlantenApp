@@ -6,7 +6,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Input;
 using PlantenApplicatie.Data;
-using PlantenApplicatie.Domain.Models;
+using PlantenApplicatie.UI.Models;
 using PlantenApplicatie.UI.View;
 using PlantenApplicatie.UI.ViewModel;
 using Prism.Commands;

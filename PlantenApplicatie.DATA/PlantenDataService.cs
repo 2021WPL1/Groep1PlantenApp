@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using PlantenApplicatie.Data;
-using PlantenApplicatie.Domain.Models;
+using PlantenApplicatie.UI.Models;
 
 namespace PlantenApplicatie.Data
 {

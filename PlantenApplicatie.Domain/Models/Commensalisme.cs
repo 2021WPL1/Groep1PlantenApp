@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PlantenApplicatie.Domain.Models
+namespace PlantenApplicatie.UI.Models
 {
     public partial class Commensalisme
     {
         public long Id { get; set; }
-        public long PlantId { get; set; }
+        public long? PlantId { get; set; }
         public string Ontwikkelsnelheid { get; set; }
         public string Strategie { get; set; }
 

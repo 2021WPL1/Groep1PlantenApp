@@ -5,7 +5,7 @@ using System.Windows;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
 using PlantenApplicatie.Data;
-using PlantenApplicatie.Domain.Models;
+using PlantenApplicatie.UI.Models;
 using PlantenApplicatie.UI.View;
 using Prism.Commands;
 
