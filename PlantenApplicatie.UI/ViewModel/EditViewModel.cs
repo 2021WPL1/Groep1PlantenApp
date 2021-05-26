@@ -49,20 +49,6 @@ namespace PlantenApplicatie.UI.ViewModel
         public ObservableCollection<FenoRatioBloeiBlad> FenoRatio { get; set; }
         public ObservableCollection<FenoSpruitfenologie> FenoSpruit { get; set; }
         public ObservableCollection<FenoLevensvorm> FenoLevensvorm { get; set; }
-
-        /*
-         * Bloeiwijze (Id, Naam(string), Figuur (byte[]), UrlLocatie (string))
-         * Habitus (Id, Naam, Figuur (byte[]), UrlLocatie (string))
-         * max bladhoogte - maand (Id, Bladgrootte(string)) (FenoBladGrootte.cs)
-         * max bloeihoogte - maand (Id, Bladgrootte(string)) (FenoBladGrootte.cs)
-         * min bloeihoogte - maand (Id, Bladgrootte(string)) (FenoBladGrootte.cs)
-         * bladkleur - maand (Id, NaamKleur(string), HexWaarde(byte[])) FenoKleur.cs
-         * bloeikleur - maand (Id, NaamKleur(string), HexWaarde(byte[])) FenoKleur.cs
-         * bladvorm  (Id, Vorm (string) )
-         * ratio Bloei/blad ( Fenotype.cs -> RatioBloeiBlad (string))
-         * spruitfen (Id, Fenologie (string))
-         * levensvorm volgens R. (Id, Levensvorm (string), Figuur(byte[]), UrlLocatie(string))
-         */
         //Abio
         public ObservableCollection<AbioBezonning> AbioBezonning { get; set; }
         public ObservableCollection<AbioGrondsoort> AbioGrondsoort { get; set; }
@@ -231,7 +217,32 @@ namespace PlantenApplicatie.UI.ViewModel
                         .Variantnaam);
             }
             //Fenotype
-
+            FenoSelectedBloeiwijze =
+                _fenoBloeiwijze.FirstOrDefault(f =>
+                    f.Naam == _plantenDataService.GetFenotype(plant.PlantId).Bloeiwijze);
+            FenoSelectedHabitus =
+                _fenoHabitus.FirstOrDefault(f => f.Naam == _plantenDataService.GetFenotype(plant.PlantId).Habitus);
+            FenoSelectedMaxBladgrootte = _fenoBladgrootte.FirstOrDefault(f =>
+                f.Bladgrootte == _plantenDataService.GetFenoMaxBladHoogte(plant.PlantId));
+            FenoSelectedMaxBladgrootteMaand = _plantenDataService.GetFenoMaxBladHoogteMaand(plant.PlantId);
+            FenoSelectedMaxBloeihoogte = _fenoBladgrootte.FirstOrDefault(f =>
+                f.Bladgrootte == _plantenDataService.GetFenoMaxBloeiHoogte(plant.PlantId));
+            FenoSelectedMaxBloeihoogteMaand = _plantenDataService.GetFenoMaxBloeiHoogteMaand(plant.PlantId);
+            FenoSelectedMinBloeihoogte = _fenoBladgrootte.FirstOrDefault(f =>
+                f.Bladgrootte == _plantenDataService.GetFenoMinBloeiHoogte(plant.PlantId));
+            FenoSelectedMinBloeihoogteMaand = _plantenDataService.GetFenoMinBloeiHoogteMaand(plant.PlantId);
+            FenoSelectedBladKleur = _plantenDataService.GetFenoBladKleur(plant.PlantId);
+            FenoSelectedBladKleurMaand = _plantenDataService.GetFenoBladMaand(plant.PlantId);
+            FenoSelectedBloeiKleur = _plantenDataService.GetFenoBloeiKleur(plant.PlantId);
+            FenoSelectedBloeiKleurMaand = _plantenDataService.GetFenoBloeiMaand(plant.PlantId);
+            FenoSelectedBladvorm =
+                _fenoBladvorm.FirstOrDefault(f => f.Vorm == _plantenDataService.GetFenotype(plant.PlantId).Bladvorm);
+            FenoSelectedRatio = _fenoRatio.FirstOrDefault(f =>
+                f.Waarde == _plantenDataService.GetFenotype(plant.PlantId).RatioBloeiBlad);
+            FenoSelectedSpruit = _fenoSpruit.FirstOrDefault(f =>
+                f.Fenologie == _plantenDataService.GetFenotype(plant.PlantId).Spruitfenologie);
+            FenoSelectedLevensvorm = _fenoLevensvorm.FirstOrDefault(f =>
+                f.Levensvorm == _plantenDataService.GetFenotype(plant.PlantId).Levensvorm);
             //Abio
             AbioSelectedBezonning =
                 _abiobezonning.FirstOrDefault(a => a.Naam == _plantenDataService.GetAbiotiek(plant.PlantId).Bezonning);
