@@ -49,6 +49,9 @@ namespace PlantenApplicatie.UI.ViewModel
 
             //Senne & Hermes
             this.EditSchermCommand = new DelegateCommand(EditScherm);
+
+            SelectedPlantBladKleur = new ObservableCollection<string>();
+            SelectedPlantBloeiKleur = new ObservableCollection<string>();
         }
 
 
