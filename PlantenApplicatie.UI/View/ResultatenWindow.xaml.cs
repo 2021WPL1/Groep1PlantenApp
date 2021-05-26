@@ -25,6 +25,7 @@ namespace PlantenApplicatie.UI.View
             viewModel = new ResultatenViewModel(PlantenDataService.Instance());
             DataContext = viewModel;
             viewModel.fillLabels(plant);
+            viewModel.LoadList();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

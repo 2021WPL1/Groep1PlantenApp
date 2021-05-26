@@ -120,12 +120,12 @@ namespace PlantenApplicatie.UI.ViewModel
         {
            SelectedPlantBladKleur.Clear();
            SelectedPlantBloeiKleur.Clear();
-           foreach (var bladkleur in SelectedPlantBladKleur)
+           foreach (var bladkleur in _selectedPlantBladKleur)
            {
                SelectedPlantBladKleur.Add(bladkleur);
            }
 
-           foreach (var bloeikleur in SelectedPlantBloeiKleur)
+           foreach (var bloeikleur in _selectedPlantBloeiKleur)
            {
                SelectedPlantBloeiKleur.Add(bloeikleur);
            }
