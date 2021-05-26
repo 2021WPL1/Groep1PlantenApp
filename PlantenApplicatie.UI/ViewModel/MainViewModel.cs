@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
+using GalaSoft.MvvmLight.Command;
 using PlantenApplicatie.Data;
 using PlantenApplicatie.Domain.Models;
 using PlantenApplicatie.UI.View;
@@ -15,6 +16,7 @@ namespace PlantenApplicatie.UI.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
+        public RelayCommand<Window> schermGebruikerToevoegenCommand { get; set; }
         //ICommand om zoekresultaat leeg te maken
         public ICommand ClearResultCommand { get; set; }
 
@@ -86,6 +88,8 @@ namespace PlantenApplicatie.UI.ViewModel
             TfgsvVariant = new ObservableCollection<TfgsvVariant>();
             PlantResults = new ObservableCollection<Plant>();
 
+            //Hemen en Maarten
+            schermGebruikerToevoegenCommand = new RelayCommand<Window>(this.SchermGebruikerToevoegenCommand);
             this._plantenDataService = plantenDataService;
         }
 
@@ -496,6 +500,13 @@ namespace PlantenApplicatie.UI.ViewModel
                     }
                 }
             }
+        }
+        //Hemen en Maarten
+        public void SchermGebruikerToevoegenCommand(Window window)
+        {
+            CreateGebruiker createGebruiker = new CreateGebruiker();
+            window.Close();
+            createGebruiker.ShowDialog();
         }
     }
 }

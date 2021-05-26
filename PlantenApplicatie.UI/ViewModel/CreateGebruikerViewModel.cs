@@ -1,5 +1,7 @@
-﻿using PlantenApplicatie.Data;
+﻿using GalaSoft.MvvmLight.Command;
+using PlantenApplicatie.Data;
 using PlantenApplicatie.Domain.Models;
+using PlantenApplicatie.UI.View;
 using Prism.Commands;
 using System;
 using System.Collections.Generic;
@@ -7,6 +9,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Cryptography;
 using System.Text;
+using System.Windows;
 using System.Windows.Input;
 
 namespace PlantenApplicatie.UI.ViewModel
@@ -14,8 +17,8 @@ namespace PlantenApplicatie.UI.ViewModel
     //Maarten & Hemen 
     class CreateGebruikerViewModel : ViewModelBase
     {
+        public RelayCommand<Window> addGebruikerCommand { get; set; }
         private PlantenDataService _dataservice;
-        public ICommand addGebruikerCommand { get; set; }
         public ObservableCollection<Rol> Rollen { get; set; }
         private string emailInput;
         private string wachtwoordInput;
@@ -26,7 +29,7 @@ namespace PlantenApplicatie.UI.ViewModel
         //Hemen &maarten 
         public CreateGebruikerViewModel(PlantenDataService plantenDataService)
         {
-            addGebruikerCommand = new DelegateCommand(addGebruiker);
+            this.addGebruikerCommand = new RelayCommand<Window>(this.addGebruiker);
             Rollen = new ObservableCollection<Rol>();
             this._dataservice = plantenDataService;
         }
@@ -62,7 +65,6 @@ namespace PlantenApplicatie.UI.ViewModel
                 OnPropertyChanged();
             }
         }
-        [Required(ErrorMessage = " Password is required")]
         public string WachtwoordInput
         {
             get
@@ -75,7 +77,6 @@ namespace PlantenApplicatie.UI.ViewModel
                 OnPropertyChanged();
             }
         }
-        [Required(ErrorMessage = "Confirm Password is required")]
         public string WachtwoordBevestigen
         {
             get { return wachtwoordBevestigen; }
@@ -91,28 +92,32 @@ namespace PlantenApplicatie.UI.ViewModel
             }
         }
         //hemen & maarten 
-        public void addGebruiker()
+        public void addGebruiker(Window closeWindow)
         {
             try
             {
                 if (WachtwoordBevestigen == WachtwoordInput)
                 {
                     using (var sha256 = SHA256.Create())
-                    {
+                    {   
+                        MainWindow window = new MainWindow();
                         var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(WachtwoordInput));
                         _dataservice.addGebruiker(SelectedRol.Omschrijving, EmailInput, hashedBytes);
+                        closeWindow.Close();
+                        window.ShowDialog();
+                        
                     }
 
                 }
                 else
                 {
-                    SelectedError = "wachtwoord is niet zelfde";
+                    SelectedError = "wachtwoord is niet hetzelfde";
                 }
             }
             catch (Exception)
             {
 
-                SelectedError = "er is iets fout";
+                SelectedError = "oei, er is iets fout";
             }
           
           
