@@ -67,7 +67,7 @@
                 SelectedItem="{Binding FilterSelectedVariant, Mode=TwoWay}"
                 DisplayMemberPath="Variantnaam"
                 SelectedValuePath="VariantId"/>
-            <TabControl Margin="298,36,0,1" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left">
+            <TabControl Margin="298,36,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left">
                 <TabControl.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -77,8 +77,8 @@
                     </TransformGroup>
                 </TabControl.RenderTransform>
                 <TabItem x:Name="tabFenotype" Header="Fenotype">
-                    <ScrollViewer x:Name="scrollFenotype" Margin="6,0,-6,0" Height="590">
-                        <Grid x:Name="gridFenotype" Background="WhiteSmoke" Height="750" Width="550">
+                    <ScrollViewer x:Name="scrollFenotype" Margin="6,0,-6,0" Height="591" VerticalAlignment="Center">
+                        <Grid x:Name="gridFenotype" Background="WhiteSmoke" Height="697" Width="550" VerticalAlignment="Top">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
@@ -87,11 +87,11 @@
                                 x:Name="ImgBloeiwijze"
                                 Source="{Binding Path=FenoSelectedBloeiwijzeImage,Mode=TwoWay}"
                                 HorizontalAlignment="Left"
-                                Height="117" 
+                                Height="154" 
                                 Margin="291,46,0,0"
                                 VerticalAlignment="Top"
-                                Width="116" />
-                            <Label x:Name="lblHabitus" Content="Habitus" HorizontalAlignment="Left" Margin="35,318,0,0" VerticalAlignment="Top"/>
+                                Width="167" />
+                            <Label x:Name="lblHabitus" Content="Habitus" HorizontalAlignment="Left" Margin="35,240,0,0" VerticalAlignment="Top"/>
                             <ComboBox
                                 ItemsSource="{Binding FenoHabitus}"
                                 SelectedItem="{Binding FenoSelectedHabitus, Mode=TwoWay}"
@@ -99,10 +99,10 @@
                                 SelectedValuePath="Id"
                                 x:Name="cbxHabitus"
                                 HorizontalAlignment="Left"
-                                Margin="107,322,0,0"
+                                Margin="100,240,0,0"
                                 VerticalAlignment="Top"
                                 Width="365"/>
-                            <Label x:Name="lblMaxBladhoogte" Content="Maximale Bladhoogte" HorizontalAlignment="Left" Margin="35,370,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblMaxBladhoogte" Content="Maximale Bladhoogte" HorizontalAlignment="Left" Margin="35,300,0,0" VerticalAlignment="Top"/>
                             <ComboBox
                                 ItemsSource="{Binding FenoBladgrootte}"
                                 SelectedItem="{Binding FenoSelectedMaxBladgrootte, Mode=TwoWay}"
@@ -110,11 +110,11 @@
                                 SelectedValuePath="Id"
                                 x:Name="cbxMaxBladhoogte"
                                 HorizontalAlignment="Left"
-                                Margin="174,374,0,0"
+                                Margin="185,305,0,0"
                                 VerticalAlignment="Top"
                                 Width="70"
                                 Height="22"/>
-                            <Label x:Name="lblMaxBladhoogteMaand" Content="In Maand: " HorizontalAlignment="Left" Margin="285,370,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblMaxBladhoogteMaand" Content="In Maand: " HorizontalAlignment="Left" Margin="285,300,0,0" VerticalAlignment="Top"/>
                             <ComboBox
                                 ItemsSource="{Binding FenoMaand}"
                                 SelectedItem="{Binding FenoSelectedMaxBladgrootteMaand, Mode=TwoWay}"
@@ -122,11 +122,11 @@
                                 SelectedValuePath="Id"
                                 x:Name="cbxBladHoogteMaand"
                                 HorizontalAlignment="Left"
-                                Margin="355,374,0,0"
+                                Margin="355,305,0,0"
                                 VerticalAlignment="Top"
                                 Width="120"/>
-                            <Label x:Name="lblMaxBloeihoogte" Content="Maximale Bloeihoogte" HorizontalAlignment="Left" Margin="35,400,0,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lblMinBloeihoogte" Content="Minimum Bloeihoogte" HorizontalAlignment="Left" Margin="35,430,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblMaxBloeihoogte" Content="Maximale Bloeihoogte" HorizontalAlignment="Left" Margin="35,330,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblMinBloeihoogte" Content="Minimum Bloeihoogte" HorizontalAlignment="Left" Margin="35,360,0,0" VerticalAlignment="Top"/>
                             <ComboBox
                                 ItemsSource="{Binding FenoBladgrootte}"
                                 SelectedItem="{Binding FenoSelectedMaxBloeihoogte, Mode=TwoWay}"
@@ -134,7 +134,7 @@
                                 SelectedValuePath="Id"
                                 x:Name="cbxMaxBloeihoogte"
                                 HorizontalAlignment="Left"
-                                Margin="174,404,0,0"
+                                Margin="185,335,0,0"
                                 VerticalAlignment="Top"
                                 Width="70"
                                 Height="22"/>
@@ -145,7 +145,7 @@
                                 SelectedValuePath="Id"
                                 x:Name="cbxMaxBloeihoogteMaand"
                                 HorizontalAlignment="Left"
-                                Margin="355,404,0,0"
+                                Margin="355,335,0,0"
                                 VerticalAlignment="Top"
                                 Width="120"/>
                             <ComboBox
@@ -155,7 +155,7 @@
                                 SelectedValuePath="Id"
                                 x:Name="cbxMinBloeihoogte"
                                 HorizontalAlignment="Left"
-                                Margin="174,434,0,0"
+                                Margin="185,365,0,0"
                                 VerticalAlignment="Top"
                                 Width="70"
                                 Height="22"/>
@@ -166,13 +166,13 @@
                                 SelectedValuePath="Id"
                                 x:Name="cbxMinBloeihoogteMaand"
                                 HorizontalAlignment="Left"
-                                Margin="355,434,0,0"
+                                Margin="355,365,0,0"
                                 VerticalAlignment="Top"
                                 Width="120"/>
-                            <Label x:Name="lblMaxbloeihoogteMaand" Content="In Maand: " HorizontalAlignment="Left" Margin="285,400,0,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lblMinBloeihoogteMaand" Content="In Maand: " HorizontalAlignment="Left" Margin="285,430,0,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lblBladkleur" Content="Bladkleur" HorizontalAlignment="Left" Margin="35,490,0,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lblBloeikleur" Content="Bloeikleur" HorizontalAlignment="Left" Margin="35,520,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblMaxbloeihoogteMaand" Content="In Maand: " HorizontalAlignment="Left" Margin="285,330,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblMinBloeihoogteMaand" Content="In Maand: " HorizontalAlignment="Left" Margin="285,360,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblBladkleur" Content="Bladkleur" HorizontalAlignment="Left" Margin="100,400,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblBloeikleur" Content="Bloeikleur" HorizontalAlignment="Left" Margin="100,430,0,0" VerticalAlignment="Top"/>
                             <ComboBox
                                 ItemsSource="{Binding FenoKleur}"
                                 SelectedItem="{Binding FenoSelectedBladKleur, Mode=TwoWay}"
@@ -180,7 +180,7 @@
                                 SelectedValuePath="Id"
                                 x:Name="cbxBladkleur"
                                 HorizontalAlignment="Left"
-                                Margin="105,494,0,0"
+                                Margin="185,405,0,0"
                                 VerticalAlignment="Top"
                                 Width="70"
                                 Height="22"/>
@@ -191,12 +191,12 @@
                                 SelectedValuePath="Id"
                                 x:Name="cbxBloeikleur"
                                 HorizontalAlignment="Left"
-                                Margin="105,524,0,0"
+                                Margin="185,435,0,0"
                                 VerticalAlignment="Top"
                                 Width="70"
                                 Height="22"/>
-                            <Label x:Name="lblBladkleurMaand" Content="In Maand: " HorizontalAlignment="Left" Margin="190,490,0,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lblBloeikleurMaand" Content="In Maand: " HorizontalAlignment="Left" Margin="190,520,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblBladkleurMaand" Content="In Maand: " HorizontalAlignment="Left" Margin="285,400,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblBloeikleurMaand" Content="In Maand: " HorizontalAlignment="Left" Margin="285,430,0,0" VerticalAlignment="Top"/>
                             <ComboBox 
                                 ItemsSource="{Binding FenoMaand}"
                                 SelectedItem="{Binding FenoSelectedBladKleurMaand, Mode=TwoWay}"
@@ -204,7 +204,7 @@
                                 SelectedValuePath="Id"
                                 x:Name="cbxBladkleurMaand"
                                 HorizontalAlignment="Left"
-                                Margin="260,494,0,0"
+                                Margin="355,405,0,0"
                                 VerticalAlignment="Top"
                                 Width="120"/>
                             <ComboBox
@@ -214,7 +214,7 @@
                                 SelectedValuePath="Id"
                                 x:Name="cbxBloeikleurMaand" 
                                 HorizontalAlignment="Left" 
-                                Margin="260,524,0,0" 
+                                Margin="355,434,0,0" 
                                 VerticalAlignment="Top" 
                                 Width="120"/>
                             <ComboBox
@@ -224,11 +224,11 @@
                                 SelectedValuePath="Id"
                                 x:Name="cbxBladvorm" 
                                 HorizontalAlignment="Left" 
-                                Margin="330,594,0,0" 
+                                Margin="185,485,0,0" 
                                 VerticalAlignment="Top" 
                                 Width="120"/>
-                            <Label x:Name="lblBladvorm" Content="Bladvorm:" HorizontalAlignment="Left" Margin="260,590,0,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lblRatioBloeiBlad" Content="Ratio Bloei/Blad:" HorizontalAlignment="Left" Margin="35,640,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblBladvorm" Content="Bladvorm:" HorizontalAlignment="Left" Margin="100,480,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblRatioBloeiBlad" Content="Ratio Bloei/Blad:" HorizontalAlignment="Left" Margin="65,520,0,0" VerticalAlignment="Top"/>
                             <ComboBox
                                 ItemsSource="{Binding FenoRatio}"
                                 SelectedItem="{Binding FenoSelectedRatio, Mode=TwoWay}"
@@ -236,7 +236,7 @@
                                 SelectedValuePath="Id"
                                 x:Name="cbxRatioBloeiBlad" 
                                 HorizontalAlignment="Left" 
-                                Margin="140,644,0,0" 
+                                Margin="185,525,0,0" 
                                 VerticalAlignment="Top"
                                 Width="120"/>
                             <ComboBox
@@ -246,11 +246,11 @@
                                 SelectedValuePath="Id"
                                 x:Name="cbxSpruitFenologie"
                                 HorizontalAlignment="Left" 
-                                Margin="362,644,0,0" 
+                                Margin="185,565,0,0" 
                                 VerticalAlignment="Top" 
                                 Width="120"/>
-                            <Label x:Name="lblSpruitfenologie" Content="SpruitFenologie" HorizontalAlignment="Left" Margin="260,640,0,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lblRaunkhiaer" Content="Levensvorm volgens Raunkhiaer" HorizontalAlignment="Left" Margin="35,680,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblSpruitfenologie" Content="SpruitFenologie" HorizontalAlignment="Left" Margin="70,560,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblRaunkhiaer" Content="Levensvorm volgens Raunkhiaer" HorizontalAlignment="Left" Margin="5,620,0,0" VerticalAlignment="Top"/>
                             <ComboBox
                                 ItemsSource="{Binding FenoLevensvorm}"
                                 SelectedItem="{Binding FenoSelectedLevensvorm, Mode=TwoWay}"
@@ -258,7 +258,7 @@
                                 SelectedValuePath="Id"
                                 x:Name="cbxRaunkhiaer" 
                                 HorizontalAlignment="Left" 
-                                Margin="226,684,0,0"
+                                Margin="200,625,0,0"
                                 VerticalAlignment="Top" Width="120"/>
                             <ListBox
                                 x:Name="ListBoxBloeiWijze" 
@@ -266,7 +266,7 @@
                                 SelectedItem="{Binding FenoSelectedBloeiwijze,Mode=TwoWay}"
                                 DisplayMemberPath="Naam"
                                 SelectedValuePath="Id"
-                                Margin="30,45,307,449"/>
+                                Margin="30,48,353,0" Height="154" VerticalAlignment="Top"/>
                         </Grid>
                     </ScrollViewer>
                 </TabItem>
