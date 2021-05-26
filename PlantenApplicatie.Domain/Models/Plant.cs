@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace PlantenApplicatie.UI.Models
+namespace PlantenApplicatie.Domain.Models
 {
     public partial class Plant
     {
@@ -11,11 +10,11 @@ namespace PlantenApplicatie.UI.Models
             AbiotiekMulti = new HashSet<AbiotiekMulti>();
             BeheerMaand = new HashSet<BeheerMaand>();
             Commensalisme = new HashSet<Commensalisme>();
-            CommensalismeMulti = new HashSet<CommensalismeMulti>();
+            Models.CommensalismeMulti = new HashSet<CommensalismeMulti>();
             ExtraEigenschap = new HashSet<ExtraEigenschap>();
             Fenotype = new HashSet<Fenotype>();
-            Foto = new HashSet<Foto>();
-            UpdatePlant = new HashSet<UpdatePlant>();
+            Models.Foto = new HashSet<Foto>();
+            Models.UpdatePlant = new HashSet<UpdatePlant>();
         }
 
         public long PlantId { get; set; }

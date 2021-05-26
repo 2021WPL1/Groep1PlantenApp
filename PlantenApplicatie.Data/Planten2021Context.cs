@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using PlantenApplicatie.UI.Models;
+using PlantenApplicatie.Domain.Models;
 
 
 namespace PlantenApplicatie.Data
