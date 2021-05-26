@@ -315,7 +315,7 @@ namespace PlantenApplicatie.Data
         }
         public List<CommSocialbiliteit> GetCommSocialbiliteit()
         {
-            return context.CommSocialbiliteit.OrderBy(c => c.Waarde).ToList();
+            return context.CommSocialbiliteit.ToList();
         }
         //Extra Eigenschappen
         //Beheer Eigenschappen
