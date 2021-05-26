@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
@@ -21,6 +22,11 @@ namespace PlantenApplicatie.UI.ViewModel
         //Command maken voor form te sluiten
         public RelayCommand<Window> CloseResultCommand { get; private set; }
 
+        //Jelle & Stephanie
+        //Lists voor boxen met meerdere waarden
+        public ObservableCollection<string> BeheerAllSelectedPlantMonths { get; set; }
+
+
         //Jelle & Hemen
         //Plant voor in labels
         private Plant _plantenResultaat;
@@ -32,6 +38,10 @@ namespace PlantenApplicatie.UI.ViewModel
         private ExtraEigenschap _extraEigenschap;
         private BeheerMaand _beheerMaand;
 
+        //Jelle & Stephanie
+        //Private lists voor observable collections op te vullen
+        private List<string> _beheerAllSelectedPlantMonths = new List<string>();
+
         public ResultatenViewModel(PlantenDataService plantenDataService)
         {
             
@@ -41,6 +51,9 @@ namespace PlantenApplicatie.UI.ViewModel
 
             //Senne & Hermes
             this.EditSchermCommand = new DelegateCommand(EditScherm);
+
+            //Jelle & Stephanie
+            BeheerAllSelectedPlantMonths = new ObservableCollection<string>();
         }
 
 
@@ -107,6 +120,18 @@ namespace PlantenApplicatie.UI.ViewModel
             }
         }
 
+        //Jelle & Stephanie
+        //Laad lijsten voor listboxes
+        public void LoadLists()
+        {
+            BeheerAllSelectedPlantMonths.Clear();
+            foreach (var month in _beheerAllSelectedPlantMonths)
+            {
+                BeheerAllSelectedPlantMonths.Add(month);
+            }
+        }
+
+
         //Jelle & Hemen
         //Command die gelinkt is aan close button om form te sluiten
         public void CloseResult(Window window)
@@ -127,6 +152,21 @@ namespace PlantenApplicatie.UI.ViewModel
             Commensalisme = _plantenDataService.GetCommensalisme(plant.PlantId);
             ExtraEigenschap = _plantenDataService.GetExtraEigenschap(plant.PlantId);
             BeheerMaand = _plantenDataService.GetBeheerMaand(plant.PlantId);
+
+            //Jelle & Stephanie
+            //Filters voor lists
+            if (BeheerMaand.Jan == true) { _beheerAllSelectedPlantMonths.Add("Januari"); }
+            if (BeheerMaand.Feb == true) { _beheerAllSelectedPlantMonths.Add("Februari"); }
+            if (BeheerMaand.Mrt == true) { _beheerAllSelectedPlantMonths.Add("Maart"); }
+            if (BeheerMaand.Apr == true) { _beheerAllSelectedPlantMonths.Add("April"); }
+            if (BeheerMaand.Mei == true) { _beheerAllSelectedPlantMonths.Add("Mei"); }
+            if (BeheerMaand.Jun == true) { _beheerAllSelectedPlantMonths.Add("Juni"); }
+            if (BeheerMaand.Jul == true) { _beheerAllSelectedPlantMonths.Add("Juli"); }
+            if (BeheerMaand.Aug == true) { _beheerAllSelectedPlantMonths.Add("Augustus"); }
+            if (BeheerMaand.Sept == true) { _beheerAllSelectedPlantMonths.Add("September"); }
+            if (BeheerMaand.Okt == true) { _beheerAllSelectedPlantMonths.Add("Oktober"); }
+            if (BeheerMaand.Nov == true) { _beheerAllSelectedPlantMonths.Add("November"); }
+            if (BeheerMaand.Dec == true) { _beheerAllSelectedPlantMonths.Add("December"); }
         }
     }
 }

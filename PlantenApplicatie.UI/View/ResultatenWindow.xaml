@@ -517,7 +517,9 @@
                             <Label Content="{Binding BeheerMaand.Beheerdaad, Mode=OneWay}" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="0,11,0,0" Height="28"/>
                             <Label Content="" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="0,125,0,0" Height="70"/>
                             <Label Content="" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="0,86,0,0" Height="28"/>
-                            <ListBox x:Name="listboxMaand" Margin="146,50,146,225" BorderBrush="#FF020202"/>
+                            <ListBox x:Name="listboxMaand" 
+                                     ItemsSource="{Binding BeheerAllSelectedPlantMonths}"
+                                     Margin="146,50,146,225" BorderBrush="#FF020202"/>
                         </Grid>
                     </TabItem>
 
