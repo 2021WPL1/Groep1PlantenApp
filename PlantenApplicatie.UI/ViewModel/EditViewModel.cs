@@ -32,6 +32,12 @@ namespace PlantenApplicatie.UI.ViewModel
         public ObservableCollection<TfgsvSoort> FilterTfgsvSoort { get; set; }
         public ObservableCollection<TfgsvVariant> FilterTfgsvVariant { get; set; }
         //Fenotype
+        public ObservableCollection<FenoBloeiwijze> FenoBloeiwijze { get; set; }
+        public ObservableCollection<FenoHabitus> FenoHabitus { get; set; }
+        public ObservableCollection<FenoBladgrootte> FenoBladgrote { get; set; } //bladhoogte, min & max bloeihoogte
+        public ObservableCollection<FenoKleur> FenoKleur { get; set; } //bladkleur & bloeikleur
+        //public ObservableCollection<FenoMaand> FenoMaand { get; set; } //bladkleur & bloeikleur
+
         /*
          * Bloeiwijze (Id, Naam(string), Figuur (byte[]), UrlLocatie (string))
          * Habitus (Id, Naam, Figuur (byte[]), UrlLocatie (string))
@@ -40,7 +46,6 @@ namespace PlantenApplicatie.UI.ViewModel
          * min bloeihoogte - maand (Id, Bladgrootte(string)) (FenoBladGrootte.cs)
          * bladkleur - maand (Id, NaamKleur(string), HexWaarde(byte[])) FenoKleur.cs
          * bloeikleur - maand (Id, NaamKleur(string), HexWaarde(byte[])) FenoKleur.cs
-         * bladgrootte tot (Id, Bladgrootte(string)) ???.cs
          * bladvorm  (Id, Vorm (string) )
          * ratio Bloei/blad ( Fenotype.cs -> RatioBloeiBlad (string))
          * spruitfen (Id, Fenologie (string))
