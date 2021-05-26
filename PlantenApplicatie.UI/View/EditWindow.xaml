@@ -83,40 +83,132 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <Label x:Name="lblBloeiwijze" Content="Bloeiwijze" HorizontalAlignment="Left" Margin="35,9,0,0" VerticalAlignment="Top" Height="26" Width="62"/>
-                            <Image x:Name="ImgBloeiwijze" HorizontalAlignment="Left" Height="117" Margin="291,46,0,0" VerticalAlignment="Top" Width="116" />
+                            <Image
+                                x:Name="ImgBloeiwijze"
+                                HorizontalAlignment="Left"
+                                Height="117" 
+                                Margin="291,46,0,0"
+                                VerticalAlignment="Top"
+                                Width="116" />
                             <Label x:Name="lblHabitus" Content="Habitus" HorizontalAlignment="Left" Margin="35,318,0,0" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="cbxHabitus" HorizontalAlignment="Left" Margin="107,322,0,0" VerticalAlignment="Top" Width="365"/>
+                            <ComboBox
+                                x:Name="cbxHabitus"
+                                HorizontalAlignment="Left"
+                                Margin="107,322,0,0"
+                                VerticalAlignment="Top"
+                                Width="365"/>
                             <Label x:Name="lblMaxBladhoogte" Content="Maximale Bladhoogte" HorizontalAlignment="Left" Margin="35,370,0,0" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="cbxMaxBladhoogte" HorizontalAlignment="Left" Margin="174,374,0,0" VerticalAlignment="Top" Width="70" Height="22"/>
+                            <ComboBox
+                                x:Name="cbxMaxBladhoogte"
+                                HorizontalAlignment="Left"
+                                Margin="174,374,0,0"
+                                VerticalAlignment="Top"
+                                Width="70"
+                                Height="22"/>
                             <Label x:Name="lblMaxBladhoogteMaand" Content="In Maand: " HorizontalAlignment="Left" Margin="285,370,0,0" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="cbxBladHoogteMaand" HorizontalAlignment="Left" Margin="355,374,0,0" VerticalAlignment="Top" Width="120"/>
+                            <ComboBox
+                                x:Name="cbxBladHoogteMaand"
+                                HorizontalAlignment="Left"
+                                Margin="355,374,0,0"
+                                VerticalAlignment="Top"
+                                Width="120"/>
                             <Label x:Name="lblMaxBloeihoogte" Content="Maximale Bloeihoogte" HorizontalAlignment="Left" Margin="35,400,0,0" VerticalAlignment="Top"/>
                             <Label x:Name="lblMinBloeihoogte" Content="Minimum Bloeihoogte" HorizontalAlignment="Left" Margin="35,430,0,0" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="cbxMaxBloeihoogte" HorizontalAlignment="Left" Margin="174,404,0,0" VerticalAlignment="Top" Width="70" Height="22"/>
-                            <ComboBox x:Name="cbxMaxBloeihoogteMaand" HorizontalAlignment="Left" Margin="355,404,0,0" VerticalAlignment="Top" Width="120"/>
-                            <ComboBox x:Name="cbxMinBloeihoogte" HorizontalAlignment="Left" Margin="174,434,0,0" VerticalAlignment="Top" Width="70" Height="22"/>
-                            <ComboBox x:Name="cbxMinBloeihoogteMaand" HorizontalAlignment="Left" Margin="355,434,0,0" VerticalAlignment="Top" Width="120"/>
+                            <ComboBox
+                                x:Name="cbxMaxBloeihoogte"
+                                HorizontalAlignment="Left"
+                                Margin="174,404,0,0"
+                                VerticalAlignment="Top"
+                                Width="70"
+                                Height="22"/>
+                            <ComboBox
+                                x:Name="cbxMaxBloeihoogteMaand"
+                                HorizontalAlignment="Left"
+                                Margin="355,404,0,0"
+                                VerticalAlignment="Top"
+                                Width="120"/>
+                            <ComboBox
+                                x:Name="cbxMinBloeihoogte"
+                                HorizontalAlignment="Left"
+                                Margin="174,434,0,0"
+                                VerticalAlignment="Top"
+                                Width="70"
+                                Height="22"/>
+                            <ComboBox
+                                x:Name="cbxMinBloeihoogteMaand"
+                                HorizontalAlignment="Left"
+                                Margin="355,434,0,0"
+                                VerticalAlignment="Top"
+                                Width="120"/>
                             <Label x:Name="lblMaxbloeihoogteMaand" Content="In Maand: " HorizontalAlignment="Left" Margin="285,400,0,0" VerticalAlignment="Top"/>
                             <Label x:Name="lblMinBloeihoogteMaand" Content="In Maand: " HorizontalAlignment="Left" Margin="285,430,0,0" VerticalAlignment="Top"/>
                             <Label x:Name="lblBladkleur" Content="Bladkleur" HorizontalAlignment="Left" Margin="35,490,0,0" VerticalAlignment="Top"/>
                             <Label x:Name="lblBloeikleur" Content="Bloeikleur" HorizontalAlignment="Left" Margin="35,520,0,0" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="cbxBladkleur" HorizontalAlignment="Left" Margin="105,494,0,0" VerticalAlignment="Top" Width="70" Height="22"/>
-                            <ComboBox x:Name="cbxBloeikleur" HorizontalAlignment="Left" Margin="105,524,0,0" VerticalAlignment="Top" Width="70" Height="22"/>
+                            <ComboBox
+                                x:Name="cbxBladkleur"
+                                HorizontalAlignment="Left"
+                                Margin="105,494,0,0"
+                                VerticalAlignment="Top"
+                                Width="70"
+                                Height="22"/>
+                            <ComboBox
+                                x:Name="cbxBloeikleur"
+                                HorizontalAlignment="Left"
+                                Margin="105,524,0,0"
+                                VerticalAlignment="Top"
+                                Width="70"
+                                Height="22"/>
                             <Label x:Name="lblBladkleurMaand" Content="In Maand: " HorizontalAlignment="Left" Margin="190,490,0,0" VerticalAlignment="Top"/>
                             <Label x:Name="lblBloeikleurMaand" Content="In Maand: " HorizontalAlignment="Left" Margin="190,520,0,0" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="cbxBladkleurMaand" HorizontalAlignment="Left" Margin="260,494,0,0" VerticalAlignment="Top" Width="120"/>
-                            <ComboBox x:Name="cbxBloeikleurMaand" HorizontalAlignment="Left" Margin="260,524,0,0" VerticalAlignment="Top" Width="120"/>
+                            <ComboBox 
+                                x:Name="cbxBladkleurMaand"
+                                HorizontalAlignment="Left"
+                                Margin="260,494,0,0"
+                                VerticalAlignment="Top"
+                                Width="120"/>
+                            <ComboBox
+                                x:Name="cbxBloeikleurMaand" 
+                                HorizontalAlignment="Left" 
+                                Margin="260,524,0,0" 
+                                VerticalAlignment="Top" 
+                                Width="120"/>
                             <Label x:Name="lblBladgrootteTot" Content="Bladgrootte tot:" HorizontalAlignment="Left" Margin="35,590,0,0" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="cbxBladgrootteTot" HorizontalAlignment="Left" Margin="130,594,0,0" VerticalAlignment="Top" Width="120"/>
-                            <ComboBox x:Name="cbxBladvorm" HorizontalAlignment="Left" Margin="330,594,0,0" VerticalAlignment="Top" Width="120"/>
+                            <ComboBox
+                                x:Name="cbxBladgrootteTot" 
+                                HorizontalAlignment="Left" 
+                                Margin="130,594,0,0" 
+                                VerticalAlignment="Top" 
+                                Width="120"/>
+                            <ComboBox
+                                x:Name="cbxBladvorm" 
+                                HorizontalAlignment="Left" 
+                                Margin="330,594,0,0" 
+                                VerticalAlignment="Top" 
+                                Width="120"/>
                             <Label x:Name="lblBladvorm" Content="Bladvorm:" HorizontalAlignment="Left" Margin="260,590,0,0" VerticalAlignment="Top"/>
                             <Label x:Name="lblRatioBloeiBlad" Content="Ratio Bloei/Blad:" HorizontalAlignment="Left" Margin="35,640,0,0" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="cbxRatioBloeiBlad" HorizontalAlignment="Left" Margin="140,644,0,0" VerticalAlignment="Top" Width="120"/>
-                            <ComboBox HorizontalAlignment="Left" Margin="362,644,0,0" VerticalAlignment="Top" Width="120"/>
+                            <ComboBox
+                                x:Name="cbxRatioBloeiBlad" 
+                                HorizontalAlignment="Left" 
+                                Margin="140,644,0,0" 
+                                VerticalAlignment="Top"
+                                Width="120"/>
+                            <ComboBox
+                                x:Name="cbxSpruitFenologie"
+                                HorizontalAlignment="Left" 
+                                Margin="362,644,0,0" 
+                                VerticalAlignment="Top" 
+                                Width="120"/>
                             <Label x:Name="lblSpruitfenologie" Content="SpruitFenologie" HorizontalAlignment="Left" Margin="260,640,0,0" VerticalAlignment="Top"/>
                             <Label x:Name="lblRaunkhiaer" Content="Levensvorm volgens Raunkhiaer" HorizontalAlignment="Left" Margin="35,680,0,0" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="cbxRaunkhiaer" HorizontalAlignment="Left" Margin="226,684,0,0" VerticalAlignment="Top" Width="120"/>
-                            <ListBox x:Name="ListBoxBloeiWijze" Margin="30,45,307,449"/>
+                            <ComboBox
+                                x:Name="cbxRaunkhiaer" 
+                                HorizontalAlignment="Left" 
+                                Margin="226,684,0,0"
+                                VerticalAlignment="Top" Width="120"/>
+                            <ListBox
+                                x:Name="ListBoxBloeiWijze" 
+                                Margin="30,45,307,449"/>
                         </Grid>
                     </ScrollViewer>
                 </TabItem>
