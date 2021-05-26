@@ -3,10 +3,9 @@ using System.Collections.Generic;
 
 namespace PlantenApplicatie.UI.Models
 {
-    public partial class CommSocialbiliteit
+    public partial class FenoRatioBloeiBlad
     {
-        public int Id { get; set; }
-        public string Sociabiliteit { get; set; }
+        public long Id { get; set; }
         public string Waarde { get; set; }
     }
 }

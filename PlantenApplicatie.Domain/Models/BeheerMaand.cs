@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PlantenApplicatie.Domain.Models
+namespace PlantenApplicatie.UI.Models
 {
     public partial class BeheerMaand
     {
