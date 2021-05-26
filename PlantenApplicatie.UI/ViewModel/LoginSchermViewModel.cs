@@ -74,7 +74,11 @@ namespace PlantenApplicatie.UI.ViewModel
                             }
                         }
                     }
-                }            
+                }
+                else
+                {
+                    SelectedError = "Er is een veld niet ingevuld";
+                }
             }
             catch (Exception e)
             {
