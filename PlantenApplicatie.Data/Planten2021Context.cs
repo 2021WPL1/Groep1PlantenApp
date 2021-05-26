@@ -56,7 +56,7 @@ namespace PlantenApplicatie.Data
         public virtual DbSet<TfgsvType> TfgsvType { get; set; }
         public virtual DbSet<TfgsvVariant> TfgsvVariant { get; set; }
         public virtual DbSet<UpdatePlant> UpdatePlant { get; set; }
-
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)

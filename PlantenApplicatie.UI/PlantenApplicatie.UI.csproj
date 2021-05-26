@@ -43,7 +43,7 @@
   <ItemGroup>
     <Resource Include="View\Images\AchtergrondSchermen.jpg" />
     <Resource Include="View\Images\aar.jpg" />
-    <Resource Include="View\Images\brede pluim.jpg" />
+    <Resource Include="View\Images\pluim.jpg" />
     <Resource Include="View\Images\etage.jpg" />
     <Resource Include="View\Images\knop.jpg" />
     <Resource Include="View\Images\margrietachtig.jpg" />

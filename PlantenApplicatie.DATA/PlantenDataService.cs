@@ -191,6 +191,101 @@ namespace PlantenApplicatie.Data
             return context.TfgsvVariant.FirstOrDefault(p => p.VariantId == plantId);
         }
         //Fenotype
+        public string GetFenoMaxBladHoogte(long id)
+        {
+            return context.Fenotype.FirstOrDefault(f => f.PlantId == id).MaxBladhoogte.ToString();
+        }
+        public string GetFenoMaxBloeiHoogte(long id)
+        {
+            return context.Fenotype.FirstOrDefault(f => f.PlantId == id).MaxBloeihoogte.ToString();
+        }
+        public string GetFenoMinBloeiHoogte(long id)
+        {
+            return context.Fenotype.FirstOrDefault(f => f.PlantId == id).MinBloeihoogte.ToString();
+        }
+        public FenotypeMulti GetFenotypeMulti(long id)
+        {
+            return context.FenotypeMulti.FirstOrDefault(f => f.PlantId == id);
+        }
+        public FenoMaand GetFenoMaxBladHoogteMaand(long id)
+        {
+            return context.FenoMaand.FirstOrDefault(f =>
+                f.Maand == context.FenotypeMulti.Where(m => m.Eigenschap == "blad-max")
+                    .FirstOrDefault(i => i.PlantId == id).Maand);
+        }
+        public FenoMaand GetFenoMaxBloeiHoogteMaand(long id)
+        {
+            return context.FenoMaand.FirstOrDefault(f =>
+                f.Maand == context.FenotypeMulti.Where(m => m.Eigenschap == "bloei-max")
+                    .FirstOrDefault(i => i.PlantId == id).Maand);
+        }
+        public FenoMaand GetFenoMinBloeiHoogteMaand(long id)
+        {
+            return context.FenoMaand.FirstOrDefault(f =>
+                f.Maand == context.FenotypeMulti.Where(m => m.Eigenschap == "bloei-min")
+                    .FirstOrDefault(i => i.PlantId == id).Maand);
+        }
+        public FenoKleur GetFenoBladKleur(long id)
+        {
+            return context.FenoKleur.FirstOrDefault(f =>
+                f.NaamKleur == context.FenotypeMulti.Where(m => m.Eigenschap == "blad")
+                    .FirstOrDefault(i => i.PlantId == id).Waarde);
+        }
+        public FenoMaand GetFenoBladMaand(long id)
+        {
+            return context.FenoMaand.FirstOrDefault(f =>
+                f.Maand == context.FenotypeMulti.Where(m => m.Eigenschap == "blad")
+                    .FirstOrDefault(i => i.PlantId == id).Maand);
+        }
+        public FenoKleur GetFenoBloeiKleur(long id)
+        {
+            return context.FenoKleur.FirstOrDefault(f =>
+                f.NaamKleur == context.FenotypeMulti.Where(m => m.Eigenschap == "bloei")
+                    .FirstOrDefault(i => i.PlantId == id).Waarde);
+        }
+        public FenoMaand GetFenoBloeiMaand(long id)
+        {
+            return context.FenoMaand.FirstOrDefault(f =>
+                f.Maand == context.FenotypeMulti.Where(m => m.Eigenschap == "bloei")
+                    .FirstOrDefault(i => i.PlantId == id).Maand);
+        }
+        public List<FenoBloeiwijze> GetFenoBloeiwijze()
+        {
+            return context.FenoBloeiwijze.ToList();
+        }
+        public List<FenoHabitus> GetFenoHabitus()
+        {
+            return context.FenoHabitus.OrderBy(f=>f.Naam).ToList();
+        }
+        public List<FenoBladgrootte> GetFenoBladgrootte()
+        {
+            return context.FenoBladgrootte.ToList();
+        }
+        public List<FenoKleur> GetFenoKleur()
+        {
+            return context.FenoKleur.ToList();
+        }
+        public List<FenoMaand> GetFenoMaand()
+        {
+            return context.FenoMaand.ToList();
+        }
+        public List<FenoBladvorm> GetFenoBladvorm()
+        {
+            return context.FenoBladvorm.OrderBy(f=>f.Vorm).ToList();
+        }
+        public List<FenoRatioBloeiBlad> GetFenoRatio()
+        {
+            return context.FenoRatioBloeiBlad.OrderBy(f=>f.Waarde).ToList();
+        }
+        public List<FenoSpruitfenologie> GetFenoSpruit()
+        {
+            return context.FenoSpruitfenologie.OrderBy(f=>f.Fenologie).ToList();
+        }
+        public List<FenoLevensvorm> GetFenoLevensvorm()
+        {
+            return context.FenoLevensvorm.OrderBy(f=>f.Levensvorm).ToList();
+        }
+
         //Abio
         public List<AbioBezonning> GetAbioBezonning()
         {

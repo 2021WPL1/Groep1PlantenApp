@@ -1,16 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.DirectoryServices;
+using System.IO;
 using System.Linq;
+using System.Net.Mime;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
 using GalaSoft.MvvmLight.Command;
 using PlantenApplicatie.Data;
 using PlantenApplicatie.Domain.Models;
 using Prism.Commands;
+using Window = System.Windows.Window;
 
 namespace PlantenApplicatie.UI.ViewModel
 {
@@ -34,23 +42,13 @@ namespace PlantenApplicatie.UI.ViewModel
         //Fenotype
         public ObservableCollection<FenoBloeiwijze> FenoBloeiwijze { get; set; }
         public ObservableCollection<FenoHabitus> FenoHabitus { get; set; }
-        public ObservableCollection<FenoBladgrootte> FenoBladgrote { get; set; } //bladhoogte, min & max bloeihoogte
+        public ObservableCollection<FenoBladgrootte> FenoBladgrootte { get; set; } //bladhoogte, min & max bloeihoogte
         public ObservableCollection<FenoKleur> FenoKleur { get; set; } //bladkleur & bloeikleur
-        //public ObservableCollection<FenoMaand> FenoMaand { get; set; } //bladkleur & bloeikleur
-
-        /*
-         * Bloeiwijze (Id, Naam(string), Figuur (byte[]), UrlLocatie (string))
-         * Habitus (Id, Naam, Figuur (byte[]), UrlLocatie (string))
-         * max bladhoogte - maand (Id, Bladgrootte(string)) (FenoBladGrootte.cs)
-         * max bloeihoogte - maand (Id, Bladgrootte(string)) (FenoBladGrootte.cs)
-         * min bloeihoogte - maand (Id, Bladgrootte(string)) (FenoBladGrootte.cs)
-         * bladkleur - maand (Id, NaamKleur(string), HexWaarde(byte[])) FenoKleur.cs
-         * bloeikleur - maand (Id, NaamKleur(string), HexWaarde(byte[])) FenoKleur.cs
-         * bladvorm  (Id, Vorm (string) )
-         * ratio Bloei/blad ( Fenotype.cs -> RatioBloeiBlad (string))
-         * spruitfen (Id, Fenologie (string))
-         * levensvorm volgens R. (Id, Levensvorm (string), Figuur(byte[]), UrlLocatie(string))
-         */
+        public ObservableCollection<FenoMaand> FenoMaand { get; set; } //bladkleur & bloeikleur
+        public ObservableCollection<FenoBladvorm> FenoBladvorm { get; set; }
+        public ObservableCollection<FenoRatioBloeiBlad> FenoRatio { get; set; }
+        public ObservableCollection<FenoSpruitfenologie> FenoSpruit { get; set; }
+        public ObservableCollection<FenoLevensvorm> FenoLevensvorm { get; set; }
         //Abio
         public ObservableCollection<AbioBezonning> AbioBezonning { get; set; }
         public ObservableCollection<AbioGrondsoort> AbioGrondsoort { get; set; }
@@ -94,6 +92,16 @@ namespace PlantenApplicatie.UI.ViewModel
         private List<TfgsvSoort> _filtersoorten;
         private List<TfgsvVariant> _filtervarianten;
         //Fenotype
+        private List<FenoBloeiwijze> _fenoBloeiwijze;
+        private ImageSource[] _fenoBloeiAllImages;
+        private List<FenoHabitus> _fenoHabitus;
+        private List<FenoBladgrootte> _fenoBladgrootte;
+        private List<FenoKleur> _fenoKleur;
+        private List<FenoMaand> _fenoMaand;
+        private List<FenoBladvorm> _fenoBladvorm;
+        private List<FenoRatioBloeiBlad> _fenoRatio;
+        private List<FenoSpruitfenologie> _fenoSpruit;
+        private List<FenoLevensvorm> _fenoLevensvorm;
         //Abio
         private List<AbioBezonning> _abiobezonning;
         private List<AbioGrondsoort> _abiogrondsoort;
@@ -120,6 +128,23 @@ namespace PlantenApplicatie.UI.ViewModel
         private string _filterNewSoort;
         private string _filterNewVariant;
         //Fenotype
+        private FenoBloeiwijze _fenoselectedBloeiwijze;
+        private ImageSource _fenoselectedBloeiwijzeImage;
+        private FenoHabitus _fenoselectedHabitus;
+        private FenoBladgrootte _fenoselectedMaxBladgrootte;
+        private FenoMaand _fenoselectedMaxBladgrootteMaand;
+        private FenoBladgrootte _fenoselectedMaxBloeihoogte;
+        private FenoMaand _fenoselectedMaxBloeihoogteMaand;
+        private FenoBladgrootte _fenoselectedMinBloeihoogte;
+        private FenoMaand _fenoselectedMinBloeihoogteMaand;
+        private FenoKleur _fenoselectedBladKleur;
+        private FenoMaand _fenoselectedBladKleurMaand;
+        private FenoKleur _fenoselectedBloeiKleur;
+        private FenoMaand _fenoselectedBloeiKleurMaand;
+        private FenoBladvorm _fenoselectedBladvorm;
+        private FenoRatioBloeiBlad _fenoselectedRatio;
+        private FenoSpruitfenologie _fenoselectedSpruit;
+        private FenoLevensvorm _fenoselectedLevensvorm;
         //Abio
         private AbioBezonning _abioselectedBezonning;
         private AbioGrondsoort _abioselectedGrondsoort;
@@ -149,6 +174,15 @@ namespace PlantenApplicatie.UI.ViewModel
             FilterTfgsvSoort = new ObservableCollection<TfgsvSoort>();
             FilterTfgsvVariant = new ObservableCollection<TfgsvVariant>();
             //Fenotype
+            FenoBloeiwijze = new ObservableCollection<FenoBloeiwijze>();
+            FenoHabitus = new ObservableCollection<FenoHabitus>();
+            FenoBladgrootte = new ObservableCollection<FenoBladgrootte>();
+            FenoKleur = new ObservableCollection<FenoKleur>();
+            FenoMaand = new ObservableCollection<FenoMaand>();
+            FenoBladvorm = new ObservableCollection<FenoBladvorm>();
+            FenoRatio = new ObservableCollection<FenoRatioBloeiBlad>();
+            FenoSpruit = new ObservableCollection<FenoSpruitfenologie>();
+            FenoLevensvorm = new ObservableCollection<FenoLevensvorm>();
             //Abio
             AbioBezonning = new ObservableCollection<AbioBezonning>();
             AbioGrondsoort = new ObservableCollection<AbioGrondsoort>();
@@ -183,6 +217,32 @@ namespace PlantenApplicatie.UI.ViewModel
                         .Variantnaam);
             }
             //Fenotype
+            FenoSelectedBloeiwijze =
+                _fenoBloeiwijze.FirstOrDefault(f =>
+                    f.Naam == _plantenDataService.GetFenotype(plant.PlantId).Bloeiwijze);
+            FenoSelectedHabitus =
+                _fenoHabitus.FirstOrDefault(f => f.Naam == _plantenDataService.GetFenotype(plant.PlantId).Habitus);
+            FenoSelectedMaxBladgrootte = _fenoBladgrootte.FirstOrDefault(f =>
+                f.Bladgrootte == _plantenDataService.GetFenoMaxBladHoogte(plant.PlantId));
+            FenoSelectedMaxBladgrootteMaand = _plantenDataService.GetFenoMaxBladHoogteMaand(plant.PlantId);
+            FenoSelectedMaxBloeihoogte = _fenoBladgrootte.FirstOrDefault(f =>
+                f.Bladgrootte == _plantenDataService.GetFenoMaxBloeiHoogte(plant.PlantId));
+            FenoSelectedMaxBloeihoogteMaand = _plantenDataService.GetFenoMaxBloeiHoogteMaand(plant.PlantId);
+            FenoSelectedMinBloeihoogte = _fenoBladgrootte.FirstOrDefault(f =>
+                f.Bladgrootte == _plantenDataService.GetFenoMinBloeiHoogte(plant.PlantId));
+            FenoSelectedMinBloeihoogteMaand = _plantenDataService.GetFenoMinBloeiHoogteMaand(plant.PlantId);
+            FenoSelectedBladKleur = _plantenDataService.GetFenoBladKleur(plant.PlantId);
+            FenoSelectedBladKleurMaand = _plantenDataService.GetFenoBladMaand(plant.PlantId);
+            FenoSelectedBloeiKleur = _plantenDataService.GetFenoBloeiKleur(plant.PlantId);
+            FenoSelectedBloeiKleurMaand = _plantenDataService.GetFenoBloeiMaand(plant.PlantId);
+            FenoSelectedBladvorm =
+                _fenoBladvorm.FirstOrDefault(f => f.Vorm == _plantenDataService.GetFenotype(plant.PlantId).Bladvorm);
+            FenoSelectedRatio = _fenoRatio.FirstOrDefault(f =>
+                f.Waarde == _plantenDataService.GetFenotype(plant.PlantId).RatioBloeiBlad);
+            FenoSelectedSpruit = _fenoSpruit.FirstOrDefault(f =>
+                f.Fenologie == _plantenDataService.GetFenotype(plant.PlantId).Spruitfenologie);
+            FenoSelectedLevensvorm = _fenoLevensvorm.FirstOrDefault(f =>
+                f.Levensvorm == _plantenDataService.GetFenotype(plant.PlantId).Levensvorm);
             //Abio
             AbioSelectedBezonning =
                 _abiobezonning.FirstOrDefault(a => a.Naam == _plantenDataService.GetAbiotiek(plant.PlantId).Bezonning);
@@ -275,6 +335,24 @@ namespace PlantenApplicatie.UI.ViewModel
             _filtersoorten = _plantenDataService.GetTfgsvSoorten();
             _filtervarianten = _plantenDataService.GetTfgsvVarianten();
             //Fenotype
+            _fenoBloeiAllImages = new ImageSource[6]
+            {
+                new BitmapImage(new Uri(Path.Combine(Environment.CurrentDirectory.Substring(0,Environment.CurrentDirectory.IndexOf("\\bin")),@"View\\Images\\aar.jpg" ))),
+                new BitmapImage(new Uri(Path.Combine(Environment.CurrentDirectory.Substring(0,Environment.CurrentDirectory.IndexOf("\\bin")),@"View\\Images\\scherm.jpg"))),
+                new BitmapImage(new Uri(Path.Combine(Environment.CurrentDirectory.Substring(0,Environment.CurrentDirectory.IndexOf("\\bin")),@"View\\Images\\pluim.jpg"))),
+                new BitmapImage(new Uri(Path.Combine(Environment.CurrentDirectory.Substring(0,Environment.CurrentDirectory.IndexOf("\\bin")),@"View\\Images\\knop.jpg"))), 
+                new BitmapImage(new Uri(Path.Combine(Environment.CurrentDirectory.Substring(0,Environment.CurrentDirectory.IndexOf("\\bin")),@"View\\Images\\margrietachtig.jpg"))),
+                new BitmapImage(new Uri(Path.Combine(Environment.CurrentDirectory.Substring(0,Environment.CurrentDirectory.IndexOf("\\bin")),@"View\\Images\\etage.jpg")))
+            };
+            _fenoBloeiwijze = _plantenDataService.GetFenoBloeiwijze();
+            _fenoHabitus = _plantenDataService.GetFenoHabitus();
+            _fenoBladgrootte = _plantenDataService.GetFenoBladgrootte();
+            _fenoKleur = _plantenDataService.GetFenoKleur();
+            _fenoMaand = _plantenDataService.GetFenoMaand();
+            _fenoBladvorm = _plantenDataService.GetFenoBladvorm();
+            _fenoRatio = _plantenDataService.GetFenoRatio();
+            _fenoSpruit = _plantenDataService.GetFenoSpruit();
+            _fenoLevensvorm = _plantenDataService.GetFenoLevensvorm();
             //Abio
             _abiobezonning = _plantenDataService.GetAbioBezonning();
             _abiogrondsoort = _plantenDataService.GetAbioGrondsoort();
@@ -344,6 +422,61 @@ namespace PlantenApplicatie.UI.ViewModel
         {
             //Senne & Hermes
 
+            FenoBloeiwijze.Clear();
+            FenoHabitus.Clear();
+            FenoBladgrootte.Clear();
+            FenoKleur.Clear();
+            FenoMaand.Clear();
+            FenoBladvorm.Clear();
+            FenoRatio.Clear();
+            FenoSpruit.Clear();
+            FenoLevensvorm.Clear();
+
+            //bloeiwijze
+            foreach (var bloeiwijze in _fenoBloeiwijze)
+            {
+                FenoBloeiwijze.Add(bloeiwijze);
+            }
+            //habitus
+            foreach (var habitus in _fenoHabitus)
+            {
+                FenoHabitus.Add(habitus);
+            }
+            //bladgrootte
+            foreach (var bladgrootte in _fenoBladgrootte)
+            {
+                FenoBladgrootte.Add(bladgrootte);
+            }
+            //kleur
+            foreach (var kleur in _fenoKleur)
+            {
+                FenoKleur.Add(kleur);
+            }
+            //maand
+            foreach (var maand in _fenoMaand)
+            {
+                FenoMaand.Add(maand);
+            }
+            //bladvorm
+            foreach (var bladvorm in _fenoBladvorm)
+            {
+                FenoBladvorm.Add(bladvorm);
+            }
+            //ratiobloeiblad
+            foreach (var ratio in _fenoRatio)
+            {
+                FenoRatio.Add(ratio);
+            }
+            //spruitfenologie
+            foreach (var spruit in _fenoSpruit)
+            {
+                FenoSpruit.Add(spruit);
+            }
+            //levensvorm volgens R
+            foreach (var levensvorm in _fenoLevensvorm)
+            {
+                FenoLevensvorm.Add(levensvorm);
+            }
         }
 
         public void LoadAbio()
@@ -413,6 +546,34 @@ namespace PlantenApplicatie.UI.ViewModel
         public void LoadBeheerEigenschappen()
         {
 
+        }
+
+        public void FenoShowBloeiwijzeImage()
+        {
+            switch (_fenoselectedBloeiwijze.Id)
+            {
+                case 1:
+                    FenoSelectedBloeiwijzeImage = _fenoBloeiAllImages[0];
+                    break;
+                case 2:
+                    FenoSelectedBloeiwijzeImage = _fenoBloeiAllImages[1];
+                    break;
+                case 3:
+                    FenoSelectedBloeiwijzeImage = _fenoBloeiAllImages[2];
+                    break;
+                case 4:
+                    FenoSelectedBloeiwijzeImage = _fenoBloeiAllImages[3];
+                    break;
+                case 5:
+                    FenoSelectedBloeiwijzeImage = _fenoBloeiAllImages[4];
+                    break;
+                case 6:
+                    FenoSelectedBloeiwijzeImage = _fenoBloeiAllImages[5];
+                    break;
+                default:
+                    FenoSelectedBloeiwijzeImage = null;
+                    break;
+            }
         }
 
         //Binding voor geselecteerde waardes
@@ -582,6 +743,161 @@ namespace PlantenApplicatie.UI.ViewModel
             }
         }
         //Fenotype
+        public FenoBloeiwijze FenoSelectedBloeiwijze
+        {
+            get { return _fenoselectedBloeiwijze;}
+            set
+            {
+                _fenoselectedBloeiwijze = value;
+                OnPropertyChanged();
+                FenoShowBloeiwijzeImage();
+            }
+        }
+        public ImageSource FenoSelectedBloeiwijzeImage
+        {
+            get { return _fenoselectedBloeiwijzeImage; }
+            set
+            {
+                _fenoselectedBloeiwijzeImage = value;
+                OnPropertyChanged();
+            }
+        }
+        public FenoHabitus FenoSelectedHabitus
+        {
+            get { return _fenoselectedHabitus; }
+            set
+            {
+                _fenoselectedHabitus = value;
+                OnPropertyChanged();
+            }
+        }
+        public FenoBladgrootte FenoSelectedMaxBladgrootte
+        {
+            get { return _fenoselectedMaxBladgrootte; }
+            set
+            {
+                _fenoselectedMaxBladgrootte = value;
+                OnPropertyChanged();
+            }
+        }
+        public FenoMaand FenoSelectedMaxBladgrootteMaand
+        {
+            get { return _fenoselectedMaxBladgrootteMaand; }
+            set
+            {
+                _fenoselectedMaxBladgrootteMaand = value;
+                OnPropertyChanged();
+            }
+        }
+        public FenoBladgrootte FenoSelectedMaxBloeihoogte
+        {
+            get { return _fenoselectedMaxBloeihoogte; }
+            set
+            {
+                _fenoselectedMaxBloeihoogte = value;
+                OnPropertyChanged();
+            }
+        }
+        public FenoMaand FenoSelectedMaxBloeihoogteMaand
+        {
+            get { return _fenoselectedMaxBloeihoogteMaand; }
+            set
+            {
+                _fenoselectedMaxBloeihoogteMaand = value;
+                OnPropertyChanged();
+            }
+        }
+        public FenoBladgrootte FenoSelectedMinBloeihoogte
+        {
+            get { return _fenoselectedMinBloeihoogte; }
+            set
+            {
+                _fenoselectedMinBloeihoogte = value;
+                OnPropertyChanged();
+            }
+        }
+        public FenoMaand FenoSelectedMinBloeihoogteMaand
+        {
+            get { return _fenoselectedMinBloeihoogteMaand; }
+            set
+            {
+                _fenoselectedMinBloeihoogteMaand = value;
+                OnPropertyChanged();
+            }
+        }
+        public FenoKleur FenoSelectedBladKleur
+        {
+            get { return _fenoselectedBladKleur; }
+            set
+            {
+                _fenoselectedBladKleur = value;
+                OnPropertyChanged();
+            }
+        }
+        public FenoMaand FenoSelectedBladKleurMaand
+        {
+            get { return _fenoselectedBladKleurMaand; }
+            set
+            {
+                _fenoselectedBladKleurMaand = value;
+                OnPropertyChanged();
+            }
+        }
+        public FenoKleur FenoSelectedBloeiKleur
+        {
+            get { return _fenoselectedBloeiKleur; }
+            set
+            {
+                _fenoselectedBloeiKleur = value;
+                OnPropertyChanged();
+            }
+        }
+        public FenoMaand FenoSelectedBloeiKleurMaand
+        {
+            get { return _fenoselectedBloeiKleurMaand; }
+            set
+            {
+                _fenoselectedBloeiKleurMaand = value;
+                OnPropertyChanged();
+            }
+        }
+        public FenoBladvorm FenoSelectedBladvorm
+        {
+            get { return _fenoselectedBladvorm; }
+            set
+            {
+                _fenoselectedBladvorm = value;
+                OnPropertyChanged();
+            }
+        }
+        public FenoRatioBloeiBlad FenoSelectedRatio
+        {
+            get { return _fenoselectedRatio; }
+            set
+            {
+                _fenoselectedRatio = value;
+                OnPropertyChanged();
+            }
+        }
+        public FenoSpruitfenologie FenoSelectedSpruit
+        {
+            get { return _fenoselectedSpruit; }
+            set
+            {
+                _fenoselectedSpruit = value;
+                OnPropertyChanged();
+            }
+        }
+        public FenoLevensvorm FenoSelectedLevensvorm
+        {
+            get { return _fenoselectedLevensvorm; }
+            set
+            {
+                _fenoselectedLevensvorm = value;
+                OnPropertyChanged();
+            }
+        }
+        
         //Abio
         public AbioBezonning AbioSelectedBezonning
         {
