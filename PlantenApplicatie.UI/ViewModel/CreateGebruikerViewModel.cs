@@ -10,6 +10,7 @@ using System.Windows.Input;
 
 namespace PlantenApplicatie.UI.ViewModel
 {
+    //Maarten & Hemen 
     class CreateGebruikerViewModel : ViewModelBase
     {
         private PlantenDataService _dataservice;
@@ -18,6 +19,8 @@ namespace PlantenApplicatie.UI.ViewModel
         private string emailInput;
         private string wachtwoordInput;
         private Rol _selectedRol;
+
+        //Hemen &maarten 
         public CreateGebruikerViewModel(PlantenDataService plantenDataService)
         {
             addGebruikerCommand = new DelegateCommand(addGebruiker);
@@ -66,7 +69,7 @@ namespace PlantenApplicatie.UI.ViewModel
                 OnPropertyChanged();
             }
         }
-
+        //hemen & maarten 
         public void addGebruiker()
         {
             using (var sha256 = SHA256.Create())

@@ -12,6 +12,8 @@ namespace PlantenApplicatie.UI.ViewModel
 {
     class LoginSchermViewModel : ViewModelBase
     {
+
+        //Maarten &Hemen 
         public ICommand LoginCommand { get; set; }
         private PlantenDataService _plantenDataService;
         private string _emailInput;
@@ -47,12 +49,11 @@ namespace PlantenApplicatie.UI.ViewModel
                 OnPropertyChanged();
             }
         }
-
+        //Maarten &Hemen 
         private void LogIn()
         {
             try
             {
-
 
                 if (EmailInput != null && WachtwoordInput != null)
                 {
@@ -73,12 +74,10 @@ namespace PlantenApplicatie.UI.ViewModel
                             }
                         }
                     }
-                }
-            
+                }            
             }
             catch (Exception e)
             {
-
                 SelectedError = "er is iets mis. Check uw paswoord of emailadres";
             }
         }

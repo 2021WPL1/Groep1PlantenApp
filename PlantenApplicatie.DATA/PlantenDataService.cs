@@ -209,6 +209,7 @@ namespace PlantenApplicatie.Data
         //Extra Eigenschappen
         //Beheer Eigenschappen
 
+        //Hemen &Maarten 
         public Gebruiker addGebruiker(string rol, string email, byte[] HashPaswoord)
         {
             Gebruiker gebruiker = new Gebruiker

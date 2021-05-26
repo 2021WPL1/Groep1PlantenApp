@@ -16,6 +16,7 @@ namespace PlantenApplicatie.UI.View
 {
     /// <summary>
     /// Interaction logic for LoginScherm.xaml
+    /// Hemen &Maarten
     /// </summary>
     public partial class LoginScherm : Window
     {

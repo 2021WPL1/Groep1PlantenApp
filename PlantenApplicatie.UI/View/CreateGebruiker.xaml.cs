@@ -16,6 +16,7 @@ namespace PlantenApplicatie.UI.View
 {
     /// <summary>
     /// Interaction logic for CreateGebruiker.xaml
+    /// Maarten &Hemen 
     /// </summary>
     public partial class CreateGebruiker : Window
     {
