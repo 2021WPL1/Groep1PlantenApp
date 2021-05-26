@@ -32,6 +32,25 @@ namespace PlantenApplicatie.UI.ViewModel
         public ObservableCollection<TfgsvSoort> FilterTfgsvSoort { get; set; }
         public ObservableCollection<TfgsvVariant> FilterTfgsvVariant { get; set; }
         //Fenotype
+        public ObservableCollection<FenoBloeiwijze> FenoBloeiwijze { get; set; }
+        public ObservableCollection<FenoHabitus> FenoHabitus { get; set; }
+        public ObservableCollection<FenoBladgrootte> FenoBladgrote { get; set; } //bladhoogte, min & max bloeihoogte
+        public ObservableCollection<FenoKleur> FenoKleur { get; set; } //bladkleur & bloeikleur
+        //public ObservableCollection<FenoMaand> FenoMaand { get; set; } //bladkleur & bloeikleur
+
+        /*
+         * Bloeiwijze (Id, Naam(string), Figuur (byte[]), UrlLocatie (string))
+         * Habitus (Id, Naam, Figuur (byte[]), UrlLocatie (string))
+         * max bladhoogte - maand (Id, Bladgrootte(string)) (FenoBladGrootte.cs)
+         * max bloeihoogte - maand (Id, Bladgrootte(string)) (FenoBladGrootte.cs)
+         * min bloeihoogte - maand (Id, Bladgrootte(string)) (FenoBladGrootte.cs)
+         * bladkleur - maand (Id, NaamKleur(string), HexWaarde(byte[])) FenoKleur.cs
+         * bloeikleur - maand (Id, NaamKleur(string), HexWaarde(byte[])) FenoKleur.cs
+         * bladvorm  (Id, Vorm (string) )
+         * ratio Bloei/blad ( Fenotype.cs -> RatioBloeiBlad (string))
+         * spruitfen (Id, Fenologie (string))
+         * levensvorm volgens R. (Id, Levensvorm (string), Figuur(byte[]), UrlLocatie(string))
+         */
         //Abio
         public ObservableCollection<AbioBezonning> AbioBezonning { get; set; }
         public ObservableCollection<AbioGrondsoort> AbioGrondsoort { get; set; }
@@ -41,8 +60,31 @@ namespace PlantenApplicatie.UI.ViewModel
         public ObservableCollection<AbioHabitat> AbioAllHabitats { get; set; }
         public ObservableCollection<AbioHabitat> AbioAddedHabitats { get; set; }
         //Commersialisme
+        /*
+         * Ontwikkelingssnelheid
+         * Levensduur/Concurrentiekracht
+         * Sociabiliteit
+         */
         //Extra Eigenschappen
+        /*
+         * Nectarwaarde
+         * Bijvriendelijk
+         * Eetbaar/kruidgebruik
+         * Pollenwaarde
+         * Vlindervriendelijk
+         * Geurend
+         * Vorstgevoelig
+         */
         //Beheer Eigenschappen
+        /*
+         * Beheertype
+         * BeheerPlantenNaam
+         * BeheerHandeling
+         * Maanden
+         * Aantal m²/u
+         * Frequentie per jaar
+         * Opmerking
+         */
 
         //Lists om de observable collections op te vullen
         //Filters
@@ -210,7 +252,7 @@ namespace PlantenApplicatie.UI.ViewModel
             }
             ReloadHabitatlist();
         }
-        //habitat verwijderen uit de listbox van geselecteerde
+        //habitat verwijderen uit de listbox van geselecteerde habitus
         private void HabitatVerwijderen()
         {
             //Senne & Hermes
