@@ -367,28 +367,97 @@
                     <ScrollViewer x:Name="scrollCommensialisme" Height="594" VerticalAlignment="Top">
                         <Grid x:Name="gridCommensialisme" Height="574" Width="557" Background="#FFE5E5E5">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="308*"/>
-                                <ColumnDefinition Width="25*"/>
-                                <ColumnDefinition Width="224*"/>
+                                <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <Label x:Name="lblOntwikkelingssnelheid" Content="Ontwikkelingssnelheid" HorizontalAlignment="Left" Margin="35,25,0,0" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="cbxOntwikkelingssnelheid" HorizontalAlignment="Left" Margin="180,29,0,0" VerticalAlignment="Top" Width="120"/>
-                            <Label x:Name="lblLevensduur" Content="Levensduur/Concurrentiekracht" HorizontalAlignment="Left" Margin="35,60,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkLevensduur1" Content="Zogenaamde bodembedekker, weinig verdraagzaam met andere planten" HorizontalAlignment="Left" Margin="35,100,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
-                            <CheckBox x:Name="checkLevensduur2" Content="Verdraagzame bodembedekker, ook voor een soortenrijke aanplant" HorizontalAlignment="Left" Margin="35,120,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
-                            <CheckBox x:Name="checkLevensduur3" Content="Woekerende soort, worteluitlopers" HorizontalAlignment="Left" Margin="35,140,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkLevensduur5" Content="Robuuste, meestal grote plant, ook als solitair" HorizontalAlignment="Left" Margin="36,180,0,0" VerticalAlignment="Top" Width="Auto"/>
-                            <CheckBox x:Name="checkLevensduur4" Content="Weinig of niet woekerend, goed te combineren" HorizontalAlignment="Left" Margin="35,160,0,0" VerticalAlignment="Top" Width="Auto"/>
-                            <CheckBox x:Name="checkLevensduur6" Content="Zich sterk uitzaaiende soort" HorizontalAlignment="Left" Margin="35,200,0,0" VerticalAlignment="Top" Width="Auto"/>
-                            <CheckBox x:Name="checkLevensduur7" Content="Kortlevende plant" HorizontalAlignment="Left" Margin="35,220,0,0" VerticalAlignment="Top" Width="Auto"/>
-                            <CheckBox x:Name="checkLevensduur8" Content="Geeft een goede snijbloem" HorizontalAlignment="Left" Margin="35,240,0,0" VerticalAlignment="Top" Width="Auto"/>
-                            <CheckBox x:Name="checkLevensduur9" Content="Stelt meer eisen qua 'eten en drinken' of winterbescherming" HorizontalAlignment="Left" Margin="35,260,0,0" VerticalAlignment="Top" Width="Auto" Grid.ColumnSpan="3"/>
-                            <Label x:Name="lblSociabiliteit" Content="Sociabiliteit" HorizontalAlignment="Left" Margin="31,310,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkSociabiliteit1" Content="Sociabiliteit I" HorizontalAlignment="Left" Margin="35,350,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkSociabiliteit2" Content="Sociabiliteit II" HorizontalAlignment="Left" Margin="35,370,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkSociabiliteit3" Content="Sociabiliteit III" HorizontalAlignment="Left" Margin="150,350,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkSociabiliteitIV" Content="Sociabiliteit IV" HorizontalAlignment="Left" Margin="150,370,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkSociabiliteitV" Content="Sociabiliteit V" HorizontalAlignment="Left" Margin="262,350,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
+                            <Label x:Name="lblOntwikkelingssnelheid" Content="Ontwikkelingssnelheid" HorizontalAlignment="Left" Margin="35,25,0,0" VerticalAlignment="Top" Height="26" Width="129"/>
+                            <ComboBox
+                                ItemsSource="{Binding CommOntwikkelingsSnelheid}"
+                                SelectedItem="{Binding CommSelectedOntwikkelingsSnelheid, Mode=TwoWay}"
+                                DisplayMemberPath="Snelheid"
+                                SelectedValuePath="Id"
+                                x:Name="cbxOntwikkelingssnelheid"
+                                HorizontalAlignment="Left"
+                                Margin="180,29,0,0"
+                                VerticalAlignment="Top"
+                                Width="120"
+                                Grid.ColumnSpan="2"
+                                Height="22"/>
+                            <Label x:Name="lblLevensduur" Content="Levensduur/Concurrentiekracht" HorizontalAlignment="Left" Margin="35,60,0,0" VerticalAlignment="Top" Height="26" Width="176"/>
+                            <Label x:Name="lblSociabiliteit" Content="Sociabiliteit" HorizontalAlignment="Left" Margin="24,344,0,0" VerticalAlignment="Top" Height="26" Width="71"/>
+                            <ListBox
+                                ItemsSource="{Binding CommAllLevensvorm}"
+                                SelectedItem="{Binding CommSelectedAllLevensvorm, Mode=TwoWay}"
+                                DisplayMemberPath="Levensvorm"
+                                SelectedValuePath="Id"
+                                x:Name="ListBoxAllLevensduur"
+                                Margin="0,85,0,249"
+                                HorizontalAlignment="Left"
+                                Width="240">
+                            </ListBox>
+
+                            <ListBox
+                                ItemsSource="{Binding CommAddedLevensvorm}"
+                                SelectedItem="{Binding CommSelectedAddedLevensvorm, Mode=TwoWay}"
+                                DisplayMemberPath="Levensvorm"
+                                SelectedValuePath="Id"
+                                x:Name="ListBoxAddedLevensduur"
+                                Margin="0,85,0,0"
+                                Width="240"
+                                HorizontalAlignment="Right"
+                                Height="240"
+                                VerticalAlignment="Top"/>
+                            <Button
+                                x:Name="btnRemoveLevensduur"
+                                Content="&lt;--"
+                                HorizontalAlignment="Left"
+                                Margin="260,221,0,0"
+                                VerticalAlignment="Top"
+                                Width="30"
+                                Height="20"/>
+                            <Button
+                                x:Name="btnAddLevensduur"
+                                Content="--&gt;"
+                                HorizontalAlignment="Left"
+                                Margin="260,149,0,0"
+                                VerticalAlignment="Top"
+                                Width="30"
+                                Height="20"/>
+                            <ListBox
+                                ItemsSource="{Binding CommAllSociabiliteit}"
+                                SelectedItem="{Binding CommAllSelectedSociabiliteit, Mode=TwoWay}"
+                                DisplayMemberPath="Sociabiliteit"
+                                SelectedValuePath="Id"
+                                x:Name="ListBoxAllSociabiliteit"
+                                Margin="0,370,0,11"
+                                HorizontalAlignment="Left"
+                                Width="240"
+                                Height="190"/>
+                            <ListBox
+                                ItemsSource="{Binding CommAddedSociabiliteit}"
+                                SelectedItem="{Binding CommAddedSelectedSociabiliteit}"
+                                DisplayMemberPath="Sociabiliteit"
+                                SelectedValuePath="Id"
+                                x:Name="ListBoxAddedSociabiliteit"
+                                Margin="315,370,0,11"
+                                HorizontalAlignment="Right"
+                                Width="240"
+                                Height="190"/>
+                            <Button
+                                x:Name="btnRemoveSociabiliteit"
+                                Content="&lt;--"
+                                HorizontalAlignment="Left"
+                                Margin="260,484,0,0"
+                                VerticalAlignment="Top"
+                                Width="30"
+                                Height="20"/>
+                            <Button
+                                x:Name="btnAddSociabiliteit"
+                                Content="--&gt;"
+                                HorizontalAlignment="Left"
+                                Margin="260,405,0,0"
+                                VerticalAlignment="Top"
+                                Width="30"
+                                Height="20"/>
                         </Grid>
                     </ScrollViewer>
                 </TabItem>
