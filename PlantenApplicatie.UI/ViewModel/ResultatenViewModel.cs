@@ -147,17 +147,6 @@ namespace PlantenApplicatie.UI.ViewModel
                SelectedPlantAbioHabitats.Add(habitat);
            }
         }
-        //Stephanie
-        public void LoadHabitat()
-        {
-
-            _selectedPlantAbioHabitat.Clear();
-            foreach (var habitat in SelectedPlantAbioHabitats)
-            {
-                SelectedPlantAbioHabitats.Add(habitat);
-            }
-
-        }
 
         //Jelle & Hemen
         //Command die gelinkt is aan close button om form te sluiten
@@ -202,7 +191,7 @@ namespace PlantenApplicatie.UI.ViewModel
 
             foreach (var AbioMulti in _abiotiekMulti)
             {
-                string listText = AbioMulti.Eigenschap + " - " + AbioMulti.Waarde;
+                _selectedPlantAbioHabitat.Add(AbioMulti.Waarde);
             }
         }
     }
