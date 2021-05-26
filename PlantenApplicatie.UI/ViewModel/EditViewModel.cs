@@ -31,6 +31,10 @@ namespace PlantenApplicatie.UI.ViewModel
         public RelayCommand<Window> BackCommand { get; private set; }
         public ICommand HabitatToevoegenCommand { get; set; }
         public ICommand HabitatVerwijderenCommand { get; set; }
+        public ICommand LevensduurToevoegenCommand { get; set; }
+        public ICommand LevensduurVerwijderenCommand { get; set; }
+        public ICommand SocialbiliteitToevoegenCommand { get; set; }
+        public ICommand SocialbiliteitVerwijderenCommand { get; set; }
 
         //Observable collections voor de binding
         //Filters
@@ -63,11 +67,6 @@ namespace PlantenApplicatie.UI.ViewModel
         public ObservableCollection<CommLevensvorm> CommAddedLevensvorm { get; set; }
         public ObservableCollection<CommSocialbiliteit> CommAllSocialbiliteit { get; set; }
         public ObservableCollection<CommSocialbiliteit> CommAddedSocialbiliteit { get; set; }
-        /*
-         * Ontwikkelingssnelheid
-         * Levensduur/Concurrentiekracht
-         * Sociabiliteit
-         */
         //Extra Eigenschappen
         /*
          * Nectarwaarde
@@ -181,6 +180,10 @@ namespace PlantenApplicatie.UI.ViewModel
             BackCommand = new RelayCommand<Window>(Back);
             HabitatToevoegenCommand = new DelegateCommand(HabitatToevoegen);
             HabitatVerwijderenCommand = new DelegateCommand(HabitatVerwijderen);
+            LevensduurToevoegenCommand = new DelegateCommand(LevensduurToevoegen);
+            LevensduurVerwijderenCommand = new DelegateCommand(LevensduurVerwijderen);
+            SocialbiliteitToevoegenCommand = new DelegateCommand(SocialbiliteitToevoegen);
+            SocialbiliteitVerwijderenCommand = new DelegateCommand(SocialbiliteitVerwijderen);
 
             //Filters
             FilterTfgsvTypes = new ObservableCollection<TfgsvType>();
@@ -342,6 +345,63 @@ namespace PlantenApplicatie.UI.ViewModel
                 _abioAddedHabitats.Remove(AbioSelectedAddedHabitat);
             }
             ReloadHabitatlist();
+        }
+
+        private void LevensduurToevoegen()
+        {
+            //Senne & Hermes
+
+            if (_commAddedLevensvorm != null)
+            {
+                if (!_commAddedLevensvorm.Contains(CommSelectedAllLevensvorm))
+                {
+                    _commAddedLevensvorm.Add(CommSelectedAllLevensvorm);
+
+                }
+                else
+                {
+                    MessageBox.Show("Levensvorm is al toegevoegd");
+                }
+            }
+            ReloadLevensvorm();
+        }
+        private void LevensduurVerwijderen()
+        {
+            //Senne & Hermes
+
+            if (CommSelectedAddedLevensvorm != null)
+            {
+                _commAddedLevensvorm.Remove(CommSelectedAddedLevensvorm);
+            }
+            ReloadLevensvorm();
+        }
+        private void SocialbiliteitToevoegen()
+        {
+            //Senne & Hermes
+
+            if (_commAddedSocialbiliteit != null)
+            {
+                if (!_commAddedSocialbiliteit.Contains(CommSelectedAllSocialbiliteit))
+                {
+                    _commAddedSocialbiliteit.Add(CommSelectedAllSocialbiliteit);
+
+                }
+                else
+                {
+                    MessageBox.Show("Socialbiliteit is al toegevoegd");
+                }
+            }
+            ReloadSocialbiliteit();
+        }
+        private void SocialbiliteitVerwijderen()
+        {
+            //Senne & Hermes
+
+            if (CommSelectedAddedSocialbiliteit != null)
+            {
+                _commAddedSocialbiliteit.Remove(CommSelectedAddedSocialbiliteit);
+            }
+            ReloadSocialbiliteit();
         }
 
         public void InitializeAll()

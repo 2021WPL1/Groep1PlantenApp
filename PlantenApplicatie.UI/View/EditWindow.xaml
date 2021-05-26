@@ -387,27 +387,57 @@
                             <ListBox
                                 ItemsSource="{Binding CommAllLevensvorm}"
                                 SelectedItem="{Binding CommSelectedAllLevensvorm, Mode=TwoWay}"
-                                DisplayMemberPath="Levensvorm"
                                 SelectedValuePath="Id"
                                 x:Name="ListBoxAllLevensduur"
                                 Margin="0,85,0,249"
                                 HorizontalAlignment="Left"
                                 Width="240">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock>
+                                            <TextBlock.Text>
+                                                <MultiBinding StringFormat="{}{0}">
+                                                    <Binding Path="Levensvorm"/>
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                            <TextBlock.InputBindings>
+                                                <MouseBinding Gesture="LeftDoubleClick"
+                                                              Command="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.LevensduurToevoegenCommand}"/>
+                                            </TextBlock.InputBindings>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
                             </ListBox>
 
                             <ListBox
                                 ItemsSource="{Binding CommAddedLevensvorm}"
                                 SelectedItem="{Binding CommSelectedAddedLevensvorm, Mode=TwoWay}"
-                                DisplayMemberPath="Levensvorm"
                                 SelectedValuePath="Id"
                                 x:Name="ListBoxAddedLevensduur"
                                 Margin="0,85,0,0"
                                 Width="240"
                                 HorizontalAlignment="Right"
                                 Height="240"
-                                VerticalAlignment="Top"/>
-                            <Button
+                                VerticalAlignment="Top">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock>
+                                            <TextBlock.Text>
+                                                <MultiBinding StringFormat="{}{0}">
+                                                    <Binding Path="Levensvorm"/>
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                            <TextBlock.InputBindings>
+                                                <MouseBinding Gesture="LeftDoubleClick"
+                                                              Command="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.LevensduurVerwijderenCommand}"/>
+                                            </TextBlock.InputBindings>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                                <Button
                                 x:Name="btnRemoveLevensduur"
+                                Command="{Binding Path=LevensduurVerwijderenCommand}"
                                 Content="&lt;--"
                                 HorizontalAlignment="Left"
                                 Margin="260,221,0,0"
@@ -416,6 +446,7 @@
                                 Height="20"/>
                             <Button
                                 x:Name="btnAddLevensduur"
+                                Command="{Binding Path=LevensduurToevoegenCommand}"
                                 Content="--&gt;"
                                 HorizontalAlignment="Left"
                                 Margin="260,149,0,0"
@@ -425,25 +456,56 @@
                             <ListBox
                                 ItemsSource="{Binding CommAllSocialbiliteit}"
                                 SelectedItem="{Binding CommSelectedAllSocialbiliteit, Mode=TwoWay}"
-                                DisplayMemberPath="Waarde"
                                 SelectedValuePath="Id"
                                 x:Name="ListBoxAllSociabiliteit"
                                 Margin="0,370,0,11"
                                 HorizontalAlignment="Left"
                                 Width="240"
-                                Height="190"/>
+                                Height="190">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock>
+                                            <TextBlock.Text>
+                                                <MultiBinding StringFormat="{}{0}">
+                                                    <Binding Path="Waarde"/>
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                            <TextBlock.InputBindings>
+                                                <MouseBinding Gesture="LeftDoubleClick"
+                                                              Command="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.SocialbiliteitToevoegenCommand}"/>
+                                            </TextBlock.InputBindings>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
                             <ListBox
                                 ItemsSource="{Binding CommAddedSocialbiliteit}"
                                 SelectedItem="{Binding CommSelectedAddedSocialbiliteit}"
-                                DisplayMemberPath="Waarde"
                                 SelectedValuePath="Id"
                                 x:Name="ListBoxAddedSociabiliteit"
                                 Margin="315,370,0,11"
                                 HorizontalAlignment="Right"
                                 Width="240"
-                                Height="190"/>
+                                Height="190">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock>
+                                            <TextBlock.Text>
+                                                <MultiBinding StringFormat="{}{0}">
+                                                    <Binding Path="Waarde"/>
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                            <TextBlock.InputBindings>
+                                                <MouseBinding Gesture="LeftDoubleClick"
+                                                              Command="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.SocialbiliteitVerwijderenCommand}"/>
+                                            </TextBlock.InputBindings>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
                             <Button
                                 x:Name="btnRemoveSociabiliteit"
+                                Command="{Binding Path=SocialbiliteitVerwijderenCommand}"
                                 Content="&lt;--"
                                 HorizontalAlignment="Left"
                                 Margin="260,484,0,0"
@@ -452,6 +514,7 @@
                                 Height="20"/>
                             <Button
                                 x:Name="btnAddSociabiliteit"
+                                Command="{Binding Path=SocialbiliteitToevoegenCommand}"
                                 Content="--&gt;"
                                 HorizontalAlignment="Left"
                                 Margin="260,405,0,0"
