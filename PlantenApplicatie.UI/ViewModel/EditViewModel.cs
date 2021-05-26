@@ -17,6 +17,7 @@ using GalaSoft.MvvmLight.Command;
 using PlantenApplicatie.Data;
 using PlantenApplicatie.Domain.Models;
 using Prism.Commands;
+using Window = System.Windows.Window;
 
 namespace PlantenApplicatie.UI.ViewModel
 {
@@ -40,7 +41,7 @@ namespace PlantenApplicatie.UI.ViewModel
         //Fenotype
         public ObservableCollection<FenoBloeiwijze> FenoBloeiwijze { get; set; }
         public ObservableCollection<FenoHabitus> FenoHabitus { get; set; }
-        public ObservableCollection<FenoBladgrootte> FenoBladgrote { get; set; } //bladhoogte, min & max bloeihoogte
+        public ObservableCollection<FenoBladgrootte> FenoBladgrootte { get; set; } //bladhoogte, min & max bloeihoogte
         public ObservableCollection<FenoKleur> FenoKleur { get; set; } //bladkleur & bloeikleur
         public ObservableCollection<FenoMaand> FenoMaand { get; set; } //bladkleur & bloeikleur
         public ObservableCollection<FenoBladvorm> FenoBladvorm { get; set; }
@@ -106,6 +107,14 @@ namespace PlantenApplicatie.UI.ViewModel
         //Fenotype
         private List<FenoBloeiwijze> _fenoBloeiwijze;
         private ImageSource[] _fenoBloeiAllImages;
+        private List<FenoHabitus> _fenoHabitus;
+        private List<FenoBladgrootte> _fenoBladgrootte;
+        private List<FenoKleur> _fenoKleur;
+        private List<FenoMaand> _fenoMaand;
+        private List<FenoBladvorm> _fenoBladvorm;
+        private List<FenoRatioBloeiBlad> _fenoRatio;
+        private List<FenoSpruitfenologie> _fenoSpruit;
+        private List<FenoLevensvorm> _fenoLevensvorm;
         //Abio
         private List<AbioBezonning> _abiobezonning;
         private List<AbioGrondsoort> _abiogrondsoort;
@@ -134,6 +143,14 @@ namespace PlantenApplicatie.UI.ViewModel
         //Fenotype
         private FenoBloeiwijze _fenoselectedBloeiwijze;
         private ImageSource _fenoselectedBloeiwijzeImage;
+        private FenoHabitus _fenoselectedHabitus;
+        private FenoBladgrootte _fenoselectedBladgrootte;
+        private FenoKleur _fenoselectedKleur;
+        private FenoMaand _fenoselectedMaand;
+        private FenoBladvorm _fenoselectedBladvorm;
+        private FenoRatioBloeiBlad _fenoselectedRadio;
+        private FenoSpruitfenologie _fenoselectedSpruit;
+        private FenoLevensvorm _fenoselectedLevensvorm;
         //Abio
         private AbioBezonning _abioselectedBezonning;
         private AbioGrondsoort _abioselectedGrondsoort;
@@ -164,6 +181,14 @@ namespace PlantenApplicatie.UI.ViewModel
             FilterTfgsvVariant = new ObservableCollection<TfgsvVariant>();
             //Fenotype
             FenoBloeiwijze = new ObservableCollection<FenoBloeiwijze>();
+            FenoHabitus = new ObservableCollection<FenoHabitus>();
+            FenoBladgrootte = new ObservableCollection<FenoBladgrootte>();
+            FenoKleur = new ObservableCollection<FenoKleur>();
+            FenoMaand = new ObservableCollection<FenoMaand>();
+            FenoBladvorm = new ObservableCollection<FenoBladvorm>();
+            FenoRatio = new ObservableCollection<FenoRatioBloeiBlad>();
+            FenoSpruit = new ObservableCollection<FenoSpruitfenologie>();
+            FenoLevensvorm = new ObservableCollection<FenoLevensvorm>();
             //Abio
             AbioBezonning = new ObservableCollection<AbioBezonning>();
             AbioGrondsoort = new ObservableCollection<AbioGrondsoort>();
@@ -301,7 +326,6 @@ namespace PlantenApplicatie.UI.ViewModel
             };
             _fenoBloeiwijze = _plantenDataService.GetFenoBloeiwijze();
             
-            //_fenoBloeiAllImages[0].UriSource = new Uri(@"C:\\Users\\Senne\\OneDrive - Hogeschool VIVES\\K3\\WPL1\\PlantenAPP\\PlantenApp\\PlantenApplicatie.UI\\View\\Images\\aar.jpg", UriKind.Relative);
             //Abio
             _abiobezonning = _plantenDataService.GetAbioBezonning();
             _abiogrondsoort = _plantenDataService.GetAbioGrondsoort();
