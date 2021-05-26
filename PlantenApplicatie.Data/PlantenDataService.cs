@@ -184,6 +184,39 @@ namespace PlantenApplicatie.Data
         {
             return context.FenoBloeiwijze.ToList();
         }
+        public List<FenoHabitus> GetFenoHabitus()
+        {
+            return context.FenoHabitus.ToList();
+        }
+        public List<FenoBladgrootte> GetFenoBladgrootte()
+        {
+            return context.FenoBladgrootte.ToList();
+        }
+        public List<FenoKleur> GetFenoKleur()
+        {
+            return context.FenoKleur.ToList();
+        }
+        public List<FenoMaand> GetFenoMaand()
+        {
+            return context.FenoMaand.ToList();
+        }
+        public List<FenoBladvorm> GetFenoBladvorm()
+        {
+            return context.FenoBladvorm.ToList();
+        }
+        public List<FenoRatioBloeiBlad> GetFenoRatio()
+        {
+            return context.FenoRatioBloeiBlad.ToList();
+        }
+        public List<FenoSpruitfenologie> GetFenoSpruit()
+        {
+            return context.FenoSpruitfenologie.ToList();
+        }
+        public List<FenoLevensvorm> GetFenoLevensvorm()
+        {
+            return context.FenoLevensvorm.ToList();
+        }
+
         //Abio
         public List<AbioBezonning> GetAbioBezonning()
         {
