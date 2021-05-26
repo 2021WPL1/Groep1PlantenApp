@@ -301,7 +301,9 @@
                             <Label Content="{Binding Abiotiek.Vochtbehoefte, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="57,85,0,0" Height="28" Grid.Column="1"/>
                             <Label Content="{Binding Abiotiek.Voedingsbehoefte, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="57,120,0,0" Height="28" Grid.Column="1"/>
                             <Label Content="{Binding Abiotiek.AntagonischeOmgeving, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="57,155,0,0" Height="28" Grid.Column="1"/>
-                            <ListBox Margin="57,190,222,10" BorderThickness="1,1,1,1" BorderBrush="#FF01040E" Grid.Column="1"/>
+                            <ListBox 
+                                ItemsSource="{Binding SelectedPlantAbioHabitats}"
+                                Margin="57,190,222,10" BorderThickness="1,1,1,1" BorderBrush="#FF01040E" Grid.Column="1"/>
                         </Grid>
                     </TabItem>
                     <TabItem Header="Commensalisme" Margin="21,-2,-34,-1">

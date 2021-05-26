@@ -30,7 +30,10 @@ namespace PlantenApplicatie.UI.ViewModel
         private List<FenotypeMulti> _fenotypeMulti = new List<FenotypeMulti>();
         //Stephanie
         public ObservableCollection<string> SelectedPlantAbioHabitats { get; set; }
+
+
         private List<string> _selectedPlantAbioHabitat = new List<string>();
+        private List<AbiotiekMulti> _abiotiekMulti = new List<AbiotiekMulti>();
 
         //Jelle & Hemen
         //Plant voor in labels
@@ -55,6 +58,7 @@ namespace PlantenApplicatie.UI.ViewModel
 
             SelectedPlantBladKleur = new ObservableCollection<string>();
             SelectedPlantBloeiKleur = new ObservableCollection<string>();
+            SelectedPlantAbioHabitats = new ObservableCollection<string>();
         }
 
 
@@ -136,6 +140,12 @@ namespace PlantenApplicatie.UI.ViewModel
                SelectedPlantBloeiKleur.Add(bloeikleur);
            }
 
+           SelectedPlantAbioHabitats.Clear();
+
+           foreach (var habitat in _selectedPlantAbioHabitat)
+           {
+               SelectedPlantAbioHabitats.Add(habitat);
+           }
         }
         //Stephanie
         public void LoadHabitat()
@@ -172,7 +182,6 @@ namespace PlantenApplicatie.UI.ViewModel
 
             _fenotypeMulti = _plantenDataService.GetFenoMultiKleur(plant.PlantId);
             
-
             foreach (var FenoMulti in _fenotypeMulti)
             {
                 string listText = FenoMulti.Maand + " - " + FenoMulti.Waarde;
@@ -189,8 +198,12 @@ namespace PlantenApplicatie.UI.ViewModel
                 }
             }
             //Stephanie
-            _selectedPlantAbioHabitat = _plantenDataService.GetHabitats(plant.PlantId);
+            _abiotiekMulti = _plantenDataService.GetAbiotiekMulti(plant.PlantId);
 
+            foreach (var AbioMulti in _abiotiekMulti)
+            {
+                string listText = AbioMulti.Eigenschap + " - " + AbioMulti.Waarde;
+            }
         }
     }
 }
