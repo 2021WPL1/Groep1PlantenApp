@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.EntityFrameworkCore;
 using PlantenApplicatie.Data;
+using PlantenApplicatie.Domain.Models;
 using PlantenApplicatie.UI.ViewModel;
 
 namespace PlantenApplicatie.UI.View
@@ -27,7 +28,7 @@ namespace PlantenApplicatie.UI.View
         private static Planten2021Context context = new Planten2021Context();
         private MainViewModel viewModel;
 
-        public MainWindow()
+        public MainWindow( )
         {
             InitializeComponent();
             //Senne,Maarten,Hermes
@@ -37,5 +38,6 @@ namespace PlantenApplicatie.UI.View
             viewModel.InitializeTfgsv();
             viewModel.LoadAll();
         }
+        
     }
 }
