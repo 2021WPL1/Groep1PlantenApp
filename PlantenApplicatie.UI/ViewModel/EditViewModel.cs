@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.DirectoryServices;
+using System.IO;
 using System.Linq;
 using System.Net.Mime;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -291,12 +292,12 @@ namespace PlantenApplicatie.UI.ViewModel
             //Fenotype
             _fenoBloeiAllImages = new ImageSource[6]
             {
-                new BitmapImage(new Uri("C:\\Users\\Senne\\OneDrive - Hogeschool VIVES\\K3\\WPL1\\PlantenAPP\\PlantenApp\\PlantenApplicatie.UI\\View\\Images\\aar.jpg")),
-                new BitmapImage(new Uri("C:\\Users\\Senne\\OneDrive - Hogeschool VIVES\\K3\\WPL1\\PlantenAPP\\PlantenApp\\PlantenApplicatie.UI\\View\\Images\\scherm.jpg")),
-                new BitmapImage(new Uri("C:\\Users\\Senne\\OneDrive - Hogeschool VIVES\\K3\\WPL1\\PlantenAPP\\PlantenApp\\PlantenApplicatie.UI\\View\\Images\\pluim.jpg")),
-                new BitmapImage(new Uri("C:\\Users\\Senne\\OneDrive - Hogeschool VIVES\\K3\\WPL1\\PlantenAPP\\PlantenApp\\PlantenApplicatie.UI\\View\\Images\\knop.jpg")), 
-                new BitmapImage(new Uri("C:\\Users\\Senne\\OneDrive - Hogeschool VIVES\\K3\\WPL1\\PlantenAPP\\PlantenApp\\PlantenApplicatie.UI\\View\\Images\\margrietachtig.jpg")),
-                new BitmapImage(new Uri("C:\\Users\\Senne\\OneDrive - Hogeschool VIVES\\K3\\WPL1\\PlantenAPP\\PlantenApp\\PlantenApplicatie.UI\\View\\Images\\etage.jpg"))
+                new BitmapImage(new Uri(Path.Combine(Environment.CurrentDirectory.Substring(0,Environment.CurrentDirectory.IndexOf("\\bin")),@"View\\Images\\aar.jpg" ))),
+                new BitmapImage(new Uri(Path.Combine(Environment.CurrentDirectory.Substring(0,Environment.CurrentDirectory.IndexOf("\\bin")),@"View\\Images\\scherm.jpg"))),
+                new BitmapImage(new Uri(Path.Combine(Environment.CurrentDirectory.Substring(0,Environment.CurrentDirectory.IndexOf("\\bin")),@"View\\Images\\pluim.jpg"))),
+                new BitmapImage(new Uri(Path.Combine(Environment.CurrentDirectory.Substring(0,Environment.CurrentDirectory.IndexOf("\\bin")),@"View\\Images\\knop.jpg"))), 
+                new BitmapImage(new Uri(Path.Combine(Environment.CurrentDirectory.Substring(0,Environment.CurrentDirectory.IndexOf("\\bin")),@"View\\Images\\margrietachtig.jpg"))),
+                new BitmapImage(new Uri(Path.Combine(Environment.CurrentDirectory.Substring(0,Environment.CurrentDirectory.IndexOf("\\bin")),@"View\\Images\\etage.jpg")))
             };
             _fenoBloeiwijze = _plantenDataService.GetFenoBloeiwijze();
             
