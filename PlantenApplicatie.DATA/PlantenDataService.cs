@@ -157,6 +157,11 @@ namespace PlantenApplicatie.Data
         {
             return context.FenotypeMulti.Where(m => m.PlantId == Id).ToList();
         }
+        //Stephanie
+        public List<AbioHabitat> GetAbioHabitats(long Id)
+        {
+           return context.AbioHabitat.Where(h => h.Id == Id);
+        }
 
         //Editwindow
 
