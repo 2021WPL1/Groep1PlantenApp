@@ -244,7 +244,7 @@ namespace PlantenApplicatie.Data
         }
         public List<FenoHabitus> GetFenoHabitus()
         {
-            return context.FenoHabitus.ToList();
+            return context.FenoHabitus.OrderBy(f=>f.Naam).ToList();
         }
         public List<FenoBladgrootte> GetFenoBladgrootte()
         {
@@ -260,19 +260,19 @@ namespace PlantenApplicatie.Data
         }
         public List<FenoBladvorm> GetFenoBladvorm()
         {
-            return context.FenoBladvorm.ToList();
+            return context.FenoBladvorm.OrderBy(f=>f.Vorm).ToList();
         }
         public List<FenoRatioBloeiBlad> GetFenoRatio()
         {
-            return context.FenoRatioBloeiBlad.ToList();
+            return context.FenoRatioBloeiBlad.OrderBy(f=>f.Waarde).ToList();
         }
         public List<FenoSpruitfenologie> GetFenoSpruit()
         {
-            return context.FenoSpruitfenologie.ToList();
+            return context.FenoSpruitfenologie.OrderBy(f=>f.Fenologie).ToList();
         }
         public List<FenoLevensvorm> GetFenoLevensvorm()
         {
-            return context.FenoLevensvorm.ToList();
+            return context.FenoLevensvorm.OrderBy(f=>f.Levensvorm).ToList();
         }
 
         //Abio
