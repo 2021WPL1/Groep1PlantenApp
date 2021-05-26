@@ -28,6 +28,9 @@ namespace PlantenApplicatie.UI.ViewModel
         private List<string> _selectedPlantBladKleur = new List<string>();
         private List<string> _selectedPlantBloeiKleur = new List<string>();
         private List<FenotypeMulti> _fenotypeMulti = new List<FenotypeMulti>();
+        //Stephanie
+        public ObservableCollection<string> SelectedPlantAbioHabitats { get; set; }
+        private List<string> _selectedPlantAbioHabitat = new List<string>();
 
         //Jelle & Hemen
         //Plant voor in labels
@@ -131,6 +134,17 @@ namespace PlantenApplicatie.UI.ViewModel
            }
 
         }
+        //Stephanie
+        public void LoadHabitat()
+        {
+
+            _selectedPlantAbioHabitat.Clear();
+            foreach (var habitat in SelectedPlantAbioHabitats)
+            {
+                SelectedPlantAbioHabitats.Add(habitat);
+            }
+
+        }
 
         //Jelle & Hemen
         //Command die gelinkt is aan close button om form te sluiten
@@ -154,6 +168,7 @@ namespace PlantenApplicatie.UI.ViewModel
             BeheerMaand = _plantenDataService.GetBeheerMaand(plant.PlantId);
 
             _fenotypeMulti = _plantenDataService.GetFenoMultiKleur(plant.PlantId);
+            
 
             foreach (var FenoMulti in _fenotypeMulti)
             {
@@ -170,6 +185,8 @@ namespace PlantenApplicatie.UI.ViewModel
                         break;
                 }
             }
+            //Stephanie
+            _selectedPlantAbioHabitat = _plantenDataService.GetHabitats(plant.PlantId);
 
         }
     }
