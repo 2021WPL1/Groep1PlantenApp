@@ -12,7 +12,6 @@ using Prism.Commands;
 
 namespace PlantenApplicatie.UI.ViewModel
 {
-
     //Maarten & Stephanie
     class ResultatenViewModel : ViewModelBase
     {
@@ -30,10 +29,24 @@ namespace PlantenApplicatie.UI.ViewModel
         public ObservableCollection<string> GetSelectedPlantLevensduurConcurrentiekracht { get; set; }
 
 
+        //Stephanie
+        public ObservableCollection<string> SelectedPlantBladKleur { get; set; }
+        public ObservableCollection<string> SelectedPlantBloeiKleur { get; set; }
+
+        private List<string> _selectedPlantBladKleur = new List<string>();
+        private List<string> _selectedPlantBloeiKleur = new List<string>();
+        private List<FenotypeMulti> _fenotypeMulti = new List<FenotypeMulti>();
+        //Stephanie
+        public ObservableCollection<string> SelectedPlantAbioHabitats { get; set; }
+
+
+        private List<string> _selectedPlantAbioHabitat = new List<string>();
+        private List<AbiotiekMulti> _abiotiekMulti = new List<AbiotiekMulti>();
+
         //Jelle & Hemen
         //Plant voor in labels
         private Plant _plantenResultaat;
-
+        //Maarten & Stephanie
         private PlantenDataService _plantenDataService;
         private Fenotype _fenotype;
         private Abiotiek _abiotiek;
@@ -62,6 +75,10 @@ namespace PlantenApplicatie.UI.ViewModel
             GetSelectedPlantLevensvorm = new ObservableCollection<string>();
             GetSelectedPlantSociabiliteit = new ObservableCollection<string>();
             GetSelectedPlantLevensduurConcurrentiekracht = new ObservableCollection<string>();
+
+            SelectedPlantBladKleur = new ObservableCollection<string>();
+            SelectedPlantBloeiKleur = new ObservableCollection<string>();
+            SelectedPlantAbioHabitats = new ObservableCollection<string>();
         }
 
 
@@ -128,6 +145,21 @@ namespace PlantenApplicatie.UI.ViewModel
             }
         }
 
+        //Stephanie
+        public void LoadList()
+        {
+           SelectedPlantBladKleur.Clear();
+           SelectedPlantBloeiKleur.Clear();
+           foreach (var bladkleur in _selectedPlantBladKleur)
+           {
+               SelectedPlantBladKleur.Add(bladkleur);
+           }
+
+           foreach (var bloeikleur in _selectedPlantBloeiKleur)
+           {
+               SelectedPlantBloeiKleur.Add(bloeikleur);
+           }
+
         //Jelle & Stephanie
         //Laad lijsten voor listboxes
         public void LoadLists()
@@ -154,6 +186,14 @@ namespace PlantenApplicatie.UI.ViewModel
             }
         }
 
+
+           SelectedPlantAbioHabitats.Clear();
+
+           foreach (var habitat in _selectedPlantAbioHabitat)
+           {
+               SelectedPlantAbioHabitats.Add(habitat);
+           }
+        }
 
         //Jelle & Hemen
         //Command die gelinkt is aan close button om form te sluiten
@@ -214,6 +254,31 @@ namespace PlantenApplicatie.UI.ViewModel
             }
 
 
+
+            _fenotypeMulti = _plantenDataService.GetFenoMultiKleur(plant.PlantId);
+            
+            foreach (var FenoMulti in _fenotypeMulti)
+            {
+                string listText = FenoMulti.Maand + " - " + FenoMulti.Waarde;
+                switch (FenoMulti.Eigenschap)
+                {
+                    case "blad":
+                        _selectedPlantBladKleur.Add(listText);
+                        break;
+                    case "bloei": 
+                        _selectedPlantBloeiKleur.Add(listText);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            //Stephanie
+            _abiotiekMulti = _plantenDataService.GetAbiotiekMulti(plant.PlantId);
+
+            foreach (var AbioMulti in _abiotiekMulti)
+            {
+                _selectedPlantAbioHabitat.Add(AbioMulti.Waarde);
+            }
         }
     }
 }

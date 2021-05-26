@@ -151,7 +151,9 @@
                                             </LinearGradientBrush>
                                         </Label.Background>
                                     </Label>
-                                    <ListBox x:Name="listboxBladKleur" Margin="150,120,136,280" BorderThickness="1,1,1,1" BorderBrush="#FF01040E"/>
+                                    <ListBox x:Name="listboxBladKleur" 
+                                             ItemsSource="{Binding SelectedPlantBladKleur}"
+                                             Margin="150,120,136,280" BorderThickness="1,1,1,1" BorderBrush="#FF01040E"/>
 
                                     <Label Content="Bloeikleur" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,155,0,0">
                                         <Label.Background>
@@ -217,9 +219,9 @@
                                             </LinearGradientBrush>
                                         </Label.Background>
                                     </Label>
-                                    <Label Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,15,0,0" Height="28"/>
-                                    <Label Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,50,0,0" Height="28"/>
-                                    <Label Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,85,0,0" Height="28"/>
+                                    <Label Content="{Binding Fenotype.MaxBladhoogte, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,15,0,0" Height="28"/>
+                                    <Label Content="{Binding Fenotype.MinBloeihoogte, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,50,0,0" Height="28"/>
+                                    <Label Content="{Binding Fenotype.MaxBloeihoogte, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,85,0,0" Height="28"/>
                                     <Label Content="{Binding Fenotype.Bladgrootte, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,190,0,0" Height="28"/>
                                     <Label Content="{Binding Fenotype.Bladvorm, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,225,0,0" Height="28"/>
                                     <Label Content="{Binding Fenotype.RatioBloeiBlad, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,260,0,0" Height="28"/>
@@ -227,7 +229,9 @@
                                     <Label Content="{Binding Fenotype.Bloeiwijze, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,330,0,0" Height="28"/>
                                     <Label Content="{Binding Fenotype.Habitus, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,365,0,0" Height="28"/>
                                     <Label Content="{Binding Fenotype.Levensvorm, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,400,0,0" Height="28"/>
-                                    <ListBox x:Name="listboxBloeiKleur" Margin="150,153,136,247" BorderThickness="1,1,1,1" BorderBrush="#FF01040E"/>
+                                    <ListBox x:Name="listboxBloeiKleur" 
+                                             ItemsSource="{Binding SelectedPlantBloeiKleur}"
+                                             Margin="150,153,136,247" BorderThickness="1,1,1,1" BorderBrush="#FF01040E"/>
                                 </Grid>
                             </ScrollViewer>
                         </Grid>
@@ -297,7 +301,9 @@
                             <Label Content="{Binding Abiotiek.Vochtbehoefte, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="57,85,0,0" Height="28" Grid.Column="1"/>
                             <Label Content="{Binding Abiotiek.Voedingsbehoefte, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="57,120,0,0" Height="28" Grid.Column="1"/>
                             <Label Content="{Binding Abiotiek.AntagonischeOmgeving, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="57,155,0,0" Height="28" Grid.Column="1"/>
-                            <ListBox Margin="57,190,222,10" BorderThickness="1,1,1,1" BorderBrush="#FF01040E" Grid.Column="1"/>
+                            <ListBox 
+                                ItemsSource="{Binding SelectedPlantAbioHabitats}"
+                                Margin="57,190,222,10" BorderThickness="1,1,1,1" BorderBrush="#FF01040E" Grid.Column="1"/>
                         </Grid>
                     </TabItem>
                     <TabItem Header="Commensalisme" Margin="21,-2,-34,-1">
@@ -309,6 +315,10 @@
                         </TabItem.Background>
                         <Grid Margin="0,0,99,0">
                             <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="156*"/>
+                                    <ColumnDefinition Width="317*"/>
+                                </Grid.ColumnDefinitions>
 
                                 <Label Content="Ontwikkelingssnelheid" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,15,0,0" Height="28">
                                     <Label.Background>
