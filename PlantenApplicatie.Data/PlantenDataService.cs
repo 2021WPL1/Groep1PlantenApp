@@ -180,6 +180,10 @@ namespace PlantenApplicatie.Data
             return context.TfgsvVariant.FirstOrDefault(p => p.VariantId == plantId);
         }
         //Fenotype
+        public List<FenoBloeiwijze> GetFenoBloeiwijze()
+        {
+            return context.FenoBloeiwijze.ToList();
+        }
         //Abio
         public List<AbioBezonning> GetAbioBezonning()
         {
