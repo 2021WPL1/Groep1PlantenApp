@@ -301,6 +301,10 @@ namespace PlantenApplicatie.Data
             return context.AbioHabitat.ToList();
         }
         //Commersialisme
+        public List<CommLevensvorm> GetCommLevensvorm()
+        {
+            return context.CommLevensvorm.OrderBy(c => c.Levensvorm).ToList();
+        }
         //Extra Eigenschappen
         //Beheer Eigenschappen
     }

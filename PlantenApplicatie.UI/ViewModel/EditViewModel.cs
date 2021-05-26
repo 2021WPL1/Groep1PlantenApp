@@ -58,6 +58,8 @@ namespace PlantenApplicatie.UI.ViewModel
         public ObservableCollection<AbioHabitat> AbioAllHabitats { get; set; }
         public ObservableCollection<AbioHabitat> AbioAddedHabitats { get; set; }
         //Commersialisme
+        public ObservableCollection<CommLevensvorm> CommAllLevensvorm { get; set; }
+        public ObservableCollection<CommLevensvorm> CommAddedLevensvorm { get; set; }
         /*
          * Ontwikkelingssnelheid
          * Levensduur/Concurrentiekracht
@@ -111,6 +113,9 @@ namespace PlantenApplicatie.UI.ViewModel
         private List<AbioHabitat> _abioAllHabitats;
         private List<AbioHabitat> _abioAddedHabitats;
         //Commersialisme
+        private List<CommLevensvorm> _commAllLevensvorm;
+
+        private List<CommLevensvorm> _commAddedLevensvorm;
         //Extra Eigenschappen
         //Beheer Eigenschappen
 
@@ -154,6 +159,9 @@ namespace PlantenApplicatie.UI.ViewModel
         private AbioHabitat _abioselectedAllHabitat;
         private AbioHabitat _abioselectedAddedHabitat;
         //Commersialisme
+        private CommLevensvorm _commselectedAllLevensvorm;
+
+        private CommLevensvorm _commselectedAddedLevensvorm;
         //Extra Eigenschappen
         //Beheer Eigenschappen
 
@@ -192,6 +200,8 @@ namespace PlantenApplicatie.UI.ViewModel
             AbioAllHabitats = new ObservableCollection<AbioHabitat>();
             AbioAddedHabitats = new ObservableCollection<AbioHabitat>();
             //Commersialisme
+            CommAllLevensvorm = new ObservableCollection<CommLevensvorm>();
+            CommAddedLevensvorm = new ObservableCollection<CommLevensvorm>();
             //Extra Eigenschappen
             //Beheer Eigenschappen
         }
@@ -362,6 +372,8 @@ namespace PlantenApplicatie.UI.ViewModel
             _abioAllHabitats = _plantenDataService.GetHabitats();
             _abioAddedHabitats = new List<AbioHabitat>();
             //Commersialisme
+            _commAllLevensvorm = _plantenDataService.GetCommLevensvorm();
+            _commAddedLevensvorm = new List<CommLevensvorm>();
             //Extra Eigenschappen
             //Beheer Eigenschappen
 
@@ -535,7 +547,28 @@ namespace PlantenApplicatie.UI.ViewModel
 
         public void LoadCommersialisme()
         {
+            CommAllLevensvorm.Clear();
 
+            foreach (var levensvorm in _commAllLevensvorm)
+            {
+                CommAllLevensvorm.Add(levensvorm);
+            }
+        }
+        public void ReloadLevensvorm()
+        {
+            //Senne & Hermes
+
+            CommAddedLevensvorm.Clear();
+            foreach (var levensvorm in _commAddedLevensvorm)
+            {
+                CommAddedLevensvorm.Add(levensvorm);
+            }
+        }
+        public void ReloadSociabiliteit()
+        {
+            //Senne & Hermes
+
+            
         }
 
         public void LoadExtraEigenschappen()
@@ -983,6 +1016,25 @@ namespace PlantenApplicatie.UI.ViewModel
             }
         }
         //Commersialisme
+        public CommLevensvorm CommSelectedAllLevensvorm
+        {
+            get { return _commselectedAllLevensvorm; }
+            set
+            {
+                _commselectedAllLevensvorm = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public CommLevensvorm CommSelectedAddedLevensvorm
+        {
+            get { return _commselectedAddedLevensvorm; }
+            set
+            {
+                _commselectedAddedLevensvorm = value;
+                OnPropertyChanged();
+            }
+        }
         //Extra Eigenschappen
         //Beheer Eigenschappen
     }
