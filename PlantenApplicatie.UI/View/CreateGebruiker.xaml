@@ -1,0 +1,38 @@
+﻿<Window x:Class="PlantenApplicatie.UI.View.CreateGebruiker"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PlantenApplicatie.UI.View"
+        mc:Ignorable="d"
+        Title="CreateGebruiker" Height="450" Width="800">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="Images/AchtergrondSchermen.jpg"/>
+        </Grid.Background>
+        <Image HorizontalAlignment="Left" Height="80" Margin="718,0,0,0" VerticalAlignment="Top" Width="80" Source="Images/Plantify.png"/>
+        <Label Content="Plantify" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Arial Rounded MT Bold" Width="388" FontSize="100" BorderBrush="Black" BorderThickness="5">
+            <Label.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White"/>
+                    <GradientStop Color="#FFC7FF00" Offset="1"/>
+                </LinearGradientBrush>
+            </Label.Background>
+        </Label>
+        <Label Content="Emailadres:" HorizontalAlignment="Left" Margin="128,0,0,0" VerticalAlignment="Center" Background="White" BorderBrush="Black" BorderThickness="2" Height="42" Width="157" FontSize="20" FontFamily="Arial Black"/>
+        <Label Content="Wachtwoord:" HorizontalAlignment="Left" Margin="128,243,0,0" VerticalAlignment="Top" Background="White" BorderBrush="Black" BorderThickness="2" FontSize="20" FontFamily="Arial Black"/>
+        <TextBox x:Name="EmailAdres" Text="{Binding Path=EmailInput, Mode=TwoWay}" HorizontalAlignment="Left" Margin="308,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="312" Height="42" BorderBrush="Black" BorderThickness="2" FontSize="20"/>
+        <TextBox x:Name="Wachtwoord" Text="{Binding Path=WachtwoordInput, Mode=TwoWay}" HorizontalAlignment="Left" Margin="308,243,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="312" Height="42" BorderBrush="Black" BorderThickness="2" FontSize="20"/>
+        <Button Name="AddGebruiker" Content="Registreer" HorizontalAlignment="Center" Margin="0,356,0,0" VerticalAlignment="Top" Height="56" Width="156" FontSize="30" BorderBrush="Black" BorderThickness="2"
+                Command="{Binding Path=addGebruikerCommand}">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White"/>
+                    <GradientStop Color="#FFC7FF00" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Label Content="Rol:" HorizontalAlignment="Left" Margin="128,285,0,0" VerticalAlignment="Top" Background="White" BorderBrush="Black" BorderThickness="2" FontSize="20" FontFamily="Arial Black"/>
+        <ComboBox ItemsSource="{Binding Rollen}" DisplayMemberPath="Omschrijving" SelectedItem="{Binding SelectedRol, Mode=TwoWay}" SelectedValuePath="Omschrijving" x:Name="rol" HorizontalAlignment="Left" Margin="308,290,0,0" VerticalAlignment="Top" Width="312" Height="42" FontSize="20"/>
+    </Grid>
+</Window>

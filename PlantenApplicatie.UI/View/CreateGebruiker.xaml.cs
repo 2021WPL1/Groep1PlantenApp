@@ -15,15 +15,16 @@ using System.Windows.Shapes;
 namespace PlantenApplicatie.UI.View
 {
     /// <summary>
-    /// Interaction logic for LoginScherm.xaml
+    /// Interaction logic for CreateGebruiker.xaml
     /// </summary>
-    public partial class LoginScherm : Window
+    public partial class CreateGebruiker : Window
     {
-        private LoginSchermViewModel viewModel;
-        public LoginScherm()
+        private CreateGebruikerViewModel viewModel;
+        public CreateGebruiker()
         {
-            viewModel = new LoginSchermViewModel(PlantenDataService.Instance());
+            viewModel = new CreateGebruikerViewModel(PlantenDataService.Instance());
             DataContext = viewModel;
+            viewModel.addRollen();
             InitializeComponent();
         }
     }
