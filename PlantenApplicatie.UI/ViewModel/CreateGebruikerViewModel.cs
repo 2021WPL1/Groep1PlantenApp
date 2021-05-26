@@ -4,6 +4,7 @@ using Prism.Commands;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Input;
@@ -18,7 +19,9 @@ namespace PlantenApplicatie.UI.ViewModel
         public ObservableCollection<Rol> Rollen { get; set; }
         private string emailInput;
         private string wachtwoordInput;
+        private string wachtwoordBevestigen;
         private Rol _selectedRol;
+        private string _error;
 
         //Hemen &maarten 
         public CreateGebruikerViewModel(PlantenDataService plantenDataService)
@@ -45,6 +48,8 @@ namespace PlantenApplicatie.UI.ViewModel
                 OnPropertyChanged();
             }
         }
+        [Required]
+        [EmailAddress]
         public string EmailInput
         {
             get
@@ -57,6 +62,7 @@ namespace PlantenApplicatie.UI.ViewModel
                 OnPropertyChanged();
             }
         }
+        [Required(ErrorMessage = " Password is required")]
         public string WachtwoordInput
         {
             get
@@ -69,14 +75,47 @@ namespace PlantenApplicatie.UI.ViewModel
                 OnPropertyChanged();
             }
         }
+        [Required(ErrorMessage = "Confirm Password is required")]
+        public string WachtwoordBevestigen
+        {
+            get { return wachtwoordBevestigen; }
+            set { wachtwoordBevestigen = value; }
+        }
+        public string SelectedError
+        {
+            get { return _error; }
+            set
+            {
+                _error = value;
+                OnPropertyChanged();
+            }
+        }
         //hemen & maarten 
         public void addGebruiker()
         {
-            using (var sha256 = SHA256.Create())
+            try
             {
-                var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(WachtwoordInput));
-                _dataservice.addGebruiker(SelectedRol.Omschrijving, EmailInput, hashedBytes);
+                if (WachtwoordBevestigen == WachtwoordInput)
+                {
+                    using (var sha256 = SHA256.Create())
+                    {
+                        var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(WachtwoordInput));
+                        _dataservice.addGebruiker(SelectedRol.Omschrijving, EmailInput, hashedBytes);
+                    }
+
+                }
+                else
+                {
+                    SelectedError = "wachtwoord is niet zelfde";
+                }
             }
+            catch (Exception)
+            {
+
+                SelectedError = "er is iets fout";
+            }
+          
+          
         }
     }
 }

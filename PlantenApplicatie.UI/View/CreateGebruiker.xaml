@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PlantenApplicatie.UI.View"
         mc:Ignorable="d"
-        Title="CreateGebruiker" Height="450" Width="800">
+        Title="CreateGebruiker" Height="502" Width="800">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="Images/AchtergrondSchermen.jpg"/>
@@ -19,11 +19,11 @@
                 </LinearGradientBrush>
             </Label.Background>
         </Label>
-        <Label Content="Emailadres:" HorizontalAlignment="Left" Margin="128,0,0,0" VerticalAlignment="Center" Background="White" BorderBrush="Black" BorderThickness="2" Height="42" Width="157" FontSize="20" FontFamily="Arial Black"/>
-        <Label Content="Wachtwoord:" HorizontalAlignment="Left" Margin="128,243,0,0" VerticalAlignment="Top" Background="White" BorderBrush="Black" BorderThickness="2" FontSize="20" FontFamily="Arial Black"/>
-        <TextBox x:Name="EmailAdres" Text="{Binding Path=EmailInput, Mode=TwoWay}" HorizontalAlignment="Left" Margin="308,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="312" Height="42" BorderBrush="Black" BorderThickness="2" FontSize="20"/>
-        <TextBox x:Name="Wachtwoord" Text="{Binding Path=WachtwoordInput, Mode=TwoWay}" HorizontalAlignment="Left" Margin="308,243,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="312" Height="42" BorderBrush="Black" BorderThickness="2" FontSize="20"/>
-        <Button Name="AddGebruiker" Content="Registreer" HorizontalAlignment="Center" Margin="0,356,0,0" VerticalAlignment="Top" Height="56" Width="156" FontSize="30" BorderBrush="Black" BorderThickness="2"
+        <Label Content="Emailadres:" HorizontalAlignment="Left" Margin="57,167,0,0" VerticalAlignment="Top" Background="White" BorderBrush="Black" BorderThickness="2" Height="42" Width="171" FontSize="20" FontFamily="Arial Black"/>
+        <Label Content="Wachtwoord:" HorizontalAlignment="Left" Margin="57,223,0,0" VerticalAlignment="Top" Background="White" BorderBrush="Black" BorderThickness="2" FontSize="20" FontFamily="Arial Black" Height="42" Width="171"/>
+        <TextBox x:Name="EmailAdres" Text="{Binding Path=EmailInput, Mode=TwoWay}" HorizontalAlignment="Left" Margin="263,167,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="312" Height="42" BorderBrush="Black" BorderThickness="2" FontSize="20"/>
+        <TextBox x:Name="Wachtwoord" Text="{Binding Path=WachtwoordInput, Mode=TwoWay}" HorizontalAlignment="Left" Margin="263,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="312" Height="42" BorderBrush="Black" BorderThickness="2" FontSize="20"/>
+        <Button Name="AddGebruiker" Content="Registreer" HorizontalAlignment="Center" Margin="0,384,0,0" VerticalAlignment="Top" Height="40" Width="156" FontSize="20" BorderBrush="Black" BorderThickness="2"
                 Command="{Binding Path=addGebruikerCommand}">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -32,7 +32,10 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Label Content="Rol:" HorizontalAlignment="Left" Margin="128,285,0,0" VerticalAlignment="Top" Background="White" BorderBrush="Black" BorderThickness="2" FontSize="20" FontFamily="Arial Black"/>
-        <ComboBox ItemsSource="{Binding Rollen}" DisplayMemberPath="Omschrijving" SelectedItem="{Binding SelectedRol, Mode=TwoWay}" SelectedValuePath="Omschrijving" x:Name="rol" HorizontalAlignment="Left" Margin="308,290,0,0" VerticalAlignment="Top" Width="312" Height="42" FontSize="20"/>
+        <Label Content="Rol:" HorizontalAlignment="Left" Margin="115,342,0,0" VerticalAlignment="Top" Background="White" BorderBrush="Black" BorderThickness="2" FontSize="20" FontFamily="Arial Black"/>
+        <ComboBox ItemsSource="{Binding Rollen}" DisplayMemberPath="Omschrijving" SelectedItem="{Binding SelectedRol, Mode=TwoWay}" SelectedValuePath="Omschrijving" x:Name="rol" HorizontalAlignment="Left" Margin="263,337,0,0" VerticalAlignment="Top" Width="312" Height="42" FontSize="20"/>
+        <Label Content="Wachtwoord bevestigen" HorizontalAlignment="Left" Margin="57,284,0,0" VerticalAlignment="Top" Background="White" BorderBrush="Black" BorderThickness="2" FontSize="12" FontFamily="Arial Black" Height="42"/>
+        <TextBox x:Name="Wachtwoord_Bevestigen" Text="{Binding WachtwoordBevestigen, Mode=TwoWay}" HorizontalAlignment="Left" Margin="263,284,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="312" Height="42" BorderBrush="Black" BorderThickness="2" FontSize="20"/>
+        <Label Content="{Binding Path=SelectedError, Mode=TwoWay}" HorizontalAlignment="Left" Margin="580,227,0,0" VerticalAlignment="Top" Width="210" Height="42" FontSize="20" Foreground="#FFF91313"/>
     </Grid>
 </Window>
