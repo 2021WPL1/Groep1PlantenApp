@@ -52,6 +52,9 @@ namespace PlantenApplicatie.UI.ViewModel
 
             //Senne & Hermes
             this.EditSchermCommand = new DelegateCommand(EditScherm);
+
+            SelectedPlantBladKleur = new ObservableCollection<string>();
+            SelectedPlantBloeiKleur = new ObservableCollection<string>();
         }
 
 
@@ -123,12 +126,12 @@ namespace PlantenApplicatie.UI.ViewModel
         {
            SelectedPlantBladKleur.Clear();
            SelectedPlantBloeiKleur.Clear();
-           foreach (var bladkleur in SelectedPlantBladKleur)
+           foreach (var bladkleur in _selectedPlantBladKleur)
            {
                SelectedPlantBladKleur.Add(bladkleur);
            }
 
-           foreach (var bloeikleur in SelectedPlantBloeiKleur)
+           foreach (var bloeikleur in _selectedPlantBloeiKleur)
            {
                SelectedPlantBloeiKleur.Add(bloeikleur);
            }
