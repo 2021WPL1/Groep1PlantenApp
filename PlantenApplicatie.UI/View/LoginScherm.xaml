@@ -8,9 +8,9 @@
         Title="LoginScherm" Height="450" Width="800">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/View/AchtergrondSchermen.jpg"/>
+            <ImageBrush ImageSource="Images/AchtergrondSchermen.jpg"/>
         </Grid.Background>
-        <Image HorizontalAlignment="Left" Height="80" Margin="718,0,0,0" VerticalAlignment="Top" Width="80" Source="/View/Plantify.png"/>
+        <Image HorizontalAlignment="Left" Height="80" Margin="718,0,0,0" VerticalAlignment="Top" Width="80" Source="Images/Plantify.png"/>
         <Label Content="Plantify" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Arial Rounded MT Bold" Width="388" FontSize="100" BorderBrush="Black" BorderThickness="5">
             <Label.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
