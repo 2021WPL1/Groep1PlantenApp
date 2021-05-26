@@ -10,6 +10,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using GalaSoft.MvvmLight.Command;
 using PlantenApplicatie.Data;
@@ -37,7 +38,6 @@ namespace PlantenApplicatie.UI.ViewModel
         public ObservableCollection<TfgsvVariant> FilterTfgsvVariant { get; set; }
         //Fenotype
         public ObservableCollection<FenoBloeiwijze> FenoBloeiwijze { get; set; }
-        public ObservableCollection<Image> FenoBloeiImages { get; set; }
         public ObservableCollection<FenoHabitus> FenoHabitus { get; set; }
         public ObservableCollection<FenoBladgrootte> FenoBladgrote { get; set; } //bladhoogte, min & max bloeihoogte
         public ObservableCollection<FenoKleur> FenoKleur { get; set; } //bladkleur & bloeikleur
@@ -103,7 +103,8 @@ namespace PlantenApplicatie.UI.ViewModel
         private List<TfgsvSoort> _filtersoorten;
         private List<TfgsvVariant> _filtervarianten;
         //Fenotype
-        private BitmapImage[] _fenoBloeiAllImages;
+        private List<FenoBloeiwijze> _fenoBloeiwijze;
+        private ImageSource[] _fenoBloeiAllImages;
         //Abio
         private List<AbioBezonning> _abiobezonning;
         private List<AbioGrondsoort> _abiogrondsoort;
@@ -130,6 +131,8 @@ namespace PlantenApplicatie.UI.ViewModel
         private string _filterNewSoort;
         private string _filterNewVariant;
         //Fenotype
+        private FenoBloeiwijze _fenoselectedBloeiwijze;
+        private ImageSource _fenoselectedBloeiwijzeImage;
         //Abio
         private AbioBezonning _abioselectedBezonning;
         private AbioGrondsoort _abioselectedGrondsoort;
@@ -160,7 +163,6 @@ namespace PlantenApplicatie.UI.ViewModel
             FilterTfgsvVariant = new ObservableCollection<TfgsvVariant>();
             //Fenotype
             FenoBloeiwijze = new ObservableCollection<FenoBloeiwijze>();
-            FenoBloeiImages = new ObservableCollection<Image>();
             //Abio
             AbioBezonning = new ObservableCollection<AbioBezonning>();
             AbioGrondsoort = new ObservableCollection<AbioGrondsoort>();
@@ -287,16 +289,16 @@ namespace PlantenApplicatie.UI.ViewModel
             _filtersoorten = _plantenDataService.GetTfgsvSoorten();
             _filtervarianten = _plantenDataService.GetTfgsvVarianten();
             //Fenotype
-            _fenoBloeiAllImages = new BitmapImage[6]
+            _fenoBloeiAllImages = new ImageSource[6]
             {
-                new BitmapImage(new Uri(@"C:\\Users\\Senne\\OneDrive - Hogeschool VIVES\\K3\\WPL1\\PlantenAPP\\PlantenApp\\PlantenApplicatie.UI\\View\\Images\\aar.jpg", UriKind.Relative)),
-                new BitmapImage(new Uri(@"C:\\Users\\Senne\\OneDrive - Hogeschool VIVES\\K3\\WPL1\\PlantenAPP\\PlantenApp\\PlantenApplicatie.UI\\View\\Images\\scherm.jpg", UriKind.Relative)),
-                new BitmapImage(new Uri(@"C:\\Users\\Senne\\OneDrive - Hogeschool VIVES\\K3\\WPL1\\PlantenAPP\\PlantenApp\\PlantenApplicatie.UI\\View\\Images\\pluim.jpg", UriKind.Relative)),
-                new BitmapImage(new Uri(@"C:\\Users\\Senne\\OneDrive - Hogeschool VIVES\\K3\\WPL1\\PlantenAPP\\PlantenApp\\PlantenApplicatie.UI\\View\\Images\\knop.jpg", UriKind.Relative)),
-                new BitmapImage(new Uri(@"C:\\Users\\Senne\\OneDrive - Hogeschool VIVES\\K3\\WPL1\\PlantenAPP\\PlantenApp\\PlantenApplicatie.UI\\View\\Images\\margrietachtig.jpg", UriKind.Relative)),
-                new BitmapImage(new Uri(@"C:\\Users\\Senne\\OneDrive - Hogeschool VIVES\\K3\\WPL1\\PlantenAPP\\PlantenApp\\PlantenApplicatie.UI\\View\\Images\\etage.jpg", UriKind.Relative)),
+                new BitmapImage(new Uri("C:\\Users\\Senne\\OneDrive - Hogeschool VIVES\\K3\\WPL1\\PlantenAPP\\PlantenApp\\PlantenApplicatie.UI\\View\\Images\\aar.jpg")),
+                new BitmapImage(new Uri("C:\\Users\\Senne\\OneDrive - Hogeschool VIVES\\K3\\WPL1\\PlantenAPP\\PlantenApp\\PlantenApplicatie.UI\\View\\Images\\scherm.jpg")),
+                new BitmapImage(new Uri("C:\\Users\\Senne\\OneDrive - Hogeschool VIVES\\K3\\WPL1\\PlantenAPP\\PlantenApp\\PlantenApplicatie.UI\\View\\Images\\pluim.jpg")),
+                new BitmapImage(new Uri("C:\\Users\\Senne\\OneDrive - Hogeschool VIVES\\K3\\WPL1\\PlantenAPP\\PlantenApp\\PlantenApplicatie.UI\\View\\Images\\knop.jpg")), 
+                new BitmapImage(new Uri("C:\\Users\\Senne\\OneDrive - Hogeschool VIVES\\K3\\WPL1\\PlantenAPP\\PlantenApp\\PlantenApplicatie.UI\\View\\Images\\margrietachtig.jpg")),
+                new BitmapImage(new Uri("C:\\Users\\Senne\\OneDrive - Hogeschool VIVES\\K3\\WPL1\\PlantenAPP\\PlantenApp\\PlantenApplicatie.UI\\View\\Images\\etage.jpg"))
             };
-            
+            _fenoBloeiwijze = _plantenDataService.GetFenoBloeiwijze();
             
             //_fenoBloeiAllImages[0].UriSource = new Uri(@"C:\\Users\\Senne\\OneDrive - Hogeschool VIVES\\K3\\WPL1\\PlantenAPP\\PlantenApp\\PlantenApplicatie.UI\\View\\Images\\aar.jpg", UriKind.Relative);
             //Abio
@@ -367,7 +369,12 @@ namespace PlantenApplicatie.UI.ViewModel
         public void LoadFenotype()
         {
             //Senne & Hermes
+            FenoBloeiwijze.Clear();
 
+            foreach (var bloeiwijze in _fenoBloeiwijze)
+            {
+                FenoBloeiwijze.Add(bloeiwijze);
+            }
         }
 
         public void LoadAbio()
@@ -437,6 +444,34 @@ namespace PlantenApplicatie.UI.ViewModel
         public void LoadBeheerEigenschappen()
         {
 
+        }
+
+        public void FenoShowBloeiwijzeImage()
+        {
+            switch (_fenoselectedBloeiwijze.Id)
+            {
+                case 1:
+                    FenoSelectedBloeiwijzeImage = _fenoBloeiAllImages[0];
+                    break;
+                case 2:
+                    FenoSelectedBloeiwijzeImage = _fenoBloeiAllImages[1];
+                    break;
+                case 3:
+                    FenoSelectedBloeiwijzeImage = _fenoBloeiAllImages[2];
+                    break;
+                case 4:
+                    FenoSelectedBloeiwijzeImage = _fenoBloeiAllImages[3];
+                    break;
+                case 5:
+                    FenoSelectedBloeiwijzeImage = _fenoBloeiAllImages[4];
+                    break;
+                case 6:
+                    FenoSelectedBloeiwijzeImage = _fenoBloeiAllImages[5];
+                    break;
+                default:
+                    FenoSelectedBloeiwijzeImage = null;
+                    break;
+            }
         }
 
         //Binding voor geselecteerde waardes
@@ -606,6 +641,25 @@ namespace PlantenApplicatie.UI.ViewModel
             }
         }
         //Fenotype
+        public FenoBloeiwijze FenoSelectedBloeiwijze
+        {
+            get { return _fenoselectedBloeiwijze;}
+            set
+            {
+                _fenoselectedBloeiwijze = value;
+                OnPropertyChanged();
+                FenoShowBloeiwijzeImage();
+            }
+        }
+        public ImageSource FenoSelectedBloeiwijzeImage
+        {
+            get { return _fenoselectedBloeiwijzeImage; }
+            set
+            {
+                _fenoselectedBloeiwijzeImage = value;
+                OnPropertyChanged();
+            }
+        }
         //Abio
         public AbioBezonning AbioSelectedBezonning
         {

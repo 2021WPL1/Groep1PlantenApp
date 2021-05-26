@@ -85,6 +85,7 @@
                             <Label x:Name="lblBloeiwijze" Content="Bloeiwijze" HorizontalAlignment="Left" Margin="35,9,0,0" VerticalAlignment="Top" Height="26" Width="62"/>
                             <Image
                                 x:Name="ImgBloeiwijze"
+                                Source="{Binding Path=FenoSelectedBloeiwijzeImage,Mode=TwoWay}"
                                 HorizontalAlignment="Left"
                                 Height="117" 
                                 Margin="291,46,0,0"
@@ -208,6 +209,10 @@
                                 VerticalAlignment="Top" Width="120"/>
                             <ListBox
                                 x:Name="ListBoxBloeiWijze" 
+                                ItemsSource="{Binding FenoBloeiwijze}"
+                                SelectedItem="{Binding FenoSelectedBloeiwijze,Mode=TwoWay}"
+                                DisplayMemberPath="Naam"
+                                SelectedValuePath="Id"
                                 Margin="30,45,307,449"/>
                         </Grid>
                     </ScrollViewer>
