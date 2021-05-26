@@ -259,11 +259,11 @@
                                 x:Name="cbxRaunkhiaer" 
                                 HorizontalAlignment="Left" 
                                 Margin="200,625,0,0"
-                                VerticalAlignment="Top" Width="120"/>
+                                VerticalAlignment="Top" Width="300"/>
                             <ListBox
                                 x:Name="ListBoxBloeiWijze" 
                                 ItemsSource="{Binding FenoBloeiwijze}"
-                                SelectedItem="{Binding FenoSelectedBloeiwijze,Mode=TwoWay}"
+                                SelectedItem="{Binding FenoSelectedBloeiwijze, Mode=TwoWay}"
                                 DisplayMemberPath="Naam"
                                 SelectedValuePath="Id"
                                 Margin="30,48,353,0" Height="154" VerticalAlignment="Top"/>
