@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.DirectoryServices;
 using System.Linq;
+using System.Net.Mime;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 using GalaSoft.MvvmLight.Command;
 using PlantenApplicatie.Data;
 using PlantenApplicatie.Domain.Models;
@@ -33,10 +37,15 @@ namespace PlantenApplicatie.UI.ViewModel
         public ObservableCollection<TfgsvVariant> FilterTfgsvVariant { get; set; }
         //Fenotype
         public ObservableCollection<FenoBloeiwijze> FenoBloeiwijze { get; set; }
+        public ObservableCollection<Image> FenoBloeiImages { get; set; }
         public ObservableCollection<FenoHabitus> FenoHabitus { get; set; }
         public ObservableCollection<FenoBladgrootte> FenoBladgrote { get; set; } //bladhoogte, min & max bloeihoogte
         public ObservableCollection<FenoKleur> FenoKleur { get; set; } //bladkleur & bloeikleur
-        //public ObservableCollection<FenoMaand> FenoMaand { get; set; } //bladkleur & bloeikleur
+        public ObservableCollection<FenoMaand> FenoMaand { get; set; } //bladkleur & bloeikleur
+        public ObservableCollection<FenoBladvorm> FenoBladvorm { get; set; }
+        public ObservableCollection<FenoRatioBloeiBlad> FenoRatio { get; set; }
+        public ObservableCollection<FenoSpruitfenologie> FenoSpruit { get; set; }
+        public ObservableCollection<FenoLevensvorm> FenoLevensvorm { get; set; }
 
         /*
          * Bloeiwijze (Id, Naam(string), Figuur (byte[]), UrlLocatie (string))
@@ -94,6 +103,7 @@ namespace PlantenApplicatie.UI.ViewModel
         private List<TfgsvSoort> _filtersoorten;
         private List<TfgsvVariant> _filtervarianten;
         //Fenotype
+        private BitmapImage[] _fenoBloeiAllImages;
         //Abio
         private List<AbioBezonning> _abiobezonning;
         private List<AbioGrondsoort> _abiogrondsoort;
@@ -149,6 +159,8 @@ namespace PlantenApplicatie.UI.ViewModel
             FilterTfgsvSoort = new ObservableCollection<TfgsvSoort>();
             FilterTfgsvVariant = new ObservableCollection<TfgsvVariant>();
             //Fenotype
+            FenoBloeiwijze = new ObservableCollection<FenoBloeiwijze>();
+            FenoBloeiImages = new ObservableCollection<Image>();
             //Abio
             AbioBezonning = new ObservableCollection<AbioBezonning>();
             AbioGrondsoort = new ObservableCollection<AbioGrondsoort>();
@@ -275,6 +287,18 @@ namespace PlantenApplicatie.UI.ViewModel
             _filtersoorten = _plantenDataService.GetTfgsvSoorten();
             _filtervarianten = _plantenDataService.GetTfgsvVarianten();
             //Fenotype
+            _fenoBloeiAllImages = new BitmapImage[6]
+            {
+                new BitmapImage(new Uri(@"C:\\Users\\Senne\\OneDrive - Hogeschool VIVES\\K3\\WPL1\\PlantenAPP\\PlantenApp\\PlantenApplicatie.UI\\View\\Images\\aar.jpg", UriKind.Relative)),
+                new BitmapImage(new Uri(@"C:\\Users\\Senne\\OneDrive - Hogeschool VIVES\\K3\\WPL1\\PlantenAPP\\PlantenApp\\PlantenApplicatie.UI\\View\\Images\\scherm.jpg", UriKind.Relative)),
+                new BitmapImage(new Uri(@"C:\\Users\\Senne\\OneDrive - Hogeschool VIVES\\K3\\WPL1\\PlantenAPP\\PlantenApp\\PlantenApplicatie.UI\\View\\Images\\pluim.jpg", UriKind.Relative)),
+                new BitmapImage(new Uri(@"C:\\Users\\Senne\\OneDrive - Hogeschool VIVES\\K3\\WPL1\\PlantenAPP\\PlantenApp\\PlantenApplicatie.UI\\View\\Images\\knop.jpg", UriKind.Relative)),
+                new BitmapImage(new Uri(@"C:\\Users\\Senne\\OneDrive - Hogeschool VIVES\\K3\\WPL1\\PlantenAPP\\PlantenApp\\PlantenApplicatie.UI\\View\\Images\\margrietachtig.jpg", UriKind.Relative)),
+                new BitmapImage(new Uri(@"C:\\Users\\Senne\\OneDrive - Hogeschool VIVES\\K3\\WPL1\\PlantenAPP\\PlantenApp\\PlantenApplicatie.UI\\View\\Images\\etage.jpg", UriKind.Relative)),
+            };
+            
+            
+            //_fenoBloeiAllImages[0].UriSource = new Uri(@"C:\\Users\\Senne\\OneDrive - Hogeschool VIVES\\K3\\WPL1\\PlantenAPP\\PlantenApp\\PlantenApplicatie.UI\\View\\Images\\aar.jpg", UriKind.Relative);
             //Abio
             _abiobezonning = _plantenDataService.GetAbioBezonning();
             _abiogrondsoort = _plantenDataService.GetAbioGrondsoort();
