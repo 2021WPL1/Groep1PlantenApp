@@ -10,11 +10,11 @@ namespace PlantenApplicatie.Domain.Models
             AbiotiekMulti = new HashSet<AbiotiekMulti>();
             BeheerMaand = new HashSet<BeheerMaand>();
             Commensalisme = new HashSet<Commensalisme>();
-            Models.CommensalismeMulti = new HashSet<CommensalismeMulti>();
+            CommensalismeMulti = new HashSet<CommensalismeMulti>();
             ExtraEigenschap = new HashSet<ExtraEigenschap>();
             Fenotype = new HashSet<Fenotype>();
-            Models.Foto = new HashSet<Foto>();
-            Models.UpdatePlant = new HashSet<UpdatePlant>();
+            Foto = new HashSet<Foto>();
+            UpdatePlant = new HashSet<UpdatePlant>();
         }
 
         public long PlantId { get; set; }
