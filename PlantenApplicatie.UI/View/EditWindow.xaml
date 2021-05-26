@@ -371,8 +371,8 @@
                             </Grid.ColumnDefinitions>
                             <Label x:Name="lblOntwikkelingssnelheid" Content="Ontwikkelingssnelheid" HorizontalAlignment="Left" Margin="35,25,0,0" VerticalAlignment="Top" Height="26" Width="129"/>
                             <ComboBox
-                                ItemsSource="{Binding CommOntwikkelingsSnelheid}"
-                                SelectedItem="{Binding CommSelectedOntwikkelingsSnelheid, Mode=TwoWay}"
+                                ItemsSource="{Binding CommOntwikkelSnelheid}"
+                                SelectedItem="{Binding CommSelectedOntwikkelSnelheid, Mode=TwoWay}"
                                 DisplayMemberPath="Snelheid"
                                 SelectedValuePath="Id"
                                 x:Name="cbxOntwikkelingssnelheid"
@@ -423,9 +423,9 @@
                                 Width="30"
                                 Height="20"/>
                             <ListBox
-                                ItemsSource="{Binding CommAllSociabiliteit}"
-                                SelectedItem="{Binding CommAllSelectedSociabiliteit, Mode=TwoWay}"
-                                DisplayMemberPath="Sociabiliteit"
+                                ItemsSource="{Binding CommAllSocialbiliteit}"
+                                SelectedItem="{Binding CommSelectedAllSocialbiliteit, Mode=TwoWay}"
+                                DisplayMemberPath="Waarde"
                                 SelectedValuePath="Id"
                                 x:Name="ListBoxAllSociabiliteit"
                                 Margin="0,370,0,11"
@@ -433,9 +433,9 @@
                                 Width="240"
                                 Height="190"/>
                             <ListBox
-                                ItemsSource="{Binding CommAddedSociabiliteit}"
-                                SelectedItem="{Binding CommAddedSelectedSociabiliteit}"
-                                DisplayMemberPath="Sociabiliteit"
+                                ItemsSource="{Binding CommAddedSocialbiliteit}"
+                                SelectedItem="{Binding CommSelectedAddedSocialbiliteit}"
+                                DisplayMemberPath="Waarde"
                                 SelectedValuePath="Id"
                                 x:Name="ListBoxAddedSociabiliteit"
                                 Margin="315,370,0,11"

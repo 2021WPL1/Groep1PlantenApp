@@ -141,6 +141,10 @@ namespace PlantenApplicatie.Data
         {
             return context.Commensalisme.SingleOrDefault(c => c.PlantId == Id);
         }
+        public CommensalismeMulti GetCommensalismeMulti(long Id)
+        {
+            return context.CommensalismeMulti.SingleOrDefault(c => c.PlantId == Id);
+        }
         //Geeft de plant & zijn specifieke eigenschappen
         public ExtraEigenschap GetExtraEigenschap(long Id)
         {
@@ -301,9 +305,17 @@ namespace PlantenApplicatie.Data
             return context.AbioHabitat.ToList();
         }
         //Commersialisme
+        public List<CommOntwikkelsnelheid> GetCommOntwikkelSnelheid()
+        {
+            return context.CommOntwikkelsnelheid.OrderBy(c => c.Snelheid).ToList();
+        }
         public List<CommLevensvorm> GetCommLevensvorm()
         {
             return context.CommLevensvorm.OrderBy(c => c.Levensvorm).ToList();
+        }
+        public List<CommSocialbiliteit> GetCommSocialbiliteit()
+        {
+            return context.CommSocialbiliteit.OrderBy(c => c.Waarde).ToList();
         }
         //Extra Eigenschappen
         //Beheer Eigenschappen
