@@ -40,6 +40,11 @@ namespace PlantenApplicatie.UI.ViewModel
 
         private void LogIn()
         {
+            try
+            {
+
+            
+           
             using (var sha256 = SHA256.Create())
             {
                 var gebruiker = _plantenDataService.getGebruikerViaEmail(EmailInput);
@@ -49,6 +54,13 @@ namespace PlantenApplicatie.UI.ViewModel
                     MainWindow window = new MainWindow();
                     window.ShowDialog();
                 }
+                
+            }
+        }
+            catch (Exception e)
+            {
+
+                throw e;
             }
         }
     }
