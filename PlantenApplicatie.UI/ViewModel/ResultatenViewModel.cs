@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
@@ -11,7 +12,6 @@ using Prism.Commands;
 
 namespace PlantenApplicatie.UI.ViewModel
 {
-
     //Maarten & Stephanie
     class ResultatenViewModel : ViewModelBase
     {
@@ -21,10 +21,18 @@ namespace PlantenApplicatie.UI.ViewModel
         //Command maken voor form te sluiten
         public RelayCommand<Window> CloseResultCommand { get; private set; }
 
+        //Stephanie
+        public ObservableCollection<string> SelectedPlantBladKleur { get; set; }
+        public ObservableCollection<string> SelectedPlantBloeiKleur { get; set; }
+
+        private List<string> _selectedPlantBladKleur = new List<string>();
+        private List<string> _selectedPlantBloeiKleur = new List<string>();
+        private List<FenotypeMulti> _fenotypeMulti = new List<FenotypeMulti>();
+
         //Jelle & Hemen
         //Plant voor in labels
         private Plant _plantenResultaat;
-
+        //Maarten & Stephanie
         private PlantenDataService _plantenDataService;
         private Fenotype _fenotype;
         private Abiotiek _abiotiek;
@@ -32,10 +40,10 @@ namespace PlantenApplicatie.UI.ViewModel
         private ExtraEigenschap _extraEigenschap;
         private BeheerMaand _beheerMaand;
 
+
+
         public ResultatenViewModel(PlantenDataService plantenDataService)
         {
-            
-
             this._plantenDataService = plantenDataService;
             this.CloseResultCommand = new RelayCommand<Window>(this.CloseResult);
 
@@ -107,6 +115,23 @@ namespace PlantenApplicatie.UI.ViewModel
             }
         }
 
+        //Stephanie
+        public void LoadList()
+        {
+           SelectedPlantBladKleur.Clear();
+           SelectedPlantBloeiKleur.Clear();
+           foreach (var bladkleur in SelectedPlantBladKleur)
+           {
+               SelectedPlantBladKleur.Add(bladkleur);
+           }
+
+           foreach (var bloeikleur in SelectedPlantBloeiKleur)
+           {
+               SelectedPlantBloeiKleur.Add(bloeikleur);
+           }
+
+        }
+
         //Jelle & Hemen
         //Command die gelinkt is aan close button om form te sluiten
         public void CloseResult(Window window)
@@ -127,6 +152,25 @@ namespace PlantenApplicatie.UI.ViewModel
             Commensalisme = _plantenDataService.GetCommensalisme(plant.PlantId);
             ExtraEigenschap = _plantenDataService.GetExtraEigenschap(plant.PlantId);
             BeheerMaand = _plantenDataService.GetBeheerMaand(plant.PlantId);
+
+            _fenotypeMulti = _plantenDataService.GetFenoMultiKleur(plant.PlantId);
+
+            foreach (var FenoMulti in _fenotypeMulti)
+            {
+                string listText = FenoMulti.Maand + " - " + FenoMulti.Waarde;
+                switch (FenoMulti.Eigenschap)
+                {
+                    case "blad":
+                        _selectedPlantBladKleur.Add(listText);
+                        break;
+                    case "bloei": 
+                        _selectedPlantBloeiKleur.Add(listText);
+                        break;
+                    default:
+                        break;
+                }
+            }
+
         }
     }
 }

@@ -152,6 +152,12 @@ namespace PlantenApplicatie.Data
             return context.BeheerMaand.SingleOrDefault(b => b.PlantId == Id);
         }
 
+        //Stephanie ( pls delete if wrong )
+        public List<FenotypeMulti> GetFenoMultiKleur(long Id)
+        {
+            return context.FenotypeMulti.Where(m => m.PlantId == Id).ToList();
+        }
+
         //Editwindow
 
         //Filters
