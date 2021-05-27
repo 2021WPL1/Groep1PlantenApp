@@ -1,4 +1,7 @@
-﻿using System;
+﻿using PlantenApplicatie.Data;
+using PlantenApplicatie.Domain.Models;
+using PlantenApplicatie.UI.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -9,23 +12,21 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using PlantenApplicatie.Data;
-using PlantenApplicatie.Domain.Models;
-using PlantenApplicatie.UI.ViewModel;
 
 namespace PlantenApplicatie.UI.View
 {
-    //Jelle & Hemen
-    public partial class ResultatenWindow : Window
+    /// <summary>
+    /// Interaction logic for GebruikerResultWindows.xaml
+    /// </summary>
+    public partial class GebruikerResultWindows : Window
     {
-        private ResultatenViewModel viewModel;
-        public ResultatenWindow(Plant plant)
+        private GebruikerResultModel viewModel;
+        public GebruikerResultWindows(Plant plant)
         {
             InitializeComponent();
-            viewModel = new ResultatenViewModel(PlantenDataService.Instance());
+            viewModel = new GebruikerResultModel(PlantenDataService.Instance());
             DataContext = viewModel;
             viewModel.fillLabels(plant);
-            viewModel.LoadLists();
         }
     }
 }
