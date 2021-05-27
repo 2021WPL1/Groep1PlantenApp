@@ -274,9 +274,6 @@ namespace PlantenApplicatie.UI.ViewModel
                     case "Levensvorm":
                         _getSelectedPlantLevensvorm.Add(commMulti.Waarde);
                         break;
-                    case "Levensduur/Concurrentiekracht":
-                        _getSelectedPlantLevensduurConcurrentiekracht.Add(commMulti.Waarde);
-                        break;
                     default:
                         break;
                 }

@@ -27,6 +27,7 @@ namespace PlantenApplicatie.UI.View
             viewModel = new GebruikerResultModel(PlantenDataService.Instance());
             DataContext = viewModel;
             viewModel.fillLabels(plant);
+            viewModel.LoadLists();
         }
     }
 }

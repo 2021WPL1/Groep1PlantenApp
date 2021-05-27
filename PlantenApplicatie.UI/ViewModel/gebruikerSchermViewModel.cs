@@ -16,7 +16,6 @@ namespace PlantenApplicatie.UI.ViewModel
 {
     public class gebruikerSchermViewModel : ViewModelBase
     {
-        public RelayCommand<Window> schermGebruikerToevoegenCommand { get; set; }
         //ICommand om zoekresultaat leeg te maken
         public ICommand ClearResultCommand { get; set; }
 
