@@ -1,20 +1,19 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.Command;
+using PlantenApplicatie.Data;
+using PlantenApplicatie.Domain.Models;
+using PlantenApplicatie.UI.View;
+using Prism.Commands;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.Command;
-using PlantenApplicatie.Data;
-using PlantenApplicatie.Domain.Models;
-using PlantenApplicatie.UI.View;
-using PlantenApplicatie.UI.ViewModel;
-using Prism.Commands;
 
 namespace PlantenApplicatie.UI.ViewModel
 {
-    public class gebruikerSchermViewModel : ViewModelBase
+    public class DataCollectorZoekSchermModel : ViewModelBase
     {
         public RelayCommand<Window> schermGebruikerToevoegenCommand { get; set; }
         //ICommand om zoekresultaat leeg te maken
@@ -24,7 +23,7 @@ namespace PlantenApplicatie.UI.ViewModel
         public ICommand ZoekViaNaamCommand { get; set; }
 
         public ICommand ResultaatSchermCommand { get; set; }
-     
+        public ICommand CreatePlantCommand { get; set; }
 
         //bool die ervoor zorgt dat de selected filters niet gecleared worden
         private bool _loadCheck;
@@ -69,11 +68,11 @@ namespace PlantenApplicatie.UI.ViewModel
 
         private string _zoekViaNaamInput = "";
 
-        public gebruikerSchermViewModel(PlantenDataService plantenDataService)
+        public DataCollectorZoekSchermModel(PlantenDataService plantenDataService)
         {//DAO
             //Senne, Hermes
             ZoekViaNaamCommand = new DelegateCommand(ZoekViaNaam);
-          
+            CreatePlantCommand = new DelegateCommand(CreatePlant);
 
             //Stephanie, Hermes
             ClearResultCommand = new DelegateCommand(ClearResult);
@@ -92,7 +91,11 @@ namespace PlantenApplicatie.UI.ViewModel
             this._plantenDataService = plantenDataService;
         }
 
-       
+        private void CreatePlant()
+        {
+            EditWindow window = new EditWindow();
+            window.ShowDialog();
+        }
 
         public Plant SelectedPlant
         {
@@ -498,4 +501,3 @@ namespace PlantenApplicatie.UI.ViewModel
         }
     }
 }
-
