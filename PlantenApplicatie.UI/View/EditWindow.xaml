@@ -67,7 +67,7 @@
                 SelectedItem="{Binding FilterSelectedVariant, Mode=TwoWay}"
                 DisplayMemberPath="Variantnaam"
                 SelectedValuePath="VariantId"/>
-            <TabControl Margin="298,36,0,-4" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left">
+            <TabControl Margin="298,36,0,-2" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left">
                 <TabControl.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -362,8 +362,8 @@
                     </ScrollViewer>
                 </TabItem>
                 <TabItem x:Name="tabCommensialisme" Header="Commensialisme" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <ScrollViewer x:Name="scrollCommensialisme" Height="599" VerticalAlignment="Top">
-                        <Grid x:Name="gridCommensialisme" Height="887" Width="557" Background="#FFE5E5E5">
+                    <ScrollViewer x:Name="scrollCommensialisme" Height="592" VerticalAlignment="Top">
+                        <Grid x:Name="gridCommensialisme" Height="887" Width="599" Background="#FFE5E5E5">
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
@@ -391,7 +391,7 @@
                                 x:Name="ListBoxAllLevensduur"
                                 Margin="0,85,0,0"
                                 HorizontalAlignment="Left"
-                                Width="240" Height="254" VerticalAlignment="Top">
+                                Width="240" Height="240" VerticalAlignment="Top">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <TextBlock>
@@ -591,6 +591,10 @@
                                 VerticalAlignment="Top"
                                 Width="30"
                                 Height="20"/>
+                            <Label x:Name="lblToegevoegdeLevensduurConcurrentiekracht" Content="Toegevoegde Levensduur/Concurrentiekracht" HorizontalAlignment="Left" Margin="345,60,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblToegevoegdeSociabiliteit" Content="Toegevoegde Sociabiliteit" HorizontalAlignment="Left" Margin="380,344,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblStrategie" Content="Strategie" HorizontalAlignment="Left" Margin="100,600,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblToegevoegdeStrategie" Content="Toegevoegdestrategie" HorizontalAlignment="Left" Margin="400,598,0,0" VerticalAlignment="Top"/>
                         </Grid>
                     </ScrollViewer>
                 </TabItem>
