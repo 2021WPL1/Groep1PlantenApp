@@ -59,7 +59,9 @@ namespace PlantenApplicatie.Data
             fgsv[2] = context.TfgsvSoort.Where(p => p.GeslachtGeslacht.FamilieFamile.TypeTypeid == typeId).ToList();
 
             //Bug variant heeft geen soort om te koppelen
+            //context.TfgsvVariant.ToList();
             //Jelle & Stephanie
+            //Boventstaande bug kwam doordat de databank geen relatie had gelegd tussen soort en variant, doordat dit is gefixt werkt dit nu wel
             fgsv[3] = context.TfgsvVariant.Where(p => p.SoortSoort.GeslachtGeslacht.FamilieFamile.TypeTypeid == typeId).ToList();
 
             return fgsv;
@@ -73,7 +75,9 @@ namespace PlantenApplicatie.Data
             gsv[1] = context.TfgsvSoort.Where(p => p.GeslachtGeslacht.FamilieFamileId == familieId).ToList();
 
             //Bug variant heeft geen soort om te koppelen
+            //context.TfgsvVariant.ToList();
             //Jelle & Stephanie
+            //Boventstaande bug kwam doordat de databank geen relatie had gelegd tussen soort en variant, doordat dit is gefixt werkt dit nu wel
             gsv[2] = context.TfgsvVariant.Where(p => p.SoortSoort.GeslachtGeslacht.FamilieFamileId == familieId).ToList();
 
             return gsv;
@@ -86,7 +90,9 @@ namespace PlantenApplicatie.Data
             sv[0] = context.TfgsvSoort.Where(p => p.GeslachtGeslachtId == geslachtId).ToList();
 
             //Bug variant heeft geen soort om te koppelen
+            //context.TfgsvVariant.ToList();
             //Jelle & Stephanie
+            //Boventstaande bug kwam doordat de databank geen relatie had gelegd tussen soort en variant, doordat dit is gefixt werkt dit nu wel
             sv[1] = context.TfgsvVariant.Where(p => p.SoortSoort.GeslachtGeslachtId == geslachtId).ToList();
 
             return sv;
@@ -96,7 +102,9 @@ namespace PlantenApplicatie.Data
         {
             //Senne, Hermes en Maarten
             //Bug variant heeft geen soort om te koppelen
+            //context.TfgsvVariant.ToList();
             //Jelle & Stephanie
+            //Boventstaande bug kwam doordat de databank geen relatie had gelegd tussen soort en variant, doordat dit is gefixt werkt dit nu wel
             return context.TfgsvVariant.Where(p => p.SoortSoortid == soortId).ToList();
         }
 
@@ -161,10 +169,16 @@ namespace PlantenApplicatie.Data
             return context.ExtraEigenschap.SingleOrDefault(e => e.PlantId == Id);
         }
         //Geeft de plant en de het onnderhoud per maand
-        public BeheerMaand GetBeheerMaand(long Id)
+        /*public BeheerMaand GetBeheerMaand(long Id)
         {
             return context.BeheerMaand.SingleOrDefault(b => b.PlantId == Id);
+        }*/
+        //Jelle
+        public List<BeheerMaand> GetBeheerMaand(long Id)
+        {
+            return context.BeheerMaand.Where(b => b.PlantId == Id).ToList(); 
         }
+
 
         //Stephanie & Jelle
         public List<FenotypeMulti> GetFenoMultiKleur(long Id)
