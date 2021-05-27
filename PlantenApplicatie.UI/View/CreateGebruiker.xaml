@@ -39,7 +39,7 @@
                 <ComboBox ItemsSource="{Binding Rollen}" DisplayMemberPath="Omschrijving" SelectedItem="{Binding SelectedRol, Mode=TwoWay}" SelectedValuePath="Omschrijving" x:Name="rol" HorizontalAlignment="Left" Margin="263,359,0,0" VerticalAlignment="Top" Width="312" Height="42" FontSize="20"/>
                 <Label Content="Wachtwoord&#xD;&#xA; bevestigen" HorizontalAlignment="Left" Margin="57,284,0,0" VerticalAlignment="Top" Background="White" BorderBrush="Black" BorderThickness="2" FontSize="20" FontFamily="Arial Black" Height="58"/>
                 <TextBox x:Name="Wachtwoord_Bevestigen" Text="{Binding WachtwoordBevestigen, Mode=TwoWay}" HorizontalAlignment="Left" Margin="263,284,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="312" Height="42" BorderBrush="Black" BorderThickness="2" FontSize="20"/>
-                <Label Content="{Binding Path=SelectedError, Mode=TwoWay}" HorizontalAlignment="Left" Margin="580,227,0,0" VerticalAlignment="Top" Width="210" Height="42" FontSize="20" Foreground="#FFF91313"/>
+                <Label Content="{Binding Path=SelectedError, Mode=TwoWay}" HorizontalAlignment="Left" Margin="57,136,0,0" VerticalAlignment="Top" Width="518" Height="31" FontSize="18" Foreground="#FFF91313"/>
             </Grid>
         </Viewbox>
     </Grid>

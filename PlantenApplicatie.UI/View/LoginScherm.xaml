@@ -34,7 +34,7 @@
                         </LinearGradientBrush>
                     </Button.Background>
                 </Button>
-                <Label Content="{Binding Path=SelectedError, Mode=TwoWay}" HorizontalAlignment="Left" Margin="308,175,0,0" VerticalAlignment="Top" Height="42" Width="312" FontSize="20"/>
+                <Label Content="{Binding Path=SelectedError, Mode=TwoWay}" HorizontalAlignment="Left" Margin="128,175,0,0" VerticalAlignment="Top" Height="42" Width="492" FontSize="20" Background="Transparent" Foreground="Red"/>
             </Grid>
         </Viewbox>
     </Grid>

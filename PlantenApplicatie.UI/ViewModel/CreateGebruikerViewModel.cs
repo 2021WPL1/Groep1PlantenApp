@@ -96,22 +96,27 @@ namespace PlantenApplicatie.UI.ViewModel
         {
             try
             {
-                if (WachtwoordBevestigen == WachtwoordInput)
+                if (EmailInput.Contains("vives.be")&&EmailInput.Contains("@"))
                 {
-                    using (var sha256 = SHA256.Create())
-                    {   
-                        MainWindow window = new MainWindow();
-                        var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(WachtwoordInput));
-                        _dataservice.addGebruiker(SelectedRol.Omschrijving, EmailInput, hashedBytes);
-                        closeWindow.Close();
-                        window.ShowDialog();
-                        
+                    if (WachtwoordBevestigen == WachtwoordInput)
+                    {
+                        using (var sha256 = SHA256.Create())
+                        {   
+                            MainWindow window = new MainWindow();
+                            var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(WachtwoordInput));
+                            _dataservice.addGebruiker(SelectedRol.Omschrijving, EmailInput, hashedBytes);
+                            closeWindow.Close();
+                            window.ShowDialog();
+                        }
                     }
-
+                    else
+                    {
+                        SelectedError = "wachtwoord is niet hetzelfde";
+                    }
                 }
                 else
                 {
-                    SelectedError = "wachtwoord is niet hetzelfde";
+                    SelectedError = "emailadres moet 'vives.be' bevatten";
                 }
             }
             catch (Exception)
@@ -119,8 +124,6 @@ namespace PlantenApplicatie.UI.ViewModel
 
                 SelectedError = "oei, er is iets fout";
             }
-          
-          
         }
     }
 }
