@@ -21,6 +21,9 @@ namespace PlantenApplicatie.UI.ViewModel
         //Senne, Hermes
         public ICommand ZoekViaNaamCommand { get; set; }
 
+
+        //Jelle & Hemen
+        //Command om resultatenscherm op te roepen
         public ICommand ResultaatSchermCommand { get; set; }
         public ICommand CreatePlantCommand { get; set; }
 
@@ -95,6 +98,7 @@ namespace PlantenApplicatie.UI.ViewModel
             window.ShowDialog();
         }
 
+        //Jelle & Hemen
         public Plant SelectedPlant
         {
             get { return _selectedPlant; }
@@ -105,6 +109,7 @@ namespace PlantenApplicatie.UI.ViewModel
             }
         }
 
+        //Jelle & Hemen
         public void ResultaatScherm()
         {
             if (_selectedPlant != null)
