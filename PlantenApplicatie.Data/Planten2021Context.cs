@@ -1,8 +1,8 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using PlantenApplicatie.Data;
 using PlantenApplicatie.Domain.Models;
-
 
 namespace PlantenApplicatie.Data
 {
@@ -25,6 +25,7 @@ namespace PlantenApplicatie.Data
         public virtual DbSet<AbioVoedingsbehoefte> AbioVoedingsbehoefte { get; set; }
         public virtual DbSet<Abiotiek> Abiotiek { get; set; }
         public virtual DbSet<AbiotiekMulti> AbiotiekMulti { get; set; }
+        public virtual DbSet<BeheerDaden> BeheerDaden { get; set; }
         public virtual DbSet<BeheerMaand> BeheerMaand { get; set; }
         public virtual DbSet<CommLevensvorm> CommLevensvorm { get; set; }
         public virtual DbSet<CommOntwikkelsnelheid> CommOntwikkelsnelheid { get; set; }
@@ -56,7 +57,7 @@ namespace PlantenApplicatie.Data
         public virtual DbSet<TfgsvType> TfgsvType { get; set; }
         public virtual DbSet<TfgsvVariant> TfgsvVariant { get; set; }
         public virtual DbSet<UpdatePlant> UpdatePlant { get; set; }
-        
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -194,6 +195,19 @@ namespace PlantenApplicatie.Data
                     .HasConstraintName("commensalismev1_plant_FK");
             });
 
+            modelBuilder.Entity<BeheerDaden>(entity =>
+            {
+                entity.ToTable("Beheer_Daden");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .ValueGeneratedNever();
+
+                entity.Property(e => e.Beheerdaad)
+                    .HasColumnName("beheerdaad")
+                    .HasMaxLength(50);
+            });
+
             modelBuilder.Entity<BeheerMaand>(entity =>
             {
                 entity.ToTable("Beheer_Maand");
@@ -211,6 +225,8 @@ namespace PlantenApplicatie.Data
                 entity.Property(e => e.Dec).HasColumnName("dec");
 
                 entity.Property(e => e.Feb).HasColumnName("feb");
+
+                entity.Property(e => e.FrequentiePerJaar).HasColumnName("frequentie per jaar");
 
                 entity.Property(e => e.Jan).HasColumnName("jan");
 
@@ -819,6 +835,12 @@ namespace PlantenApplicatie.Data
                 entity.Property(e => e.Variantnaam)
                     .HasColumnName("variantnaam")
                     .HasMaxLength(100);
+
+                entity.HasOne(d => d.SoortSoort)
+                    .WithMany(p => p.TfgsvVariant)
+                    .HasForeignKey(d => d.SoortSoortid)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Tfgsv_Variant_Tfgsv_Soort");
             });
 
             modelBuilder.Entity<UpdatePlant>(entity =>
@@ -854,4 +876,3 @@ namespace PlantenApplicatie.Data
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }
-
