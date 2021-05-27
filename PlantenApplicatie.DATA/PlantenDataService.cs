@@ -404,6 +404,11 @@ namespace PlantenApplicatie.Data
         {
             return context.BeheerMaand.Where(b => b.PlantId == id).ToList();
         }
+
+        public void AddNewBeheerDaad(string beheerdaad)
+        {
+            context.BeheerDaden.Add(new BeheerDaden() {Beheerdaad = beheerdaad});
+        }
         //Bestaande beheersbehandeling aanpassen
         public bool GetEditBeheerJan(long id)
         {
