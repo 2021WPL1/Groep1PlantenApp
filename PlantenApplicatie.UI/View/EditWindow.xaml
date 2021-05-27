@@ -773,7 +773,6 @@
                                 RenderTransformOrigin="0.512,0.452"/>
                             <CheckBox 
                                 x:Name="CheckDec" 
-                                Content="" 
                                 Margin="239,184,307,0" 
                                 VerticalAlignment="Top"/>
                             <Label x:Name="lblJan" Content="J" HorizontalAlignment="Left" Margin="20,159,0,0" VerticalAlignment="Top"/>
