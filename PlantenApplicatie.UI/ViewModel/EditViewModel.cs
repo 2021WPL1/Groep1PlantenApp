@@ -68,15 +68,9 @@ namespace PlantenApplicatie.UI.ViewModel
         public ObservableCollection<CommSocialbiliteit> CommAllSocialbiliteit { get; set; }
         public ObservableCollection<CommSocialbiliteit> CommAddedSocialbiliteit { get; set; }
         //Extra Eigenschappen
-        /*
-         * Nectarwaarde
-         * Bijvriendelijk
-         * Eetbaar/kruidgebruik
-         * Pollenwaarde
-         * Vlindervriendelijk
-         * Geurend
-         * Vorstgevoelig
-         */
+        public ObservableCollection<ExtraNectarwaarde> ExtraNectarwaarde { get; set; }
+        public ObservableCollection<ExtraPollenwaarde> ExtraPollenwaarde { get; set; }
+       
         //Beheer Eigenschappen
         /*
          * Beheertype
@@ -119,8 +113,10 @@ namespace PlantenApplicatie.UI.ViewModel
         private List<CommLevensvorm> _commAllLevensvorm;
         private List<CommLevensvorm> _commAddedLevensvorm;
         private List<CommSocialbiliteit> _commAllSocialbiliteit;
-        private List<CommSocialbiliteit> _commAddedSocialbiliteit;        
+        private List<CommSocialbiliteit> _commAddedSocialbiliteit;
         //Extra Eigenschappen
+        private List<ExtraNectarwaarde> _extraNectarwaarde;
+        private List<ExtraPollenwaarde> _extraPollenwaarde;
         //Beheer Eigenschappen
 
         //Geselecteerde waardes
@@ -169,6 +165,13 @@ namespace PlantenApplicatie.UI.ViewModel
         private CommSocialbiliteit _commselectedAllSocialbiliteit;
         private CommSocialbiliteit _commselectedAddedSocialbiliteit;
         //Extra Eigenschappen
+        private ExtraNectarwaarde _extraselectedNectarwaarde;
+        private ExtraEigenschap _extraselectedBijvriendelijk;
+        private ExtraEigenschap _extraselectedEetbaarKruid;
+        private ExtraPollenwaarde _extraselectedPollenwaarde;
+        private ExtraEigenschap _extraselectedVlindervriendelijk;
+        private ExtraEigenschap _extraselectedGeurend;
+        private ExtraEigenschap _extraselectedVorstgevoelig;
         //Beheer Eigenschappen
 
         public EditViewModel(PlantenDataService plantenDataService)
@@ -672,7 +675,17 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public void LoadExtraEigenschappen()
         {
+            ExtraNectarwaarde.Clear();
+            ExtraPollenwaarde.Clear();
 
+            foreach (var nectarwaarde in _extraNectarwaarde)
+            {
+                ExtraNectarwaarde.Add(nectarwaarde);
+            }
+            foreach (var pollenwaarde in _extraPollenwaarde)
+            {
+                ExtraPollenwaarde.Add(pollenwaarde);
+            }
         }
         public void LoadBeheerEigenschappen()
         {
@@ -1152,6 +1165,70 @@ namespace PlantenApplicatie.UI.ViewModel
             }
         }
         //Extra Eigenschappen
+        public ExtraNectarwaarde ExtraSelectedNectarwaarde
+        {
+            get { return _extraselectedNectarwaarde; }
+            set
+            {
+                _extraselectedNectarwaarde = value;
+                OnPropertyChanged();
+            }
+        }
+        public ExtraEigenschap ExtraSelectedBijvriendelijk
+        {
+            get { return _extraselectedBijvriendelijk; }
+            set
+            {
+                _extraselectedBijvriendelijk = value;
+                OnPropertyChanged();
+            }
+        }
+        public ExtraEigenschap ExtraSelectedEetbaarKruid
+        {
+            get { return _extraselectedEetbaarKruid; }
+            set
+            {
+                _extraselectedEetbaarKruid = value;
+                OnPropertyChanged();
+            }
+        }
+        public ExtraPollenwaarde ExtraSelectedPollenwaarde
+        {
+            get { return _extraselectedPollenwaarde; }
+            set
+            {
+                _extraselectedPollenwaarde = value;
+                OnPropertyChanged();
+            }
+        }
+        public ExtraEigenschap ExtraSelectedVlindervriendelijk
+        {
+            get { return _extraselectedVlindervriendelijk; }
+            set
+            {
+                _extraselectedVlindervriendelijk = value;
+                OnPropertyChanged();
+            }
+        }
+        public ExtraEigenschap ExtraSelectedGeurend
+        {
+            get { return _extraselectedGeurend; }
+            set
+            {
+                _extraselectedGeurend = value;
+                OnPropertyChanged();
+            }
+        }
+        public ExtraEigenschap ExtraSelectedVorstgevoelig
+        {
+            get { return _extraselectedVorstgevoelig; }
+            set
+            {
+                _extraselectedVorstgevoelig = value;
+                OnPropertyChanged();
+            }
+        }
+
         //Beheer Eigenschappen
     }
 }
