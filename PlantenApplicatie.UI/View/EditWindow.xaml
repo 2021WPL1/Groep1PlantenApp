@@ -67,7 +67,7 @@
                 SelectedItem="{Binding FilterSelectedVariant, Mode=TwoWay}"
                 DisplayMemberPath="Variantnaam"
                 SelectedValuePath="VariantId"/>
-            <TabControl Margin="298,36,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left">
+            <TabControl Margin="298,36,0,-4" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left">
                 <TabControl.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -78,7 +78,7 @@
                 </TabControl.RenderTransform>
                 <TabItem x:Name="tabFenotype" Header="Fenotype">
                     <ScrollViewer x:Name="scrollFenotype" Margin="6,0,-6,0" Height="591" VerticalAlignment="Center">
-                        <Grid x:Name="gridFenotype" Background="WhiteSmoke" Height="697" Width="550" VerticalAlignment="Top">
+                        <Grid x:Name="gridFenotype" Background="#FFE5E5E5" Height="708" Width="550">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
@@ -272,7 +272,7 @@
                 </TabItem>
                 <TabItem x:Name="tabAbiotischeFactoren" Header="Abiotische Factoren" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,-1,0,0">
                     <ScrollViewer x:Name="scrollAbiotischeFactoren" Height="590" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <Grid x:Name="gridAbiotischeFactoren" Height="981" Width="550" Background="#FFF5F5F2">
+                        <Grid x:Name="gridAbiotischeFactoren" Height="981" Width="550" Background="#FFE5E5E5">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="525"/>
                             </Grid.ColumnDefinitions>
@@ -291,14 +291,12 @@
                                 ItemsSource="{Binding AbioGrondsoort}"
                                 SelectedItem="{Binding AbioSelectedGrondsoort, Mode=TwoWay}"
                                 DisplayMemberPath="Grondsoort"
-                                HorizontalAlignment="Left" Width="180" Height="150" VerticalAlignment="Top">
-                            </ListBox>
+                                HorizontalAlignment="Left" Width="180" Height="150" VerticalAlignment="Top"/>
                             <ListBox x:Name="VoedingsbehoefteListBox" Margin="22,230,0,0"
                                 ItemsSource="{Binding AbioVoedingsbehoefte}"     
                                 SelectedItem="{Binding AbioSelectedVoedingsbehoefte, Mode=TwoWay}"
                                 DisplayMemberPath="Voedingsbehoefte"
-                                HorizontalAlignment="Left" Width="180" Height="150" VerticalAlignment="Top">
-                            </ListBox>
+                                HorizontalAlignment="Left" Width="180" Height="150" VerticalAlignment="Top"/>
                             <ListBox x:Name="VochtbehoefteListBox" Margin="302,230,43,0"
                                 ItemsSource="{Binding AbioVochtbehoefte}"     
                                 SelectedItem="{Binding AbioSelectedVochtbehoefte, Mode=TwoWay}"
@@ -319,7 +317,7 @@
                                             </TextBlock.Text>
                                             <TextBlock.InputBindings>
                                                 <MouseBinding Gesture="LeftDoubleClick"
-                                                              Command="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.HabitatToevoegenCommand}"/>
+                                                              Command="{Binding DataContext.HabitatToevoegenCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"/>
                                             </TextBlock.InputBindings>
                                         </TextBlock>
                                     </DataTemplate>
@@ -341,7 +339,7 @@
                                             </TextBlock.Text>
                                             <TextBlock.InputBindings>
                                                 <MouseBinding Gesture="LeftDoubleClick"
-                                                              Command="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.HabitatVerwijderenCommand}"/>
+                                                              Command="{Binding DataContext.HabitatVerwijderenCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"/>
                                             </TextBlock.InputBindings>
                                         </TextBlock>
                                     </DataTemplate>
@@ -364,54 +362,308 @@
                     </ScrollViewer>
                 </TabItem>
                 <TabItem x:Name="tabCommensialisme" Header="Commensialisme" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <ScrollViewer x:Name="scrollCommensialisme" Height="594" VerticalAlignment="Top">
-                        <Grid x:Name="gridCommensialisme" Height="574" Width="557" Background="#FFE5E5E5">
+                    <ScrollViewer x:Name="scrollCommensialisme" Height="599" VerticalAlignment="Top">
+                        <Grid x:Name="gridCommensialisme" Height="887" Width="557" Background="#FFE5E5E5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="308*"/>
-                                <ColumnDefinition Width="25*"/>
-                                <ColumnDefinition Width="224*"/>
+                                <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <Label x:Name="lblOntwikkelingssnelheid" Content="Ontwikkelingssnelheid" HorizontalAlignment="Left" Margin="35,25,0,0" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="cbxOntwikkelingssnelheid" HorizontalAlignment="Left" Margin="180,29,0,0" VerticalAlignment="Top" Width="120"/>
-                            <Label x:Name="lblLevensduur" Content="Levensduur/Concurrentiekracht" HorizontalAlignment="Left" Margin="35,60,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkLevensduur1" Content="Zogenaamde bodembedekker, weinig verdraagzaam met andere planten" HorizontalAlignment="Left" Margin="35,100,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
-                            <CheckBox x:Name="checkLevensduur2" Content="Verdraagzame bodembedekker, ook voor een soortenrijke aanplant" HorizontalAlignment="Left" Margin="35,120,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
-                            <CheckBox x:Name="checkLevensduur3" Content="Woekerende soort, worteluitlopers" HorizontalAlignment="Left" Margin="35,140,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkLevensduur5" Content="Robuuste, meestal grote plant, ook als solitair" HorizontalAlignment="Left" Margin="36,180,0,0" VerticalAlignment="Top" Width="Auto"/>
-                            <CheckBox x:Name="checkLevensduur4" Content="Weinig of niet woekerend, goed te combineren" HorizontalAlignment="Left" Margin="35,160,0,0" VerticalAlignment="Top" Width="Auto"/>
-                            <CheckBox x:Name="checkLevensduur6" Content="Zich sterk uitzaaiende soort" HorizontalAlignment="Left" Margin="35,200,0,0" VerticalAlignment="Top" Width="Auto"/>
-                            <CheckBox x:Name="checkLevensduur7" Content="Kortlevende plant" HorizontalAlignment="Left" Margin="35,220,0,0" VerticalAlignment="Top" Width="Auto"/>
-                            <CheckBox x:Name="checkLevensduur8" Content="Geeft een goede snijbloem" HorizontalAlignment="Left" Margin="35,240,0,0" VerticalAlignment="Top" Width="Auto"/>
-                            <CheckBox x:Name="checkLevensduur9" Content="Stelt meer eisen qua 'eten en drinken' of winterbescherming" HorizontalAlignment="Left" Margin="35,260,0,0" VerticalAlignment="Top" Width="Auto" Grid.ColumnSpan="3"/>
-                            <Label x:Name="lblSociabiliteit" Content="Sociabiliteit" HorizontalAlignment="Left" Margin="31,310,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkSociabiliteit1" Content="Sociabiliteit I" HorizontalAlignment="Left" Margin="35,350,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkSociabiliteit2" Content="Sociabiliteit II" HorizontalAlignment="Left" Margin="35,370,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkSociabiliteit3" Content="Sociabiliteit III" HorizontalAlignment="Left" Margin="150,350,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkSociabiliteitIV" Content="Sociabiliteit IV" HorizontalAlignment="Left" Margin="150,370,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="checkSociabiliteitV" Content="Sociabiliteit V" HorizontalAlignment="Left" Margin="262,350,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
+                            <Label x:Name="lblOntwikkelingssnelheid" Content="Ontwikkelingssnelheid" HorizontalAlignment="Left" Margin="35,25,0,0" VerticalAlignment="Top" Height="26" Width="129"/>
+                            <ComboBox
+                                ItemsSource="{Binding CommOntwikkelSnelheid}"
+                                SelectedItem="{Binding CommSelectedOntwikkelSnelheid, Mode=TwoWay}"
+                                DisplayMemberPath="Snelheid"
+                                SelectedValuePath="Id"
+                                x:Name="cbxOntwikkelingssnelheid"
+                                HorizontalAlignment="Left"
+                                Margin="180,29,0,0"
+                                VerticalAlignment="Top"
+                                Width="120"
+                                Height="22"/>
+                            <Label x:Name="lblLevensduur" Content="Levensduur/Concurrentiekracht" HorizontalAlignment="Left" Margin="35,60,0,0" VerticalAlignment="Top" Height="26" Width="176"/>
+                            <Label x:Name="lblSociabiliteit" Content="Sociabiliteit" HorizontalAlignment="Left" Margin="24,344,0,0" VerticalAlignment="Top" Height="26" Width="71"/>
+                            <ListBox
+                                ItemsSource="{Binding CommAllLevensvorm}"
+                                SelectedItem="{Binding CommSelectedAllLevensvorm, Mode=TwoWay}"
+                                SelectedValuePath="Id"
+                                x:Name="ListBoxAllLevensduur"
+                                Margin="0,85,0,0"
+                                HorizontalAlignment="Left"
+                                Width="240" Height="254" VerticalAlignment="Top">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock>
+                                            <TextBlock.Text>
+                                                <MultiBinding StringFormat="{}{0}">
+                                                    <Binding Path="Levensvorm"/>
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                            <TextBlock.InputBindings>
+                                                <MouseBinding Gesture="LeftDoubleClick"
+                                                              Command="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.LevensduurToevoegenCommand}"/>
+                                            </TextBlock.InputBindings>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+
+                            <ListBox
+                                ItemsSource="{Binding CommAddedLevensvorm}"
+                                SelectedItem="{Binding CommSelectedAddedLevensvorm, Mode=TwoWay}"
+                                SelectedValuePath="Id"
+                                x:Name="ListBoxAddedLevensduur"
+                                Margin="0,85,0,0"
+                                Width="240"
+                                HorizontalAlignment="Right"
+                                Height="240"
+                                VerticalAlignment="Top">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock>
+                                            <TextBlock.Text>
+                                                <MultiBinding StringFormat="{}{0}">
+                                                    <Binding Path="Levensvorm"/>
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                            <TextBlock.InputBindings>
+                                                <MouseBinding Gesture="LeftDoubleClick"
+                                                              Command="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.LevensduurVerwijderenCommand}"/>
+                                            </TextBlock.InputBindings>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                            <Button
+                                x:Name="btnRemoveLevensduur"
+                                Command="{Binding Path=LevensduurVerwijderenCommand}"
+                                Content="&lt;--"
+                                HorizontalAlignment="Left"
+                                Margin="260,221,0,0"
+                                VerticalAlignment="Top"
+                                Width="30"
+                                Height="20"/>
+                            <Button
+                                x:Name="btnAddLevensduur"
+                                Command="{Binding Path=LevensduurToevoegenCommand}"
+                                Content="--&gt;"
+                                HorizontalAlignment="Left"
+                                Margin="260,149,0,0"
+                                VerticalAlignment="Top"
+                                Width="30"
+                                Height="20"/>
+                            <ListBox
+                                ItemsSource="{Binding CommAllSocialbiliteit}"
+                                SelectedItem="{Binding CommSelectedAllSocialbiliteit, Mode=TwoWay}"
+                                SelectedValuePath="Id"
+                                x:Name="ListBoxAllSociabiliteit"
+                                Margin="0,378,0,0"
+                                HorizontalAlignment="Left"
+                                Width="240"
+                                Height="190" VerticalAlignment="Top">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock>
+                                            <TextBlock.Text>
+                                                <MultiBinding StringFormat="{}{0} - {1}">
+                                                    <Binding Path="Sociabiliteit"/>
+                                                    <Binding Path="Waarde"/>
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                            <TextBlock.InputBindings>
+                                                <MouseBinding Gesture="LeftDoubleClick"
+                                                              Command="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.SocialbiliteitToevoegenCommand}"/>
+                                            </TextBlock.InputBindings>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                            <ListBox
+                                ItemsSource="{Binding CommAddedSocialbiliteit}"
+                                SelectedItem="{Binding CommSelectedAddedSocialbiliteit}"
+                                SelectedValuePath="Id"
+                                x:Name="ListBoxAddedSociabiliteit"
+                                Margin="0,378,0,0"
+                                HorizontalAlignment="Right"
+                                Width="240"
+                                Height="190" VerticalAlignment="Top">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock>
+                                            <TextBlock.Text>
+                                                <MultiBinding StringFormat="{}{0} - {1}">
+                                                    <Binding Path="Sociabiliteit"/>
+                                                    <Binding Path="Waarde"/>
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                            <TextBlock.InputBindings>
+                                                <MouseBinding Gesture="LeftDoubleClick"
+                                                              Command="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.SocialbiliteitVerwijderenCommand}"/>
+                                            </TextBlock.InputBindings>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                            <Button
+                                x:Name="btnRemoveSociabiliteit"
+                                Command="{Binding Path=SocialbiliteitVerwijderenCommand}"
+                                Content="&lt;--"
+                                HorizontalAlignment="Left"
+                                Margin="260,484,0,0"
+                                VerticalAlignment="Top"
+                                Width="30"
+                                Height="20"/>
+                            <Button
+                                x:Name="btnAddSociabiliteit"
+                                Command="{Binding Path=SocialbiliteitToevoegenCommand}"
+                                Content="--&gt;"
+                                HorizontalAlignment="Left"
+                                Margin="260,405,0,0"
+                                VerticalAlignment="Top"
+                                Width="30"
+                                Height="20"/>
+                            <ListBox
+                                ItemsSource="{Binding CommAllStrategie}"
+                                SelectedItem="{Binding CommSelectedAllStrategie, Mode=TwoWay}"
+                                SelectedValuePath="Id"
+                                x:Name="ListBoxAllStrategie"
+                                Margin="100,636,0,0"
+                                HorizontalAlignment="Left"
+                                Width="100"
+                                Height="190" VerticalAlignment="Top" Grid.RowSpan="2">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock>
+                                            <TextBlock.Text>
+                                                <MultiBinding StringFormat="{}{0}">
+                                                    <Binding Path="Strategie"/>
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                            <TextBlock.InputBindings>
+                                                <MouseBinding Gesture="LeftDoubleClick"
+                                                    Command="{Binding DataContext.StrategieToevoegenCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"/>
+                                            </TextBlock.InputBindings>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                            <ListBox
+                                ItemsSource="{Binding CommAddedStrategie}"
+                                SelectedItem="{Binding CommSelectedAddedStrategie, Mode=TwoWay}"
+                                SelectedValuePath="Id"
+                                x:Name="ListBoxAddedStrategie"
+                                Margin="0,631,100,0"
+                                HorizontalAlignment="Right"
+                                Width="100"
+                                Height="190" VerticalAlignment="Top" Grid.RowSpan="2">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock>
+                                            <TextBlock.Text>
+                                                <MultiBinding StringFormat="{}{0}">
+                                                    <Binding Path="Strategie"/>
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                            <TextBlock.InputBindings>
+                                                <MouseBinding Gesture="LeftDoubleClick"
+                                                    Command="{Binding DataContext.StrategieVerwijderenCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"/>
+                                            </TextBlock.InputBindings>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                            <Button
+                                x:Name="btnAddStrategie"
+                                Command="{Binding StrategieToevoegenCommand}"
+                                Content="--&gt;"
+                                HorizontalAlignment="Left"
+                                Margin="260,650,0,0"
+                                VerticalAlignment="Top"
+                                Width="30"
+                                Height="20"/>
+                            <Button
+                                x:Name="btnRemoveStrategie"
+                                Command="{Binding StrategieVerwijderenCommand}"
+                                Content="&lt;--"
+                                HorizontalAlignment="Left"
+                                Margin="260,750,0,0"
+                                VerticalAlignment="Top"
+                                Width="30"
+                                Height="20"/>
                         </Grid>
                     </ScrollViewer>
                 </TabItem>
                 <TabItem x:Name="tabExtraEigenschappen" Header="Extra Eigenschappen" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,-1,0,0">
                     <ScrollViewer>
-                        <Grid Height="563" Width="557" Background="#FFE5E5E5">
+                        <Grid Height="244" Width="593" Background="#FFE5E5E5" VerticalAlignment="Top">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <ComboBox x:Name="cbxNectarwaarde" HorizontalAlignment="Left" Margin="30,30,0,0" VerticalAlignment="Top" Width="120" BorderBrush="#FFFFFCFC" Background="#FFDDDDDD"/>
-                            <Label x:Name="lblNectarwaarde" Content="Nectarwaarde" HorizontalAlignment="Left" Margin="47,4,0,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lblPollenwaarde" Content="Pollenwaarde" HorizontalAlignment="Left" Margin="49,55,0,0" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="cbxPollenwaarde" HorizontalAlignment="Left" Margin="30,82,0,0" VerticalAlignment="Top" Width="120"/>
-                            <Label x:Name="lblBijvriendelijk" Content="Bijvriendelijk" HorizontalAlignment="Center" Margin="2,4,0,0" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="cbxBijvriendelijk" HorizontalAlignment="Center" Margin="0,30,0,0" VerticalAlignment="Top" Width="120"/>
-                            <Label x:Name="lblVlindervriendelijk" Content="Vlindervriendelijk" HorizontalAlignment="Center" Margin="0,56,0,0" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="cbxVlindervriendelijk" HorizontalAlignment="Center" Margin="3,82,0,0" VerticalAlignment="Top" Width="120"/>
-                            <Label x:Name="lblEetbaarKruidgebruik" Content="Eetbaar/kruidgebruik" Margin="405,4,29,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lblGeurend" Content="Geurend" HorizontalAlignment="Left" Margin="439,57,0,0" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="cbxEetbaarKruidgebruik" Margin="406,30,30,0" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="cbxGeurend" Margin="407,82,30,0" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="cbxVorstgevoelig" HorizontalAlignment="Center" Margin="0,135,0,0" VerticalAlignment="Top" Width="120"/>
-                            <Label x:Name="lblVorstgevoelig" Content="Vorstgevoelig" HorizontalAlignment="Center" Margin="0,109,0,0" VerticalAlignment="Top"/>
+                            <ComboBox
+                                ItemsSource="{Binding ExtraNectarwaarde}"
+                                SelectedItem="{Binding ExtraSelectedNectarwaarde, Mode=TwoWay}"
+                                DisplayMemberPath="Waarde"
+                                SelectedValuePath="Id"
+                                x:Name="cbxNectarwaarde"
+                                HorizontalAlignment="Left"
+                                Margin="220,30,0,0"
+                                VerticalAlignment="Top"
+                                Width="120"/>
+                            <Label x:Name="lblNectarwaarde" Content="Nectarwaarde" HorizontalAlignment="Left" Margin="235,4,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblPollenwaarde" Content="Pollenwaarde" HorizontalAlignment="Left" Margin="420,4,0,0" VerticalAlignment="Top"/>
+                            <ComboBox
+                                ItemsSource="{Binding ExtraPollenwaarde}"
+                                SelectedItem="{Binding ExtraSelectedPollenwaarde, Mode=TwoWay}"
+                                DisplayMemberPath="Waarde"
+                                SelectedValuePath="Id"
+                                x:Name="cbxPollenwaarde"
+                                HorizontalAlignment="Left"
+                                Margin="400,30,0,0"
+                                VerticalAlignment="Top"
+                                Width="120"/>
+                            <CheckBox
+                                IsChecked="{Binding ExtraSelectedBijvriendelijk, Mode=TwoWay}"
+                                x:Name="CheckBoxBijvriendelijk"
+                                Content="Bijvriendelijk"
+                                HorizontalAlignment="Left"
+                                Margin="50,20,0,0"
+                                VerticalAlignment="Top"/>
+                            <CheckBox
+                                IsChecked="{Binding ExtraSelectedEetbaar, Mode=TwoWay}"
+                                x:Name="CheckBoxEetbaar"
+                                Content="Eetbaar"
+                                HorizontalAlignment="Left"
+                                Margin="50,60,0,0"
+                                VerticalAlignment="Top"/>
+                            <CheckBox
+                                IsChecked="{Binding ExtraSelectedKruidGebruik, Mode=TwoWay}"
+                                x:Name="CheckBoxKruidgebruik"
+                                Content="Kruidgebruik"
+                                HorizontalAlignment="Left"
+                                Margin="50,100,0,0"
+                                VerticalAlignment="Top"/>
+                            <CheckBox
+                                IsChecked="{Binding ExtraSelectedGeurend, Mode=TwoWay}"
+                                x:Name="CheckBoxGeurend"
+                                Content="Geurend"
+                                HorizontalAlignment="Left"
+                                Margin="50,140,0,0"
+                                VerticalAlignment="Top"/>
+                            <CheckBox
+                                IsChecked="{Binding ExtraSelectedVorstgevoelig, Mode=TwoWay}"
+                                x:Name="checkBoxVorstgevoelig"
+                                Content="Vorstgevoelig"
+                                HorizontalAlignment="Left"
+                                Margin="50,180,0,0"
+                                VerticalAlignment="Top"/>
+                            <CheckBox
+                                IsChecked="{Binding ExtraSelectedVlindervriendelijk, Mode=TwoWay}"
+                                x:Name="checkBoxVlindervriendelijk"
+                                Content="Vlindervriendelijk"
+                                HorizontalAlignment="Left"
+                                Margin="50,217,0,0"
+                                VerticalAlignment="Top"/>
                         </Grid>
                     </ScrollViewer>
                 </TabItem>

@@ -31,6 +31,12 @@ namespace PlantenApplicatie.UI.ViewModel
         public RelayCommand<Window> BackCommand { get; private set; }
         public ICommand HabitatToevoegenCommand { get; set; }
         public ICommand HabitatVerwijderenCommand { get; set; }
+        public ICommand LevensduurToevoegenCommand { get; set; }
+        public ICommand LevensduurVerwijderenCommand { get; set; }
+        public ICommand SocialbiliteitToevoegenCommand { get; set; }
+        public ICommand SocialbiliteitVerwijderenCommand { get; set; }
+        public ICommand StrategieToevoegenCommand { get; set; }
+        public ICommand StrategieVerwijderenCommand { get; set; }
 
         //Observable collections voor de binding
         //Filters
@@ -58,21 +64,17 @@ namespace PlantenApplicatie.UI.ViewModel
         public ObservableCollection<AbioHabitat> AbioAllHabitats { get; set; }
         public ObservableCollection<AbioHabitat> AbioAddedHabitats { get; set; }
         //Commersialisme
-        /*
-         * Ontwikkelingssnelheid
-         * Levensduur/Concurrentiekracht
-         * Sociabiliteit
-         */
+        public ObservableCollection<CommOntwikkelsnelheid> CommOntwikkelSnelheid { get; set; }
+        public ObservableCollection<CommLevensvorm> CommAllLevensvorm { get; set; }
+        public ObservableCollection<CommLevensvorm> CommAddedLevensvorm { get; set; }
+        public ObservableCollection<CommSocialbiliteit> CommAllSocialbiliteit { get; set; }
+        public ObservableCollection<CommSocialbiliteit> CommAddedSocialbiliteit { get; set; }
+        public ObservableCollection<CommStrategie> CommAllStrategie { get; set; }
+        public ObservableCollection<CommStrategie> CommAddedStrategie { get; set; }
         //Extra Eigenschappen
-        /*
-         * Nectarwaarde
-         * Bijvriendelijk
-         * Eetbaar/kruidgebruik
-         * Pollenwaarde
-         * Vlindervriendelijk
-         * Geurend
-         * Vorstgevoelig
-         */
+        public ObservableCollection<ExtraNectarwaarde> ExtraNectarwaarde { get; set; }
+        public ObservableCollection<ExtraPollenwaarde> ExtraPollenwaarde { get; set; }
+       
         //Beheer Eigenschappen
         /*
          * Beheertype
@@ -111,7 +113,16 @@ namespace PlantenApplicatie.UI.ViewModel
         private List<AbioHabitat> _abioAllHabitats;
         private List<AbioHabitat> _abioAddedHabitats;
         //Commersialisme
+        private List<CommOntwikkelsnelheid> _commOntwikkelSnelheid;
+        private List<CommLevensvorm> _commAllLevensvorm;
+        private List<CommLevensvorm> _commAddedLevensvorm;
+        private List<CommSocialbiliteit> _commAllSocialbiliteit;
+        private List<CommSocialbiliteit> _commAddedSocialbiliteit;
+        private List<CommStrategie> _commAllStrategies;
+        private List<CommStrategie> _commAddedStrategies;
         //Extra Eigenschappen
+        private List<ExtraNectarwaarde> _extraNectarwaarde;
+        private List<ExtraPollenwaarde> _extraPollenwaarde;
         //Beheer Eigenschappen
 
         //Geselecteerde waardes
@@ -154,7 +165,22 @@ namespace PlantenApplicatie.UI.ViewModel
         private AbioHabitat _abioselectedAllHabitat;
         private AbioHabitat _abioselectedAddedHabitat;
         //Commersialisme
+        private CommOntwikkelsnelheid _commselectedOntwikkelSnelheid;
+        private CommLevensvorm _commselectedAllLevensvorm;
+        private CommLevensvorm _commselectedAddedLevensvorm;
+        private CommSocialbiliteit _commselectedAllSocialbiliteit;
+        private CommSocialbiliteit _commselectedAddedSocialbiliteit;
+        private CommStrategie _commselectedAllStrategie;
+        private CommStrategie _commselectedAddedStrategie;
         //Extra Eigenschappen
+        private ExtraNectarwaarde _extraselectedNectarwaarde;
+        private ExtraPollenwaarde _extraselectedPollenwaarde;
+        private bool _extraselectedBijvriendelijk;
+        private bool _extraselectedEetbaar;
+        private bool _extraselectedKruidGebruik;
+        private bool _extraselectedVlindervriendelijk;
+        private bool _extraselectedGeurend;
+        private bool _extraselectedVorstgevoelig;
         //Beheer Eigenschappen
 
         public EditViewModel(PlantenDataService plantenDataService)
@@ -166,6 +192,12 @@ namespace PlantenApplicatie.UI.ViewModel
             BackCommand = new RelayCommand<Window>(Back);
             HabitatToevoegenCommand = new DelegateCommand(HabitatToevoegen);
             HabitatVerwijderenCommand = new DelegateCommand(HabitatVerwijderen);
+            LevensduurToevoegenCommand = new DelegateCommand(LevensduurToevoegen);
+            LevensduurVerwijderenCommand = new DelegateCommand(LevensduurVerwijderen);
+            SocialbiliteitToevoegenCommand = new DelegateCommand(SocialbiliteitToevoegen);
+            SocialbiliteitVerwijderenCommand = new DelegateCommand(SocialbiliteitVerwijderen);
+            StrategieToevoegenCommand = new DelegateCommand(StrategieToevoegen);
+            StrategieVerwijderenCommand = new DelegateCommand(StrategieVerwijderen);
 
             //Filters
             FilterTfgsvTypes = new ObservableCollection<TfgsvType>();
@@ -192,7 +224,16 @@ namespace PlantenApplicatie.UI.ViewModel
             AbioAllHabitats = new ObservableCollection<AbioHabitat>();
             AbioAddedHabitats = new ObservableCollection<AbioHabitat>();
             //Commersialisme
+            CommOntwikkelSnelheid = new ObservableCollection<CommOntwikkelsnelheid>();
+            CommAllLevensvorm = new ObservableCollection<CommLevensvorm>();
+            CommAddedLevensvorm = new ObservableCollection<CommLevensvorm>();
+            CommAllSocialbiliteit = new ObservableCollection<CommSocialbiliteit>();
+            CommAddedSocialbiliteit = new ObservableCollection<CommSocialbiliteit>();
+            CommAllStrategie = new ObservableCollection<CommStrategie>();
+            CommAddedStrategie = new ObservableCollection<CommStrategie>();
             //Extra Eigenschappen
+            ExtraNectarwaarde = new ObservableCollection<ExtraNectarwaarde>();
+            ExtraPollenwaarde = new ObservableCollection<ExtraPollenwaarde>();
             //Beheer Eigenschappen
         }
 
@@ -261,7 +302,34 @@ namespace PlantenApplicatie.UI.ViewModel
             }
             ReloadHabitatlist();
             //Commersialisme
+            CommSelectedOntwikkelSnelheid = _commOntwikkelSnelheid.FirstOrDefault(c =>
+                c.Snelheid == _plantenDataService.GetCommensalisme(plant.PlantId).Ontwikkelsnelheid);
+            foreach (var commMulti in _plantenDataService.GetCommLevensvormFromPlant(plant.PlantId))
+            {
+                _commAddedLevensvorm.Add(_commAllLevensvorm.FirstOrDefault(c => c.Levensvorm == commMulti.Waarde));
+            }
+            ReloadLevensvorm();
+            foreach (var commensalismeMulti in _plantenDataService.GetCommSocialbiliteitFromPlant(plant.PlantId))
+            {
+                _commAddedSocialbiliteit.Add(
+                    _commAllSocialbiliteit.FirstOrDefault(c => c.Sociabiliteit == commensalismeMulti.Waarde));
+            }
+            ReloadSocialbiliteit();
+            foreach (var commensalisme in _plantenDataService.GetCommStrategieFromPlant(plant.PlantId))
+            {
+                _commAddedStrategies.Add(
+                    _commAllStrategies.FirstOrDefault(c => c.Strategie == commensalisme.Strategie));
+            }
+            ReloadStrategie();
             //Extra Eigenschappen
+            ExtraSelectedNectarwaarde = _plantenDataService.GetExtraNectarwaardeFromPlant(plant.PlantId);
+            ExtraSelectedPollenwaarde = _plantenDataService.GetExtraPollenwaardeFromPlant(plant.PlantId);
+            ExtraSelectedBijvriendelijk = _plantenDataService.GetExtraBijvriendelijk(plant.PlantId);
+            ExtraSelectedEetbaar = _plantenDataService.GetExtraEetbaar(plant.PlantId);
+            ExtraSelectedKruidGebruik = _plantenDataService.GetExtraKruidgebruik(plant.PlantId);
+            ExtraSelectedGeurend = _plantenDataService.GetExtraGeurend(plant.PlantId);
+            ExtraSelectedVorstgevoelig = _plantenDataService.GetExtraVorstgevoelig(plant.PlantId);
+            ExtraSelectedVlindervriendelijk = _plantenDataService.GetExtraVlindervriendelijk(plant.PlantId);
             //Beheer Eigenschappen
         }
         private void Opslaan()
@@ -323,7 +391,90 @@ namespace PlantenApplicatie.UI.ViewModel
             }
             ReloadHabitatlist();
         }
+        private void LevensduurToevoegen()
+        {
+            //Senne & Hermes
 
+            if (_commAddedLevensvorm != null)
+            {
+                if (!_commAddedLevensvorm.Contains(CommSelectedAllLevensvorm))
+                {
+                    _commAddedLevensvorm.Add(CommSelectedAllLevensvorm);
+
+                }
+                else
+                {
+                    MessageBox.Show("Levensvorm is al toegevoegd");
+                }
+            }
+            ReloadLevensvorm();
+        }
+        private void LevensduurVerwijderen()
+        {
+            //Senne & Hermes
+
+            if (CommSelectedAddedLevensvorm != null)
+            {
+                _commAddedLevensvorm.Remove(CommSelectedAddedLevensvorm);
+            }
+            ReloadLevensvorm();
+        }
+        private void SocialbiliteitToevoegen()
+        {
+            //Senne & Hermes
+
+            if (_commAddedSocialbiliteit != null)
+            {
+                if (!_commAddedSocialbiliteit.Contains(CommSelectedAllSocialbiliteit))
+                {
+                    _commAddedSocialbiliteit.Add(CommSelectedAllSocialbiliteit);
+
+                }
+                else
+                {
+                    MessageBox.Show("Socialbiliteit is al toegevoegd");
+                }
+            }
+            ReloadSocialbiliteit();
+        }
+        private void SocialbiliteitVerwijderen()
+        {
+            //Senne & Hermes
+
+            if (CommSelectedAddedSocialbiliteit != null)
+            {
+                _commAddedSocialbiliteit.Remove(CommSelectedAddedSocialbiliteit);
+            }
+            ReloadSocialbiliteit();
+        }
+        private void StrategieToevoegen()
+        {
+            //Senne & Hermes
+
+            if (_commAddedStrategies != null)
+            {
+                if (!_commAddedStrategies.Contains(CommSelectedAllStrategie))
+                {
+                    _commAddedStrategies.Add(CommSelectedAllStrategie);
+
+                }
+                else
+                {
+                    MessageBox.Show("Strategie is al toegevoegd");
+                }
+            }
+            ReloadStrategie();
+        }
+        private void StrategieVerwijderen()
+        {
+            //Senne & Hermes
+
+            if (CommSelectedAddedStrategie != null)
+            {
+                _commAddedStrategies.Remove(CommSelectedAddedStrategie);
+            }
+            ReloadStrategie();
+        }
         public void InitializeAll()
         {
             //Senne & Hermes
@@ -362,13 +513,20 @@ namespace PlantenApplicatie.UI.ViewModel
             _abioAllHabitats = _plantenDataService.GetHabitats();
             _abioAddedHabitats = new List<AbioHabitat>();
             //Commersialisme
+            _commOntwikkelSnelheid = _plantenDataService.GetCommOntwikkelSnelheid();
+            _commAllLevensvorm = _plantenDataService.GetCommLevensvorm();
+            _commAddedLevensvorm = new List<CommLevensvorm>();
+            _commAllSocialbiliteit = _plantenDataService.GetCommSocialbiliteit();
+            _commAddedSocialbiliteit = new List<CommSocialbiliteit>();
+            _commAllStrategies = _plantenDataService.GetCommStrategie();
+            _commAddedStrategies = new List<CommStrategie>();
             //Extra Eigenschappen
+            _extraNectarwaarde = _plantenDataService.GetExtraNectarwaarde();
+            _extraPollenwaarde = _plantenDataService.GetExtraPollenwaarde();
             //Beheer Eigenschappen
-
 
             LoadAll();
         }
-
         public void LoadAll()
         {
             //Senne & Hermes
@@ -380,7 +538,6 @@ namespace PlantenApplicatie.UI.ViewModel
             LoadExtraEigenschappen();
             LoadBeheerEigenschappen();
         }
-
         public void LoadFilters()
         {
             //Senne & Hermes
@@ -417,7 +574,6 @@ namespace PlantenApplicatie.UI.ViewModel
                 FilterTfgsvVariant.Add(tfgsvVariant);
             }
         }
-
         public void LoadFenotype()
         {
             //Senne & Hermes
@@ -478,7 +634,6 @@ namespace PlantenApplicatie.UI.ViewModel
                 FenoLevensvorm.Add(levensvorm);
             }
         }
-
         public void LoadAbio()
         {
             //Senne & Hermes
@@ -521,7 +676,6 @@ namespace PlantenApplicatie.UI.ViewModel
                 AbioAllHabitats.Add(habitat);
             }
         }
-
         public void ReloadHabitatlist()
         {
             //Senne & Hermes
@@ -532,22 +686,86 @@ namespace PlantenApplicatie.UI.ViewModel
                 AbioAddedHabitats.Add(habitat);
             }
         }
-
         public void LoadCommersialisme()
         {
+            //Senne & Hermes
+            CommOntwikkelSnelheid.Clear();
+            CommAllLevensvorm.Clear();
+            CommAllSocialbiliteit.Clear();
+            CommAllStrategie.Clear();
 
+            //ontwikkelsnelheid
+            foreach (var ontwikkelsnelheid in _commOntwikkelSnelheid)
+            {
+                CommOntwikkelSnelheid.Add(ontwikkelsnelheid);
+            }
+            //levensvorm
+            foreach (var levensvorm in _commAllLevensvorm)
+            {
+                CommAllLevensvorm.Add(levensvorm);
+            }
+            //socialbiliteit
+            foreach (var socialbiliteit in _commAllSocialbiliteit)
+            {
+                CommAllSocialbiliteit.Add(socialbiliteit);
+            }
+            //strategie
+            foreach (var strategy in _commAllStrategies)
+            {
+                CommAllStrategie.Add(strategy);
+            }
         }
+        public void ReloadLevensvorm()
+        {
+            //Senne & Hermes
+            //enkel de toegevoegde levensvormen refreshen
 
+            CommAddedLevensvorm.Clear();
+            foreach (var levensvorm in _commAddedLevensvorm)
+            {
+                CommAddedLevensvorm.Add(levensvorm);
+            }
+        }
+        public void ReloadSocialbiliteit()
+        {
+            //Senne & Hermes
+            //enkel de toegevoegde Sociabiliteiten refreshen
+
+            CommAddedSocialbiliteit.Clear();
+            foreach (var socialbiliteit in _commAddedSocialbiliteit)
+            {
+                CommAddedSocialbiliteit.Add(socialbiliteit);
+            }
+        }
+        public void ReloadStrategie()
+        {
+            //Senne & Hermes
+            //enkel de toegevoegde Strategies refreshen
+
+            CommAddedStrategie.Clear();
+            foreach (var strategy in _commAddedStrategies)
+            {
+                CommAddedStrategie.Add(strategy);
+            }
+        }
         public void LoadExtraEigenschappen()
         {
+            ExtraNectarwaarde.Clear();
+            ExtraPollenwaarde.Clear();
 
+            foreach (var nectarwaarde in _extraNectarwaarde)
+            {
+                ExtraNectarwaarde.Add(nectarwaarde);
+            }
+            foreach (var pollenwaarde in _extraPollenwaarde)
+            {
+                ExtraPollenwaarde.Add(pollenwaarde);
+            }
         }
-
         public void LoadBeheerEigenschappen()
         {
 
         }
-
         public void FenoShowBloeiwijzeImage()
         {
             switch (_fenoselectedBloeiwijze.Id)
@@ -897,7 +1115,6 @@ namespace PlantenApplicatie.UI.ViewModel
                 OnPropertyChanged();
             }
         }
-        
         //Abio
         public AbioBezonning AbioSelectedBezonning
         {
@@ -910,7 +1127,6 @@ namespace PlantenApplicatie.UI.ViewModel
                 OnPropertyChanged();
             }
         }
-
         public AbioGrondsoort AbioSelectedGrondsoort
         {
             //Senne & Hermes
@@ -922,7 +1138,6 @@ namespace PlantenApplicatie.UI.ViewModel
                 OnPropertyChanged();
             }
         }
-
         public AbioVoedingsbehoefte AbioSelectedVoedingsbehoefte
         {
             //Senne & Hermes
@@ -934,7 +1149,6 @@ namespace PlantenApplicatie.UI.ViewModel
                 OnPropertyChanged();
             }
         }
-
         public AbioVochtbehoefte AbioSelectedVochtbehoefte
         {
             //Senne & Hermes
@@ -946,7 +1160,6 @@ namespace PlantenApplicatie.UI.ViewModel
                 OnPropertyChanged();
             }
         }
-
         public AbioReactieAntagonischeOmg AbioSelectedReactie
         {
             //Senne & Hermes
@@ -958,7 +1171,6 @@ namespace PlantenApplicatie.UI.ViewModel
                 OnPropertyChanged();
             }
         }
-
         public AbioHabitat AbioSelectedAllHabitat
         {
             //Senne & Hermes
@@ -970,7 +1182,6 @@ namespace PlantenApplicatie.UI.ViewModel
                 OnPropertyChanged();
             }
         }
-
         public AbioHabitat AbioSelectedAddedHabitat
         {
             //Senne & Hermes
@@ -983,7 +1194,143 @@ namespace PlantenApplicatie.UI.ViewModel
             }
         }
         //Commersialisme
+        public CommOntwikkelsnelheid CommSelectedOntwikkelSnelheid
+        {
+            get { return _commselectedOntwikkelSnelheid; }
+            set
+            {
+                _commselectedOntwikkelSnelheid = value;
+                OnPropertyChanged();
+            }
+        }
+        public CommLevensvorm CommSelectedAllLevensvorm
+        {
+            get { return _commselectedAllLevensvorm; }
+            set
+            {
+                _commselectedAllLevensvorm = value;
+                OnPropertyChanged();
+            }
+        }
+        public CommLevensvorm CommSelectedAddedLevensvorm
+        {
+            get { return _commselectedAddedLevensvorm; }
+            set
+            {
+                _commselectedAddedLevensvorm = value;
+                OnPropertyChanged();
+            }
+        }
+        public CommSocialbiliteit CommSelectedAllSocialbiliteit
+        {
+            get { return _commselectedAllSocialbiliteit; }
+            set
+            {
+                _commselectedAllSocialbiliteit = value;
+                OnPropertyChanged();
+            }
+        }
+        public CommSocialbiliteit CommSelectedAddedSocialbiliteit
+        {
+            get { return _commselectedAddedSocialbiliteit; }
+            set
+            {
+                _commselectedAddedSocialbiliteit = value;
+                OnPropertyChanged();
+            }
+        }
+        public CommStrategie CommSelectedAllStrategie
+        {
+            get { return _commselectedAllStrategie; }
+            set
+            {
+                _commselectedAllStrategie = value;
+                OnPropertyChanged();
+            }
+        }
+        public CommStrategie CommSelectedAddedStrategie
+        {
+            get { return _commselectedAddedStrategie; }
+            set
+            {
+                _commselectedAddedStrategie = value;
+                OnPropertyChanged();
+            }
+        }
         //Extra Eigenschappen
+        public ExtraNectarwaarde ExtraSelectedNectarwaarde
+        {
+            get { return _extraselectedNectarwaarde; }
+            set
+            {
+                _extraselectedNectarwaarde = value;
+                OnPropertyChanged();
+            }
+        }
+        public ExtraPollenwaarde ExtraSelectedPollenwaarde
+        {
+            get { return _extraselectedPollenwaarde; }
+            set
+            {
+                _extraselectedPollenwaarde = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool ExtraSelectedBijvriendelijk
+        {
+            get { return _extraselectedBijvriendelijk; }
+            set
+            {
+                _extraselectedBijvriendelijk = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool ExtraSelectedEetbaar
+        {
+            get { return _extraselectedEetbaar; }
+            set
+            {
+                _extraselectedEetbaar = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool ExtraSelectedKruidGebruik
+        {
+            get { return _extraselectedKruidGebruik; }
+            set
+            {
+                _extraselectedKruidGebruik = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool ExtraSelectedVlindervriendelijk
+        {
+            get { return _extraselectedVlindervriendelijk; }
+            set
+            {
+                _extraselectedVlindervriendelijk = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool ExtraSelectedGeurend
+        {
+            get { return _extraselectedGeurend; }
+            set
+            {
+                _extraselectedGeurend = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool ExtraSelectedVorstgevoelig
+        {
+            get { return _extraselectedVorstgevoelig; }
+            set
+            {
+                _extraselectedVorstgevoelig = value;
+                OnPropertyChanged();
+            }
+        }
+
         //Beheer Eigenschappen
     }
 }
