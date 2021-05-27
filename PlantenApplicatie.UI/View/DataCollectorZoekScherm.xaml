@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PlantenApplicatie.UI.View"
         mc:Ignorable="d"
-        Title="DataCollectorZoekScherm" Height="450" Width="800">
+        Title="DataCollectorZoekScherm" Height="450" Width="800" WindowState="Maximized">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="Images/AchtergrondSchermen.jpg"/>
