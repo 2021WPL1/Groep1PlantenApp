@@ -14,21 +14,19 @@ using Prism.Commands;
 
 namespace PlantenApplicatie.UI.ViewModel
 {
-    public class MainViewModel : ViewModelBase
+    public class gebruikerSchermViewModel : ViewModelBase
     {
         public RelayCommand<Window> schermGebruikerToevoegenCommand { get; set; }
         //ICommand om zoekresultaat leeg te maken
         public ICommand ClearResultCommand { get; set; }
+
         //Senne, Hermes
         public ICommand ZoekViaNaamCommand { get; set; }
 
-
-        //Jelle & Hemen
-        //Command om resultatenscherm op te roepen
         public ICommand ResultaatSchermCommand { get; set; }
-        public ICommand CreatePlantCommand { get; set; }
+     
 
-        //boolean die ervoor zorgt dat de geselecteerde filters niet leeggemaakt worden
+        //bool die ervoor zorgt dat de selected filters niet gecleared worden
         private bool _loadCheck;
 
         private PlantenDataService _plantenDataService;
@@ -71,11 +69,11 @@ namespace PlantenApplicatie.UI.ViewModel
 
         private string _zoekViaNaamInput = "";
 
-        public MainViewModel(PlantenDataService plantenDataService)
-        {//DAO instantiëren
+        public gebruikerSchermViewModel(PlantenDataService plantenDataService)
+        {//DAO
             //Senne, Hermes
             ZoekViaNaamCommand = new DelegateCommand(ZoekViaNaam);
-            CreatePlantCommand = new DelegateCommand(CreatePlant);
+          
 
             //Stephanie, Hermes
             ClearResultCommand = new DelegateCommand(ClearResult);
@@ -91,17 +89,11 @@ namespace PlantenApplicatie.UI.ViewModel
             PlantResults = new ObservableCollection<Plant>();
 
             //Hemen en Maarten
-            schermGebruikerToevoegenCommand = new RelayCommand<Window>(this.SchermGebruikerToevoegenCommand);
             this._plantenDataService = plantenDataService;
         }
 
-        private void CreatePlant()
-        {
-            EditWindow window = new EditWindow();
-            window.ShowDialog();
-        }
+       
 
-        //Jelle & Hemen
         public Plant SelectedPlant
         {
             get { return _selectedPlant; }
@@ -112,12 +104,11 @@ namespace PlantenApplicatie.UI.ViewModel
             }
         }
 
-        //Jelle & Hemen
         public void ResultaatScherm()
         {
             if (_selectedPlant != null)
             {
-                ResultatenWindow window = new ResultatenWindow(_selectedPlant);
+                GebruikerResultWindows window = new GebruikerResultWindows(_selectedPlant);
                 window.ShowDialog();
             }
             else
@@ -198,7 +189,7 @@ namespace PlantenApplicatie.UI.ViewModel
             //Senne, Maarten, Hermes
             var types = _types;
             TfgsvTypes.Clear();
-            foreach (var tfgsvType in types.OrderBy(p=>p.Planttypenaam))
+            foreach (var tfgsvType in types.OrderBy(p => p.Planttypenaam))
             {
                 TfgsvTypes.Add(tfgsvType);
             }
@@ -209,7 +200,7 @@ namespace PlantenApplicatie.UI.ViewModel
             //Senne, Maarten, Hermes
             var families = _families;
             TfgsvFamilie.Clear();
-            foreach (var tfgsvFamily in families.OrderBy(p=>p.Familienaam))
+            foreach (var tfgsvFamily in families.OrderBy(p => p.Familienaam))
             {
                 TfgsvFamilie.Add(tfgsvFamily);
             }
@@ -220,7 +211,7 @@ namespace PlantenApplicatie.UI.ViewModel
             //Senne, Maarten, Hermes
             var geslachten = _geslachten;
             TfgsvGeslacht.Clear();
-            foreach (var tfgsvGeslacht in geslachten.OrderBy(p=>p.Geslachtnaam))
+            foreach (var tfgsvGeslacht in geslachten.OrderBy(p => p.Geslachtnaam))
             {
                 TfgsvGeslacht.Add(tfgsvGeslacht);
             }
@@ -231,7 +222,7 @@ namespace PlantenApplicatie.UI.ViewModel
             //Senne, Maarten, Hermes
             var soorten = _soorten;
             TfgsvSoort.Clear();
-            foreach (var tfgsvSoort in soorten.OrderBy(p=>p.Soortnaam))
+            foreach (var tfgsvSoort in soorten.OrderBy(p => p.Soortnaam))
             {
                 TfgsvSoort.Add(tfgsvSoort);
             }
@@ -242,7 +233,7 @@ namespace PlantenApplicatie.UI.ViewModel
             //Senne, Maarten, Hermes
             var varianten = _varianten;
             TfgsvVariant.Clear();
-            foreach (var tfgsvVariant in varianten.OrderBy(p=>p.Variantnaam))
+            foreach (var tfgsvVariant in varianten.OrderBy(p => p.Variantnaam))
             {
                 TfgsvVariant.Add(tfgsvVariant);
             }
@@ -505,16 +496,6 @@ namespace PlantenApplicatie.UI.ViewModel
                 }
             }
         }
-        //Hemen en Maarten
-        public void SchermGebruikerToevoegenCommand(Window window)
-        {
-            CreateGebruiker createGebruiker = new CreateGebruiker();
-            window.Close();
-            createGebruiker.ShowDialog();
-        }
-        public void changevisibilityDependingOnRol()
-        {
-            
-        }
     }
 }
+

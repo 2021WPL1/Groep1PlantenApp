@@ -15,17 +15,19 @@ using System.Windows.Shapes;
 namespace PlantenApplicatie.UI.View
 {
     /// <summary>
-    /// Interaction logic for LoginScherm.xaml
-    /// Hemen &Maarten
+    /// Interaction logic for GebruikerZoekscherm.xaml
     /// </summary>
-    public partial class LoginScherm : Window
+    public partial class GebruikerZoekscherm : Window
+        
     {
-        private LoginSchermViewModel viewModel;
-        public LoginScherm()
+        private gebruikerSchermViewModel viewModel;
+        public GebruikerZoekscherm()
         {
-            viewModel = new LoginSchermViewModel(PlantenDataService.Instance());
-            DataContext = viewModel;
             InitializeComponent();
+            viewModel = new gebruikerSchermViewModel(PlantenDataService.Instance());
+            DataContext = viewModel;
+            viewModel.InitializeTfgsv();
+            viewModel.LoadAll();
         }
     }
 }

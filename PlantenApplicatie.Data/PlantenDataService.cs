@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
@@ -153,6 +154,7 @@ namespace PlantenApplicatie.Data
         {
             return context.Commensalisme.SingleOrDefault(c => c.PlantId == Id);
         }
+        
         //Geeft de plant & zijn specifieke eigenschappen
         public ExtraEigenschap GetExtraEigenschap(long Id)
         {
@@ -325,8 +327,107 @@ namespace PlantenApplicatie.Data
         }
 
         //Commersialisme
+
+        public List<CommensalismeMulti> GetCommLevensvormFromPlant(long id)
+        {
+            return context.CommensalismeMulti.Where(m => m.Eigenschap == "Levensvorm")
+                .Where(i => i.PlantId == id).ToList();
+        }
+
+        public List<CommensalismeMulti> GetCommSocialbiliteitFromPlant(long id)
+        {
+            return context.CommensalismeMulti.Where(m => m.Eigenschap == "Sociabiliteit").Where(i => i.PlantId == id)
+                .ToList();
+        }
+
+        public List<Commensalisme> GetCommStrategieFromPlant(long id)
+        {
+            return context.Commensalisme.Where(c => c.PlantId == id).ToList();
+        }
+        public List<CommOntwikkelsnelheid> GetCommOntwikkelSnelheid()
+        {
+            return context.CommOntwikkelsnelheid.OrderBy(c => c.Snelheid).ToList();
+        }
+        public List<CommLevensvorm> GetCommLevensvorm()
+        {
+            return context.CommLevensvorm.OrderBy(c => c.Levensvorm).ToList();
+        }
+        public List<CommSocialbiliteit> GetCommSocialbiliteit()
+        {
+            return context.CommSocialbiliteit.ToList();
+        }
+        public List<CommStrategie> GetCommStrategie()
+        {
+            return context.CommStrategie.ToList();
+        }
         //Extra Eigenschappen
+        public List<ExtraNectarwaarde> GetExtraNectarwaarde()
+        {
+            return context.ExtraNectarwaarde.OrderBy(n => n.Waarde).ToList();
+        }
+        public List<ExtraPollenwaarde> GetExtraPollenwaarde()
+        {
+            return context.ExtraPollenwaarde.OrderBy(p => p.Waarde).ToList();
+        }
+        public ExtraNectarwaarde GetExtraNectarwaardeFromPlant(long id)
+        {
+            return context.ExtraNectarwaarde.FirstOrDefault(e =>
+                e.Waarde == context.ExtraEigenschap.FirstOrDefault(x => x.PlantId == id).Nectarwaarde);
+        }
+        public ExtraPollenwaarde GetExtraPollenwaardeFromPlant(long id)
+        {
+            return context.ExtraPollenwaarde.FirstOrDefault(e =>
+                e.Waarde == context.ExtraEigenschap.FirstOrDefault(x => x.PlantId == id).Pollenwaarde);
+        }
+        public bool GetExtraBijvriendelijk(long id)
+        {
+            return (bool) context.ExtraEigenschap.FirstOrDefault(e=>e.PlantId==id).Bijvriendelijke;
+        }
+        public bool GetExtraEetbaar(long id)
+        {
+            return (bool)context.ExtraEigenschap.FirstOrDefault(e => e.PlantId == id).Eetbaar;
+        }
+        public bool GetExtraVlindervriendelijk(long id)
+        {
+            return (bool)context.ExtraEigenschap.FirstOrDefault(e => e.PlantId == id).Vlindervriendelijk;
+        }
+        public bool GetExtraGeurend(long id)
+        {
+            return (bool)context.ExtraEigenschap.FirstOrDefault(e => e.PlantId == id).Geurend;
+        }
+        public bool GetExtraVorstgevoelig(long id)
+        {
+            return (bool)context.ExtraEigenschap.FirstOrDefault(e => e.PlantId == id).Vorstgevoelig;
+        }
+        public bool GetExtraKruidgebruik(long id)
+        {
+            return (bool)context.ExtraEigenschap.FirstOrDefault(e => e.PlantId == id).Kruidgebruik;
+        }
         //Beheer Eigenschappen
+
+        //Hemen &Maarten 
+        public Gebruiker addGebruiker(string rol, string email, byte[] HashPaswoord)
+        {
+            Gebruiker gebruiker = new Gebruiker
+            {
+                Rol = rol,
+                Emailadres = email,
+                HashPaswoord = HashPaswoord
+
+            };
+            context.Gebruiker.Add(gebruiker);
+            context.SaveChanges();
+            return gebruiker;
+        }
+        public List<Rol> GetRollen()
+        {
+            return context.Rol.ToList();
+        }
+        public Gebruiker getGebruikerViaEmail(string email)
+        {
+            return context.Gebruiker.SingleOrDefault(g => g.Emailadres == email);
+        }
+
 
         //Jelle & Stephanie
         public List<CommensalismeMulti> GetCommMulti(long plantId)
