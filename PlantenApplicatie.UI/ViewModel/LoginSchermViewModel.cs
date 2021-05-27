@@ -88,6 +88,10 @@ namespace PlantenApplicatie.UI.ViewModel
                                 SelectedError = "Wachtwoord is onjuist";
                             }
                         }
+                        else
+                        {
+                            SelectedError = "Emailadres of wachtwoord is niet gekend";
+                        }
                     }
                 }
                 else
