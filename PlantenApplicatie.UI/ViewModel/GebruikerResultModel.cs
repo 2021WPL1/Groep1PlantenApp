@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight.Command;
 using PlantenApplicatie.Data;
 using PlantenApplicatie.Domain.Models;
+using PlantenApplicatie.UI.View;
 using Prism.Commands;
 using System;
 using System.Collections.Generic;
@@ -98,10 +99,7 @@ namespace PlantenApplicatie.UI.ViewModel
         //Command die gelinkt is aan close button om form te sluiten
         public void CloseResult(Window window)
         {
-            if (window != null)
-            {
                 window.Close();
-            }
         }
 
         //Command om labels op te vullen

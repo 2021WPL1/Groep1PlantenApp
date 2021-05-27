@@ -108,7 +108,7 @@ namespace PlantenApplicatie.UI.ViewModel
         {
             if (_selectedPlant != null)
             {
-                ResultatenWindow window = new ResultatenWindow(_selectedPlant);
+                GebruikerResultWindows window = new GebruikerResultWindows(_selectedPlant);
                 window.ShowDialog();
             }
             else
