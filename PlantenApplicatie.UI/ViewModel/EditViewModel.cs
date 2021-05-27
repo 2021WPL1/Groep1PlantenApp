@@ -1433,7 +1433,6 @@ namespace PlantenApplicatie.UI.ViewModel
                 OnPropertyChanged();
             }
         }
-        //Bestaande beheersbehandeling aanpassen
         public BeheerDaden EditBeheerSelectedDaden
         {
             get { return _editbeheerselectedDaden; }
