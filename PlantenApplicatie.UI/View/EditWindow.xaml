@@ -468,6 +468,7 @@
                                             <TextBlock.Text>
                                                 <MultiBinding StringFormat="{}{0}">
                                                     <Binding Path="Waarde"/>
+                                                    <Binding Path="Sociabiliteit"/>
                                                 </MultiBinding>
                                             </TextBlock.Text>
                                             <TextBlock.InputBindings>
@@ -493,6 +494,7 @@
                                             <TextBlock.Text>
                                                 <MultiBinding StringFormat="{}{0}">
                                                     <Binding Path="Waarde"/>
+                                                    <Binding Path="Sociabiliteit"/>
                                                 </MultiBinding>
                                             </TextBlock.Text>
                                             <TextBlock.InputBindings>

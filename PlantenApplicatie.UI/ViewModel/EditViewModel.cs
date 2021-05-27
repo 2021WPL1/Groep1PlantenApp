@@ -284,6 +284,7 @@ namespace PlantenApplicatie.UI.ViewModel
             }
             ReloadHabitatlist();
             //Commersialisme
+
             //Extra Eigenschappen
             //Beheer Eigenschappen
         }
