@@ -315,6 +315,11 @@ namespace PlantenApplicatie.Data
             return context.CommensalismeMulti.Where(m => m.Eigenschap == "Sociabiliteit").Where(i => i.PlantId == id)
                 .ToList();
         }
+
+        public List<Commensalisme> GetCommStrategieFromPlant(long id)
+        {
+            return context.Commensalisme.Where(c => c.Id == id).ToList();
+        }
         public List<CommOntwikkelsnelheid> GetCommOntwikkelSnelheid()
         {
             return context.CommOntwikkelsnelheid.OrderBy(c => c.Snelheid).ToList();
