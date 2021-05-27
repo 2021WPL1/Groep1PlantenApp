@@ -35,6 +35,8 @@ namespace PlantenApplicatie.UI.ViewModel
         public ICommand LevensduurVerwijderenCommand { get; set; }
         public ICommand SocialbiliteitToevoegenCommand { get; set; }
         public ICommand SocialbiliteitVerwijderenCommand { get; set; }
+        public ICommand StrategieToevoegenCommand { get; set; }
+        public ICommand StrategieVerwijderenCommand { get; set; }
 
         //Observable collections voor de binding
         //Filters
@@ -67,6 +69,8 @@ namespace PlantenApplicatie.UI.ViewModel
         public ObservableCollection<CommLevensvorm> CommAddedLevensvorm { get; set; }
         public ObservableCollection<CommSocialbiliteit> CommAllSocialbiliteit { get; set; }
         public ObservableCollection<CommSocialbiliteit> CommAddedSocialbiliteit { get; set; }
+        public ObservableCollection<CommStrategie> CommAllStrategie { get; set; }
+        public ObservableCollection<CommStrategie> CommAddedStrategie { get; set; }
         //Extra Eigenschappen
         public ObservableCollection<ExtraNectarwaarde> ExtraNectarwaarde { get; set; }
         public ObservableCollection<ExtraPollenwaarde> ExtraPollenwaarde { get; set; }
@@ -114,6 +118,8 @@ namespace PlantenApplicatie.UI.ViewModel
         private List<CommLevensvorm> _commAddedLevensvorm;
         private List<CommSocialbiliteit> _commAllSocialbiliteit;
         private List<CommSocialbiliteit> _commAddedSocialbiliteit;
+        private List<CommStrategie> _commAllStrategies;
+        private List<CommStrategie> _commAddedStrategies;
         //Extra Eigenschappen
         private List<ExtraNectarwaarde> _extraNectarwaarde;
         private List<ExtraPollenwaarde> _extraPollenwaarde;
@@ -164,6 +170,8 @@ namespace PlantenApplicatie.UI.ViewModel
         private CommLevensvorm _commselectedAddedLevensvorm;
         private CommSocialbiliteit _commselectedAllSocialbiliteit;
         private CommSocialbiliteit _commselectedAddedSocialbiliteit;
+        private CommStrategie _commselectedAllStrategie;
+        private CommStrategie _commselectedAddedStrategie;
         //Extra Eigenschappen
         private ExtraNectarwaarde _extraselectedNectarwaarde;
         private ExtraEigenschap _extraselectedBijvriendelijk;
@@ -187,6 +195,8 @@ namespace PlantenApplicatie.UI.ViewModel
             LevensduurVerwijderenCommand = new DelegateCommand(LevensduurVerwijderen);
             SocialbiliteitToevoegenCommand = new DelegateCommand(SocialbiliteitToevoegen);
             SocialbiliteitVerwijderenCommand = new DelegateCommand(SocialbiliteitVerwijderen);
+            StrategieToevoegenCommand = new DelegateCommand(StrategieToevoegen);
+            StrategieVerwijderenCommand = new DelegateCommand(StrategieVerwijderen);
 
             //Filters
             FilterTfgsvTypes = new ObservableCollection<TfgsvType>();
@@ -218,6 +228,8 @@ namespace PlantenApplicatie.UI.ViewModel
             CommAddedLevensvorm = new ObservableCollection<CommLevensvorm>();
             CommAllSocialbiliteit = new ObservableCollection<CommSocialbiliteit>();
             CommAddedSocialbiliteit = new ObservableCollection<CommSocialbiliteit>();
+            CommAllStrategie = new ObservableCollection<CommStrategie>();
+            CommAddedStrategie = new ObservableCollection<CommStrategie>();
             //Extra Eigenschappen
             //Beheer Eigenschappen
         }
@@ -419,7 +431,34 @@ namespace PlantenApplicatie.UI.ViewModel
             }
             ReloadSocialbiliteit();
         }
+        private void StrategieToevoegen()
+        {
+            //Senne & Hermes
 
+            if (_commAddedStrategies != null)
+            {
+                if (!_commAddedStrategies.Contains(CommSelectedAllStrategie))
+                {
+                    _commAddedStrategies.Add(CommSelectedAllStrategie);
+
+                }
+                else
+                {
+                    MessageBox.Show("Strategie is al toegevoegd");
+                }
+            }
+            ReloadSocialbiliteit();
+        }
+        private void StrategieVerwijderen()
+        {
+            //Senne & Hermes
+
+            if (CommSelectedAddedStrategie != null)
+            {
+                _commAddedStrategies.Remove(CommSelectedAddedStrategie);
+            }
+            ReloadSocialbiliteit();
+        }
         public void InitializeAll()
         {
             //Senne & Hermes
@@ -463,6 +502,8 @@ namespace PlantenApplicatie.UI.ViewModel
             _commAddedLevensvorm = new List<CommLevensvorm>();
             _commAllSocialbiliteit = _plantenDataService.GetCommSocialbiliteit();
             _commAddedSocialbiliteit = new List<CommSocialbiliteit>();
+            _commAllStrategies = _plantenDataService.GetCommStrategie();
+            _commAddedStrategies = new List<CommStrategie>();
             //Extra Eigenschappen
             //Beheer Eigenschappen
 
@@ -634,6 +675,7 @@ namespace PlantenApplicatie.UI.ViewModel
             CommOntwikkelSnelheid.Clear();
             CommAllLevensvorm.Clear();
             CommAllSocialbiliteit.Clear();
+            CommAllStrategie.Clear();
 
             //ontwikkelsnelheid
             foreach (var ontwikkelsnelheid in _commOntwikkelSnelheid)
@@ -649,6 +691,11 @@ namespace PlantenApplicatie.UI.ViewModel
             foreach (var socialbiliteit in _commAllSocialbiliteit)
             {
                 CommAllSocialbiliteit.Add(socialbiliteit);
+            }
+            //strategie
+            foreach (var strategy in _commAllStrategies)
+            {
+                CommAllStrategie.Add(strategy);
             }
         }
         public void ReloadLevensvorm()
@@ -671,6 +718,17 @@ namespace PlantenApplicatie.UI.ViewModel
             foreach (var socialbiliteit in _commAddedSocialbiliteit)
             {
                 CommAddedSocialbiliteit.Add(socialbiliteit);
+            }
+        }
+        public void ReloadStrategie()
+        {
+            //Senne & Hermes
+            //enkel de toegevoegde Strategies refreshen
+
+            CommAddedStrategie.Clear();
+            foreach (var strategy in _commAddedStrategies)
+            {
+                CommAddedStrategie.Add(strategy);
             }
         }
         public void LoadExtraEigenschappen()
@@ -1161,6 +1219,24 @@ namespace PlantenApplicatie.UI.ViewModel
             set
             {
                 _commselectedAddedSocialbiliteit = value;
+                OnPropertyChanged();
+            }
+        }
+        public CommStrategie CommSelectedAllStrategie
+        {
+            get { return _commselectedAllStrategie; }
+            set
+            {
+                _commselectedAllStrategie = value;
+                OnPropertyChanged();
+            }
+        }
+        public CommStrategie CommSelectedAddedStrategie
+        {
+            get { return _commselectedAddedStrategie; }
+            set
+            {
+                _commselectedAddedStrategie = value;
                 OnPropertyChanged();
             }
         }
