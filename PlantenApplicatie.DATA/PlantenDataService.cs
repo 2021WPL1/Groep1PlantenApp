@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
@@ -141,10 +142,7 @@ namespace PlantenApplicatie.Data
         {
             return context.Commensalisme.SingleOrDefault(c => c.PlantId == Id);
         }
-        public CommensalismeMulti GetCommensalismeMulti(long Id)
-        {
-            return context.CommensalismeMulti.SingleOrDefault(c => c.PlantId == Id);
-        }
+        
         //Geeft de plant & zijn specifieke eigenschappen
         public ExtraEigenschap GetExtraEigenschap(long Id)
         {
@@ -305,6 +303,18 @@ namespace PlantenApplicatie.Data
             return context.AbioHabitat.ToList();
         }
         //Commersialisme
+
+        public List<CommensalismeMulti> GetCommLevensvormFromPlant(long id)
+        {
+            return context.CommensalismeMulti.Where(m => m.Eigenschap == "Levensvorm")
+                .Where(i => i.PlantId == id).ToList();
+        }
+
+        public List<CommensalismeMulti> GetCommSocialbiliteitFromPlant(long id)
+        {
+            return context.CommensalismeMulti.Where(m => m.Eigenschap == "Sociabiliteit").Where(i => i.PlantId == id)
+                .ToList();
+        }
         public List<CommOntwikkelsnelheid> GetCommOntwikkelSnelheid()
         {
             return context.CommOntwikkelsnelheid.OrderBy(c => c.Snelheid).ToList();

@@ -284,7 +284,19 @@ namespace PlantenApplicatie.UI.ViewModel
             }
             ReloadHabitatlist();
             //Commersialisme
-
+            CommSelectedOntwikkelSnelheid = _commOntwikkelSnelheid.FirstOrDefault(c =>
+                c.Snelheid == _plantenDataService.GetCommensalisme(plant.PlantId).Ontwikkelsnelheid);
+            foreach (var commMulti in _plantenDataService.GetCommLevensvormFromPlant(plant.PlantId))
+            {
+                _commAddedLevensvorm.Add(_commAllLevensvorm.FirstOrDefault(c => c.Levensvorm == commMulti.Waarde));
+            }
+            ReloadLevensvorm();
+            foreach (var commensalismeMulti in _plantenDataService.GetCommSocialbiliteitFromPlant(plant.PlantId))
+            {
+                _commAddedSocialbiliteit.Add(
+                    _commAllSocialbiliteit.FirstOrDefault(c => c.Sociabiliteit == commensalismeMulti.Waarde));
+            }
+            ReloadSocialbiliteit();
             //Extra Eigenschappen
             //Beheer Eigenschappen
         }
