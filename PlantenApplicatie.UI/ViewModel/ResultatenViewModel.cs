@@ -26,7 +26,7 @@ namespace PlantenApplicatie.UI.ViewModel
         //Verschil ObservableCollection en lists: observablecollection zorgt ervoor dat als je in je frontend dingen aanpast, dat dit automatisch mee aangepast wordt,
         //dit komt doordat de INotifyCollectionChanged hier ingebouwd is (bij lists niet). In dit geval kan je een list gebruiken
         //wij gebruiken Observable om in de toekomst de optie tot uitbreiden te voorzien.
-        public ObservableCollection<string> BeheerAllSelectedPlantMonths { get; set; }
+        public ObservableCollection<string> BeheerSelectedPlant { get; set; }
         public ObservableCollection<string> GetSelectedPlantLevensvorm { get; set; }
         public ObservableCollection<string> GetSelectedPlantSociabiliteit { get; set; }
         public ObservableCollection<string> GetSelectedPlantLevensduurConcurrentiekracht { get; set; }
@@ -43,11 +43,11 @@ namespace PlantenApplicatie.UI.ViewModel
         private Abiotiek _abiotiek;
         private Commensalisme _commensalisme;
         private ExtraEigenschap _extraEigenschap;
-        private BeheerMaand _beheerMaand;
+        //private BeheerMaand _beheerMaand;
 
         //Jelle & Stephanie
         //Private lists om observable collections op te vullen
-        private List<string> _beheerAllSelectedPlantMonths = new List<string>();
+        private List<string> _beheerSelectedPlant = new List<string>();
         private List<string> _getSelectedPlantLevensvorm = new List<string>();
         private List<string> _getSelecteedPlantSociabiliteit = new List<string>();
         private List<string> _selectedPlantBladKleur = new List<string>();
@@ -60,6 +60,9 @@ namespace PlantenApplicatie.UI.ViewModel
         private List<CommensalismeMulti> _getSelectedPlantCommMulti = new List<CommensalismeMulti>();
         private List<FenotypeMulti> _fenotypeMulti = new List<FenotypeMulti>();
         private List<AbiotiekMulti> _abiotiekMulti = new List<AbiotiekMulti>();
+
+        //Jelle
+        private List<BeheerMaand> _getSelectedBeheerMaand = new List<BeheerMaand>();
 
         //Constructor, dit wordt gebruikt om waarden in te stellen
         public ResultatenViewModel(PlantenDataService plantenDataService)
@@ -74,7 +77,7 @@ namespace PlantenApplicatie.UI.ViewModel
 
             //Jelle & Stephanie
             //Instellen van nieuwe ObservableCollections voor gebruik om informatie weer te geven in de UI
-            BeheerAllSelectedPlantMonths = new ObservableCollection<string>();
+            BeheerSelectedPlant = new ObservableCollection<string>();
             GetSelectedPlantLevensvorm = new ObservableCollection<string>();
             GetSelectedPlantSociabiliteit = new ObservableCollection<string>();
             GetSelectedPlantLevensduurConcurrentiekracht = new ObservableCollection<string>();
@@ -130,14 +133,14 @@ namespace PlantenApplicatie.UI.ViewModel
             }
         }
 
-        public BeheerMaand BeheerMaand
+        /*public BeheerMaand BeheerMaand
         {
             get { return _beheerMaand; }
             set
             {
                 _beheerMaand = value;
             }
-        }
+        }*/
 
         public Plant PlantenResultaat
         {
@@ -153,7 +156,7 @@ namespace PlantenApplicatie.UI.ViewModel
         public void LoadLists()
         {
             //Maak eerst alle elementen leeg
-            BeheerAllSelectedPlantMonths.Clear();
+            BeheerSelectedPlant.Clear();
             GetSelectedPlantLevensvorm.Clear();
             GetSelectedPlantSociabiliteit.Clear();
             GetSelectedPlantLevensduurConcurrentiekracht.Clear();
@@ -163,9 +166,9 @@ namespace PlantenApplicatie.UI.ViewModel
 
             //Vul ObservableCollections met informatie uit de lijsten
             //De informatie komt uit fillLabels
-            foreach (var month in _beheerAllSelectedPlantMonths)
+            foreach (var month in _beheerSelectedPlant)
             {
-                BeheerAllSelectedPlantMonths.Add(month);
+                BeheerSelectedPlant.Add(month);
             }
             foreach (var text in _getSelectedPlantLevensvorm)
             {
@@ -213,22 +216,48 @@ namespace PlantenApplicatie.UI.ViewModel
             Abiotiek = _plantenDataService.GetAbiotiek(plant.PlantId);
             Commensalisme = _plantenDataService.GetCommensalisme(plant.PlantId);
             ExtraEigenschap = _plantenDataService.GetExtraEigenschap(plant.PlantId);
-            BeheerMaand = _plantenDataService.GetBeheerMaand(plant.PlantId);
+            // BeheerMaand = _plantenDataService.GetBeheerMaand(plant.PlantId);
+
+            //Jelle
+            _getSelectedBeheerMaand = _plantenDataService.GetBeheerMaand(plant.PlantId);
+
+            foreach (var beheerMaand in _getSelectedBeheerMaand)
+            {
+                string text = "Beheerdaad: " + beheerMaand.Beheerdaad;
+                text += "\r\nMaand(en):";
+                if (beheerMaand.Jan == true) { text += " - Januari"; }
+                if (beheerMaand.Feb == true) { text += " - Februari"; }
+                if (beheerMaand.Mrt == true) { text += " - Maart"; }
+                if (beheerMaand.Apr == true) { text += " - April"; }
+                if (beheerMaand.Mei == true) { text += " - Mei"; }
+                if (beheerMaand.Jun == true) { text += " - Juni"; }
+                if (beheerMaand.Jul == true) { text += " - Juli"; }
+                if (beheerMaand.Aug == true) { text += " - Augustus"; }
+                if (beheerMaand.Sept == true) { text += " - September"; }
+                if (beheerMaand.Okt == true) { text += " - Oktober"; }
+                if (beheerMaand.Nov == true) { text += " - November"; }
+                if (beheerMaand.Dec == true) { text += " - December"; }
+
+                text += "\r\nFrequentie: " + beheerMaand.FrequentiePerJaar;
+                text += "\r\nOpmschrijving: " + beheerMaand.Omschrijving;
+                
+                _beheerSelectedPlant.Add(text);
+            }
 
             //Jelle & Stephanie
             //controleert of de beheermaand maand true is, als dat zo is komt hij in de lijst, anders niet
-            if (BeheerMaand.Jan == true) { _beheerAllSelectedPlantMonths.Add("Januari"); }
-            if (BeheerMaand.Feb == true) { _beheerAllSelectedPlantMonths.Add("Februari"); }
-            if (BeheerMaand.Mrt == true) { _beheerAllSelectedPlantMonths.Add("Maart"); }
-            if (BeheerMaand.Apr == true) { _beheerAllSelectedPlantMonths.Add("April"); }
-            if (BeheerMaand.Mei == true) { _beheerAllSelectedPlantMonths.Add("Mei"); }
-            if (BeheerMaand.Jun == true) { _beheerAllSelectedPlantMonths.Add("Juni"); }
-            if (BeheerMaand.Jul == true) { _beheerAllSelectedPlantMonths.Add("Juli"); }
-            if (BeheerMaand.Aug == true) { _beheerAllSelectedPlantMonths.Add("Augustus"); }
-            if (BeheerMaand.Sept == true) { _beheerAllSelectedPlantMonths.Add("September"); }
-            if (BeheerMaand.Okt == true) { _beheerAllSelectedPlantMonths.Add("Oktober"); }
-            if (BeheerMaand.Nov == true) { _beheerAllSelectedPlantMonths.Add("November"); }
-            if (BeheerMaand.Dec == true) { _beheerAllSelectedPlantMonths.Add("December"); }
+            /*if (BeheerMaand.Jan == true) { _beheerSelectedPlant.Add("Januari"); }
+            if (BeheerMaand.Feb == true) { _beheerSelectedPlant.Add("Februari"); }
+            if (BeheerMaand.Mrt == true) { _beheerSelectedPlant.Add("Maart"); }
+            if (BeheerMaand.Apr == true) { _beheerSelectedPlant.Add("April"); }
+            if (BeheerMaand.Mei == true) { _beheerSelectedPlant.Add("Mei"); }
+            if (BeheerMaand.Jun == true) { _beheerSelectedPlant.Add("Juni"); }
+            if (BeheerMaand.Jul == true) { _beheerSelectedPlant.Add("Juli"); }
+            if (BeheerMaand.Aug == true) { _beheerSelectedPlant.Add("Augustus"); }
+            if (BeheerMaand.Sept == true) { _beheerSelectedPlant.Add("September"); }
+            if (BeheerMaand.Okt == true) { _beheerSelectedPlant.Add("Oktober"); }
+            if (BeheerMaand.Nov == true) { _beheerSelectedPlant.Add("November"); }
+            if (BeheerMaand.Dec == true) { _beheerSelectedPlant.Add("December"); }*/
 
             //Jelle & Stephanie
             //Filter alle getcommMulti rijen die het plantId bevat

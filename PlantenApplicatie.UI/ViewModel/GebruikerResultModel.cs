@@ -111,7 +111,7 @@ namespace PlantenApplicatie.UI.ViewModel
             Abiotiek = _plantenDataService.GetAbiotiek(plant.PlantId);
             Commensalisme = _plantenDataService.GetCommensalisme(plant.PlantId);
             ExtraEigenschap = _plantenDataService.GetExtraEigenschap(plant.PlantId);
-            BeheerMaand = _plantenDataService.GetBeheerMaand(plant.PlantId);
+            //BeheerMaand = _plantenDataService.GetBeheerMaand(plant.PlantId);
         }
     }
 }

@@ -495,7 +495,7 @@
                             </LinearGradientBrush>
                         </TabItem.Background>
                         <Grid Margin="0,0,80,0">
-                            <Label Content="Beheerbehandeling" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="9,11,0,0">
+                            <Label Content="Beheerbehandeling" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="117" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="9,11,0,0">
                                 <Label.Background>
                                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                         <GradientStop Color="White"/>
@@ -503,7 +503,7 @@
                                     </LinearGradientBrush>
                                 </Label.Background>
                             </Label>
-                            <Label Content="Opmerking" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="9,125,0,0">
+                            <Label Content="Opmerking" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="73" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="303,11,0,0">
                                 <Label.Background>
                                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                         <GradientStop Color="White"/>
@@ -511,7 +511,7 @@
                                     </LinearGradientBrush>
                                 </Label.Background>
                             </Label>
-                            <Label Content="Maand" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="9,50,0,0">
+                            <Label Content="Maand" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="51" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="131,11,0,0">
                                 <Label.Background>
                                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                         <GradientStop Color="White"/>
@@ -519,7 +519,7 @@
                                     </LinearGradientBrush>
                                 </Label.Background>
                             </Label>
-                            <Label Content="Frequentie per jaar" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="9,86,0,0">
+                            <Label Content="Frequentie per jaar" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="113" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="185,11,0,0">
                                 <Label.Background>
                                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                         <GradientStop Color="White"/>
@@ -527,12 +527,9 @@
                                     </LinearGradientBrush>
                                 </Label.Background>
                             </Label>
-                            <Label Content="{Binding BeheerMaand.Beheerdaad, Mode=OneWay}" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="0,11,0,0" Height="28"/>
-                            <Label Content="" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="0,125,0,0" Height="70"/>
-                            <Label Content="" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="0,86,0,0" Height="28"/>
                             <ListBox x:Name="listboxMaand" 
-                                     ItemsSource="{Binding BeheerAllSelectedPlantMonths}"
-                                     Margin="146,50,146,225" BorderBrush="#FF020202"/>
+                                     ItemsSource="{Binding BeheerSelectedPlant}"
+                                     Margin="10,44,116,45" BorderBrush="#FF020202"/>
                         </Grid>
                     </TabItem>
 
