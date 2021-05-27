@@ -210,13 +210,17 @@ namespace PlantenApplicatie.Data
         //Beheer Eigenschappen
 
         //Hemen &Maarten 
-        public Gebruiker addGebruiker(string rol, string email, byte[] HashPaswoord)
+        public Gebruiker addGebruiker(string rol, string email, byte[] HashPaswoord,string voornaam , string achternaam, string vivesnr)
         {
             Gebruiker gebruiker = new Gebruiker
             {
                 Rol = rol,
                 Emailadres = email,
-                HashPaswoord = HashPaswoord
+                HashPaswoord = HashPaswoord,
+                Voornaam = voornaam,
+                 Achternaam= achternaam ,
+                 Vivesnr = vivesnr
+
 
             };
             context.Gebruiker.Add(gebruiker);
