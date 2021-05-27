@@ -365,7 +365,7 @@
                 </TabItem>
                 <TabItem x:Name="tabCommensialisme" Header="Commensialisme" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <ScrollViewer x:Name="scrollCommensialisme" Height="599" VerticalAlignment="Top">
-                        <Grid x:Name="gridCommensialisme" Height="774" Width="557" Background="#FFE5E5E5">
+                        <Grid x:Name="gridCommensialisme" Height="887" Width="557" Background="#FFE5E5E5">
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
@@ -539,7 +539,7 @@
                                         <TextBlock>
                                             <TextBlock.Text>
                                                 <MultiBinding StringFormat="{}{0}">
-                                                    <Binding Path="Waarde"/>
+                                                    <Binding Path="Strategie"/>
                                                 </MultiBinding>
                                             </TextBlock.Text>
                                             <TextBlock.InputBindings>
@@ -564,12 +564,12 @@
                                         <TextBlock>
                                             <TextBlock.Text>
                                                 <MultiBinding StringFormat="{}{0}">
-                                                    <Binding Path="Waarde"/>
+                                                    <Binding Path="Strategie"/>
                                                 </MultiBinding>
                                             </TextBlock.Text>
                                             <TextBlock.InputBindings>
                                                 <MouseBinding Gesture="LeftDoubleClick"
-                                                    Command="{Binding DataContext.SocialbiliteitToevoegenCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"/>
+                                                    Command="{Binding DataContext.StrategieVerwijderenCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"/>
                                             </TextBlock.InputBindings>
                                         </TextBlock>
                                     </DataTemplate>
@@ -585,9 +585,9 @@
                                 Width="30"
                                 Height="20"/>
                             <Button
-                                x:Name="ListBoxRemoveStrategie"
+                                x:Name="btnRemoveStrategie"
                                 Command="{Binding StrategieVerwijderenCommand}"
-                                Content="--&gt;"
+                                Content="&lt;--"
                                 HorizontalAlignment="Left"
                                 Margin="260,750,0,0"
                                 VerticalAlignment="Top"
