@@ -239,7 +239,7 @@ namespace PlantenApplicatie.UI.ViewModel
                 if (beheerMaand.Dec == true) { text += " - December"; }
 
                 text += "\r\nFrequentie: " + beheerMaand.FrequentiePerJaar;
-                text += "\r\nOpmschrijving: " + beheerMaand.Omschrijving;
+                text += "\r\nOmschrijving: " + beheerMaand.Omschrijving;
                 
                 _beheerSelectedPlant.Add(text);
             }

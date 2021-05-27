@@ -503,7 +503,7 @@
                                     </LinearGradientBrush>
                                 </Label.Background>
                             </Label>
-                            <Label Content="Opmerking" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="73" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="303,11,0,0">
+                            <Label Content="Omschrijving" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="82" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="303,11,0,0">
                                 <Label.Background>
                                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                         <GradientStop Color="White"/>
@@ -529,7 +529,7 @@
                             </Label>
                             <ListBox x:Name="listboxMaand" 
                                      ItemsSource="{Binding BeheerSelectedPlant}"
-                                     Margin="10,44,116,45" BorderBrush="#FF020202"/>
+                                     Margin="10,44,107,45" BorderBrush="#FF020202"/>
                         </Grid>
                     </TabItem>
 
