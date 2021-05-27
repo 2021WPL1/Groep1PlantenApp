@@ -205,8 +205,34 @@ namespace PlantenApplicatie.UI.ViewModel
         private bool _extraselectedVorstgevoelig;
         //Nieuwe beheersbehandeling
         private BeheerDaden _newbeheerselectedDaden;
+        private bool _newbeheerselectedJan;
+        private bool _newbeheerselectedFeb;
+        private bool _newbeheerselectedMrt;
+        private bool _newbeheerselectedApr;
+        private bool _newbeheerselectedMei;
+        private bool _newbeheerselectedJun;
+        private bool _newbeheerselectedJul;
+        private bool _newbeheerselectedAug;
+        private bool _newbeheerselectedSept;
+        private bool _newbeheerselectedOkt;
+        private bool _newbeheerselectedNov;
+        private bool _newbeheerselectedDec;
+
         //Bestaande beheersbehandeling aanpassen
         private BeheerDaden _editbeheerselectedDaden;
+
+        private bool _editbeheerselectedJan;
+        private bool _editbeheerselectedFeb;
+        private bool _editbeheerselectedMrt;
+        private bool _editbeheerselectedApr;
+        private bool _editbeheerselectedMei;
+        private bool _editbeheerselectedJun;
+        private bool _editbeheerselectedJul;
+        private bool _editbeheerselectedAug;
+        private bool _editbeheerselectedSept;
+        private bool _editbeheerselectedOkt;
+        private bool _editbeheerselectedNov;
+        private bool _editbeheerselectedDec;
 
         public EditViewModel(PlantenDataService plantenDataService)
         {
@@ -1414,6 +1440,223 @@ namespace PlantenApplicatie.UI.ViewModel
             set
             {
                 _editbeheerselectedDaden = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public bool NewBeheerSelectedJan
+        {
+            get { return _newbeheerselectedJan; }
+            set { _newbeheerselectedJan = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool NewBeheerSelectedFeb
+        {
+            get { return _newbeheerselectedFeb; }
+            set
+            {
+                _newbeheerselectedFeb = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool NewBeheerSelectedMrt
+        {
+            get { return _newbeheerselectedMrt; }
+            set
+            {
+                _newbeheerselectedMrt = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool NewBeheerSelectedApr
+        {
+            get { return _newbeheerselectedApr; }
+            set
+            {
+                _newbeheerselectedApr = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool NewBeheerSelectedMei
+        {
+            get { return _newbeheerselectedMei; }
+            set
+            {
+                _newbeheerselectedMei = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool NewBeheerSelectedJun
+        {
+            get { return _newbeheerselectedJun; }
+            set
+            {
+                _newbeheerselectedJun = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool NewBeheerSelectedJul
+        {
+            get { return _newbeheerselectedJul; }
+            set
+            {
+                _newbeheerselectedJul = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool NewBeheerSelectedAug
+        {
+            get { return _newbeheerselectedAug; }
+            set
+            {
+                _newbeheerselectedAug = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool NewBeheerSelectedSept
+        {
+            get { return _newbeheerselectedSept; }
+            set
+            {
+                _newbeheerselectedSept = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool NewBeheerSelectedOkt
+        {
+            get { return _newbeheerselectedOkt; }
+            set
+            {
+                _newbeheerselectedOkt = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool NewBeheerSelectedNov
+        {
+            get { return _newbeheerselectedNov; }
+            set
+            {
+                _newbeheerselectedNov = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool NewBeheerSelectedDec
+        {
+            get { return _newbeheerselectedDec; }
+            set
+            {
+                _newbeheerselectedDec = value;
+                OnPropertyChanged();
+            }
+        }
+
+        //Bestaande beheersbehandeling
+        public bool EditBeheerSelectedJan
+        {
+            get { return _editbeheerselectedJan; }
+            set
+            {
+                _editbeheerselectedJan = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool EditBeheerSelectedFeb
+        {
+            get { return _editbeheerselectedFeb; }
+            set
+            {
+                _editbeheerselectedFeb = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool EditBeheerSelectedMrt
+        {
+            get { return _editbeheerselectedMrt; }
+            set
+            {
+                _editbeheerselectedMrt = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool EditBeheerSelectedApr
+        {
+            get { return _editbeheerselectedApr; }
+            set
+            {
+                _editbeheerselectedApr = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool EditBeheerSelectedMei
+        {
+            get { return _editbeheerselectedMei; }
+            set
+            {
+                _editbeheerselectedMei = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool EditBeheerSelectedJun
+        {
+            get { return _editbeheerselectedJun; }
+            set
+            {
+                _editbeheerselectedJun = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool EditBeheerSelectedJul
+        {
+            get { return _editbeheerselectedJul; }
+            set
+            {
+                _editbeheerselectedJul = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool EditBeheerSelectedAug
+        {
+            get { return _editbeheerselectedAug; }
+            set
+            {
+                _editbeheerselectedAug = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool EditBeheerSelectedSept
+        {
+            get { return _editbeheerselectedSept; }
+            set
+            {
+                _editbeheerselectedSept = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool EditBeheerSelectedOkt
+        {
+            get { return _editbeheerselectedOkt; }
+            set
+            {
+                _editbeheerselectedOkt = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool EditBeheerSelectedNov
+        {
+            get { return _editbeheerselectedNov; }
+            set
+            {
+                _editbeheerselectedNov = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool EditBeheerSelectedDec
+        {
+            get { return _editbeheerselectedDec; }
+            set
+            {
+                _editbeheerselectedDec = value;
                 OnPropertyChanged();
             }
         }

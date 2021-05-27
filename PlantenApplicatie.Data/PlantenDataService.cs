@@ -405,6 +405,107 @@ namespace PlantenApplicatie.Data
             return context.BeheerMaand.Where(b => b.PlantId == id).ToList();
         }
         //Bestaande beheersbehandeling aanpassen
+        //Beheer Eigenschappen new
+        public bool GetNewBeheerJan(long id)
+        {
+            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Jan;
+        }
+        public bool GetNewBeheerFeb(long id)
+        {
+            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Feb;
+        }
+        public bool GetNewBeheerMrt(long id)
+        {
+            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Mrt;
+        }
+        public bool GetNewBeheerApr(long id)
+        {
+            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Apr;
+        }
+        public bool GetNewBeheerMei(long id)
+        {
+            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Mei;
+        }
+        public bool GetNewBeheerJun(long id)
+        {
+            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Jun;
+        }
+        public bool GetNewBeheerJul(long id)
+        {
+            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Jul;
+        }
+        public bool GetNewBeheerAug(long id)
+        {
+            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Aug;
+        }
+        public bool GetNewBeheerSept(long id)
+        {
+            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Sept;
+        }
+        public bool GetNewBeheerOkt(long id)
+        {
+            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Okt;
+        }
+        public bool GetNewBeheerNov(long id)
+        {
+            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Nov;
+        }
+        public bool GetNewBeheerDec(long id)
+        {
+            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Dec;
+        }
+
+        //Bestaande beheerbehandeling
+        public bool GetEditBeheerJan(long id)
+        {
+            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Jan;
+        }
+        public bool GetEditBeheerFeb(long id)
+        {
+            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Feb;
+
+        }
+        public bool GetEditBeheerMrt(long id)
+        {
+            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Mrt;
+        }
+        public bool GetEditBeheerApr(long id)
+        {
+            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Apr;
+        }
+        public bool GetEditBeheerMei(long id)
+        {
+            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Mei;
+        }
+        public bool GetEditBeheerJun(long id)
+        {
+            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Jun;
+        }
+        public bool GetEditBeheerJul(long id)
+        {
+            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Jul;
+        }
+        public bool GetEditBeheerAug(long id)
+        {
+            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Aug;
+        }
+        public bool GetEditBeheerSept(long id)
+        {
+            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Sept;
+        }
+        public bool GetEditBeheerOkt(long id)
+        {
+            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Okt;
+        }
+        public bool GetEditBeheerNov(long id)
+        {
+            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Nov;
+        }
+        public bool GetEditBeheerDec(long id)
+        {
+            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Dec;
+        }
+
 
         //Hemen &Maarten 
         public Gebruiker addGebruiker(string rol, string email, byte[] HashPaswoord)
@@ -428,6 +529,7 @@ namespace PlantenApplicatie.Data
         {
             return context.Gebruiker.SingleOrDefault(g => g.Emailadres == email);
         }
+
 
 
         //Jelle & Stephanie
