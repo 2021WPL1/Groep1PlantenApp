@@ -466,9 +466,9 @@
                                     <DataTemplate>
                                         <TextBlock>
                                             <TextBlock.Text>
-                                                <MultiBinding StringFormat="{}{0}">
-                                                    <Binding Path="Waarde"/>
+                                                <MultiBinding StringFormat="{}{0} - {1}">
                                                     <Binding Path="Sociabiliteit"/>
+                                                    <Binding Path="Waarde"/>
                                                 </MultiBinding>
                                             </TextBlock.Text>
                                             <TextBlock.InputBindings>
@@ -492,9 +492,9 @@
                                     <DataTemplate>
                                         <TextBlock>
                                             <TextBlock.Text>
-                                                <MultiBinding StringFormat="{}{0}">
-                                                    <Binding Path="Waarde"/>
+                                                <MultiBinding StringFormat="{}{0} - {1}">
                                                     <Binding Path="Sociabiliteit"/>
+                                                    <Binding Path="Waarde"/>
                                                 </MultiBinding>
                                             </TextBlock.Text>
                                             <TextBlock.InputBindings>
