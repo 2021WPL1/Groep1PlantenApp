@@ -327,6 +327,10 @@ namespace PlantenApplicatie.Data
         {
             return context.CommSocialbiliteit.ToList();
         }
+        public List<CommStrategie> GetCommStrategie()
+        {
+            return context.CommStrategie.ToList();
+        }
         //Extra Eigenschappen
         public List<ExtraNectarwaarde> GetExtraNectarwaarde()
         {
@@ -336,10 +340,10 @@ namespace PlantenApplicatie.Data
         {
             return context.ExtraPollenwaarde.OrderBy(p => p.Waarde).ToList();
         }
-        public ExtraEigenschap GetExtraBijvriendelijk()
-        {
-            return context.ExtraEigenschap.Where(b => b.Bijvriendelijke);
-        }
+        //public ExtraEigenschap GetExtraBijvriendelijk()
+        //{
+        //    return context.ExtraEigenschap.Where(b => b.Bijvriendelijke);
+        //}
         //Beheer Eigenschappen
     }
 }
