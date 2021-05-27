@@ -79,7 +79,6 @@ namespace PlantenApplicatie.UI.ViewModel
         public ObservableCollection<ExtraPollenwaarde> ExtraPollenwaarde { get; set; }
         //Nieuwe beheersbehandeling
         public ObservableCollection<BeheerDaden> NewBeheerDaden { get; set; }
-        public ObservableCollection<BeheerDaden> EditBeheerDaden { get; set; }
         /*
          * (obs)Beheerhandeling: alle beheerhandelingen tonen
          * textbox-> nieuwe handeling
@@ -94,6 +93,8 @@ namespace PlantenApplicatie.UI.ViewModel
          */
 
         //Bestaande beheersbehandeling aanpassen
+        public ObservableCollection<BeheerDaden> EditBeheerDaden { get; set; }
+
         /*
          * (obs) beheerhandeling van de plant
          * 12 bools voor maanden (ingevuld door geselecteerde behandeling)
@@ -205,6 +206,7 @@ namespace PlantenApplicatie.UI.ViewModel
         private bool _extraselectedVorstgevoelig;
         //Nieuwe beheersbehandeling
         private BeheerDaden _newbeheerselectedDaden;
+        private string _newbeheerDaad;
         private bool _newbeheerselectedJan;
         private bool _newbeheerselectedFeb;
         private bool _newbeheerselectedMrt;
@@ -220,7 +222,6 @@ namespace PlantenApplicatie.UI.ViewModel
 
         //Bestaande beheersbehandeling aanpassen
         private BeheerDaden _editbeheerselectedDaden;
-
         private bool _editbeheerselectedJan;
         private bool _editbeheerselectedFeb;
         private bool _editbeheerselectedMrt;
@@ -534,7 +535,14 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         private void NewBeheerToevoegen()
         {
-
+            if (_newbeheerDaad.Trim() != string.Empty && _newbeheerDaad != null)
+            {
+                _plantenDataService.AddNewBeheerDaad(_newbeheerDaad);
+            }
+            else
+            {
+                MessageBox.Show("Gelieve een waarde in te vullen bij beheerhandeling");
+            }
             ReloadAllBeheerdaden();
         }
         private void NewBeheerHandelingToevoegen()
@@ -1442,7 +1450,15 @@ namespace PlantenApplicatie.UI.ViewModel
                 OnPropertyChanged();
             }
         }
-
+        public string NewBeheerDaad
+        {
+            get { return _newbeheerDaad; }
+            set
+            {
+                _newbeheerDaad = value;
+                OnPropertyChanged();
+            }
+        }
         public bool NewBeheerSelectedJan
         {
             get { return _newbeheerselectedJan; }
