@@ -174,12 +174,13 @@ namespace PlantenApplicatie.UI.ViewModel
         private CommStrategie _commselectedAddedStrategie;
         //Extra Eigenschappen
         private ExtraNectarwaarde _extraselectedNectarwaarde;
-        private ExtraEigenschap _extraselectedBijvriendelijk;
-        private ExtraEigenschap _extraselectedEetbaarKruid;
         private ExtraPollenwaarde _extraselectedPollenwaarde;
-        private ExtraEigenschap _extraselectedVlindervriendelijk;
-        private ExtraEigenschap _extraselectedGeurend;
-        private ExtraEigenschap _extraselectedVorstgevoelig;
+        private bool _extraselectedBijvriendelijk;
+        private bool _extraselectedEetbaar;
+        private bool _extraselectedKruidGebruik;
+        private bool _extraselectedVlindervriendelijk;
+        private bool _extraselectedGeurend;
+        private bool _extraselectedVorstgevoelig;
         //Beheer Eigenschappen
 
         public EditViewModel(PlantenDataService plantenDataService)
@@ -231,6 +232,8 @@ namespace PlantenApplicatie.UI.ViewModel
             CommAllStrategie = new ObservableCollection<CommStrategie>();
             CommAddedStrategie = new ObservableCollection<CommStrategie>();
             //Extra Eigenschappen
+            ExtraNectarwaarde = new ObservableCollection<ExtraNectarwaarde>();
+            ExtraPollenwaarde = new ObservableCollection<ExtraPollenwaarde>();
             //Beheer Eigenschappen
         }
 
@@ -319,6 +322,14 @@ namespace PlantenApplicatie.UI.ViewModel
             }
             ReloadStrategie();
             //Extra Eigenschappen
+            ExtraSelectedNectarwaarde = _plantenDataService.GetExtraNectarwaardeFromPlant(plant.PlantId);
+            ExtraSelectedPollenwaarde = _plantenDataService.GetExtraPollenwaardeFromPlant(plant.PlantId);
+            ExtraSelectedBijvriendelijk = _plantenDataService.GetExtraBijvriendelijk(plant.PlantId);
+            ExtraSelectedEetbaar = _plantenDataService.GetExtraEetbaar(plant.PlantId);
+            ExtraSelectedKruidGebruik = _plantenDataService.GetExtraKruidgebruik(plant.PlantId);
+            ExtraSelectedGeurend = _plantenDataService.GetExtraGeurend(plant.PlantId);
+            ExtraSelectedVorstgevoelig = _plantenDataService.GetExtraVorstgevoelig(plant.PlantId);
+            ExtraSelectedVlindervriendelijk = _plantenDataService.GetExtraVlindervriendelijk(plant.PlantId);
             //Beheer Eigenschappen
         }
         private void Opslaan()
@@ -380,7 +391,6 @@ namespace PlantenApplicatie.UI.ViewModel
             }
             ReloadHabitatlist();
         }
-
         private void LevensduurToevoegen()
         {
             //Senne & Hermes
@@ -511,8 +521,9 @@ namespace PlantenApplicatie.UI.ViewModel
             _commAllStrategies = _plantenDataService.GetCommStrategie();
             _commAddedStrategies = new List<CommStrategie>();
             //Extra Eigenschappen
+            _extraNectarwaarde = _plantenDataService.GetExtraNectarwaarde();
+            _extraPollenwaarde = _plantenDataService.GetExtraPollenwaarde();
             //Beheer Eigenschappen
-
 
             LoadAll();
         }
@@ -524,7 +535,7 @@ namespace PlantenApplicatie.UI.ViewModel
             LoadFenotype();
             LoadAbio();
             LoadCommersialisme();
-            //LoadExtraEigenschappen();
+            LoadExtraEigenschappen();
             LoadBeheerEigenschappen();
         }
         public void LoadFilters()
@@ -1256,24 +1267,6 @@ namespace PlantenApplicatie.UI.ViewModel
                 OnPropertyChanged();
             }
         }
-        public ExtraEigenschap ExtraSelectedBijvriendelijk
-        {
-            get { return _extraselectedBijvriendelijk; }
-            set
-            {
-                _extraselectedBijvriendelijk = value;
-                OnPropertyChanged();
-            }
-        }
-        public ExtraEigenschap ExtraSelectedEetbaarKruid
-        {
-            get { return _extraselectedEetbaarKruid; }
-            set
-            {
-                _extraselectedEetbaarKruid = value;
-                OnPropertyChanged();
-            }
-        }
         public ExtraPollenwaarde ExtraSelectedPollenwaarde
         {
             get { return _extraselectedPollenwaarde; }
@@ -1283,7 +1276,34 @@ namespace PlantenApplicatie.UI.ViewModel
                 OnPropertyChanged();
             }
         }
-        public ExtraEigenschap ExtraSelectedVlindervriendelijk
+        public bool ExtraSelectedBijvriendelijk
+        {
+            get { return _extraselectedBijvriendelijk; }
+            set
+            {
+                _extraselectedBijvriendelijk = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool ExtraSelectedEetbaar
+        {
+            get { return _extraselectedEetbaar; }
+            set
+            {
+                _extraselectedEetbaar = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool ExtraSelectedKruidGebruik
+        {
+            get { return _extraselectedKruidGebruik; }
+            set
+            {
+                _extraselectedKruidGebruik = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool ExtraSelectedVlindervriendelijk
         {
             get { return _extraselectedVlindervriendelijk; }
             set
@@ -1292,7 +1312,7 @@ namespace PlantenApplicatie.UI.ViewModel
                 OnPropertyChanged();
             }
         }
-        public ExtraEigenschap ExtraSelectedGeurend
+        public bool ExtraSelectedGeurend
         {
             get { return _extraselectedGeurend; }
             set
@@ -1301,7 +1321,7 @@ namespace PlantenApplicatie.UI.ViewModel
                 OnPropertyChanged();
             }
         }
-        public ExtraEigenschap ExtraSelectedVorstgevoelig
+        public bool ExtraSelectedVorstgevoelig
         {
             get { return _extraselectedVorstgevoelig; }
             set
