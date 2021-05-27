@@ -23,9 +23,9 @@ namespace PlantenApplicatie.UI.ViewModel
 
         //Jelle & Stephanie
         //ObservableCollection die gelinkt wordt via binding aan de juiste listboxen
-        //Verschil ObservableCollection en lists, observable zorgt dat als je in je frontend dingen aangepast, kan dit automatisch mee worden aangepast,
-        //dit komt doordat de INotifyCollectionChanged hier ingebouwd is (bij list niet). In dit geval kan je een list gebruiken, maar wij gebruiken Observable
-        //voor het geval dat wij dit in de toekomst uitbreiden en wel moeten aanpassen.
+        //Verschil ObservableCollection en lists: observablecollection zorgt ervoor dat als je in je frontend dingen aanpast, dat dit automatisch mee aangepast wordt,
+        //dit komt doordat de INotifyCollectionChanged hier ingebouwd is (bij lists niet). In dit geval kan je een list gebruiken
+        //wij gebruiken Observable om in de toekomst de optie tot uitbreiden te voorzien.
         public ObservableCollection<string> BeheerAllSelectedPlantMonths { get; set; }
         public ObservableCollection<string> GetSelectedPlantLevensvorm { get; set; }
         public ObservableCollection<string> GetSelectedPlantSociabiliteit { get; set; }
@@ -46,9 +46,9 @@ namespace PlantenApplicatie.UI.ViewModel
         private BeheerMaand _beheerMaand;
 
         //Jelle & Stephanie
-        //Private lists voor observable collections op te vullen
+        //Private lists om observable collections op te vullen
         private List<string> _beheerAllSelectedPlantMonths = new List<string>();
-        private List<string> _getSelecteedPlantLevensvorm = new List<string>();
+        private List<string> _getSelectedPlantLevensvorm = new List<string>();
         private List<string> _getSelecteedPlantSociabiliteit = new List<string>();
         private List<string> _selectedPlantBladKleur = new List<string>();
         private List<string> _selectedPlantBloeiKleur = new List<string>();
@@ -56,31 +56,35 @@ namespace PlantenApplicatie.UI.ViewModel
         private List<string> _selectedPlantAbioHabitat = new List<string>();
 
         //Jelle & Stephanie
-        //Lists om multi data in te stoppen, dit is voor de plantgegevens met meerdere waarden te gebruiken om juiste waarden te krijgen
+        //Lists om multi data in te stoppen, dit is om de plantgegevens met meerdere waarden te gebruiken om de juiste waarden te krijgen.
         private List<CommensalismeMulti> _getSelectedPlantCommMulti = new List<CommensalismeMulti>();
         private List<FenotypeMulti> _fenotypeMulti = new List<FenotypeMulti>();
         private List<AbiotiekMulti> _abiotiekMulti = new List<AbiotiekMulti>();
 
+        //Constructor, dit wordt gebruikt om waarden in te stellen
         public ResultatenViewModel(PlantenDataService plantenDataService)
         {
             this._plantenDataService = plantenDataService;
+            //Dit dient om het resultatenscherm te sluiten
             this.CloseResultCommand = new RelayCommand<Window>(this.CloseResult);
 
             //Senne & Hermes
+            //Om commands via buttons door te geven
             this.EditSchermCommand = new DelegateCommand(EditScherm);
 
             //Jelle & Stephanie
+            //Instellen van nieuwe ObservableCollections voor gebruik om informatie weer te geven in de UI
             BeheerAllSelectedPlantMonths = new ObservableCollection<string>();
             GetSelectedPlantLevensvorm = new ObservableCollection<string>();
             GetSelectedPlantSociabiliteit = new ObservableCollection<string>();
             GetSelectedPlantLevensduurConcurrentiekracht = new ObservableCollection<string>();
-
             SelectedPlantBladKleur = new ObservableCollection<string>();
             SelectedPlantBloeiKleur = new ObservableCollection<string>();
             SelectedPlantAbioHabitats = new ObservableCollection<string>();
         }
 
-
+        //Senne & Hermes
+        //Opent een nieuw scherm naar Edit pagina.
         private void EditScherm()
         {
             EditWindow window = new EditWindow(_plantenResultaat);
@@ -145,18 +149,25 @@ namespace PlantenApplicatie.UI.ViewModel
         }
 
         //Jelle & Stephanie
-        //Laad lijsten voor listboxes
+        //Laadt lijsten voor UI elementen
         public void LoadLists()
         {
+            //Maak eerst alle elementen leeg
             BeheerAllSelectedPlantMonths.Clear();
+            GetSelectedPlantLevensvorm.Clear();
+            GetSelectedPlantSociabiliteit.Clear();
+            GetSelectedPlantLevensduurConcurrentiekracht.Clear();
+            SelectedPlantBladKleur.Clear();
+            SelectedPlantBloeiKleur.Clear();
+            SelectedPlantAbioHabitats.Clear();
+
+            //Vul ObservableCollections met informatie uit de lijsten
+            //De informatie komt uit fillLabels
             foreach (var month in _beheerAllSelectedPlantMonths)
             {
                 BeheerAllSelectedPlantMonths.Add(month);
             }
-            GetSelectedPlantLevensvorm.Clear();
-            GetSelectedPlantSociabiliteit.Clear();
-            GetSelectedPlantLevensduurConcurrentiekracht.Clear();
-            foreach (var text in _getSelecteedPlantLevensvorm)
+            foreach (var text in _getSelectedPlantLevensvorm)
             {
                 GetSelectedPlantLevensvorm.Add(text);
             }
@@ -168,28 +179,19 @@ namespace PlantenApplicatie.UI.ViewModel
             {
                 GetSelectedPlantLevensduurConcurrentiekracht.Add(text);
             }
-            SelectedPlantBladKleur.Clear();
-            SelectedPlantBloeiKleur.Clear();
             foreach (var bladkleur in _selectedPlantBladKleur)
             {
                 SelectedPlantBladKleur.Add(bladkleur);
             }
-
             foreach (var bloeikleur in _selectedPlantBloeiKleur)
             {
                 SelectedPlantBloeiKleur.Add(bloeikleur);
             }
-
-            SelectedPlantAbioHabitats.Clear();
-
             foreach (var habitat in _selectedPlantAbioHabitat)
             {
                 SelectedPlantAbioHabitats.Add(habitat);
             }
         }
-
-            
-        
 
         //Jelle & Hemen
         //Command die gelinkt is aan close button om form te sluiten
@@ -202,6 +204,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
 
         //Command om labels op te vullen
+        //deze wordt opgeroepen vóór het laden van de lijsten
         public void fillLabels(Plant plant)
         {
             PlantenResultaat = plant;
@@ -213,7 +216,7 @@ namespace PlantenApplicatie.UI.ViewModel
             BeheerMaand = _plantenDataService.GetBeheerMaand(plant.PlantId);
 
             //Jelle & Stephanie
-            //controleert of de beheermaand maand true is, als dat is komt hij in de lijst, anders niet
+            //controleert of de beheermaand maand true is, als dat zo is komt hij in de lijst, anders niet
             if (BeheerMaand.Jan == true) { _beheerAllSelectedPlantMonths.Add("Januari"); }
             if (BeheerMaand.Feb == true) { _beheerAllSelectedPlantMonths.Add("Februari"); }
             if (BeheerMaand.Mrt == true) { _beheerAllSelectedPlantMonths.Add("Maart"); }
@@ -228,9 +231,10 @@ namespace PlantenApplicatie.UI.ViewModel
             if (BeheerMaand.Dec == true) { _beheerAllSelectedPlantMonths.Add("December"); }
 
             //Jelle & Stephanie
-            //Filtered alle getcommmulti rijen die het plantid bevat
+            //Filter alle getcommMulti rijen die het plantId bevat
             _getSelectedPlantCommMulti = _plantenDataService.GetCommMulti(plant.PlantId);
-            //Foreach vervolg door een switch om op te splitsen in juiste tabellen
+
+            //Foreach vervolgd door een switch om op te splitsen in juiste tabellen
             foreach (var commMulti in _getSelectedPlantCommMulti)
             {
                 switch (commMulti.Eigenschap)
@@ -239,7 +243,7 @@ namespace PlantenApplicatie.UI.ViewModel
                         _getSelecteedPlantSociabiliteit.Add(commMulti.Waarde);
                         break;
                     case "Levensvorm":
-                        _getSelecteedPlantLevensvorm.Add(commMulti.Waarde);
+                        _getSelectedPlantLevensvorm.Add(commMulti.Waarde);
                         break;
                     case "Levensduur/Concurrentiekracht":
                         _getSelectedPlantLevensduurConcurrentiekracht.Add(commMulti.Waarde);
@@ -248,9 +252,7 @@ namespace PlantenApplicatie.UI.ViewModel
                         break;
                 }
             }
-
-
-
+            //Stephanie & Jelle
             _fenotypeMulti = _plantenDataService.GetFenoMultiKleur(plant.PlantId);
             
             foreach (var FenoMulti in _fenotypeMulti)
@@ -268,7 +270,7 @@ namespace PlantenApplicatie.UI.ViewModel
                         break;
                 }
             }
-            //Stephanie
+            //Stephanie & Jelle
             _abiotiekMulti = _plantenDataService.GetAbiotiekMulti(plant.PlantId);
 
             foreach (var AbioMulti in _abiotiekMulti)
