@@ -200,21 +200,35 @@ namespace PlantenApplicatie.UI.ViewModel
         private bool _extraselectedVlindervriendelijk;
         private bool _extraselectedGeurend;
         private bool _extraselectedVorstgevoelig;
+
+        //Nieuwe beheersbehandeling
         private bool _newbeheerselectedJan;
         private bool _newbeheerselectedFeb;
-        private bool _newbeheerselectedMaa;
+        private bool _newbeheerselectedMrt;
         private bool _newbeheerselectedApr;
         private bool _newbeheerselectedMei;
         private bool _newbeheerselectedJun;
         private bool _newbeheerselectedJul;
         private bool _newbeheerselectedAug;
-        private bool _newbeheerselectedSep;
+        private bool _newbeheerselectedSept;
         private bool _newbeheerselectedOkt;
         private bool _newbeheerselectedNov;
         private bool _newbeheerselectedDec;
-        //Nieuwe beheersbehandeling
 
         //Bestaande beheersbehandeling aanpassen
+        private bool _editbeheerselectedJan;
+        private bool _editbeheerselectedFeb;
+        private bool _editbeheerselectedMrt;
+        private bool _editbeheerselectedApr;
+        private bool _editbeheerselectedMei;
+        private bool _editbeheerselectedJun;
+        private bool _editbeheerselectedJul;
+        private bool _editbeheerselectedAug;
+        private bool _editbeheerselectedSept;
+        private bool _editbeheerselectedOkt;
+        private bool _editbeheerselectedNov;
+        private bool _editbeheerselectedDec;
+
         public EditViewModel(PlantenDataService plantenDataService)
         {
             //Senne & Hermes
@@ -1382,12 +1396,12 @@ namespace PlantenApplicatie.UI.ViewModel
                 OnPropertyChanged();
             }
         }
-        public bool NewBeheerSelectedMaa
+        public bool NewBeheerSelectedMrt
         {
-            get { return _newbeheerselectedMaa; }
+            get { return _newbeheerselectedMrt; }
             set
             {
-                _newbeheerselectedMaa = value;
+                _newbeheerselectedMrt = value;
                 OnPropertyChanged();
             }
         }
@@ -1436,12 +1450,12 @@ namespace PlantenApplicatie.UI.ViewModel
                 OnPropertyChanged();
             }
         }
-        public bool NewBeheerSelectedSep
+        public bool NewBeheerSelectedSept
         {
-            get { return _newbeheerselectedSep; }
+            get { return _newbeheerselectedSept; }
             set
             {
-                _newbeheerselectedSep = value;
+                _newbeheerselectedSept = value;
                 OnPropertyChanged();
             }
         }
@@ -1472,5 +1486,116 @@ namespace PlantenApplicatie.UI.ViewModel
                 OnPropertyChanged();
             }
         }
+
+        //Bestaande beheersbehandeling
+        public bool EditBeheerSelectedJan
+        {
+            get { return _editbeheerselectedJan; }
+            set
+            {
+                _editbeheerselectedJan = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool EditBeheerSelectedFeb
+        {
+            get { return _editbeheerselectedFeb; }
+            set
+            {
+                _editbeheerselectedFeb = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool EditBeheerSelectedMrt
+        {
+            get { return _editbeheerselectedMrt; }
+            set
+            {
+                _editbeheerselectedMrt = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool EditBeheerSelectedApr
+        {
+            get { return _editbeheerselectedApr; }
+            set
+            {
+                _editbeheerselectedApr = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool EditBeheerSelectedMei
+        {
+            get { return _editbeheerselectedMei; }
+            set
+            {
+                _editbeheerselectedMei = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool EditBeheerSelectedJun
+        {
+            get { return _editbeheerselectedJun; }
+            set
+            {
+                _editbeheerselectedJun = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool EditBeheerSelectedJul
+        {
+            get { return _editbeheerselectedJul; }
+            set
+            {
+                _editbeheerselectedJul = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool EditBeheerSelectedAug
+        {
+            get { return _editbeheerselectedAug; }
+            set
+            {
+                _editbeheerselectedAug = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool EditBeheerSelectedSept
+        {
+            get { return _editbeheerselectedSept; }
+            set
+            {
+                _editbeheerselectedSept = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool EditBeheerSelectedOkt
+        {
+            get { return _editbeheerselectedOkt; }
+            set
+            {
+                _editbeheerselectedOkt = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool EditBeheerSelectedNov
+        {
+            get { return _editbeheerselectedNov; }
+            set
+            {
+                _editbeheerselectedNov = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool EditBeheerSelectedDec
+        {
+            get { return _editbeheerselectedDec; }
+            set
+            {
+                _editbeheerselectedDec = value;
+                OnPropertyChanged();
+            }
+        }
     }
+
 }
