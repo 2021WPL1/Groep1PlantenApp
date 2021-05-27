@@ -15,7 +15,6 @@ namespace PlantenApplicatie.UI.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
-
         //ICommand om zoekresultaat leeg te maken
         public ICommand ClearResultCommand { get; set; }
         //Senne, Hermes
@@ -27,7 +26,7 @@ namespace PlantenApplicatie.UI.ViewModel
         public ICommand ResultaatSchermCommand { get; set; }
         public ICommand CreatePlantCommand { get; set; }
 
-        //bool die ervoor zorgt dat de selected filters niet gecleared worden
+        //boolean die ervoor zorgt dat de geselecteerde filters niet leeggemaakt worden
         private bool _loadCheck;
 
         private PlantenDataService _plantenDataService;
@@ -71,7 +70,7 @@ namespace PlantenApplicatie.UI.ViewModel
         private string _zoekViaNaamInput = "";
 
         public MainViewModel(PlantenDataService plantenDataService)
-        {//DAO
+        {//DAO instantiëren
             //Senne, Hermes
             ZoekViaNaamCommand = new DelegateCommand(ZoekViaNaam);
             CreatePlantCommand = new DelegateCommand(CreatePlant);
