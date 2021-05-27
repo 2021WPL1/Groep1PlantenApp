@@ -8,16 +8,19 @@ using PlantenApplicatie.Domain.Models;
 
 namespace PlantenApplicatie.Data
 {
+    //Data Access Object / DAO in singleton
     public class PlantenDataService
     {
         private static readonly PlantenDataService instance = new PlantenDataService();
         private Planten2021Context context;
-
+            
+        //Singleton patroon wordt hier aangemaakt
         public static PlantenDataService Instance()
         {
             return instance;
         }
 
+        //Initalisatie van verbinding met de databank
         private PlantenDataService()
         {
             this.context = new Planten2021Context();
@@ -45,6 +48,7 @@ namespace PlantenApplicatie.Data
             return context.TfgsvVariant.ToList();
         }
 
+        //Hier worden aan de hand van TFGSV de juiste onderdelen gefilterd voor het zoekscherm
         public Object[] GetFilteredFamilies(long typeId)
         {
             Object[] fgsv = new object[4];
@@ -152,12 +156,12 @@ namespace PlantenApplicatie.Data
             return context.BeheerMaand.SingleOrDefault(b => b.PlantId == Id);
         }
 
-        //Stephanie ( pls delete if wrong )
+        //Stephanie & Jelle
         public List<FenotypeMulti> GetFenoMultiKleur(long Id)
         {
             return context.FenotypeMulti.Where(m => m.PlantId == Id).ToList();
         }
-        //Stephanie
+        //Stephanie & Jelle
         public List<AbiotiekMulti> GetAbioHabitats(long Id)
         {
             return context.AbiotiekMulti.Where(h => h.PlantId == Id).ToList();
@@ -311,11 +315,12 @@ namespace PlantenApplicatie.Data
         {
             return context.AbioHabitat.ToList();
         }
+
         //Commersialisme
         //Extra Eigenschappen
         //Beheer Eigenschappen
 
-
+        //Jelle & Stephanie
         public List<CommensalismeMulti> GetCommMulti(long plantId)
         {
             return context.CommensalismeMulti.Where(p => p.PlantId == plantId).ToList();

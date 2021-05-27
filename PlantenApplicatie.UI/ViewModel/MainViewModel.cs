@@ -15,9 +15,9 @@ namespace PlantenApplicatie.UI.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
+
         //ICommand om zoekresultaat leeg te maken
         public ICommand ClearResultCommand { get; set; }
-
         //Senne, Hermes
         public ICommand ZoekViaNaamCommand { get; set; }
 
