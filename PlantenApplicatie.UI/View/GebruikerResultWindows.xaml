@@ -1,12 +1,12 @@
-﻿<Window x:Class="PlantenApplicatie.UI.View.GebruikerResultWindows"
+﻿<Window x:Class="PlantenApplicatie.UI.View.ResultatenWindow"
         x:Name="ResultatenScherm"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PlantenApplicatie.UI.View"
+        xmlns:local="clr-namespace:PlantenApplicatie" xmlns:viewmodel="clr-namespace:PlantenApplicatie.UI.ViewModel" 
         mc:Ignorable="d"
-        Title="GebruikerResultWindows" Height="450" Width="800" WindowState="Maximized">
+        Title="ResultatenWindow" Height="696" Width="800" WindowState="Maximized">
     <Grid Margin="0,0,0,0" RenderTransformOrigin="0.951,0.501">
 
         <Grid.RowDefinitions>
@@ -151,7 +151,9 @@
                                             </LinearGradientBrush>
                                         </Label.Background>
                                     </Label>
-                                    <ListBox x:Name="listboxBladKleur" Margin="150,120,136,280" BorderThickness="1,1,1,1" BorderBrush="#FF01040E"/>
+                                    <ListBox x:Name="listboxBladKleur" 
+                                             ItemsSource="{Binding SelectedPlantBladKleur}"
+                                             Margin="150,120,136,280" BorderThickness="1,1,1,1" BorderBrush="#FF01040E" FontSize="15"/>
 
                                     <Label Content="Bloeikleur" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,155,0,0">
                                         <Label.Background>
@@ -217,9 +219,9 @@
                                             </LinearGradientBrush>
                                         </Label.Background>
                                     </Label>
-                                    <Label Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,15,0,0" Height="28"/>
-                                    <Label Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,50,0,0" Height="28"/>
-                                    <Label Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,85,0,0" Height="28"/>
+                                    <Label Content="{Binding Fenotype.MaxBladhoogte, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,15,0,0" Height="28"/>
+                                    <Label Content="{Binding Fenotype.MinBloeihoogte, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,50,0,0" Height="28"/>
+                                    <Label Content="{Binding Fenotype.MaxBloeihoogte, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,85,0,0" Height="28"/>
                                     <Label Content="{Binding Fenotype.Bladgrootte, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,190,0,0" Height="28"/>
                                     <Label Content="{Binding Fenotype.Bladvorm, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,225,0,0" Height="28"/>
                                     <Label Content="{Binding Fenotype.RatioBloeiBlad, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,260,0,0" Height="28"/>
@@ -227,7 +229,9 @@
                                     <Label Content="{Binding Fenotype.Bloeiwijze, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,330,0,0" Height="28"/>
                                     <Label Content="{Binding Fenotype.Habitus, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,365,0,0" Height="28"/>
                                     <Label Content="{Binding Fenotype.Levensvorm, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,400,0,0" Height="28"/>
-                                    <ListBox x:Name="listboxBloeiKleur" Margin="150,153,136,247" BorderThickness="1,1,1,1" BorderBrush="#FF01040E"/>
+                                    <ListBox x:Name="listboxBloeiKleur" 
+                                             ItemsSource="{Binding SelectedPlantBloeiKleur}"
+                                             Margin="150,153,136,247" BorderThickness="1,1,1,1" BorderBrush="#FF01040E" FontSize="15"/>
                                 </Grid>
                             </ScrollViewer>
                         </Grid>
@@ -297,7 +301,9 @@
                             <Label Content="{Binding Abiotiek.Vochtbehoefte, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="57,85,0,0" Height="28" Grid.Column="1"/>
                             <Label Content="{Binding Abiotiek.Voedingsbehoefte, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="57,120,0,0" Height="28" Grid.Column="1"/>
                             <Label Content="{Binding Abiotiek.AntagonischeOmgeving, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="57,155,0,0" Height="28" Grid.Column="1"/>
-                            <ListBox Margin="57,190,222,10" BorderThickness="1,1,1,1" BorderBrush="#FF01040E" Grid.Column="1"/>
+                            <ListBox 
+                                ItemsSource="{Binding SelectedPlantAbioHabitats}"
+                                Margin="57,190,222,10" BorderThickness="1,1,1,1" BorderBrush="#FF01040E" Grid.Column="1" FontSize="15"/>
                         </Grid>
                     </TabItem>
                     <TabItem Header="Commensalisme" Margin="21,-2,-34,-1">
@@ -309,6 +315,10 @@
                         </TabItem.Background>
                         <Grid Margin="0,0,99,0">
                             <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="156*"/>
+                                    <ColumnDefinition Width="317*"/>
+                                </Grid.ColumnDefinitions>
 
                                 <Label Content="Ontwikkelingssnelheid" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,15,0,0" Height="28">
                                     <Label.Background>
@@ -318,18 +328,11 @@
                                         </LinearGradientBrush>
                                     </Label.Background>
                                 </Label>
-                                <Label Content="Levensduur/Concurrentiekracht" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,52,0,0" Height="28">
-                                    <Label.Background>
-                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                            <GradientStop Color="White"/>
-                                            <GradientStop Color="#FFC7FF00" Offset="1"/>
-                                        </LinearGradientBrush>
-                                    </Label.Background>
-                                </Label>
-                                <ListBox x:Name="listboxSociabiliteit" Margin="150,86,123,186" BorderThickness="1,1,1,1" BorderBrush="#FF01040E" RenderTransformOrigin="0.5,0.5">
+                                <ListBox x:Name="listboxSociabiliteit" 
+                                         ItemsSource="{Binding GetSelectedPlantSociabiliteit}"
+                                         Margin="150,51,123,221" BorderThickness="1,1,1,1" BorderBrush="#FF01040E" RenderTransformOrigin="0.5,0.5" FontSize="15">
                                     <ListBox.RenderTransform>
                                         <TransformGroup>
-                                            <ScaleTransform ScaleY="-1"/>
                                             <SkewTransform/>
                                             <RotateTransform/>
                                             <TranslateTransform/>
@@ -337,7 +340,7 @@
                                     </ListBox.RenderTransform>
                                 </ListBox>
 
-                                <Label Content="Sociabiliteit" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,88,0,0" Height="28">
+                                <Label Content="Sociabiliteit" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,51,0,0" Height="28">
                                     <Label.Background>
                                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                             <GradientStop Color="White"/>
@@ -345,7 +348,7 @@
                                         </LinearGradientBrush>
                                     </Label.Background>
                                 </Label>
-                                <Label Content="Strategie" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,122,0,0" Height="28">
+                                <Label Content="Strategie" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,87,0,0" Height="28">
                                     <Label.Background>
                                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                             <GradientStop Color="White"/>
@@ -354,18 +357,8 @@
                                     </Label.Background>
                                 </Label>
                                 <Label Content="{Binding Commensalisme.Ontwikkelsnelheid, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,15,0,0" Height="28" Grid.ColumnSpan="3"/>
-                                <Label Content="{Binding Commensalisme.Strategie, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,122,0,0" Height="28"/>
-                                <ListBox x:Name="listboxLevensDuur" Margin="150,50,123,222" BorderThickness="1,1,1,1" BorderBrush="#FF01040E" RenderTransformOrigin="0.5,0.5">
-                                    <ListBox.RenderTransform>
-                                        <TransformGroup>
-                                            <ScaleTransform ScaleY="-1"/>
-                                            <SkewTransform/>
-                                            <RotateTransform/>
-                                            <TranslateTransform/>
-                                        </TransformGroup>
-                                    </ListBox.RenderTransform>
-                                </ListBox>
-                                <Label Content="Levensvorm" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,157,0,0" Height="28">
+                                <Label Content="{Binding Commensalisme.Strategie, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,87,0,0" Height="28"/>
+                                <Label Content="Levensvorm" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,124,0,0" Height="28">
                                     <Label.Background>
                                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                             <GradientStop Color="White"/>
@@ -373,10 +366,11 @@
                                         </LinearGradientBrush>
                                     </Label.Background>
                                 </Label>
-                                <ListBox x:Name="listboxLevensVorm" Margin="150,155,123,117" BorderThickness="1,1,1,1" BorderBrush="#FF01040E" RenderTransformOrigin="0.5,0.5">
+                                <ListBox x:Name="listboxLevensVorm" 
+                                         ItemsSource="{Binding GetSelectedPlantLevensvorm}"
+                                         Margin="150,124,123,147" BorderThickness="1,1,1,1" BorderBrush="#FF01040E" RenderTransformOrigin="0.5,0.5" FontSize="15">
                                     <ListBox.RenderTransform>
                                         <TransformGroup>
-                                            <ScaleTransform ScaleY="-1"/>
                                             <SkewTransform/>
                                             <RotateTransform/>
                                             <TranslateTransform/>
@@ -482,7 +476,7 @@
                             </LinearGradientBrush>
                         </TabItem.Background>
                         <Grid Margin="0,0,80,0">
-                            <Label Content="Beheerbehandeling" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="9,11,0,0">
+                            <Label Content="Beheerbehandeling" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="117" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="9,11,0,0">
                                 <Label.Background>
                                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                         <GradientStop Color="White"/>
@@ -490,7 +484,7 @@
                                     </LinearGradientBrush>
                                 </Label.Background>
                             </Label>
-                            <Label Content="Opmerking" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="9,125,0,0">
+                            <Label Content="Omschrijving" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="82" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="303,11,0,0">
                                 <Label.Background>
                                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                         <GradientStop Color="White"/>
@@ -498,7 +492,7 @@
                                     </LinearGradientBrush>
                                 </Label.Background>
                             </Label>
-                            <Label Content="Maand" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="9,50,0,0">
+                            <Label Content="Maand" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="51" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="131,11,0,0">
                                 <Label.Background>
                                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                         <GradientStop Color="White"/>
@@ -506,7 +500,7 @@
                                     </LinearGradientBrush>
                                 </Label.Background>
                             </Label>
-                            <Label Content="Frequentie per jaar" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="9,86,0,0">
+                            <Label Content="Frequentie per jaar" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="113" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="185,11,0,0">
                                 <Label.Background>
                                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                         <GradientStop Color="White"/>
@@ -514,10 +508,9 @@
                                     </LinearGradientBrush>
                                 </Label.Background>
                             </Label>
-                            <Label Content="{Binding BeheerMaand.Beheerdaad, Mode=OneWay}" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="0,11,0,0" Height="28"/>
-                            <Label Content="" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="0,125,0,0" Height="70"/>
-                            <Label Content="" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="0,86,0,0" Height="28"/>
-                            <ListBox x:Name="listboxMaand" Margin="146,50,146,225" BorderBrush="#FF020202"/>
+                            <ListBox x:Name="listboxMaand" 
+                                     ItemsSource="{Binding BeheerSelectedPlant}"
+                                     Margin="10,44,107,45" BorderBrush="#FF020202" FontSize="15"/>
                         </Grid>
                     </TabItem>
 
@@ -533,9 +526,9 @@
                         </LinearGradientBrush>
                     </Button.Background>
                 </Button>
-                <Image HorizontalAlignment="Left" Height="67" VerticalAlignment="Top" Width="74" Source="/View/Images/brede pluim.jpg" Margin="400,38,0,0"/>
-                <Image HorizontalAlignment="Left" Height="67" VerticalAlignment="Top" Width="74" Source="/View/Images/brede pluim.jpg" Margin="400,119,0,0"/>
-                <Image HorizontalAlignment="Left" Height="67" VerticalAlignment="Top" Width="74" Source="/View/Images/brede pluim.jpg" Margin="400,207,0,0"/>
+                <Image HorizontalAlignment="Left" Height="67" VerticalAlignment="Top" Width="74" Source="Images/pluim.jpg" Margin="400,38,0,0"/>
+                <Image HorizontalAlignment="Left" Height="67" VerticalAlignment="Top" Width="74" Source="Images/pluim.jpg" Margin="400,119,0,0"/>
+                <Image HorizontalAlignment="Left" Height="67" VerticalAlignment="Top" Width="74" Source="Images/pluim.jpg" Margin="400,207,0,0"/>
 
             </Grid>
         </Viewbox>

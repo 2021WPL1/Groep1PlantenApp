@@ -536,9 +536,9 @@
                         </LinearGradientBrush>
                     </Button.Background>
                 </Button>
-                <Image HorizontalAlignment="Left" Height="67" VerticalAlignment="Top" Width="74" Source="/View/Images/brede pluim.jpg" Margin="400,38,0,0"/>
-                <Image HorizontalAlignment="Left" Height="67" VerticalAlignment="Top" Width="74" Source="/View/Images/brede pluim.jpg" Margin="400,119,0,0"/>
-                <Image HorizontalAlignment="Left" Height="67" VerticalAlignment="Top" Width="74" Source="/View/Images/brede pluim.jpg" Margin="400,207,0,0"/>
+                <Image HorizontalAlignment="Left" Height="67" VerticalAlignment="Top" Width="74" Source="Images/pluim.jpg" Margin="400,38,0,0"/>
+                <Image HorizontalAlignment="Left" Height="67" VerticalAlignment="Top" Width="74" Source="Images/pluim.jpg" Margin="400,119,0,0"/>
+                <Image HorizontalAlignment="Left" Height="67" VerticalAlignment="Top" Width="74" Source="Images/pluim.jpg" Margin="400,207,0,0"/>
 
             </Grid>
         </Viewbox>
