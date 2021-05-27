@@ -405,9 +405,22 @@ namespace PlantenApplicatie.Data
             return context.BeheerMaand.Where(b => b.PlantId == id).ToList();
         }
 
-        public void AddNewBeheerDaad(string beheerdaad)
+        public string AddNewBeheerDaad(string beheerdaad)
         {
-            context.BeheerDaden.Add(new BeheerDaden() {Beheerdaad = beheerdaad});
+            string result = null;
+            foreach (var beheerDaden in GetAllBeheerDaden())
+            {
+                if (beheerDaden.Beheerdaad.ToLower().Trim()==beheerdaad.ToLower().Trim())
+                {
+                    result = "Waarde bestaat al";
+                    return result;
+                }
+            }
+            var idlist = context.BeheerDaden.OrderByDescending(b => b.Id).ToList();
+            int newId = idlist.First().Id+1;
+            context.BeheerDaden.Add(new BeheerDaden() {Id = newId,Beheerdaad = beheerdaad});
+            context.SaveChanges();
+            return result;
         }
         //Bestaande beheersbehandeling aanpassen
         public bool GetEditBeheerJan(long id)

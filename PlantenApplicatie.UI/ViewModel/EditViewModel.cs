@@ -535,13 +535,27 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         private void NewBeheerToevoegen()
         {
-            if (_newbeheerDaad.Trim() != string.Empty && _newbeheerDaad != null)
+            if ( _newbeheerDaad != null)
             {
-                _plantenDataService.AddNewBeheerDaad(_newbeheerDaad);
+                if (_newbeheerDaad.Trim() != string.Empty)
+                {
+                    var result=_plantenDataService.AddNewBeheerDaad(_newbeheerDaad);
+                    if (result!=null)
+                    {
+                        MessageBox.Show(result);
+                        return;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Gelieve een waarde in te vullen bij beheerhandeling");
+                    return;
+                }    
             }
             else
             {
                 MessageBox.Show("Gelieve een waarde in te vullen bij beheerhandeling");
+                return;
             }
             ReloadAllBeheerdaden();
         }
@@ -861,6 +875,9 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public void ReloadAllBeheerdaden()
         {
+            NewBeheerDaad = null;
+            _newbeheerDaden = _plantenDataService.GetAllBeheerDaden();
+
             NewBeheerDaden.Clear();
             foreach (var beheerDaden in _newbeheerDaden)
             {
@@ -869,29 +886,34 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public void FenoShowBloeiwijzeImage()
         {
-            switch (_fenoselectedBloeiwijze.Id)
+            if (_fenoselectedBloeiwijze != null)
             {
-                case 1:
-                    FenoSelectedBloeiwijzeImage = _fenoBloeiAllImages[0];
-                    break;
-                case 2:
-                    FenoSelectedBloeiwijzeImage = _fenoBloeiAllImages[1];
-                    break;
-                case 3:
-                    FenoSelectedBloeiwijzeImage = _fenoBloeiAllImages[2];
-                    break;
-                case 4:
-                    FenoSelectedBloeiwijzeImage = _fenoBloeiAllImages[3];
-                    break;
-                case 5:
-                    FenoSelectedBloeiwijzeImage = _fenoBloeiAllImages[4];
-                    break;
-                case 6:
-                    FenoSelectedBloeiwijzeImage = _fenoBloeiAllImages[5];
-                    break;
-                default:
-                    FenoSelectedBloeiwijzeImage = null;
-                    break;
+
+
+                switch (_fenoselectedBloeiwijze.Id)
+                {
+                    case 1:
+                        FenoSelectedBloeiwijzeImage = _fenoBloeiAllImages[0];
+                        break;
+                    case 2:
+                        FenoSelectedBloeiwijzeImage = _fenoBloeiAllImages[1];
+                        break;
+                    case 3:
+                        FenoSelectedBloeiwijzeImage = _fenoBloeiAllImages[2];
+                        break;
+                    case 4:
+                        FenoSelectedBloeiwijzeImage = _fenoBloeiAllImages[3];
+                        break;
+                    case 5:
+                        FenoSelectedBloeiwijzeImage = _fenoBloeiAllImages[4];
+                        break;
+                    case 6:
+                        FenoSelectedBloeiwijzeImage = _fenoBloeiAllImages[5];
+                        break;
+                    default:
+                        FenoSelectedBloeiwijzeImage = null;
+                        break;
+                }
             }
         }
 
