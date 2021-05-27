@@ -318,6 +318,18 @@ namespace PlantenApplicatie.Data
             return context.CommSocialbiliteit.ToList();
         }
         //Extra Eigenschappen
+        public List<ExtraNectarwaarde> GetExtraNectarwaarde()
+        {
+            return context.ExtraNectarwaarde.OrderBy(n => n.Waarde).ToList();
+        }
+        public List<ExtraPollenwaarde> GetExtraPollenwaarde()
+        {
+            return context.ExtraPollenwaarde.OrderBy(p => p.Waarde).ToList();
+        }
+        public ExtraEigenschap GetExtraBijvriendelijk()
+        {
+            return context.ExtraEigenschap.Where(b => b.Bijvriendelijke);
+        }
         //Beheer Eigenschappen
     }
 }
