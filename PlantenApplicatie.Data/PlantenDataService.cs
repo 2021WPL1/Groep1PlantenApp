@@ -318,7 +318,7 @@ namespace PlantenApplicatie.Data
 
         public List<Commensalisme> GetCommStrategieFromPlant(long id)
         {
-            return context.Commensalisme.Where(c => c.Id == id).ToList();
+            return context.Commensalisme.Where(c => c.PlantId == id).ToList();
         }
         public List<CommOntwikkelsnelheid> GetCommOntwikkelSnelheid()
         {
