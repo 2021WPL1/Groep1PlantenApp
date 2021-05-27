@@ -345,10 +345,40 @@ namespace PlantenApplicatie.Data
         {
             return context.ExtraPollenwaarde.OrderBy(p => p.Waarde).ToList();
         }
-        //public ExtraEigenschap GetExtraBijvriendelijk()
-        //{
-        //    return context.ExtraEigenschap.Where(b => b.Bijvriendelijke);
-        //}
+        public ExtraNectarwaarde GetExtraNectarwaardeFromPlant(long id)
+        {
+            return context.ExtraNectarwaarde.FirstOrDefault(e =>
+                e.Waarde == context.ExtraEigenschap.FirstOrDefault(x => x.PlantId == id).Nectarwaarde);
+        }
+        public ExtraPollenwaarde GetExtraPollenwaardeFromPlant(long id)
+        {
+            return context.ExtraPollenwaarde.FirstOrDefault(e =>
+                e.Waarde == context.ExtraEigenschap.FirstOrDefault(x => x.PlantId == id).Pollenwaarde);
+        }
+        public bool GetExtraBijvriendelijk(long id)
+        {
+            return (bool) context.ExtraEigenschap.FirstOrDefault(e=>e.PlantId==id).Bijvriendelijke;
+        }
+        public bool GetExtraEetbaar(long id)
+        {
+            return (bool)context.ExtraEigenschap.FirstOrDefault(e => e.PlantId == id).Eetbaar;
+        }
+        public bool GetExtraVlindervriendelijk(long id)
+        {
+            return (bool)context.ExtraEigenschap.FirstOrDefault(e => e.PlantId == id).Vlindervriendelijk;
+        }
+        public bool GetExtraGeurend(long id)
+        {
+            return (bool)context.ExtraEigenschap.FirstOrDefault(e => e.PlantId == id).Geurend;
+        }
+        public bool GetExtraVorstgevoelig(long id)
+        {
+            return (bool)context.ExtraEigenschap.FirstOrDefault(e => e.PlantId == id).Vorstgevoelig;
+        }
+        public bool GetExtraKruidgebruik(long id)
+        {
+            return (bool)context.ExtraEigenschap.FirstOrDefault(e => e.PlantId == id).Kruidgebruik;
+        }
         //Beheer Eigenschappen
     }
 }
