@@ -312,6 +312,12 @@ namespace PlantenApplicatie.UI.ViewModel
                     _commAllSocialbiliteit.FirstOrDefault(c => c.Sociabiliteit == commensalismeMulti.Waarde));
             }
             ReloadSocialbiliteit();
+            foreach (var commensalisme in _plantenDataService.GetCommStrategieFromPlant(plant.PlantId))
+            {
+                _commAddedStrategies.Add(
+                    _commAllStrategies.FirstOrDefault(c => c.Strategie == commensalisme.Strategie));
+            }
+            ReloadStrategie();
             //Extra Eigenschappen
             //Beheer Eigenschappen
         }
@@ -447,7 +453,7 @@ namespace PlantenApplicatie.UI.ViewModel
                     MessageBox.Show("Strategie is al toegevoegd");
                 }
             }
-            ReloadSocialbiliteit();
+            ReloadStrategie();
         }
         private void StrategieVerwijderen()
         {
@@ -457,7 +463,7 @@ namespace PlantenApplicatie.UI.ViewModel
             {
                 _commAddedStrategies.Remove(CommSelectedAddedStrategie);
             }
-            ReloadSocialbiliteit();
+            ReloadStrategie();
         }
         public void InitializeAll()
         {
@@ -518,7 +524,7 @@ namespace PlantenApplicatie.UI.ViewModel
             LoadFenotype();
             LoadAbio();
             LoadCommersialisme();
-            LoadExtraEigenschappen();
+            //LoadExtraEigenschappen();
             LoadBeheerEigenschappen();
         }
         public void LoadFilters()
