@@ -395,7 +395,16 @@ namespace PlantenApplicatie.Data
         {
             return (bool)context.ExtraEigenschap.FirstOrDefault(e => e.PlantId == id).Kruidgebruik;
         }
-        //Beheer Eigenschappen
+        //Nieuwe beheersbehandeling
+        public List<BeheerDaden> GetAllBeheerDaden()
+        {
+            return context.BeheerDaden.OrderBy(b => b.Beheerdaad).ToList();
+        }
+        public List<BeheerMaand> GetBeheerFromPlant(long id)
+        {
+            return context.BeheerMaand.Where(b => b.PlantId == id).ToList();
+        }
+        //Bestaande beheersbehandeling aanpassen
 
         //Hemen &Maarten 
         public Gebruiker addGebruiker(string rol, string email, byte[] HashPaswoord)

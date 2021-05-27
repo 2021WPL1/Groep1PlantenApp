@@ -37,6 +37,9 @@ namespace PlantenApplicatie.UI.ViewModel
         public ICommand SocialbiliteitVerwijderenCommand { get; set; }
         public ICommand StrategieToevoegenCommand { get; set; }
         public ICommand StrategieVerwijderenCommand { get; set; }
+        public ICommand NewBeheerToevoegenCommand { get; set; }
+        public ICommand NewBeheerHandelToevoegenCommand { get; set; }
+        public ICommand EditBeheerWijzigingenOpslaanCommand { get; set; }
 
         //Observable collections voor de binding
         //Filters
@@ -201,8 +204,10 @@ namespace PlantenApplicatie.UI.ViewModel
         private bool _extraselectedGeurend;
         private bool _extraselectedVorstgevoelig;
         //Nieuwe beheersbehandeling
-
+        private BeheerDaden _newbeheerselectedDaden;
         //Bestaande beheersbehandeling aanpassen
+        private BeheerDaden _editbeheerselectedDaden;
+
         public EditViewModel(PlantenDataService plantenDataService)
         {
             //Senne & Hermes
@@ -218,6 +223,9 @@ namespace PlantenApplicatie.UI.ViewModel
             SocialbiliteitVerwijderenCommand = new DelegateCommand(SocialbiliteitVerwijderen);
             StrategieToevoegenCommand = new DelegateCommand(StrategieToevoegen);
             StrategieVerwijderenCommand = new DelegateCommand(StrategieVerwijderen);
+            NewBeheerToevoegenCommand = new DelegateCommand(NewBeheerToevoegen);
+            NewBeheerHandelToevoegenCommand = new DelegateCommand(NewBeheerHandelingToevoegen);
+            EditBeheerWijzigingenOpslaanCommand = new DelegateCommand(EditBeheerWijzigingenOpslaan);
 
             //Filters
             FilterTfgsvTypes = new ObservableCollection<TfgsvType>();
@@ -255,8 +263,9 @@ namespace PlantenApplicatie.UI.ViewModel
             ExtraNectarwaarde = new ObservableCollection<ExtraNectarwaarde>();
             ExtraPollenwaarde = new ObservableCollection<ExtraPollenwaarde>();
             //Nieuwe beheersbehandeling
-
+            NewBeheerDaden = new ObservableCollection<BeheerDaden>();
             //Bestaande beheersbehandeling aanpassen
+            EditBeheerDaden = new ObservableCollection<BeheerDaden>();
         }
 
         public void FillDataFromPlant(Plant plant)
@@ -497,6 +506,20 @@ namespace PlantenApplicatie.UI.ViewModel
             }
             ReloadStrategie();
         }
+        private void NewBeheerToevoegen()
+        {
+
+            ReloadAllBeheerdaden();
+        }
+        private void NewBeheerHandelingToevoegen()
+        {
+            ReloadEditBeheerdaden();
+        }
+        private void EditBeheerWijzigingenOpslaan()
+        {
+            ReloadEditBeheerdaden();
+        }
+
         public void InitializeAll()
         {
             //Senne & Hermes
@@ -545,8 +568,10 @@ namespace PlantenApplicatie.UI.ViewModel
             //Extra Eigenschappen
             _extraNectarwaarde = _plantenDataService.GetExtraNectarwaarde();
             _extraPollenwaarde = _plantenDataService.GetExtraPollenwaarde();
-            //Beheer Eigenschappen
-
+            //Nieuwe beheersbehandeling
+            _newbeheerDaden = _plantenDataService.GetAllBeheerDaden();
+            //Bestaande beheersbehandeling aanpassen
+            _editbeheerDaden = new List<BeheerDaden>();
             LoadAll();
         }
         public void LoadAll()
@@ -786,7 +811,27 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public void LoadBeheerEigenschappen()
         {
-
+            NewBeheerDaden.Clear();
+            foreach (var beheerDaden in _newbeheerDaden)
+            {
+                NewBeheerDaden.Add(beheerDaden);
+            }
+        }
+        public void ReloadEditBeheerdaden()
+        {
+            EditBeheerDaden.Clear();
+            foreach (var beheerDaden in _editbeheerDaden)
+            {
+                EditBeheerDaden.Add(beheerDaden);
+            }
+        }
+        public void ReloadAllBeheerdaden()
+        {
+            NewBeheerDaden.Clear();
+            foreach (var beheerDaden in _newbeheerDaden)
+            {
+                NewBeheerDaden.Add(beheerDaden);
+            }
         }
         public void FenoShowBloeiwijzeImage()
         {
@@ -1353,7 +1398,24 @@ namespace PlantenApplicatie.UI.ViewModel
             }
         }
         //Nieuwe beheersbehandeling
-
+        public BeheerDaden NewBeheerSelectedDaden
+        {
+            get { return _newbeheerselectedDaden; }
+            set
+            {
+                _newbeheerselectedDaden = value;
+                OnPropertyChanged();
+            }
+        }
         //Bestaande beheersbehandeling aanpassen
+        public BeheerDaden EditBeheerSelectedDaden
+        {
+            get { return _editbeheerselectedDaden; }
+            set
+            {
+                _editbeheerselectedDaden = value;
+                OnPropertyChanged();
+            }
+        }
     }
 }
