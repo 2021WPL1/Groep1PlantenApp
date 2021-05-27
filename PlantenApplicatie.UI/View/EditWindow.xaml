@@ -78,7 +78,7 @@
                 </TabControl.RenderTransform>
                 <TabItem x:Name="tabFenotype" Header="Fenotype">
                     <ScrollViewer x:Name="scrollFenotype" Margin="6,0,-6,0" Height="591" VerticalAlignment="Center">
-                        <Grid x:Name="gridFenotype" Background="WhiteSmoke" Height="708" Width="550">
+                        <Grid x:Name="gridFenotype" Background="#FFE5E5E5" Height="708" Width="550">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
@@ -272,7 +272,7 @@
                 </TabItem>
                 <TabItem x:Name="tabAbiotischeFactoren" Header="Abiotische Factoren" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,-1,0,0">
                     <ScrollViewer x:Name="scrollAbiotischeFactoren" Height="590" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <Grid x:Name="gridAbiotischeFactoren" Height="981" Width="550" Background="#FFF5F5F2">
+                        <Grid x:Name="gridAbiotischeFactoren" Height="981" Width="550" Background="#FFE5E5E5">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="525"/>
                             </Grid.ColumnDefinitions>
@@ -291,14 +291,12 @@
                                 ItemsSource="{Binding AbioGrondsoort}"
                                 SelectedItem="{Binding AbioSelectedGrondsoort, Mode=TwoWay}"
                                 DisplayMemberPath="Grondsoort"
-                                HorizontalAlignment="Left" Width="180" Height="150" VerticalAlignment="Top">
-                            </ListBox>
+                                HorizontalAlignment="Left" Width="180" Height="150" VerticalAlignment="Top"/>
                             <ListBox x:Name="VoedingsbehoefteListBox" Margin="22,230,0,0"
                                 ItemsSource="{Binding AbioVoedingsbehoefte}"     
                                 SelectedItem="{Binding AbioSelectedVoedingsbehoefte, Mode=TwoWay}"
                                 DisplayMemberPath="Voedingsbehoefte"
-                                HorizontalAlignment="Left" Width="180" Height="150" VerticalAlignment="Top">
-                            </ListBox>
+                                HorizontalAlignment="Left" Width="180" Height="150" VerticalAlignment="Top"/>
                             <ListBox x:Name="VochtbehoefteListBox" Margin="302,230,43,0"
                                 ItemsSource="{Binding AbioVochtbehoefte}"     
                                 SelectedItem="{Binding AbioSelectedVochtbehoefte, Mode=TwoWay}"
@@ -319,7 +317,7 @@
                                             </TextBlock.Text>
                                             <TextBlock.InputBindings>
                                                 <MouseBinding Gesture="LeftDoubleClick"
-                                                              Command="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.HabitatToevoegenCommand}"/>
+                                                              Command="{Binding DataContext.HabitatToevoegenCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"/>
                                             </TextBlock.InputBindings>
                                         </TextBlock>
                                     </DataTemplate>
@@ -341,7 +339,7 @@
                                             </TextBlock.Text>
                                             <TextBlock.InputBindings>
                                                 <MouseBinding Gesture="LeftDoubleClick"
-                                                              Command="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.HabitatVerwijderenCommand}"/>
+                                                              Command="{Binding DataContext.HabitatVerwijderenCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"/>
                                             </TextBlock.InputBindings>
                                         </TextBlock>
                                     </DataTemplate>
@@ -598,24 +596,74 @@
                 </TabItem>
                 <TabItem x:Name="tabExtraEigenschappen" Header="Extra Eigenschappen" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,-1,0,0">
                     <ScrollViewer>
-                        <Grid Height="563" Width="557" Background="#FFE5E5E5">
+                        <Grid Height="244" Width="593" Background="#FFE5E5E5" VerticalAlignment="Top">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <ComboBox x:Name="cbxNectarwaarde" HorizontalAlignment="Left" Margin="30,30,0,0" VerticalAlignment="Top" Width="120" BorderBrush="#FFFFFCFC" Background="#FFDDDDDD"/>
-                            <Label x:Name="lblNectarwaarde" Content="Nectarwaarde" HorizontalAlignment="Left" Margin="47,4,0,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lblPollenwaarde" Content="Pollenwaarde" HorizontalAlignment="Left" Margin="49,55,0,0" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="cbxPollenwaarde" HorizontalAlignment="Left" Margin="30,82,0,0" VerticalAlignment="Top" Width="120"/>
-                            <Label x:Name="lblBijvriendelijk" Content="Bijvriendelijk" HorizontalAlignment="Center" Margin="2,4,0,0" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="cbxBijvriendelijk" HorizontalAlignment="Center" Margin="0,30,0,0" VerticalAlignment="Top" Width="120"/>
-                            <Label x:Name="lblVlindervriendelijk" Content="Vlindervriendelijk" HorizontalAlignment="Center" Margin="0,56,0,0" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="cbxVlindervriendelijk" HorizontalAlignment="Center" Margin="3,82,0,0" VerticalAlignment="Top" Width="120"/>
-                            <Label x:Name="lblEetbaarKruidgebruik" Content="Eetbaar/kruidgebruik" Margin="405,4,29,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lblGeurend" Content="Geurend" HorizontalAlignment="Left" Margin="439,57,0,0" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="cbxEetbaarKruidgebruik" Margin="406,30,30,0" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="cbxGeurend" Margin="407,82,30,0" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="cbxVorstgevoelig" HorizontalAlignment="Center" Margin="0,135,0,0" VerticalAlignment="Top" Width="120"/>
-                            <Label x:Name="lblVorstgevoelig" Content="Vorstgevoelig" HorizontalAlignment="Center" Margin="0,109,0,0" VerticalAlignment="Top"/>
+                            <ComboBox
+                                ItemsSource="{Binding ExtraNectarwaarde}"
+                                SelectedItem="{Binding ExtraSelectedNectarwaarde, Mode=TwoWay}"
+                                DisplayMemberPath="Waarde"
+                                SelectedValuePath="Id"
+                                x:Name="cbxNectarwaarde"
+                                HorizontalAlignment="Left"
+                                Margin="220,30,0,0"
+                                VerticalAlignment="Top"
+                                Width="120"/>
+                            <Label x:Name="lblNectarwaarde" Content="Nectarwaarde" HorizontalAlignment="Left" Margin="235,4,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblPollenwaarde" Content="Pollenwaarde" HorizontalAlignment="Left" Margin="420,4,0,0" VerticalAlignment="Top"/>
+                            <ComboBox
+                                ItemsSource="{Binding ExtraPollenwaarde}"
+                                SelectedItem="{Binding ExtraSelectedPollenwaarde, Mode=TwoWay}"
+                                DisplayMemberPath="Waarde"
+                                SelectedValuePath="Id"
+                                x:Name="cbxPollenwaarde"
+                                HorizontalAlignment="Left"
+                                Margin="400,30,0,0"
+                                VerticalAlignment="Top"
+                                Width="120"/>
+                            <CheckBox
+                                IsChecked="{Binding ExtraSelectedBijvriendelijk, Mode=TwoWay}"
+                                x:Name="CheckBoxBijvriendelijk"
+                                Content="Bijvriendelijk"
+                                HorizontalAlignment="Left"
+                                Margin="50,20,0,0"
+                                VerticalAlignment="Top"/>
+                            <CheckBox
+                                IsChecked="{Binding ExtraSelectedEetbaar, Mode=TwoWay}"
+                                x:Name="CheckBoxEetbaar"
+                                Content="Eetbaar"
+                                HorizontalAlignment="Left"
+                                Margin="50,60,0,0"
+                                VerticalAlignment="Top"/>
+                            <CheckBox
+                                IsChecked="{Binding ExtraSelectedKruidGebruik, Mode=TwoWay}"
+                                x:Name="CheckBoxKruidgebruik"
+                                Content="Kruidgebruik"
+                                HorizontalAlignment="Left"
+                                Margin="50,100,0,0"
+                                VerticalAlignment="Top"/>
+                            <CheckBox
+                                IsChecked="{Binding ExtraSelectedGeurend, Mode=TwoWay}"
+                                x:Name="CheckBoxGeurend"
+                                Content="Geurend"
+                                HorizontalAlignment="Left"
+                                Margin="50,140,0,0"
+                                VerticalAlignment="Top"/>
+                            <CheckBox
+                                IsChecked="{Binding ExtraSelectedVorstgevoelig, Mode=TwoWay}"
+                                x:Name="checkBoxVorstgevoelig"
+                                Content="Vorstgevoelig"
+                                HorizontalAlignment="Left"
+                                Margin="50,180,0,0"
+                                VerticalAlignment="Top"/>
+                            <CheckBox
+                                IsChecked="{Binding ExtraSelectedVlindervriendelijk, Mode=TwoWay}"
+                                x:Name="checkBoxVlindervriendelijk"
+                                Content="Vlindervriendelijk"
+                                HorizontalAlignment="Left"
+                                Margin="50,217,0,0"
+                                VerticalAlignment="Top"/>
                         </Grid>
                     </ScrollViewer>
                 </TabItem>
