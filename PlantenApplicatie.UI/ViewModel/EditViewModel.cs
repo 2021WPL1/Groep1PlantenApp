@@ -74,16 +74,31 @@ namespace PlantenApplicatie.UI.ViewModel
         //Extra Eigenschappen
         public ObservableCollection<ExtraNectarwaarde> ExtraNectarwaarde { get; set; }
         public ObservableCollection<ExtraPollenwaarde> ExtraPollenwaarde { get; set; }
-       
-        //Beheer Eigenschappen
+        //Nieuwe beheersbehandeling
+        
         /*
-         * Beheertype
-         * BeheerPlantenNaam
-         * BeheerHandeling
-         * Maanden
-         * Aantal m²/u
-         * Frequentie per jaar
-         * Opmerking
+         * (obs)Beheerhandeling: alle beheerhandelingen tonen
+         * textbox-> nieuwe handeling
+         * 12 bools voor de maanden
+         * textbox-> freq per x jaar
+         * textbox -> m2 per u 
+         * textbox -> omschrijving
+         */
+        /*
+         * ICommand nieuwe beheerbehandeling toevoegen
+         * ICommand behandeling toevoegen
+         */
+
+        //Bestaande beheersbehandeling aanpassen
+        /*
+         * (obs) beheerhandeling van de plant
+         * 12 bools voor maanden (ingevuld door geselecteerde behandeling)
+         * textbox-> freq per x jaar (ingevuld door geselecteerde behandeling)
+         * textbox -> m2 per u  (ingevuld door geselecteerde behandeling)
+         * textbox -> omschrijving (ingevuld door geselecteerde behandeling)
+         */
+        /*
+         * ICommand Behandeling Wijziging opslaan
          */
 
         //Lists om de observable collections op te vullen
