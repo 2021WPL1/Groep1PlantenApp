@@ -75,7 +75,8 @@ namespace PlantenApplicatie.UI.ViewModel
         public ObservableCollection<ExtraNectarwaarde> ExtraNectarwaarde { get; set; }
         public ObservableCollection<ExtraPollenwaarde> ExtraPollenwaarde { get; set; }
         //Nieuwe beheersbehandeling
-        
+        public ObservableCollection<BeheerDaden> NewBeheerDaden { get; set; }
+        public ObservableCollection<BeheerDaden> EditBeheerDaden { get; set; }
         /*
          * (obs)Beheerhandeling: alle beheerhandelingen tonen
          * textbox-> nieuwe handeling
@@ -138,7 +139,10 @@ namespace PlantenApplicatie.UI.ViewModel
         //Extra Eigenschappen
         private List<ExtraNectarwaarde> _extraNectarwaarde;
         private List<ExtraPollenwaarde> _extraPollenwaarde;
-        //Beheer Eigenschappen
+        //Nieuwe beheersbehandeling
+        private List<BeheerDaden> _newbeheerDaden;
+        //Bestaande beheersbehandeling aanpassen
+        private List<BeheerDaden> _editbeheerDaden;
 
         //Geselecteerde waardes
         //Filters
@@ -196,7 +200,6 @@ namespace PlantenApplicatie.UI.ViewModel
         private bool _extraselectedVlindervriendelijk;
         private bool _extraselectedGeurend;
         private bool _extraselectedVorstgevoelig;
-        //Beheer Eigenschappen New
         private bool _newbeheerselectedJan;
         private bool _newbeheerselectedFeb;
         private bool _newbeheerselectedMaa;
@@ -209,8 +212,9 @@ namespace PlantenApplicatie.UI.ViewModel
         private bool _newbeheerselectedOkt;
         private bool _newbeheerselectedNov;
         private bool _newbeheerselectedDec;
+        //Nieuwe beheersbehandeling
 
-
+        //Bestaande beheersbehandeling aanpassen
         public EditViewModel(PlantenDataService plantenDataService)
         {
             //Senne & Hermes
@@ -262,7 +266,9 @@ namespace PlantenApplicatie.UI.ViewModel
             //Extra Eigenschappen
             ExtraNectarwaarde = new ObservableCollection<ExtraNectarwaarde>();
             ExtraPollenwaarde = new ObservableCollection<ExtraPollenwaarde>();
-            //Beheer Eigenschappen
+            //Nieuwe beheersbehandeling
+
+            //Bestaande beheersbehandeling aanpassen
         }
 
         public void FillDataFromPlant(Plant plant)
@@ -1358,8 +1364,8 @@ namespace PlantenApplicatie.UI.ViewModel
                 OnPropertyChanged();
             }
         }
+        //Nieuwe beheersbehandeling
 
-        //Beheer Eigenschappen new
         public bool NewBeheerSelectedJan
         {
             get { return _newbeheerselectedJan; }
