@@ -45,5 +45,6 @@ namespace PlantenApplicatie.UI.View
             DataContext = viewModel;
             viewModel.InitializeAll();
         }
+
     }
 }
