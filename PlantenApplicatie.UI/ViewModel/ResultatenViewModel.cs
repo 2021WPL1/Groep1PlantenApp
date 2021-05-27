@@ -70,9 +70,9 @@ namespace PlantenApplicatie.UI.ViewModel
             this.EditSchermCommand = new DelegateCommand(EditScherm);
 
             //Jelle & Stephanie
-            BeheerAllSelectedPlantMonths = new List<string>();
-            GetSelectedPlantLevensvorm = new List<string>();
-            GetSelectedPlantSociabiliteit = new List<string>();
+            BeheerAllSelectedPlantMonths = new ObservableCollection<string>();
+            GetSelectedPlantLevensvorm = new ObservableCollection<string>();
+            GetSelectedPlantSociabiliteit = new ObservableCollection<string>();
             GetSelectedPlantLevensduurConcurrentiekracht = new ObservableCollection<string>();
 
             SelectedPlantBladKleur = new ObservableCollection<string>();
