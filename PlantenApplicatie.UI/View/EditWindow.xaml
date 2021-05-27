@@ -67,7 +67,7 @@
                 SelectedItem="{Binding FilterSelectedVariant, Mode=TwoWay}"
                 DisplayMemberPath="Variantnaam"
                 SelectedValuePath="VariantId"/>
-            <TabControl Margin="298,36,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left">
+            <TabControl Margin="298,36,0,-4" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left">
                 <TabControl.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -78,7 +78,7 @@
                 </TabControl.RenderTransform>
                 <TabItem x:Name="tabFenotype" Header="Fenotype">
                     <ScrollViewer x:Name="scrollFenotype" Margin="6,0,-6,0" Height="591" VerticalAlignment="Center">
-                        <Grid x:Name="gridFenotype" Background="WhiteSmoke" Height="697" Width="550" VerticalAlignment="Top">
+                        <Grid x:Name="gridFenotype" Background="WhiteSmoke" Height="708" Width="550">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
@@ -364,8 +364,11 @@
                     </ScrollViewer>
                 </TabItem>
                 <TabItem x:Name="tabCommensialisme" Header="Commensialisme" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <ScrollViewer x:Name="scrollCommensialisme" Height="594" VerticalAlignment="Top">
-                        <Grid x:Name="gridCommensialisme" Height="574" Width="557" Background="#FFE5E5E5">
+                    <ScrollViewer x:Name="scrollCommensialisme" Height="599" VerticalAlignment="Top">
+                        <Grid x:Name="gridCommensialisme" Height="774" Width="557" Background="#FFE5E5E5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
@@ -380,7 +383,6 @@
                                 Margin="180,29,0,0"
                                 VerticalAlignment="Top"
                                 Width="120"
-                                Grid.ColumnSpan="2"
                                 Height="22"/>
                             <Label x:Name="lblLevensduur" Content="Levensduur/Concurrentiekracht" HorizontalAlignment="Left" Margin="35,60,0,0" VerticalAlignment="Top" Height="26" Width="176"/>
                             <Label x:Name="lblSociabiliteit" Content="Sociabiliteit" HorizontalAlignment="Left" Margin="24,344,0,0" VerticalAlignment="Top" Height="26" Width="71"/>
@@ -389,9 +391,9 @@
                                 SelectedItem="{Binding CommSelectedAllLevensvorm, Mode=TwoWay}"
                                 SelectedValuePath="Id"
                                 x:Name="ListBoxAllLevensduur"
-                                Margin="0,85,0,249"
+                                Margin="0,85,0,0"
                                 HorizontalAlignment="Left"
-                                Width="240">
+                                Width="240" Height="254" VerticalAlignment="Top">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <TextBlock>
@@ -435,7 +437,7 @@
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
                             </ListBox>
-                                <Button
+                            <Button
                                 x:Name="btnRemoveLevensduur"
                                 Command="{Binding Path=LevensduurVerwijderenCommand}"
                                 Content="&lt;--"
@@ -458,10 +460,10 @@
                                 SelectedItem="{Binding CommSelectedAllSocialbiliteit, Mode=TwoWay}"
                                 SelectedValuePath="Id"
                                 x:Name="ListBoxAllSociabiliteit"
-                                Margin="0,370,0,11"
+                                Margin="0,378,0,0"
                                 HorizontalAlignment="Left"
                                 Width="240"
-                                Height="190">
+                                Height="190" VerticalAlignment="Top">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <TextBlock>
@@ -484,10 +486,10 @@
                                 SelectedItem="{Binding CommSelectedAddedSocialbiliteit}"
                                 SelectedValuePath="Id"
                                 x:Name="ListBoxAddedSociabiliteit"
-                                Margin="315,370,0,11"
+                                Margin="0,378,0,0"
                                 HorizontalAlignment="Right"
                                 Width="240"
-                                Height="190">
+                                Height="190" VerticalAlignment="Top">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <TextBlock>
@@ -520,6 +522,74 @@
                                 Content="--&gt;"
                                 HorizontalAlignment="Left"
                                 Margin="260,405,0,0"
+                                VerticalAlignment="Top"
+                                Width="30"
+                                Height="20"/>
+                            <ListBox
+                                ItemsSource="{Binding CommAllStrategie}"
+                                SelectedItem="{Binding CommSelectedAllStrategie, Mode=TwoWay}"
+                                SelectedValuePath="Id"
+                                x:Name="ListBoxAllStrategie"
+                                Margin="100,636,0,0"
+                                HorizontalAlignment="Left"
+                                Width="100"
+                                Height="190" VerticalAlignment="Top" Grid.RowSpan="2">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock>
+                                            <TextBlock.Text>
+                                                <MultiBinding StringFormat="{}{0}">
+                                                    <Binding Path="Waarde"/>
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                            <TextBlock.InputBindings>
+                                                <MouseBinding Gesture="LeftDoubleClick"
+                                                    Command="{Binding DataContext.StrategieToevoegenCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"/>
+                                            </TextBlock.InputBindings>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                            <ListBox
+                                ItemsSource="{Binding CommAddedStrategie}"
+                                SelectedItem="{Binding CommSelectedAddedStrategie, Mode=TwoWay}"
+                                SelectedValuePath="Id"
+                                x:Name="ListBoxAddedStrategie"
+                                Margin="0,631,100,0"
+                                HorizontalAlignment="Right"
+                                Width="100"
+                                Height="190" VerticalAlignment="Top" Grid.RowSpan="2">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock>
+                                            <TextBlock.Text>
+                                                <MultiBinding StringFormat="{}{0}">
+                                                    <Binding Path="Waarde"/>
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                            <TextBlock.InputBindings>
+                                                <MouseBinding Gesture="LeftDoubleClick"
+                                                    Command="{Binding DataContext.SocialbiliteitToevoegenCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"/>
+                                            </TextBlock.InputBindings>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                            <Button
+                                x:Name="btnAddStrategie"
+                                Command="{Binding StrategieToevoegenCommand}"
+                                Content="--&gt;"
+                                HorizontalAlignment="Left"
+                                Margin="260,650,0,0"
+                                VerticalAlignment="Top"
+                                Width="30"
+                                Height="20"/>
+                            <Button
+                                x:Name="ListBoxRemoveStrategie"
+                                Command="{Binding StrategieVerwijderenCommand}"
+                                Content="--&gt;"
+                                HorizontalAlignment="Left"
+                                Margin="260,750,0,0"
                                 VerticalAlignment="Top"
                                 Width="30"
                                 Height="20"/>
