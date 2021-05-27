@@ -196,7 +196,20 @@ namespace PlantenApplicatie.UI.ViewModel
         private bool _extraselectedVlindervriendelijk;
         private bool _extraselectedGeurend;
         private bool _extraselectedVorstgevoelig;
-        //Beheer Eigenschappen
+        //Beheer Eigenschappen New
+        private bool _newbeheerselectedJan;
+        private bool _newbeheerselectedFeb;
+        private bool _newbeheerselectedMaa;
+        private bool _newbeheerselectedApr;
+        private bool _newbeheerselectedMei;
+        private bool _newbeheerselectedJun;
+        private bool _newbeheerselectedJul;
+        private bool _newbeheerselectedAug;
+        private bool _newbeheerselectedSep;
+        private bool _newbeheerselectedOkt;
+        private bool _newbeheerselectedNov;
+        private bool _newbeheerselectedDec;
+
 
         public EditViewModel(PlantenDataService plantenDataService)
         {
@@ -1346,6 +1359,112 @@ namespace PlantenApplicatie.UI.ViewModel
             }
         }
 
-        //Beheer Eigenschappen
+        //Beheer Eigenschappen new
+        public bool NewBeheerSelectedJan
+        {
+            get { return _newbeheerselectedJan; }
+            set { _newbeheerselectedJan = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool NewBeheerSelectedFeb
+        {
+            get { return _newbeheerselectedFeb; }
+            set
+            {
+                _newbeheerselectedFeb = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool NewBeheerSelectedMaa
+        {
+            get { return _newbeheerselectedMaa; }
+            set
+            {
+                _newbeheerselectedMaa = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool NewBeheerSelectedApr
+        {
+            get { return _newbeheerselectedApr; }
+            set
+            {
+                _newbeheerselectedApr = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool NewBeheerSelectedMei
+        {
+            get { return _newbeheerselectedMei; }
+            set
+            {
+                _newbeheerselectedMei = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool NewBeheerSelectedJun
+        {
+            get { return _newbeheerselectedJun; }
+            set
+            {
+                _newbeheerselectedJun = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool NewBeheerSelectedJul
+        {
+            get { return _newbeheerselectedJul; }
+            set
+            {
+                _newbeheerselectedJul = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool NewBeheerSelectedAug
+        {
+            get { return _newbeheerselectedAug; }
+            set
+            {
+                _newbeheerselectedAug = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool NewBeheerSelectedSep
+        {
+            get { return _newbeheerselectedSep; }
+            set
+            {
+                _newbeheerselectedSep = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool NewBeheerSelectedOkt
+        {
+            get { return _newbeheerselectedOkt; }
+            set
+            {
+                _newbeheerselectedOkt = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool NewBeheerSelectedNov
+        {
+            get { return _newbeheerselectedNov; }
+            set
+            {
+                _newbeheerselectedNov = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool NewBeheerSelectedDec
+        {
+            get { return _newbeheerselectedDec; }
+            set
+            {
+                _newbeheerselectedDec = value;
+                OnPropertyChanged();
+            }
+        }
     }
 }

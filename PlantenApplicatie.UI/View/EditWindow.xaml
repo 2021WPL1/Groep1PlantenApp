@@ -677,23 +677,34 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
+                            <Button
+                                x:Name="btnVoegHandelingToe"
+                                Content="Voeg toe"
+                                HorizontalAlignment="Left"
+                                Margin="15,47,0,0"
+                                VerticalAlignment="Top"/>
+                            <TextBox
+                                x:Name="TextBoxVoegBehandelingToe"
+                                HorizontalAlignment="Left" Margin="177,13,0,0"
+                                TextWrapping="Wrap"
+                                VerticalAlignment="Top"
+                                Width="385"/>
                             <Rectangle HorizontalAlignment="Center" Height="1" Margin="0,80,0,0" Stroke="Black" VerticalAlignment="Top" Width="562"/>
                             <Label x:Name="lblBestaandehandeling" Content="BeheerHandeling" HorizontalAlignment="Left" Margin="4,97,0,0" VerticalAlignment="Top"/>
                             <ComboBox x:Name="cbxBeheerHandeling" HorizontalAlignment="Left" Margin="12,124,0,0" VerticalAlignment="Top" Width="493"/>
-                            <TextBox x:Name="txtOpmerking" HorizontalAlignment="Left" Margin="5,294,0,70" TextWrapping="Wrap" Width="539"/>
                             <Label x:Name="lblOmschrijving" Content="Omschrijving" HorizontalAlignment="Left" Margin="7,264,0,0" VerticalAlignment="Top"/>
                             <CheckBox x:Name="CheckJan" Content="" HorizontalAlignment="Left" Margin="19,184,0,0" VerticalAlignment="Top"/>
                             <CheckBox x:Name="CheckFeb" Content="" HorizontalAlignment="Left" Margin="39,184,0,0" VerticalAlignment="Top"/>
                             <CheckBox x:Name="CheckMaa" Content="" HorizontalAlignment="Left" Margin="59,184,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="CheckOkt" Content="" HorizontalAlignment="Left" Margin="199,184,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="CheckNov" Content="" HorizontalAlignment="Left" Margin="219,184,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.512,0.452"/>
-                            <CheckBox x:Name="CheckJul" Content="" HorizontalAlignment="Left" Margin="139,184,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="CheckDec" Content="" Margin="239,184,307,0" VerticalAlignment="Top"/>
                             <CheckBox x:Name="CheckApr" Content="" HorizontalAlignment="Left" Margin="79,184,0,0" VerticalAlignment="Top"/>
                             <CheckBox x:Name="CheckMei" Content="" HorizontalAlignment="Left" Margin="99,184,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="CheckSep" Content="" HorizontalAlignment="Left" Margin="179,184,0,0" VerticalAlignment="Top"/>
                             <CheckBox x:Name="CheckJun" Content="" HorizontalAlignment="Left" Margin="119,184,0,0" VerticalAlignment="Top"/>
+                            <CheckBox x:Name="CheckJul" Content="" HorizontalAlignment="Left" Margin="139,184,0,0" VerticalAlignment="Top"/>
                             <CheckBox x:Name="CheckAug" Content="" HorizontalAlignment="Left" Margin="159,184,0,0" VerticalAlignment="Top"/>
+                            <CheckBox x:Name="CheckSep" Content="" HorizontalAlignment="Left" Margin="179,184,0,0" VerticalAlignment="Top"/>
+                            <CheckBox x:Name="CheckOkt" Content="" HorizontalAlignment="Left" Margin="199,184,0,0" VerticalAlignment="Top"/>
+                            <CheckBox x:Name="CheckNov" Content="" HorizontalAlignment="Left" Margin="219,184,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.512,0.452"/>
+                            <CheckBox x:Name="CheckDec" Content="" Margin="239,184,307,0" VerticalAlignment="Top"/>
                             <Label x:Name="lblJan" Content="J" HorizontalAlignment="Left" Margin="20,159,0,0" VerticalAlignment="Top"/>
                             <Label x:Name="lblFeb" Content="F" HorizontalAlignment="Left" Margin="40,159,0,0" VerticalAlignment="Top"/>
                             <Label x:Name="lblMaa" Content="M" HorizontalAlignment="Left" Margin="58,159,0,0" VerticalAlignment="Top"/>
@@ -711,8 +722,7 @@
                             <Label x:Name="lblPerAantalJaar" Content="Frequentie per x jaar" HorizontalAlignment="Left" Margin="281,170,0,0" VerticalAlignment="Top"/>
                             <TextBox x:Name="txtPerAantalJaar" HorizontalAlignment="Left" Margin="410,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="33"/>
                             <Label x:Name="lblVoegHandelingToe" Content="Voeg beheershandeling toe" HorizontalAlignment="Left" Margin="-1,8,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="TextBoxVoegBehandelingToe" HorizontalAlignment="Left" Margin="177,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="385"/>
-                            <Button x:Name="btnVoegHandelingToe" Content="Voeg toe" HorizontalAlignment="Left" Margin="15,47,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="txtOpmerking" HorizontalAlignment="Left" Margin="5,294,0,70" TextWrapping="Wrap" Width="539"/>
                             <Button x:Name="btnVoegBeheerbehandelingToe" Content="Voeg beheerdaad toe" HorizontalAlignment="Left" Margin="23,522,0,0" VerticalAlignment="Top"/>
                         </Grid>
                     </ScrollViewer>
