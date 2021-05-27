@@ -51,44 +51,52 @@ namespace PlantenApplicatie.Data
         //Hier worden aan de hand van TFGSV de juiste onderdelen gefilterd voor het zoekscherm
         public Object[] GetFilteredFamilies(long typeId)
         {
+            //Senne, Hermes en Maarten
             Object[] fgsv = new object[4];
             fgsv[0] = context.TfgsvFamilie.Where(p => p.TypeTypeid == typeId).ToList();
             fgsv[1] = context.TfgsvGeslacht.Where(p => p.FamilieFamile.TypeTypeid == typeId).ToList();
             fgsv[2] = context.TfgsvSoort.Where(p => p.GeslachtGeslacht.FamilieFamile.TypeTypeid == typeId).ToList();
 
             //Bug variant heeft geen soort om te koppelen
-            fgsv[3] = context.TfgsvVariant.ToList();
+            //Jelle & Stephanie
+            fgsv[3] = context.TfgsvVariant.Where(p => p.SoortSoort.GeslachtGeslacht.FamilieFamile.TypeTypeid == typeId).ToList();
 
             return fgsv;
         }
 
         public Object[] GetFilteredGeslachten(long familieId)
         {
+            //Senne, Hermes en Maarten
             Object[] gsv = new object[3];
             gsv[0] = context.TfgsvGeslacht.Where(p => p.FamilieFamileId == familieId).ToList();
             gsv[1] = context.TfgsvSoort.Where(p => p.GeslachtGeslacht.FamilieFamileId == familieId).ToList();
 
             //Bug variant heeft geen soort om te koppelen
-            gsv[2] = context.TfgsvVariant.ToList();
+            //Jelle & Stephanie
+            gsv[2] = context.TfgsvVariant.Where(p => p.SoortSoort.GeslachtGeslacht.FamilieFamileId == familieId).ToList();
 
             return gsv;
         }
 
         public Object[] GetFilteredSoorten(long geslachtId)
         {
+            //Senne, Hermes en Maarten
             Object[] sv = new object[2];
             sv[0] = context.TfgsvSoort.Where(p => p.GeslachtGeslachtId == geslachtId).ToList();
 
             //Bug variant heeft geen soort om te koppelen
-            sv[1] = context.TfgsvVariant.ToList();
+            //Jelle & Stephanie
+            sv[1] = context.TfgsvVariant.Where(p => p.SoortSoort.GeslachtGeslachtId == geslachtId).ToList();
 
             return sv;
         }
 
         public List<TfgsvVariant> GetFilteredVarianten(long soortId)
         {
+            //Senne, Hermes en Maarten
             //Bug variant heeft geen soort om te koppelen
-            return context.TfgsvVariant.ToList();
+            //Jelle & Stephanie
+            return context.TfgsvVariant.Where(p => p.SoortSoortid == soortId).ToList();
         }
 
         //Geeft alle planten
