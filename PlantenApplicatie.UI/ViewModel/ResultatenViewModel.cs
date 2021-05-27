@@ -22,7 +22,10 @@ namespace PlantenApplicatie.UI.ViewModel
         public RelayCommand<Window> CloseResultCommand { get; private set; }
 
         //Jelle & Stephanie
-        //Lists voor boxen met meerdere waarden
+        //ObservableCollection die gelinkt wordt via binding aan de juiste listboxen
+        //Verschil ObservableCollection en lists, observable zorgt dat als je in je frontend dingen aangepast, kan dit automatisch mee worden aangepast,
+        //dit komt doordat de INotifyCollectionChanged hier ingebouwd is (bij list niet). In dit geval kan je een list gebruiken, maar wij gebruiken Observable
+        //voor het geval dat wij dit in de toekomst uitbreiden en wel moeten aanpassen.
         public ObservableCollection<string> BeheerAllSelectedPlantMonths { get; set; }
         public ObservableCollection<string> GetSelectedPlantLevensvorm { get; set; }
         public ObservableCollection<string> GetSelectedPlantSociabiliteit { get; set; }
@@ -67,9 +70,9 @@ namespace PlantenApplicatie.UI.ViewModel
             this.EditSchermCommand = new DelegateCommand(EditScherm);
 
             //Jelle & Stephanie
-            BeheerAllSelectedPlantMonths = new ObservableCollection<string>();
-            GetSelectedPlantLevensvorm = new ObservableCollection<string>();
-            GetSelectedPlantSociabiliteit = new ObservableCollection<string>();
+            BeheerAllSelectedPlantMonths = new List<string>();
+            GetSelectedPlantLevensvorm = new List<string>();
+            GetSelectedPlantSociabiliteit = new List<string>();
             GetSelectedPlantLevensduurConcurrentiekracht = new ObservableCollection<string>();
 
             SelectedPlantBladKleur = new ObservableCollection<string>();
