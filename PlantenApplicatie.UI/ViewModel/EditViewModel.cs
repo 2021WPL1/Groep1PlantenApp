@@ -220,6 +220,9 @@ namespace PlantenApplicatie.UI.ViewModel
         private bool _newbeheerselectedOkt;
         private bool _newbeheerselectedNov;
         private bool _newbeheerselectedDec;
+        private string _newbeheerOmschrijving;
+        private string _newbeheerFrequentie;
+        private string _newbeheerM2U;
 
         //Bestaande beheersbehandeling aanpassen
         private BeheerDaden _editbeheerselectedDaden;
@@ -235,6 +238,7 @@ namespace PlantenApplicatie.UI.ViewModel
         private bool _editbeheerselectedOkt;
         private bool _editbeheerselectedNov;
         private bool _editbeheerselectedDec;
+
 
         public EditViewModel(PlantenDataService plantenDataService)
         {
@@ -298,7 +302,7 @@ namespace PlantenApplicatie.UI.ViewModel
 
         public void GetNieuwPlantId()
         {
-
+            _plantId = _plantenDataService.GetNieuwPlantId();
         }
         public void FillDataFromPlant(Plant plant)
         {
@@ -567,13 +571,14 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         private void NewBeheerHandelingToevoegen()
         {
-            var handeling = _newbeheerselectedDaden.Beheerdaad;
-            if (handeling==null)
+            //Beheerhandeling checken als er iets geselecteerd
+            if (_newbeheerselectedDaden == null)
             {
                 MessageBox.Show("Gelieve een handeling te selecteren");
                 return;
             }
 
+            //kijken als er minstens 1 maand geselecteerd is
             if (_newbeheerselectedJan == false && _newbeheerselectedFeb == false && _newbeheerselectedMrt == false &&
                 _newbeheerselectedApr == false && _newbeheerselectedMei == false && _newbeheerselectedJun == false &&
                 _newbeheerselectedJul == false && _newbeheerselectedAug == false && _newbeheerselectedSept == false &&
@@ -583,10 +588,84 @@ namespace PlantenApplicatie.UI.ViewModel
                 return;
             }
 
-            var newBeheer=new BeheerMaand(){}
+            //Kijken als er een frequentie is ingevuld
+            if (_newbeheerFrequentie.Trim() == string.Empty)
+            {
+                MessageBox.Show("Gelieve een frequentie in te vullen");
+                return;
+            }
+            //kijken als de frequentie een getal is
+            try
+            {
+                int.Parse(_newbeheerFrequentie.Trim());
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Gelieve een getal in te vullen als frequentie");
+                return;
+            }
 
+            //Kijken als m2u is ingevuld
+            if (_newbeheerM2U.Trim() == string.Empty)
+            {
+                MessageBox.Show("Gelieve een aantal m²/u in te vullen");
+                return;
+            }
+            //Kijken als m2u een getal is
+            try
+            {
+                double.Parse(_newbeheerM2U.Trim());
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Gelieve een getal in te vullen als m²/u");
+                return;
+            }
 
+            //kijken als de omschrijving is ingevuld
+            if (_newbeheerOmschrijving.Trim() == string.Empty)
+            {
+                MessageBox.Show("Gelieve een omschrijving in te vullen");
+                return;
+            }
+
+            var handeling = _newbeheerselectedDaden.Beheerdaad;
+            var frequentie = _newbeheerFrequentie.Trim();
+            var m2U = _newbeheerM2U.Trim();
+            var omschrijving = _newbeheerOmschrijving.Trim();
+
+            //beheer koppelen aan plant
+            string result = _plantenDataService.AddBeheerToPlant(_plantId, handeling, omschrijving,
+                _newbeheerselectedJan, _newbeheerselectedFeb, _newbeheerselectedMrt,
+                _newbeheerselectedApr, _newbeheerselectedMei, _newbeheerselectedJun,
+                _newbeheerselectedJul, _newbeheerselectedAug, _newbeheerselectedSept,
+                _newbeheerselectedOkt, _newbeheerselectedNov, _newbeheerselectedDec, frequentie, m2U);
+
+            //fout of succes message weergeven
+            MessageBox.Show(result);
+            
+            ClearBeheerhandeling();
             ReloadEditBeheerdaden();
+        }
+        private void ClearBeheerhandeling()
+        {
+            //geselecteerde waarden terug op leeg zetten na het koppelen van de beheerbehandeling
+            NewBeheerSelectedDaden = null;
+            NewBeheerSelectedJan = false;
+            NewBeheerSelectedFeb = false;
+            NewBeheerSelectedMrt = false;
+            NewBeheerSelectedApr = false;
+            NewBeheerSelectedMei = false;
+            NewBeheerSelectedJun = false;
+            NewBeheerSelectedJul = false;
+            NewBeheerSelectedAug = false;
+            NewBeheerSelectedSept= false;
+            NewBeheerSelectedOkt = false;
+            NewBeheerSelectedNov = false;
+            NewBeheerSelectedDec = false;
+            NewBeheerFrequentie=string.Empty;
+            NewBeheerM2U = string.Empty;
+            NewBeheerOmschrijving = string.Empty;
         }
         private void EditBeheerWijzigingenOpslaan()
         {
@@ -1615,6 +1694,33 @@ namespace PlantenApplicatie.UI.ViewModel
             set
             {
                 _newbeheerselectedDec = value;
+                OnPropertyChanged();
+            }
+        }
+        public string NewBeheerOmschrijving
+        {
+            get { return _newbeheerOmschrijving; }
+            set
+            {
+                _newbeheerOmschrijving = value;
+                OnPropertyChanged();
+            }
+        }
+        public string NewBeheerFrequentie
+        {
+            get { return _newbeheerFrequentie; }
+            set
+            {
+                _newbeheerFrequentie = value;
+                OnPropertyChanged();
+            }
+        }
+        public string NewBeheerM2U
+        {
+            get { return _newbeheerM2U; }
+            set
+            {
+                _newbeheerM2U = value;
                 OnPropertyChanged();
             }
         }
