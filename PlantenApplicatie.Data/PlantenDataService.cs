@@ -171,6 +171,12 @@ namespace PlantenApplicatie.Data
 
         //Editwindow
 
+        public long GetNieuwPlantId()
+        {
+            var plantids = context.Plant.OrderByDescending(p => p.PlantId).ToList();
+            return plantids.First().PlantId+1;
+        }
+
         //Filters
         public TfgsvType GetFilterType(int? plantId)
         {
@@ -422,6 +428,50 @@ namespace PlantenApplicatie.Data
             context.SaveChanges();
             return result;
         }
+
+        public string AddBeheerToPlant(long plantId, string beheerdaad, string omschrijving, bool jan, bool feb,
+            bool mrt, bool apr, bool mei, bool jun, bool jul, bool aug, bool sept, bool okt, bool nov, bool dec,
+            string frequentie, string m2u)
+        {
+            string result = null;
+            foreach (var beheerMaand in context.BeheerMaand.Where(p => p.PlantId == plantId).ToList())
+            {
+                if (beheerMaand.Beheerdaad.ToLower().Trim()==beheerdaad.ToLower().Trim())
+                {
+                    result = "Waarde is al toegevoegd aan de plant";
+                    return result;
+                }
+            }
+
+            var idList = context.BeheerMaand.OrderByDescending(b => b.Id).ToList();
+            long newId = idList.First().Id + 1;
+
+            var beheermaand = new BeheerMaand()
+            {
+                Id = newId,
+                PlantId = plantId,
+                Beheerdaad = beheerdaad,
+                Omschrijving = omschrijving,
+                Jan = jan,
+                Feb = feb,
+                Mrt = mrt,
+                Apr = apr,
+                Mei = mei,
+                Jun = jun,
+                Jul = jul,
+                Aug = aug,
+                Sept = sept,
+                Okt = okt,
+                Nov = nov,
+                Dec = dec,
+                FrequentiePerJaar = int.Parse(frequentie)
+                //M2U = double.Parse(m2u)
+            };
+            result = "Beheermaand toegevoegd aan plant";
+            //context.SaveChanges();
+            return result;
+        }
+
         //Bestaande beheersbehandeling aanpassen
         public bool GetEditBeheerJan(long id)
         {
