@@ -25,6 +25,7 @@ namespace PlantenApplicatie.UI.ViewModel
     public class EditViewModel :ViewModelBase
     {//Senne & Hermes
         private PlantenDataService _plantenDataService;
+        private long _plantId;
 
         //Command voor opslaan
         public ICommand OpslaanCommand { get; set; }
@@ -295,9 +296,14 @@ namespace PlantenApplicatie.UI.ViewModel
             EditBeheerDaden = new ObservableCollection<BeheerDaden>();
         }
 
+        public void GetNieuwPlantId()
+        {
+
+        }
         public void FillDataFromPlant(Plant plant)
         {
             //Senne & Hermes
+            _plantId = plant.PlantId;
             //Filters
             FilterSelectedType = _filtertypes.FirstOrDefault(f =>
                 f.Planttypenaam == _plantenDataService.GetFilterType(plant.TypeId).Planttypenaam);
@@ -561,11 +567,35 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         private void NewBeheerHandelingToevoegen()
         {
+            var handeling = _newbeheerselectedDaden.Beheerdaad;
+            if (handeling==null)
+            {
+                MessageBox.Show("Gelieve een handeling te selecteren");
+                return;
+            }
+
+            if (_newbeheerselectedJan == false && _newbeheerselectedFeb == false && _newbeheerselectedMrt == false &&
+                _newbeheerselectedApr == false && _newbeheerselectedMei == false && _newbeheerselectedJun == false &&
+                _newbeheerselectedJul == false && _newbeheerselectedAug == false && _newbeheerselectedSept == false &&
+                _newbeheerselectedOkt == false && _newbeheerselectedNov == false && _newbeheerselectedDec == false)
+            {
+                MessageBox.Show("Gelieve minimum 1 maand te selecteren");
+                return;
+            }
+
+            var newBeheer=new BeheerMaand(){}
+
+
             ReloadEditBeheerdaden();
         }
         private void EditBeheerWijzigingenOpslaan()
         {
             ReloadEditBeheerdaden();
+        }
+
+        private void EditBeheerSelectionChanged()
+        {
+            //_editbeheerselectedDaden
         }
 
         public void InitializeAll()
@@ -1469,6 +1499,7 @@ namespace PlantenApplicatie.UI.ViewModel
             set
             {
                 _editbeheerselectedDaden = value;
+                EditBeheerSelectionChanged();
                 OnPropertyChanged();
             }
         }

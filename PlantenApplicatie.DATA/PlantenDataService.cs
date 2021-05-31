@@ -171,6 +171,12 @@ namespace PlantenApplicatie.Data
 
         //Editwindow
 
+        public long GetNieuwPlantId()
+        {
+            var plantids = context.Plant.OrderByDescending(p => p.PlantId).ToList();
+            return plantids.First().PlantId+1;
+        }
+
         //Filters
         public TfgsvType GetFilterType(int? plantId)
         {
