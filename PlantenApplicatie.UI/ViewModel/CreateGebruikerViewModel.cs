@@ -96,10 +96,10 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         private void closeAddGebruiker(Window window)
         {
-            MainWindow main = new MainWindow();
+            GebruikersBeheer beheer= new GebruikersBeheer();
               
                 window.Close();
-            main.ShowDialog();
+            beheer.ShowDialog();
             
         }
         //hemen & maarten 
