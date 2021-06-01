@@ -8,7 +8,7 @@ using PlantenApplicatie.Data;
 using PlantenApplicatie.Domain.Models;
 
 namespace PlantenApplicatie.Data
-{
+{ 
     //Data Access Object / DAO in singleton
     public class PlantenDataService
     {
@@ -480,7 +480,7 @@ namespace PlantenApplicatie.Data
             dbBeheerMaand.Dec = dec;
             dbBeheerMaand.Omschrijving = omschrijving;
             dbBeheerMaand.FrequentiePerJaar = int.Parse(frequentie);
-            dbBeheerMaand.M2u=double.Parse(m2u);
+            //dbBeheerMaand.M2U=m2u;
 
             //context.SaveChanges();
         }
@@ -519,8 +519,8 @@ namespace PlantenApplicatie.Data
                 Okt = okt,
                 Nov = nov,
                 Dec = dec,
-                FrequentiePerJaar = int.Parse(frequentie),
-                M2u = double.Parse(m2u)
+                FrequentiePerJaar = int.Parse(frequentie)
+                //M2U = double.Parse(m2u)
             };
             result = "Beheermaand toegevoegd aan plant";
             //context.SaveChanges();
