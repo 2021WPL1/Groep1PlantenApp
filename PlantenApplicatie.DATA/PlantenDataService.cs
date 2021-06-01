@@ -482,7 +482,7 @@ namespace PlantenApplicatie.Data
             dbBeheerMaand.FrequentiePerJaar = int.Parse(frequentie);
             dbBeheerMaand.M2u=double.Parse(m2u);
 
-            //context.SaveChanges();
+            context.SaveChanges();
         }
 
         public string AddBeheerToPlant(long plantId, string beheerdaad, string omschrijving, bool jan, bool feb,
@@ -522,8 +522,9 @@ namespace PlantenApplicatie.Data
                 FrequentiePerJaar = int.Parse(frequentie),
                 M2u = double.Parse(m2u)
             };
+            context.BeheerMaand.Add(beheermaand);
+            context.SaveChanges();
             result = "Beheermaand toegevoegd aan plant";
-            //context.SaveChanges();
             return result;
         }
 
