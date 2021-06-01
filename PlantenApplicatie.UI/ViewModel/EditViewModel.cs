@@ -820,7 +820,7 @@ namespace PlantenApplicatie.UI.ViewModel
             EditBeheerSelectedNov =  (bool) _editbeheerselectedDaden.Nov;
             EditBeheerSelectedDec = (bool)_editbeheerselectedDaden.Dec;
             EditBeheerFrequentie = _editbeheerselectedDaden.FrequentiePerJaar.ToString();
-            //EditBeheerM2U = _editbeheerselectedDaden.M2U.ToString();
+            EditBeheerM2U = _editbeheerselectedDaden.M2u.ToString();
             EditBeheerOmschrijving = _editbeheerselectedDaden.Omschrijving;
         }
 
