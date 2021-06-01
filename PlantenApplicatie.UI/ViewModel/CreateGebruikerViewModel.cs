@@ -25,6 +25,10 @@ namespace PlantenApplicatie.UI.ViewModel
         private string wachtwoordBevestigen;
         private Rol _selectedRol;
         private string _error;
+        private string _voornaam;
+        private string _achternaam;
+        private string _vivesnr;
+
 
         //Hemen &maarten 
         public CreateGebruikerViewModel(PlantenDataService plantenDataService)
@@ -48,6 +52,42 @@ namespace PlantenApplicatie.UI.ViewModel
             set
             {
                 _selectedRol = value;
+                OnPropertyChanged();
+            }
+        }
+        public string VoorNaamInput
+        {
+            get
+            {
+                return _voornaam;
+            }
+            set
+            {
+                _voornaam = value;
+                OnPropertyChanged();
+            }
+        }
+        public string AchterNaamInput
+        {
+            get
+            {
+                return _achternaam;
+            }
+            set
+            {
+                _achternaam = value;
+                OnPropertyChanged();
+            }
+        }
+        public string VivesNrInput
+        {
+            get
+            {
+                return _vivesnr;
+            }
+            set
+            {
+                _vivesnr = value;
                 OnPropertyChanged();
             }
         }
@@ -96,23 +136,33 @@ namespace PlantenApplicatie.UI.ViewModel
         {
             try
             {
-                if (EmailInput.Contains("vives.be")&&EmailInput.Contains("@"))
+                if (EmailInput.Contains("vives.be") && EmailInput.Contains("@") && VoorNaamInput != null && AchterNaamInput !=null && VivesNrInput !=null)
                 {
-                    if (WachtwoordBevestigen == WachtwoordInput)
+                    var gebruiker = _dataservice.getGebruikerViaEmail(EmailInput);
+                    if (gebruiker == null)
                     {
-                        using (var sha256 = SHA256.Create())
-                        {   
-                            MainWindow window = new MainWindow();
-                            var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(WachtwoordInput));
-                            _dataservice.addGebruiker(SelectedRol.Omschrijving, EmailInput, hashedBytes);
-                            closeWindow.Close();
-                            window.ShowDialog();
+                        if (WachtwoordBevestigen == WachtwoordInput)
+                        {
+                            using (var sha256 = SHA256.Create())
+                            {
+                                MainWindow window = new MainWindow();
+                                var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(WachtwoordInput));
+                                _dataservice.addGebruiker(SelectedRol.Omschrijving, EmailInput, hashedBytes,VivesNrInput,VoorNaamInput,AchterNaamInput);
+                                closeWindow.Close();
+                                window.ShowDialog();
+                            }
+                        }
+                        else
+                        {
+                            SelectedError = "wachtwoord is niet hetzelfde";
                         }
                     }
                     else
                     {
-                        SelectedError = "wachtwoord is niet hetzelfde";
+                        SelectedError = "Het emailadres bestaat al";
                     }
+
+
                 }
                 else
                 {
@@ -121,6 +171,8 @@ namespace PlantenApplicatie.UI.ViewModel
             }
             catch (Exception)
             {
+
+
 
                 SelectedError = "oei, er is iets fout";
             }

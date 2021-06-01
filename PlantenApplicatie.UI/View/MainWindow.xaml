@@ -48,7 +48,9 @@
                     </Label.Background>
                 </Label>
                 <Border BorderThickness="5" BorderBrush="Black" Margin="1,4,-1,-4">
-                    <Button Content="Uitloggen" Margin="325,5,5,618" BorderBrush="Black" BorderThickness="2" Command="{Binding CloseMainWindowCommand, Mode=OneWay}" CommandParameter="{Binding ElementName=Mainwindow}">
+                    <Button x:Name="AddGebruiker" 
+                        Command="{Binding schermGebruikerToevoegenCommand}" CommandParameter="{Binding ElementName=window}"
+                        Margin="5,5,323,616" BorderBrush="Black" BorderThickness="2" Content="Gebruiker toevoegen" >
                         <Button.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="White" Offset="0"/>
