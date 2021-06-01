@@ -19,6 +19,7 @@
         public bool? Nov { get; set; }
         public bool? Dec { get; set; }
         public int? FrequentiePerJaar { get; set; }
+        public double? M2u { get; set; }
 
         public virtual Plant Plant { get; set; }
     }

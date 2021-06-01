@@ -1,7 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-using PlantenApplicatie.Data;
+﻿using Microsoft.EntityFrameworkCore;
 using PlantenApplicatie.Domain.Models;
 
 namespace PlantenApplicatie.Data
@@ -233,6 +230,8 @@ namespace PlantenApplicatie.Data
                 entity.Property(e => e.Jul).HasColumnName("jul");
 
                 entity.Property(e => e.Jun).HasColumnName("jun");
+
+                entity.Property(e => e.M2u).HasColumnName("M2U");
 
                 entity.Property(e => e.Mei).HasColumnName("mei");
 
