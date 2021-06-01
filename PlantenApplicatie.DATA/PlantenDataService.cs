@@ -459,32 +459,7 @@ namespace PlantenApplicatie.Data
             return result;
         }
 
-        public void EditBeheerFromPlant(long plantId, string beheerdaad, string omschrijving, bool jan, bool feb,
-            bool mrt, bool apr, bool mei, bool jun, bool jul, bool aug, bool sept, bool okt, bool nov, bool dec,
-            string frequentie, string m2u)
-        {
-            var allBeheerDadenFromPlant = GetBeheerDadenFromPlant(plantId);
-            var dbBeheerMaand = allBeheerDadenFromPlant.FirstOrDefault(b => b.Beheerdaad == beheerdaad);
-
-            dbBeheerMaand.Jan = jan;
-            dbBeheerMaand.Feb = feb;
-            dbBeheerMaand.Mrt = mrt;
-            dbBeheerMaand.Apr = apr;
-            dbBeheerMaand.Mei = mei;
-            dbBeheerMaand.Jun = jun;
-            dbBeheerMaand.Jul = jul;
-            dbBeheerMaand.Aug = aug;
-            dbBeheerMaand.Sept = sept;
-            dbBeheerMaand.Okt = okt;
-            dbBeheerMaand.Nov = nov;
-            dbBeheerMaand.Dec = dec;
-            dbBeheerMaand.Omschrijving = omschrijving;
-            dbBeheerMaand.FrequentiePerJaar = int.Parse(frequentie);
-            dbBeheerMaand.M2u=double.Parse(m2u);
-
-            context.SaveChanges();
-        }
-
+        
         public string AddBeheerToPlant(long plantId, string beheerdaad, string omschrijving, bool jan, bool feb,
             bool mrt, bool apr, bool mei, bool jun, bool jul, bool aug, bool sept, bool okt, bool nov, bool dec,
             string frequentie, string m2u)
@@ -503,7 +478,6 @@ namespace PlantenApplicatie.Data
 
             var beheermaand = new BeheerMaand()
             {
-                Id = newId,
                 PlantId = plantId,
                 Beheerdaad = beheerdaad,
                 Omschrijving = omschrijving,
@@ -578,7 +552,37 @@ namespace PlantenApplicatie.Data
         {
             return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Dec;
         }
+        public void EditBeheerFromPlant(long plantId, string beheerdaad, string omschrijving, bool jan, bool feb,
+            bool mrt, bool apr, bool mei, bool jun, bool jul, bool aug, bool sept, bool okt, bool nov, bool dec,
+            string frequentie, string m2u)
+        {
+            var allBeheerDadenFromPlant = GetBeheerDadenFromPlant(plantId);
+            var dbBeheerMaand = allBeheerDadenFromPlant.FirstOrDefault(b => b.Beheerdaad == beheerdaad);
 
+            dbBeheerMaand.Jan = jan;
+            dbBeheerMaand.Feb = feb;
+            dbBeheerMaand.Mrt = mrt;
+            dbBeheerMaand.Apr = apr;
+            dbBeheerMaand.Mei = mei;
+            dbBeheerMaand.Jun = jun;
+            dbBeheerMaand.Jul = jul;
+            dbBeheerMaand.Aug = aug;
+            dbBeheerMaand.Sept = sept;
+            dbBeheerMaand.Okt = okt;
+            dbBeheerMaand.Nov = nov;
+            dbBeheerMaand.Dec = dec;
+            dbBeheerMaand.Omschrijving = omschrijving;
+            dbBeheerMaand.FrequentiePerJaar = int.Parse(frequentie);
+            dbBeheerMaand.M2u = double.Parse(m2u);
+
+            context.SaveChanges();
+        }
+
+        public void DeleteBeheerFromPlant(BeheerMaand beheerMaand)
+        {
+            context.BeheerMaand.Remove(beheerMaand);
+            context.SaveChanges();
+        }
 
         //Hemen &Maarten 
         public Gebruiker addGebruiker(string rol, string email, byte[] HashPaswoord,string voornaam , string achternaam, string vivesnr)

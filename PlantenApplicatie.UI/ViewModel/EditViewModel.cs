@@ -41,6 +41,7 @@ namespace PlantenApplicatie.UI.ViewModel
         public ICommand NewBeheerToevoegenCommand { get; set; }
         public ICommand NewBeheerHandelToevoegenCommand { get; set; }
         public ICommand EditBeheerWijzigingenOpslaanCommand { get; set; }
+        public ICommand EditBeheerVerwijderenCommand { get; set; }
 
         //Observable collections voor de binding
         //Filters
@@ -261,6 +262,7 @@ namespace PlantenApplicatie.UI.ViewModel
             NewBeheerToevoegenCommand = new DelegateCommand(NewBeheerToevoegen);
             NewBeheerHandelToevoegenCommand = new DelegateCommand(NewBeheerHandelingToevoegen);
             EditBeheerWijzigingenOpslaanCommand = new DelegateCommand(EditBeheerWijzigingenOpslaan);
+            EditBeheerVerwijderenCommand = new DelegateCommand(EditBeheerVerwijderen);
 
             //Filters
             FilterTfgsvTypes = new ObservableCollection<TfgsvType>();
@@ -800,6 +802,18 @@ namespace PlantenApplicatie.UI.ViewModel
             EditBeheerOmschrijving = string.Empty;
         }
 
+        private void EditBeheerVerwijderen()
+        {
+            if (_editbeheerselectedDaden==null)
+            {
+                MessageBox.Show("Gelieve een handeling te selecteren");
+                return;
+            }
+
+            _plantenDataService.DeleteBeheerFromPlant(_editbeheerselectedDaden);
+            ReloadEditBeheerdaden();
+        }
+
         private void EditBeheerSelectionChanged()
         {
             if (_editbeheerselectedDaden==null)
@@ -1125,6 +1139,7 @@ namespace PlantenApplicatie.UI.ViewModel
         public void ReloadEditBeheerdaden()
         {
             EditBeheerDaden.Clear();
+            _editbeheerDaden = _plantenDataService.GetBeheerDadenFromPlant(_plantId);
             foreach (var beheerDaden in _editbeheerDaden)
             {
                 EditBeheerDaden.Add(beheerDaden);
