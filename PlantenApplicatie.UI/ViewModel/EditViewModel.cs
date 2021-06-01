@@ -335,7 +335,7 @@ namespace PlantenApplicatie.UI.ViewModel
                         .Variantnaam);
             }
 
-            PlantdichtheidMin = _plantenDataService.GetPlantdichtheid(plant.PlantId);
+            //PlantdichtheidMin = _plantenDataService.GetPlantdichtheid(plant.PlantId);
 
             //Fenotype
             FenoSelectedBloeiwijze =
