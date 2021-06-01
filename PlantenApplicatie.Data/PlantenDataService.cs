@@ -223,6 +223,22 @@ namespace PlantenApplicatie.Data
         {
             return context.TfgsvVariant.FirstOrDefault(p => p.VariantId == plantId);
         }
+
+        public void GetPlantdichtheid(long plantId,string min, string max)
+        {
+            var plant = context.Plant.Where(p => p.PlantId == plantId);
+
+            var _min = plant.Where(m => m.PlantdichtheidMin == short.Parse(min));
+
+            var _max = plant.Where(M => M.PlantdichtheidMax == short.Parse(max));
+        }
+
+        public void GetPlantdichtheidMin(long plantId, string min)
+        {
+            var plant = context.Plant.Where(p => p.PlantId == plantId);
+            
+            var plantdichtheidMin = plant.Where(m => m.PlantdichtheidMin == short.Parse(min));
+        }
         //Fenotype
         public string GetFenoMaxBladHoogte(long id)
         {

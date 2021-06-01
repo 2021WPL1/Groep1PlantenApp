@@ -1041,6 +1041,25 @@
             <Label x:Name="lblNieuwGeslacht" Content="Nieuw Geslacht" HorizontalAlignment="Left" Margin="14,266,0,0" VerticalAlignment="Top"/>
             <Label x:Name="lblNieuweSoort" Content="Nieuwe Soort" HorizontalAlignment="Left" Margin="22,356,0,0" VerticalAlignment="Top"/>
             <Label x:Name="lblNieuweVariant" Content="Nieuwe Variant" HorizontalAlignment="Left" Margin="22,446,0,0" VerticalAlignment="Top"/>
+            <Label Content="Plantdichtheid Min" HorizontalAlignment="Left" Margin="14,504,0,0" VerticalAlignment="Top"/>
+            <Label Content="Plantdichtheid Max" HorizontalAlignment="Left" Margin="14,535,0,0" VerticalAlignment="Top"/>
+            <TextBox 
+                Text="{Binding PlantdichtheidMin, Mode=TwoWay}"
+                x:Name="txtBoxPlantdichtheidMin" 
+                HorizontalAlignment="Left" 
+                Margin="139,508,0,0" 
+                TextWrapping="Wrap" 
+                VerticalAlignment="Top" 
+                Width="41"
+                RenderTransformOrigin="0.097,1.277"/>
+            <TextBox 
+                Text="{Binding PlantdichtheidMax, Mode=TwoWay}"
+                x:Name="txtBoxPlantdichtheidMax" 
+                HorizontalAlignment="Left"
+                Margin="139,539,0,0"
+                TextWrapping="Wrap"
+                VerticalAlignment="Top"
+                Width="41"/>
         </Grid>
     </Viewbox>
 </Window>

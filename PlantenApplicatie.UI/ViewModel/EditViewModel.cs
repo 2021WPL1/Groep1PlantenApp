@@ -50,6 +50,7 @@ namespace PlantenApplicatie.UI.ViewModel
         public ObservableCollection<TfgsvGeslacht> FilterTfgsvGeslacht { get; set; }
         public ObservableCollection<TfgsvSoort> FilterTfgsvSoort { get; set; }
         public ObservableCollection<TfgsvVariant> FilterTfgsvVariant { get; set; }
+
         //Fenotype
         public ObservableCollection<FenoBloeiwijze> FenoBloeiwijze { get; set; }
         public ObservableCollection<FenoHabitus> FenoHabitus { get; set; }
@@ -164,6 +165,8 @@ namespace PlantenApplicatie.UI.ViewModel
         private string _filterNewSoort;
         private string _filterNewVariant;
 
+        private string _plantdichtheidMin;
+        private string _plantdichtheidMax;
         //Fenotype
         private FenoBloeiwijze _fenoselectedBloeiwijze;
         private ImageSource _fenoselectedBloeiwijzeImage;
@@ -331,6 +334,9 @@ namespace PlantenApplicatie.UI.ViewModel
                     f.Variantnaam == _plantenDataService.GetFilterVariant(plant.VariantId)
                         .Variantnaam);
             }
+
+            PlantdichtheidMin = _plantenDataService.GetPlantdichtheid(plant.PlantId);
+
             //Fenotype
             FenoSelectedBloeiwijze =
                 _fenoBloeiwijze.FirstOrDefault(f =>
@@ -1373,6 +1379,25 @@ namespace PlantenApplicatie.UI.ViewModel
                     FilterSelectedVariant = null;
                 }
                 _filterNewVariant = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string PlantdichtheidMin
+        {
+            get { return _plantdichtheidMin; }
+            set 
+            {
+                _plantdichtheidMin = value;
+                OnPropertyChanged();
+            }
+        }
+        public string PlantdichtheidMax
+        {
+            get { return _plantdichtheidMax; }
+            set
+            {
+                _plantdichtheidMax = value;
                 OnPropertyChanged();
             }
         }
