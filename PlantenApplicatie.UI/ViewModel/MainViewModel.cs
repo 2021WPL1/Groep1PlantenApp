@@ -17,6 +17,7 @@ namespace PlantenApplicatie.UI.ViewModel
     public class MainViewModel : ViewModelBase
     {
         public RelayCommand<Window> schermGebruikerToevoegenCommand { get; set; }
+        public RelayCommand<Window> CloseMainWindowCommand { get; set; }
         //ICommand om zoekresultaat leeg te maken
         public ICommand ClearResultCommand { get; set; }
         //Senne, Hermes
@@ -92,7 +93,15 @@ namespace PlantenApplicatie.UI.ViewModel
 
             //Hemen en Maarten
             schermGebruikerToevoegenCommand = new RelayCommand<Window>(this.SchermGebruikerToevoegenCommand);
+            CloseMainWindowCommand = new RelayCommand<Window>(this.CloseMainWindow);
             this._plantenDataService = plantenDataService;
+        }
+
+        private void CloseMainWindow(Window window)
+        {
+            LoginScherm loginscherm = new LoginScherm();
+            window.Close();
+            loginscherm.ShowDialog();
         }
 
         private void CreatePlant()
@@ -512,9 +521,6 @@ namespace PlantenApplicatie.UI.ViewModel
             window.Close();
             createGebruiker.ShowDialog();
         }
-        public void changevisibilityDependingOnRol()
-        {
-            
-        }
+        
     }
 }

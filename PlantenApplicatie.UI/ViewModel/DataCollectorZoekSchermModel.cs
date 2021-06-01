@@ -15,7 +15,7 @@ namespace PlantenApplicatie.UI.ViewModel
 {
     public class DataCollectorZoekSchermModel : ViewModelBase
     {
-        public RelayCommand<Window> schermGebruikerToevoegenCommand { get; set; }
+        public RelayCommand<Window> CloseDataCollectorSchermCommand { get; set; }
         //ICommand om zoekresultaat leeg te maken
         public ICommand ClearResultCommand { get; set; }
 
@@ -70,6 +70,7 @@ namespace PlantenApplicatie.UI.ViewModel
 
         public DataCollectorZoekSchermModel(PlantenDataService plantenDataService)
         {//DAO
+            CloseDataCollectorSchermCommand = new RelayCommand<Window>(this.CloseDataCollectorScherm);
             //Senne, Hermes
             ZoekViaNaamCommand = new DelegateCommand(ZoekViaNaam);
             CreatePlantCommand = new DelegateCommand(CreatePlant);
@@ -89,6 +90,13 @@ namespace PlantenApplicatie.UI.ViewModel
 
             //Hemen en Maarten
             this._plantenDataService = plantenDataService;
+        }
+
+        private void CloseDataCollectorScherm(Window window)
+        {
+            LoginScherm loginscherm = new LoginScherm();
+            window.Close();
+            loginscherm.ShowDialog();
         }
 
         private void CreatePlant()
