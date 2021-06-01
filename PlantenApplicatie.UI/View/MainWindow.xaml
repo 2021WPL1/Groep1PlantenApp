@@ -28,6 +28,16 @@
                 </Label>
                 <Label Content="*Dubbelklik de plant voor meer info*" Margin="266,328,0,0" VerticalAlignment="Top" Foreground="#FFFF0C0C" FontSize="10"/>
                 <Border BorderThickness="5" BorderBrush="Black" Margin="1,4,-1,-4">
+                    <Button Content="Uitloggen" Margin="325,5,5,618" BorderBrush="Black" BorderThickness="2" Command="{Binding CloseMainWindowCommand, Mode=OneWay}" CommandParameter="{Binding ElementName=Mainwindow}">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White" Offset="0"/>
+                                <GradientStop Color="#FFC7FF00" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                </Border>
+                <Border BorderThickness="5" BorderBrush="Black" Margin="1,4,-1,-4">
                     <Button x:Name="AddGebruiker"
                         Command="{Binding schermGebruikerToevoegenCommand}" CommandParameter="{Binding ElementName=Mainwindow}"
                         Margin="5,5,318,616" BorderBrush="Black" BorderThickness="2" Content="Nieuwe gebruiker" >
@@ -47,18 +57,6 @@
                         </LinearGradientBrush>
                     </Label.Background>
                 </Label>
-                <Border BorderThickness="5" BorderBrush="Black" Margin="1,4,-1,-4">
-                    <Button x:Name="AddGebruiker" 
-                        Command="{Binding schermGebruikerToevoegenCommand}" CommandParameter="{Binding ElementName=window}"
-                        Margin="5,5,323,616" BorderBrush="Black" BorderThickness="2" Content="Gebruiker toevoegen" >
-                        <Button.Background>
-                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="White" Offset="0"/>
-                                <GradientStop Color="#FFC7FF00" Offset="1"/>
-                            </LinearGradientBrush>
-                        </Button.Background>
-                    </Button>
-                </Border>
                 <Label Content="Zoekscherm" HorizontalAlignment="Center" Margin="2,9,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Normal" FontFamily="Algerian" FontStyle="Normal" FontStretch="Expanded" BorderBrush="Black" BorderThickness="0">
                     <Label.Background>
                         <RadialGradientBrush>
