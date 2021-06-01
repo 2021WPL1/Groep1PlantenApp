@@ -8,7 +8,7 @@ using PlantenApplicatie.Data;
 using PlantenApplicatie.Domain.Models;
 
 namespace PlantenApplicatie.Data
-{
+{ 
     //Data Access Object / DAO in singleton
     public class PlantenDataService
     {
