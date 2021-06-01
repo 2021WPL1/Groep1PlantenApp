@@ -405,8 +405,18 @@ namespace PlantenApplicatie.Data
         {
             return context.BeheerDaden.OrderBy(b => b.Beheerdaad).ToList();
         }
-        public List<BeheerMaand> GetBeheerFromPlant(long id)
+        public List<BeheerMaand> GetBeheerDadenFromPlant(long id)
         {
+            //var beheerMaandFromPlant= context.BeheerMaand.Where(b => b.PlantId == id).ToList();
+            //var allBeheerdaden = GetAllBeheerDaden();
+            //List<BeheerDaden> beheerDaden = new List<BeheerDaden>();
+            //foreach (var maand in beheerMaandFromPlant)
+            //{
+            //    beheerDaden.Add(allBeheerdaden.FirstOrDefault(b=>b.Beheerdaad==maand.Beheerdaad));
+            //}
+
+            //return beheerDaden;
+
             return context.BeheerMaand.Where(b => b.PlantId == id).ToList();
         }
 
@@ -427,11 +437,37 @@ namespace PlantenApplicatie.Data
             return result;
         }
 
+        public void EditBeheerFromPlant(long plantId, string beheerdaad, string omschrijving, bool jan, bool feb,
+            bool mrt, bool apr, bool mei, bool jun, bool jul, bool aug, bool sept, bool okt, bool nov, bool dec,
+            string frequentie, string m2u)
+        {
+            var allBeheerDadenFromPlant = GetBeheerDadenFromPlant(plantId);
+            var dbBeheerMaand = allBeheerDadenFromPlant.FirstOrDefault(b => b.Beheerdaad == beheerdaad);
+
+            dbBeheerMaand.Jan=jan;
+            dbBeheerMaand.Feb=feb;
+            dbBeheerMaand.Mrt=mrt;
+            dbBeheerMaand.Apr=apr;
+            dbBeheerMaand.Mei=mei;
+            dbBeheerMaand.Jun=jun;
+            dbBeheerMaand.Jul=jul;
+            dbBeheerMaand.Aug=aug;
+            dbBeheerMaand.Sept=sept;
+            dbBeheerMaand.Okt=okt;
+            dbBeheerMaand.Nov=nov;
+            dbBeheerMaand.Dec=dec;
+            dbBeheerMaand.Omschrijving=omschrijving;
+            dbBeheerMaand.FrequentiePerJaar=int.Parse(frequentie);
+            //dbBeheerMaand.M2U=m2u;
+
+            //context.SaveChanges();
+        }
+
         public string AddBeheerToPlant(long plantId, string beheerdaad, string omschrijving, bool jan, bool feb,
             bool mrt, bool apr, bool mei, bool jun, bool jul, bool aug, bool sept, bool okt, bool nov, bool dec,
             string frequentie, string m2u)
         {
-            string result = null;
+            string result;
             foreach (var beheerMaand in context.BeheerMaand.Where(p => p.PlantId == plantId).ToList())
             {
                 if (beheerMaand.Beheerdaad.ToLower().Trim()==beheerdaad.ToLower().Trim())
