@@ -173,8 +173,7 @@ namespace PlantenApplicatie.Data
 
         public long GetNieuwPlantId()
         {
-            var plantids = context.Plant.OrderByDescending(p => p.PlantId).ToList();
-            return plantids.First().PlantId+1;
+            return context.Plant.Max(p => p.PlantId)+1;
         }
 
         //Filters
@@ -422,8 +421,7 @@ namespace PlantenApplicatie.Data
                     return result;
                 }
             }
-            var idlist = context.BeheerDaden.OrderByDescending(b => b.Id).ToList();
-            int newId = idlist.First().Id+1;
+            int newId = context.BeheerDaden.Max(b => b.Id) + 1;
             context.BeheerDaden.Add(new BeheerDaden() {Id = newId,Beheerdaad = beheerdaad});
             context.SaveChanges();
             return result;
@@ -443,8 +441,7 @@ namespace PlantenApplicatie.Data
                 }
             }
 
-            var idList = context.BeheerMaand.OrderByDescending(b => b.Id).ToList();
-            long newId = idList.First().Id + 1;
+            long newId = context.BeheerMaand.Max(b=>b.Id) + 1;
 
             var beheermaand = new BeheerMaand()
             {
