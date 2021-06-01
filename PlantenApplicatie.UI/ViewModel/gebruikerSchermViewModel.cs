@@ -16,6 +16,7 @@ namespace PlantenApplicatie.UI.ViewModel
 {
     public class gebruikerSchermViewModel : ViewModelBase
     {
+        public RelayCommand<Window> CloseGebruikerSchermCommand { get; set; }
         //ICommand om zoekresultaat leeg te maken
         public ICommand ClearResultCommand { get; set; }
 
@@ -86,11 +87,18 @@ namespace PlantenApplicatie.UI.ViewModel
             TfgsvVariant = new ObservableCollection<TfgsvVariant>();
             PlantResults = new ObservableCollection<Plant>();
 
+            CloseGebruikerSchermCommand = new RelayCommand<Window>(this.CloseGebruikerScherm);
+
             //Hemen en Maarten
             this._plantenDataService = plantenDataService;
         }
 
-       
+        private void CloseGebruikerScherm(Window window)
+        {
+            LoginScherm loginScherm = new LoginScherm();
+            window.Close();
+            loginScherm.ShowDialog();
+        }
 
         public Plant SelectedPlant
         {
