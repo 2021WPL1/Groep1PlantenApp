@@ -426,5 +426,17 @@ namespace PlantenApplicatie.Data
         {
             return context.CommensalismeMulti.Where(p => p.PlantId == plantId).ToList();
         }
+        //Hemen & Maarten
+        public List<Gebruiker> GetAllUsers()
+        {
+            return context.Gebruiker.ToList();
+        }
+        public Gebruiker verwijderGebruiker(string email)
+        {
+            var gebruiker = getGebruikerViaEmail(email);
+            context.Gebruiker.Remove(gebruiker);
+            context.SaveChanges();
+            return gebruiker;
+        }
     }
 }

@@ -22,7 +22,7 @@
                 <Border BorderThickness="5" BorderBrush="Black" Margin="1,4,-1,-4">
                     <Button x:Name="AddGebruiker" 
                         Command="{Binding schermGebruikerToevoegenCommand}" CommandParameter="{Binding ElementName=window}"
-                        Margin="5,5,318,616" BorderBrush="Black" BorderThickness="2" Content="Nieuwe Gebruiker" >
+                        Margin="5,5,304,596" BorderBrush="Black" BorderThickness="2" Content="Nieuwe Gebruiker" FontSize="14" >
                         <Button.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="White"/>
@@ -31,7 +31,7 @@
                         </Button.Background>
                     </Button>
                 </Border>
-                <Label Content="Zoekscherm" HorizontalAlignment="Center" Margin="2,9,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Normal" FontFamily="Algerian" FontStyle="Normal" FontStretch="Expanded" BorderBrush="Black" BorderThickness="0">
+                <Label Content="Zoekscherm" HorizontalAlignment="Center" Margin="0,16,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Normal" FontFamily="Algerian" FontStyle="Normal" FontStretch="Expanded" BorderBrush="Black" BorderThickness="0">
                     <Label.Background>
                         <RadialGradientBrush>
                             <GradientStop Color="#FFC7FF00" Offset="0.253"/>
@@ -43,7 +43,7 @@
                 </Label>
                 <Button x:Name="AdddGebruiker" 
                         Command="{Binding CloseGebruikersBeheerCommand}" CommandParameter="{Binding ElementName=window}"
-                        Margin="323,14,10,617" BorderBrush="Black" BorderThickness="2" Content="Terug" >
+                        Margin="305,15,10,597" BorderBrush="Black" BorderThickness="2" Content="Terug" FontSize="20" >
                     <Button.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="White"/>
@@ -51,8 +51,19 @@
                         </LinearGradientBrush>
                     </Button.Background>
                 </Button>
-
+                <ListBox Margin="1,62,-1,73" BorderBrush="Black"  BorderThickness="5" ItemsSource="{Binding Users}" DisplayMemberPath="Emailadres" SelectedItem="{Binding SelectedGebruiker, Mode=TwoWay}"></ListBox>
+                <Button x:Name="Verwijder" 
+            Command="{Binding GebruikerVerwijderenCommand}" CommandParameter="{Binding ElementName=window}"
+            Margin="157,597,157,10" BorderBrush="Black" BorderThickness="2" Content="verwijder" FontSize="14" >
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="White"/>
+                            <GradientStop Color="#FFC7FF00" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
             </Grid>
         </Viewbox>
+        
     </Grid>
 </Window>

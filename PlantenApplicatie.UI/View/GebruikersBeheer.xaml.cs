@@ -24,7 +24,9 @@ namespace PlantenApplicatie.UI.View
         {
             viewModel = new GebruikersBeheerViewModel(PlantenDataService.Instance());
             DataContext = viewModel;
+            viewModel.ShowAllUser();
             InitializeComponent();
+            
         }
     }
 }

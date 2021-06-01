@@ -15,7 +15,7 @@ using System.Windows.Input;
 namespace PlantenApplicatie.UI.ViewModel
 {
     //Maarten & Hemen 
-    class CreateGebruikerViewModel : ViewModelBase
+    public class CreateGebruikerViewModel : ViewModelBase
     {
         public RelayCommand<Window> addGebruikerCommand { get; set; }
         public RelayCommand<Window> closeAddGebruikerCommand { get; set; }
@@ -112,12 +112,12 @@ namespace PlantenApplicatie.UI.ViewModel
                     if (WachtwoordBevestigen == WachtwoordInput)
                     {
                         using (var sha256 = SHA256.Create())
-                        {   
-                            MainWindow window = new MainWindow();
+                        {
+                            GebruikersBeheer beheer = new GebruikersBeheer();
                             var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(WachtwoordInput));
                             _dataservice.addGebruiker(SelectedRol.Omschrijving, EmailInput, hashedBytes);
                             closeWindow.Close();
-                            window.ShowDialog();
+                            beheer.ShowDialog();
                         }
                     }
                     else
