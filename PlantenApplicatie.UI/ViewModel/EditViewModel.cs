@@ -612,7 +612,7 @@ namespace PlantenApplicatie.UI.ViewModel
             }
             catch (Exception e)
             {
-                MessageBox.Show("Gelieve een getal in te vullen als frequentie");
+                MessageBox.Show("Gelieve een natuurlijk getal in te vullen als frequentie");
                 return;
             }
 
