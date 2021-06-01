@@ -589,11 +589,17 @@ namespace PlantenApplicatie.UI.ViewModel
             }
 
             //Kijken als er een frequentie is ingevuld
+            if (_newbeheerFrequentie == null)
+            {
+                MessageBox.Show("Gelieve een frequentie in te vullen");
+                return;
+            }
             if (_newbeheerFrequentie.Trim() == string.Empty)
             {
                 MessageBox.Show("Gelieve een frequentie in te vullen");
                 return;
             }
+
             //kijken als de frequentie een getal is
             try
             {
@@ -606,11 +612,17 @@ namespace PlantenApplicatie.UI.ViewModel
             }
 
             //Kijken als m2u is ingevuld
+            if (_newbeheerM2U == null)
+            {
+                MessageBox.Show("Gelieve een aantal m²/u in te vullen");
+                return;
+            }
             if (_newbeheerM2U.Trim() == string.Empty)
             {
                 MessageBox.Show("Gelieve een aantal m²/u in te vullen");
                 return;
             }
+
             //Kijken als m2u een getal is
             try
             {
@@ -623,6 +635,11 @@ namespace PlantenApplicatie.UI.ViewModel
             }
 
             //kijken als de omschrijving is ingevuld
+            if (_newbeheerOmschrijving == null)
+            {
+                MessageBox.Show("Gelieve een omschrijving in te vullen");
+                return;
+            }
             if (_newbeheerOmschrijving.Trim() == string.Empty)
             {
                 MessageBox.Show("Gelieve een omschrijving in te vullen");
