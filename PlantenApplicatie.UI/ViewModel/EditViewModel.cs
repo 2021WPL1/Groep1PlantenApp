@@ -653,7 +653,7 @@ namespace PlantenApplicatie.UI.ViewModel
 
             var handeling = _newbeheerselectedDaden.Beheerdaad;
             var frequentie = _newbeheerFrequentie.Trim();
-            var m2U = _newbeheerM2U.Trim();
+            var m2U = _newbeheerM2U.Trim().Replace('.',',');
             var omschrijving = _newbeheerOmschrijving.Trim();
 
             //beheer koppelen aan plant
