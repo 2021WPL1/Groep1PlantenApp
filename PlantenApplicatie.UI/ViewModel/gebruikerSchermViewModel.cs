@@ -23,7 +23,6 @@ namespace PlantenApplicatie.UI.ViewModel
         public ICommand ZoekViaNaamCommand { get; set; }
 
         public ICommand ResultaatSchermCommand { get; set; }
-     
 
         //bool die ervoor zorgt dat de selected filters niet gecleared worden
         private bool _loadCheck;
