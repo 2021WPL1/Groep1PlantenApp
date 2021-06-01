@@ -45,8 +45,8 @@ namespace PlantenApplicatie.UI.View
             viewModel = new EditViewModel(PlantenDataService.Instance());
 
             DataContext = viewModel;
-            viewModel.InitializeAll();
             viewModel.GetNieuwPlantId();
+            viewModel.InitializeAll();
         }
 
     }

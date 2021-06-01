@@ -94,7 +94,7 @@ namespace PlantenApplicatie.UI.ViewModel
          */
 
         //Bestaande beheersbehandeling aanpassen
-        public ObservableCollection<BeheerDaden> EditBeheerDaden { get; set; }
+        public ObservableCollection<BeheerMaand> EditBeheerDaden { get; set; }
 
         /*
          * (obs) beheerhandeling van de plant
@@ -147,7 +147,7 @@ namespace PlantenApplicatie.UI.ViewModel
         //Nieuwe beheersbehandeling
         private List<BeheerDaden> _newbeheerDaden;
         //Bestaande beheersbehandeling aanpassen
-        private List<BeheerDaden> _editbeheerDaden;
+        private List<BeheerMaand> _editbeheerDaden;
 
         //Geselecteerde waardes
         //Filters
@@ -225,7 +225,7 @@ namespace PlantenApplicatie.UI.ViewModel
         private string _newbeheerM2U;
 
         //Bestaande beheersbehandeling aanpassen
-        private BeheerDaden _editbeheerselectedDaden;
+        private BeheerMaand _editbeheerselectedDaden;
         private bool _editbeheerselectedJan;
         private bool _editbeheerselectedFeb;
         private bool _editbeheerselectedMrt;
@@ -300,7 +300,7 @@ namespace PlantenApplicatie.UI.ViewModel
             //Nieuwe beheersbehandeling
             NewBeheerDaden = new ObservableCollection<BeheerDaden>();
             //Bestaande beheersbehandeling aanpassen
-            EditBeheerDaden = new ObservableCollection<BeheerDaden>();
+            EditBeheerDaden = new ObservableCollection<BeheerMaand>();
         }
 
         public void GetNieuwPlantId()
@@ -402,6 +402,8 @@ namespace PlantenApplicatie.UI.ViewModel
             ExtraSelectedVorstgevoelig = _plantenDataService.GetExtraVorstgevoelig(plant.PlantId);
             ExtraSelectedVlindervriendelijk = _plantenDataService.GetExtraVlindervriendelijk(plant.PlantId);
             //Beheer Eigenschappen
+            _editbeheerDaden = _plantenDataService.GetBeheerDadenFromPlant(_plantId);
+            ReloadEditBeheerdaden();
         }
         private void Opslaan()
         {//Senne & Hermes
@@ -664,10 +666,10 @@ namespace PlantenApplicatie.UI.ViewModel
             //fout of succes message weergeven
             MessageBox.Show(result);
             
-            ClearBeheerhandeling();
+            ClearNewBeheerhandeling();
             ReloadEditBeheerdaden();
         }
-        private void ClearBeheerhandeling()
+        private void ClearNewBeheerhandeling()
         {
             //geselecteerde waarden terug op leeg zetten na het koppelen van de beheerbehandeling
             NewBeheerSelectedDaden = null;
@@ -689,13 +691,137 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         private void EditBeheerWijzigingenOpslaan()
         {
+            //Beheerhandeling checken als er iets geselecteerd
+            if (_editbeheerselectedDaden == null)
+            {
+                MessageBox.Show("Gelieve een handeling te selecteren");
+                return;
+            }
 
+            //kijken als er minstens 1 maand geselecteerd is
+            if (_editbeheerselectedJan == false && _editbeheerselectedFeb == false && _editbeheerselectedMrt == false &&
+                _editbeheerselectedApr == false && _editbeheerselectedMei == false && _editbeheerselectedJun == false &&
+                _editbeheerselectedJul == false && _editbeheerselectedAug == false && _editbeheerselectedSept == false &&
+                _editbeheerselectedOkt == false && _editbeheerselectedNov == false && _editbeheerselectedDec == false)
+            {
+                MessageBox.Show("Gelieve minimum 1 maand te selecteren");
+                return;
+            }
+
+            //Kijken als er een frequentie is ingevuld
+            if (_editbeheerFrequentie == null)
+            {
+                MessageBox.Show("Gelieve een frequentie in te vullen");
+                return;
+            }
+            if (_editbeheerFrequentie.Trim() == string.Empty)
+            {
+                MessageBox.Show("Gelieve een frequentie in te vullen");
+                return;
+            }
+
+            //kijken als de frequentie een getal is
+            try
+            {
+                int.Parse(_editbeheerFrequentie.Trim());
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Gelieve een getal in te vullen als frequentie");
+                return;
+            }
+
+            //Kijken als m2u is ingevuld
+            if (_editbeheerM2U == null)
+            {
+                MessageBox.Show("Gelieve een aantal m²/u in te vullen");
+                return;
+            }
+            if (_editbeheerM2U.Trim() == string.Empty)
+            {
+                MessageBox.Show("Gelieve een aantal m²/u in te vullen");
+                return;
+            }
+
+            //Kijken als m2u een getal is
+            try
+            {
+                double.Parse(_editbeheerM2U.Trim());
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Gelieve een getal in te vullen als m²/u");
+                return;
+            }
+
+            //kijken als de omschrijving is ingevuld
+            if (_editbeheerOmschrijving == null)
+            {
+                MessageBox.Show("Gelieve een omschrijving in te vullen");
+                return;
+            }
+            if (_editbeheerOmschrijving.Trim() == string.Empty)
+            {
+                MessageBox.Show("Gelieve een omschrijving in te vullen");
+                return;
+            }
+
+            var handeling = _editbeheerselectedDaden.Beheerdaad;
+            var frequentie = _editbeheerFrequentie.Trim();
+            var m2U = _editbeheerM2U.Trim();
+            var omschrijving = _editbeheerOmschrijving.Trim();
+
+            _plantenDataService.EditBeheerFromPlant(_plantId,handeling,omschrijving, _editbeheerselectedJan, _editbeheerselectedFeb, _editbeheerselectedMrt,
+                _editbeheerselectedApr, _editbeheerselectedMei, _editbeheerselectedJun,
+                _editbeheerselectedJul, _editbeheerselectedAug, _editbeheerselectedSept,
+                _editbeheerselectedOkt, _editbeheerselectedNov, _editbeheerselectedDec,frequentie,m2U);
+
+            ClearEditBeheerhandeling();
             ReloadEditBeheerdaden();
+        }
+        private void ClearEditBeheerhandeling()
+        {
+            //geselecteerde waarden terug op leeg zetten na het koppelen van de beheerbehandeling
+            EditBeheerSelectedDaden = null;
+            EditBeheerSelectedJan = false;
+            EditBeheerSelectedFeb = false;
+            EditBeheerSelectedMrt = false;
+            EditBeheerSelectedApr = false;
+            EditBeheerSelectedMei = false;
+            EditBeheerSelectedJun = false;
+            EditBeheerSelectedJul = false;
+            EditBeheerSelectedAug = false;
+            EditBeheerSelectedSept = false;
+            EditBeheerSelectedOkt = false;
+            EditBeheerSelectedNov = false;
+            EditBeheerSelectedDec = false;
+            EditBeheerFrequentie = string.Empty;
+            EditBeheerM2U = string.Empty;
+            EditBeheerOmschrijving = string.Empty;
         }
 
         private void EditBeheerSelectionChanged()
         {
-            //_editbeheerselectedDaden
+            if (_editbeheerselectedDaden==null)
+            {
+                return;
+            }
+
+            EditBeheerSelectedJan =  (bool) _editbeheerselectedDaden.Jan;
+            EditBeheerSelectedFeb =  (bool) _editbeheerselectedDaden.Feb;
+            EditBeheerSelectedMrt =  (bool) _editbeheerselectedDaden.Mrt;
+            EditBeheerSelectedApr =  (bool) _editbeheerselectedDaden.Apr;
+            EditBeheerSelectedMei =  (bool) _editbeheerselectedDaden.Mei;
+            EditBeheerSelectedJun =  (bool) _editbeheerselectedDaden.Jun;
+            EditBeheerSelectedJul =  (bool) _editbeheerselectedDaden.Jul;
+            EditBeheerSelectedAug =  (bool) _editbeheerselectedDaden.Aug;
+            EditBeheerSelectedSept = (bool) _editbeheerselectedDaden.Sept;
+            EditBeheerSelectedOkt =  (bool) _editbeheerselectedDaden.Okt;
+            EditBeheerSelectedNov =  (bool) _editbeheerselectedDaden.Nov;
+            EditBeheerSelectedDec = (bool)_editbeheerselectedDaden.Dec;
+            EditBeheerFrequentie = _editbeheerselectedDaden.FrequentiePerJaar.ToString();
+            //EditBeheerM2U = _editbeheerselectedDaden.M2U.ToString();
+            EditBeheerOmschrijving = _editbeheerselectedDaden.Omschrijving;
         }
 
         public void InitializeAll()
@@ -749,7 +875,7 @@ namespace PlantenApplicatie.UI.ViewModel
             //Nieuwe beheersbehandeling
             _newbeheerDaden = _plantenDataService.GetAllBeheerDaden();
             //Bestaande beheersbehandeling aanpassen
-            _editbeheerDaden = new List<BeheerDaden>();
+            _editbeheerDaden = new List<BeheerMaand>();
             LoadAll();
         }
         public void LoadAll()
@@ -990,6 +1116,7 @@ namespace PlantenApplicatie.UI.ViewModel
         public void LoadBeheerEigenschappen()
         {
             NewBeheerDaden.Clear();
+
             foreach (var beheerDaden in _newbeheerDaden)
             {
                 NewBeheerDaden.Add(beheerDaden);
@@ -1737,7 +1864,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
 
         //Bestaande beheersbehandeling
-        public BeheerDaden EditBeheerSelectedDaden
+        public BeheerMaand EditBeheerSelectedDaden
         {
             get { return _editbeheerselectedDaden; }
             set
