@@ -14,7 +14,7 @@ namespace PlantenApplicatie.Data
     {
         private static readonly PlantenDataService instance = new PlantenDataService();
         private Planten2021Context context;
-            
+
         //Singleton patroon wordt hier aangemaakt
         public static PlantenDataService Instance()
         {
@@ -162,7 +162,7 @@ namespace PlantenApplicatie.Data
         {
             return context.Commensalisme.SingleOrDefault(c => c.PlantId == Id);
         }
-        
+
         //Geeft de plant & zijn specifieke eigenschappen
         public ExtraEigenschap GetExtraEigenschap(long Id)
         {
@@ -192,6 +192,11 @@ namespace PlantenApplicatie.Data
         }
 
         //Editwindow
+
+        public long GetNieuwPlantId()
+        {
+            return context.Plant.Max(p => p.PlantId) + 1;
+        }
 
         //Filters
         public TfgsvType GetFilterType(int? plantId)
@@ -283,7 +288,7 @@ namespace PlantenApplicatie.Data
         }
         public List<FenoHabitus> GetFenoHabitus()
         {
-            return context.FenoHabitus.OrderBy(f=>f.Naam).ToList();
+            return context.FenoHabitus.OrderBy(f => f.Naam).ToList();
         }
         public List<FenoBladgrootte> GetFenoBladgrootte()
         {
@@ -299,19 +304,19 @@ namespace PlantenApplicatie.Data
         }
         public List<FenoBladvorm> GetFenoBladvorm()
         {
-            return context.FenoBladvorm.OrderBy(f=>f.Vorm).ToList();
+            return context.FenoBladvorm.OrderBy(f => f.Vorm).ToList();
         }
         public List<FenoRatioBloeiBlad> GetFenoRatio()
         {
-            return context.FenoRatioBloeiBlad.OrderBy(f=>f.Waarde).ToList();
+            return context.FenoRatioBloeiBlad.OrderBy(f => f.Waarde).ToList();
         }
         public List<FenoSpruitfenologie> GetFenoSpruit()
         {
-            return context.FenoSpruitfenologie.OrderBy(f=>f.Fenologie).ToList();
+            return context.FenoSpruitfenologie.OrderBy(f => f.Fenologie).ToList();
         }
         public List<FenoLevensvorm> GetFenoLevensvorm()
         {
-            return context.FenoLevensvorm.OrderBy(f=>f.Levensvorm).ToList();
+            return context.FenoLevensvorm.OrderBy(f => f.Levensvorm).ToList();
         }
 
         //Abio
@@ -395,7 +400,7 @@ namespace PlantenApplicatie.Data
         }
         public bool GetExtraBijvriendelijk(long id)
         {
-            return (bool) context.ExtraEigenschap.FirstOrDefault(e=>e.PlantId==id).Bijvriendelijke;
+            return (bool)context.ExtraEigenschap.FirstOrDefault(e => e.PlantId == id).Bijvriendelijke;
         }
         public bool GetExtraEetbaar(long id)
         {
@@ -417,7 +422,162 @@ namespace PlantenApplicatie.Data
         {
             return (bool)context.ExtraEigenschap.FirstOrDefault(e => e.PlantId == id).Kruidgebruik;
         }
-        //Beheer Eigenschappen
+        //Nieuwe beheersbehandeling
+        public List<BeheerDaden> GetAllBeheerDaden()
+        {
+            return context.BeheerDaden.OrderBy(b => b.Beheerdaad).ToList();
+        }
+        public List<BeheerMaand> GetBeheerDadenFromPlant(long id)
+        {
+            //var beheerMaandFromPlant= context.BeheerMaand.Where(b => b.PlantId == id).ToList();
+            //var allBeheerdaden = GetAllBeheerDaden();
+            //List<BeheerDaden> beheerDaden = new List<BeheerDaden>();
+            //foreach (var maand in beheerMaandFromPlant)
+            //{
+            //    beheerDaden.Add(allBeheerdaden.FirstOrDefault(b=>b.Beheerdaad==maand.Beheerdaad));
+            //}
+
+            //return beheerDaden;
+
+            return context.BeheerMaand.Where(b => b.PlantId == id).ToList();
+        }
+
+        public string AddNewBeheerDaad(string beheerdaad)
+        {
+            string result = null;
+            foreach (var beheerDaden in GetAllBeheerDaden())
+            {
+                if (beheerDaden.Beheerdaad.ToLower().Trim() == beheerdaad.ToLower().Trim())
+                {
+                    result = "Waarde bestaat al";
+                    return result;
+                }
+            }
+            int newId = context.BeheerDaden.Max(b => b.Id) + 1;
+            context.BeheerDaden.Add(new BeheerDaden() { Id = newId, Beheerdaad = beheerdaad });
+            context.SaveChanges();
+            return result;
+        }
+
+        public void EditBeheerFromPlant(long plantId, string beheerdaad, string omschrijving, bool jan, bool feb,
+            bool mrt, bool apr, bool mei, bool jun, bool jul, bool aug, bool sept, bool okt, bool nov, bool dec,
+            string frequentie, string m2u)
+        {
+            var allBeheerDadenFromPlant = GetBeheerDadenFromPlant(plantId);
+            var dbBeheerMaand = allBeheerDadenFromPlant.FirstOrDefault(b => b.Beheerdaad == beheerdaad);
+
+            dbBeheerMaand.Jan = jan;
+            dbBeheerMaand.Feb = feb;
+            dbBeheerMaand.Mrt = mrt;
+            dbBeheerMaand.Apr = apr;
+            dbBeheerMaand.Mei = mei;
+            dbBeheerMaand.Jun = jun;
+            dbBeheerMaand.Jul = jul;
+            dbBeheerMaand.Aug = aug;
+            dbBeheerMaand.Sept = sept;
+            dbBeheerMaand.Okt = okt;
+            dbBeheerMaand.Nov = nov;
+            dbBeheerMaand.Dec = dec;
+            dbBeheerMaand.Omschrijving = omschrijving;
+            dbBeheerMaand.FrequentiePerJaar = int.Parse(frequentie);
+            //dbBeheerMaand.M2U=m2u;
+
+            //context.SaveChanges();
+        }
+
+        public string AddBeheerToPlant(long plantId, string beheerdaad, string omschrijving, bool jan, bool feb,
+            bool mrt, bool apr, bool mei, bool jun, bool jul, bool aug, bool sept, bool okt, bool nov, bool dec,
+            string frequentie, string m2u)
+        {
+            string result;
+            foreach (var beheerMaand in context.BeheerMaand.Where(p => p.PlantId == plantId).ToList())
+            {
+                if (beheerMaand.Beheerdaad.ToLower().Trim() == beheerdaad.ToLower().Trim())
+                {
+                    result = "Waarde is al toegevoegd aan de plant";
+                    return result;
+                }
+            }
+
+            long newId = context.BeheerMaand.Max(b => b.Id) + 1;
+
+            var beheermaand = new BeheerMaand()
+            {
+                Id = newId,
+                PlantId = plantId,
+                Beheerdaad = beheerdaad,
+                Omschrijving = omschrijving,
+                Jan = jan,
+                Feb = feb,
+                Mrt = mrt,
+                Apr = apr,
+                Mei = mei,
+                Jun = jun,
+                Jul = jul,
+                Aug = aug,
+                Sept = sept,
+                Okt = okt,
+                Nov = nov,
+                Dec = dec,
+                FrequentiePerJaar = int.Parse(frequentie)
+                //M2U = double.Parse(m2u)
+            };
+            result = "Beheermaand toegevoegd aan plant";
+            //context.SaveChanges();
+            return result;
+        }
+
+        //Bestaande beheersbehandeling aanpassen
+        public bool GetEditBeheerJan(long id)
+        {
+            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Jan;
+        }
+        public bool GetEditBeheerFeb(long id)
+        {
+            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Feb;
+
+        }
+        public bool GetEditBeheerMrt(long id)
+        {
+            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Mrt;
+        }
+        public bool GetEditBeheerApr(long id)
+        {
+            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Apr;
+        }
+        public bool GetEditBeheerMei(long id)
+        {
+            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Mei;
+        }
+        public bool GetEditBeheerJun(long id)
+        {
+            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Jun;
+        }
+        public bool GetEditBeheerJul(long id)
+        {
+            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Jul;
+        }
+        public bool GetEditBeheerAug(long id)
+        {
+            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Aug;
+        }
+        public bool GetEditBeheerSept(long id)
+        {
+            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Sept;
+        }
+        public bool GetEditBeheerOkt(long id)
+        {
+            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Okt;
+        }
+        public bool GetEditBeheerNov(long id)
+        {
+            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Nov;
+        }
+        public bool GetEditBeheerDec(long id)
+        {
+            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Dec;
+        }
+
 
         //Hemen &Maarten 
         public Gebruiker addGebruiker(string rol, string email, byte[] HashPaswoord,string voornaam , string achternaam, string vivesnr)
@@ -445,6 +605,7 @@ namespace PlantenApplicatie.Data
         {
             return context.Gebruiker.SingleOrDefault(g => g.Emailadres == email);
         }
+
 
 
         //Jelle & Stephanie

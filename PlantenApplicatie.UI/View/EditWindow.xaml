@@ -41,7 +41,7 @@
                 SelectedValuePath="FamileId"/>
             <ComboBox
                 x:Name="cbxSoort" 
-                Margin="-9,318,552,0" 
+                Margin="120,318,713,0" 
                 VerticalAlignment="Top"
                 ItemsSource="{Binding FilterTfgsvSoort}"
                 SelectedItem="{Binding FilterSelectedSoort, Mode=TwoWay}"
@@ -67,7 +67,7 @@
                 SelectedItem="{Binding FilterSelectedVariant, Mode=TwoWay}"
                 DisplayMemberPath="Variantnaam"
                 SelectedValuePath="VariantId"/>
-            <TabControl Margin="298,36,0,-4" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left">
+            <TabControl Margin="298,36,0,-2" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left">
                 <TabControl.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -362,8 +362,8 @@
                     </ScrollViewer>
                 </TabItem>
                 <TabItem x:Name="tabCommensialisme" Header="Commensialisme" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <ScrollViewer x:Name="scrollCommensialisme" Height="599" VerticalAlignment="Top">
-                        <Grid x:Name="gridCommensialisme" Height="887" Width="557" Background="#FFE5E5E5">
+                    <ScrollViewer x:Name="scrollCommensialisme" Height="592" VerticalAlignment="Top">
+                        <Grid x:Name="gridCommensialisme" Height="887" Width="599" Background="#FFE5E5E5">
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
@@ -391,7 +391,7 @@
                                 x:Name="ListBoxAllLevensduur"
                                 Margin="0,85,0,0"
                                 HorizontalAlignment="Left"
-                                Width="240" Height="254" VerticalAlignment="Top">
+                                Width="240" Height="240" VerticalAlignment="Top">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <TextBlock>
@@ -591,6 +591,10 @@
                                 VerticalAlignment="Top"
                                 Width="30"
                                 Height="20"/>
+                            <Label x:Name="lblToegevoegdeLevensduurConcurrentiekracht" Content="Toegevoegde Levensduur/Concurrentiekracht" HorizontalAlignment="Left" Margin="345,60,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblToegevoegdeSociabiliteit" Content="Toegevoegde Sociabiliteit" HorizontalAlignment="Left" Margin="380,344,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblStrategie" Content="Strategie" HorizontalAlignment="Left" Margin="100,600,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblToegevoegdeStrategie" Content="Toegevoegdestrategie" HorizontalAlignment="Left" Margin="400,598,0,0" VerticalAlignment="Top"/>
                         </Grid>
                     </ScrollViewer>
                 </TabItem>
@@ -667,51 +671,318 @@
                         </Grid>
                     </ScrollViewer>
                 </TabItem>
-                <TabItem Header="eigenschappen met betrekking tot beheer" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,-1,0,0" FontSize="11">
+                <TabItem x:Name="tabNieuweBeheerbehandeling" Header="Nieuwe behandeling" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,-1,0,0" FontSize="11">
                     <ScrollViewer>
                         <Grid Height="565" Width="566" Background="#FFE5E5E5">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <Label x:Name="lblBeheerType" Content="Type" HorizontalAlignment="Left" Margin="4,4,0,0" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="cbxBeheerType" HorizontalAlignment="Left" Margin="40,8,0,0" VerticalAlignment="Top" Width="120"/>
-                            <Label x:Name="lblBeheerPlantenNaam" Content="PlantenNaam" HorizontalAlignment="Left" Margin="173,4,0,0" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="cbxPlantenNaam" HorizontalAlignment="Left" Margin="250,8,0,0" VerticalAlignment="Top" Width="120"/>
-                            <Rectangle HorizontalAlignment="Center" Height="1" Margin="0,37,0,0" Stroke="Black" VerticalAlignment="Top" Width="562"/>
-                            <Label Content="BeheerHandeling" HorizontalAlignment="Left" Margin="29,39,0,0" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="cbxBeheerHandeling" HorizontalAlignment="Left" Margin="15,62,0,0" VerticalAlignment="Top" Width="120"/>
-                            <TextBox x:Name="txtOpmerking" HorizontalAlignment="Left" Margin="15,193,0,22" TextWrapping="Wrap" Width="539"/>
-                            <Label Content="Opmerking" HorizontalAlignment="Left" Margin="15,169,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="CheckJan" Content="" HorizontalAlignment="Left" Margin="152,65,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="CheckFeb" Content="" HorizontalAlignment="Left" Margin="172,65,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="CheckMaa" Content="" HorizontalAlignment="Left" Margin="192,65,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="CheckOkt" Content="" HorizontalAlignment="Left" Margin="332,65,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="CheckNov" Content="" HorizontalAlignment="Left" Margin="352,65,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.512,0.452"/>
-                            <CheckBox x:Name="CheckJul" Content="" HorizontalAlignment="Left" Margin="272,65,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="CheckDec" Content="" Margin="372,65,174,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="CheckApr" Content="" HorizontalAlignment="Left" Margin="212,65,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="CheckMei" Content="" HorizontalAlignment="Left" Margin="232,65,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="CheckSep" Content="" HorizontalAlignment="Left" Margin="312,65,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="CheckJun" Content="" HorizontalAlignment="Left" Margin="252,65,0,0" VerticalAlignment="Top"/>
-                            <CheckBox x:Name="CheckAug" Content="" HorizontalAlignment="Left" Margin="292,65,0,0" VerticalAlignment="Top"/>
-                            <Label Content="J" HorizontalAlignment="Left" Margin="153,40,0,0" VerticalAlignment="Top"/>
-                            <Label Content="F" HorizontalAlignment="Left" Margin="173,40,0,0" VerticalAlignment="Top"/>
-                            <Label Content="M" HorizontalAlignment="Left" Margin="191,40,0,0" VerticalAlignment="Top"/>
-                            <Label Content="M" HorizontalAlignment="Left" Margin="231,40,0,0" VerticalAlignment="Top"/>
-                            <Label Content="J" HorizontalAlignment="Left" Margin="254,40,0,0" VerticalAlignment="Top"/>
-                            <Label Content="S" HorizontalAlignment="Left" Margin="312,40,0,0" VerticalAlignment="Top"/>
-                            <Label Content="A" HorizontalAlignment="Left" Margin="212,40,0,0" VerticalAlignment="Top"/>
-                            <Label Content="A" HorizontalAlignment="Left" Margin="292,40,0,0" VerticalAlignment="Top"/>
-                            <Label Content="J" HorizontalAlignment="Left" Margin="273,40,0,0" VerticalAlignment="Top"/>
-                            <Label Content="O" HorizontalAlignment="Left" Margin="332,40,0,0" VerticalAlignment="Top"/>
-                            <Label Content="D" HorizontalAlignment="Left" Margin="372,40,0,0" VerticalAlignment="Top"/>
-                            <Label Content="N" HorizontalAlignment="Left" Margin="351,40,0,0" VerticalAlignment="Top"/>
-                            <Label Content="Aantal m²/u" Margin="443,38,55,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="txtAantaVierkanteMeterPerUur" HorizontalAlignment="Left" Margin="420,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                            <Label Content="Frequentie per jaar" HorizontalAlignment="Left" Margin="430,93,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="txtFrequentiePerJaar" HorizontalAlignment="Left" Margin="420,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <Button
+                                Command="{Binding Path=NewBeheerToevoegenCommand}"
+                                x:Name="btnVoegHandelingToe"
+                                Content="Voeg toe"
+                                HorizontalAlignment="Left"
+                                Margin="15,47,0,0"
+                                VerticalAlignment="Top"/>
+                            <TextBox
+                                Text="{Binding NewBeheerDaad, Mode=TwoWay}"
+                                x:Name="TextBoxVoegBehandelingToe"
+                                HorizontalAlignment="Left" Margin="177,13,0,0"
+                                TextWrapping="Wrap"
+                                VerticalAlignment="Top"
+                                Width="385"/>
+                            <Rectangle HorizontalAlignment="Center" Height="1" Margin="0,80,0,0" Stroke="Black" VerticalAlignment="Top" Width="562"/>
+                            <Label x:Name="lblBestaandehandeling" Content="BeheerHandeling" HorizontalAlignment="Left" Margin="4,97,0,0" VerticalAlignment="Top"/>
+                            <ComboBox
+                                ItemsSource="{Binding NewBeheerDaden}"
+                                SelectedItem="{Binding NewBeheerSelectedDaden, Mode=TwoWay}"
+                                DisplayMemberPath="Beheerdaad"
+                                SelectedValuePath="Id"
+                                x:Name="cbxBeheerHandeling"
+                                HorizontalAlignment="Left" 
+                                Margin="12,124,0,0" 
+                                VerticalAlignment="Top"
+                                Width="493"/>
+                            <Label x:Name="lblOmschrijving" Content="Omschrijving" HorizontalAlignment="Left" Margin="7,264,0,0" VerticalAlignment="Top"/>
+                            <CheckBox
+                                IsChecked="{Binding NewBeheerSelectedJan, Mode=TwoWay}"
+                                x:Name="CheckJan"
+                                Content="" 
+                                HorizontalAlignment="Left"
+                                Margin="19,184,0,0" 
+                                VerticalAlignment="Top"/>
+                            <CheckBox 
+                                IsChecked="{Binding NewBeheerSelectedFeb, Mode=TwoWay}"
+                                x:Name="CheckFeb" 
+                                Content="" 
+                                HorizontalAlignment="Left" 
+                                Margin="39,184,0,0" 
+                                VerticalAlignment="Top"/>
+                            <CheckBox
+                                IsChecked="{Binding NewBeheerSelectedMrt, Mode=TwoWay}"
+                                x:Name="CheckMrt"
+                                Content="" 
+                                HorizontalAlignment="Left"
+                                Margin="59,184,0,0" 
+                                VerticalAlignment="Top"/>
+                            <CheckBox
+                                IsChecked="{Binding NewBeheerSelectedApr, Mode=TwoWay}"
+                                x:Name="CheckApr"
+                                Content="" 
+                                HorizontalAlignment="Left"
+                                Margin="79,184,0,0" 
+                                VerticalAlignment="Top"/>
+                            <CheckBox 
+                                IsChecked="{Binding NewBeheerSelectedMei, Mode=TwoWay}"
+                                x:Name="CheckMei"
+                                Content="" 
+                                HorizontalAlignment="Left" 
+                                Margin="99,184,0,0" 
+                                VerticalAlignment="Top"/>
+                            <CheckBox
+                                IsChecked="{Binding NewBeheerSelectedJun, Mode=TwoWay}"
+                                x:Name="CheckJun" 
+                                Content=""
+                                HorizontalAlignment="Left"
+                                Margin="119,184,0,0"
+                                VerticalAlignment="Top"/>
+                            <CheckBox
+                                IsChecked="{Binding NewBeheerSelectedJul, Mode=TwoWay}"
+                                x:Name="CheckJul" 
+                                Content="" 
+                                HorizontalAlignment="Left"
+                                Margin="139,184,0,0"
+                                VerticalAlignment="Top"/>
+                            <CheckBox 
+                                IsChecked="{Binding NewBeheerSelectedAug, Mode=TwoWay}"
+                                x:Name="CheckAug"
+                                Content="" 
+                                HorizontalAlignment="
+                                Left"
+                                Margin="159,184,0,0" VerticalAlignment="Top"/>
+                            <CheckBox 
+                                IsChecked="{Binding NewBeheerSelectedSept, Mode=TwoWay}"
+                                x:Name="CheckSept"
+                                Content="" 
+                                HorizontalAlignment="Left"
+                                Margin="179,184,0,0"
+                                VerticalAlignment="Top"/>
+                            <CheckBox 
+                                IsChecked="{Binding NewBeheerSelectedOkt, Mode=TwoWay}"
+                                x:Name="CheckOkt" 
+                                Content=""
+                                HorizontalAlignment="Left"
+                                Margin="199,184,0,0"
+                                VerticalAlignment="Top"/>
+                            <CheckBox
+                                IsChecked="{Binding NewBeheerSelectedNov, Mode=TwoWay}"
+                                x:Name="CheckNov" 
+                                Content=""
+                                HorizontalAlignment="Left"
+                                Margin="219,184,0,0"
+                                VerticalAlignment="Top" 
+                                RenderTransformOrigin="0.512,0.452"/>
+                            <CheckBox 
+                                IsChecked="{Binding NewBeheerSelectedDec, Mode=TwoWay}"
+                                x:Name="CheckDec" 
+                                Margin="239,184,307,0" 
+                                VerticalAlignment="Top"/>
+                            <Label x:Name="lblJan" Content="J" HorizontalAlignment="Left" Margin="20,159,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblFeb" Content="F" HorizontalAlignment="Left" Margin="40,159,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblMaa" Content="M" HorizontalAlignment="Left" Margin="58,159,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblMei" Content="M" HorizontalAlignment="Left" Margin="98,159,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblJun" Content="J" HorizontalAlignment="Left" Margin="121,159,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lnlSep" Content="S" HorizontalAlignment="Left" Margin="179,159,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblApr" Content="A" HorizontalAlignment="Left" Margin="79,159,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblAug" Content="A" HorizontalAlignment="Left" Margin="159,159,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblJul" Content="J" HorizontalAlignment="Left" Margin="140,159,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblOkt" Content="O" HorizontalAlignment="Left" Margin="199,159,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblDec" Content="D" HorizontalAlignment="Left" Margin="239,159,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblNov" Content="N" HorizontalAlignment="Left" Margin="218,159,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblM2PerUur" Content="Aantal m²/u" Margin="4,220,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="68"/>
+                            <TextBox 
+                                Text="{Binding NewBeheerM2U, Mode=TwoWay}"
+                                x:Name="txtAantaVierkanteMeterPerUur" 
+                                HorizontalAlignment="Left" 
+                                Margin="80,225,0,0" 
+                                TextWrapping="Wrap" 
+                                VerticalAlignment="Top" 
+                                Width="120"/>
+                            <Label x:Name="lblPerAantalJaar" Content="Frequentie per x jaar" HorizontalAlignment="Left" Margin="281,170,0,0" VerticalAlignment="Top"/>
+                            <TextBox 
+                                Text="{Binding NewBeheerFrequentie, Mode=TwoWay}"
+                                x:Name="txtPerAantalJaar" 
+                                HorizontalAlignment="Left" 
+                                Margin="410,175,0,0" 
+                                TextWrapping="Wrap"
+                                VerticalAlignment="Top" 
+                                Width="33"/>
+                            <Label x:Name="lblVoegHandelingToe" Content="Voeg beheershandeling toe" HorizontalAlignment="Left" Margin="-1,8,0,0" VerticalAlignment="Top"/>
+                            <TextBox 
+                                Text="{Binding NewBeheerOmschrijving, Mode=TwoWay}"
+                                x:Name="txtOpmerking"
+                                HorizontalAlignment="Left"
+                                Margin="5,294,0,70"
+                                TextWrapping="Wrap" 
+                                Width="539"/>
+                            <Button 
+                                Command="{Binding NewBeheerHandelToevoegenCommand, Mode=TwoWay}"
+                                x:Name="btnVoegBeheerbehandelingToe" 
+                                Content="Voeg beheerdaad toe" 
+                                HorizontalAlignment="Left" 
+                                Margin="23,522,0,0"
+                                VerticalAlignment="Top"/>
                         </Grid>
                     </ScrollViewer>
+                </TabItem>
+                <TabItem x:Name="tabEditBeheerbehandeling" Header="Bestaande behandeling" HorizontalAlignment="Center" Height="20" VerticalAlignment="Top" Width="139" Margin="0,-1,0,0">
+                    <Grid Background="#FFE5E5E5" Height="466" VerticalAlignment="Top" Margin="23,0,33,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Label x:Name="lblBestaandehandelingView" Content="BeheerHandeling" HorizontalAlignment="Left" Margin="14,10,0,0" VerticalAlignment="Top"/>
+                        <ComboBox
+                            ItemsSource="{Binding EditBeheerDaden}"
+                            SelectedItem="{Binding EditBeheerSelectedDaden}"
+                            DisplayMemberPath="Beheerdaad"
+                            SelectedValuePath="Id"
+                            x:Name="cbxBeheerHandelingView" 
+                            HorizontalAlignment="Left"
+                            Margin="17,40,0,0"
+                            VerticalAlignment="Top"
+                            Width="493"
+                            Grid.ColumnSpan="2"/>
+                        <TextBox
+                            Text="{Binding EditBeheerOmschrijving, Mode=TwoWay}"
+                            x:Name="txtOpmerkingEdit" 
+                            HorizontalAlignment="Stretch" 
+                            Margin="5,200,0,0" 
+                            TextWrapping="Wrap" 
+                            Width="539"
+                            Height="200" 
+                            VerticalAlignment="Top"/>
+                        <Label x:Name="lblOmschrijving_Copy" Content="Omschrijving" HorizontalAlignment="Left" Margin="37,167,0,0" VerticalAlignment="Top"/>
+                        <CheckBox
+                            IsChecked="{Binding EditBeheerSelectedJan}"
+                            x:Name="CheckJanEdit"
+                            Content=""
+                            HorizontalAlignment="Left"
+                            Margin="19,100,0,0"
+                            VerticalAlignment="Top"/>
+                        <CheckBox
+                            IsChecked="{Binding EditBeheerSelectedFeb}"
+                            x:Name="CheckFebEdit"
+                            Content="" 
+                            HorizontalAlignment="Left"
+                            Margin="39,100,0,0"
+                            VerticalAlignment="Top"/>
+                        <CheckBox 
+                            IsChecked="{Binding EditBeheerSelectedMrt}"
+                            x:Name="CheckMrtEdit" 
+                            Content="" 
+                            HorizontalAlignment="Left" 
+                            Margin="59,100,0,0"
+                            VerticalAlignment="Top"/>
+                        <CheckBox 
+                            IsChecked="{Binding EditBeheerSelectedOkt}"
+                            x:Name="CheckOktEdit"
+                            Content="" 
+                            HorizontalAlignment="Left"
+                            Margin="199,100,0,0" 
+                            VerticalAlignment="Top"/>
+                        <CheckBox 
+                            IsChecked="{Binding EditBeheerSelectedNov}"
+                            x:Name="CheckNovEdit"
+                            Content="" 
+                            HorizontalAlignment="Left"
+                            Margin="219,100,0,0" 
+                            VerticalAlignment="Top" 
+                            RenderTransformOrigin="0.512,0.452"/>
+                        <CheckBox
+                            IsChecked="{Binding EditBeheerSelectedJul}"
+                            x:Name="CheckJulEdit"
+                            Content=""
+                            HorizontalAlignment="Left"
+                            Margin="139,100,0,0"
+                            VerticalAlignment="Top"/>
+                        <CheckBox 
+                            IsChecked="{Binding EditBeheerSelectedDec}"
+                            x:Name="CheckDecEdit" 
+                            Content=""
+                            Margin="239,100,329,0" 
+                            VerticalAlignment="Top"/>
+                        <CheckBox
+                            IsChecked="{Binding EditBeheerSelectedApr}"
+                            x:Name="CheckAprEdit"
+                            Content="" 
+                            HorizontalAlignment="Left"
+                            Margin="79,100,0,0"
+                            VerticalAlignment="Top"/>
+                        <CheckBox 
+                            IsChecked="{Binding EditBeheerSelectedMei}"
+                            x:Name="CheckMeiEdit"
+                            Content="" 
+                            HorizontalAlignment="Left" 
+                            Margin="99,100,0,0"
+                            VerticalAlignment="Top"/>
+                        <CheckBox
+                            IsChecked="{Binding EditBeheerSelectedSept}"
+                            x:Name="CheckSeptEdit"
+                            Content="" 
+                            HorizontalAlignment="Left" 
+                            Margin="179,100,0,0" 
+                            VerticalAlignment="Top"/>
+                        <CheckBox
+                            IsChecked="{Binding EditBeheerSelectedJun}"
+                            x:Name="CheckJunEdit"
+                            Content=""
+                            HorizontalAlignment="Left"
+                            Margin="119,100,0,0"
+                            VerticalAlignment="Top"/>
+                        <CheckBox 
+                            IsChecked="{Binding EditBeheerSelectedAug}"
+                            x:Name="CheckAugEdit" 
+                            Content=""
+                            HorizontalAlignment="Left"
+                            Margin="159,100,0,0" 
+                            VerticalAlignment="Top"/>
+                        <Label x:Name="lblJan_Copy" Content="J" HorizontalAlignment="Left" Margin="20,75,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="lblFeb_Copy" Content="F" HorizontalAlignment="Left" Margin="40,75,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="lblMaa_Copy" Content="M" HorizontalAlignment="Left" Margin="58,75,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="lblMei_Copy" Content="M" HorizontalAlignment="Left" Margin="98,75,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="lblJun_Copy" Content="J" HorizontalAlignment="Left" Margin="121,75,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="lnlSep_Copy" Content="S" HorizontalAlignment="Left" Margin="179,75,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="lblApr_Copy" Content="A" HorizontalAlignment="Left" Margin="79,75,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="lblAug_Copy" Content="A" HorizontalAlignment="Left" Margin="159,75,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="lblJul_Copy" Content="J" HorizontalAlignment="Left" Margin="140,75,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="lblOkt_Copy" Content="O" HorizontalAlignment="Left" Margin="199,75,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="lblDec_Copy" Content="D" HorizontalAlignment="Left" Margin="239,75,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="lblNov_Copy" Content="N" HorizontalAlignment="Left" Margin="218,75,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="lblM2PerUur_Copy" Content="Aantal m²/u" Margin="4,130,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="77"/>
+                        <TextBox
+                            Text="{Binding EditBeheerM2U}"
+                            x:Name="txtAantaVierkanteMeterPerUurEdit" 
+                            HorizontalAlignment="Left" 
+                            Margin="90,135,0,0" 
+                            TextWrapping="Wrap" 
+                            VerticalAlignment="Top"
+                            Width="120"/>
+                        <Label x:Name="lblPerAantalJaar_Copy" Content="Frequentie per x jaar" HorizontalAlignment="Left" Margin="281,90,0,0" VerticalAlignment="Top"/>
+                        <TextBox
+                            Text="{Binding EditBeheerFrequentie}"
+                            x:Name="txtPerAantalJaarEdit" 
+                            HorizontalAlignment="Left" 
+                            Margin="410,95,0,0" 
+                            TextWrapping="Wrap" 
+                            VerticalAlignment="Top"
+                            Width="33"/>
+                        <Button
+                            Command="{Binding Path=EditBeheerWijzigingenOpslaanCommand}"
+                            Content="Wijzigingen opslaan"
+                            HorizontalAlignment="Left"
+                            Margin="15,435,0,0"
+                            VerticalAlignment="Top"/>
+                    </Grid>
                 </TabItem>
             </TabControl>
             <Button x:Name="btnStartOpnieuw" 
@@ -734,7 +1005,7 @@
                 HorizontalAlignment="Left" 
                 Margin="120,180,0,0" 
                 TextWrapping="Wrap" 
-                VerticalAlignment="Top" Width="120"/>
+                VerticalAlignment="Top" Width="120" />
             <TextBox 
                 Text="{Binding FilterNewGeslacht, Mode=TwoWay}"
                 x:Name="TxtBoxGeslacht"
