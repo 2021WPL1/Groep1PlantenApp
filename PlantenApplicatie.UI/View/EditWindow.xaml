@@ -926,7 +926,7 @@
                             Margin="99,100,0,0"
                             VerticalAlignment="Top"/>
                         <CheckBox
-                            IsChecked="{Binding EditBeheerSelected}"
+                            IsChecked="{Binding EditBeheerSelectedSept}"
                             x:Name="CheckSeptEdit"
                             Content="" 
                             HorizontalAlignment="Left" 
