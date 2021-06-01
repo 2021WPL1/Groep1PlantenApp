@@ -64,10 +64,10 @@ namespace PlantenApplicatie.UI.ViewModel
         private void SchermGebruikerToevoegenCommand(Window window)
         {
             CreateGebruiker create = new CreateGebruiker();
-
+            
             window.Close();
             create.ShowDialog();
-
+            
         }
         public  void ShowAllUser()
         {

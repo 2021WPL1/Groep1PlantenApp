@@ -24,9 +24,18 @@ namespace PlantenApplicatie.UI.View
         {
             viewModel = new GebruikersBeheerViewModel(PlantenDataService.Instance());
             DataContext = viewModel;
-            viewModel.ShowAllUser();
+          //  viewModel.ShowAllUser();
             InitializeComponent();
             
+
         }
+        // hemen &maarten 
+        //in de plaats van refresh
+        protected override void OnActivated(EventArgs eventArgs)
+        {
+            base.OnActivated(eventArgs);
+            viewModel.ShowAllUser();
+        }
+
     }
 }

@@ -51,7 +51,9 @@
                         </LinearGradientBrush>
                     </Button.Background>
                 </Button>
-                <ListBox Margin="1,62,-1,73" BorderBrush="Black"  BorderThickness="5" ItemsSource="{Binding Users}" DisplayMemberPath="Emailadres" SelectedItem="{Binding SelectedGebruiker, Mode=TwoWay}"></ListBox>
+                <ListBox Margin="1,62,-1,73" BorderBrush="Black"  BorderThickness="5" 
+                         ItemsSource="{Binding Users}" DisplayMemberPath="Emailadres"
+                         SelectedItem="{Binding SelectedGebruiker, Mode=TwoWay}"></ListBox>
                 <Button x:Name="Verwijder" 
             Command="{Binding GebruikerVerwijderenCommand}" CommandParameter="{Binding ElementName=window}"
             Margin="157,597,157,10" BorderBrush="Black" BorderThickness="2" Content="verwijder" FontSize="14" >
