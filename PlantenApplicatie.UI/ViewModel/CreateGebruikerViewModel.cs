@@ -18,6 +18,8 @@ namespace PlantenApplicatie.UI.ViewModel
     class CreateGebruikerViewModel : ViewModelBase
     {
         public RelayCommand<Window> addGebruikerCommand { get; set; }
+        public RelayCommand<Window> closeAddGebruikerCommand { get; set; }
+       
         private PlantenDataService _dataservice;
         public ObservableCollection<Rol> Rollen { get; set; }
         private string emailInput;
@@ -29,7 +31,8 @@ namespace PlantenApplicatie.UI.ViewModel
         //Hemen &maarten 
         public CreateGebruikerViewModel(PlantenDataService plantenDataService)
         {
-            this.addGebruikerCommand = new RelayCommand<Window>(this.addGebruiker);
+            closeAddGebruikerCommand = new RelayCommand<Window>(this.closeAddGebruiker);
+            addGebruikerCommand = new RelayCommand<Window>(this.addGebruiker);
             Rollen = new ObservableCollection<Rol>();
             this._dataservice = plantenDataService;
         }
@@ -90,6 +93,14 @@ namespace PlantenApplicatie.UI.ViewModel
                 _error = value;
                 OnPropertyChanged();
             }
+        }
+        private void closeAddGebruiker(Window window)
+        {
+            MainWindow main = new MainWindow();
+              
+                window.Close();
+            main.ShowDialog();
+            
         }
         //hemen & maarten 
         public void addGebruiker(Window closeWindow)
