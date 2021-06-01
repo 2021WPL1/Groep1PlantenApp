@@ -14,7 +14,7 @@ namespace PlantenApplicatie.Data
     {
         private static readonly PlantenDataService instance = new PlantenDataService();
         private Planten2021Context context;
-            
+
         //Singleton patroon wordt hier aangemaakt
         public static PlantenDataService Instance()
         {
@@ -146,7 +146,7 @@ namespace PlantenApplicatie.Data
         {
             return context.Commensalisme.SingleOrDefault(c => c.PlantId == Id);
         }
-        
+
         //Geeft de plant & zijn specifieke eigenschappen
         public ExtraEigenschap GetExtraEigenschap(long Id)
         {
@@ -173,7 +173,7 @@ namespace PlantenApplicatie.Data
 
         public long GetNieuwPlantId()
         {
-            return context.Plant.Max(p => p.PlantId)+1;
+            return context.Plant.Max(p => p.PlantId) + 1;
         }
 
         //Filters
@@ -266,7 +266,7 @@ namespace PlantenApplicatie.Data
         }
         public List<FenoHabitus> GetFenoHabitus()
         {
-            return context.FenoHabitus.OrderBy(f=>f.Naam).ToList();
+            return context.FenoHabitus.OrderBy(f => f.Naam).ToList();
         }
         public List<FenoBladgrootte> GetFenoBladgrootte()
         {
@@ -282,19 +282,19 @@ namespace PlantenApplicatie.Data
         }
         public List<FenoBladvorm> GetFenoBladvorm()
         {
-            return context.FenoBladvorm.OrderBy(f=>f.Vorm).ToList();
+            return context.FenoBladvorm.OrderBy(f => f.Vorm).ToList();
         }
         public List<FenoRatioBloeiBlad> GetFenoRatio()
         {
-            return context.FenoRatioBloeiBlad.OrderBy(f=>f.Waarde).ToList();
+            return context.FenoRatioBloeiBlad.OrderBy(f => f.Waarde).ToList();
         }
         public List<FenoSpruitfenologie> GetFenoSpruit()
         {
-            return context.FenoSpruitfenologie.OrderBy(f=>f.Fenologie).ToList();
+            return context.FenoSpruitfenologie.OrderBy(f => f.Fenologie).ToList();
         }
         public List<FenoLevensvorm> GetFenoLevensvorm()
         {
-            return context.FenoLevensvorm.OrderBy(f=>f.Levensvorm).ToList();
+            return context.FenoLevensvorm.OrderBy(f => f.Levensvorm).ToList();
         }
 
         //Abio
@@ -378,7 +378,7 @@ namespace PlantenApplicatie.Data
         }
         public bool GetExtraBijvriendelijk(long id)
         {
-            return (bool) context.ExtraEigenschap.FirstOrDefault(e=>e.PlantId==id).Bijvriendelijke;
+            return (bool)context.ExtraEigenschap.FirstOrDefault(e => e.PlantId == id).Bijvriendelijke;
         }
         public bool GetExtraEetbaar(long id)
         {
@@ -425,14 +425,14 @@ namespace PlantenApplicatie.Data
             string result = null;
             foreach (var beheerDaden in GetAllBeheerDaden())
             {
-                if (beheerDaden.Beheerdaad.ToLower().Trim()==beheerdaad.ToLower().Trim())
+                if (beheerDaden.Beheerdaad.ToLower().Trim() == beheerdaad.ToLower().Trim())
                 {
                     result = "Waarde bestaat al";
                     return result;
                 }
             }
             int newId = context.BeheerDaden.Max(b => b.Id) + 1;
-            context.BeheerDaden.Add(new BeheerDaden() {Id = newId,Beheerdaad = beheerdaad});
+            context.BeheerDaden.Add(new BeheerDaden() { Id = newId, Beheerdaad = beheerdaad });
             context.SaveChanges();
             return result;
         }
@@ -444,20 +444,20 @@ namespace PlantenApplicatie.Data
             var allBeheerDadenFromPlant = GetBeheerDadenFromPlant(plantId);
             var dbBeheerMaand = allBeheerDadenFromPlant.FirstOrDefault(b => b.Beheerdaad == beheerdaad);
 
-            dbBeheerMaand.Jan=jan;
-            dbBeheerMaand.Feb=feb;
-            dbBeheerMaand.Mrt=mrt;
-            dbBeheerMaand.Apr=apr;
-            dbBeheerMaand.Mei=mei;
-            dbBeheerMaand.Jun=jun;
-            dbBeheerMaand.Jul=jul;
-            dbBeheerMaand.Aug=aug;
-            dbBeheerMaand.Sept=sept;
-            dbBeheerMaand.Okt=okt;
-            dbBeheerMaand.Nov=nov;
-            dbBeheerMaand.Dec=dec;
-            dbBeheerMaand.Omschrijving=omschrijving;
-            dbBeheerMaand.FrequentiePerJaar=int.Parse(frequentie);
+            dbBeheerMaand.Jan = jan;
+            dbBeheerMaand.Feb = feb;
+            dbBeheerMaand.Mrt = mrt;
+            dbBeheerMaand.Apr = apr;
+            dbBeheerMaand.Mei = mei;
+            dbBeheerMaand.Jun = jun;
+            dbBeheerMaand.Jul = jul;
+            dbBeheerMaand.Aug = aug;
+            dbBeheerMaand.Sept = sept;
+            dbBeheerMaand.Okt = okt;
+            dbBeheerMaand.Nov = nov;
+            dbBeheerMaand.Dec = dec;
+            dbBeheerMaand.Omschrijving = omschrijving;
+            dbBeheerMaand.FrequentiePerJaar = int.Parse(frequentie);
             //dbBeheerMaand.M2U=m2u;
 
             //context.SaveChanges();
@@ -470,14 +470,14 @@ namespace PlantenApplicatie.Data
             string result;
             foreach (var beheerMaand in context.BeheerMaand.Where(p => p.PlantId == plantId).ToList())
             {
-                if (beheerMaand.Beheerdaad.ToLower().Trim()==beheerdaad.ToLower().Trim())
+                if (beheerMaand.Beheerdaad.ToLower().Trim() == beheerdaad.ToLower().Trim())
                 {
                     result = "Waarde is al toegevoegd aan de plant";
                     return result;
                 }
             }
 
-            long newId = context.BeheerMaand.Max(b=>b.Id) + 1;
+            long newId = context.BeheerMaand.Max(b => b.Id) + 1;
 
             var beheermaand = new BeheerMaand()
             {
