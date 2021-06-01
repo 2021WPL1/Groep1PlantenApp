@@ -671,7 +671,7 @@
                         </Grid>
                     </ScrollViewer>
                 </TabItem>
-                <TabItem x:Name="tabNieuweBeheerbehandeling" Header="Nieuwe beheersbehandeling" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,-1,0,0" FontSize="11">
+                <TabItem x:Name="tabNieuweBeheerbehandeling" Header="Nieuwe behandeling" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,-1,0,0" FontSize="11">
                     <ScrollViewer>
                         <Grid Height="565" Width="566" Background="#FFE5E5E5">
                             <Grid.ColumnDefinitions>
@@ -835,7 +835,7 @@
                         </Grid>
                     </ScrollViewer>
                 </TabItem>
-                <TabItem x:Name="tabEditBeheerbehandeling" Header="Bestaande beheersbehandeling aanpassen" HorizontalAlignment="Center" Height="20" VerticalAlignment="Center" Width="54">
+                <TabItem x:Name="tabEditBeheerbehandeling" Header="Bestaande behandeling" HorizontalAlignment="Center" Height="20" VerticalAlignment="Top" Width="139" Margin="0,-1,0,0">
                     <Grid Background="#FFE5E5E5" Height="466" VerticalAlignment="Top">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
