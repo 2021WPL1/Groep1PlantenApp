@@ -13,7 +13,7 @@ using System.Windows.Input;
 namespace PlantenApplicatie.UI.ViewModel
 {
     class GebruikerResultModel : ViewModelBase
-    {
+    { 
         //Jelle & Hemen 
         //Command maken voor form te sluiten
         public RelayCommand<Window> CloseResultCommand { get; private set; }
