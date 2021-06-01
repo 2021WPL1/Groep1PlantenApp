@@ -152,7 +152,8 @@
                           DisplayMemberPath="Variantnaam"
                           SelectedValuePath="VariantId"
                           HorizontalAlignment="Left" Margin="120,218,0,0" VerticalAlignment="Top" Width="120"/>
-                <ListBox x:Name="lstResult"
+                <ListBox x:Name="lstResult" 
+                         ItemsSource="{Binding PlantResults}"
                          SelectedItem="{Binding SelectedPlant, Mode=TwoWay}"
                          Margin="5,357,5,0" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" Grid.IsSharedSizeScope="True" Padding="5,0,0,0" Height="292" VerticalAlignment="Top">
                     <ListBox.RenderTransform>
@@ -163,6 +164,21 @@
                             <TranslateTransform/>
                         </TransformGroup>
                     </ListBox.RenderTransform>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0}">
+                                        <Binding Path="Fgsv"/>
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                                <TextBlock.InputBindings>
+                                    <MouseBinding Gesture="LeftDoubleClick"
+                                                  Command="{Binding RelativeSource={RelativeSource AncestorType=Window},Path=DataContext.ResultaatSchermCommand}"/>
+                                </TextBlock.InputBindings>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
                 </ListBox>
 
                 <Button x:Name="Create" 
