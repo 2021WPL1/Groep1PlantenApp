@@ -584,6 +584,99 @@ namespace PlantenApplicatie.Data
             context.SaveChanges();
         }
 
+        //Opslaan
+        public bool CheckIfPlantExists(long plantId)
+        {
+            var exists = context.Plant.FirstOrDefault(p => p.PlantId == plantId);
+            if (exists==null)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+
+        public string CreateNewPlant(long plantId, string abBezonning, string abGrondsoort, string abVochtbehoefte,
+            string abVoedingsbehoefte, string abAntagonie, string abMulEigenschap, string abMulWaarde,
+            string comOntwikkelsnelheid, string comStrategie)
+        {
+            string result = null;
+            Plant plant = GetPlantWithId(plantId);
+
+            //abiotiek
+            var abiotiek = new Abiotiek()
+            {
+                PlantId = plantId,
+                Bezonning = abBezonning,
+                Grondsoort = abGrondsoort,
+                Vochtbehoefte = abVochtbehoefte,
+                Voedingsbehoefte = abVoedingsbehoefte,
+                AntagonischeOmgeving = abAntagonie,
+                Plant = plant
+            };
+            //abiotiekmulti
+            var abiotiekMulti = new AbiotiekMulti()
+            {
+                PlantId = plantId,
+                Eigenschap = abMulEigenschap,
+                Waarde = abMulWaarde,
+                Plant = plant
+            };
+            //commensalisme
+            var commensalisme = new Commensalisme()
+            {
+                PlantId = plantId,
+                Ontwikkelsnelheid = comOntwikkelsnelheid,
+                Strategie = comStrategie,
+                Plant = plant
+            };
+            //commensalismemulti
+            var commensalismeMulti = new CommensalismeMulti()
+            {
+
+            };
+            //extra eigenschap
+
+            //fenotype
+            //fenotype multi
+
+            //familie
+            //geslacht
+            //soort
+            //type
+            //variant
+
+            //plant
+            var newPlant = new Plant()
+            {
+
+            };
+
+            //context.Plant.Add(newPlant);
+            //context.SaveChanges();
+
+            return result;
+        }
+
+        public string EditPlantData(Abiotiek abiotiek, AbiotiekMulti abiotiekMulti, Fenotype fenotype,
+            FenotypeMulti fenotypeMulti, Commensalisme commensalisme, CommensalismeMulti commensalismeMulti,
+            ExtraEigenschap extraEigenschap, TfgsvType type, TfgsvFamilie familie, TfgsvGeslacht geslacht,
+            TfgsvSoort soort, TfgsvVariant variant)
+        {
+            string result = null;
+            var dbAbiotiek = context.Abiotiek.FirstOrDefault(a => a.Id == abiotiek.Id);
+            //abmulti = meerdere habitus
+            var dbFenotype = context.Fenotype.FirstOrDefault(f => f.Id == fenotype.Id);
+            //fenomulti = meerdere waarden
+            var dbCommensalisme = context.Commensalisme.FirstOrDefault(c => c.Id == commensalisme.Id);
+            //commmulti = meerdere waarden
+            var dbExtra = context.ExtraEigenschap.FirstOrDefault(e => e.Id == extraEigenschap.Id);
+
+
+            return result;
+        }
+
         //Hemen &Maarten 
         public Gebruiker addGebruiker(string rol, string email, byte[] HashPaswoord,string voornaam , string achternaam, string vivesnr)
         {

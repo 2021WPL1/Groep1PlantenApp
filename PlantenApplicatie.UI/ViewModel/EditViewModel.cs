@@ -163,6 +163,7 @@ namespace PlantenApplicatie.UI.ViewModel
         private string _filterNewGeslacht;
         private string _filterNewSoort;
         private string _filterNewVariant;
+
         //Fenotype
         private FenoBloeiwijze _fenoselectedBloeiwijze;
         private ImageSource _fenoselectedBloeiwijzeImage;
@@ -428,6 +429,25 @@ namespace PlantenApplicatie.UI.ViewModel
             //Extra Eigenschappen
             //Beheer Eigenschappen
             */
+            if (_filterselectedType==null)
+            {
+                
+            }
+            else
+            {
+                
+            }
+
+            if (_plantenDataService.CheckIfPlantExists(_plantId))
+            {
+                //edit
+            }
+            else
+            {
+                //create
+            }
+
+            
         }
         private void Back(Window window)
         {
