@@ -982,6 +982,13 @@
                             HorizontalAlignment="Left"
                             Margin="15,435,0,0"
                             VerticalAlignment="Top"/>
+                        <Button
+                            Command="{Binding Path=EditBeheerVerwijderenCommand}"
+                            x:Name="btnBehandelingVerwijderen" 
+                            Content="Verwijder beheerbehandeling" 
+                            HorizontalAlignment="Left" 
+                            Margin="174,435,0,0" 
+                            VerticalAlignment="Top"/>
                     </Grid>
                 </TabItem>
             </TabControl>
