@@ -238,6 +238,9 @@ namespace PlantenApplicatie.UI.ViewModel
         private bool _editbeheerselectedOkt;
         private bool _editbeheerselectedNov;
         private bool _editbeheerselectedDec;
+        private string _editbeheerOmschrijving;
+        private string _editbeheerFrequentie;
+        private string _editbeheerM2U;
 
 
         public EditViewModel(PlantenDataService plantenDataService)
@@ -669,6 +672,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         private void EditBeheerWijzigingenOpslaan()
         {
+
             ReloadEditBeheerdaden();
         }
 
@@ -1572,16 +1576,6 @@ namespace PlantenApplicatie.UI.ViewModel
                 OnPropertyChanged();
             }
         }
-        public BeheerDaden EditBeheerSelectedDaden
-        {
-            get { return _editbeheerselectedDaden; }
-            set
-            {
-                _editbeheerselectedDaden = value;
-                EditBeheerSelectionChanged();
-                OnPropertyChanged();
-            }
-        }
         public string NewBeheerDaad
         {
             get { return _newbeheerDaad; }
@@ -1726,6 +1720,16 @@ namespace PlantenApplicatie.UI.ViewModel
         }
 
         //Bestaande beheersbehandeling
+        public BeheerDaden EditBeheerSelectedDaden
+        {
+            get { return _editbeheerselectedDaden; }
+            set
+            {
+                _editbeheerselectedDaden = value;
+                EditBeheerSelectionChanged();
+                OnPropertyChanged();
+            }
+        }
         public bool EditBeheerSelectedJan
         {
             get { return _editbeheerselectedJan; }
@@ -1831,6 +1835,33 @@ namespace PlantenApplicatie.UI.ViewModel
             set
             {
                 _editbeheerselectedDec = value;
+                OnPropertyChanged();
+            }
+        }
+        public string EditBeheerOmschrijving
+        {
+            get { return _editbeheerOmschrijving; }
+            set
+            {
+                _editbeheerOmschrijving = value;
+                OnPropertyChanged();
+            }
+        }
+        public string EditBeheerFrequentie
+        {
+            get { return _editbeheerFrequentie; }
+            set
+            {
+                _editbeheerFrequentie = value;
+                OnPropertyChanged();
+            }
+        }
+        public string EditBeheerM2U
+        {
+            get { return _editbeheerM2U; }
+            set
+            {
+                _editbeheerM2U = value;
                 OnPropertyChanged();
             }
         }
