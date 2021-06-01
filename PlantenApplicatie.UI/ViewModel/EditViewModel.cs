@@ -330,69 +330,163 @@ namespace PlantenApplicatie.UI.ViewModel
                     f.Variantnaam == _plantenDataService.GetFilterVariant(plant.VariantId)
                         .Variantnaam);
             }
-            //Fenotype
-            FenoSelectedBloeiwijze =
-                _fenoBloeiwijze.FirstOrDefault(f =>
-                    f.Naam == _plantenDataService.GetFenotype(plant.PlantId).Bloeiwijze);
-            FenoSelectedHabitus =
-                _fenoHabitus.FirstOrDefault(f => f.Naam == _plantenDataService.GetFenotype(plant.PlantId).Habitus);
-            FenoSelectedMaxBladgrootte = _fenoBladgrootte.FirstOrDefault(f =>
-                f.Bladgrootte == _plantenDataService.GetFenoMaxBladHoogte(plant.PlantId));
-            FenoSelectedMaxBladgrootteMaand = _plantenDataService.GetFenoMaxBladHoogteMaand(plant.PlantId);
-            FenoSelectedMaxBloeihoogte = _fenoBladgrootte.FirstOrDefault(f =>
-                f.Bladgrootte == _plantenDataService.GetFenoMaxBloeiHoogte(plant.PlantId));
-            FenoSelectedMaxBloeihoogteMaand = _plantenDataService.GetFenoMaxBloeiHoogteMaand(plant.PlantId);
-            FenoSelectedMinBloeihoogte = _fenoBladgrootte.FirstOrDefault(f =>
-                f.Bladgrootte == _plantenDataService.GetFenoMinBloeiHoogte(plant.PlantId));
-            FenoSelectedMinBloeihoogteMaand = _plantenDataService.GetFenoMinBloeiHoogteMaand(plant.PlantId);
-            FenoSelectedBladKleur = _plantenDataService.GetFenoBladKleur(plant.PlantId);
-            FenoSelectedBladKleurMaand = _plantenDataService.GetFenoBladMaand(plant.PlantId);
-            FenoSelectedBloeiKleur = _plantenDataService.GetFenoBloeiKleur(plant.PlantId);
-            FenoSelectedBloeiKleurMaand = _plantenDataService.GetFenoBloeiMaand(plant.PlantId);
-            FenoSelectedBladvorm =
-                _fenoBladvorm.FirstOrDefault(f => f.Vorm == _plantenDataService.GetFenotype(plant.PlantId).Bladvorm);
-            FenoSelectedRatio = _fenoRatio.FirstOrDefault(f =>
-                f.Waarde == _plantenDataService.GetFenotype(plant.PlantId).RatioBloeiBlad);
-            FenoSelectedSpruit = _fenoSpruit.FirstOrDefault(f =>
-                f.Fenologie == _plantenDataService.GetFenotype(plant.PlantId).Spruitfenologie);
-            FenoSelectedLevensvorm = _fenoLevensvorm.FirstOrDefault(f =>
-                f.Levensvorm == _plantenDataService.GetFenotype(plant.PlantId).Levensvorm);
-            //Abio
-            AbioSelectedBezonning =
-                _abiobezonning.FirstOrDefault(a => a.Naam == _plantenDataService.GetAbiotiek(plant.PlantId).Bezonning);
-            AbioSelectedGrondsoort = _abiogrondsoort.FirstOrDefault(a =>
-                a.Grondsoort == _plantenDataService.GetAbiotiek(plant.PlantId).Grondsoort);
-            AbioSelectedVoedingsbehoefte = _abiovoedingsbehoefte.FirstOrDefault(a =>
-                a.Voedingsbehoefte == _plantenDataService.GetAbiotiek(plant.PlantId).Voedingsbehoefte);
-            AbioSelectedVochtbehoefte = _abiovochtbehoefte.FirstOrDefault(a =>
-                a.Vochtbehoefte == _plantenDataService.GetAbiotiek(plant.PlantId).Vochtbehoefte);
-            AbioSelectedReactie = _abioReactie.FirstOrDefault(a =>
-                a.Antagonie == _plantenDataService.GetAbiotiek(plant.PlantId).AntagonischeOmgeving);
 
-            foreach (var abiotiekMulti in _plantenDataService.GetAbiotiekMulti(plant.PlantId))
+            //Fenotype
+            if (_plantenDataService.GetFenotype(plant.PlantId) != null)
             {
-                _abioAddedHabitats.Add(_abioAllHabitats.FirstOrDefault(a => a.Afkorting == abiotiekMulti.Waarde));
+                FenoSelectedBloeiwijze =
+                    _fenoBloeiwijze.FirstOrDefault(f =>
+                        f.Naam == _plantenDataService.GetFenotype(plant.PlantId).Bloeiwijze);
             }
+            if (_plantenDataService.GetFenotype(plant.PlantId) != null)
+            {
+                FenoSelectedHabitus =
+                    _fenoHabitus.FirstOrDefault(f => f.Naam == _plantenDataService.GetFenotype(plant.PlantId).Habitus);
+            }
+            if (_plantenDataService.GetFenoMaxBladHoogte(plant.PlantId) != null)
+            {
+                FenoSelectedMaxBladgrootte = _fenoBladgrootte.FirstOrDefault(f =>
+                    f.Bladgrootte == _plantenDataService.GetFenoMaxBladHoogte(plant.PlantId));
+            }
+            if (_plantenDataService.GetFenoMaxBladHoogteMaand(plant.PlantId) != null)
+            {
+                FenoSelectedMaxBladgrootteMaand = _plantenDataService.GetFenoMaxBladHoogteMaand(plant.PlantId);
+            }
+            if (_plantenDataService.GetFenoMaxBloeiHoogte(plant.PlantId) != null)
+            {
+                FenoSelectedMaxBloeihoogte = _fenoBladgrootte.FirstOrDefault(f =>
+                    f.Bladgrootte == _plantenDataService.GetFenoMaxBloeiHoogte(plant.PlantId));
+            }
+            if (_plantenDataService.GetFenoMaxBloeiHoogteMaand(plant.PlantId) != null)
+            {
+                FenoSelectedMaxBloeihoogteMaand = _plantenDataService.GetFenoMaxBloeiHoogteMaand(plant.PlantId);
+            }
+            if (_plantenDataService.GetFenoMinBloeiHoogte(plant.PlantId) != null)
+            {
+                FenoSelectedMinBloeihoogte = _fenoBladgrootte.FirstOrDefault(f =>
+                    f.Bladgrootte == _plantenDataService.GetFenoMinBloeiHoogte(plant.PlantId));
+            }
+            if (_plantenDataService.GetFenoMinBloeiHoogteMaand(plant.PlantId) != null)
+            {
+                FenoSelectedMinBloeihoogteMaand = _plantenDataService.GetFenoMinBloeiHoogteMaand(plant.PlantId);
+            }
+            if (_plantenDataService.GetFenoBladKleur(plant.PlantId) != null)
+            {
+                FenoSelectedBladKleur = _plantenDataService.GetFenoBladKleur(plant.PlantId);
+            }
+            if (_plantenDataService.GetFenoBladKleur(plant.PlantId) != null)
+            {
+                FenoSelectedBladKleur = _plantenDataService.GetFenoBladKleur(plant.PlantId);
+            }
+            if (_plantenDataService.GetFenoBladMaand(plant.PlantId) != null)
+            {
+                FenoSelectedBladKleurMaand = _plantenDataService.GetFenoBladMaand(plant.PlantId);
+            }
+            if (_plantenDataService.GetFenoBloeiKleur(plant.PlantId) != null)
+            {
+                FenoSelectedBloeiKleur = _plantenDataService.GetFenoBloeiKleur(plant.PlantId);
+            }
+            if (_plantenDataService.GetFenoBloeiMaand(plant.PlantId) != null)
+            {
+                FenoSelectedBloeiKleurMaand = _plantenDataService.GetFenoBloeiMaand(plant.PlantId);
+            }
+            if (_plantenDataService.GetFenotype(plant.PlantId) != null)
+            {
+                FenoSelectedBladvorm =
+                    _fenoBladvorm.FirstOrDefault(f => f.Vorm == _plantenDataService.GetFenotype(plant.PlantId).Bladvorm);
+            }
+            if (_plantenDataService.GetFenotype(plant.PlantId) != null)
+            {
+                FenoSelectedRatio = _fenoRatio.FirstOrDefault(f =>
+                    f.Waarde == _plantenDataService.GetFenotype(plant.PlantId).RatioBloeiBlad);
+            }
+            if (_plantenDataService.GetFenotype(plant.PlantId) != null)
+            {
+                FenoSelectedSpruit = _fenoSpruit.FirstOrDefault(f =>
+                    f.Fenologie == _plantenDataService.GetFenotype(plant.PlantId).Spruitfenologie);
+            }
+            if (_plantenDataService.GetFenotype(plant.PlantId) != null)
+            {
+                FenoSelectedLevensvorm = _fenoLevensvorm.FirstOrDefault(f =>
+                    f.Levensvorm == _plantenDataService.GetFenotype(plant.PlantId).Levensvorm);
+            }
+            
+            
+            //Abio
+
+            if (_plantenDataService.GetAbiotiek(plant.PlantId) != null)
+            {
+                AbioSelectedBezonning =
+                    _abiobezonning.FirstOrDefault(a => a.Naam == _plantenDataService.GetAbiotiek(plant.PlantId).Bezonning);
+            }
+            if (_plantenDataService.GetAbiotiek(plant.PlantId) != null)
+            {
+                AbioSelectedGrondsoort = _abiogrondsoort.FirstOrDefault(a =>
+                    a.Grondsoort == _plantenDataService.GetAbiotiek(plant.PlantId).Grondsoort);
+            }
+            if (_plantenDataService.GetAbiotiek(plant.PlantId) != null)
+            {
+                AbioSelectedVoedingsbehoefte = _abiovoedingsbehoefte.FirstOrDefault(a =>
+                    a.Voedingsbehoefte == _plantenDataService.GetAbiotiek(plant.PlantId).Voedingsbehoefte);
+            }
+            if (_plantenDataService.GetAbiotiek(plant.PlantId) != null)
+            {
+                AbioSelectedVochtbehoefte = _abiovochtbehoefte.FirstOrDefault(a =>
+                    a.Vochtbehoefte == _plantenDataService.GetAbiotiek(plant.PlantId).Vochtbehoefte);
+            }
+
+            if (_plantenDataService.GetAbiotiek(plant.PlantId) != null)
+            {
+                AbioSelectedReactie = _abioReactie.FirstOrDefault(a =>
+                    a.Antagonie == _plantenDataService.GetAbiotiek(plant.PlantId).AntagonischeOmgeving);
+            }
+
+            if (_plantenDataService.GetAbiotiekMulti(plant.PlantId) != null)
+            {
+                foreach (var abiotiekMulti in _plantenDataService.GetAbiotiekMulti(plant.PlantId))
+                {
+                    _abioAddedHabitats.Add(_abioAllHabitats.FirstOrDefault(a => a.Afkorting == abiotiekMulti.Waarde));
+                }
+            }
+            
             ReloadHabitatlist();
             //Commersialisme
-            CommSelectedOntwikkelSnelheid = _commOntwikkelSnelheid.FirstOrDefault(c =>
-                c.Snelheid == _plantenDataService.GetCommensalisme(plant.PlantId).Ontwikkelsnelheid);
-            foreach (var commMulti in _plantenDataService.GetCommLevensvormFromPlant(plant.PlantId))
+
+            if (_plantenDataService.GetCommensalisme(plant.PlantId) != null)
             {
-                _commAddedLevensvorm.Add(_commAllLevensvorm.FirstOrDefault(c => c.Levensvorm == commMulti.Waarde));
+                CommSelectedOntwikkelSnelheid = _commOntwikkelSnelheid.FirstOrDefault(c =>
+                    c.Snelheid == _plantenDataService.GetCommensalisme(plant.PlantId).Ontwikkelsnelheid);
             }
+
+            if (_plantenDataService.GetCommLevensvormFromPlant(plant.PlantId) != null)
+            {
+                foreach (var commMulti in _plantenDataService.GetCommLevensvormFromPlant(plant.PlantId))
+                {
+                    _commAddedLevensvorm.Add(_commAllLevensvorm.FirstOrDefault(c => c.Levensvorm == commMulti.Waarde));
+                }
+            }
+            
             ReloadLevensvorm();
-            foreach (var commensalismeMulti in _plantenDataService.GetCommSocialbiliteitFromPlant(plant.PlantId))
+
+            if (_plantenDataService.GetCommSocialbiliteitFromPlant(plant.PlantId) != null)
             {
-                _commAddedSocialbiliteit.Add(
-                    _commAllSocialbiliteit.FirstOrDefault(c => c.Sociabiliteit == commensalismeMulti.Waarde));
+                foreach (var commensalismeMulti in _plantenDataService.GetCommSocialbiliteitFromPlant(plant.PlantId))
+                {
+                    _commAddedSocialbiliteit.Add(
+                        _commAllSocialbiliteit.FirstOrDefault(c => c.Sociabiliteit == commensalismeMulti.Waarde));
+                }
             }
+
             ReloadSocialbiliteit();
-            foreach (var commensalisme in _plantenDataService.GetCommStrategieFromPlant(plant.PlantId))
+            if (_plantenDataService.GetCommStrategieFromPlant(plant.PlantId) != null)
             {
-                _commAddedStrategies.Add(
-                    _commAllStrategies.FirstOrDefault(c => c.Strategie == commensalisme.Strategie));
+                foreach (var commensalisme in _plantenDataService.GetCommStrategieFromPlant(plant.PlantId))
+                {
+                    _commAddedStrategies.Add(
+                        _commAllStrategies.FirstOrDefault(c => c.Strategie == commensalisme.Strategie));
+                }
             }
+
             ReloadStrategie();
             //Extra Eigenschappen
             ExtraSelectedNectarwaarde = _plantenDataService.GetExtraNectarwaardeFromPlant(plant.PlantId);
