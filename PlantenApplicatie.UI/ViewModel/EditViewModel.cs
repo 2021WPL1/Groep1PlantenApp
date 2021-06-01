@@ -811,6 +811,7 @@ namespace PlantenApplicatie.UI.ViewModel
             }
 
             _plantenDataService.DeleteBeheerFromPlant(_editbeheerselectedDaden);
+            ClearEditBeheerhandeling();
             ReloadEditBeheerdaden();
         }
 
