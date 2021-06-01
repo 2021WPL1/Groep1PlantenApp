@@ -41,7 +41,7 @@
                 SelectedValuePath="FamileId"/>
             <ComboBox
                 x:Name="cbxSoort" 
-                Margin="-9,318,552,0" 
+                Margin="120,318,713,0" 
                 VerticalAlignment="Top"
                 ItemsSource="{Binding FilterTfgsvSoort}"
                 SelectedItem="{Binding FilterSelectedSoort, Mode=TwoWay}"
@@ -836,7 +836,7 @@
                     </ScrollViewer>
                 </TabItem>
                 <TabItem x:Name="tabEditBeheerbehandeling" Header="Bestaande behandeling" HorizontalAlignment="Center" Height="20" VerticalAlignment="Top" Width="139" Margin="0,-1,0,0">
-                    <Grid Background="#FFE5E5E5" Height="466" VerticalAlignment="Top">
+                    <Grid Background="#FFE5E5E5" Height="466" VerticalAlignment="Top" Margin="23,0,33,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
@@ -855,13 +855,13 @@
                         <TextBox
                             Text="{Binding EditBeheerOmschrijving, Mode=TwoWay}"
                             x:Name="txtOpmerkingEdit" 
-                            HorizontalAlignment="Left" 
+                            HorizontalAlignment="Stretch" 
                             Margin="5,200,0,0" 
                             TextWrapping="Wrap" 
                             Width="539"
                             Height="200" 
                             VerticalAlignment="Top"/>
-                        <Label x:Name="lblOmschrijving_Copy" Content="Omschrijving" HorizontalAlignment="Left" Margin="7,170,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="lblOmschrijving_Copy" Content="Omschrijving" HorizontalAlignment="Left" Margin="37,167,0,0" VerticalAlignment="Top"/>
                         <CheckBox
                             IsChecked="{Binding EditBeheerSelectedJan}"
                             x:Name="CheckJanEdit"
