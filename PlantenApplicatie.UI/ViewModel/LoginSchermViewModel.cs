@@ -17,6 +17,9 @@ namespace PlantenApplicatie.UI.ViewModel
 
         //Maarten &Hemen 
         public RelayCommand<Window> CloseWindowCommand { get; set; }
+
+        public ICommand OpenWachtwoordVergetenWindow { get; set; }
+
         private PlantenDataService _plantenDataService;
         private string _emailInput;
         private string _wachtwoordInput;
@@ -24,8 +27,16 @@ namespace PlantenApplicatie.UI.ViewModel
         public LoginSchermViewModel(PlantenDataService plantenDataService)
         {
             this.CloseWindowCommand = new RelayCommand<Window>(this.CloseWindow);
+            OpenWachtwoordVergetenWindow = new DelegateCommand(WachtwoordVergetenScherm);
             this._plantenDataService = plantenDataService;
         }
+
+        public void WachtwoordVergetenScherm()
+        {
+            WachtwoordVergetenWindow window = new WachtwoordVergetenWindow();
+            window.ShowDialog();
+        }
+
         public string EmailInput
         {
             get { return _emailInput; }

@@ -20,6 +20,7 @@
     <None Remove="scherm.jpg" />
     <None Remove="smalle pluim.jpg" />
     <None Remove="View\Plantify.png" />
+    <None Remove="View\WachtwoordVergeten.xaml~RFe5190c.TMP" />
   </ItemGroup>
 
   <ItemGroup>

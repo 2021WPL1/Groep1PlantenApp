@@ -1,9 +1,10 @@
-﻿<Window x:Class="PlantenApplicatie.UI.View.WachtwoordVergeten"
+﻿<Window x:Class="PlantenApplicatie.UI.View.WachtwoordVergetenWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PlantenApplicatie.UI.View"
+        xmlns:local="clr-namespace:PlantenApplicatie.UI.View" xmlns:viewmodel="clr-namespace:PlantenApplicatie.UI.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:WachtwoordViewModel}"
+        x:Name="WachtwoordVergeten"
         mc:Ignorable="d"
         Title="WachtwoordVergeten" Height="450" Width="800">
     <Grid>
@@ -14,7 +15,10 @@
         <Label Content="Voer code in:" HorizontalAlignment="Left" Margin="18,272,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" Margin="132,272,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
         <Button Content="Controleer code" HorizontalAlignment="Left" Margin="132,326,0,0" VerticalAlignment="Top" Height="40" Width="120" IsEnabled="False"/>
-        <Button Content="Back" HorizontalAlignment="Left" Margin="524,326,0,0" VerticalAlignment="Top" Height="40" Width="120"/>
+        <Button Content="Back" 
+                Command="{Binding Path=CloseResultCommand, Mode=OneWay}"
+                CommandParameter="{Binding ElementName=WachtwoordVergeten}"
+                HorizontalAlignment="Left" Margin="524,326,0,0" VerticalAlignment="Top" Height="40" Width="120"/>
         <Label Content="Nieuw wachtwoord:" HorizontalAlignment="Left" Margin="375,56,0,0" VerticalAlignment="Top"/>
         <Label Content="Herhaal nieuw wachtwoord:" HorizontalAlignment="Left" Margin="333,95,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" Margin="524,64,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>

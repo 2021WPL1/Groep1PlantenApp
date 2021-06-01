@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PlantenApplicatie.Data;
+using PlantenApplicatie.UI.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -15,11 +17,13 @@ namespace PlantenApplicatie.UI.View
     /// <summary>
     /// Interaction logic for WachtwoordVergeten.xaml
     /// </summary>
-    public partial class WachtwoordVergeten : Window
+    public partial class WachtwoordVergetenWindow : Window
     {
-        public WachtwoordVergeten()
+        private WachtwoordViewModel viewModel;
+        public WachtwoordVergetenWindow()
         {
             InitializeComponent();
+            viewModel = new WachtwoordViewModel(PlantenDataService.Instance());
         }
     }
 }
