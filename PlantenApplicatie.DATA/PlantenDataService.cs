@@ -419,14 +419,6 @@ namespace PlantenApplicatie.Data
         {
             return context.Gebruiker.SingleOrDefault(g => g.Emailadres == email);
         }
-
-
-        //Jelle & Stephanie
-        public List<CommensalismeMulti> GetCommMulti(long plantId)
-        {
-            return context.CommensalismeMulti.Where(p => p.PlantId == plantId).ToList();
-        }
-        //Hemen & Maarten
         public List<Gebruiker> GetAllUsers()
         {
             return context.Gebruiker.ToList();
@@ -438,5 +430,12 @@ namespace PlantenApplicatie.Data
             context.SaveChanges();
             return gebruiker;
         }
+
+        //Jelle & Stephanie
+        public List<CommensalismeMulti> GetCommMulti(long plantId)
+        {
+            return context.CommensalismeMulti.Where(p => p.PlantId == plantId).ToList();
+        }
+       
     }
 }
