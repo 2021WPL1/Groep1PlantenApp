@@ -189,9 +189,9 @@
                             <GradientStop Color="White"/>
                             <GradientStop Color="#FFC7FF00" Offset="1"/>
                         </LinearGradientBrush>
-                    </Button.Background> Create
+                    </Button.Background> Creëer
                 </Button>
-                <Button x:Name="btnStartOpnieuw" Content="Clear zoekresultaat" 
+                <Button x:Name="btnStartOpnieuw" Content="Leegmaken" 
                         Command="{Binding Path=ClearResultCommand}"
                         HorizontalAlignment="Left" Margin="74,273,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="2" Width="119">
                     <Button.Background>
