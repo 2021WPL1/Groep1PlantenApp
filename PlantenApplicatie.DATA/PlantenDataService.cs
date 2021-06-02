@@ -144,7 +144,7 @@ namespace PlantenApplicatie.Data
         //Geeft de plant en zijn uiterlijke kenmerken + habitus
         public Fenotype GetFenotype(long Id)
         {
-            return context.Fenotype.SingleOrDefault(p => p.PlantId == Id);
+            return context.Fenotype.FirstOrDefault(p => p.PlantId == Id);
         }
         //Geeft de plant en zijn behoeftes
         public Abiotiek GetAbiotiek(long Id)
@@ -239,14 +239,26 @@ namespace PlantenApplicatie.Data
         //Fenotype
         public string GetFenoMaxBladHoogte(long id)
         {
+            if (context.Fenotype.FirstOrDefault(f => f.PlantId == id) == null)
+            {
+                return null;
+            }
             return context.Fenotype.FirstOrDefault(f => f.PlantId == id).MaxBladhoogte.ToString();
         }
         public string GetFenoMaxBloeiHoogte(long id)
         {
+            if (context.Fenotype.FirstOrDefault(f => f.PlantId == id) == null)
+            {
+                return null;
+            }
             return context.Fenotype.FirstOrDefault(f => f.PlantId == id).MaxBloeihoogte.ToString();
         }
         public string GetFenoMinBloeiHoogte(long id)
         {
+            if (context.Fenotype.FirstOrDefault(f => f.PlantId == id) == null)
+            {
+                return null;
+            }
             return context.Fenotype.FirstOrDefault(f => f.PlantId == id).MinBloeihoogte.ToString();
         }
         public FenotypeMulti GetFenotypeMulti(long id)
@@ -403,36 +415,69 @@ namespace PlantenApplicatie.Data
         }
         public ExtraNectarwaarde GetExtraNectarwaardeFromPlant(long id)
         {
+            if (context.ExtraEigenschap.FirstOrDefault(x => x.PlantId == id).Nectarwaarde == null)
+            {
+                return null;
+            }
             return context.ExtraNectarwaarde.FirstOrDefault(e =>
                 e.Waarde == context.ExtraEigenschap.FirstOrDefault(x => x.PlantId == id).Nectarwaarde);
         }
         public ExtraPollenwaarde GetExtraPollenwaardeFromPlant(long id)
         {
+            if (context.ExtraEigenschap.FirstOrDefault(x => x.PlantId == id).Pollenwaarde == null)
+            {
+                return null;
+            }
             return context.ExtraPollenwaarde.FirstOrDefault(e =>
                 e.Waarde == context.ExtraEigenschap.FirstOrDefault(x => x.PlantId == id).Pollenwaarde);
         }
         public bool GetExtraBijvriendelijk(long id)
         {
+            if (context.ExtraEigenschap.FirstOrDefault(e => e.PlantId == id).Bijvriendelijke == null)
+            {
+                return false;
+            }
             return (bool)context.ExtraEigenschap.FirstOrDefault(e => e.PlantId == id).Bijvriendelijke;
         }
         public bool GetExtraEetbaar(long id)
         {
+            if (context.ExtraEigenschap.FirstOrDefault(e => e.PlantId == id).Eetbaar == null)
+            {
+                return false;
+            }
             return (bool)context.ExtraEigenschap.FirstOrDefault(e => e.PlantId == id).Eetbaar;
+
         }
         public bool GetExtraVlindervriendelijk(long id)
         {
+            if (context.ExtraEigenschap.FirstOrDefault(e => e.PlantId == id).Vlindervriendelijk == null)
+            {
+                return false;
+            }
             return (bool)context.ExtraEigenschap.FirstOrDefault(e => e.PlantId == id).Vlindervriendelijk;
         }
         public bool GetExtraGeurend(long id)
         {
+            if (context.ExtraEigenschap.FirstOrDefault(e => e.PlantId == id).Geurend == null)
+            {
+                return false;
+            }
             return (bool)context.ExtraEigenschap.FirstOrDefault(e => e.PlantId == id).Geurend;
         }
         public bool GetExtraVorstgevoelig(long id)
         {
+            if (context.ExtraEigenschap.FirstOrDefault(e => e.PlantId == id).Vorstgevoelig == null)
+            {
+                return false;
+            }
             return (bool)context.ExtraEigenschap.FirstOrDefault(e => e.PlantId == id).Vorstgevoelig;
         }
         public bool GetExtraKruidgebruik(long id)
         {
+            if (context.ExtraEigenschap.FirstOrDefault(e => e.PlantId == id).Kruidgebruik == null)
+            {
+                return false;
+            }
             return (bool)context.ExtraEigenschap.FirstOrDefault(e => e.PlantId == id).Kruidgebruik;
         }
         //Nieuwe beheersbehandeling
