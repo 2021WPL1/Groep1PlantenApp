@@ -24,6 +24,7 @@ namespace PlantenApplicatie.UI.View
         {
             InitializeComponent();
             viewModel = new WachtwoordViewModel(PlantenDataService.Instance());
+            DataContext = viewModel;
         }
     }
 }

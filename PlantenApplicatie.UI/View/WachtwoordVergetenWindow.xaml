@@ -11,7 +11,9 @@
         <Label Content="Wachtwoord vergeten" HorizontalAlignment="Left" Margin="10,20,0,0" VerticalAlignment="Top" Width="134"/>
         <Label Content="Vul email in: " HorizontalAlignment="Left" Margin="19,70,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" Margin="132,74,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Stuur mail" HorizontalAlignment="Left" Margin="132,113,0,0" VerticalAlignment="Top" Height="40" Width="120"/>
+        <Button Content="Stuur mail" 
+                Command="{Binding Path=MailCodeSending, Mode=OneWay}"
+                HorizontalAlignment="Left" Margin="132,113,0,0" VerticalAlignment="Top" Height="40" Width="120"/>
         <Label Content="Voer code in:" HorizontalAlignment="Left" Margin="18,272,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" Margin="132,272,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
         <Button Content="Controleer code" HorizontalAlignment="Left" Margin="132,326,0,0" VerticalAlignment="Top" Height="40" Width="120" IsEnabled="False"/>
