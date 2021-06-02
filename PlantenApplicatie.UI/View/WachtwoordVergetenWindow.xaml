@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PlantenApplicatie.UI.View" xmlns:viewmodel="clr-namespace:PlantenApplicatie.UI.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:WachtwoordViewModel}"
+        xmlns:local="clr-namespace:PlantenApplicatie.UI.View" xmlns:viewmodel="clr-namespace:PlantenApplicatie.UI.ViewModel"
         x:Name="WachtwoordVergeten"
         mc:Ignorable="d"
         Title="WachtwoordVergeten" Height="450" Width="800">
@@ -28,7 +28,7 @@
                 IsEnabled="{Binding CodeEnabled}"
                 HorizontalAlignment="Left" Margin="132,326,0,0" VerticalAlignment="Top" Height="40" Width="120"/>
         <Button Content="Stuur mail opnieuw" 
-                Command="{Binding Path=CloseResultCommand, Mode=OneWay}"
+                Command="{Binding Path=MailCodeSending, Mode=OneWay}"
                 IsEnabled="{Binding CodeEnabled}"
                 HorizontalAlignment="Left" Margin="7,326,0,0" VerticalAlignment="Top" Height="40" Width="120"/>
         <Label Content="Nieuw wachtwoord:" HorizontalAlignment="Left" Margin="375,56,0,0" VerticalAlignment="Top"/>
@@ -43,10 +43,12 @@
                  Margin="524,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button Content="Zet nieuw wachtwoord"
                 Command="{Binding Path=PasswordChecking, Mode=OneWay}"
+                CommandParameter="{Binding ElementName=WachtwoordVergeten}"
                 IsEnabled="{Binding PasswordEnabled}"
                 HorizontalAlignment="Left" Margin="524,152,0,0" VerticalAlignment="Top" Height="40" Width="137"/>
         <Button Content="Back" 
                 Command="{Binding Path=CloseResultCommand, Mode=OneWay}"
+                CommandParameter="{Binding ElementName=WachtwoordVergeten}"
                 HorizontalAlignment="Left" Margin="524,326,0,0" VerticalAlignment="Top" Height="40" Width="120"/>
 
     </Grid>

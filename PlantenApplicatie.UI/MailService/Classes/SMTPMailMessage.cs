@@ -23,7 +23,7 @@ namespace PlantenApplicatie.UI.MailService.Classes
         //Maakt een normale mail
         public MailMessage CreateMail(string ReceiverAdress, string htmlContent, string subject)
         {
-            var from = new MailAddress("jelle.dispersyn@student.vives.be", "We wet plants ;)");
+            var from = new MailAddress("jelle.dispersyn@student.vives.be", "Plantify");
             var to = new MailAddress(ReceiverAdress);
             var message = new MailMessage(from, to);
             message.Subject = subject;

@@ -26,22 +26,55 @@ namespace PlantenApplicatie.UI.ViewModel
         public RelayCommand<Window> CloseResultCommand { get; set; }
         public ICommand MailCodeSending { get; set; }
         public ICommand CodeChecking { get; set; }
-        public ICommand PasswordChecking { get; set; }
+        public RelayCommand<Window> PasswordChecking { get; set; }
 
-        private bool _isSelected;
+        private bool _emailEnabled = true;
+        private bool _codeEnabled = false;
+        private bool _passwordEnabled = false;
 
-        public bool isSelected
+
+        public bool EmailEnabled
         {
             get
             {
-                return _isSelected;
+                return _emailEnabled;
             }
             set
             {
-                if (_isSelected != value)
+                if (_emailEnabled != value)
                 {
-                    _isSelected = value;
-                    OnPropertyChanged("isSelected");
+                    _emailEnabled = value;
+                    OnPropertyChanged("EmailEnabled");
+                }
+            }
+        }
+        public bool CodeEnabled
+        {
+            get
+            {
+                return _codeEnabled;
+            }
+            set
+            {
+                if (_codeEnabled != value)
+                {
+                    _codeEnabled = value;
+                    OnPropertyChanged("CodeEnabled");
+                }
+            }
+        }
+        public bool PasswordEnabled
+        {
+            get
+            {
+                return _passwordEnabled;
+            }
+            set
+            {
+                if (_passwordEnabled != value)
+                {
+                    _passwordEnabled = value;
+                    OnPropertyChanged("PasswordEnabled");
                 }
             }
         }
@@ -58,7 +91,7 @@ namespace PlantenApplicatie.UI.ViewModel
             this.CloseResultCommand = new RelayCommand<Window>(this.CloseWindow);
             MailCodeSending = new DelegateCommand(SendMail);
             CodeChecking = new DelegateCommand(EnableNewPassword);
-            PasswordChecking = new DelegateCommand(CreateNewPassword);
+            this.PasswordChecking = new RelayCommand<Window>(this.CreateNewPassword);
             this._plantenDataService = plantenDataService;
         }
 
@@ -103,23 +136,25 @@ namespace PlantenApplicatie.UI.ViewModel
 
         public void SendMail()
         {
-            isSelected = !isSelected;
-            /*if (_plantenDataService.getGebruikerViaEmail(EmailInput) != null)
+            if (_plantenDataService.getGebruikerViaEmail(EmailInput) != null)
             {
+                if (_code != null) { _code = null;}
                 Random r = new Random();
                 for (int i = 0; i < 9; i++)
                 {
                     _code += r.Next(0, 9).ToString();
                 }
-                string fileName = "MailMessage.html";
-                string path = Path.Combine(Environment.CurrentDirectory, fileName);
-                string html = File.ReadAllText(path);
-                string body = String.Format(html, _code);
+                //string fileName = "MailMessage.html";
+                //string path = Path.Combine(Environment.CurrentDirectory, fileName);
+                //string html = File.ReadAllText(path);
+                string body = String.Format($"Beste Meneer / Mevrouw,\r\nUw code voor uw wachtwoord te resetten is {_code}.\r\n Vriendlijke groeten, Plantify");
                 var msg = sMTPMailMessage.CreateMail(EmailInput, body, "Wachtwoord reset");
                 var result = sMTPMailMessage.sendMessage(msg);
                 if (result.Status == MailSendingStatus.OK)
                 {
                     MessageBox.Show($"Message send to {EmailInput}");
+                    EmailEnabled = false;
+                    CodeEnabled = true;
                     return;
                 }
                 else
@@ -131,24 +166,26 @@ namespace PlantenApplicatie.UI.ViewModel
             else
             {
                 MessageBox.Show("Deze mail bestaat niet in onze database.");
-            }*/
+            }
         }
 
         public void EnableNewPassword()
         {
             if (CodeInput == _code)
             {
-                MessageBox.Show("you did it!");
+                MessageBox.Show("De code is geaccepteerd, gelieve uw nieuw wachtwoord in te vullen.");
+                CodeEnabled = false;
+                PasswordEnabled = true;
             }
             else
             {
-                MessageBox.Show("This is a wrong code");
+                MessageBox.Show("Dit is niet de juiste code");
             }
         }
 
-        public void CreateNewPassword()
+        public void CreateNewPassword(Window window)
         {
-            if (PasswordInput1 != null && PasswordInput2 != null)
+            if (PasswordInput1 != null && PasswordInput1 != "" && PasswordInput2 != null && PasswordInput2 != null)
             {
                 if (PasswordInput1 == PasswordInput2)
                 {
@@ -159,6 +196,8 @@ namespace PlantenApplicatie.UI.ViewModel
                         if (!hashedBytes.SequenceEqual(gebruiker.HashPaswoord))
                         {
                             _plantenDataService.ChangeGebruikerPassword(gebruiker, hashedBytes);
+                            MessageBox.Show("Uw wachtwoord is gewijzigd.");
+                            window.Close();
                         }
                         else
                         {
