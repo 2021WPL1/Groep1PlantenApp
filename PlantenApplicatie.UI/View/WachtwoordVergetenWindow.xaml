@@ -19,6 +19,7 @@
         <Label Content="Voer code in:" HorizontalAlignment="Left" Margin="18,272,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" 
                  Text= "{Binding Path=CodeInput, Mode=TwoWay}"
+                 IsEnabled="{Binding isSelected}"
                  Margin="132,272,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button Content="Controleer code"
                 Command="{Binding Path=CodeChecking, Mode=OneWay}"

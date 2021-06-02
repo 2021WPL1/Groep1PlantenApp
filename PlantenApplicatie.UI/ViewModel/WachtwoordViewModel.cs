@@ -28,6 +28,24 @@ namespace PlantenApplicatie.UI.ViewModel
         public ICommand CodeChecking { get; set; }
         public ICommand PasswordChecking { get; set; }
 
+        private bool _isSelected;
+
+        public bool isSelected
+        {
+            get
+            {
+                return _isSelected;
+            }
+            set
+            {
+                if (_isSelected != value)
+                {
+                    _isSelected = value;
+                    OnPropertyChanged("isSelected");
+                }
+            }
+        }
+
         private string _emailInput;
         private string _codeInput;
         private string _passwordInput1;
@@ -43,6 +61,7 @@ namespace PlantenApplicatie.UI.ViewModel
             PasswordChecking = new DelegateCommand(CreateNewPassword);
             this._plantenDataService = plantenDataService;
         }
+
 
         public string EmailInput
         {
@@ -84,7 +103,8 @@ namespace PlantenApplicatie.UI.ViewModel
 
         public void SendMail()
         {
-            if (_plantenDataService.getGebruikerViaEmail(EmailInput) != null)
+            _isSelected = !_isSelected;
+            /*if (_plantenDataService.getGebruikerViaEmail(EmailInput) != null)
             {
                 Random r = new Random();
                 for (int i = 0; i < 9; i++)
@@ -111,7 +131,7 @@ namespace PlantenApplicatie.UI.ViewModel
             else
             {
                 MessageBox.Show("Deze mail bestaat niet in onze database.");
-            }
+            }*/
         }
 
         public void EnableNewPassword()
