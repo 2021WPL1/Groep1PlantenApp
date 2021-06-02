@@ -25,6 +25,9 @@ namespace PlantenApplicatie.UI.ViewModel
         private string emailInput;
         private string wachtwoordInput;
         private string wachtwoordBevestigen;
+        private string _voornaam;
+        private string _achternaam;
+        private string _vivesnr;
         private Rol _selectedRol;
         private string _error;
 
@@ -44,6 +47,47 @@ namespace PlantenApplicatie.UI.ViewModel
                 Rollen.Add(rol);
             }
 
+        }
+        public string WachtwoordBevestigen
+        {
+            get { return wachtwoordBevestigen; }
+            set { wachtwoordBevestigen = value; }
+        }
+        public string VoorNaamInput
+        {
+            get
+            {
+                return _voornaam;
+            }
+            set
+            {
+                _voornaam = value;
+                OnPropertyChanged();
+            }
+        }
+        public string AchterNaamInput
+        {
+            get
+            {
+                return _achternaam;
+            }
+            set
+            {
+                _achternaam = value;
+                OnPropertyChanged();
+            }
+        }
+        public string VivesNrInput
+        {
+            get
+            {
+                return _vivesnr;
+            }
+            set
+            {
+                _vivesnr = value;
+                OnPropertyChanged();
+            }
         }
         public Rol SelectedRol
         {
@@ -80,11 +124,6 @@ namespace PlantenApplicatie.UI.ViewModel
                 OnPropertyChanged();
             }
         }
-        public string WachtwoordBevestigen
-        {
-            get { return wachtwoordBevestigen; }
-            set { wachtwoordBevestigen = value; }
-        }
         public string SelectedError
         {
             get { return _error; }
@@ -106,23 +145,33 @@ namespace PlantenApplicatie.UI.ViewModel
         {
             try
             {
-                if (EmailInput.Contains("vives.be")&&EmailInput.Contains("@"))
+                if (EmailInput.Contains("vives.be") && EmailInput.Contains("@") && VoorNaamInput != null && AchterNaamInput != null && VivesNrInput != null)
                 {
-                    if (WachtwoordBevestigen == WachtwoordInput)
+                    var gebruiker = _dataservice.getGebruikerViaEmail(EmailInput);
+                    if (gebruiker == null)
                     {
-                        using (var sha256 = SHA256.Create())
+                        if (WachtwoordBevestigen == WachtwoordInput)
                         {
-                            GebruikersBeheer beheer = new GebruikersBeheer();
-                            var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(WachtwoordInput));
-                            _dataservice.addGebruiker(SelectedRol.Omschrijving, EmailInput, hashedBytes);
-                            closeWindow.Close();
-                            beheer.ShowDialog();
+                            using (var sha256 = SHA256.Create())
+                            {
+                                GebruikersBeheer beheer = new GebruikersBeheer();
+                                var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(WachtwoordInput));
+                                _dataservice.addGebruiker(SelectedRol.Omschrijving, EmailInput, hashedBytes, VivesNrInput, VoorNaamInput, AchterNaamInput);
+                                closeWindow.Close();
+                                beheer.ShowDialog();
+                            }
+                        }
+                        else
+                        {
+                            SelectedError = "wachtwoord is niet hetzelfde";
                         }
                     }
                     else
                     {
-                        SelectedError = "wachtwoord is niet hetzelfde";
+                        SelectedError = "Het emailadres bestaat al";
                     }
+
+
                 }
                 else
                 {
@@ -131,6 +180,8 @@ namespace PlantenApplicatie.UI.ViewModel
             }
             catch (Exception)
             {
+
+
 
                 SelectedError = "oei, er is iets fout";
             }
