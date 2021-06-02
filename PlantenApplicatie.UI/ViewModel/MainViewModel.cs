@@ -27,7 +27,6 @@ namespace PlantenApplicatie.UI.ViewModel
         //Jelle & Hemen
         //Command om resultatenscherm op te roepen
         public ICommand ResultaatSchermCommand { get; set; }
-        public ICommand CreatePlantCommand { get; set; }
 
         //boolean die ervoor zorgt dat de geselecteerde filters niet leeggemaakt worden
         private bool _loadCheck;
@@ -76,7 +75,6 @@ namespace PlantenApplicatie.UI.ViewModel
         {//DAO instantiëren
             //Senne, Hermes
             ZoekViaNaamCommand = new DelegateCommand(ZoekViaNaam);
-            CreatePlantCommand = new DelegateCommand(CreatePlant);
 
             //Stephanie, Hermes
             ClearResultCommand = new DelegateCommand(ClearResult);
@@ -102,12 +100,6 @@ namespace PlantenApplicatie.UI.ViewModel
             LoginScherm loginscherm = new LoginScherm();
             window.Close();
             loginscherm.ShowDialog();
-        }
-
-        private void CreatePlant()
-        {
-            EditWindow window = new EditWindow();
-            window.ShowDialog();
         }
 
         //Jelle & Hemen

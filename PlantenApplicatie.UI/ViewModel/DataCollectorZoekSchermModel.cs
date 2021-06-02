@@ -23,7 +23,6 @@ namespace PlantenApplicatie.UI.ViewModel
         public ICommand ZoekViaNaamCommand { get; set; }
 
         public ICommand ResultaatSchermCommand { get; set; }
-        public ICommand CreatePlantCommand { get; set; }
 
         //bool die ervoor zorgt dat de selected filters niet gecleared worden
         private bool _loadCheck;
@@ -73,7 +72,6 @@ namespace PlantenApplicatie.UI.ViewModel
             CloseDataCollectorSchermCommand = new RelayCommand<Window>(this.CloseDataCollectorScherm);
             //Senne, Hermes
             ZoekViaNaamCommand = new DelegateCommand(ZoekViaNaam);
-            CreatePlantCommand = new DelegateCommand(CreatePlant);
 
             //Stephanie, Hermes
             ClearResultCommand = new DelegateCommand(ClearResult);
@@ -99,11 +97,6 @@ namespace PlantenApplicatie.UI.ViewModel
             loginscherm.ShowDialog();
         }
 
-        private void CreatePlant()
-        {
-            EditWindow window = new EditWindow();
-            window.ShowDialog();
-        }
 
         public Plant SelectedPlant
         {
