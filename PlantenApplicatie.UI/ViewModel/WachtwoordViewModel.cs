@@ -16,9 +16,10 @@ namespace PlantenApplicatie.UI.ViewModel
     public class WachtwoordViewModel : ViewModelBase
     {
         //Eigen api key voor mails te sturen via sendgrid
-        private static SMTPMailMessage sMTPMailMessage = new SMTPMailMessage("apikey",
-            "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",
-            "smtp.sendgrid.net");
+        private static SMTPMailMessage sMTPMailMessage = new SMTPMailMessage();
+        /*private static SMTPMailMessage sMTPMailMessage = new SMTPMailMessage("gunnar.fritsch31@ethereal.email",
+            "9kSgGREuC3rf6N9PxJ",
+            "smtp.ethereal.email");*/
         public RelayCommand<Window> CloseResultCommand { get; set; }
         public ICommand MailCodeSending { get; set; }
 

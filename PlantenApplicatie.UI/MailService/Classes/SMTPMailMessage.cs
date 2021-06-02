@@ -10,11 +10,11 @@ namespace PlantenApplicatie.UI.MailService.Classes
     public class SMTPMailMessage
     {
         private SmtpClient smtpClient { get; set; }
-        public SMTPMailMessage(string SMTPName, string SMTPPassword, string SMTPHost)
+        public SMTPMailMessage()
         {
-            smtpClient = new SmtpClient();
-            smtpClient.Credentials = new NetworkCredential(SMTPName, SMTPPassword);
-            smtpClient.Host = SMTPHost;
+            smtpClient = new SmtpClient(); 
+            smtpClient.Credentials = new NetworkCredential("gunnar.fritsch31@ethereal.email", "9kSgGREuC3rf6N9PxJ");
+            smtpClient.Host = "smtp.ethereal.email";
             smtpClient.Port = 587;
             smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtpClient.EnableSsl = true;
@@ -40,6 +40,7 @@ namespace PlantenApplicatie.UI.MailService.Classes
 
             try
             {
+                smtpClient.Credentials = new NetworkCredential("gunnar.fritsch31@ethereal.email", "9kSgGREuC3rf6N9PxJ");
                 smtpClient.Send(msg);
             }
             catch (Exception e)
