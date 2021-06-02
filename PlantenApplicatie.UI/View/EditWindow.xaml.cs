@@ -29,7 +29,7 @@ namespace PlantenApplicatie.UI.View
             //Senne & Hermes
             InitializeComponent();
 
-            viewModel = new EditViewModel(PlantenDataService.Instance());
+            viewModel = new EditViewModel(PlantenDataService.Instance(),EditScherm);
 
             DataContext = viewModel;
             viewModel.InitializeAll();

@@ -17,6 +17,7 @@ using System.Windows.Media.Imaging;
 using GalaSoft.MvvmLight.Command;
 using PlantenApplicatie.Data;
 using PlantenApplicatie.Domain.Models;
+using PlantenApplicatie.UI.View;
 using Prism.Commands;
 using Window = System.Windows.Window;
 
@@ -26,6 +27,7 @@ namespace PlantenApplicatie.UI.ViewModel
     {//Senne & Hermes
         private PlantenDataService _plantenDataService;
         private long _plantId;
+        private Window _editScherm;
 
         //Command voor opslaan
         public ICommand OpslaanCommand { get; set; }
@@ -244,10 +246,11 @@ namespace PlantenApplicatie.UI.ViewModel
         private string _editbeheerFrequentie;
         private string _editbeheerM2U;
 
-        public EditViewModel(PlantenDataService plantenDataService)
+        public EditViewModel(PlantenDataService plantenDataService, Window window)
         {
             //Senne & Hermes
             this._plantenDataService = plantenDataService;
+            _editScherm = window;
 
             OpslaanCommand = new DelegateCommand(Opslaan);
             BackCommand = new RelayCommand<Window>(Back);
@@ -576,10 +579,12 @@ namespace PlantenApplicatie.UI.ViewModel
             extraEigenschap.Geurend = _extraselectedGeurend;
             extraEigenschap.Vorstgevoelig = _extraselectedVorstgevoelig;
 
-            _plantenDataService.EditPlantData(_plantId, fenotype, abiotiek, abiotiekMulti, commensalisme,
+            MessageBox.Show(_plantenDataService.EditPlantData(_plantId, fenotype, abiotiek, abiotiekMulti,
+                commensalisme,
                 _commAddedSocialbiliteit, _commAddedLevensvorm, extraEigenschap, _filterselectedType,
                 _filterselectedFamilie, _filterselectedGeslacht, _filterselectedSoort, _filterselectedVariant,
-                _plantdichtheidMin, _plantdichtheidMax);
+                _plantdichtheidMin, _plantdichtheidMax));
+            Back(_editScherm);
         }
         private void Back(Window window)
         {
