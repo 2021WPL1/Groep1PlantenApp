@@ -698,7 +698,7 @@ namespace PlantenApplicatie.Data
                 foreach (var socialbiliteit in commSocialbiliteit)
                 {
                     context.CommensalismeMulti.Add(new CommensalismeMulti()
-                        { PlantId = plantId, Eigenschap = "Sociabiliteit", Waarde = socialbiliteit.Waarde });
+                        { PlantId = plantId, Eigenschap = "Sociabiliteit", Waarde = socialbiliteit.Sociabiliteit });
                 }
 
                 foreach (var levensvorm in commLevensvorm)
@@ -752,12 +752,11 @@ namespace PlantenApplicatie.Data
                     dbPlant.VariantId = (int?) variant.VariantId;
                 }
 
-                string test = "test";
                 context.SaveChanges();
             }
             catch (Exception e)
             {
-                result = e.InnerException+"\n\nEr is een fout opgetreden tijdens het opslaan, gelieve contact op te nemen met de beheerders van Plantify";
+                result = "Er is een fout opgetreden tijdens het opslaan, gelieve contact op te nemen met de beheerders van Plantify";
             }
             
             return result;
