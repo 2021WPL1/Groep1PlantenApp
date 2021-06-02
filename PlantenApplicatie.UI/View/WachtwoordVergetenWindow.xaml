@@ -31,11 +31,13 @@
                     </Label.Background>
                 </Label>
                 <TextBox HorizontalAlignment="Left" 
-                 Text= "{Binding Path=EmailInput, Mode=TwoWay}"
-                 Margin="132,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                Text= "{Binding Path=EmailInput, Mode=TwoWay}"
+                IsEnabled="{Binding Path=EmailEnabled}" 
+                 Margin="94,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158" FontSize="8" Height="21"/>
                 <Button Content="Stuur mail" 
                 Command="{Binding Path=MailCodeSending, Mode=OneWay}"
-                HorizontalAlignment="Left" Margin="132,103,0,0" VerticalAlignment="Top" Height="29" Width="120">
+                IsEnabled="{Binding Path=EmailEnabled}"      
+                HorizontalAlignment="Left" Margin="94,103,0,0" VerticalAlignment="Top" Height="29" Width="158">
                     <Button.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="White"/>
@@ -53,9 +55,11 @@
                 </Label>
                 <TextBox HorizontalAlignment="Left" 
                  Text= "{Binding Path=CodeInput, Mode=TwoWay}"
-                 Margin="132,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                 IsEnabled="{Binding Path=CodeEnabled}"
+                 Margin="94,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
                 <Button Content="Controleer code"
                 Command="{Binding Path=CodeChecking, Mode=OneWay}"
+                IsEnabled="{Binding Path=CodeEnabled}"
                 HorizontalAlignment="Left" Margin="135,235,0,0" VerticalAlignment="Top" Height="30" Width="120">
                     <Button.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -93,12 +97,15 @@
                 </Label>
                 <TextBox HorizontalAlignment="Left" 
                  Text= "{Binding Path=PasswordInput1, Mode=TwoWay}"
+                 IsEnabled="{Binding Path=PasswordEnabled}"
                  Margin="375,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                 <TextBox HorizontalAlignment="Left" 
                  Text= "{Binding Path=PasswordInput2, Mode=TwoWay}"
+                 IsEnabled="{Binding Path=PasswordEnabled}"
                  Margin="375,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                 <Button Content="Wijzig wachtwoord"
                 Command="{Binding Path=PasswordChecking, Mode=OneWay}"
+                IsEnabled="{Binding Path=PasswordEnabled}"
                 CommandParameter="{Binding ElementName=WachtwoordVergeten}"
                 HorizontalAlignment="Left" Margin="375,233,0,0" VerticalAlignment="Top" Height="32" Width="137">
                     <Button.Background>
@@ -109,7 +116,8 @@
                     </Button.Background>
                 </Button>
                 <Button Content="Stuur nieuwe code" 
-                Command="{Binding Path=CloseResultCommand, Mode=OneWay}"
+                Command="{Binding Path=MailCodeSending, Mode=OneWay}"
+                IsEnabled="{Binding Path=CodeEnabled}"
                 HorizontalAlignment="Left" Margin="10,235,0,0" VerticalAlignment="Top" Height="30" Width="120">
                     <Button.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -118,7 +126,7 @@
                         </LinearGradientBrush>
                     </Button.Background>
                 </Button>
-                
+
             </Grid>
         </Viewbox>
     </Grid>
