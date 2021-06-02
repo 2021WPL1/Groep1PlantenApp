@@ -6,40 +6,120 @@
         xmlns:local="clr-namespace:PlantenApplicatie.UI.View" xmlns:viewmodel="clr-namespace:PlantenApplicatie.UI.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:WachtwoordViewModel}"
         x:Name="WachtwoordVergeten"
         mc:Ignorable="d"
-        Title="WachtwoordVergeten" Height="450" Width="800">
+        Title="WachtwoordVergeten" WindowState="Maximized" Height="450" Width="800">
     <Grid>
-        <Label Content="Wachtwoord vergeten" HorizontalAlignment="Left" Margin="10,20,0,0" VerticalAlignment="Top" Width="134"/>
-        <Label Content="Vul email in: " HorizontalAlignment="Left" Margin="19,70,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" 
+        <Grid.Background>
+            <ImageBrush ImageSource="/View/AchtergrondSchermen.jpg"/>
+        </Grid.Background>
+        <Viewbox>
+            <Grid Width="568">
+                <Rectangle HorizontalAlignment="Center" Height="346" Stroke="Black" VerticalAlignment="Center" Width="568" Fill="White" Opacity="0.75"/>
+                <Label Content="Wachtwoord vergeten" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="157" FontFamily="Algerian">
+                    <Label.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="White"/>
+                            <GradientStop Color="#FFC7FF00" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Label.Background>
+                </Label>
+                <Label Content="Vul email in: " HorizontalAlignment="Left" Margin="11,55,0,0" VerticalAlignment="Top">
+                    <Label.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="White"/>
+                            <GradientStop Color="#FFC7FF00" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Label.Background>
+                </Label>
+                <TextBox HorizontalAlignment="Left" 
                  Text= "{Binding Path=EmailInput, Mode=TwoWay}"
-                 Margin="132,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Stuur mail" 
+                 Margin="132,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <Button Content="Stuur mail" 
                 Command="{Binding Path=MailCodeSending, Mode=OneWay}"
-                HorizontalAlignment="Left" Margin="132,113,0,0" VerticalAlignment="Top" Height="40" Width="120"/>
-        <Label Content="Voer code in:" HorizontalAlignment="Left" Margin="18,272,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" 
+                HorizontalAlignment="Left" Margin="132,103,0,0" VerticalAlignment="Top" Height="29" Width="120">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="White"/>
+                            <GradientStop Color="#FFC7FF00" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Label Content="Voer code in:" HorizontalAlignment="Left" Margin="10,174,0,0" VerticalAlignment="Top">
+                    <Label.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="White"/>
+                            <GradientStop Color="#FFC7FF00" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Label.Background>
+                </Label>
+                <TextBox HorizontalAlignment="Left" 
                  Text= "{Binding Path=CodeInput, Mode=TwoWay}"
-                 Margin="132,272,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Controleer code"
+                 Margin="132,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <Button Content="Controleer code"
                 Command="{Binding Path=CodeChecking, Mode=OneWay}"
-                HorizontalAlignment="Left" Margin="132,326,0,0" VerticalAlignment="Top" Height="40" Width="120"/>
-        <Button Content="Back" 
+                HorizontalAlignment="Left" Margin="135,235,0,0" VerticalAlignment="Top" Height="30" Width="120">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="White"/>
+                            <GradientStop Color="#FFC7FF00" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button Content="Terug" 
                 Command="{Binding Path=CloseResultCommand, Mode=OneWay}"
-                HorizontalAlignment="Left" Margin="524,326,0,0" VerticalAlignment="Top" Height="40" Width="120"/>
-        <Label Content="Nieuw wachtwoord:" HorizontalAlignment="Left" Margin="375,56,0,0" VerticalAlignment="Top"/>
-        <Label Content="Herhaal nieuw wachtwoord:" HorizontalAlignment="Left" Margin="333,95,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" 
+                CommandParameter="{Binding ElementName=WachtwoordVergeten}"
+                HorizontalAlignment="Center" Margin="0,306,0,0" VerticalAlignment="Top" Height="40" Width="120">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="White"/>
+                            <GradientStop Color="#FFC7FF00" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Label Content="Nieuw wachtwoord:" HorizontalAlignment="Left" Margin="375,56,0,0" VerticalAlignment="Top">
+                    <Label.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="White"/>
+                            <GradientStop Color="#FFC7FF00" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Label.Background>
+                </Label>
+                <Label Content="Herhaal nieuw wachtwoord:" HorizontalAlignment="Left" Margin="375,134,0,0" VerticalAlignment="Top">
+                    <Label.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="White"/>
+                            <GradientStop Color="#FFC7FF00" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Label.Background>
+                </Label>
+                <TextBox HorizontalAlignment="Left" 
                  Text= "{Binding Path=PasswordInput1, Mode=TwoWay}"
-                 Margin="524,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" 
+                 Margin="375,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <TextBox HorizontalAlignment="Left" 
                  Text= "{Binding Path=PasswordInput2, Mode=TwoWay}"
-                 Margin="524,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Zet nieuw wachtwoord"
+                 Margin="375,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <Button Content="Wijzig wachtwoord"
                 Command="{Binding Path=PasswordChecking, Mode=OneWay}"
-                HorizontalAlignment="Left" Margin="524,152,0,0" VerticalAlignment="Top" Height="40" Width="137"/>
-        <Button Content="Stuur mail opnieuw" 
+                CommandParameter="{Binding ElementName=WachtwoordVergeten}"
+                HorizontalAlignment="Left" Margin="375,233,0,0" VerticalAlignment="Top" Height="32" Width="137">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="White"/>
+                            <GradientStop Color="#FFC7FF00" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button Content="Stuur nieuwe code" 
                 Command="{Binding Path=CloseResultCommand, Mode=OneWay}"
-                HorizontalAlignment="Left" Margin="7,326,0,0" VerticalAlignment="Top" Height="40" Width="120"/>
-
+                HorizontalAlignment="Left" Margin="10,235,0,0" VerticalAlignment="Top" Height="30" Width="120">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="White"/>
+                            <GradientStop Color="#FFC7FF00" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                
+            </Grid>
+        </Viewbox>
     </Grid>
 </Window>
