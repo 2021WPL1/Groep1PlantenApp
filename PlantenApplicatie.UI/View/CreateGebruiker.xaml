@@ -40,7 +40,12 @@
                 </Label>
                 <TextBox x:Name="EmailAdres" Text="{Binding Path=EmailInput, Mode=TwoWay}" HorizontalAlignment="Center" Margin="0,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="234" Height="29" BorderBrush="Black" BorderThickness="2" FontSize="14" FontFamily="Arial"/>
                 <TextBox x:Name="Wachtwoord" Text="{Binding Path=WachtwoordInput, Mode=TwoWay}" HorizontalAlignment="Center" Margin="0,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="234" Height="29" BorderBrush="Black" BorderThickness="2" FontSize="14" FontFamily="Arial"/>
-                <Button Name="AddGebruiker" Content="Registreer" HorizontalAlignment="Center" Margin="0,408,0,0" VerticalAlignment="Top" Height="40" Width="156" FontSize="20" BorderBrush="Black" BorderThickness="2"
+                <TextBox x:Name="Wachtwoord_Bevestigen" Text="{Binding WachtwoordBevestigen, Mode=TwoWay}" HorizontalAlignment="Center" Margin="0,187,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="234" Height="27" BorderBrush="Black" BorderThickness="2" FontSize="14" FontFamily="Arial"/>
+                <TextBox x:Name="VoorNaam" Text="{Binding VoorNaamInput, Mode=TwoWay}" HorizontalAlignment="Center" Margin="0,239,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="234" Height="28" BorderBrush="Black" BorderThickness="2" FontSize="14" FontFamily="Arial"/>
+                <TextBox x:Name="AchterNaam" Text="{Binding AchterNaamInput, Mode=TwoWay}" HorizontalAlignment="Center" Margin="0,286,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="234" Height="28" BorderBrush="Black" BorderThickness="2" FontSize="14" FontFamily="Arial"/>
+                <TextBox x:Name="VivesNr" Text="{Binding VivesNrInput, Mode=TwoWay}" HorizontalAlignment="Center" Margin="0,328,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="234" Height="30" BorderBrush="Black" BorderThickness="2" FontSize="14" FontFamily="Arial"/>
+                <ComboBox ItemsSource="{Binding Rollen}" DisplayMemberPath="Omschrijving" SelectedItem="{Binding SelectedRol, Mode=TwoWay}" SelectedValuePath="Omschrijving" x:Name="rol" HorizontalAlignment="Center" Margin="0,373,0,0" VerticalAlignment="Top" Width="234" Height="30" FontSize="14" FontFamily="Arial"/>
+                <Button Name="AddGebruiker" Content="Registreer" HorizontalAlignment="Left" Margin="477,413,0,0" VerticalAlignment="Top" Height="30" Width="156" FontSize="18" BorderBrush="Black" BorderThickness="2"
                 Command="{Binding Path=addGebruikerCommand}" CommandParameter="{Binding ElementName=CreateWindow}">
                     <Button.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -57,7 +62,6 @@
                         </LinearGradientBrush>
                     </Label.Background>
                 </Label>
-                <ComboBox ItemsSource="{Binding Rollen}" DisplayMemberPath="Omschrijving" SelectedItem="{Binding SelectedRol, Mode=TwoWay}" SelectedValuePath="Omschrijving" x:Name="rol" HorizontalAlignment="Center" Margin="0,373,0,0" VerticalAlignment="Top" Width="234" Height="30" FontSize="14" FontFamily="Arial"/>
                 <Label Content="Wachtwoord&#xD;&#xA; bevestigen" HorizontalAlignment="Left" Margin="115,176,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="2" FontSize="14" FontFamily="Arial" Height="48" Width="122">
                     <Label.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -66,7 +70,6 @@
                         </LinearGradientBrush>
                     </Label.Background>
                 </Label>
-                <TextBox x:Name="Wachtwoord_Bevestigen" Text="{Binding WachtwoordBevestigen, Mode=TwoWay}" HorizontalAlignment="Center" Margin="0,187,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="234" Height="27" BorderBrush="Black" BorderThickness="2" FontSize="14" FontFamily="Arial"/>
                 <Label Content="{Binding Path=SelectedError, Mode=TwoWay}" HorizontalAlignment="Center" Margin="0,60,0,0" VerticalAlignment="Top" Width="414" Height="31" Foreground="#FFF91313"/>
                 <Label Content="Voornaam:" HorizontalAlignment="Left" Margin="115,239,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="2" FontSize="14" FontFamily="Arial" Height="29" Width="122">
                     <Label.Background>
@@ -76,7 +79,7 @@
                         </LinearGradientBrush>
                     </Label.Background>
                 </Label>
-                <Label Content="Familienaam :" HorizontalAlignment="Left" Margin="10,300,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="2" FontSize="14" FontFamily="Arial" Height="29" Width="122">
+                <Label Content="Familienaam :" HorizontalAlignment="Left" Margin="115,285,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="2" FontSize="14" FontFamily="Arial" Height="29" Width="122">
                     <Label.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="White"/>
@@ -84,7 +87,7 @@
                         </LinearGradientBrush>
                     </Label.Background>
                 </Label>
-                <Label Content="VivesNr" HorizontalAlignment="Left" Margin="10,343,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="2" FontSize="14" FontFamily="Arial" Height="29" Width="122">
+                <Label Content="VivesNr" HorizontalAlignment="Left" Margin="115,329,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="2" FontSize="14" FontFamily="Arial" Height="29" Width="122">
                     <Label.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="White"/>
@@ -92,10 +95,7 @@
                         </LinearGradientBrush>
                     </Label.Background>
                 </Label>
-                <TextBox x:Name="AchterNaam" Text="{Binding AchterNaamInput, Mode=TwoWay}" HorizontalAlignment="Center" Margin="0,286,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="234" Height="28" BorderBrush="Black" BorderThickness="2" FontSize="14" FontFamily="Arial"/>
-                <TextBox x:Name="VoorNaam" Text="{Binding VoorNaamInput, Mode=TwoWay}" HorizontalAlignment="Center" Margin="0,239,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="234" Height="28" BorderBrush="Black" BorderThickness="2" FontSize="14" FontFamily="Arial"/>
-                <TextBox x:Name="VivesNr" Text="{Binding VivesNrInput, Mode=TwoWay}" HorizontalAlignment="Center" Margin="0,328,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="234" Height="30" BorderBrush="Black" BorderThickness="2" FontSize="14" FontFamily="Arial"/>
-                <Button Content="Terug" HorizontalAlignment="Left" Margin="602,408,0,0" VerticalAlignment="Top" Height="40" Width="156" FontSize="20" BorderBrush="Black" BorderThickness="2" Command="{Binding closeAddGebruikerCommand}" CommandParameter="{Binding ElementName=CreateWindow}">
+                <Button Content="Terug" HorizontalAlignment="Left" Margin="157,413,0,0" VerticalAlignment="Top" Height="30" Width="156" FontSize="18" BorderBrush="Black" BorderThickness="2" Command="{Binding closeAddGebruikerCommand}" CommandParameter="{Binding ElementName=CreateWindow}">
                     <Button.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="White"/>

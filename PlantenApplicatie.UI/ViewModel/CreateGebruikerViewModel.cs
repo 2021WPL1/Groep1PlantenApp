@@ -49,47 +49,8 @@ namespace PlantenApplicatie.UI.ViewModel
             }
 
         }
-        public string WachtwoordBevestigen
-        {
-            get { return wachtwoordBevestigen; }
-            set { wachtwoordBevestigen = value; }
-        }
-        public string VoorNaamInput
-        {
-            get
-            {
-                return _voornaam;
-            }
-            set
-            {
-                _voornaam = value;
-                OnPropertyChanged();
-            }
-        }
-        public string AchterNaamInput
-        {
-            get
-            {
-                return _achternaam;
-            }
-            set
-            {
-                _achternaam = value;
-                OnPropertyChanged();
-            }
-        }
-        public string VivesNrInput
-        {
-            get
-            {
-                return _vivesnr;
-            }
-            set
-            {
-                _vivesnr = value;
-                OnPropertyChanged();
-            }
-        }
+      
+     
         public Rol SelectedRol
         {
             get { return _selectedRol; }
@@ -125,6 +86,49 @@ namespace PlantenApplicatie.UI.ViewModel
                 OnPropertyChanged();
             }
         }
+        public string WachtwoordBevestigen
+        {
+            get { return wachtwoordBevestigen; }
+            set { wachtwoordBevestigen = value; }
+        }
+        public string VoorNaamInput
+        {
+            get
+            {
+                return _voornaam;
+            }
+            set
+            {
+                _voornaam = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string AchterNaamInput
+        {
+            get
+            {
+                return _achternaam;
+            }
+            set
+            {
+                _achternaam = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string VivesNrInput
+        {
+            get
+            {
+                return _vivesnr;
+            }
+            set
+            {
+                _vivesnr = value;
+                OnPropertyChanged();
+            }
+        }
         public string SelectedError
         {
             get { return _error; }
@@ -157,7 +161,7 @@ namespace PlantenApplicatie.UI.ViewModel
                             {
                                 GebruikersBeheer beheer = new GebruikersBeheer();
                                 var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(WachtwoordInput));
-                                _dataservice.addGebruiker(SelectedRol.Omschrijving, EmailInput, hashedBytes, VivesNrInput, VoorNaamInput, AchterNaamInput);
+                                _dataservice.addGebruiker( EmailInput,SelectedRol.Omschrijving, hashedBytes, VivesNrInput, VoorNaamInput, AchterNaamInput);
                                 closeWindow.Close();
                                 beheer.ShowDialog();
                             }
