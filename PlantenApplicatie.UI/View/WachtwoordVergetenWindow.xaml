@@ -10,23 +10,36 @@
     <Grid>
         <Label Content="Wachtwoord vergeten" HorizontalAlignment="Left" Margin="10,20,0,0" VerticalAlignment="Top" Width="134"/>
         <Label Content="Vul email in: " HorizontalAlignment="Left" Margin="19,70,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="132,74,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" 
+                 Text= "{Binding Path=EmailInput, Mode=TwoWay}"
+                 Margin="132,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button Content="Stuur mail" 
                 Command="{Binding Path=MailCodeSending, Mode=OneWay}"
                 HorizontalAlignment="Left" Margin="132,113,0,0" VerticalAlignment="Top" Height="40" Width="120"/>
         <Label Content="Voer code in:" HorizontalAlignment="Left" Margin="18,272,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="132,272,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
-        <Button Content="Controleer code" HorizontalAlignment="Left" Margin="132,326,0,0" VerticalAlignment="Top" Height="40" Width="120" IsEnabled="False"/>
+        <TextBox HorizontalAlignment="Left" 
+                 Text= "{Binding Path=CodeInput, Mode=TwoWay}"
+                 Margin="132,272,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Controleer code"
+                Command="{Binding Path=CodeChecking, Mode=OneWay}"
+                HorizontalAlignment="Left" Margin="132,326,0,0" VerticalAlignment="Top" Height="40" Width="120"/>
         <Button Content="Back" 
                 Command="{Binding Path=CloseResultCommand, Mode=OneWay}"
-                CommandParameter="{Binding ElementName=WachtwoordVergeten}"
                 HorizontalAlignment="Left" Margin="524,326,0,0" VerticalAlignment="Top" Height="40" Width="120"/>
         <Label Content="Nieuw wachtwoord:" HorizontalAlignment="Left" Margin="375,56,0,0" VerticalAlignment="Top"/>
         <Label Content="Herhaal nieuw wachtwoord:" HorizontalAlignment="Left" Margin="333,95,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="524,64,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
-        <TextBox HorizontalAlignment="Left" Margin="524,103,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
-        <Button Content="Zet nieuw wachtwoord" HorizontalAlignment="Left" Margin="524,152,0,0" VerticalAlignment="Top" Height="40" Width="137" IsEnabled="False"/>
-        <Button Content="Stuur mail again" HorizontalAlignment="Left" Margin="7,326,0,0" VerticalAlignment="Top" Height="40" Width="120" IsEnabled="False"/>
+        <TextBox HorizontalAlignment="Left" 
+                 Text= "{Binding Path=PasswordInput1, Mode=TwoWay}"
+                 Margin="524,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" 
+                 Text= "{Binding Path=PasswordInput2, Mode=TwoWay}"
+                 Margin="524,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Zet nieuw wachtwoord"
+                Command="{Binding Path=PasswordChecking, Mode=OneWay}"
+                HorizontalAlignment="Left" Margin="524,152,0,0" VerticalAlignment="Top" Height="40" Width="137"/>
+        <Button Content="Stuur mail again" 
+                Command="{Binding Path=CloseResultCommand, Mode=OneWay}"
+                HorizontalAlignment="Left" Margin="7,326,0,0" VerticalAlignment="Top" Height="40" Width="120"/>
 
     </Grid>
 </Window>

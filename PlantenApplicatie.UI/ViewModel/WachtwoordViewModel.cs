@@ -7,6 +7,8 @@ using Prism.Commands;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
@@ -20,13 +22,59 @@ namespace PlantenApplicatie.UI.ViewModel
         /*private static SMTPMailMessage sMTPMailMessage = new SMTPMailMessage("gunnar.fritsch31@ethereal.email",
             "9kSgGREuC3rf6N9PxJ",
             "smtp.ethereal.email");*/
+        private PlantenDataService _plantenDataService;
         public RelayCommand<Window> CloseResultCommand { get; set; }
         public ICommand MailCodeSending { get; set; }
+        public ICommand CodeChecking { get; set; }
+        public ICommand PasswordChecking { get; set; }
+
+        private string _emailInput;
+        private string _codeInput;
+        private string _passwordInput1;
+        private string _passwordInput2;
+
+        private string _code;
 
         public WachtwoordViewModel(PlantenDataService plantenDataService)
         {
             this.CloseResultCommand = new RelayCommand<Window>(this.CloseWindow);
             MailCodeSending = new DelegateCommand(SendMail);
+            CodeChecking = new DelegateCommand(EnableNewPassword);
+            PasswordChecking = new DelegateCommand(CreateNewPassword);
+            this._plantenDataService = plantenDataService;
+        }
+
+        public string EmailInput
+        {
+            get { return _emailInput; }
+            set
+            {
+                _emailInput = value.Trim();
+            }
+        }
+        public string CodeInput
+        {
+            get { return _codeInput; }
+            set
+            {
+                _codeInput = value;
+            }
+        }
+        public string PasswordInput1
+        {
+            get { return _passwordInput1; }
+            set
+            {
+                _passwordInput1 = value;
+            }
+        }
+        public string PasswordInput2
+        {
+            get { return _passwordInput2; }
+            set
+            {
+                _passwordInput2 = value;
+            }
         }
 
         public void CloseWindow(Window window)
@@ -34,31 +82,77 @@ namespace PlantenApplicatie.UI.ViewModel
             window.Close();
         }
 
-        static void SendMail()
+        public void SendMail()
         {
-            string mail = "jelle.dispersyn@student.vives.be";
-            Random r = new Random();
-            string code = string.Empty;
-            for (int i = 0; i < 9; i++)
+            if (_plantenDataService.getGebruikerViaEmail(EmailInput) != null)
             {
-                code += r.Next(0, 9).ToString();
-            }
-            string html = File.ReadAllText(@"D:\Vives\Kwartaal 3\Werkplekleren1\PlantenApp\PlantenApplicatie.UI\MailService\Files\MailMessage.html");
-            string body = String.Format(html, code);
-            var msg = sMTPMailMessage.CreateMail(mail, body, "Wachtwoord reset");
-            var result = sMTPMailMessage.sendMessage(msg);
-            if (result.Status == MailSendingStatus.OK)
-            {
-                MessageBox.Show($"Message send to {mail}");
-                return;
+                Random r = new Random();
+                for (int i = 0; i < 9; i++)
+                {
+                    _code += r.Next(0, 9).ToString();
+                }
+                string html = File.ReadAllText(@"D:\Vives\Kwartaal 3\Werkplekleren1\PlantenApp\PlantenApplicatie.UI\MailService\Files\MailMessage.html");
+                string body = String.Format(html, _code);
+                var msg = sMTPMailMessage.CreateMail(EmailInput, body, "Wachtwoord reset");
+                var result = sMTPMailMessage.sendMessage(msg);
+                if (result.Status == MailSendingStatus.OK)
+                {
+                    MessageBox.Show($"Message send to {EmailInput}");
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show(result.Message);
+                    return;
+                }
             }
             else
             {
-                MessageBox.Show(result.Message);
-                return;
+                MessageBox.Show("Deze mail bestaat niet in onze database.");
             }
+        }
 
+        public void EnableNewPassword()
+        {
+            if (CodeInput == _code)
+            {
+                MessageBox.Show("you did it!");
+            }
+            else
+            {
+                MessageBox.Show("This is a wrong code");
+            }
+        }
 
+        public void CreateNewPassword()
+        {
+            if (PasswordInput1 != null && PasswordInput2 != null)
+            {
+                if (PasswordInput1 == PasswordInput2)
+                {
+                    var gebruiker = _plantenDataService.getGebruikerViaEmail(EmailInput);
+                    using (var sha256 = SHA256.Create())
+                    {
+                        var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(PasswordInput1));
+                        if (!hashedBytes.SequenceEqual(gebruiker.HashPaswoord))
+                        {
+                            _plantenDataService.ChangeGebruikerPassword(gebruiker, hashedBytes);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Dit is het oude wachtwoord.");
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("De wachtwoorden zijn niet hetzelfde.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Gelieve beide textboxen in te vullen.");
+            }
         }
     }
 }
