@@ -594,20 +594,46 @@ namespace PlantenApplicatie.Data
         }
 
         //Opslaan
-        public string EditPlantData(Abiotiek abiotiek, AbiotiekMulti abiotiekMulti, Fenotype fenotype,
-            FenotypeMulti fenotypeMulti, Commensalisme commensalisme, CommensalismeMulti commensalismeMulti,
+        public void test(Fenotype fenotype)
+        {
+            var dbFenotype = context.Fenotype.FirstOrDefault(f => f.PlantId == fenotype.PlantId);
+            dbFenotype = fenotype;
+
+            string gmklsjdf = "mlksjdfmlkj";
+        }
+
+        public string EditPlantData(long plantId, Fenotype fenotype,
+            FenotypeMulti fenotypeMulti, Abiotiek abiotiek, List<AbiotiekMulti> abiotiekMulti,
+            Commensalisme commensalisme, CommensalismeMulti commensalismeMulti,
             ExtraEigenschap extraEigenschap, TfgsvType type, TfgsvFamilie familie, TfgsvGeslacht geslacht,
-            TfgsvSoort soort, TfgsvVariant variant)
+            TfgsvSoort soort, TfgsvVariant variant, string plantDichtheidMin, string plantDichtheidMax)
         {
             string result = null;
-            var dbAbiotiek = context.Abiotiek.FirstOrDefault(a => a.Id == abiotiek.Id);
-            //abmulti = meerdere habitus
-            var dbFenotype = context.Fenotype.FirstOrDefault(f => f.Id == fenotype.Id);
-            //fenomulti = meerdere waarden
-            var dbCommensalisme = context.Commensalisme.FirstOrDefault(c => c.Id == commensalisme.Id);
-            //commmulti = meerdere waarden
-            var dbExtra = context.ExtraEigenschap.FirstOrDefault(e => e.Id == extraEigenschap.Id);
+            try
+            {
+                //fenotype
 
+
+                //abiotiek
+                var dbAbiotiek = context.Abiotiek.FirstOrDefault(a => a.PlantId == abiotiek.PlantId);
+                dbAbiotiek = abiotiek;
+                
+                context.AbiotiekMulti.RemoveRange(GetAbiotiekMulti(3));
+                context.AbiotiekMulti.AddRange(abiotiekMulti);
+                //commensalisme
+                var dbCommensalisme = context.Commensalisme.FirstOrDefault(c => c.Id == commensalisme.Id);
+
+
+                //extra eigenschappen
+                var dbExtra = context.ExtraEigenschap.FirstOrDefault(e => e.Id == extraEigenschap.Id);
+                
+                //plant
+            }
+            catch (Exception e)
+            {
+                result = "Er is een fout opgetreden tijdens het opslaan, gelieve contact op te nemen met de beheerders van Plantify";
+            }
+            
             return result;
         }
 
