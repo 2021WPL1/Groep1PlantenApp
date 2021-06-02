@@ -46,7 +46,7 @@ namespace PlantenApplicatie.Data
         }
         public List<TfgsvVariant> GetTfgsvVarianten()
         {
-            return context.TfgsvVariant.ToList();
+            return context.TfgsvVariant.Where(t => t.Variantnaam != null).ToList();
         }
 
         //Hier worden aan de hand van TFGSV de juiste onderdelen gefilterd voor het zoekscherm
