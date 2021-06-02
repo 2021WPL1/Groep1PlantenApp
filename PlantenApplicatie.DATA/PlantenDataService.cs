@@ -42,7 +42,7 @@ namespace PlantenApplicatie.Data
         }
         public List<TfgsvSoort> GetTfgsvSoorten()
         {
-            return context.TfgsvSoort.ToList();
+            return context.TfgsvSoort.Where(t=>t.Soortnaam!=null).ToList();
         }
         public List<TfgsvVariant> GetTfgsvVarianten()
         {
