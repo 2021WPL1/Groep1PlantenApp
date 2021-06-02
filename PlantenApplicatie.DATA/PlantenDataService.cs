@@ -612,16 +612,17 @@ namespace PlantenApplicatie.Data
         }
 
         //Hemen &Maarten 
-        public Gebruiker addGebruiker(string rol, string email, byte[] HashPaswoord, string VivesNr, string voornaam, string achternaam)
+        public Gebruiker addGebruiker(string rol, string email, byte[] HashPaswoord,string voornaam , string achternaam, string vivesnr)
         {
             Gebruiker gebruiker = new Gebruiker
             {
                 Rol = rol,
                 Emailadres = email,
                 HashPaswoord = HashPaswoord,
-                Vivesnr = VivesNr,
                 Voornaam = voornaam,
-                Achternaam = achternaam
+                 Achternaam= achternaam ,
+                 Vivesnr = vivesnr
+
 
             };
             context.Gebruiker.Add(gebruiker);
