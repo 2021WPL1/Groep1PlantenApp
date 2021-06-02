@@ -518,6 +518,30 @@ namespace PlantenApplicatie.UI.ViewModel
             //Extra Eigenschappen
             //Beheer Eigenschappen
             */
+
+            Abiotiek abiotiek = _plantenDataService.GetAbiotiek(_plantId);
+            abiotiek.Bezonning = _abioselectedBezonning.Naam;
+            abiotiek.Grondsoort = _abioselectedGrondsoort.Grondsoort;
+            abiotiek.Vochtbehoefte = _abioselectedVochtbehoefte.Vochtbehoefte;
+            abiotiek.Voedingsbehoefte = _abioselectedVoedingsbehoefte.Voedingsbehoefte;
+            abiotiek.AntagonischeOmgeving = _abioselectedReactie.Antagonie;
+
+            List<AbiotiekMulti> abiotiekMulti = new List<AbiotiekMulti>();
+            foreach (var habitat in _abioAddedHabitats)
+            {
+                abiotiekMulti.Add(new AbiotiekMulti(){Eigenschap = "habitat", PlantId = _plantId,Waarde = habitat.Afkorting});
+            }
+
+            Fenotype fenotype = _plantenDataService.GetFenotype(_plantId);
+            fenotype.Bladgrootte = int.Parse(_fenoselectedMaxBladgrootte.Bladgrootte);
+            fenotype.Bladvorm = _fenoselectedBladvorm.Vorm;
+            fenotype.RatioBloeiBlad = _fenoselectedRatio.Waarde;
+            fenotype.Spruitfenologie = _fenoselectedSpruit.Fenologie;
+            fenotype.Bloeiwijze = _fenoselectedBloeiwijze.Naam;
+            fenotype.Habitus = _fenoselectedHabitus.Naam;
+            fenotype.Levensvorm = _fenoselectedLevensvorm.Levensvorm;
+
+            _plantenDataService.test(fenotype);
         }
         private void Back(Window window)
         {
