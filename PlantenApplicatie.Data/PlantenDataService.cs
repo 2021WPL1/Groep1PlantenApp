@@ -193,11 +193,6 @@ namespace PlantenApplicatie.Data
 
         //Editwindow
 
-        public long GetNieuwPlantId()
-        {
-            return context.Plant.Max(p => p.PlantId) + 1;
-        }
-
         //Filters
         public TfgsvType GetFilterType(int? plantId)
         {
