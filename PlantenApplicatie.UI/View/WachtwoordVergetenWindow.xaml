@@ -37,7 +37,7 @@
         <Button Content="Zet nieuw wachtwoord"
                 Command="{Binding Path=PasswordChecking, Mode=OneWay}"
                 HorizontalAlignment="Left" Margin="524,152,0,0" VerticalAlignment="Top" Height="40" Width="137"/>
-        <Button Content="Stuur mail again" 
+        <Button Content="Stuur mail opnieuw" 
                 Command="{Binding Path=CloseResultCommand, Mode=OneWay}"
                 HorizontalAlignment="Left" Margin="7,326,0,0" VerticalAlignment="Top" Height="40" Width="120"/>
 
