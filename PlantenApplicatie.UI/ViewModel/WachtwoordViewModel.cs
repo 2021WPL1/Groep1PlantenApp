@@ -91,7 +91,9 @@ namespace PlantenApplicatie.UI.ViewModel
                 {
                     _code += r.Next(0, 9).ToString();
                 }
-                string html = File.ReadAllText(@"D:\Vives\Kwartaal 3\Werkplekleren1\PlantenApp\PlantenApplicatie.UI\MailService\Files\MailMessage.html");
+                string fileName = "MailMessage.html";
+                string path = Path.Combine(Environment.CurrentDirectory, fileName);
+                string html = File.ReadAllText(path);
                 string body = String.Format(html, _code);
                 var msg = sMTPMailMessage.CreateMail(EmailInput, body, "Wachtwoord reset");
                 var result = sMTPMailMessage.sendMessage(msg);
