@@ -757,7 +757,7 @@ namespace PlantenApplicatie.Data
             }
             catch (Exception e)
             {
-                result = e+"\nEr is een fout opgetreden tijdens het opslaan, gelieve contact op te nemen met de beheerders van Plantify";
+                result = e.InnerException+"\n\nEr is een fout opgetreden tijdens het opslaan, gelieve contact op te nemen met de beheerders van Plantify";
             }
             
             return result;
