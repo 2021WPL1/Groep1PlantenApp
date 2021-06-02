@@ -165,6 +165,7 @@ namespace PlantenApplicatie.UI.ViewModel
         private FenoBloeiwijze _fenoselectedBloeiwijze;
         private ImageSource _fenoselectedBloeiwijzeImage;
         private FenoHabitus _fenoselectedHabitus;
+        private FenoBladgrootte _fenoselectedBladGrootteTot;
         private FenoBladgrootte _fenoselectedMaxBladgrootte;
         private FenoMaand _fenoselectedMaxBladgrootteMaand;
         private FenoBladgrootte _fenoselectedMaxBloeihoogte;
@@ -338,6 +339,11 @@ namespace PlantenApplicatie.UI.ViewModel
             {
                 FenoSelectedHabitus =
                     _fenoHabitus.FirstOrDefault(f => f.Naam == _plantenDataService.GetFenotype(plant.PlantId).Habitus);
+            }
+            if (_plantenDataService.GetFenoBladgrootteTot(plant.PlantId)!=null)
+            {
+                FenoSelectedBladgrootteTot = _fenoBladgrootte.FirstOrDefault(f =>
+                    f.Bladgrootte == _plantenDataService.GetFenoBladgrootteTot(plant.PlantId));
             }
             if (_plantenDataService.GetFenoMaxBladHoogte(plant.PlantId) != null)
             {
@@ -1406,6 +1412,15 @@ namespace PlantenApplicatie.UI.ViewModel
             set
             {
                 _fenoselectedHabitus = value;
+                OnPropertyChanged();
+            }
+        }
+        public FenoBladgrootte FenoSelectedBladgrootteTot
+        {
+            get {return _fenoselectedBladGrootteTot; }
+            set
+            {
+                _fenoselectedBladGrootteTot = value;
                 OnPropertyChanged();
             }
         }

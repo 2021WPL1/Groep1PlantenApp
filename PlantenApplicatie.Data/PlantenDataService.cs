@@ -237,6 +237,15 @@ namespace PlantenApplicatie.Data
             return context.Plant.FirstOrDefault(p => p.PlantId == plantId).PlantdichtheidMin.ToString();
         }
         //Fenotype
+        public string GetFenoBladgrootteTot(long plantId)
+        {
+            if (context.Fenotype.FirstOrDefault(f=>f.PlantId==plantId)==null)
+            {
+                return null;
+            }
+
+            return context.Fenotype.FirstOrDefault(f => f.PlantId == plantId).Bladgrootte.ToString();
+        }
         public string GetFenoMaxBladHoogte(long id)
         {
             if (context.Fenotype.FirstOrDefault(f => f.PlantId == id) == null)
