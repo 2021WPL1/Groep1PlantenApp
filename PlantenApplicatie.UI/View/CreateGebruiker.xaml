@@ -76,7 +76,7 @@
                         </LinearGradientBrush>
                     </Label.Background>
                 </Label>
-                <Label Content="Achternaam :" HorizontalAlignment="Left" Margin="115,285,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="2" FontSize="14" FontFamily="Arial" Height="29" Width="122">
+                <Label Content="Familienaam :" HorizontalAlignment="Left" Margin="10,300,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="2" FontSize="14" FontFamily="Arial" Height="29" Width="122">
                     <Label.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="White"/>
@@ -84,7 +84,7 @@
                         </LinearGradientBrush>
                     </Label.Background>
                 </Label>
-                <Label Content="Vivesnr" HorizontalAlignment="Left" Margin="115,328,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="2" FontSize="14" FontFamily="Arial" Height="30" Width="122">
+                <Label Content="VivesNr" HorizontalAlignment="Left" Margin="10,343,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="2" FontSize="14" FontFamily="Arial" Height="29" Width="122">
                     <Label.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="White"/>
