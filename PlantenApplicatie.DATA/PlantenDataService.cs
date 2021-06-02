@@ -603,25 +603,48 @@ namespace PlantenApplicatie.Data
         }
 
         //Opslaan
-        public void test(Fenotype fenotype)
+        public void test()
         {
-            var dbFenotype = context.Fenotype.FirstOrDefault(f => f.PlantId == fenotype.PlantId);
-            dbFenotype = fenotype;
 
-            string gmklsjdf = "mlksjdfmlkj";
+
+            string result = "result";
+        }
+        public void EditPlantFenoMulti(long plantId, FenoMaand bladMaxMaand, FenoMaand bloeiMinMaand, FenoMaand bloeiMaxMaand, FenoMaand bladMaand,
+            FenoKleur bladKleur, FenoMaand bloeiMaand, FenoKleur bloeiKleur)
+        {
+            var dbBladMax = context.FenotypeMulti.Where(f => f.Eigenschap == "blad-max")
+                .FirstOrDefault(f => f.PlantId == plantId);
+            dbBladMax.Maand = bladMaxMaand.Maand;
+            var dbBloeiMin = context.FenotypeMulti.Where(f => f.Eigenschap == "bloei-min")
+                .FirstOrDefault(f => f.PlantId == plantId);
+            dbBloeiMin.Maand = bloeiMinMaand.Maand;
+            var dbBloeiMax= context.FenotypeMulti.Where(f => f.Eigenschap == "bloei-max")
+                .FirstOrDefault(f => f.PlantId == plantId);
+            dbBloeiMax.Maand = bloeiMaxMaand.Maand;
+            var dbBlad= context.FenotypeMulti.Where(f => f.Eigenschap == "blad")
+                .FirstOrDefault(f => f.PlantId == plantId);
+            dbBlad.Maand = bladMaand.Maand;
+            dbBlad.Waarde = bladKleur.NaamKleur;
+            var dbBloei= context.FenotypeMulti.Where(f => f.Eigenschap == "bloei")
+                .FirstOrDefault(f => f.PlantId == plantId);
+            dbBloei.Maand = bloeiMaand.Maand;
+            dbBloei.Waarde = bloeiKleur.NaamKleur;
+
+            //context.SaveChanges();
         }
 
-        public string EditPlantData(long plantId, Fenotype fenotype,
-            FenotypeMulti fenotypeMulti, Abiotiek abiotiek, List<AbiotiekMulti> abiotiekMulti,
-            Commensalisme commensalisme, CommensalismeMulti commensalismeMulti,
-            ExtraEigenschap extraEigenschap, TfgsvType type, TfgsvFamilie familie, TfgsvGeslacht geslacht,
+        public string EditPlantData(long plantId, Fenotype fenotype, Abiotiek abiotiek,
+            List<AbiotiekMulti> abiotiekMulti,
+            Commensalisme commensalisme, CommensalismeMulti commensalismeMulti, ExtraEigenschap extraEigenschap,
+            TfgsvType type, TfgsvFamilie familie, TfgsvGeslacht geslacht,
             TfgsvSoort soort, TfgsvVariant variant, string plantDichtheidMin, string plantDichtheidMax)
         {
             string result = null;
             try
             {
                 //fenotype
-
+                var dbFenotype = context.Fenotype.FirstOrDefault(f => f.PlantId == fenotype.PlantId);
+                dbFenotype = fenotype;
 
                 //abiotiek
                 var dbAbiotiek = context.Abiotiek.FirstOrDefault(a => a.PlantId == abiotiek.PlantId);
@@ -637,6 +660,9 @@ namespace PlantenApplicatie.Data
                 var dbExtra = context.ExtraEigenschap.FirstOrDefault(e => e.Id == extraEigenschap.Id);
                 
                 //plant
+
+
+                //context.SaveChanges();
             }
             catch (Exception e)
             {

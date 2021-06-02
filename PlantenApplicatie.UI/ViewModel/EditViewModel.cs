@@ -505,25 +505,22 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         private void Opslaan()
         {//Senne & Hermes
-            /* TEST -> werkt nog niet
-            //Filters
-            var filterselectedType = FilterSelectedType.Planttypenaam;
-            var filterselectedFamilie = FilterSelectedFamilie.Familienaam;
-            var filterselectedGeslacht = FilterSelectedGeslacht.Geslachtnaam;
-            var filterselectedSoort = FilterSelectedSoort.Soortnaam;
-            var filterselectedVariant = FilterSelectedVariant.Variantnaam;
-            //Fenotype
-            //Abio
-            var abioselectedBezonning = AbioSelectedBezonning.Naam;
-            var abioselectedGrondsoort = AbioSelectedGrondsoort.Grondsoort;
-            var abioselectedVoedingbehoefte = AbioSelectedVoedingsbehoefte.Voedingsbehoefte;
-            var abioselectedVochtbehoefte = AbioSelectedVochtbehoefte.Vochtbehoefte;
-            var abioselectedReactie = AbioSelectedReactie.Antagonie;
-            var abioselectedHabitats = AbioAddedHabitats.Select(x => x.Afkorting).ToList();
-            //Commersialisme
-            //Extra Eigenschappen
-            //Beheer Eigenschappen
-            */
+
+            Fenotype fenotype = _plantenDataService.GetFenotype(_plantId);
+            fenotype.Bladgrootte = int.Parse(_fenoselectedBladGrootteTot.Bladgrootte);
+            fenotype.Bladvorm = _fenoselectedBladvorm.Vorm;
+            fenotype.RatioBloeiBlad = _fenoselectedRatio.Waarde;
+            fenotype.Spruitfenologie = _fenoselectedSpruit.Fenologie;
+            fenotype.Bloeiwijze = _fenoselectedBloeiwijze.Naam;
+            fenotype.Habitus = _fenoselectedHabitus.Naam;
+            fenotype.Levensvorm = _fenoselectedLevensvorm.Levensvorm;
+            fenotype.MaxBladhoogte = int.Parse(_fenoselectedMaxBladgrootte.Bladgrootte);
+            fenotype.MinBloeihoogte = int.Parse(_fenoselectedMinBloeihoogte.Bladgrootte);
+            fenotype.MaxBloeihoogte = int.Parse(_fenoselectedMaxBloeihoogte.Bladgrootte);
+
+            _plantenDataService.EditPlantFenoMulti(_plantId, _fenoselectedMaxBladgrootteMaand, _fenoselectedMinBloeihoogteMaand,
+                _fenoselectedMaxBloeihoogteMaand, _fenoselectedBladKleurMaand, _fenoselectedBladKleur,
+                _fenoselectedBloeiKleurMaand, _fenoselectedBloeiKleur);
 
             Abiotiek abiotiek = _plantenDataService.GetAbiotiek(_plantId);
             abiotiek.Bezonning = _abioselectedBezonning.Naam;
@@ -535,19 +532,16 @@ namespace PlantenApplicatie.UI.ViewModel
             List<AbiotiekMulti> abiotiekMulti = new List<AbiotiekMulti>();
             foreach (var habitat in _abioAddedHabitats)
             {
-                abiotiekMulti.Add(new AbiotiekMulti(){Eigenschap = "habitat", PlantId = _plantId,Waarde = habitat.Afkorting});
+                abiotiekMulti.Add(new AbiotiekMulti() { Eigenschap = "habitat", PlantId = _plantId, Waarde = habitat.Afkorting });
             }
+            
 
-            Fenotype fenotype = _plantenDataService.GetFenotype(_plantId);
-            fenotype.Bladgrootte = int.Parse(_fenoselectedMaxBladgrootte.Bladgrootte);
-            fenotype.Bladvorm = _fenoselectedBladvorm.Vorm;
-            fenotype.RatioBloeiBlad = _fenoselectedRatio.Waarde;
-            fenotype.Spruitfenologie = _fenoselectedSpruit.Fenologie;
-            fenotype.Bloeiwijze = _fenoselectedBloeiwijze.Naam;
-            fenotype.Habitus = _fenoselectedHabitus.Naam;
-            fenotype.Levensvorm = _fenoselectedLevensvorm.Levensvorm;
+            _plantenDataService.test();
 
-            _plantenDataService.test(fenotype);
+
+
+
+            //_plantenDataService.EditPlantData(_plantId, fenotype, abiotiek, abiotiekMulti);
         }
         private void Back(Window window)
         {
