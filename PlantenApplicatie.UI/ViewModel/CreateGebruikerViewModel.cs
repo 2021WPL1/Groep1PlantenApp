@@ -30,9 +30,6 @@ namespace PlantenApplicatie.UI.ViewModel
         private string _vivesnr;
         private Rol _selectedRol;
         private string _error;
-        private string _voornaam;
-        private string _achternaam;
-        private string _vivesnr;
 
 
         //Hemen &maarten 
@@ -99,42 +96,6 @@ namespace PlantenApplicatie.UI.ViewModel
             set
             {
                 _selectedRol = value;
-                OnPropertyChanged();
-            }
-        }
-        public string VoorNaamInput
-        {
-            get
-            {
-                return _voornaam;
-            }
-            set
-            {
-                _voornaam = value;
-                OnPropertyChanged();
-            }
-        }
-        public string AchterNaamInput
-        {
-            get
-            {
-                return _achternaam;
-            }
-            set
-            {
-                _achternaam = value;
-                OnPropertyChanged();
-            }
-        }
-        public string VivesNrInput
-        {
-            get
-            {
-                return _vivesnr;
-            }
-            set
-            {
-                _vivesnr = value;
                 OnPropertyChanged();
             }
         }

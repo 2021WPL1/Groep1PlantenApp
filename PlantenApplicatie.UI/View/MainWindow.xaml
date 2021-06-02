@@ -40,7 +40,7 @@
                 <Border BorderThickness="5" BorderBrush="Black" Margin="1,4,-1,-4">
                     <Button x:Name="AddGebruiker"
                         Command="{Binding schermGebruikerToevoegenCommand}" CommandParameter="{Binding ElementName=Mainwindow}"
-                        Margin="5,5,318,616" BorderBrush="Black" BorderThickness="2" Content="Nieuwe gebruiker" >
+                        Margin="5,5,318,616" BorderBrush="Black" BorderThickness="2" Content="Gebruikersbeheer" >
                         <Button.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="White"/>
