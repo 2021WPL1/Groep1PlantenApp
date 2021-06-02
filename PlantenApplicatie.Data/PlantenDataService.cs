@@ -610,6 +610,10 @@ namespace PlantenApplicatie.Data
         {
             return context.Gebruiker.SingleOrDefault(g => g.Emailadres == email);
         }
+        public Foto getFotoViaPlantId(long Id)
+        {
+            return context.Foto.SingleOrDefault(f => f.Plant == Id);
+        }
 
 
 
