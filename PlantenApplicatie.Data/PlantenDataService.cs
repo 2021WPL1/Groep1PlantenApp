@@ -452,5 +452,11 @@ namespace PlantenApplicatie.Data
         {
             return context.CommensalismeMulti.Where(p => p.PlantId == plantId).ToList();
         }
+
+        public void ChangeGebruikerPassword(Gebruiker gebruiker, byte[] password)
+        {
+            gebruiker.HashPaswoord = password;
+            context.SaveChanges();
+        }
     }
 }
