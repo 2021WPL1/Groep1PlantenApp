@@ -76,9 +76,9 @@ namespace PlantenApplicatie.UI.ViewModel
                                 }
                                 else if (gebruiker.Rol == "Data-collector")
                                 {
-                                    DataCollectorZoekScherm window = new DataCollectorZoekScherm();
+                                    DataCollectorZoekScherm dataCollectorZoekScherm = new DataCollectorZoekScherm();
                                     windowClose.Close();
-                                    window.ShowDialog();
+                                    dataCollectorZoekScherm.ShowDialog();
                                 }
                                 else
                                 {
