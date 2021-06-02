@@ -103,7 +103,7 @@ namespace PlantenApplicatie.UI.ViewModel
 
         public void SendMail()
         {
-            _isSelected = !_isSelected;
+            isSelected = !isSelected;
             /*if (_plantenDataService.getGebruikerViaEmail(EmailInput) != null)
             {
                 Random r = new Random();
