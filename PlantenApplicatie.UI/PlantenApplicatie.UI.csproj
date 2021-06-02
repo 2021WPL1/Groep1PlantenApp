@@ -43,7 +43,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="View\Aubriete 'Hamburger Stadtpark'.jpg" />
     <Resource Include="View\Images\AchtergrondSchermen.jpg" />
     <Resource Include="View\Images\aar.jpg" />
     <Resource Include="View\Images\pluim.jpg" />
