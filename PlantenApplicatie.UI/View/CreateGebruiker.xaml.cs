@@ -28,5 +28,7 @@ namespace PlantenApplicatie.UI.View
             viewModel.addRollen();
             InitializeComponent();
         }
+
+       
     }
 }
