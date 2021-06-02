@@ -204,6 +204,16 @@
                             Key="Return" Command="{Binding Path=ZoekViaNaamCommand}"/>
                     </TextBox.InputBindings>
                 </TextBox>
+                <Button x:Name="Create_Copy" 
+                    Command="{Binding CreatePlantCommand}"
+                    Margin="310,206,28,425" BorderBrush="Black" BorderThickness="2" Content="Back" >
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="White"/>
+                            <GradientStop Color="#FFC7FF00" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
             </Grid>
         </Viewbox>
     </Grid>

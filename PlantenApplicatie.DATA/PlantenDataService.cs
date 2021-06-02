@@ -612,17 +612,16 @@ namespace PlantenApplicatie.Data
         }
 
         //Hemen &Maarten 
-        public Gebruiker addGebruiker(string rol, string email, byte[] HashPaswoord,string voornaam , string achternaam, string vivesnr)
+        public Gebruiker addGebruiker(string rol, string email, byte[] HashPaswoord, string VivesNr, string voornaam, string achternaam)
         {
             Gebruiker gebruiker = new Gebruiker
             {
                 Rol = rol,
                 Emailadres = email,
                 HashPaswoord = HashPaswoord,
+                Vivesnr = VivesNr,
                 Voornaam = voornaam,
-                 Achternaam= achternaam ,
-                 Vivesnr = vivesnr
-
+                Achternaam = achternaam
 
             };
             context.Gebruiker.Add(gebruiker);
@@ -637,11 +636,23 @@ namespace PlantenApplicatie.Data
         {
             return context.Gebruiker.SingleOrDefault(g => g.Emailadres == email);
         }
+        public List<Gebruiker> GetAllUsers()
+        {
+            return context.Gebruiker.ToList();
+        }
+        public Gebruiker verwijderGebruiker(string email)
+        {
+            var gebruiker = getGebruikerViaEmail(email);
+            context.Gebruiker.Remove(gebruiker);
+            context.SaveChanges();
+            return gebruiker;
+        }
 
         //Jelle & Stephanie
         public List<CommensalismeMulti> GetCommMulti(long plantId)
         {
             return context.CommensalismeMulti.Where(p => p.PlantId == plantId).ToList();
         }
+       
     }
 }
