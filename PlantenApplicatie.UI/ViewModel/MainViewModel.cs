@@ -23,7 +23,6 @@ namespace PlantenApplicatie.UI.ViewModel
         //Senne, Hermes
         public ICommand ZoekViaNaamCommand { get; set; }
 
-
         //Jelle & Hemen
         //Command om resultatenscherm op te roepen
         public ICommand ResultaatSchermCommand { get; set; }
@@ -102,6 +101,52 @@ namespace PlantenApplicatie.UI.ViewModel
             loginscherm.ShowDialog();
         }
 
+        //Jelle
+        private Gebruiker _loggedInGebruiker = new Gebruiker();
+        public Gebruiker LoggedInGebruiker
+        {
+            get { return _loggedInGebruiker; }
+            set
+            {
+                _loggedInGebruiker = value;
+            }
+        }
+        public void loadLoggedInUser(Gebruiker gebruiker)
+        {
+            _loggedInGebruiker = gebruiker;
+        }
+        private Visibility _rolButtonsVisibility;
+        public Visibility RolButtonsVisibility
+        {
+            get
+            {
+                return _rolButtonsVisibility;
+            }
+            set
+            {
+                if (_rolButtonsVisibility != value)
+                {
+                    _rolButtonsVisibility = value;
+                }
+            }
+        }
+        public void EnableRolButtons()
+        {
+            switch (LoggedInGebruiker.Rol)
+            {
+                case "Gebruiker":
+                    RolButtonsVisibility = Visibility.Hidden;
+                    break;
+                case "Data-collector":
+                    RolButtonsVisibility = Visibility.Hidden;
+                    break;
+                case "Manager":
+                    RolButtonsVisibility = Visibility.Visible;
+                    break;
+                default:
+                    break;
+            }
+        }
         //Jelle & Hemen
         public Plant SelectedPlant
         {
@@ -118,7 +163,7 @@ namespace PlantenApplicatie.UI.ViewModel
         {
             if (_selectedPlant != null)
             {
-                ResultatenWindow window = new ResultatenWindow(_selectedPlant);
+                ResultatenWindow window = new ResultatenWindow(_selectedPlant, LoggedInGebruiker);
                 window.ShowDialog();
             }
             else
@@ -509,7 +554,7 @@ namespace PlantenApplicatie.UI.ViewModel
         //Hemen en Maarten
         public void SchermGebruikerToevoegenCommand(Window window)
         {
-            GebruikersBeheer beheer = new GebruikersBeheer();
+            GebruikersBeheer beheer = new GebruikersBeheer(LoggedInGebruiker);
             window.Close();
             beheer.ShowDialog();
         }

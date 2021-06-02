@@ -1,4 +1,5 @@
 ﻿using PlantenApplicatie.Data;
+using PlantenApplicatie.Domain.Models;
 using PlantenApplicatie.UI.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -20,11 +21,12 @@ namespace PlantenApplicatie.UI.View
     public partial class GebruikersBeheer : Window
     {
         private GebruikersBeheerViewModel viewModel;
-        public GebruikersBeheer()
+        public GebruikersBeheer(Gebruiker gebruiker)
         {
             viewModel = new GebruikersBeheerViewModel(PlantenDataService.Instance());
             DataContext = viewModel;
-          //  viewModel.ShowAllUser();
+            //  viewModel.ShowAllUser();
+            viewModel.loadLoggedInUser(gebruiker);
             InitializeComponent();
             
 

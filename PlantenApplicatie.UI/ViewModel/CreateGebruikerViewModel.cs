@@ -31,6 +31,12 @@ namespace PlantenApplicatie.UI.ViewModel
         private Rol _selectedRol;
         private string _error;
 
+        //Jelle
+        public Gebruiker loggedInGebruiker;
+        public void loadLoggedInUser(Gebruiker gebruiker)
+        {
+            loggedInGebruiker = gebruiker;
+        }
 
         //Hemen &maarten 
         public CreateGebruikerViewModel(PlantenDataService plantenDataService)
@@ -140,7 +146,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         private void closeAddGebruiker(Window window)
         {
-            GebruikersBeheer beheer = new GebruikersBeheer();
+            GebruikersBeheer beheer = new GebruikersBeheer(loggedInGebruiker);
             window.Close();
             beheer.ShowDialog();
             
@@ -159,7 +165,7 @@ namespace PlantenApplicatie.UI.ViewModel
                         {
                             using (var sha256 = SHA256.Create())
                             {
-                                GebruikersBeheer beheer = new GebruikersBeheer();
+                                GebruikersBeheer beheer = new GebruikersBeheer(loggedInGebruiker);
                                 var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(WachtwoordInput));
                                 _dataservice.addGebruiker( EmailInput,SelectedRol.Omschrijving, hashedBytes, VivesNrInput, VoorNaamInput, AchterNaamInput);
                                 closeWindow.Close();

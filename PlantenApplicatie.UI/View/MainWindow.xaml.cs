@@ -28,13 +28,14 @@ namespace PlantenApplicatie.UI.View
         private static Planten2021Context context = new Planten2021Context();
         private MainViewModel viewModel;
 
-        public MainWindow( )
+        public MainWindow(Gebruiker gebruiker)
         {
             InitializeComponent();
             //Senne,Maarten,Hermes
             //mainviewmodel
             viewModel = new MainViewModel(PlantenDataService.Instance());
             DataContext = viewModel;
+            viewModel.EnableRolButtons();
             viewModel.InitializeTfgsv();
             viewModel.LoadAll();
         }

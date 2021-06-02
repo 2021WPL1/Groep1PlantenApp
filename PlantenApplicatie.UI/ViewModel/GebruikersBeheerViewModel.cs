@@ -21,6 +21,14 @@ namespace PlantenApplicatie.UI.ViewModel
         public RelayCommand<Window> schermGebruikerToevoegenCommand { get; set; }
         public RelayCommand<Window> CloseGebruikersBeheerCommand { get; set; }
         private Gebruiker _selectedGebruiker;
+
+        //Jelle
+        public Gebruiker loggedInGebruiker;
+        public void loadLoggedInUser(Gebruiker gebruiker)
+        {
+            loggedInGebruiker = gebruiker;
+        }
+
         public GebruikersBeheerViewModel(PlantenDataService plantenDataService)
         {//DAO instantiëren
     
@@ -55,7 +63,7 @@ namespace PlantenApplicatie.UI.ViewModel
 
         private void CloseGebruikersBeheer(Window window)
         {
-            MainWindow main = new MainWindow();
+            MainWindow main = new MainWindow(loggedInGebruiker);
             window.Close();
             main.ShowDialog();
         }

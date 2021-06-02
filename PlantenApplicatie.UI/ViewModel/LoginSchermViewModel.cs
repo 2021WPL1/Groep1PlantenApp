@@ -78,27 +78,9 @@ namespace PlantenApplicatie.UI.ViewModel
                             var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(WachtwoordInput));
                             if (hashedBytes.SequenceEqual(gebruiker.HashPaswoord))
                             {
-                                
-                                if (gebruiker.Rol == "Manager")
-                                {
-                                    MainWindow window = new MainWindow();
-                                    windowClose.Close();
-                                    window.ShowDialog();
-                                }
-                                else if (gebruiker.Rol == "Data-collector")
-                                {
-                                    DataCollectorZoekScherm window = new DataCollectorZoekScherm();
-                                    windowClose.Close();
-                                    window.ShowDialog();
-                                }
-                                else
-                                {
-                                    GebruikerZoekscherm gebruikerZoekscherm = new GebruikerZoekscherm();
-                                    windowClose.Close();
-                                    gebruikerZoekscherm.ShowDialog();
-
-                                }
-                                
+                                MainWindow window = new MainWindow(gebruiker);
+                                windowClose.Close();
+                                window.ShowDialog();              
                             }
                             else
                             {

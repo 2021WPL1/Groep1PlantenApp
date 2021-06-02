@@ -94,6 +94,42 @@ namespace PlantenApplicatie.UI.ViewModel
             window.ShowDialog();
         }
 
+        //Jelle
+        private Visibility _rolButtonsVisibility;
+        public Visibility RolButtonsVisibility
+        {
+            get
+            {
+                return _rolButtonsVisibility;
+            }
+            set
+            {
+                if (_rolButtonsVisibility != value)
+                {
+                    _rolButtonsVisibility = value;
+                }
+            }
+        }
+        public void EnableRolButtons(Gebruiker gebruiker)
+        {
+            switch (gebruiker.Rol)
+            {
+                case "Gebruiker":
+                    RolButtonsVisibility = Visibility.Hidden;
+                    break;
+                case "Data-collector":
+                    RolButtonsVisibility = Visibility.Visible;
+                    break;
+                case "Manager":
+                    RolButtonsVisibility = Visibility.Visible;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+
+
         //Stephanie & Maarten
         //Geeft de data van de plant door
         public Fenotype Fenotype
