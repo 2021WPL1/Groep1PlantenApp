@@ -526,16 +526,57 @@ namespace PlantenApplicatie.UI.ViewModel
             }
 
             Fenotype fenotype = _plantenDataService.OpslaanGetFenotype(_plantId);
-            fenotype.Bladgrootte = int.Parse(_fenoselectedBladGrootteTot.Bladgrootte);
-            fenotype.Bladvorm = _fenoselectedBladvorm.Vorm;
-            fenotype.RatioBloeiBlad = _fenoselectedRatio.Waarde;
-            fenotype.Spruitfenologie = _fenoselectedSpruit.Fenologie;
-            fenotype.Bloeiwijze = _fenoselectedBloeiwijze.Naam;
-            fenotype.Habitus = _fenoselectedHabitus.Naam;
-            fenotype.Levensvorm = _fenoselectedLevensvorm.Levensvorm;
-            fenotype.MaxBladhoogte = int.Parse(_fenoselectedMaxBladgrootte.Bladgrootte);
-            fenotype.MinBloeihoogte = int.Parse(_fenoselectedMinBloeihoogte.Bladgrootte);
-            fenotype.MaxBloeihoogte = int.Parse(_fenoselectedMaxBloeihoogte.Bladgrootte);
+
+            if (_fenoselectedBladGrootteTot != null)
+            {
+                fenotype.Bladgrootte = int.Parse(_fenoselectedBladGrootteTot.Bladgrootte);
+            }
+
+            if (_fenoselectedBladvorm != null)
+            {
+                fenotype.Bladvorm = _fenoselectedBladvorm.Vorm;
+            }
+
+            if (_fenoselectedRatio != null)
+            {
+                fenotype.RatioBloeiBlad = _fenoselectedRatio.Waarde;
+            }
+
+            if (_fenoselectedSpruit != null)
+            {
+                fenotype.Spruitfenologie = _fenoselectedSpruit.Fenologie;
+            }
+
+            if (_fenoselectedBloeiwijze != null)
+            {
+                fenotype.Bloeiwijze = _fenoselectedBloeiwijze.Naam;
+            }
+
+            if (_fenoselectedHabitus != null)
+            {
+                fenotype.Habitus = _fenoselectedHabitus.Naam;
+            }
+
+            if (_fenoselectedLevensvorm != null)
+            {
+                fenotype.Levensvorm = _fenoselectedLevensvorm.Levensvorm;
+            }
+
+            if (_fenoselectedMaxBladgrootte != null)
+            {
+                fenotype.MaxBladhoogte = int.Parse(_fenoselectedMaxBladgrootte.Bladgrootte);
+            }
+
+            if (_fenoselectedMinBloeihoogte != null)
+            {
+                fenotype.MinBloeihoogte = int.Parse(_fenoselectedMinBloeihoogte.Bladgrootte);
+            }
+
+            if (_fenoselectedMaxBloeihoogte != null)
+            {
+                fenotype.MaxBloeihoogte = int.Parse(_fenoselectedMaxBloeihoogte.Bladgrootte);
+            }
+            
 
             _plantenDataService.EditPlantFenoMulti(_plantId, _fenoselectedMaxBladgrootteMaand, _fenoselectedMinBloeihoogteMaand,
                 _fenoselectedMaxBloeihoogteMaand, _fenoselectedBladKleurMaand, _fenoselectedBladKleur,
