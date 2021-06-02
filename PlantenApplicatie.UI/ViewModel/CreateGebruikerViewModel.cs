@@ -96,9 +96,8 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         private void closeAddGebruiker(Window window)
         {
-            GebruikersBeheer beheer= new GebruikersBeheer();
-              
-                window.Close();
+            GebruikersBeheer beheer = new GebruikersBeheer();
+            window.Close();
             beheer.ShowDialog();
             
         }
