@@ -91,7 +91,7 @@
                                 Margin="291,46,0,0"
                                 VerticalAlignment="Top"
                                 Width="167" />
-                            <Label x:Name="lblHabitus" Content="Habitus" HorizontalAlignment="Left" Margin="35,240,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblHabitus" Content="Habitus" HorizontalAlignment="Left" Margin="37,215,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.575,-0.155"/>
                             <ComboBox
                                 ItemsSource="{Binding FenoHabitus}"
                                 SelectedItem="{Binding FenoSelectedHabitus, Mode=TwoWay}"
@@ -99,9 +99,20 @@
                                 SelectedValuePath="Id"
                                 x:Name="cbxHabitus"
                                 HorizontalAlignment="Left"
-                                Margin="100,240,0,0"
+                                Margin="115,216,0,0"
                                 VerticalAlignment="Top"
                                 Width="365"/>
+                            <ComboBox
+                                ItemsSource="{Binding FenoBladgrootte}"
+                                SelectedItem="{Binding FenoBladgrootteTot, Mode=TwoWay}"
+                                DisplayMemberPath="Bladgrootte"
+                                SelectedValuePath="Id"
+                                x:Name="cbxBladgrootte_tot" 
+                                HorizontalAlignment="Left"
+                                Margin="152,275,0,0" 
+                                VerticalAlignment="Top" 
+                                Width="120" 
+                                RenderTransformOrigin="0.446,-0.018"/>
                             <Label x:Name="lblMaxBladhoogte" Content="Maximale Bladhoogte" HorizontalAlignment="Left" Margin="35,300,0,0" VerticalAlignment="Top"/>
                             <ComboBox
                                 ItemsSource="{Binding FenoBladgrootte}"
@@ -267,6 +278,7 @@
                                 DisplayMemberPath="Naam"
                                 SelectedValuePath="Id"
                                 Margin="30,48,353,0" Height="154" VerticalAlignment="Top"/>
+                            <Label x:Name="lblBladgrootteTot" Content="Bladgrootte tot" HorizontalAlignment="Left" Margin="35,270,0,0" VerticalAlignment="Top"/>
                         </Grid>
                     </ScrollViewer>
                 </TabItem>
