@@ -664,8 +664,6 @@ namespace PlantenApplicatie.Data
                     Waarde = bloeiKleur.NaamKleur
                 });
             }
-            
-            //context.SaveChanges();
         }
 
         public string EditPlantData(long plantId, Fenotype fenotype, Abiotiek abiotiek,
@@ -674,7 +672,7 @@ namespace PlantenApplicatie.Data
             TfgsvType type, TfgsvFamilie familie, TfgsvGeslacht geslacht,
             TfgsvSoort soort, TfgsvVariant variant, string plantDichtheidMin, string plantDichtheidMax)
         {
-            string result = null;
+            string result = "Plant werd aangepast";
             try
             {
                 //fenotype
@@ -755,11 +753,11 @@ namespace PlantenApplicatie.Data
                 }
 
                 string test = "test";
-                //context.SaveChanges();
+                context.SaveChanges();
             }
             catch (Exception e)
             {
-                result = "Er is een fout opgetreden tijdens het opslaan, gelieve contact op te nemen met de beheerders van Plantify";
+                result = e+"\nEr is een fout opgetreden tijdens het opslaan, gelieve contact op te nemen met de beheerders van Plantify";
             }
             
             return result;
