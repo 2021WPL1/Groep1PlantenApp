@@ -104,7 +104,7 @@
                                 Width="365"/>
                             <ComboBox
                                 ItemsSource="{Binding FenoBladgrootte}"
-                                SelectedItem="{Binding FenoBladgrootteTot, Mode=TwoWay}"
+                                SelectedItem="{Binding FenoSelectedBladgrootteTot, Mode=TwoWay}"
                                 DisplayMemberPath="Bladgrootte"
                                 SelectedValuePath="Id"
                                 x:Name="cbxBladgrootte_tot" 
