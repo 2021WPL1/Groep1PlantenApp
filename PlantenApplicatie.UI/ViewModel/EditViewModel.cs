@@ -30,6 +30,8 @@ namespace PlantenApplicatie.UI.ViewModel
         //Command voor opslaan
         public ICommand OpslaanCommand { get; set; }
         public RelayCommand<Window> BackCommand { get; private set; }
+        public ICommand ClearSoortCommand { get; set; }
+        public ICommand ClearVariantCommand { get; set; }
         public ICommand HabitatToevoegenCommand { get; set; }
         public ICommand HabitatVerwijderenCommand { get; set; }
         public ICommand LevensduurToevoegenCommand { get; set; }
@@ -249,6 +251,8 @@ namespace PlantenApplicatie.UI.ViewModel
 
             OpslaanCommand = new DelegateCommand(Opslaan);
             BackCommand = new RelayCommand<Window>(Back);
+            ClearSoortCommand = new DelegateCommand(ClearSoort);
+            ClearVariantCommand = new DelegateCommand(ClearVariant);
             HabitatToevoegenCommand = new DelegateCommand(HabitatToevoegen);
             HabitatVerwijderenCommand = new DelegateCommand(HabitatVerwijderen);
             LevensduurToevoegenCommand = new DelegateCommand(LevensduurToevoegen);
@@ -583,6 +587,14 @@ namespace PlantenApplicatie.UI.ViewModel
             {
                 window.Close();
             }
+        }
+        private void ClearSoort()
+        {
+            FilterSelectedSoort = null;
+        }
+        private void ClearVariant()
+        {
+            FilterSelectedVariant = null;
         }
         //Habitat toevoegen aan listbox (die moeten toegevoegd worden aan de plant)
         private void HabitatToevoegen()
