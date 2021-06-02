@@ -516,55 +516,6 @@ namespace PlantenApplicatie.Data
         }
 
         //Bestaande beheersbehandeling aanpassen
-        public bool GetEditBeheerJan(long id)
-        {
-            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Jan;
-        }
-        public bool GetEditBeheerFeb(long id)
-        {
-            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Feb;
-
-        }
-        public bool GetEditBeheerMrt(long id)
-        {
-            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Mrt;
-        }
-        public bool GetEditBeheerApr(long id)
-        {
-            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Apr;
-        }
-        public bool GetEditBeheerMei(long id)
-        {
-            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Mei;
-        }
-        public bool GetEditBeheerJun(long id)
-        {
-            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Jun;
-        }
-        public bool GetEditBeheerJul(long id)
-        {
-            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Jul;
-        }
-        public bool GetEditBeheerAug(long id)
-        {
-            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Aug;
-        }
-        public bool GetEditBeheerSept(long id)
-        {
-            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Sept;
-        }
-        public bool GetEditBeheerOkt(long id)
-        {
-            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Okt;
-        }
-        public bool GetEditBeheerNov(long id)
-        {
-            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Nov;
-        }
-        public bool GetEditBeheerDec(long id)
-        {
-            return (bool)context.BeheerMaand.FirstOrDefault(b => b.PlantId == id).Dec;
-        }
         public void EditBeheerFromPlant(long plantId, string beheerdaad, string omschrijving, bool jan, bool feb,
             bool mrt, bool apr, bool mei, bool jun, bool jul, bool aug, bool sept, bool okt, bool nov, bool dec,
             string frequentie, string m2u)
