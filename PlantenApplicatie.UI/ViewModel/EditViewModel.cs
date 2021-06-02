@@ -159,12 +159,6 @@ namespace PlantenApplicatie.UI.ViewModel
         private TfgsvSoort _filterselectedSoort;
         private TfgsvVariant _filterselectedVariant;
 
-        private string _filterNewType;
-        private string _filterNewFamilie;
-        private string _filterNewGeslacht;
-        private string _filterNewSoort;
-        private string _filterNewVariant;
-
         private string _plantdichtheidMin;
         private string _plantdichtheidMax;
         //Fenotype
@@ -247,7 +241,6 @@ namespace PlantenApplicatie.UI.ViewModel
         private string _editbeheerFrequentie;
         private string _editbeheerM2U;
 
-
         public EditViewModel(PlantenDataService plantenDataService)
         {
             //Senne & Hermes
@@ -309,10 +302,6 @@ namespace PlantenApplicatie.UI.ViewModel
             EditBeheerDaden = new ObservableCollection<BeheerMaand>();
         }
 
-        public void GetNieuwPlantId()
-        {
-            _plantId = _plantenDataService.GetNieuwPlantId();
-        }
         public void FillDataFromPlant(Plant plant)
         {
             //Senne & Hermes
@@ -445,14 +434,6 @@ namespace PlantenApplicatie.UI.ViewModel
                 
             }
 
-            if (_plantenDataService.CheckIfPlantExists(_plantId))
-            {
-                //edit
-            }
-            else
-            {
-                //create
-            }
 
             
         }
@@ -1226,11 +1207,6 @@ namespace PlantenApplicatie.UI.ViewModel
             get { return _filterselectedType; }
             set
             {
-                if (_filterselectedType==null)
-                {
-                    _filterNewType = "Empty";//zorgen dat hij niet null is
-                    FilterNewType = null;
-                }
                 _filterselectedType = value;
                 OnPropertyChanged();
             }
@@ -1242,11 +1218,6 @@ namespace PlantenApplicatie.UI.ViewModel
             get { return _filterselectedFamilie; }
             set
             {
-                if (_filterselectedFamilie == null)
-                {
-                    _filterNewFamilie = "Empty";//zorgen dat hij niet null is
-                    FilterNewFamilie = null;
-                }
                 _filterselectedFamilie = value;
                 OnPropertyChanged();
             }
@@ -1258,11 +1229,6 @@ namespace PlantenApplicatie.UI.ViewModel
             get { return _filterselectedGeslacht; }
             set
             {
-                if (_filterselectedGeslacht == null)
-                {
-                    _filterNewGeslacht = "Empty";//zorgen dat hij niet null is
-                    FilterNewGeslacht = null;
-                }
                 _filterselectedGeslacht = value;
                 OnPropertyChanged();
             }
@@ -1274,11 +1240,6 @@ namespace PlantenApplicatie.UI.ViewModel
             get { return _filterselectedSoort; }
             set
             {
-                if (_filterselectedSoort == null)
-                {
-                    _filterNewSoort = "Empty";//zorgen dat hij niet null is
-                    FilterNewSoort = null;
-                }
                 _filterselectedSoort = value;
                 OnPropertyChanged();
             }
@@ -1290,96 +1251,7 @@ namespace PlantenApplicatie.UI.ViewModel
             get { return _filterselectedVariant; }
             set
             {
-                if (_filterselectedVariant == null)
-                {
-                    _filterNewVariant = "Empty";//zorgen dat hij niet null is
-                    FilterNewVariant = null;
-                }
                 _filterselectedVariant = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public string FilterNewType
-        {
-            //Senne & Hermes
-
-            get { return _filterNewType; }
-            set
-            {
-                if (_filterNewType==null)
-                {
-                    _filterselectedType = new TfgsvType(){Planttypenaam = "Empty"};//zorgen dat hij niet null is
-                    FilterSelectedType = null;
-                }
-                _filterNewType = value;
-                OnPropertyChanged();
-            }
-        }
-        public string FilterNewFamilie
-        {
-            //Senne & Hermes
-
-            get { return _filterNewFamilie; }
-            set
-            {
-                if (_filterNewFamilie == null)
-                {
-                    _filterselectedFamilie = new TfgsvFamilie() { Familienaam = "Empty" };//zorgen dat hij niet null is
-                    FilterSelectedFamilie = null;
-                }
-                _filterNewFamilie = value;
-                OnPropertyChanged();
-            }
-        }
-        public string FilterNewGeslacht
-        {
-            //Senne & Hermes
-
-            get { return _filterNewGeslacht; }
-            set
-            {
-                if (_filterNewGeslacht == null)
-                {
-                    _filterselectedGeslacht = new TfgsvGeslacht() { Geslachtnaam = "Empty" };//zorgen dat hij niet null is
-                    FilterSelectedGeslacht = null;
-                }
-                _filterNewGeslacht = value;
-                OnPropertyChanged();
-            }
-        }
-        public string FilterNewSoort
-        {
-            //Senne & Hermes
-
-            get { return _filterNewSoort; }
-            set
-            {
-                if (_filterNewSoort == null)
-                {
-                    _filterselectedSoort = new TfgsvSoort() { Soortnaam = "Empty" };//zorgen dat hij niet null is
-                    FilterSelectedSoort = null;
-                }
-                _filterNewSoort = value;
-                OnPropertyChanged();
-            }
-        }
-        public string FilterNewVariant
-        {
-            //Senne & Hermes
-
-            get
-            {
-                return _filterNewVariant;
-            }
-            set
-            {
-                if (_filterNewVariant == null)
-                {
-                    _filterselectedVariant = new TfgsvVariant() { Variantnaam = "Empty" };//zorgen dat hij niet null is
-                    FilterSelectedVariant = null;
-                }
-                _filterNewVariant = value;
                 OnPropertyChanged();
             }
         }
