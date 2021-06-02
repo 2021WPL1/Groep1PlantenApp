@@ -315,9 +315,12 @@ namespace PlantenApplicatie.UI.ViewModel
             FilterSelectedGeslacht = _filtergeslachten.FirstOrDefault(f =>
                 f.Geslachtnaam == _plantenDataService.GetFilterGeslacht(plant.GeslachtId)
                     .Geslachtnaam);
-            FilterSelectedSoort = _filtersoorten.FirstOrDefault(f =>
-                f.Soortnaam == _plantenDataService.GetFilterSoort(plant.SoortId).Soortnaam);
+            if (_plantenDataService.GetFilterSoort(plant.SoortId)!=null)
+            {
+                FilterSelectedSoort = _filtersoorten.FirstOrDefault(f =>
+                    f.Soortnaam == _plantenDataService.GetFilterSoort(plant.SoortId).Soortnaam);
 
+            }
             if ( _plantenDataService.GetFilterVariant(plant.VariantId) != null)
             {
                 FilterSelectedVariant = _filtervarianten.FirstOrDefault(f =>
@@ -505,8 +508,17 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         private void Opslaan()
         {//Senne & Hermes
+            if (_filterselectedSoort==null)
+            {
+                _filterselectedSoort = new TfgsvSoort() {Soortnaam = null, Soortid = 0};
+            }
 
-            Fenotype fenotype = _plantenDataService.GetFenotype(_plantId);
+            if (_filterselectedVariant==null)
+            {
+                _filterselectedVariant = new TfgsvVariant() {Variantnaam = null, VariantId = 0};
+            }
+
+            Fenotype fenotype = _plantenDataService.OpslaanGetFenotype(_plantId);
             fenotype.Bladgrootte = int.Parse(_fenoselectedBladGrootteTot.Bladgrootte);
             fenotype.Bladvorm = _fenoselectedBladvorm.Vorm;
             fenotype.RatioBloeiBlad = _fenoselectedRatio.Waarde;
@@ -532,16 +544,38 @@ namespace PlantenApplicatie.UI.ViewModel
             List<AbiotiekMulti> abiotiekMulti = new List<AbiotiekMulti>();
             foreach (var habitat in _abioAddedHabitats)
             {
-                abiotiekMulti.Add(new AbiotiekMulti() { Eigenschap = "habitat", PlantId = _plantId, Waarde = habitat.Afkorting });
+                abiotiekMulti.Add(new AbiotiekMulti()
+                    {Eigenschap = "habitat", PlantId = _plantId, Waarde = habitat.Afkorting});
             }
-            
 
-            _plantenDataService.test();
+            List<Commensalisme> commensalisme = new List<Commensalisme>();
+            long commId = _plantenDataService.NewCommId();
+            foreach (var strategy in _commAddedStrategies)
+            {
+                commensalisme.Add(new Commensalisme()
+                {
+                    Id = commId,
+                    PlantId = _plantId, Ontwikkelsnelheid = _commselectedOntwikkelSnelheid.Snelheid,
+                    Strategie = strategy.Strategie
+                });
+                commId++;
+            }
 
+            ExtraEigenschap extraEigenschap = _plantenDataService.GetExtraEigenschap(_plantId);
+            extraEigenschap.PlantId = _plantId;
+            extraEigenschap.Nectarwaarde = _extraselectedNectarwaarde.Waarde;
+            extraEigenschap.Pollenwaarde = _extraselectedPollenwaarde.Waarde;
+            extraEigenschap.Bijvriendelijke = _extraselectedBijvriendelijk;
+            extraEigenschap.Vlindervriendelijk = _extraselectedVlindervriendelijk;
+            extraEigenschap.Eetbaar = _extraselectedEetbaar;
+            extraEigenschap.Kruidgebruik = _extraselectedKruidGebruik;
+            extraEigenschap.Geurend = _extraselectedGeurend;
+            extraEigenschap.Vorstgevoelig = _extraselectedVorstgevoelig;
 
-
-
-            //_plantenDataService.EditPlantData(_plantId, fenotype, abiotiek, abiotiekMulti);
+            _plantenDataService.EditPlantData(_plantId, fenotype, abiotiek, abiotiekMulti, commensalisme,
+                _commAddedSocialbiliteit, _commAddedLevensvorm, extraEigenschap, _filterselectedType,
+                _filterselectedFamilie, _filterselectedGeslacht, _filterselectedSoort, _filterselectedVariant,
+                _plantdichtheidMin, _plantdichtheidMax);
         }
         private void Back(Window window)
         {
@@ -621,7 +655,7 @@ namespace PlantenApplicatie.UI.ViewModel
                 }
                 else
                 {
-                    MessageBox.Show("Socialbiliteit is al toegevoegd");
+                    MessageBox.Show("Sociabiliteit is al toegevoegd");
                 }
             }
             ReloadSocialbiliteit();
