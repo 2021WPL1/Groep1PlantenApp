@@ -786,8 +786,23 @@ namespace PlantenApplicatie.Data
                 }
                 dbPlant.Fgsv = fgsv;
 
-                dbPlant.PlantdichtheidMin = short.Parse(plantDichtheidMin);
-                dbPlant.PlantdichtheidMax = short.Parse(plantDichtheidMax);
+                if (plantDichtheidMin==String.Empty)
+                {
+                    dbPlant.PlantdichtheidMin = null;
+                }
+                else
+                {
+                    dbPlant.PlantdichtheidMin = short.Parse(plantDichtheidMin);
+                }
+                if (plantDichtheidMax == String.Empty)
+                {
+                    dbPlant.PlantdichtheidMax = null;
+                }
+                else
+                {
+                    dbPlant.PlantdichtheidMax = short.Parse(plantDichtheidMax);
+                }
+
                 dbPlant.TypeId = (int?) type.Planttypeid;
                 dbPlant.FamilieId = (int?) familie.FamileId;
                 if (soort.Soortid==0)
@@ -812,7 +827,7 @@ namespace PlantenApplicatie.Data
             }
             catch (Exception e)
             {
-                result = "Er is een fout opgetreden tijdens het opslaan, gelieve contact op te nemen met de beheerders van Plantify";
+                result = e +"\nEr is een fout opgetreden tijdens het opslaan, gelieve contact op te nemen met de beheerders van Plantify";
             }
             
             return result;
