@@ -27,7 +27,6 @@ namespace PlantenApplicatie.UI.View
             viewModel.LoadLoggedInUser(gebruiker);
             viewModel.EnableRolButtons();
             viewModel.fillLabels(plant);
-            viewModel.LoadLists();
         }
     }
 }

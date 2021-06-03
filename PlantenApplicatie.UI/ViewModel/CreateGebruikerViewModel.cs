@@ -22,9 +22,9 @@ namespace PlantenApplicatie.UI.ViewModel
        
         private PlantenDataService _dataservice;
         public ObservableCollection<Rol> Rollen { get; set; }
-        private string emailInput;
-        private string wachtwoordInput;
-        private string wachtwoordBevestigen;
+        private string _emailInput;
+        private string _wachtwoordInput;
+        private string _wachtwoordBevestigen;
         private string _voornaam;
         private string _achternaam;
         private string _vivesnr;
@@ -90,11 +90,11 @@ namespace PlantenApplicatie.UI.ViewModel
         {
             get
             {
-                return emailInput;
+                return _emailInput;
             }
             set
             {
-                emailInput = value;
+                _emailInput = value;
                 OnPropertyChanged();
             }
         }
@@ -102,18 +102,18 @@ namespace PlantenApplicatie.UI.ViewModel
         {
             get
             {
-                return wachtwoordInput;
+                return _wachtwoordInput;
             }
             set
             {
-                wachtwoordInput = value;
+                _wachtwoordInput = value;
                 OnPropertyChanged();
             }
         }
         public string WachtwoordBevestigen
         {
-            get { return wachtwoordBevestigen; }
-            set { wachtwoordBevestigen = value; }
+            get { return _wachtwoordBevestigen; }
+            set { _wachtwoordBevestigen = value; }
         }
         public string VoorNaamInput
         {

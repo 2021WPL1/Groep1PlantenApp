@@ -306,7 +306,7 @@
                             <Label Content="{Binding Abiotiek.Voedingsbehoefte, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="57,120,0,0" Height="28" Grid.Column="1"/>
                             <Label Content="{Binding Abiotiek.AntagonischeOmgeving, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="57,155,0,0" Height="28" Grid.Column="1"/>
                             <ListBox 
-                                ItemsSource="{Binding SelectedPlantAbioHabitats}"
+                                ItemsSource="{Binding SelectedPlantAbioHabitat}"
                                 Margin="57,190,222,10" BorderThickness="1,1,1,1" BorderBrush="#FF01040E" Grid.Column="1" FontSize="15"/>
                         </Grid>
                     </TabItem>
