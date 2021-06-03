@@ -35,5 +35,6 @@ namespace PlantenApplicatie.UI.View
             viewModel.InitializeAll();
             viewModel.FillDataFromPlant(plant);
         }
+
     }
 }
