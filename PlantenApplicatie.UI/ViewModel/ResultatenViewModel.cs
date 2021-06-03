@@ -226,6 +226,9 @@ namespace PlantenApplicatie.UI.ViewModel
             Commensalisme = _plantenDataService.GetCommensalisme(plant.PlantId);
             ExtraEigenschap = _plantenDataService.GetExtraEigenschap(plant.PlantId);
             Foto = _plantenDataService.getFotoViaPlantId(plant.PlantId);
+            var Path = System.IO.Directory.GetCurrentDirectory();
+            var aangepastPath = Path.Replace("bin\\Debug\\netcoreapp3.1", Foto.UrlLocatie);
+            Foto.UrlLocatie = aangepastPath;
             // BeheerMaand = _plantenDataService.GetBeheerMaand(plant.PlantId);
 
             //Jelle

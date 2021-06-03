@@ -101,6 +101,7 @@
                             <Label Content="{Binding PlantenResultaat.Variant, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="41,155,0,0" Height="28" Grid.Column="2"/>
                             <Label Content="{Binding PlantenResultaat.PlantdichtheidMin, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="41,190,0,0" Height="28" Grid.Column="2"/>
                             <Label Content="{Binding PlantenResultaat.PlantdichtheidMax, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="41,225,0,0" Height="28" Grid.Column="2"/>
+                            <Label Content="{Binding Foto.UrlLocatie}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="571" Grid.ColumnSpan="3" FontSize="10" />
 
                         </Grid>
                     </TabItem>
