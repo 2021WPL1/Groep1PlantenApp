@@ -678,7 +678,7 @@ namespace PlantenApplicatie.UI.ViewModel
             if (window != null)
             {
                 Plant plant = _plantenDataService.GetPlantWithId(_plantId);
-                ResultatenWindow resultaat = new ResultatenWindow(plant);
+                ResultatenWindow resultaat = new ResultatenWindow(plant,LoggedInGebruiker);
                 window.Close();
                 resultaat.ShowDialog();
             }

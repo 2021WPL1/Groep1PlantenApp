@@ -150,8 +150,9 @@ namespace PlantenApplicatie.UI.ViewModel
         {
             if (_selectedPlant != null)
             {
-                ResultatenWindow window = new ResultatenWindow(_selectedPlant, LoggedInGebruiker);
-                window.ShowDialog();
+                ResultatenWindow resultatenWindow = new ResultatenWindow(_selectedPlant, LoggedInGebruiker);
+                window.Close();
+                resultatenWindow.ShowDialog();
             }
             else
             {

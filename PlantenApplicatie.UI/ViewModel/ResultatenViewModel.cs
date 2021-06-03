@@ -63,8 +63,9 @@ namespace PlantenApplicatie.UI.ViewModel
         //Opent een nieuw scherm naar Edit pagina.
         private void EditScherm(Window window)
         {
-            EditWindow window = new EditWindow(PlantenResultaat, LoggedInGebruiker);
-            window.ShowDialog();
+            EditWindow editWindow = new EditWindow(PlantenResultaat, LoggedInGebruiker);
+            window.Close();
+            editWindow.ShowDialog();
         }
         //Maarten
         public string Foto { get; set; }
@@ -104,7 +105,7 @@ namespace PlantenApplicatie.UI.ViewModel
                     RolButtonsVisibility = Visibility.Hidden;
                     break;
                 case "Data-collector":
-                    RolButtonsVisibility = Visibility.Hidden;
+                    RolButtonsVisibility = Visibility.Visible;
                     break;
                 case "Manager":
                     RolButtonsVisibility = Visibility.Visible;
@@ -120,7 +121,7 @@ namespace PlantenApplicatie.UI.ViewModel
         {
             if (window != null)
             {
-                MainWindow main = new MainWindow();
+                MainWindow main = new MainWindow(LoggedInGebruiker);
                 window.Close();
                 main.ShowDialog();
             }

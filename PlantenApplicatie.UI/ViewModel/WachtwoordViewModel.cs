@@ -12,6 +12,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
+using PlantenApplicatie.UI.View;
 
 namespace PlantenApplicatie.UI.ViewModel
 {
@@ -106,7 +107,9 @@ namespace PlantenApplicatie.UI.ViewModel
         //venster sluiten
         public void CloseWindow(Window window)
         {
+            LoginScherm loginScherm = new LoginScherm();
             window.Close();
+            loginScherm.ShowDialog();
         }
 
         public void SendMail()
@@ -173,7 +176,9 @@ namespace PlantenApplicatie.UI.ViewModel
                         {
                             _plantenDataService.ChangeGebruikerPassword(gebruiker, hashedBytes);
                             MessageBox.Show("Uw wachtwoord is gewijzigd.");
+                            LoginScherm loginScherm = new LoginScherm();
                             window.Close();
+                            loginScherm.ShowDialog();
                         }
                         else
                         {

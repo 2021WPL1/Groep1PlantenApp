@@ -18,20 +18,21 @@ namespace PlantenApplicatie.UI.ViewModel
         //Maarten &Hemen 
         public RelayCommand<Window> CloseWindowCommand { get; set; }
 
-        public ICommand OpenWachtwoordVergetenWindow { get; set; }
+        public RelayCommand<Window> OpenWachtwoordVergetenWindow { get; set; }
 
         private PlantenDataService _plantenDataService;
         public LoginSchermViewModel(PlantenDataService plantenDataService)
         {
             this.CloseWindowCommand = new RelayCommand<Window>(this.CloseWindow);
-            OpenWachtwoordVergetenWindow = new DelegateCommand(WachtwoordVergetenScherm);
+            this.OpenWachtwoordVergetenWindow = new RelayCommand<Window>(this.WachtwoordVergetenScherm);
             this._plantenDataService = plantenDataService;
         }
 
-        public void WachtwoordVergetenScherm()
+        public void WachtwoordVergetenScherm(Window window)
         {
-            WachtwoordVergetenWindow window = new WachtwoordVergetenWindow();
-            window.ShowDialog();
+            WachtwoordVergetenWindow wachtwoordVergetenWindow = new WachtwoordVergetenWindow();
+            window.Close();
+            wachtwoordVergetenWindow.ShowDialog();
         }
 
         public string EmailInput{ get; set; }
