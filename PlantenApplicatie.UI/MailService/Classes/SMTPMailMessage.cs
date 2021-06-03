@@ -5,21 +5,23 @@ using System.Net;
 using System.Net.Mail;
 using System.Net.Mime;
 
-namespace PlantenApplicatie.UI.MailService.Classes
+namespace PlantenApplicatie.UI.MailService
 {
-    public class SMTPMailMessage
+    public class SMTPMailService
     {
         private SmtpClient smtpClient { get; set; }
-        public SMTPMailMessage()
+        public SMTPMailService(string username, string wachtwoord, string host)
         {
-            smtpClient = new SmtpClient(); 
-            smtpClient.Credentials = new NetworkCredential("gunnar.fritsch31@ethereal.email", "9kSgGREuC3rf6N9PxJ");
-            smtpClient.Host = "smtp.ethereal.email";
+           smtpClient = new SmtpClient();
+            //
+          //  smtpClient.UseDefaultCredentials = false;
+            smtpClient.Credentials = new NetworkCredential(username, wachtwoord);
+            smtpClient.Host = host;
             smtpClient.Port = 587;
             smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtpClient.EnableSsl = true;
-            smtpClient.UseDefaultCredentials = false;
-        }
+            
+        }//
         //Maakt een normale mail
         public MailMessage CreateMail(string ReceiverAdress, string htmlContent, string subject)
         {
@@ -40,7 +42,7 @@ namespace PlantenApplicatie.UI.MailService.Classes
 
             try
             {
-                smtpClient.Credentials = new NetworkCredential("gunnar.fritsch31@ethereal.email", "9kSgGREuC3rf6N9PxJ");
+                //smtpClient.Credentials = new NetworkCredential("gunnar.fritsch31@ethereal.email", "9kSgGREuC3rf6N9PxJ");
                 smtpClient.Send(msg);
             }
             catch (Exception e)

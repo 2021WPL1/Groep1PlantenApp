@@ -1,7 +1,7 @@
 ﻿using GalaSoft.MvvmLight.Command;
 using PlantenApplicatie.Data;
 using PlantenApplicatie.Domain.Models;
-using PlantenApplicatie.UI.MailService.Classes;
+using PlantenApplicatie.UI.MailService;
 using PlantenApplicatie.UI.MailService.Enums;
 using Prism.Commands;
 using System;
@@ -18,10 +18,10 @@ namespace PlantenApplicatie.UI.ViewModel
     public class WachtwoordViewModel : ViewModelBase
     {
         //Eigen api key voor mails te sturen via sendgrid
-        private static SMTPMailMessage sMTPMailMessage = new SMTPMailMessage();
-        /*private static SMTPMailMessage sMTPMailMessage = new SMTPMailMessage("gunnar.fritsch31@ethereal.email",
+        //private static SMTPMailMessage sMTPMailMessage = new SMTPMailMessage();
+        private  SMTPMailService sMTPMailService = new SMTPMailService("gunnar.fritsch31@ethereal.email",
             "9kSgGREuC3rf6N9PxJ",
-            "smtp.ethereal.email");*/
+            "smtp.ethereal.email");
         private PlantenDataService _plantenDataService;
         public RelayCommand<Window> CloseResultCommand { get; set; }
         public ICommand MailCodeSending { get; set; }
@@ -83,7 +83,6 @@ namespace PlantenApplicatie.UI.ViewModel
         private string _codeInput;
         private string _passwordInput1;
         private string _passwordInput2;
-
         private string _code;
 
         public WachtwoordViewModel(PlantenDataService plantenDataService)
@@ -147,10 +146,9 @@ namespace PlantenApplicatie.UI.ViewModel
                 string fileName = "MailMessage.html";
                 string path = Environment.CurrentDirectory.Replace("\\bin\\Debug\\netcoreapp3.1", "") + $"\\MailService\\Files\\{fileName}";
                 string html = File.ReadAllText(path);
-                //string body = String.Format($"Beste Meneer / Mevrouw,\r\nUw code voor uw wachtwoord te resetten is {_code}.\r\n Vriendlijke groeten, Plantify");
                 string body = String.Format(html, _code);
-                var msg = sMTPMailMessage.CreateMail(EmailInput, body, "Wachtwoord reset");
-                var result = sMTPMailMessage.sendMessage(msg);
+                var msg = sMTPMailService.CreateMail(EmailInput, body, "Wachtwoord reset");
+                var result = sMTPMailService.sendMessage(msg);
                 if (result.Status == MailSendingStatus.OK)
                 {
                     MessageBox.Show($"Message send to {EmailInput}");
