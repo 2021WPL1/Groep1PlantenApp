@@ -32,36 +32,11 @@ namespace PlantenApplicatie.UI.ViewModel
         public ObservableCollection<string> GetSelectedPlantLevensduurConcurrentiekracht { get; set; }
         public ObservableCollection<string> SelectedPlantBladKleur { get; set; }
         public ObservableCollection<string> SelectedPlantBloeiKleur { get; set; }
-        public ObservableCollection<string> SelectedPlantAbioHabitat { get; set; }
+        public ObservableCollection<string> SelectedPlantAbioHabitat { get; set; }   
 
         //Maarten & Stephanie
         private PlantenDataService _plantenDataService;
-
-        //Jelle
-        public Gebruiker LoggedInGebruiker { get; set; }
-        public void LoadLoggedInUser(Gebruiker gebruiker)
-        {
-            LoggedInGebruiker = gebruiker;
-        }
-        public Visibility RolButtonsVisibility { get; set; }
-        public void EnableRolButtons()
-        {
-            switch (LoggedInGebruiker.Rol)
-            {
-                case "Gebruiker":
-                    RolButtonsVisibility = Visibility.Hidden;
-                    break;
-                case "Data-collector":
-                    RolButtonsVisibility = Visibility.Visible;
-                    break;
-                case "Manager":
-                    RolButtonsVisibility = Visibility.Visible;
-                    break;
-                default:
-                    break;
-            }
-        }
-
+     
         //Constructor, dit wordt gebruikt om waarden in te stellen
         public ResultatenViewModel(PlantenDataService plantenDataService)
         {
@@ -105,6 +80,39 @@ namespace PlantenApplicatie.UI.ViewModel
         public ExtraEigenschap ExtraEigenschap { get; set; }
 
         public Plant PlantenResultaat { get; set; }
+
+        //Jelle
+        //Maken van gebruiker
+        public Gebruiker LoggedInGebruiker { get; set; }
+        //Jelle
+        //Maken van visibility om te linken via databinding met gui
+        public Visibility RolButtonsVisibility { get; set; }
+
+        //Jelle
+        //functie om gebruiker info te geven om te gebruiken doorheen de viewmodel
+        public void LoadLoggedInUser(Gebruiker gebruiker)
+        {
+            LoggedInGebruiker = gebruiker;
+        }
+        //Jelle
+        //Functie voor de visibility van de speciale buttons die bij sommige rollen niet beschikbaar mogen zijn.
+        public void EnableRolButtons()
+        {
+            switch (LoggedInGebruiker.Rol)
+            {
+                case "Gebruiker":
+                    RolButtonsVisibility = Visibility.Hidden;
+                    break;
+                case "Data-collector":
+                    RolButtonsVisibility = Visibility.Hidden;
+                    break;
+                case "Manager":
+                    RolButtonsVisibility = Visibility.Visible;
+                    break;
+                default:
+                    break;
+            }
+        }
 
         //Jelle & Hemen
         //Command die gelinkt is aan close button om form te sluiten

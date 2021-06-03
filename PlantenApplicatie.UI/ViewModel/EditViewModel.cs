@@ -2194,28 +2194,13 @@ namespace PlantenApplicatie.UI.ViewModel
             }
         }
         //Jelle
+        //Maken van gebruiker
         public Gebruiker LoggedInGebruiker { get; set; }
+        //Jelle
+        //functie om gebruiker info te geven om te gebruiken doorheen de viewmodel
         public void LoadLoggedInUser(Gebruiker gebruiker)
         {
             LoggedInGebruiker = gebruiker;
-        }
-        public Visibility RolButtonsVisibility { get; set; }
-        public void EnableRolButtons()
-        {
-            switch (LoggedInGebruiker.Rol)
-            {
-                case "Gebruiker":
-                    RolButtonsVisibility = Visibility.Hidden;
-                    break;
-                case "Data-collector":
-                    RolButtonsVisibility = Visibility.Hidden;
-                    break;
-                case "Manager":
-                    RolButtonsVisibility = Visibility.Visible;
-                    break;
-                default:
-                    break;
-            }
         }
     }
 }

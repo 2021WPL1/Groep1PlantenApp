@@ -22,17 +22,22 @@ namespace PlantenApplicatie.UI.ViewModel
         private SMTPMailService sMTPMailService = new SMTPMailService("gunnar.fritsch31@ethereal.email",
             "9kSgGREuC3rf6N9PxJ",
             "smtp.ethereal.email");
+        //Link naar databank om uiteindelijk het wachtwoord aan te passen
         private PlantenDataService _plantenDataService;
+        //command gelinkt naar gui om venster te sluiten
         public RelayCommand<Window> CloseResultCommand { get; set; }
+        //Command om boxes van mail aan en uit te leggen
         public ICommand MailCodeSending { get; set; }
+        //Command om boxes van code aan en uit te leggen
         public ICommand CodeChecking { get; set; }
+        //Command om boxes van wachtwoord aan en uit te leggen
         public RelayCommand<Window> PasswordChecking { get; set; }
-
+        //Startwaardes
         private bool _emailEnabled = true;
         private bool _codeEnabled = false;
         private bool _passwordEnabled = false;
 
-
+        //Kijkt of email boxes aan of uit moeten zijn
         public bool EmailEnabled
         {
             get
@@ -48,6 +53,7 @@ namespace PlantenApplicatie.UI.ViewModel
                 }
             }
         }
+        //Kijkt of code boxes aan of uit moeten zijn
         public bool CodeEnabled
         {
             get
@@ -63,6 +69,7 @@ namespace PlantenApplicatie.UI.ViewModel
                 }
             }
         }
+        //Kijkt of wachtwoord boxes aan of uit moeten zijn
         public bool PasswordEnabled
         {
             get
@@ -79,11 +86,6 @@ namespace PlantenApplicatie.UI.ViewModel
             }
         }
 
-        private string _emailInput;
-        private string _codeInput;
-        private string _passwordInput1;
-        private string _passwordInput2;
-        private string _code;
 
         //constructor
         public WachtwoordViewModel(PlantenDataService plantenDataService)
@@ -96,38 +98,10 @@ namespace PlantenApplicatie.UI.ViewModel
         }
 
         //Email properties een waarde geven
-        public string EmailInput
-        {
-            get { return _emailInput; }
-            set
-            {
-                _emailInput = value.Trim();
-            }
-        }
-        public string CodeInput
-        {
-            get { return _codeInput; }
-            set
-            {
-                _codeInput = value;
-            }
-        }
-        public string PasswordInput1
-        {
-            get { return _passwordInput1; }
-            set
-            {
-                _passwordInput1 = value;
-            }
-        }
-        public string PasswordInput2
-        {
-            get { return _passwordInput2; }
-            set
-            {
-                _passwordInput2 = value;
-            }
-        }
+        public string EmailInput { get; set; }
+        public string CodeInput { get; set; }
+        public string PasswordInput1 { get; set; }
+        public string PasswordInput2 { get; set; }
 
         //venster sluiten
         public void CloseWindow(Window window)
@@ -139,16 +113,16 @@ namespace PlantenApplicatie.UI.ViewModel
         {
             if (_plantenDataService.getGebruikerViaEmail(EmailInput) != null)
             {
-                if (_code != null) { _code = null;}
+                if (CodeInput != null) { CodeInput = null;}
                 Random r = new Random();
                 for (int i = 0; i < 9; i++)
                 {
-                    _code += r.Next(0, 9).ToString();
+                    CodeInput += r.Next(0, 9).ToString();
                 }
                 string fileName = "MailMessage.html";
                 string path = Environment.CurrentDirectory.Replace("\\bin\\Debug\\netcoreapp3.1", "") + $"\\MailService\\Files\\{fileName}";
                 string html = File.ReadAllText(path);
-                string body = String.Format(html, _code);
+                string body = String.Format(html, CodeInput);
                 var msg = sMTPMailService.CreateMail(EmailInput, body, "Wachtwoord reset");
                 var result = sMTPMailService.sendMessage(msg);
                 if (result.Status == MailSendingStatus.OK)
@@ -172,7 +146,7 @@ namespace PlantenApplicatie.UI.ViewModel
 
         public void EnableNewPassword()
         {
-            if (CodeInput == _code)
+            if (CodeInput == CodeInput)
             {
                 MessageBox.Show("De code is geaccepteerd, gelieve uw nieuw wachtwoord in te vullen.");
                 CodeEnabled = false;

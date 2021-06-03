@@ -27,7 +27,6 @@ namespace PlantenApplicatie.UI.View
             DataContext = viewModel;
             //  viewModel.ShowAllUser();
             viewModel.LoadLoggedInUser(gebruiker);
-            viewModel.EnableRolButtons();
             InitializeComponent();
             
 

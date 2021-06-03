@@ -100,14 +100,33 @@ namespace PlantenApplicatie.UI.ViewModel
             window.Close();
             loginscherm.ShowDialog();
         }
+       
+        //Jelle & Hemen
+        public Plant SelectedPlant
+        {
+            get { return _selectedPlant; }
+            set
+            {
+                _selectedPlant = value;
+                OnPropertyChanged();
+            }
+        }
 
         //Jelle
+        //Maken van gebruiker
         public Gebruiker LoggedInGebruiker { get; set; }
+        //Jelle
+        //Maken van visibility om te linken via databinding met gui
+        public Visibility RolButtonsVisibility { get; set; }
+
+        //Jelle
+        //functie om gebruiker info te geven om te gebruiken doorheen de viewmodel
         public void LoadLoggedInUser(Gebruiker gebruiker)
         {
             LoggedInGebruiker = gebruiker;
         }
-        public Visibility RolButtonsVisibility { get; set; }
+        //Jelle
+        //Functie voor de visibility van de speciale buttons die bij sommige rollen niet beschikbaar mogen zijn.
         public void EnableRolButtons()
         {
             switch (LoggedInGebruiker.Rol)
@@ -123,16 +142,6 @@ namespace PlantenApplicatie.UI.ViewModel
                     break;
                 default:
                     break;
-            }
-        }
-        //Jelle & Hemen
-        public Plant SelectedPlant
-        {
-            get { return _selectedPlant; }
-            set
-            {
-                _selectedPlant = value;
-                OnPropertyChanged();
             }
         }
 

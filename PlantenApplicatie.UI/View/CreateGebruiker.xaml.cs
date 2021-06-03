@@ -27,7 +27,6 @@ namespace PlantenApplicatie.UI.View
             viewModel = new CreateGebruikerViewModel(PlantenDataService.Instance());
             DataContext = viewModel;
             viewModel.LoadLoggedInUser(gebruiker);
-            viewModel.EnableRolButtons();
             viewModel.addRollen();
             InitializeComponent();
         }

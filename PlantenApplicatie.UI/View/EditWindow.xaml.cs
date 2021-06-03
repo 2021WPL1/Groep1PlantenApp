@@ -33,7 +33,6 @@ namespace PlantenApplicatie.UI.View
 
             DataContext = viewModel;
             viewModel.LoadLoggedInUser(gebruiker);
-            viewModel.EnableRolButtons();
             viewModel.InitializeAll();
             viewModel.FillDataFromPlant(plant);
         }

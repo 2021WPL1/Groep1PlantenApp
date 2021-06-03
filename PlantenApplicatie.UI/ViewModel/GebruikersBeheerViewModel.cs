@@ -22,31 +22,6 @@ namespace PlantenApplicatie.UI.ViewModel
         public RelayCommand<Window> CloseGebruikersBeheerCommand { get; set; }
         private Gebruiker _selectedGebruiker;
 
-        //Jelle
-        public Gebruiker LoggedInGebruiker { get; set; }
-        public void LoadLoggedInUser(Gebruiker gebruiker)
-        {
-            LoggedInGebruiker = gebruiker;
-        }
-        public Visibility RolButtonsVisibility { get; set; }
-        public void EnableRolButtons()
-        {
-            switch (LoggedInGebruiker.Rol)
-            {
-                case "Gebruiker":
-                    RolButtonsVisibility = Visibility.Hidden;
-                    break;
-                case "Data-collector":
-                    RolButtonsVisibility = Visibility.Hidden;
-                    break;
-                case "Manager":
-                    RolButtonsVisibility = Visibility.Visible;
-                    break;
-                default:
-                    break;
-            }
-        }
-
         public GebruikersBeheerViewModel(PlantenDataService plantenDataService)
         {//DAO instantiëren
     
@@ -68,6 +43,16 @@ namespace PlantenApplicatie.UI.ViewModel
                 _selectedGebruiker = value;
                 OnPropertyChanged();
             }
+        }
+
+        //Jelle
+        //Maken van gebruiker
+        public Gebruiker LoggedInGebruiker { get; set; }
+        //Jelle
+        //functie om gebruiker info te geven om te gebruiken doorheen de viewmodel
+        public void LoadLoggedInUser(Gebruiker gebruiker)
+        {
+            LoggedInGebruiker = gebruiker;
         }
 
         private void VerwijderGebruiker()

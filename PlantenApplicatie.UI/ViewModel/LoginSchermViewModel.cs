@@ -21,9 +21,6 @@ namespace PlantenApplicatie.UI.ViewModel
         public ICommand OpenWachtwoordVergetenWindow { get; set; }
 
         private PlantenDataService _plantenDataService;
-        private string _emailInput;
-        private string _wachtwoordInput;
-        private string _selectedError;
         public LoginSchermViewModel(PlantenDataService plantenDataService)
         {
             this.CloseWindowCommand = new RelayCommand<Window>(this.CloseWindow);
@@ -37,31 +34,9 @@ namespace PlantenApplicatie.UI.ViewModel
             window.ShowDialog();
         }
 
-        public string EmailInput
-        {
-            get { return _emailInput; }
-            set
-            {
-                _emailInput = value.Trim();
-            }
-        }
-        public string WachtwoordInput
-        {
-            get { return _wachtwoordInput; }
-            set
-            {
-                _wachtwoordInput = value;
-            }
-        }
-        public string SelectedError
-        {
-            get { return _selectedError; }
-            set
-            {
-                _selectedError = value;
-                OnPropertyChanged();
-            }
-        }
+        public string EmailInput{ get; set; }
+        public string WachtwoordInput { get; set; }
+        public string SelectedError { get; set; }
         //Maarten &Hemen 
         private void CloseWindow(Window windowClose)
         {
