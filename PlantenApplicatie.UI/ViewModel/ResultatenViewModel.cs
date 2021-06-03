@@ -39,7 +39,6 @@ namespace PlantenApplicatie.UI.ViewModel
         private Plant _plantenResultaat;
         //Maarten & Stephanie
         private Foto _foto;
-        private string _selectedError;
         private PlantenDataService _plantenDataService;
         private Fenotype _fenotype;
         private Abiotiek _abiotiek;
@@ -92,36 +91,12 @@ namespace PlantenApplicatie.UI.ViewModel
         //Opent een nieuw scherm naar Edit pagina.
         private void EditScherm()
         {
-            EditWindow window = new EditWindow(_plantenResultaat, LoggedInGebruiker);
+            EditWindow window = new EditWindow(_plantenResultaat);
             window.ShowDialog();
         }
 
-        //Jelle
-        public Gebruiker LoggedInGebruiker { get; set; }
-        public void LoadLoggedInUser(Gebruiker gebruiker)
-        {
-            LoggedInGebruiker = gebruiker;
-        }
-        public Visibility RolButtonsVisibility { get; set; }
-        public void EnableRolButtons()
-        {
-            switch (LoggedInGebruiker.Rol)
-            {
-                case "Gebruiker":
-                    RolButtonsVisibility = Visibility.Hidden;
-                    break;
-                case "Data-collector":
-                    RolButtonsVisibility = Visibility.Visible;
-                    break;
-                case "Manager":
-                    RolButtonsVisibility = Visibility.Visible;
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        //Maarten
+        //Stephanie & Maarten
+        //Geeft de data van de plant door
         public Foto Foto
         {
             get { return _foto; }
@@ -130,16 +105,6 @@ namespace PlantenApplicatie.UI.ViewModel
                 _foto = value;
             }
         }
-        public string SelectedError
-        {
-            get { return _selectedError; }
-            set
-            {
-                _selectedError = value;
-            }
-        }
-        //Stephanie & Maarten
-        //Geeft de data van de plant door
         public Fenotype Fenotype
         {
             get { return _fenotype; }
@@ -261,18 +226,9 @@ namespace PlantenApplicatie.UI.ViewModel
             Commensalisme = _plantenDataService.GetCommensalisme(plant.PlantId);
             ExtraEigenschap = _plantenDataService.GetExtraEigenschap(plant.PlantId);
             Foto = _plantenDataService.getFotoViaPlantId(plant.PlantId);
-            
-            if (Foto != null)
-            {
-                var Path = System.IO.Directory.GetCurrentDirectory();
-                var aangepastPath = Path.Replace("bin\\Debug\\netcoreapp3.1", Foto.UrlLocatie);
-                Foto.UrlLocatie = aangepastPath;
-            }
-            else
-            {
-                SelectedError = "Geen foto bestaand";
-            }
-            
+            var Path = System.IO.Directory.GetCurrentDirectory();
+            var aangepastPath = Path.Replace("bin\\Debug\\netcoreapp3.1", Foto.UrlLocatie);
+            Foto.UrlLocatie = aangepastPath;
             // BeheerMaand = _plantenDataService.GetBeheerMaand(plant.PlantId);
 
             //Jelle
