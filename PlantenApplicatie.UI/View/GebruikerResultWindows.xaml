@@ -515,7 +515,7 @@
                     </TabItem>
 
                 </TabControl>
-                <Button Content="Back" 
+                <Button Content="Terug" 
                         Command="{Binding Path=CloseResultCommand, Mode=OneWay}"
                         CommandParameter="{Binding ElementName=GebruikerResultScherm}"
                         Margin="459,290,-63,12" >

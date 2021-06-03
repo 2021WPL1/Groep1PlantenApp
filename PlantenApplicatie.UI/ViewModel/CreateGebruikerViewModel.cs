@@ -15,25 +15,28 @@ using System.Windows.Input;
 namespace PlantenApplicatie.UI.ViewModel
 {
     //Maarten & Hemen 
-    class CreateGebruikerViewModel : ViewModelBase
+    public class CreateGebruikerViewModel : ViewModelBase
     {
         public RelayCommand<Window> addGebruikerCommand { get; set; }
+        public RelayCommand<Window> closeAddGebruikerCommand { get; set; }
+       
         private PlantenDataService _dataservice;
         public ObservableCollection<Rol> Rollen { get; set; }
         private string emailInput;
         private string wachtwoordInput;
         private string wachtwoordBevestigen;
-        private Rol _selectedRol;
-        private string _error;
         private string _voornaam;
         private string _achternaam;
         private string _vivesnr;
+        private Rol _selectedRol;
+        private string _error;
 
 
         //Hemen &maarten 
         public CreateGebruikerViewModel(PlantenDataService plantenDataService)
         {
-            this.addGebruikerCommand = new RelayCommand<Window>(this.addGebruiker);
+            closeAddGebruikerCommand = new RelayCommand<Window>(this.closeAddGebruiker);
+            addGebruikerCommand = new RelayCommand<Window>(this.addGebruiker);
             Rollen = new ObservableCollection<Rol>();
             this._dataservice = plantenDataService;
         }
@@ -46,48 +49,14 @@ namespace PlantenApplicatie.UI.ViewModel
             }
 
         }
+      
+     
         public Rol SelectedRol
         {
             get { return _selectedRol; }
             set
             {
                 _selectedRol = value;
-                OnPropertyChanged();
-            }
-        }
-        public string VoorNaamInput
-        {
-            get
-            {
-                return _voornaam;
-            }
-            set
-            {
-                _voornaam = value;
-                OnPropertyChanged();
-            }
-        }
-        public string AchterNaamInput
-        {
-            get
-            {
-                return _achternaam;
-            }
-            set
-            {
-                _achternaam = value;
-                OnPropertyChanged();
-            }
-        }
-        public string VivesNrInput
-        {
-            get
-            {
-                return _vivesnr;
-            }
-            set
-            {
-                _vivesnr = value;
                 OnPropertyChanged();
             }
         }
@@ -122,6 +91,44 @@ namespace PlantenApplicatie.UI.ViewModel
             get { return wachtwoordBevestigen; }
             set { wachtwoordBevestigen = value; }
         }
+        public string VoorNaamInput
+        {
+            get
+            {
+                return _voornaam;
+            }
+            set
+            {
+                _voornaam = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string AchterNaamInput
+        {
+            get
+            {
+                return _achternaam;
+            }
+            set
+            {
+                _achternaam = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string VivesNrInput
+        {
+            get
+            {
+                return _vivesnr;
+            }
+            set
+            {
+                _vivesnr = value;
+                OnPropertyChanged();
+            }
+        }
         public string SelectedError
         {
             get { return _error; }
@@ -131,12 +138,19 @@ namespace PlantenApplicatie.UI.ViewModel
                 OnPropertyChanged();
             }
         }
+        private void closeAddGebruiker(Window window)
+        {
+            GebruikersBeheer beheer = new GebruikersBeheer();
+            window.Close();
+            beheer.ShowDialog();
+            
+        }
         //hemen & maarten 
         public void addGebruiker(Window closeWindow)
         {
             try
             {
-                if (EmailInput.Contains("vives.be") && EmailInput.Contains("@") && VoorNaamInput != null && AchterNaamInput !=null && VivesNrInput !=null)
+                if (EmailInput.Contains("vives.be") && EmailInput.Contains("@") && VoorNaamInput != null && AchterNaamInput != null && VivesNrInput != null)
                 {
                     var gebruiker = _dataservice.getGebruikerViaEmail(EmailInput);
                     if (gebruiker == null)
@@ -145,11 +159,11 @@ namespace PlantenApplicatie.UI.ViewModel
                         {
                             using (var sha256 = SHA256.Create())
                             {
-                                MainWindow window = new MainWindow();
+                                GebruikersBeheer beheer = new GebruikersBeheer();
                                 var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(WachtwoordInput));
-                                _dataservice.addGebruiker(SelectedRol.Omschrijving, EmailInput, hashedBytes,VivesNrInput,VoorNaamInput,AchterNaamInput);
+                                _dataservice.addGebruiker( EmailInput,SelectedRol.Omschrijving, hashedBytes, VivesNrInput, VoorNaamInput, AchterNaamInput);
                                 closeWindow.Close();
-                                window.ShowDialog();
+                                beheer.ShowDialog();
                             }
                         }
                         else

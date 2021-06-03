@@ -515,7 +515,7 @@
                     </TabItem>
 
                 </TabControl>
-                <Button Content="Back" 
+                <Button Content="Terug" 
                         Command="{Binding Path=CloseResultCommand, Mode=OneWay}"
                         CommandParameter="{Binding ElementName=ResultatenScherm}"
                         Margin="459,290,-63,12" >
@@ -526,7 +526,7 @@
                         </LinearGradientBrush>
                     </Button.Background>
                 </Button>
-                <Button Content="Edit" 
+                <Button Content="Aanpassen" 
                         Command="{Binding Path=EditSchermCommand}"
                         Margin="354,290,0,12" HorizontalAlignment="Left" Width="80" >
                     <Button.Background>

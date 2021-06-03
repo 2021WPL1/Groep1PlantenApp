@@ -509,9 +509,9 @@ namespace PlantenApplicatie.UI.ViewModel
         //Hemen en Maarten
         public void SchermGebruikerToevoegenCommand(Window window)
         {
-            CreateGebruiker createGebruiker = new CreateGebruiker();
+            GebruikersBeheer beheer = new GebruikersBeheer();
             window.Close();
-            createGebruiker.ShowDialog();
+            beheer.ShowDialog();
         }
         
     }
