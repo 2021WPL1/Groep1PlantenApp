@@ -608,10 +608,11 @@ namespace PlantenApplicatie.Data
         }
 
         //Opslaan
-        public void EditPlantFenoMulti(long plantId, FenoMaand bladMaxMaand, FenoMaand bloeiMinMaand, FenoMaand bloeiMaxMaand, FenoMaand bladMaand,
+        public List<FenotypeMulti> EditPlantFenoMulti(long plantId, FenoMaand bladMaxMaand, FenoMaand bloeiMinMaand, FenoMaand bloeiMaxMaand, FenoMaand bladMaand,
             FenoKleur bladKleur, FenoMaand bloeiMaand, FenoKleur bloeiKleur)
         {
             long fenoId = context.FenotypeMulti.Max(f => f.Id) + 1;
+            List<FenotypeMulti> resultList = new List<FenotypeMulti>();
 
             var dbBladMax = context.FenotypeMulti.Where(f => f.Eigenschap == "blad-max")
                 .FirstOrDefault(f => f.PlantId == plantId);
@@ -654,7 +655,7 @@ namespace PlantenApplicatie.Data
 
             if (dbBladMax==null)
             {
-                context.FenotypeMulti.Add(new FenotypeMulti()
+                resultList.Add(new FenotypeMulti()
                     { Id = fenoId, PlantId = plantId, Eigenschap = "blad-max", Maand = bladMaxMaand.Maand });
                 fenoId++;
             }
@@ -665,7 +666,7 @@ namespace PlantenApplicatie.Data
 
             if (dbBloeiMin==null)
             {
-                context.FenotypeMulti.Add(new FenotypeMulti()
+                resultList.Add(new FenotypeMulti()
                     { Id = fenoId, PlantId = plantId, Eigenschap = "bloei-min", Maand = bloeiMinMaand.Maand });
                 fenoId++;
             }
@@ -676,7 +677,7 @@ namespace PlantenApplicatie.Data
 
             if (dbBloeiMax==null)
             {
-                context.FenotypeMulti.Add(new FenotypeMulti()
+                resultList.Add(new FenotypeMulti()
                     { Id = fenoId, PlantId = plantId, Eigenschap = "bloei-max", Maand = bloeiMaxMaand.Maand });
                 fenoId++;
             }
@@ -688,7 +689,7 @@ namespace PlantenApplicatie.Data
 
             if (dbBlad==null)
             {
-                context.FenotypeMulti.Add(new FenotypeMulti()
+                resultList.Add(new FenotypeMulti()
                 {
                     Id = fenoId,
                     PlantId = plantId,
@@ -706,7 +707,7 @@ namespace PlantenApplicatie.Data
 
             if (dbBloei==null)
             {
-                context.FenotypeMulti.Add(new FenotypeMulti()
+                resultList.Add(new FenotypeMulti()
                 {
                     Id = fenoId,
                     PlantId = plantId,
@@ -720,9 +721,11 @@ namespace PlantenApplicatie.Data
                 dbBloei.Maand = bloeiMaand.Maand;
                 dbBloei.Waarde = bloeiKleur.NaamKleur;
             }
+
+            return resultList;
         }
 
-        public string EditPlantData(long plantId, Fenotype fenotype, Abiotiek abiotiek,
+        public string EditPlantData(long plantId, Fenotype fenotype, List<FenotypeMulti> fenotypeMulti ,Abiotiek abiotiek,
             List<AbiotiekMulti> abiotiekMulti,
             List<Commensalisme> commensalisme, List<CommSocialbiliteit> commSocialbiliteit, List<CommLevensvorm> commLevensvorm, ExtraEigenschap extraEigenschap,
             TfgsvType type, TfgsvFamilie familie, TfgsvGeslacht geslacht,
@@ -823,6 +826,7 @@ namespace PlantenApplicatie.Data
                     dbPlant.VariantId = (int?) variant.VariantId;
                 }
 
+                context.FenotypeMulti.AddRange(fenotypeMulti);
                 context.SaveChanges();
             }
             catch (Exception e)
