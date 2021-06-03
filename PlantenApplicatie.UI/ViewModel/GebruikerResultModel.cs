@@ -40,6 +40,7 @@ namespace PlantenApplicatie.UI.ViewModel
         private Abiotiek _abiotiek;
         private Commensalisme _commensalisme;
         private ExtraEigenschap _extraEigenschap;
+        private Foto _foto;
         //private BeheerMaand _beheerMaand;
 
         //Jelle & Stephanie
@@ -85,6 +86,14 @@ namespace PlantenApplicatie.UI.ViewModel
         {
             EditWindow window = new EditWindow(_plantenResultaat);
             window.ShowDialog();
+        }
+        public Foto Foto
+        {
+            get { return _foto; }
+            set
+            {
+                _foto = value;
+            }
         }
 
         //Stephanie & Maarten
@@ -209,6 +218,7 @@ namespace PlantenApplicatie.UI.ViewModel
             Abiotiek = _plantenDataService.GetAbiotiek(plant.PlantId);
             Commensalisme = _plantenDataService.GetCommensalisme(plant.PlantId);
             ExtraEigenschap = _plantenDataService.GetExtraEigenschap(plant.PlantId);
+            Foto = _plantenDataService.getFotoViaPlantId(plant.PlantId);
             // BeheerMaand = _plantenDataService.GetBeheerMaand(plant.PlantId);
 
             //Jelle
