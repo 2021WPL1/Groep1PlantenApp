@@ -7,15 +7,17 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
         Title="MainWindow" Height="623" Width="898" WindowState="Maximized">
-    <Viewbox Margin="0,0,0,10">
-        <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="654">
-            <Grid.Background>
-                <ImageBrush ImageSource="Images/AchtergrondSchermen.jpg"/>
-            </Grid.Background>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Label x:Name="lblZoekscherm" Content="AanpassenScherm" HorizontalAlignment="Left" Margin="249,0,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold">
+    <Grid Margin="0,0,0,0" RenderTransformOrigin="0.951,0.501">
+        <Grid.Background>
+            <ImageBrush ImageSource="Images/AchtergrondSchermen.jpg"/>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Viewbox Margin="0,0,0,10">
+            <Grid>
+
+                <Label x:Name="lblZoekscherm" Content="AanpassenScherm" HorizontalAlignment="Left" Margin="249,0,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold">
                 <Label.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White"/>
@@ -1601,6 +1603,7 @@
                 VerticalAlignment="Top"
                 BorderBrush="Black" BorderThickness="1,1,1,1"
                 Width="69" Height="28"/>
-        </Grid>
-    </Viewbox>
+            </Grid>
+        </Viewbox>
+    </Grid>
 </Window>
