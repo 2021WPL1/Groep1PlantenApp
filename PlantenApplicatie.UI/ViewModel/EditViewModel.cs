@@ -677,7 +677,10 @@ namespace PlantenApplicatie.UI.ViewModel
             //Senne & Hermes
             if (window != null)
             {
+                Plant plant = _plantenDataService.GetPlantWithId(_plantId);
+                ResultatenWindow resultaat = new ResultatenWindow(plant);
                 window.Close();
+                resultaat.ShowDialog();
             }
         }
         private void ClearSoort()
