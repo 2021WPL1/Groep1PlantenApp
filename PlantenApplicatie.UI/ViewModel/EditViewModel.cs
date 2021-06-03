@@ -313,6 +313,7 @@ namespace PlantenApplicatie.UI.ViewModel
         public void FillDataFromPlant(Plant plant)
         {
             //Senne & Hermes
+            //data opvullen met data uit de databank
             _plantId = plant.PlantId;
             //Filters
             FilterSelectedType = _filtertypes.FirstOrDefault(f =>
@@ -515,6 +516,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         private void Opslaan()
         {//Senne & Hermes
+            //alle geselecteerde data opslaan en doorsturen naar de DAO
             List<FenotypeMulti> fenotypeMulti;
 
             if (_filterselectedSoort==null)
@@ -672,6 +674,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         private void Back(Window window)
         {
+            //Senne & Hermes
             if (window != null)
             {
                 window.Close();
@@ -679,10 +682,12 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         private void ClearSoort()
         {
+            //Senne & Hermes
             FilterSelectedSoort = null;
         }
         private void ClearVariant()
         {
+            //Senne & Hermes
             FilterSelectedVariant = null;
         }
         //Habitat toevoegen aan listbox (die moeten toegevoegd worden aan de plant)
@@ -801,6 +806,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         private void NewBeheerToevoegen()
         {
+            //Senne & Hermes
             if ( _newbeheerDaad != null)
             {
                 if (_newbeheerDaad.Trim() != string.Empty)
@@ -827,6 +833,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         private void NewBeheerHandelingToevoegen()
         {
+            //Senne & Hermes
             //Beheerhandeling checken als er iets geselecteerd
             if (_newbeheerselectedDaden == null)
             {
@@ -922,6 +929,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         private void ClearNewBeheerhandeling()
         {
+            //Senne & Hermes
             //geselecteerde waarden terug op leeg zetten na het koppelen van de beheerbehandeling
             NewBeheerSelectedDaden = null;
             NewBeheerSelectedJan = false;
@@ -942,6 +950,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         private void EditBeheerWijzigingenOpslaan()
         {
+            //Senne & Hermes
             //Beheerhandeling checken als er iets geselecteerd
             if (_editbeheerselectedDaden == null)
             {
@@ -1032,6 +1041,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         private void ClearEditBeheerhandeling()
         {
+            //Senne & Hermes
             //geselecteerde waarden terug op leeg zetten na het koppelen van de beheerbehandeling
             EditBeheerSelectedDaden = null;
             EditBeheerSelectedJan = false;
@@ -1053,6 +1063,7 @@ namespace PlantenApplicatie.UI.ViewModel
 
         private void EditBeheerVerwijderen()
         {
+            //Senne & Hermes
             if (_editbeheerselectedDaden==null)
             {
                 MessageBox.Show("Gelieve een handeling te selecteren");
@@ -1066,6 +1077,7 @@ namespace PlantenApplicatie.UI.ViewModel
 
         private void EditBeheerSelectionChanged()
         {
+            //Senne & Hermes
             if (_editbeheerselectedDaden==null)
             {
                 return;
@@ -1365,6 +1377,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public void LoadExtraEigenschappen()
         {
+            //Senne & Hermes
             ExtraNectarwaarde.Clear();
             ExtraPollenwaarde.Clear();
 
@@ -1379,6 +1392,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public void LoadBeheerEigenschappen()
         {
+            //Senne & Hermes
             NewBeheerDaden.Clear();
 
             foreach (var beheerDaden in _newbeheerDaden)
@@ -1388,6 +1402,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public void ReloadEditBeheerdaden()
         {
+            //Senne & Hermes
             EditBeheerDaden.Clear();
             _editbeheerDaden = _plantenDataService.GetBeheerDadenFromPlant(_plantId);
             foreach (var beheerDaden in _editbeheerDaden)
@@ -1397,6 +1412,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public void ReloadAllBeheerdaden()
         {
+            //Senne & Hermes
             NewBeheerDaad = null;
             _newbeheerDaden = _plantenDataService.GetAllBeheerDaden();
 
@@ -1408,6 +1424,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public void FenoShowBloeiwijzeImage()
         {
+            //Senne & Hermes
             if (_fenoselectedBloeiwijze != null)
             {
 
@@ -1499,6 +1516,7 @@ namespace PlantenApplicatie.UI.ViewModel
 
         public string PlantdichtheidMin
         {
+            //Senne & Hermes
             get { return _plantdichtheidMin; }
             set 
             {
@@ -1508,6 +1526,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public string PlantdichtheidMax
         {
+            //Senne & Hermes
             get { return _plantdichtheidMax; }
             set
             {
@@ -1518,6 +1537,7 @@ namespace PlantenApplicatie.UI.ViewModel
         //Fenotype
         public FenoBloeiwijze FenoSelectedBloeiwijze
         {
+            //Senne & Hermes
             get { return _fenoselectedBloeiwijze;}
             set
             {
@@ -1528,6 +1548,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public ImageSource FenoSelectedBloeiwijzeImage
         {
+            //Senne & Hermes
             get { return _fenoselectedBloeiwijzeImage; }
             set
             {
@@ -1537,6 +1558,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public FenoHabitus FenoSelectedHabitus
         {
+            //Senne & Hermes
             get { return _fenoselectedHabitus; }
             set
             {
@@ -1546,7 +1568,8 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public FenoBladgrootte FenoSelectedBladgrootteTot
         {
-            get {return _fenoselectedBladGrootteTot; }
+            //Senne & Hermes
+            get { return _fenoselectedBladGrootteTot; }
             set
             {
                 _fenoselectedBladGrootteTot = value;
@@ -1555,6 +1578,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public FenoBladgrootte FenoSelectedMaxBladgrootte
         {
+            //Senne & Hermes
             get { return _fenoselectedMaxBladgrootte; }
             set
             {
@@ -1564,6 +1588,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public FenoMaand FenoSelectedMaxBladgrootteMaand
         {
+            //Senne & Hermes
             get { return _fenoselectedMaxBladgrootteMaand; }
             set
             {
@@ -1573,6 +1598,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public FenoBladgrootte FenoSelectedMaxBloeihoogte
         {
+            //Senne & Hermes
             get { return _fenoselectedMaxBloeihoogte; }
             set
             {
@@ -1582,6 +1608,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public FenoMaand FenoSelectedMaxBloeihoogteMaand
         {
+            //Senne & Hermes
             get { return _fenoselectedMaxBloeihoogteMaand; }
             set
             {
@@ -1591,6 +1618,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public FenoBladgrootte FenoSelectedMinBloeihoogte
         {
+            //Senne & Hermes
             get { return _fenoselectedMinBloeihoogte; }
             set
             {
@@ -1600,6 +1628,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public FenoMaand FenoSelectedMinBloeihoogteMaand
         {
+            //Senne & Hermes
             get { return _fenoselectedMinBloeihoogteMaand; }
             set
             {
@@ -1609,6 +1638,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public FenoKleur FenoSelectedBladKleur
         {
+            //Senne & Hermes
             get { return _fenoselectedBladKleur; }
             set
             {
@@ -1618,6 +1648,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public FenoMaand FenoSelectedBladKleurMaand
         {
+            //Senne & Hermes
             get { return _fenoselectedBladKleurMaand; }
             set
             {
@@ -1627,6 +1658,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public FenoKleur FenoSelectedBloeiKleur
         {
+            //Senne & Hermes
             get { return _fenoselectedBloeiKleur; }
             set
             {
@@ -1636,6 +1668,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public FenoMaand FenoSelectedBloeiKleurMaand
         {
+            //Senne & Hermes
             get { return _fenoselectedBloeiKleurMaand; }
             set
             {
@@ -1645,6 +1678,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public FenoBladvorm FenoSelectedBladvorm
         {
+            //Senne & Hermes
             get { return _fenoselectedBladvorm; }
             set
             {
@@ -1654,6 +1688,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public FenoRatioBloeiBlad FenoSelectedRatio
         {
+            //Senne & Hermes
             get { return _fenoselectedRatio; }
             set
             {
@@ -1663,6 +1698,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public FenoSpruitfenologie FenoSelectedSpruit
         {
+            //Senne & Hermes
             get { return _fenoselectedSpruit; }
             set
             {
@@ -1672,6 +1708,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public FenoLevensvorm FenoSelectedLevensvorm
         {
+            //Senne & Hermes
             get { return _fenoselectedLevensvorm; }
             set
             {
@@ -1760,6 +1797,7 @@ namespace PlantenApplicatie.UI.ViewModel
         //Commersialisme
         public CommOntwikkelsnelheid CommSelectedOntwikkelSnelheid
         {
+            //Senne & Hermes
             get { return _commselectedOntwikkelSnelheid; }
             set
             {
@@ -1769,6 +1807,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public CommLevensvorm CommSelectedAllLevensvorm
         {
+            //Senne & Hermes
             get { return _commselectedAllLevensvorm; }
             set
             {
@@ -1778,6 +1817,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public CommLevensvorm CommSelectedAddedLevensvorm
         {
+            //Senne & Hermes
             get { return _commselectedAddedLevensvorm; }
             set
             {
@@ -1787,6 +1827,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public CommSocialbiliteit CommSelectedAllSocialbiliteit
         {
+            //Senne & Hermes
             get { return _commselectedAllSocialbiliteit; }
             set
             {
@@ -1796,6 +1837,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public CommSocialbiliteit CommSelectedAddedSocialbiliteit
         {
+            //Senne & Hermes
             get { return _commselectedAddedSocialbiliteit; }
             set
             {
@@ -1805,6 +1847,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public CommStrategie CommSelectedAllStrategie
         {
+            //Senne & Hermes
             get { return _commselectedAllStrategie; }
             set
             {
@@ -1814,6 +1857,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public CommStrategie CommSelectedAddedStrategie
         {
+            //Senne & Hermes
             get { return _commselectedAddedStrategie; }
             set
             {
@@ -1824,6 +1868,7 @@ namespace PlantenApplicatie.UI.ViewModel
         //Extra Eigenschappen
         public ExtraNectarwaarde ExtraSelectedNectarwaarde
         {
+            //Senne & Hermes
             get { return _extraselectedNectarwaarde; }
             set
             {
@@ -1833,6 +1878,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public ExtraPollenwaarde ExtraSelectedPollenwaarde
         {
+            //Senne & Hermes
             get { return _extraselectedPollenwaarde; }
             set
             {
@@ -1842,6 +1888,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public bool ExtraSelectedBijvriendelijk
         {
+            //Senne & Hermes
             get { return _extraselectedBijvriendelijk; }
             set
             {
@@ -1851,6 +1898,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public bool ExtraSelectedEetbaar
         {
+            //Senne & Hermes
             get { return _extraselectedEetbaar; }
             set
             {
@@ -1860,6 +1908,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public bool ExtraSelectedKruidGebruik
         {
+            //Senne & Hermes
             get { return _extraselectedKruidGebruik; }
             set
             {
@@ -1869,6 +1918,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public bool ExtraSelectedVlindervriendelijk
         {
+            //Senne & Hermes
             get { return _extraselectedVlindervriendelijk; }
             set
             {
@@ -1878,6 +1928,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public bool ExtraSelectedGeurend
         {
+            //Senne & Hermes
             get { return _extraselectedGeurend; }
             set
             {
@@ -1887,6 +1938,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public bool ExtraSelectedVorstgevoelig
         {
+            //Senne & Hermes
             get { return _extraselectedVorstgevoelig; }
             set
             {
@@ -1897,6 +1949,7 @@ namespace PlantenApplicatie.UI.ViewModel
         //Nieuwe beheersbehandeling
         public BeheerDaden NewBeheerSelectedDaden
         {
+            //Senne & Hermes
             get { return _newbeheerselectedDaden; }
             set
             {
@@ -1906,6 +1959,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public string NewBeheerDaad
         {
+            //Senne & Hermes
             get { return _newbeheerDaad; }
             set
             {
@@ -1915,6 +1969,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public bool NewBeheerSelectedJan
         {
+            //Senne & Hermes
             get { return _newbeheerselectedJan; }
             set { _newbeheerselectedJan = value;
                 OnPropertyChanged();
@@ -1922,6 +1977,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public bool NewBeheerSelectedFeb
         {
+            //Senne & Hermes
             get { return _newbeheerselectedFeb; }
             set
             {
@@ -1931,6 +1987,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public bool NewBeheerSelectedMrt
         {
+            //Senne & Hermes
             get { return _newbeheerselectedMrt; }
             set
             {
@@ -1940,6 +1997,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public bool NewBeheerSelectedApr
         {
+            //Senne & Hermes
             get { return _newbeheerselectedApr; }
             set
             {
@@ -1949,6 +2007,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public bool NewBeheerSelectedMei
         {
+            //Senne & Hermes
             get { return _newbeheerselectedMei; }
             set
             {
@@ -1958,6 +2017,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public bool NewBeheerSelectedJun
         {
+            //Senne & Hermes
             get { return _newbeheerselectedJun; }
             set
             {
@@ -1967,6 +2027,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public bool NewBeheerSelectedJul
         {
+            //Senne & Hermes
             get { return _newbeheerselectedJul; }
             set
             {
@@ -1976,6 +2037,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public bool NewBeheerSelectedAug
         {
+            //Senne & Hermes
             get { return _newbeheerselectedAug; }
             set
             {
@@ -1985,6 +2047,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public bool NewBeheerSelectedSept
         {
+            //Senne & Hermes
             get { return _newbeheerselectedSept; }
             set
             {
@@ -1994,6 +2057,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public bool NewBeheerSelectedOkt
         {
+            //Senne & Hermes
             get { return _newbeheerselectedOkt; }
             set
             {
@@ -2003,6 +2067,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public bool NewBeheerSelectedNov
         {
+            //Senne & Hermes
             get { return _newbeheerselectedNov; }
             set
             {
@@ -2012,6 +2077,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public bool NewBeheerSelectedDec
         {
+            //Senne & Hermes
             get { return _newbeheerselectedDec; }
             set
             {
@@ -2021,6 +2087,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public string NewBeheerOmschrijving
         {
+            //Senne & Hermes
             get { return _newbeheerOmschrijving; }
             set
             {
@@ -2030,6 +2097,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public string NewBeheerFrequentie
         {
+            //Senne & Hermes
             get { return _newbeheerFrequentie; }
             set
             {
@@ -2039,6 +2107,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public string NewBeheerM2U
         {
+            //Senne & Hermes
             get { return _newbeheerM2U; }
             set
             {
@@ -2050,6 +2119,7 @@ namespace PlantenApplicatie.UI.ViewModel
         //Bestaande beheersbehandeling
         public BeheerMaand EditBeheerSelectedDaden
         {
+            //Senne & Hermes
             get { return _editbeheerselectedDaden; }
             set
             {
@@ -2060,6 +2130,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public bool EditBeheerSelectedJan
         {
+            //Senne & Hermes
             get { return _editbeheerselectedJan; }
             set
             {
@@ -2069,6 +2140,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public bool EditBeheerSelectedFeb
         {
+            //Senne & Hermes
             get { return _editbeheerselectedFeb; }
             set
             {
@@ -2078,6 +2150,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public bool EditBeheerSelectedMrt
         {
+            //Senne & Hermes
             get { return _editbeheerselectedMrt; }
             set
             {
@@ -2087,6 +2160,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public bool EditBeheerSelectedApr
         {
+            //Senne & Hermes
             get { return _editbeheerselectedApr; }
             set
             {
@@ -2096,6 +2170,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public bool EditBeheerSelectedMei
         {
+            //Senne & Hermes
             get { return _editbeheerselectedMei; }
             set
             {
@@ -2105,6 +2180,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public bool EditBeheerSelectedJun
         {
+            //Senne & Hermes
             get { return _editbeheerselectedJun; }
             set
             {
@@ -2114,6 +2190,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public bool EditBeheerSelectedJul
         {
+            //Senne & Hermes
             get { return _editbeheerselectedJul; }
             set
             {
@@ -2123,6 +2200,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public bool EditBeheerSelectedAug
         {
+            //Senne & Hermes
             get { return _editbeheerselectedAug; }
             set
             {
@@ -2132,6 +2210,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public bool EditBeheerSelectedSept
         {
+            //Senne & Hermes
             get { return _editbeheerselectedSept; }
             set
             {
@@ -2141,6 +2220,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public bool EditBeheerSelectedOkt
         {
+            //Senne & Hermes
             get { return _editbeheerselectedOkt; }
             set
             {
@@ -2150,6 +2230,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public bool EditBeheerSelectedNov
         {
+            //Senne & Hermes
             get { return _editbeheerselectedNov; }
             set
             {
@@ -2159,6 +2240,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public bool EditBeheerSelectedDec
         {
+            //Senne & Hermes
             get { return _editbeheerselectedDec; }
             set
             {
@@ -2168,6 +2250,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public string EditBeheerOmschrijving
         {
+            //Senne & Hermes
             get { return _editbeheerOmschrijving; }
             set
             {
@@ -2177,6 +2260,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public string EditBeheerFrequentie
         {
+            //Senne & Hermes
             get { return _editbeheerFrequentie; }
             set
             {
@@ -2186,6 +2270,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         public string EditBeheerM2U
         {
+            //Senne & Hermes
             get { return _editbeheerM2U; }
             set
             {
