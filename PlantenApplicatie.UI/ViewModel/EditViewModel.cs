@@ -584,6 +584,7 @@ namespace PlantenApplicatie.UI.ViewModel
                 _commAddedSocialbiliteit, _commAddedLevensvorm, extraEigenschap, _filterselectedType,
                 _filterselectedFamilie, _filterselectedGeslacht, _filterselectedSoort, _filterselectedVariant,
                 _plantdichtheidMin, _plantdichtheidMax));
+
             Back(_editScherm);
         }
         private void Back(Window window)
