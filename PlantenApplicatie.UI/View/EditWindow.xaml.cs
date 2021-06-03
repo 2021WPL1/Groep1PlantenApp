@@ -24,7 +24,7 @@ namespace PlantenApplicatie.UI.View
     {
         private EditViewModel viewModel;
 
-        public EditWindow(Plant plant)
+        public EditWindow(Plant plant, Gebruiker gebruiker)
         {//voor edit -> plant meegeven
             //Senne & Hermes
             InitializeComponent();
@@ -32,6 +32,7 @@ namespace PlantenApplicatie.UI.View
             viewModel = new EditViewModel(PlantenDataService.Instance(),EditScherm);
 
             DataContext = viewModel;
+            viewModel.LoadLoggedInUser(gebruiker);
             viewModel.InitializeAll();
             viewModel.FillDataFromPlant(plant);
         }

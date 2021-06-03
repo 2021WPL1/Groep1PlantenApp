@@ -22,15 +22,16 @@ namespace PlantenApplicatie.UI.ViewModel
        
         private PlantenDataService _dataservice;
         public ObservableCollection<Rol> Rollen { get; set; }
-        private string emailInput;
-        private string wachtwoordInput;
-        private string wachtwoordBevestigen;
-        private string _voornaam;
-        private string _achternaam;
-        private string _vivesnr;
-        private Rol _selectedRol;
-        private string _error;
 
+        //Jelle
+        //Maken van gebruiker
+        public Gebruiker LoggedInGebruiker { get; set; }
+        //Jelle
+        //functie om gebruiker info te geven om te gebruiken doorheen de viewmodel
+        public void LoadLoggedInUser(Gebruiker gebruiker)
+        {
+            LoggedInGebruiker = gebruiker;
+        }
 
         //Hemen &maarten 
         public CreateGebruikerViewModel(PlantenDataService plantenDataService)
@@ -49,98 +50,22 @@ namespace PlantenApplicatie.UI.ViewModel
             }
 
         }
-      
      
-        public Rol SelectedRol
-        {
-            get { return _selectedRol; }
-            set
-            {
-                _selectedRol = value;
-                OnPropertyChanged();
-            }
-        }
+        public Rol SelectedRol { get; set; }
         [Required]
         [EmailAddress]
-        public string EmailInput
-        {
-            get
-            {
-                return emailInput;
-            }
-            set
-            {
-                emailInput = value;
-                OnPropertyChanged();
-            }
-        }
-        public string WachtwoordInput
-        {
-            get
-            {
-                return wachtwoordInput;
-            }
-            set
-            {
-                wachtwoordInput = value;
-                OnPropertyChanged();
-            }
-        }
-        public string WachtwoordBevestigen
-        {
-            get { return wachtwoordBevestigen; }
-            set { wachtwoordBevestigen = value; }
-        }
-        public string VoorNaamInput
-        {
-            get
-            {
-                return _voornaam;
-            }
-            set
-            {
-                _voornaam = value;
-                OnPropertyChanged();
-            }
-        }
+        public string EmailInput { get; set; }
+        public string WachtwoordInput { get; set; }
+        public string WachtwoordBevestigen { get; set; }
+        public string VoorNaamInput { get; set; }
 
-        public string AchterNaamInput
-        {
-            get
-            {
-                return _achternaam;
-            }
-            set
-            {
-                _achternaam = value;
-                OnPropertyChanged();
-            }
-        }
+        public string AchterNaamInput { get; set; }
 
-        public string VivesNrInput
-        {
-            get
-            {
-                return _vivesnr;
-            }
-            set
-            {
-                _vivesnr = value;
-                OnPropertyChanged();
-            }
-        }
-        public string SelectedError
-        {
-            get { return _error; }
-            set
-            {
-                _error = value;
-                OnPropertyChanged();
-            }
-        }
+        public string VivesNrInput { get; set; }
+        public string SelectedError { get; set; }
         private void closeAddGebruiker(Window window)
         {
-            GebruikersBeheer beheer = new GebruikersBeheer();
+            GebruikersBeheer beheer = new GebruikersBeheer(LoggedInGebruiker);
             window.Close();
             beheer.ShowDialog();
             
@@ -159,7 +84,7 @@ namespace PlantenApplicatie.UI.ViewModel
                         {
                             using (var sha256 = SHA256.Create())
                             {
-                                GebruikersBeheer beheer = new GebruikersBeheer();
+                                GebruikersBeheer beheer = new GebruikersBeheer(LoggedInGebruiker);
                                 var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(WachtwoordInput));
                                 _dataservice.addGebruiker(SelectedRol.Omschrijving, EmailInput, hashedBytes, VoorNaamInput, AchterNaamInput, VivesNrInput);
                                 closeWindow.Close();
@@ -175,8 +100,6 @@ namespace PlantenApplicatie.UI.ViewModel
                     {
                         SelectedError = "Het emailadres bestaat al";
                     }
-
-
                 }
                 else
                 {
@@ -185,9 +108,6 @@ namespace PlantenApplicatie.UI.ViewModel
             }
             catch (Exception)
             {
-
-
-
                 SelectedError = "oei, er is iets fout";
             }
         }

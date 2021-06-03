@@ -19,13 +19,14 @@ namespace PlantenApplicatie.UI.View
     public partial class ResultatenWindow : Window
     {
         private ResultatenViewModel viewModel;
-        public ResultatenWindow(Plant plant)
+        public ResultatenWindow(Plant plant, Gebruiker gebruiker)
         {
             InitializeComponent();
             viewModel = new ResultatenViewModel(PlantenDataService.Instance());
             DataContext = viewModel;
+            viewModel.LoadLoggedInUser(gebruiker);
+            viewModel.EnableRolButtons();
             viewModel.fillLabels(plant);
-            viewModel.LoadLists();
         }
       
     }

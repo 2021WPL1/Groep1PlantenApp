@@ -2281,5 +2281,14 @@ namespace PlantenApplicatie.UI.ViewModel
                 OnPropertyChanged();
             }
         }
+        //Jelle
+        //Maken van gebruiker
+        public Gebruiker LoggedInGebruiker { get; set; }
+        //Jelle
+        //functie om gebruiker info te geven om te gebruiken doorheen de viewmodel
+        public void LoadLoggedInUser(Gebruiker gebruiker)
+        {
+            LoggedInGebruiker = gebruiker;
+        }
     }
 }

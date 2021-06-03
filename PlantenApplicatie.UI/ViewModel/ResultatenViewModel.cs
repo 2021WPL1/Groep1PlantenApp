@@ -32,40 +32,11 @@ namespace PlantenApplicatie.UI.ViewModel
         public ObservableCollection<string> GetSelectedPlantLevensduurConcurrentiekracht { get; set; }
         public ObservableCollection<string> SelectedPlantBladKleur { get; set; }
         public ObservableCollection<string> SelectedPlantBloeiKleur { get; set; }
-        public ObservableCollection<string> SelectedPlantAbioHabitats { get; set; }
+        public ObservableCollection<string> SelectedPlantAbioHabitat { get; set; }   
 
-        //Jelle & Hemen
-        //Plant voor in labels
-        private Plant _plantenResultaat;
         //Maarten & Stephanie
-        private Foto _foto;
-        private string _selectedError;
         private PlantenDataService _plantenDataService;
-        private Fenotype _fenotype;
-        private Abiotiek _abiotiek;
-        private Commensalisme _commensalisme;
-        private ExtraEigenschap _extraEigenschap;
-        //private BeheerMaand _beheerMaand;
-
-        //Jelle & Stephanie
-        //Private lists om observable collections op te vullen
-        private List<string> _beheerSelectedPlant = new List<string>();
-        private List<string> _getSelectedPlantLevensvorm = new List<string>();
-        private List<string> _getSelecteedPlantSociabiliteit = new List<string>();
-        private List<string> _selectedPlantBladKleur = new List<string>();
-        private List<string> _selectedPlantBloeiKleur = new List<string>();
-        private List<string> _getSelectedPlantLevensduurConcurrentiekracht = new List<string>();
-        private List<string> _selectedPlantAbioHabitat = new List<string>();
-
-        //Jelle & Stephanie
-        //Lists om multi data in te stoppen, dit is om de plantgegevens met meerdere waarden te gebruiken om de juiste waarden te krijgen.
-        private List<CommensalismeMulti> _getSelectedPlantCommMulti = new List<CommensalismeMulti>();
-        private List<FenotypeMulti> _fenotypeMulti = new List<FenotypeMulti>();
-        private List<AbiotiekMulti> _abiotiekMulti = new List<AbiotiekMulti>();
-
-        //Jelle
-        private List<BeheerMaand> _getSelectedBeheerMaand = new List<BeheerMaand>();
-
+     
         //Constructor, dit wordt gebruikt om waarden in te stellen
         public ResultatenViewModel(PlantenDataService plantenDataService)
         {
@@ -85,134 +56,61 @@ namespace PlantenApplicatie.UI.ViewModel
             GetSelectedPlantLevensduurConcurrentiekracht = new ObservableCollection<string>();
             SelectedPlantBladKleur = new ObservableCollection<string>();
             SelectedPlantBloeiKleur = new ObservableCollection<string>();
-            SelectedPlantAbioHabitats = new ObservableCollection<string>();
+            SelectedPlantAbioHabitat = new ObservableCollection<string>();
         }
 
         //Senne & Hermes
         //Opent een nieuw scherm naar Edit pagina.
         private void EditScherm(Window window)
         {
-            EditWindow Edit = new EditWindow(_plantenResultaat);
-            window.Close();
-            Edit.ShowDialog();
+            EditWindow window = new EditWindow(PlantenResultaat, LoggedInGebruiker);
+            window.ShowDialog();
         }
-
         //Maarten
-        public Foto Foto
-        {
-            get { return _foto; }
-            set
-            {
-                _foto = value;
-            }
-        }
-        public string SelectedError
-        {
-            get { return _selectedError; }
-            set
-            {
-                _selectedError = value;
-            }
-        }
+        public string Foto { get; set; }
+
         //Stephanie & Maarten
         //Geeft de data van de plant door
-        public Fenotype Fenotype
+        public Fenotype Fenotype { get; set; }
+
+        public Abiotiek Abiotiek { get; set; }
+
+        public Commensalisme Commensalisme { get; set; }
+
+        public ExtraEigenschap ExtraEigenschap { get; set; }
+
+        public Plant PlantenResultaat { get; set; }
+
+        //Jelle
+        //Maken van gebruiker
+        public Gebruiker LoggedInGebruiker { get; set; }
+        //Jelle
+        //Maken van visibility om te linken via databinding met gui
+        public Visibility RolButtonsVisibility { get; set; }
+
+        //Jelle
+        //functie om gebruiker info te geven om te gebruiken doorheen de viewmodel
+        public void LoadLoggedInUser(Gebruiker gebruiker)
         {
-            get { return _fenotype; }
-            set
-            {
-                _fenotype = value;
-            }
+            LoggedInGebruiker = gebruiker;
         }
-
-        public Abiotiek Abiotiek
+        //Jelle
+        //Functie voor de visibility van de speciale buttons die bij sommige rollen niet beschikbaar mogen zijn.
+        public void EnableRolButtons()
         {
-            get { return _abiotiek; }
-            set
+            switch (LoggedInGebruiker.Rol)
             {
-                _abiotiek = value;
-            }
-        }
-
-        public Commensalisme Commensalisme
-        {
-            get { return _commensalisme; }
-            set
-            {
-                _commensalisme = value;
-            }
-
-        }
-
-        public ExtraEigenschap ExtraEigenschap
-        {
-            get { return _extraEigenschap; }
-            set
-            {
-                _extraEigenschap = value;
-            }
-        }
-
-        /*public BeheerMaand BeheerMaand
-        {
-            get { return _beheerMaand; }
-            set
-            {
-                _beheerMaand = value;
-            }
-        }*/
-
-        public Plant PlantenResultaat
-        {
-            get { return _plantenResultaat; }
-            set
-            {
-                _plantenResultaat = value;
-            }
-        }
-
-        //Jelle & Stephanie
-        //Laadt lijsten voor UI elementen
-        public void LoadLists()
-        {
-            //Maak eerst alle elementen leeg
-            BeheerSelectedPlant.Clear();
-            GetSelectedPlantLevensvorm.Clear();
-            GetSelectedPlantSociabiliteit.Clear();
-            GetSelectedPlantLevensduurConcurrentiekracht.Clear();
-            SelectedPlantBladKleur.Clear();
-            SelectedPlantBloeiKleur.Clear();
-            SelectedPlantAbioHabitats.Clear();
-
-            //Vul ObservableCollections met informatie uit de lijsten
-            //De informatie komt uit fillLabels
-            foreach (var month in _beheerSelectedPlant)
-            {
-                BeheerSelectedPlant.Add(month);
-            }
-            foreach (var text in _getSelectedPlantLevensvorm)
-            {
-                GetSelectedPlantLevensvorm.Add(text);
-            }
-            foreach (var text in _getSelecteedPlantSociabiliteit)
-            {
-                GetSelectedPlantSociabiliteit.Add(text);
-            }
-            foreach (var text in _getSelectedPlantLevensduurConcurrentiekracht)
-            {
-                GetSelectedPlantLevensduurConcurrentiekracht.Add(text);
-            }
-            foreach (var bladkleur in _selectedPlantBladKleur)
-            {
-                SelectedPlantBladKleur.Add(bladkleur);
-            }
-            foreach (var bloeikleur in _selectedPlantBloeiKleur)
-            {
-                SelectedPlantBloeiKleur.Add(bloeikleur);
-            }
-            foreach (var habitat in _selectedPlantAbioHabitat)
-            {
-                SelectedPlantAbioHabitats.Add(habitat);
+                case "Gebruiker":
+                    RolButtonsVisibility = Visibility.Hidden;
+                    break;
+                case "Data-collector":
+                    RolButtonsVisibility = Visibility.Hidden;
+                    break;
+                case "Manager":
+                    RolButtonsVisibility = Visibility.Visible;
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -238,23 +136,16 @@ namespace PlantenApplicatie.UI.ViewModel
             Abiotiek = _plantenDataService.GetAbiotiek(plant.PlantId);
             Commensalisme = _plantenDataService.GetCommensalisme(plant.PlantId);
             ExtraEigenschap = _plantenDataService.GetExtraEigenschap(plant.PlantId);
-            Foto = _plantenDataService.getFotoViaPlantId(plant.PlantId);
-            
-            if (Foto != null)
+            var foto = _plantenDataService.getFotoViaPlantId(plant.PlantId);
+            if (foto != null)
             {
                 var Path = System.IO.Directory.GetCurrentDirectory();
-                var aangepastPath = Path.Replace("bin\\Debug\\netcoreapp3.1", Foto.UrlLocatie);
-                Foto.UrlLocatie = aangepastPath;
+                var aangepastPath = Path.Replace("bin\\Debug\\netcoreapp3.1", foto.UrlLocatie);
+                Foto = aangepastPath;
             }
-            else
-            {
-                SelectedError = "Geen foto bestaand";
-            }
-            
-            // BeheerMaand = _plantenDataService.GetBeheerMaand(plant.PlantId);
 
             //Jelle
-            _getSelectedBeheerMaand = _plantenDataService.GetBeheerMaand(plant.PlantId);
+            var _getSelectedBeheerMaand = _plantenDataService.GetBeheerMaand(plant.PlantId);
 
             foreach (var beheerMaand in _getSelectedBeheerMaand)
             {
@@ -276,27 +167,11 @@ namespace PlantenApplicatie.UI.ViewModel
                 text += "\r\nFrequentie: " + beheerMaand.FrequentiePerJaar;
                 text += "\r\nOmschrijving: " + beheerMaand.Omschrijving;
                 
-                _beheerSelectedPlant.Add(text);
+                BeheerSelectedPlant.Add(text);
             }
-
-            //Jelle & Stephanie
-            //controleert of de beheermaand maand true is, als dat zo is komt hij in de lijst, anders niet
-            /*if (BeheerMaand.Jan == true) { _beheerSelectedPlant.Add("Januari"); }
-            if (BeheerMaand.Feb == true) { _beheerSelectedPlant.Add("Februari"); }
-            if (BeheerMaand.Mrt == true) { _beheerSelectedPlant.Add("Maart"); }
-            if (BeheerMaand.Apr == true) { _beheerSelectedPlant.Add("April"); }
-            if (BeheerMaand.Mei == true) { _beheerSelectedPlant.Add("Mei"); }
-            if (BeheerMaand.Jun == true) { _beheerSelectedPlant.Add("Juni"); }
-            if (BeheerMaand.Jul == true) { _beheerSelectedPlant.Add("Juli"); }
-            if (BeheerMaand.Aug == true) { _beheerSelectedPlant.Add("Augustus"); }
-            if (BeheerMaand.Sept == true) { _beheerSelectedPlant.Add("September"); }
-            if (BeheerMaand.Okt == true) { _beheerSelectedPlant.Add("Oktober"); }
-            if (BeheerMaand.Nov == true) { _beheerSelectedPlant.Add("November"); }
-            if (BeheerMaand.Dec == true) { _beheerSelectedPlant.Add("December"); }*/
-
             //Jelle & Stephanie
             //Filter alle getcommMulti rijen die het plantId bevat
-            _getSelectedPlantCommMulti = _plantenDataService.GetCommMulti(plant.PlantId);
+            var _getSelectedPlantCommMulti = _plantenDataService.GetCommMulti(plant.PlantId);
 
             //Foreach vervolgd door een switch om op te splitsen in juiste tabellen
             foreach (var commMulti in _getSelectedPlantCommMulti)
@@ -304,17 +179,17 @@ namespace PlantenApplicatie.UI.ViewModel
                 switch (commMulti.Eigenschap)
                 {
                     case "Socialibiteit":
-                        _getSelecteedPlantSociabiliteit.Add(commMulti.Waarde);
+                        GetSelectedPlantSociabiliteit.Add(commMulti.Waarde);
                         break;
                     case "Levensvorm":
-                        _getSelectedPlantLevensvorm.Add(commMulti.Waarde);
+                        GetSelectedPlantLevensvorm.Add(commMulti.Waarde);
                         break;
                     default:
                         break;
                 }
             }
             //Stephanie & Jelle
-            _fenotypeMulti = _plantenDataService.GetFenoMultiKleur(plant.PlantId);
+            var _fenotypeMulti = _plantenDataService.GetFenoMultiKleur(plant.PlantId);
             
             foreach (var FenoMulti in _fenotypeMulti)
             {
@@ -322,21 +197,21 @@ namespace PlantenApplicatie.UI.ViewModel
                 switch (FenoMulti.Eigenschap)
                 {
                     case "blad":
-                        _selectedPlantBladKleur.Add(listText);
+                        SelectedPlantBladKleur.Add(listText);
                         break;
                     case "bloei": 
-                        _selectedPlantBloeiKleur.Add(listText);
+                        SelectedPlantBloeiKleur.Add(listText);
                         break;
                     default:
                         break;
                 }
             }
             //Stephanie & Jelle
-            _abiotiekMulti = _plantenDataService.GetAbiotiekMulti(plant.PlantId);
+            var _abiotiekMulti = _plantenDataService.GetAbiotiekMulti(plant.PlantId);
 
             foreach (var AbioMulti in _abiotiekMulti)
             {
-                _selectedPlantAbioHabitat.Add(AbioMulti.Waarde);
+                SelectedPlantAbioHabitat.Add(AbioMulti.Waarde);
             }
         }
     }
