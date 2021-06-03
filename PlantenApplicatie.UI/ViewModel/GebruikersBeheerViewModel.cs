@@ -59,8 +59,15 @@ namespace PlantenApplicatie.UI.ViewModel
         {
             if (SelectedGebruiker != null)
             {
-                var gebruiker = _plantenDataService.verwijderGebruiker(SelectedGebruiker.Emailadres);
-                ShowAllUser();
+                if (SelectedGebruiker != LoggedInGebruiker)
+                {
+                    var gebruiker = _plantenDataService.verwijderGebruiker(SelectedGebruiker.Emailadres);
+                    ShowAllUser();
+                }
+                else
+                {
+                    MessageBox.Show("Je mag jezelf niet verwijderen!");
+                }
             }
         }
 
