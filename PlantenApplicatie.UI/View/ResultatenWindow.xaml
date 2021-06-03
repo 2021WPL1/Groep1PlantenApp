@@ -32,7 +32,7 @@
                                 <GradientStop Color="#FFEFEFEF" Offset="0.081"/>
                             </LinearGradientBrush>
                         </TabItem.Background>
-                        <Grid Margin="0,0,125,0">
+                        <Grid Margin="0,0,124,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="88*"/>
                                 <ColumnDefinition Width="21*"/>
@@ -101,7 +101,16 @@
                             <Label Content="{Binding PlantenResultaat.Variant, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="41,155,0,0" Height="28" Grid.Column="2"/>
                             <Label Content="{Binding PlantenResultaat.PlantdichtheidMin, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="41,190,0,0" Height="28" Grid.Column="2"/>
                             <Label Content="{Binding PlantenResultaat.PlantdichtheidMax, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="41,225,0,0" Height="28" Grid.Column="2"/>
-                            <Label Content="{Binding Foto.UrlLocatie}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="571" Grid.ColumnSpan="3" FontSize="10" />
+                            <Label Content="{Binding SelectedError}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" FontSize="10" Grid.Column="2" Height="57" Margin="246,204,0,0" RenderTransformOrigin="0.5,0.5" Foreground="#FFFF0202" >
+                                <Label.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="1"/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Label.RenderTransform>
+                            </Label>
 
                         </Grid>
                     </TabItem>
