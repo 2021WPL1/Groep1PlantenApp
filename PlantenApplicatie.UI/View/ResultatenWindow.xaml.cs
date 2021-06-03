@@ -24,7 +24,8 @@ namespace PlantenApplicatie.UI.View
             InitializeComponent();
             viewModel = new ResultatenViewModel(PlantenDataService.Instance());
             DataContext = viewModel;
-            viewModel.EnableRolButtons(gebruiker);
+            viewModel.LoadLoggedInUser(gebruiker);
+            viewModel.EnableRolButtons();
             viewModel.fillLabels(plant);
             viewModel.LoadLists();
         }

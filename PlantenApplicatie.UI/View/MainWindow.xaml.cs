@@ -35,6 +35,7 @@ namespace PlantenApplicatie.UI.View
             //mainviewmodel
             viewModel = new MainViewModel(PlantenDataService.Instance());
             DataContext = viewModel;
+            viewModel.LoadLoggedInUser(gebruiker);
             viewModel.EnableRolButtons();
             viewModel.InitializeTfgsv();
             viewModel.LoadAll();

@@ -1,4 +1,5 @@
 ﻿using PlantenApplicatie.Data;
+using PlantenApplicatie.Domain.Models;
 using PlantenApplicatie.UI.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -21,10 +22,12 @@ namespace PlantenApplicatie.UI.View
     public partial class CreateGebruiker : Window
     {
         private CreateGebruikerViewModel viewModel;
-        public CreateGebruiker()
+        public CreateGebruiker(Gebruiker gebruiker)
         {
             viewModel = new CreateGebruikerViewModel(PlantenDataService.Instance());
             DataContext = viewModel;
+            viewModel.LoadLoggedInUser(gebruiker);
+            viewModel.EnableRolButtons();
             viewModel.addRollen();
             InitializeComponent();
         }

@@ -102,34 +102,12 @@ namespace PlantenApplicatie.UI.ViewModel
         }
 
         //Jelle
-        private Gebruiker _loggedInGebruiker = new Gebruiker();
-        public Gebruiker LoggedInGebruiker
+        public Gebruiker LoggedInGebruiker { get; set; }
+        public void LoadLoggedInUser(Gebruiker gebruiker)
         {
-            get { return _loggedInGebruiker; }
-            set
-            {
-                _loggedInGebruiker = value;
-            }
+            LoggedInGebruiker = gebruiker;
         }
-        public void loadLoggedInUser(Gebruiker gebruiker)
-        {
-            _loggedInGebruiker = gebruiker;
-        }
-        private Visibility _rolButtonsVisibility;
-        public Visibility RolButtonsVisibility
-        {
-            get
-            {
-                return _rolButtonsVisibility;
-            }
-            set
-            {
-                if (_rolButtonsVisibility != value)
-                {
-                    _rolButtonsVisibility = value;
-                }
-            }
-        }
+        public Visibility RolButtonsVisibility { get; set; }
         public void EnableRolButtons()
         {
             switch (LoggedInGebruiker.Rol)

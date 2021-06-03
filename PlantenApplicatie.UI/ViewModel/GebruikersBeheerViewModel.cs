@@ -23,10 +23,28 @@ namespace PlantenApplicatie.UI.ViewModel
         private Gebruiker _selectedGebruiker;
 
         //Jelle
-        public Gebruiker loggedInGebruiker;
-        public void loadLoggedInUser(Gebruiker gebruiker)
+        public Gebruiker LoggedInGebruiker { get; set; }
+        public void LoadLoggedInUser(Gebruiker gebruiker)
         {
-            loggedInGebruiker = gebruiker;
+            LoggedInGebruiker = gebruiker;
+        }
+        public Visibility RolButtonsVisibility { get; set; }
+        public void EnableRolButtons()
+        {
+            switch (LoggedInGebruiker.Rol)
+            {
+                case "Gebruiker":
+                    RolButtonsVisibility = Visibility.Hidden;
+                    break;
+                case "Data-collector":
+                    RolButtonsVisibility = Visibility.Hidden;
+                    break;
+                case "Manager":
+                    RolButtonsVisibility = Visibility.Visible;
+                    break;
+                default:
+                    break;
+            }
         }
 
         public GebruikersBeheerViewModel(PlantenDataService plantenDataService)
@@ -63,7 +81,7 @@ namespace PlantenApplicatie.UI.ViewModel
 
         private void CloseGebruikersBeheer(Window window)
         {
-            MainWindow main = new MainWindow(loggedInGebruiker);
+            MainWindow main = new MainWindow(LoggedInGebruiker);
             window.Close();
             main.ShowDialog();
         }
@@ -71,7 +89,7 @@ namespace PlantenApplicatie.UI.ViewModel
         //Hemen en Maarten
         private void SchermGebruikerToevoegenCommand(Window window)
         {
-            CreateGebruiker create = new CreateGebruiker();
+            CreateGebruiker create = new CreateGebruiker(LoggedInGebruiker);
             
             window.Close();
             create.ShowDialog();

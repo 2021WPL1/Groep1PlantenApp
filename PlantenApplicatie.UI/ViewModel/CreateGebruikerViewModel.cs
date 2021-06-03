@@ -32,10 +32,28 @@ namespace PlantenApplicatie.UI.ViewModel
         private string _error;
 
         //Jelle
-        public Gebruiker loggedInGebruiker;
-        public void loadLoggedInUser(Gebruiker gebruiker)
+        public Gebruiker LoggedInGebruiker { get; set; }
+        public void LoadLoggedInUser(Gebruiker gebruiker)
         {
-            loggedInGebruiker = gebruiker;
+            LoggedInGebruiker = gebruiker;
+        }
+        public Visibility RolButtonsVisibility { get; set; }
+        public void EnableRolButtons()
+        {
+            switch (LoggedInGebruiker.Rol)
+            {
+                case "Gebruiker":
+                    RolButtonsVisibility = Visibility.Hidden;
+                    break;
+                case "Data-collector":
+                    RolButtonsVisibility = Visibility.Hidden;
+                    break;
+                case "Manager":
+                    RolButtonsVisibility = Visibility.Visible;
+                    break;
+                default:
+                    break;
+            }
         }
 
         //Hemen &maarten 
@@ -146,7 +164,7 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         private void closeAddGebruiker(Window window)
         {
-            GebruikersBeheer beheer = new GebruikersBeheer(loggedInGebruiker);
+            GebruikersBeheer beheer = new GebruikersBeheer(LoggedInGebruiker);
             window.Close();
             beheer.ShowDialog();
             
@@ -165,7 +183,7 @@ namespace PlantenApplicatie.UI.ViewModel
                         {
                             using (var sha256 = SHA256.Create())
                             {
-                                GebruikersBeheer beheer = new GebruikersBeheer(loggedInGebruiker);
+                                GebruikersBeheer beheer = new GebruikersBeheer(LoggedInGebruiker);
                                 var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(WachtwoordInput));
                                 _dataservice.addGebruiker( EmailInput,SelectedRol.Omschrijving, hashedBytes, VivesNrInput, VoorNaamInput, AchterNaamInput);
                                 closeWindow.Close();

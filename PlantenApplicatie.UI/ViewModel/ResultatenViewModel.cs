@@ -90,29 +90,20 @@ namespace PlantenApplicatie.UI.ViewModel
         //Opent een nieuw scherm naar Edit pagina.
         private void EditScherm()
         {
-            EditWindow window = new EditWindow(_plantenResultaat);
+            EditWindow window = new EditWindow(_plantenResultaat, LoggedInGebruiker);
             window.ShowDialog();
         }
 
         //Jelle
-        private Visibility _rolButtonsVisibility;
-        public Visibility RolButtonsVisibility
+        public Gebruiker LoggedInGebruiker { get; set; }
+        public void LoadLoggedInUser(Gebruiker gebruiker)
         {
-            get
-            {
-                return _rolButtonsVisibility;
-            }
-            set
-            {
-                if (_rolButtonsVisibility != value)
-                {
-                    _rolButtonsVisibility = value;
-                }
-            }
+            LoggedInGebruiker = gebruiker;
         }
-        public void EnableRolButtons(Gebruiker gebruiker)
+        public Visibility RolButtonsVisibility { get; set; }
+        public void EnableRolButtons()
         {
-            switch (gebruiker.Rol)
+            switch (LoggedInGebruiker.Rol)
             {
                 case "Gebruiker":
                     RolButtonsVisibility = Visibility.Hidden;
@@ -127,8 +118,6 @@ namespace PlantenApplicatie.UI.ViewModel
                     break;
             }
         }
-
-
 
         //Stephanie & Maarten
         //Geeft de data van de plant door
