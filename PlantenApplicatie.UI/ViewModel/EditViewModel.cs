@@ -583,11 +583,36 @@ namespace PlantenApplicatie.UI.ViewModel
                 _fenoselectedBloeiKleurMaand, _fenoselectedBloeiKleur);
 
             Abiotiek abiotiek = _plantenDataService.GetAbiotiek(_plantId);
-            abiotiek.Bezonning = _abioselectedBezonning.Naam;
-            abiotiek.Grondsoort = _abioselectedGrondsoort.Grondsoort;
-            abiotiek.Vochtbehoefte = _abioselectedVochtbehoefte.Vochtbehoefte;
-            abiotiek.Voedingsbehoefte = _abioselectedVoedingsbehoefte.Voedingsbehoefte;
-            abiotiek.AntagonischeOmgeving = _abioselectedReactie.Antagonie;
+
+            if (_abioselectedBezonning != null)
+            {
+                abiotiek.Bezonning = _abioselectedBezonning.Naam;
+            }
+
+            if (_abioselectedGrondsoort != null)
+            {
+                abiotiek.Grondsoort = _abioselectedGrondsoort.Grondsoort;
+            }
+
+            if (_abioselectedVochtbehoefte != null)
+            {
+                abiotiek.Vochtbehoefte = _abioselectedVochtbehoefte.Vochtbehoefte;
+            }
+
+            if (_abioselectedVoedingsbehoefte != null)
+            {
+                abiotiek.Voedingsbehoefte = _abioselectedVoedingsbehoefte.Voedingsbehoefte;
+            }
+
+            if (_abioselectedVoedingsbehoefte != null)
+            {
+                abiotiek.Voedingsbehoefte = _abioselectedVoedingsbehoefte.Voedingsbehoefte;
+            }
+
+            if (_abioselectedReactie != null)
+            {
+                abiotiek.AntagonischeOmgeving = _abioselectedReactie.Antagonie;
+            }
 
             List<AbiotiekMulti> abiotiekMulti = new List<AbiotiekMulti>();
             foreach (var habitat in _abioAddedHabitats)
@@ -598,6 +623,12 @@ namespace PlantenApplicatie.UI.ViewModel
 
             List<Commensalisme> commensalisme = new List<Commensalisme>();
             long commId = _plantenDataService.NewCommId();
+
+            if (_commAddedStrategies == null || _commselectedOntwikkelSnelheid == null)
+            {
+                MessageBox.Show("Gelieve een ontwikkelsnelheid en strategie in te vullen");
+                return;
+            }
             foreach (var strategy in _commAddedStrategies)
             {
                 commensalisme.Add(new Commensalisme()
@@ -611,8 +642,17 @@ namespace PlantenApplicatie.UI.ViewModel
 
             ExtraEigenschap extraEigenschap = _plantenDataService.GetExtraEigenschap(_plantId);
             extraEigenschap.PlantId = _plantId;
-            extraEigenschap.Nectarwaarde = _extraselectedNectarwaarde.Waarde;
-            extraEigenschap.Pollenwaarde = _extraselectedPollenwaarde.Waarde;
+
+            if (_extraselectedNectarwaarde != null)
+            {
+                extraEigenschap.Nectarwaarde = _extraselectedNectarwaarde.Waarde;
+            }
+
+            if (_extraselectedPollenwaarde != null)
+            {
+                extraEigenschap.Pollenwaarde = _extraselectedPollenwaarde.Waarde;
+            }
+
             extraEigenschap.Bijvriendelijke = _extraselectedBijvriendelijk;
             extraEigenschap.Vlindervriendelijk = _extraselectedVlindervriendelijk;
             extraEigenschap.Eetbaar = _extraselectedEetbaar;
