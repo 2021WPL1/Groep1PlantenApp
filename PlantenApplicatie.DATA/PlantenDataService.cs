@@ -889,6 +889,7 @@ namespace PlantenApplicatie.Data
             context.SaveChanges();
             return gebruiker;
         }
+       
 
         //Jelle & Stephanie
         public List<CommensalismeMulti> GetCommMulti(long plantId)
