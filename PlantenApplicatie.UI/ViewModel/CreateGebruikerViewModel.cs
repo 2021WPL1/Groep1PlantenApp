@@ -161,7 +161,7 @@ namespace PlantenApplicatie.UI.ViewModel
                             {
                                 GebruikersBeheer beheer = new GebruikersBeheer();
                                 var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(WachtwoordInput));
-                                _dataservice.addGebruiker( EmailInput,SelectedRol.Omschrijving, hashedBytes, VivesNrInput, VoorNaamInput, AchterNaamInput);
+                                _dataservice.addGebruiker(SelectedRol.Omschrijving, EmailInput, hashedBytes, VoorNaamInput, AchterNaamInput, VivesNrInput);
                                 closeWindow.Close();
                                 beheer.ShowDialog();
                             }
