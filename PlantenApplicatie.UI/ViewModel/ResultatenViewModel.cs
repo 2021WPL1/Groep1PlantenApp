@@ -144,6 +144,12 @@ namespace PlantenApplicatie.UI.ViewModel
                 var aangepastPath = Path.Replace("bin\\Debug\\netcoreapp3.1", foto.UrlLocatie);
                 Foto = aangepastPath;
             }
+            else
+            {
+                var Path = System.IO.Directory.GetCurrentDirectory();
+                var aangepastPath = Path.Replace("bin\\Debug\\netcoreapp3.1", "View\\Images\\NoImage.png");
+                Foto = aangepastPath;
+            }
 
             //Jelle
             var _getSelectedBeheerMaand = _plantenDataService.GetBeheerMaand(plant.PlantId);
