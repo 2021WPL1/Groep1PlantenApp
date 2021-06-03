@@ -874,6 +874,10 @@ namespace PlantenApplicatie.Data
         {
             return context.Gebruiker.SingleOrDefault(g => g.Emailadres == email);
         }
+        public Foto getFotoViaPlantId(long Id)
+        {
+            return context.Foto.SingleOrDefault(f => f.Plant == Id);
+        }
         public List<Gebruiker> GetAllUsers()
         {
             return context.Gebruiker.ToList();
@@ -884,10 +888,6 @@ namespace PlantenApplicatie.Data
             context.Gebruiker.Remove(gebruiker);
             context.SaveChanges();
             return gebruiker;
-        }
-        public Foto getFotoViaPlantId(long Id)
-        {
-            return context.Foto.SingleOrDefault(f => f.Plant == Id);
         }
 
         //Jelle & Stephanie
