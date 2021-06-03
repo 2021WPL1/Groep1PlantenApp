@@ -9,65 +9,136 @@
         Title="MainWindow" Height="623" Width="898" WindowState="Maximized">
     <Viewbox Margin="0,0,0,10">
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="654">
+            <Grid.Background>
+                <ImageBrush ImageSource="Images/AchtergrondSchermen.jpg"/>
+            </Grid.Background>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Label x:Name="lblZoekscherm" Content="Zoekscherm" HorizontalAlignment="Left" Margin="249,0,0,0" VerticalAlignment="Top" FontSize="20"/>
+            <Label x:Name="lblZoekscherm" Content="AanpassenScherm" HorizontalAlignment="Left" Margin="249,0,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold">
+                <Label.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                    </LinearGradientBrush>
+                </Label.Background>
+            </Label>
             <Image x:Name="imgPlantify" HorizontalAlignment="Left" Height="75" Margin="2,0,0,0" VerticalAlignment="Top" Width="75"/>
-            <Label x:Name="lblFamilie" Content="Familie" HorizontalAlignment="Left" Margin="22,137,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.068,0.332"/>
-            <Label x:Name="lblSoort" Content="Soort" HorizontalAlignment="Left" Margin="34,318,0,0" VerticalAlignment="Top"/>
-            <Label x:Name="lblType" Content="Type" HorizontalAlignment="Left" Margin="22,50,0,0" VerticalAlignment="Top"/>
-            <Label x:Name="lblGeslacht" Content="Geslacht" HorizontalAlignment="Left" Margin="22,228,0,0" VerticalAlignment="Top"/>
-            <Label x:Name="lblVariant" Content="Variant" HorizontalAlignment="Left" Margin="30,408,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lblFamilie" Content="Familie" HorizontalAlignment="Left" Margin="22,105,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.068,0.332" BorderBrush="Black" BorderThickness="1,1,1,1" Width="57">
+                <Label.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                    </LinearGradientBrush>
+                </Label.Background>
+            </Label>
+            <Label x:Name="lblSoort" Content="Soort" HorizontalAlignment="Left" Margin="23,224,0,0" VerticalAlignment="Top"  BorderBrush="Black" BorderThickness="1,1,1,1" Width="57">
+                <Label.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                    </LinearGradientBrush>
+                </Label.Background>
+            </Label>
+            <Label x:Name="lblType" Content="Type" HorizontalAlignment="Left" Margin="22,50,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1,1,1,1" Width="57">
+                <Label.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                    </LinearGradientBrush>
+                </Label.Background>
+            </Label>
+            <Label x:Name="lblGeslacht" Content="Geslacht" HorizontalAlignment="Left" Margin="22,162,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1,1,1,1">
+                <Label.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                    </LinearGradientBrush>
+                </Label.Background>
+            </Label>
+            <Label x:Name="lblVariant" Content="Variant" HorizontalAlignment="Left" Margin="22,284,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1,1,1,1" Width="57">
+                <Label.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                    </LinearGradientBrush>
+                </Label.Background>
+            </Label>
+            <Button x:Name="btnClearSoort"
+                Command="{Binding Path= ClearSoortCommand}"
+                Content="clear Soort"
+                HorizontalAlignment="Left"
+                Margin="47,508,0,0"  BorderBrush="Black" BorderThickness="1,1,1,1" 
+                VerticalAlignment="Top" Width="76" Height="27">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button x:Name="btnClearVariant"
+                Command="{Binding Path=ClearVariantCommand}"
+                Content="clear Variant"
+                HorizontalAlignment="Left"
+                Margin="144,509,0,0"  BorderBrush="Black" BorderThickness="1,1,1,1" 
+                VerticalAlignment="Top" Width="84" Height="27">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
             <ComboBox 
                 x:Name="cbxType" 
                 HorizontalAlignment="Left" 
-                Margin="120,50,0,0" 
-                VerticalAlignment="Top" 
+                Margin="100,51,0,0" 
+                VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1,1,1,1" 
                 Width="120"
                 ItemsSource="{Binding FilterTfgsvTypes}"
                 SelectedItem="{Binding FilterSelectedType, Mode=TwoWay}"
                 DisplayMemberPath="Planttypenaam"
-                SelectedValuePath="Planttypeid"/>
+                SelectedValuePath="Planttypeid" Height="28"/>
             <ComboBox 
                 x:Name="cbxFamilie" 
                 HorizontalAlignment="Left" 
-                Margin="120,140,0,0" 
+                Margin="101,106,0,0" 
                 VerticalAlignment="Top"
                 Width="120"
                 ItemsSource="{Binding FilterTfgsvFamilie}"
                 SelectedItem="{Binding FilterSelectedFamilie, Mode=TwoWay}"
                 DisplayMemberPath="Familienaam"
-                SelectedValuePath="FamileId"/>
+                SelectedValuePath="FamileId" Height="28"/>
             <ComboBox
                 x:Name="cbxSoort" 
-                Margin="120,318,713,0" 
-                VerticalAlignment="Top"
+                Margin="103,224,746,0" 
+                VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1,1,1,1" 
                 ItemsSource="{Binding FilterTfgsvSoort}"
                 SelectedItem="{Binding FilterSelectedSoort, Mode=TwoWay}"
                 DisplayMemberPath="Soortnaam"
-                SelectedValuePath="Soortid" Width="120"/>
+                SelectedValuePath="Soortid" Width="120" Height="28"/>
             <ComboBox 
                 x:Name="cbxGeslacht"
                 HorizontalAlignment="Left" 
-                Margin="120,230,0,0" 
+                Margin="102,164,0,0" 
                 VerticalAlignment="Top" 
-                Width="120"
+                Width="120" BorderBrush="Black" BorderThickness="1,1,1,1" 
                 ItemsSource="{Binding FilterTfgsvGeslacht}"
                 SelectedItem="{Binding FilterSelectedGeslacht, Mode=TwoWay}"
                 DisplayMemberPath="Geslachtnaam"
-                SelectedValuePath="GeslachtId"/>
+                SelectedValuePath="GeslachtId" Height="28"/>
             <ComboBox 
                 x:Name="cbxVariant" 
                 HorizontalAlignment="Left" 
-                Margin="120,410,0,0" 
-                VerticalAlignment="Top" 
-                Width="120"
+                Margin="103,284,0,0" 
+                VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1,1,1,1"
+                Width="120" 
                 ItemsSource="{Binding FilterTfgsvVariant}"
                 SelectedItem="{Binding FilterSelectedVariant, Mode=TwoWay}"
                 DisplayMemberPath="Variantnaam"
-                SelectedValuePath="VariantId"/>
-            <TabControl Margin="298,36,0,-2" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left">
+                SelectedValuePath="VariantId" Height="28"/>
+            <TabControl Margin="298,36,0,-2" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="671">
                 <TabControl.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -77,32 +148,54 @@
                     </TransformGroup>
                 </TabControl.RenderTransform>
                 <TabItem x:Name="tabFenotype" Header="Fenotype">
-                    <ScrollViewer x:Name="scrollFenotype" Margin="6,0,-6,0" Height="591" VerticalAlignment="Center">
-                        <Grid x:Name="gridFenotype" Background="#FFE5E5E5" Height="708" Width="550">
+                    <ScrollViewer x:Name="scrollFenotype" Margin="6,0,-6,0" Height="592" VerticalAlignment="Center">
+                        <Grid x:Name="gridFenotype" Background="#FFA8ABBB" Height="708" Width="550">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
+                                <ColumnDefinition Width="76*"/>
+                                <ColumnDefinition Width="199*"/>
                             </Grid.ColumnDefinitions>
-                            <Label x:Name="lblBloeiwijze" Content="Bloeiwijze" HorizontalAlignment="Left" Margin="35,9,0,0" VerticalAlignment="Top" Height="26" Width="62"/>
+                            <Label x:Name="lblBloeiwijze" Content="Bloeiwijze" HorizontalAlignment="Left" Margin="30,9,0,0" VerticalAlignment="Top" Height="26" Width="85" BorderBrush="Black" BorderThickness="1,1,1,1">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
                             <Image
                                 x:Name="ImgBloeiwijze"
                                 Source="{Binding Path=FenoSelectedBloeiwijzeImage,Mode=TwoWay}"
                                 HorizontalAlignment="Left"
                                 Height="154" 
-                                Margin="291,46,0,0"
+                                Margin="139,46,0,0"
                                 VerticalAlignment="Top"
-                                Width="167" />
-                            <Label x:Name="lblHabitus" Content="Habitus" HorizontalAlignment="Left" Margin="35,240,0,0" VerticalAlignment="Top"/>
+                                Width="167" Grid.Column="1" OpacityMask="#FFA8ABBB" />
+                            <Label x:Name="lblHabitus" Content="Habitus" HorizontalAlignment="Left" Margin="33,227,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1,1,1,1">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
                             <ComboBox
                                 ItemsSource="{Binding FenoHabitus}"
                                 SelectedItem="{Binding FenoSelectedHabitus, Mode=TwoWay}"
                                 DisplayMemberPath="Naam"
                                 SelectedValuePath="Id"
                                 x:Name="cbxHabitus"
-                                HorizontalAlignment="Left"
-                                Margin="100,240,0,0"
+                                HorizontalAlignment="Left" BorderBrush="Black" BorderThickness="1,1,1,1"
+                                Margin="107,227,0,0"
                                 VerticalAlignment="Top"
-                                Width="365"/>
-                            <Label x:Name="lblMaxBladhoogte" Content="Maximale Bladhoogte" HorizontalAlignment="Left" Margin="35,300,0,0" VerticalAlignment="Top"/>
+                                Width="374" Height="29" Grid.ColumnSpan="2"/>
+                            <Label x:Name="lblMaxBladhoogte" Content="Maximale Bladhoogte" HorizontalAlignment="Left" Margin="31,288,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1,1,1,1" Grid.ColumnSpan="2">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
                             <ComboBox
                                 ItemsSource="{Binding FenoBladgrootte}"
                                 SelectedItem="{Binding FenoSelectedMaxBladgrootte, Mode=TwoWay}"
@@ -110,11 +203,18 @@
                                 SelectedValuePath="Id"
                                 x:Name="cbxMaxBladhoogte"
                                 HorizontalAlignment="Left"
-                                Margin="185,305,0,0"
+                                Margin="34,290,0,0"
                                 VerticalAlignment="Top"
                                 Width="70"
-                                Height="22"/>
-                            <Label x:Name="lblMaxBladhoogteMaand" Content="In Maand: " HorizontalAlignment="Left" Margin="285,300,0,0" VerticalAlignment="Top"/>
+                                Height="26" Grid.Column="1"/>
+                            <Label x:Name="lblMaxBladhoogteMaand" Content="In Maand: " HorizontalAlignment="Left" Margin="143,292,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1,1,1,1" Grid.Column="1">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
                             <ComboBox
                                 ItemsSource="{Binding FenoMaand}"
                                 SelectedItem="{Binding FenoSelectedMaxBladgrootteMaand, Mode=TwoWay}"
@@ -122,11 +222,26 @@
                                 SelectedValuePath="Id"
                                 x:Name="cbxBladHoogteMaand"
                                 HorizontalAlignment="Left"
-                                Margin="355,305,0,0"
+                                Margin="229,295,0,0"
                                 VerticalAlignment="Top"
-                                Width="120"/>
-                            <Label x:Name="lblMaxBloeihoogte" Content="Maximale Bloeihoogte" HorizontalAlignment="Left" Margin="35,330,0,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lblMinBloeihoogte" Content="Minimum Bloeihoogte" HorizontalAlignment="Left" Margin="35,360,0,0" VerticalAlignment="Top"/>
+                                Width="120"
+                                Height="25" Grid.Column="1"/>
+                            <Label x:Name="lblMaxBloeihoogte" Content="Maximale Bloeihoogte" HorizontalAlignment="Left" Margin="31,325,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1,1,1,1" Grid.ColumnSpan="2">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
+                            <Label x:Name="lblMinBloeihoogte" Content="Minimum Bloeihoogte" HorizontalAlignment="Left" Margin="31,362,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1,1,1,1" Grid.ColumnSpan="2">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
                             <ComboBox
                                 ItemsSource="{Binding FenoBladgrootte}"
                                 SelectedItem="{Binding FenoSelectedMaxBloeihoogte, Mode=TwoWay}"
@@ -134,10 +249,10 @@
                                 SelectedValuePath="Id"
                                 x:Name="cbxMaxBloeihoogte"
                                 HorizontalAlignment="Left"
-                                Margin="185,335,0,0"
+                                Margin="33,330,0,0"
                                 VerticalAlignment="Top"
                                 Width="70"
-                                Height="22"/>
+                                Height="26" Grid.Column="1"/>
                             <ComboBox
                                 ItemsSource="{Binding FenoMaand}"
                                 SelectedItem="{Binding FenoSelectedMaxBloeihoogteMaand, Mode=TwoWay}"
@@ -145,9 +260,10 @@
                                 SelectedValuePath="Id"
                                 x:Name="cbxMaxBloeihoogteMaand"
                                 HorizontalAlignment="Left"
-                                Margin="355,335,0,0"
+                                Margin="231,331,0,0"
                                 VerticalAlignment="Top"
-                                Width="120"/>
+                                Width="120"
+                                Height="25" Grid.Column="1"/>
                             <ComboBox
                                 ItemsSource="{Binding FenoBladgrootte}"
                                 SelectedItem="{Binding FenoSelectedMinBloeihoogte, Mode=TwoWay}"
@@ -155,10 +271,10 @@
                                 SelectedValuePath="Id"
                                 x:Name="cbxMinBloeihoogte"
                                 HorizontalAlignment="Left"
-                                Margin="185,365,0,0"
+                                Margin="33,365,0,0"
                                 VerticalAlignment="Top"
                                 Width="70"
-                                Height="22"/>
+                                Height="26" Grid.Column="1"/>
                             <ComboBox
                                 ItemsSource="{Binding FenoMaand}"
                                 SelectedItem="{Binding FenoSelectedMinBloeihoogteMaand, Mode=TwoWay}"
@@ -166,13 +282,42 @@
                                 SelectedValuePath="Id"
                                 x:Name="cbxMinBloeihoogteMaand"
                                 HorizontalAlignment="Left"
-                                Margin="355,365,0,0"
+                                Margin="231,367,0,0"
                                 VerticalAlignment="Top"
-                                Width="120"/>
-                            <Label x:Name="lblMaxbloeihoogteMaand" Content="In Maand: " HorizontalAlignment="Left" Margin="285,330,0,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lblMinBloeihoogteMaand" Content="In Maand: " HorizontalAlignment="Left" Margin="285,360,0,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lblBladkleur" Content="Bladkleur" HorizontalAlignment="Left" Margin="100,400,0,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lblBloeikleur" Content="Bloeikleur" HorizontalAlignment="Left" Margin="100,430,0,0" VerticalAlignment="Top"/>
+                                Width="120"
+                                Height="25" Grid.Column="1"/>
+                            <Label x:Name="lblMaxbloeihoogteMaand" Content="In Maand: " HorizontalAlignment="Left" Margin="143,328,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1,1,1,1" Grid.Column="1">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
+                            <Label x:Name="lblMinBloeihoogteMaand" Content="In Maand: " HorizontalAlignment="Left" Margin="143,365,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1,1,1,1" Grid.Column="1">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
+                            <Label x:Name="lblBladkleur" Content="Bladkleur" HorizontalAlignment="Left" Margin="31,400,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1,1,1,1" Width="129" Grid.ColumnSpan="2">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
+                            <Label x:Name="lblBloeikleur" Content="Bloeikleur" HorizontalAlignment="Left" Margin="31,435,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1,1,1,1" Width="128" Grid.ColumnSpan="2">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
                             <ComboBox
                                 ItemsSource="{Binding FenoKleur}"
                                 SelectedItem="{Binding FenoSelectedBladKleur, Mode=TwoWay}"
@@ -180,10 +325,10 @@
                                 SelectedValuePath="Id"
                                 x:Name="cbxBladkleur"
                                 HorizontalAlignment="Left"
-                                Margin="185,405,0,0"
+                                Margin="31,401,0,0"
                                 VerticalAlignment="Top"
                                 Width="70"
-                                Height="22"/>
+                                Height="26" Grid.Column="1"/>
                             <ComboBox
                                 ItemsSource="{Binding FenoKleur}"
                                 SelectedItem="{Binding FenoSelectedBloeiKleur, Mode=TwoWay}"
@@ -191,12 +336,26 @@
                                 SelectedValuePath="Id"
                                 x:Name="cbxBloeikleur"
                                 HorizontalAlignment="Left"
-                                Margin="185,435,0,0"
+                                Margin="33,435,0,0"
                                 VerticalAlignment="Top"
                                 Width="70"
-                                Height="22"/>
-                            <Label x:Name="lblBladkleurMaand" Content="In Maand: " HorizontalAlignment="Left" Margin="285,400,0,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lblBloeikleurMaand" Content="In Maand: " HorizontalAlignment="Left" Margin="285,430,0,0" VerticalAlignment="Top"/>
+                                Height="26" Grid.Column="1"/>
+                            <Label x:Name="lblBladkleurMaand" Content="In Maand: " HorizontalAlignment="Left" Margin="143,400,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1,1,1,1" Grid.Column="1">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
+                            <Label x:Name="lblBloeikleurMaand" Content="In Maand: " HorizontalAlignment="Left" Margin="143,438,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1,1,1,1" Grid.Column="1">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
                             <ComboBox 
                                 ItemsSource="{Binding FenoMaand}"
                                 SelectedItem="{Binding FenoSelectedBladKleurMaand, Mode=TwoWay}"
@@ -204,9 +363,10 @@
                                 SelectedValuePath="Id"
                                 x:Name="cbxBladkleurMaand"
                                 HorizontalAlignment="Left"
-                                Margin="355,405,0,0"
+                                Margin="229,403,0,0"
                                 VerticalAlignment="Top"
-                                Width="120"/>
+                                Width="120"
+                                Height="25" Grid.Column="1"/>
                             <ComboBox
                                 ItemsSource="{Binding FenoMaand}"
                                 SelectedItem="{Binding FenoSelectedBloeiKleurMaand, Mode=TwoWay}"
@@ -214,9 +374,10 @@
                                 SelectedValuePath="Id"
                                 x:Name="cbxBloeikleurMaand" 
                                 HorizontalAlignment="Left" 
-                                Margin="355,434,0,0" 
+                                Margin="230,440,0,0" 
                                 VerticalAlignment="Top" 
-                                Width="120"/>
+                                Width="120"
+                                Height="25" Grid.Column="1"/>
                             <ComboBox
                                 ItemsSource="{Binding FenoBladvorm}"
                                 SelectedItem="{Binding FenoSelectedBladvorm, Mode=TwoWay}"
@@ -224,11 +385,27 @@
                                 SelectedValuePath="Id"
                                 x:Name="cbxBladvorm" 
                                 HorizontalAlignment="Left" 
-                                Margin="185,485,0,0" 
+                                Margin="33,482,0,0" 
                                 VerticalAlignment="Top" 
-                                Width="120"/>
-                            <Label x:Name="lblBladvorm" Content="Bladvorm:" HorizontalAlignment="Left" Margin="100,480,0,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lblRatioBloeiBlad" Content="Ratio Bloei/Blad:" HorizontalAlignment="Left" Margin="65,520,0,0" VerticalAlignment="Top"/>
+                                Width="120" Height="25" Grid.Column="1"/>
+                            <Label x:Name="lblBladvorm" Content="Bladvorm:" HorizontalAlignment="Left" Margin="31,482,0,0" VerticalAlignment="Top"
+                                   BorderBrush="Black" BorderThickness="1,1,1,1" Width="129" Grid.ColumnSpan="2">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
+                            <Label x:Name="lblRatioBloeiBlad" Content="Ratio Bloei/Blad:" HorizontalAlignment="Left" Margin="31,520,0,0" VerticalAlignment="Top"
+                                   BorderBrush="Black" BorderThickness="1,1,1,1" Width="131" Grid.ColumnSpan="2">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
                             <ComboBox
                                 ItemsSource="{Binding FenoRatio}"
                                 SelectedItem="{Binding FenoSelectedRatio, Mode=TwoWay}"
@@ -236,9 +413,10 @@
                                 SelectedValuePath="Id"
                                 x:Name="cbxRatioBloeiBlad" 
                                 HorizontalAlignment="Left" 
-                                Margin="185,525,0,0" 
+                                Margin="34,523,0,0" 
                                 VerticalAlignment="Top"
-                                Width="120"/>
+                                Width="120"
+                                Height="25" Grid.Column="1"/>
                             <ComboBox
                                 ItemsSource="{Binding FenoSpruit}"
                                 SelectedItem="{Binding FenoSelectedSpruit, Mode=TwoWay}"
@@ -246,66 +424,129 @@
                                 SelectedValuePath="Id"
                                 x:Name="cbxSpruitFenologie"
                                 HorizontalAlignment="Left" 
-                                Margin="185,565,0,0" 
+                                Margin="33,562,0,0" 
                                 VerticalAlignment="Top" 
-                                Width="120"/>
-                            <Label x:Name="lblSpruitfenologie" Content="SpruitFenologie" HorizontalAlignment="Left" Margin="70,560,0,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lblRaunkhiaer" Content="Levensvorm volgens Raunkhiaer" HorizontalAlignment="Left" Margin="5,620,0,0" VerticalAlignment="Top"/>
+                                Width="120"
+                                Height="25" Grid.Column="1"/>
+                            <Label x:Name="lblSpruitfenologie" Content="SpruitFenologie" HorizontalAlignment="Left" Margin="31,560,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1,1,1,1" Width="129" Grid.ColumnSpan="2">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
+                            <Label x:Name="lblRaunkhiaer" Content="Levensvorm volgens Raunkhiaer" HorizontalAlignment="Left" Margin="5,622,0,0" VerticalAlignment="Top" Height="26" Grid.ColumnSpan="2">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
                             <ComboBox
                                 ItemsSource="{Binding FenoLevensvorm}"
                                 SelectedItem="{Binding FenoSelectedLevensvorm, Mode=TwoWay}"
                                 DisplayMemberPath="Levensvorm"
                                 SelectedValuePath="Id"
                                 x:Name="cbxRaunkhiaer" 
-                                HorizontalAlignment="Left" 
-                                Margin="200,625,0,0"
-                                VerticalAlignment="Top" Width="300"/>
+                                HorizontalAlignment="Center" 
+                                Margin="0,621,0,0"
+                                VerticalAlignment="Top" Width="300" Height="26" Grid.Column="1"/>
                             <ListBox
                                 x:Name="ListBoxBloeiWijze" 
                                 ItemsSource="{Binding FenoBloeiwijze}"
                                 SelectedItem="{Binding FenoSelectedBloeiwijze, Mode=TwoWay}"
                                 DisplayMemberPath="Naam"
                                 SelectedValuePath="Id"
-                                Margin="30,48,353,0" Height="154" VerticalAlignment="Top"/>
+                                BorderBrush="Black" BorderThickness="1,1,1,1"
+                                Margin="30,48,353,0" Height="154" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
                         </Grid>
                     </ScrollViewer>
                 </TabItem>
-                <TabItem x:Name="tabAbiotischeFactoren" Header="Abiotische Factoren" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,-1,0,0">
+                <TabItem x:Name="tabAbiotischeFactoren" Header="Abiotische Factoren"  HorizontalAlignment="Left" VerticalAlignment="Center" Margin="-3,0,0,0" Height="23">
                     <ScrollViewer x:Name="scrollAbiotischeFactoren" Height="590" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <Grid x:Name="gridAbiotischeFactoren" Height="981" Width="550" Background="#FFE5E5E5">
+                        <Grid x:Name="gridAbiotischeFactoren" Height="981" Width="550" Background="#FFA8ABBB">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="525"/>
+                                <ColumnDefinition Width="167.605"/>
+                                <ColumnDefinition Width="17.523"/>
+                                <ColumnDefinition Width="339.872"/>
                             </Grid.ColumnDefinitions>
-                            <Label x:Name="lblBezonning" Content="Bezonning" HorizontalAlignment="Left" Margin="30,15,0,0" VerticalAlignment="Top" Height="26" Width="66"/>
-                            <Label x:Name="lblGrondsoort" Content="Grondsoort" HorizontalAlignment="Left" Margin="300,15,0,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lblVoedingsbehoefte" Content="Voedingsbehoefte" HorizontalAlignment="Left" Margin="23,195,0,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lblVochtbehoefte" Content="Vochtbehoefte" HorizontalAlignment="Left" Margin="300,195,0,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lblAntagonie" Content="reactie antagonistische omgeving " HorizontalAlignment="Left" Margin="22,409,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.054,0.087"/>
-                            <Label x:Name="lblHabitat" Content="Alle mogelijke Habitats" HorizontalAlignment="Left" Margin="25,620,0,0" VerticalAlignment="Top"/>
-                            <ListBox x:Name="BezonningListBox" Margin="22,42,0,0"
+                            <Label x:Name="lblBezonning" Content="Bezonning" HorizontalAlignment="Left" Margin="22,15,0,0" VerticalAlignment="Top" Height="26" Width="74" BorderBrush="Black" BorderThickness="1,1,1,1" >
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
+                            <Label x:Name="lblGrondsoort" Content="Grondsoort" HorizontalAlignment="Left" Margin="119,15,0,0" VerticalAlignment="Top" Grid.Column="2" BorderBrush="Black" BorderThickness="1,1,1,1" Width="70" >
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
+                            <Label x:Name="lblVoedingsbehoefte" Content="Voedingsbehoefte" HorizontalAlignment="Left" Margin="22,202,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1,1,1,1" >
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
+                            <Label x:Name="lblVochtbehoefte" Content="Vochtbehoefte" HorizontalAlignment="Left" Margin="117,203,0,0" VerticalAlignment="Top" Grid.Column="2" BorderBrush="Black" BorderThickness="1,1,1,1" >
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
+                            <Label x:Name="lblAntagonie" Content="reactie antagonistische omgeving " HorizontalAlignment="Left" Margin="20,416,0,0" VerticalAlignment="Top"
+                                    BorderBrush="Black" BorderThickness="1,1,1,1" RenderTransformOrigin="0.054,0.087" Grid.ColumnSpan="3">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
+                            <Label x:Name="lblHabitat" Content="Alle mogelijke Habitats" HorizontalAlignment="Left" Margin="25,620,0,0" VerticalAlignment="Top"
+                                     BorderBrush="Black" BorderThickness="1,1,1,1" >
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
+                            <ListBox x:Name="BezonningListBox" Margin="22,42,0,0" BorderBrush="Black" BorderThickness="1,1,1,1" 
                                 ItemsSource="{Binding AbioBezonning}"
                                 SelectedItem="{Binding AbioSelectedBezonning, Mode=TwoWay}"
                                 DisplayMemberPath="Naam"
-                                Height="150" VerticalAlignment="Top" HorizontalAlignment="Left" Width="180"/>
-                            <ListBox x:Name="GrondsoortListBox" Margin="302,42,0,0"
+                                Height="150" VerticalAlignment="Top" HorizontalAlignment="Left" Width="180" Grid.ColumnSpan="3"/>
+                            <ListBox x:Name="GrondsoortListBox" Margin="117,42,0,0"
                                 ItemsSource="{Binding AbioGrondsoort}"
                                 SelectedItem="{Binding AbioSelectedGrondsoort, Mode=TwoWay}"
                                 DisplayMemberPath="Grondsoort"
-                                HorizontalAlignment="Left" Width="180" Height="150" VerticalAlignment="Top"/>
-                            <ListBox x:Name="VoedingsbehoefteListBox" Margin="22,230,0,0"
+                                HorizontalAlignment="Left" Width="180" Height="150" VerticalAlignment="Top" Grid.Column="2"
+                                      BorderBrush="Black" BorderThickness="1,1,1,1" />
+                            <ListBox x:Name="VoedingsbehoefteListBox" Margin="22,230,0,0" BorderBrush="Black" BorderThickness="1,1,1,1" 
                                 ItemsSource="{Binding AbioVoedingsbehoefte}"     
                                 SelectedItem="{Binding AbioSelectedVoedingsbehoefte, Mode=TwoWay}"
                                 DisplayMemberPath="Voedingsbehoefte"
-                                HorizontalAlignment="Left" Width="180" Height="150" VerticalAlignment="Top"/>
-                            <ListBox x:Name="VochtbehoefteListBox" Margin="302,230,43,0"
+                                HorizontalAlignment="Left" Width="180" Height="150" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
+                            <ListBox x:Name="VochtbehoefteListBox" Margin="117,230,0,0" BorderBrush="Black" BorderThickness="1,1,1,1" 
                                 ItemsSource="{Binding AbioVochtbehoefte}"     
                                 SelectedItem="{Binding AbioSelectedVochtbehoefte, Mode=TwoWay}"
                                 DisplayMemberPath="Vochtbehoefte"
-                                Height="150" VerticalAlignment="Top" HorizontalAlignment="Left" Width="180"/>
-                            <ListBox x:Name="ListBoxAllHabitat" Margin="25,651,0,0"
+                                Height="150" VerticalAlignment="Top" HorizontalAlignment="Left" Width="180" Grid.Column="2"/>
+                            <ListBox x:Name="ListBoxAllHabitat" Margin="25,651,0,0"  BorderBrush="Black" BorderThickness="1,1,1,1" 
                                 ItemsSource="{Binding AbioAllHabitats}"     
                                 SelectedItem="{Binding AbioSelectedAllHabitat, Mode=TwoWay}"
-                                HorizontalAlignment="Left" Width="388" Height="138" VerticalAlignment="Top">
+                                HorizontalAlignment="Left" Width="388" Height="138" VerticalAlignment="Top" Grid.ColumnSpan="3">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <TextBlock>
@@ -324,10 +565,10 @@
                                 </ListBox.ItemTemplate>
                             </ListBox>
                             <ListBox 
-                                x:Name="ListBoxAddedHabitat" Margin="25,832,0,0"
+                                x:Name="ListBoxAddedHabitat" Margin="25,832,0,0"  BorderBrush="Black" BorderThickness="1,1,1,1" 
                                 ItemsSource="{Binding AbioAddedHabitats}"     
                                 SelectedItem="{Binding AbioSelectedAddedHabitat, Mode=TwoWay}"
-                                HorizontalAlignment="Left" Width="388" Height="138" VerticalAlignment="Top">
+                                HorizontalAlignment="Left" Width="388" Height="138" VerticalAlignment="Top" Grid.ColumnSpan="3">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <TextBlock>
@@ -347,30 +588,63 @@
                             </ListBox>
                             <Button x:Name="btnVoegHabitatToe" 
                                     Command="{Binding HabitatToevoegenCommand}"
-                                    Content="Voeg Habitat Toe" Margin="428,700,-15,0" Height="31" VerticalAlignment="Top"/>
+                                    Content="Voeg Habitat Toe" Margin="243,700,-15,0" Height="31" VerticalAlignment="Top" Grid.Column="2"
+                                    BorderBrush="Black" BorderThickness="1,1,1,1" >
+                                <Button.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Button.Background>
+                            </Button>
                             <Button x:Name="btnVerwijderHabitat" 
                                     Command="{Binding HabitatVerwijderenCommand}"
-                                    Content="Verwijder Habitat" Margin="429,864,-16,0" Height="34" VerticalAlignment="Top"/>
-                            <ListBox x:Name="ListBoxAntagonie" 
-                                     Margin="25,446,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Height="150"
+                                    Content="Verwijder Habitat" Margin="244,864,-16,0" Height="34" VerticalAlignment="Top" Grid.Column="2"
+                                      BorderBrush="Black" BorderThickness="1,1,1,1" >
+                                <Button.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Button.Background>
+                            </Button>
+                            <ListBox x:Name="ListBoxAntagonie"  BorderBrush="Black" BorderThickness="1,1,1,1" 
+                                     Margin="20,445,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Height="150"
                                      ItemsSource="{Binding AbioReactieAntagonischeOmg}"
                                       SelectedItem="{Binding AbioSelectedReactie, Mode=TwoWay}"
                                       DisplayMemberPath="Antagonie"
-                                      SelectedValuePath="Id"/>
-                            <Label Content="Habitat eigen aan de plant" HorizontalAlignment="Left" Margin="28,800,0,0" VerticalAlignment="Top"/>
+                                      SelectedValuePath="Id" Grid.ColumnSpan="3"/>
+                            <Label Content="Habitat eigen aan de plant" HorizontalAlignment="Left" Margin="28,800,0,0" VerticalAlignment="Top"
+                                    BorderBrush="Black" BorderThickness="1,1,1,1" Grid.ColumnSpan="2" >
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
                         </Grid>
                     </ScrollViewer>
                 </TabItem>
-                <TabItem x:Name="tabCommensialisme" Header="Commensialisme" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <ScrollViewer x:Name="scrollCommensialisme" Height="592" VerticalAlignment="Top">
-                        <Grid x:Name="gridCommensialisme" Height="887" Width="599" Background="#FFE5E5E5">
+                <TabItem x:Name="tabCommensialisme" Header="Commensialisme" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="-3,0,0,0" Height="23">
+                    <ScrollViewer x:Name="scrollCommensialisme" Height="592" VerticalAlignment="Top" Margin="-1,0,1,0">
+                        <Grid x:Name="gridCommensialisme" Height="887" Width="599" Background="#FFA8ABBB">
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
+                                <ColumnDefinition Width="216*"/>
+                                <ColumnDefinition Width="383*"/>
                             </Grid.ColumnDefinitions>
-                            <Label x:Name="lblOntwikkelingssnelheid" Content="Ontwikkelingssnelheid" HorizontalAlignment="Left" Margin="35,25,0,0" VerticalAlignment="Top" Height="26" Width="129"/>
+                            <Label x:Name="lblOntwikkelingssnelheid" Content="Ontwikkelingssnelheid" HorizontalAlignment="Left" Margin="35,16,0,0" 
+                                    BorderBrush="Black" BorderThickness="1,1,1,1" VerticalAlignment="Top" Height="26" Width="187" Grid.ColumnSpan="2">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
                             <ComboBox
                                 ItemsSource="{Binding CommOntwikkelSnelheid}"
                                 SelectedItem="{Binding CommSelectedOntwikkelSnelheid, Mode=TwoWay}"
@@ -378,20 +652,37 @@
                                 SelectedValuePath="Id"
                                 x:Name="cbxOntwikkelingssnelheid"
                                 HorizontalAlignment="Left"
-                                Margin="180,29,0,0"
+                                Margin="37,16,0,0"
                                 VerticalAlignment="Top"
-                                Width="120"
-                                Height="22"/>
-                            <Label x:Name="lblLevensduur" Content="Levensduur/Concurrentiekracht" HorizontalAlignment="Left" Margin="35,60,0,0" VerticalAlignment="Top" Height="26" Width="176"/>
-                            <Label x:Name="lblSociabiliteit" Content="Sociabiliteit" HorizontalAlignment="Left" Margin="24,344,0,0" VerticalAlignment="Top" Height="26" Width="71"/>
+                                Width="120"  BorderBrush="Black" BorderThickness="1,1,1,1" 
+                                Height="25" Grid.Column="1"/>
+                            <Label x:Name="lblLevensduur" Content="Levensduur/Concurrentiekracht" HorizontalAlignment="Left" Margin="34,48,0,0"
+                                    BorderBrush="Black" BorderThickness="1,1,1,1" VerticalAlignment="Top" Height="29" Width="187" Grid.ColumnSpan="2">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
+                            <Label x:Name="lblSociabiliteit" Content="Sociabiliteit" HorizontalAlignment="Left" Margin="71,344,0,0"  BorderBrush="Black" BorderThickness="1,1,1,1" 
+                                   VerticalAlignment="Top" Height="26" Width="81">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="0.832"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
                             <ListBox
                                 ItemsSource="{Binding CommAllLevensvorm}"
                                 SelectedItem="{Binding CommSelectedAllLevensvorm, Mode=TwoWay}"
                                 SelectedValuePath="Id"
                                 x:Name="ListBoxAllLevensduur"
-                                Margin="0,85,0,0"
+                                Margin="8,85,0,0"  BorderBrush="Black" BorderThickness="1,1,1,1" 
                                 HorizontalAlignment="Left"
-                                Width="240" Height="240" VerticalAlignment="Top">
+                                Width="240" Height="240" VerticalAlignment="Top" Grid.ColumnSpan="2">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <TextBlock>
@@ -414,11 +705,11 @@
                                 SelectedItem="{Binding CommSelectedAddedLevensvorm, Mode=TwoWay}"
                                 SelectedValuePath="Id"
                                 x:Name="ListBoxAddedLevensduur"
-                                Margin="0,85,0,0"
-                                Width="240"
+                                Margin="0,85,5,0"
+                                Width="250"
                                 HorizontalAlignment="Right"
-                                Height="240"
-                                VerticalAlignment="Top">
+                                Height="240"  BorderBrush="Black" BorderThickness="1,1,1,1" 
+                                VerticalAlignment="Top" Grid.Column="1">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <TextBlock>
@@ -440,28 +731,28 @@
                                 Command="{Binding Path=LevensduurVerwijderenCommand}"
                                 Content="&lt;--"
                                 HorizontalAlignment="Left"
-                                Margin="260,221,0,0"
+                                Margin="61,206,0,0"
                                 VerticalAlignment="Top"
-                                Width="30"
-                                Height="20"/>
+                                Width="30"  BorderBrush="Black" BorderThickness="1,1,1,1" 
+                                Height="20" Grid.Column="1"/>
                             <Button
                                 x:Name="btnAddLevensduur"
                                 Command="{Binding Path=LevensduurToevoegenCommand}"
                                 Content="--&gt;"
                                 HorizontalAlignment="Left"
-                                Margin="260,149,0,0"
+                                Margin="59,150,0,0"
                                 VerticalAlignment="Top"
-                                Width="30"
-                                Height="20"/>
+                                Width="30" BorderBrush="Black" BorderThickness="1,1,1,1" 
+                                Height="20" Grid.Column="1"/>
                             <ListBox
                                 ItemsSource="{Binding CommAllSocialbiliteit}"
                                 SelectedItem="{Binding CommSelectedAllSocialbiliteit, Mode=TwoWay}"
                                 SelectedValuePath="Id"
                                 x:Name="ListBoxAllSociabiliteit"
-                                Margin="0,378,0,0"
+                                Margin="5,378,0,0"
                                 HorizontalAlignment="Left"
-                                Width="240"
-                                Height="190" VerticalAlignment="Top">
+                                Width="244"  BorderBrush="Black" BorderThickness="1,1,1,1" 
+                                Height="190" VerticalAlignment="Top" Grid.ColumnSpan="2">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <TextBlock>
@@ -484,10 +775,10 @@
                                 SelectedItem="{Binding CommSelectedAddedSocialbiliteit}"
                                 SelectedValuePath="Id"
                                 x:Name="ListBoxAddedSociabiliteit"
-                                Margin="0,378,0,0"
+                                Margin="0,378,7,0"
                                 HorizontalAlignment="Right"
-                                Width="240"
-                                Height="190" VerticalAlignment="Top">
+                                Width="247"  BorderBrush="Black" BorderThickness="1,1,1,1" 
+                                Height="190" VerticalAlignment="Top" Grid.Column="1">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <TextBlock>
@@ -510,28 +801,28 @@
                                 Command="{Binding Path=SocialbiliteitVerwijderenCommand}"
                                 Content="&lt;--"
                                 HorizontalAlignment="Left"
-                                Margin="260,484,0,0"
+                                Margin="66,471,0,0"
                                 VerticalAlignment="Top"
-                                Width="30"
-                                Height="20"/>
+                                Width="30"  BorderBrush="Black" BorderThickness="1,1,1,1" 
+                                Height="20" Grid.Column="1"/>
                             <Button
                                 x:Name="btnAddSociabiliteit"
                                 Command="{Binding Path=SocialbiliteitToevoegenCommand}"
                                 Content="--&gt;"
                                 HorizontalAlignment="Left"
-                                Margin="260,405,0,0"
+                                Margin="65,413,0,0"
                                 VerticalAlignment="Top"
-                                Width="30"
-                                Height="20"/>
+                                Width="30" BorderBrush="Black" BorderThickness="1,1,1,1" 
+                                Height="20" Grid.Column="1"/>
                             <ListBox
                                 ItemsSource="{Binding CommAllStrategie}"
                                 SelectedItem="{Binding CommSelectedAllStrategie, Mode=TwoWay}"
                                 SelectedValuePath="Id"
                                 x:Name="ListBoxAllStrategie"
-                                Margin="100,636,0,0"
+                                Margin="86,664,0,0"
                                 HorizontalAlignment="Left"
-                                Width="100"
-                                Height="190" VerticalAlignment="Top" Grid.RowSpan="2">
+                                Width="106" BorderBrush="Black" BorderThickness="1,1,1,1" 
+                                Height="190" VerticalAlignment="Top">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <TextBlock>
@@ -553,10 +844,10 @@
                                 SelectedItem="{Binding CommSelectedAddedStrategie, Mode=TwoWay}"
                                 SelectedValuePath="Id"
                                 x:Name="ListBoxAddedStrategie"
-                                Margin="0,631,100,0"
+                                Margin="0,675,100,0"
                                 HorizontalAlignment="Right"
-                                Width="100"
-                                Height="190" VerticalAlignment="Top" Grid.RowSpan="2">
+                                Width="108" BorderBrush="Black" BorderThickness="1,1,1,1" 
+                                Height="180" VerticalAlignment="Top" Grid.Column="1">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <TextBlock>
@@ -578,31 +869,65 @@
                                 Command="{Binding StrategieToevoegenCommand}"
                                 Content="--&gt;"
                                 HorizontalAlignment="Left"
-                                Margin="260,650,0,0"
+                                Margin="44,712,0,0"
                                 VerticalAlignment="Top"
-                                Width="30"
-                                Height="20"/>
+                                Width="30" BorderBrush="Black" BorderThickness="1,1,1,1" 
+                                Height="20" Grid.Column="1"/>
                             <Button
                                 x:Name="btnRemoveStrategie"
                                 Command="{Binding StrategieVerwijderenCommand}"
                                 Content="&lt;--"
                                 HorizontalAlignment="Left"
-                                Margin="260,750,0,0"
+                                Margin="44,750,0,0"
                                 VerticalAlignment="Top"
-                                Width="30"
-                                Height="20"/>
-                            <Label x:Name="lblToegevoegdeLevensduurConcurrentiekracht" Content="Toegevoegde Levensduur/Concurrentiekracht" HorizontalAlignment="Left" Margin="345,60,0,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lblToegevoegdeSociabiliteit" Content="Toegevoegde Sociabiliteit" HorizontalAlignment="Left" Margin="380,344,0,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lblStrategie" Content="Strategie" HorizontalAlignment="Left" Margin="100,600,0,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lblToegevoegdeStrategie" Content="Toegevoegdestrategie" HorizontalAlignment="Left" Margin="400,598,0,0" VerticalAlignment="Top"/>
+                                Width="30" BorderBrush="Black" BorderThickness="1,1,1,1" 
+                                Height="20" Grid.Column="1"/>
+                            <Label x:Name="lblToegevoegdeLevensduurConcurrentiekracht" Content="Toegevoegde Levensduur/Concurrentiekracht"
+                                    BorderBrush="Black" BorderThickness="1,1,1,1" HorizontalAlignment="Left" Margin="127,48,0,0" VerticalAlignment="Top" Grid.Column="1">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
+                            <Label x:Name="lblToegevoegdeSociabiliteit" Content="Toegevoegde Sociabiliteit" HorizontalAlignment="Left" Margin="180,345,0,0" BorderBrush="Black" BorderThickness="1,1,1,1" 
+                                   VerticalAlignment="Top" Grid.Column="1">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
+                            <Label x:Name="lblStrategie" Content="Strategie" HorizontalAlignment="Left" Margin="86,633,0,0" VerticalAlignment="Top"
+                                    BorderBrush="Black" BorderThickness="1,1,1,1" Height="28" Width="73" >
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
+                            <Label x:Name="lblToegevoegdeStrategie" Content="Toegevoegdestrategie" HorizontalAlignment="Left" Margin="176,632,0,0" VerticalAlignment="Top" Grid.Column="1"
+                                    BorderBrush="Black" BorderThickness="1,1,1,1" Height="33" Width="137" >
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
                         </Grid>
                     </ScrollViewer>
                 </TabItem>
-                <TabItem x:Name="tabExtraEigenschappen" Header="Extra Eigenschappen" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,-1,0,0">
+                <TabItem x:Name="tabExtraEigenschappen" Header="Extra Eigenschappen" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="-4,0,0,0" Height="23">
                     <ScrollViewer>
-                        <Grid Height="244" Width="593" Background="#FFE5E5E5" VerticalAlignment="Top">
+                        <Grid Height="244" Width="593" Background="#FFA8ABBB" VerticalAlignment="Top">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
+                                <ColumnDefinition Width="408*"/>
+                                <ColumnDefinition Width="29*"/>
+                                <ColumnDefinition Width="156*"/>
                             </Grid.ColumnDefinitions>
                             <ComboBox
                                 ItemsSource="{Binding ExtraNectarwaarde}"
@@ -611,11 +936,27 @@
                                 SelectedValuePath="Id"
                                 x:Name="cbxNectarwaarde"
                                 HorizontalAlignment="Left"
-                                Margin="220,30,0,0"
-                                VerticalAlignment="Top"
+                                Margin="220,40,0,0"
+                                VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1,1,1,1" 
                                 Width="120"/>
-                            <Label x:Name="lblNectarwaarde" Content="Nectarwaarde" HorizontalAlignment="Left" Margin="235,4,0,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lblPollenwaarde" Content="Pollenwaarde" HorizontalAlignment="Left" Margin="420,4,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblNectarwaarde" Content="Nectarwaarde" HorizontalAlignment="Left" Margin="235,4,0,0" VerticalAlignment="Top"
+                                    BorderBrush="Black" BorderThickness="1,1,1,1" >
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
+                            <Label x:Name="lblPollenwaarde" Content="Pollenwaarde" HorizontalAlignment="Left" Margin="12,4,0,0" VerticalAlignment="Top"
+                                    BorderBrush="Black" BorderThickness="1,1,1,1" Grid.Column="1" Grid.ColumnSpan="2" >
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
                             <ComboBox
                                 ItemsSource="{Binding ExtraPollenwaarde}"
                                 SelectedItem="{Binding ExtraSelectedPollenwaarde, Mode=TwoWay}"
@@ -623,57 +964,59 @@
                                 SelectedValuePath="Id"
                                 x:Name="cbxPollenwaarde"
                                 HorizontalAlignment="Left"
-                                Margin="400,30,0,0"
+                                Margin="398,39,0,0"
                                 VerticalAlignment="Top"
-                                Width="120"/>
+                                Width="120" Grid.ColumnSpan="3"/>
+
                             <CheckBox
                                 IsChecked="{Binding ExtraSelectedBijvriendelijk, Mode=TwoWay}"
                                 x:Name="CheckBoxBijvriendelijk"
-                                Content="Bijvriendelijk"
-                                HorizontalAlignment="Left"
-                                Margin="50,20,0,0"
-                                VerticalAlignment="Top"/>
+                                Content="Bijvriendelijk" 
+                                HorizontalAlignment="Left" 
+                                Margin="50,20,0,0" BorderBrush="Black" BorderThickness="1,1,1,1" 
+                                VerticalAlignment="Top" />
+
                             <CheckBox
                                 IsChecked="{Binding ExtraSelectedEetbaar, Mode=TwoWay}"
                                 x:Name="CheckBoxEetbaar"
                                 Content="Eetbaar"
                                 HorizontalAlignment="Left"
-                                Margin="50,60,0,0"
-                                VerticalAlignment="Top"/>
+                                Margin="50,60,0,0" BorderBrush="Black" BorderThickness="1,1,1,1" 
+                                VerticalAlignment="Top" Foreground="Black" Background="White" Padding="4,-1,5,0"/>
                             <CheckBox
                                 IsChecked="{Binding ExtraSelectedKruidGebruik, Mode=TwoWay}"
                                 x:Name="CheckBoxKruidgebruik"
                                 Content="Kruidgebruik"
-                                HorizontalAlignment="Left"
+                                HorizontalAlignment="Left" BorderBrush="Black" BorderThickness="1,1,1,1" 
                                 Margin="50,100,0,0"
-                                VerticalAlignment="Top"/>
+                                VerticalAlignment="Top" Background="White"/>
                             <CheckBox
                                 IsChecked="{Binding ExtraSelectedGeurend, Mode=TwoWay}"
                                 x:Name="CheckBoxGeurend"
-                                Content="Geurend"
+                                Content="Geurend" 
                                 HorizontalAlignment="Left"
-                                Margin="50,140,0,0"
-                                VerticalAlignment="Top"/>
+                                Margin="50,140,0,0" BorderBrush="Black" BorderThickness="1,1,1,1" 
+                                VerticalAlignment="Top" Background="#FFFFFBFD"/>
                             <CheckBox
                                 IsChecked="{Binding ExtraSelectedVorstgevoelig, Mode=TwoWay}"
                                 x:Name="checkBoxVorstgevoelig"
                                 Content="Vorstgevoelig"
                                 HorizontalAlignment="Left"
-                                Margin="50,180,0,0"
+                                Margin="50,180,0,0" BorderBrush="Black" BorderThickness="1,1,1,1" 
                                 VerticalAlignment="Top"/>
                             <CheckBox
                                 IsChecked="{Binding ExtraSelectedVlindervriendelijk, Mode=TwoWay}"
                                 x:Name="checkBoxVlindervriendelijk"
                                 Content="Vlindervriendelijk"
                                 HorizontalAlignment="Left"
-                                Margin="50,217,0,0"
+                                Margin="50,217,0,0" BorderBrush="Black" BorderThickness="1,1,1,1" 
                                 VerticalAlignment="Top"/>
                         </Grid>
                     </ScrollViewer>
                 </TabItem>
-                <TabItem x:Name="tabNieuweBeheerbehandeling" Header="Nieuwe behandeling" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,-1,0,0" FontSize="11">
+                <TabItem x:Name="tabNieuweBeheerbehandeling" Header="Nieuwe behandeling" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="-4,0,0,0" FontSize="11" Height="22" Width="112">
                     <ScrollViewer>
-                        <Grid Height="565" Width="566" Background="#FFE5E5E5">
+                        <Grid Height="565" Width="566" Background="#FFA8ABBB" Margin="38,0,0,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
@@ -682,17 +1025,32 @@
                                 x:Name="btnVoegHandelingToe"
                                 Content="Voeg toe"
                                 HorizontalAlignment="Left"
-                                Margin="15,47,0,0"
-                                VerticalAlignment="Top"/>
+                                Margin="45,50,0,0" BorderBrush="Black" BorderThickness="1,1,1,1" 
+                                VerticalAlignment="Top" Height="22" Width="63">
+                                <Button.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Button.Background>
+                            </Button>
                             <TextBox
                                 Text="{Binding NewBeheerDaad, Mode=TwoWay}"
                                 x:Name="TextBoxVoegBehandelingToe"
-                                HorizontalAlignment="Left" Margin="177,13,0,0"
+                                HorizontalAlignment="Left" Margin="177,10,0,0"
                                 TextWrapping="Wrap"
-                                VerticalAlignment="Top"
-                                Width="385"/>
+                                VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1,1,1,1" 
+                                Width="385" Height="25"/>
                             <Rectangle HorizontalAlignment="Center" Height="1" Margin="0,80,0,0" Stroke="Black" VerticalAlignment="Top" Width="562"/>
-                            <Label x:Name="lblBestaandehandeling" Content="BeheerHandeling" HorizontalAlignment="Left" Margin="4,97,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblBestaandehandeling" Content="BeheerHandeling" HorizontalAlignment="Left" Margin="13,92,0,0" VerticalAlignment="Top"
+                                    BorderBrush="Black" BorderThickness="1,1,1,1" >
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
                             <ComboBox
                                 ItemsSource="{Binding NewBeheerDaden}"
                                 SelectedItem="{Binding NewBeheerSelectedDaden, Mode=TwoWay}"
@@ -701,77 +1059,84 @@
                                 x:Name="cbxBeheerHandeling"
                                 HorizontalAlignment="Left" 
                                 Margin="12,124,0,0" 
-                                VerticalAlignment="Top"
+                                VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1,1,1,1" 
                                 Width="493"/>
-                            <Label x:Name="lblOmschrijving" Content="Omschrijving" HorizontalAlignment="Left" Margin="7,264,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblOmschrijving" Content="Omschrijving" HorizontalAlignment="Left" Margin="7,264,0,0" VerticalAlignment="Top"
+                                    BorderBrush="Black" BorderThickness="1,1,1,1" >
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
                             <CheckBox
                                 IsChecked="{Binding NewBeheerSelectedJan, Mode=TwoWay}"
                                 x:Name="CheckJan"
                                 Content="" 
                                 HorizontalAlignment="Left"
-                                Margin="19,184,0,0" 
+                                Margin="19,184,0,0"  BorderBrush="Black" BorderThickness="1,1,1,1" 
                                 VerticalAlignment="Top"/>
                             <CheckBox 
                                 IsChecked="{Binding NewBeheerSelectedFeb, Mode=TwoWay}"
                                 x:Name="CheckFeb" 
                                 Content="" 
                                 HorizontalAlignment="Left" 
-                                Margin="39,184,0,0" 
+                                Margin="39,184,0,0"  BorderBrush="Black" BorderThickness="1,1,1,1" 
                                 VerticalAlignment="Top"/>
                             <CheckBox
                                 IsChecked="{Binding NewBeheerSelectedMrt, Mode=TwoWay}"
                                 x:Name="CheckMrt"
                                 Content="" 
                                 HorizontalAlignment="Left"
-                                Margin="59,184,0,0" 
+                                Margin="59,184,0,0"  BorderBrush="Black" BorderThickness="1,1,1,1" 
                                 VerticalAlignment="Top"/>
                             <CheckBox
                                 IsChecked="{Binding NewBeheerSelectedApr, Mode=TwoWay}"
                                 x:Name="CheckApr"
                                 Content="" 
-                                HorizontalAlignment="Left"
+                                HorizontalAlignment="Left" BorderBrush="Black" BorderThickness="1,1,1,1" 
                                 Margin="79,184,0,0" 
                                 VerticalAlignment="Top"/>
                             <CheckBox 
                                 IsChecked="{Binding NewBeheerSelectedMei, Mode=TwoWay}"
                                 x:Name="CheckMei"
                                 Content="" 
-                                HorizontalAlignment="Left" 
+                                HorizontalAlignment="Left"  BorderBrush="Black" BorderThickness="1,1,1,1" 
                                 Margin="99,184,0,0" 
                                 VerticalAlignment="Top"/>
                             <CheckBox
                                 IsChecked="{Binding NewBeheerSelectedJun, Mode=TwoWay}"
                                 x:Name="CheckJun" 
                                 Content=""
-                                HorizontalAlignment="Left"
+                                HorizontalAlignment="Left" BorderBrush="Black" BorderThickness="1,1,1,1" 
                                 Margin="119,184,0,0"
                                 VerticalAlignment="Top"/>
                             <CheckBox
                                 IsChecked="{Binding NewBeheerSelectedJul, Mode=TwoWay}"
                                 x:Name="CheckJul" 
                                 Content="" 
-                                HorizontalAlignment="Left"
+                                HorizontalAlignment="Left" BorderBrush="Black" BorderThickness="1,1,1,1" 
                                 Margin="139,184,0,0"
                                 VerticalAlignment="Top"/>
                             <CheckBox 
                                 IsChecked="{Binding NewBeheerSelectedAug, Mode=TwoWay}"
                                 x:Name="CheckAug"
                                 Content="" 
-                                HorizontalAlignment="
-                                Left"
+                                HorizontalAlignment=" Left" BorderBrush="Black" BorderThickness="1,1,1,1" 
                                 Margin="159,184,0,0" VerticalAlignment="Top"/>
                             <CheckBox 
                                 IsChecked="{Binding NewBeheerSelectedSept, Mode=TwoWay}"
                                 x:Name="CheckSept"
                                 Content="" 
-                                HorizontalAlignment="Left"
+                                HorizontalAlignment="Left" BorderBrush="Black" BorderThickness="1,1,1,1" 
                                 Margin="179,184,0,0"
                                 VerticalAlignment="Top"/>
                             <CheckBox 
                                 IsChecked="{Binding NewBeheerSelectedOkt, Mode=TwoWay}"
                                 x:Name="CheckOkt" 
                                 Content=""
-                                HorizontalAlignment="Left"
+                                HorizontalAlignment="Left" BorderBrush="Black" BorderThickness="1,1,1,1" 
                                 Margin="199,184,0,0"
                                 VerticalAlignment="Top"/>
                             <CheckBox
@@ -779,50 +1144,115 @@
                                 x:Name="CheckNov" 
                                 Content=""
                                 HorizontalAlignment="Left"
-                                Margin="219,184,0,0"
+                                Margin="219,184,0,0" BorderBrush="Black" BorderThickness="1,1,1,1" 
                                 VerticalAlignment="Top" 
                                 RenderTransformOrigin="0.512,0.452"/>
                             <CheckBox 
                                 IsChecked="{Binding NewBeheerSelectedDec, Mode=TwoWay}"
                                 x:Name="CheckDec" 
-                                Margin="239,184,307,0" 
+                                Margin="239,184,307,0"  BorderBrush="Black" BorderThickness="1,1,1,1" 
                                 VerticalAlignment="Top"/>
-                            <Label x:Name="lblJan" Content="J" HorizontalAlignment="Left" Margin="20,159,0,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lblFeb" Content="F" HorizontalAlignment="Left" Margin="40,159,0,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lblMaa" Content="M" HorizontalAlignment="Left" Margin="58,159,0,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lblMei" Content="M" HorizontalAlignment="Left" Margin="98,159,0,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lblJun" Content="J" HorizontalAlignment="Left" Margin="121,159,0,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lnlSep" Content="S" HorizontalAlignment="Left" Margin="179,159,0,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lblApr" Content="A" HorizontalAlignment="Left" Margin="79,159,0,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lblAug" Content="A" HorizontalAlignment="Left" Margin="159,159,0,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lblJul" Content="J" HorizontalAlignment="Left" Margin="140,159,0,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lblOkt" Content="O" HorizontalAlignment="Left" Margin="199,159,0,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lblDec" Content="D" HorizontalAlignment="Left" Margin="239,159,0,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lblNov" Content="N" HorizontalAlignment="Left" Margin="218,159,0,0" VerticalAlignment="Top"/>
-                            <Label x:Name="lblM2PerUur" Content="Aantal m²/u" Margin="4,220,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="68"/>
+                            <Label x:Name="lblJan" Content="J" HorizontalAlignment="Left" Margin="17,159,0,0" VerticalAlignment="Top" Width="20" Height="25">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
+                            <Label x:Name="lblFeb" Content="F" HorizontalAlignment="Left" Margin="35,159,0,0" VerticalAlignment="Top" Background="White" Width="20" Height="25"/>
+                            <Label x:Name="lblMaa" Content="M" HorizontalAlignment="Left" Margin="55,159,0,0" VerticalAlignment="Top" Width="21" Height="25">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
+                            <Label x:Name="lblMei" Content="M" HorizontalAlignment="Left" Margin="97,159,0,0" VerticalAlignment="Top" Width="20" Height="25">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
+                            <Label x:Name="lblJun" Content="J" HorizontalAlignment="Left" Margin="117,159,0,0" VerticalAlignment="Top" Background="White" Width="21" Height="25"/>
+                            <Label x:Name="lnlSep" Content="S" HorizontalAlignment="Left" Margin="178,159,0,0" VerticalAlignment="Top" Width="20" Height="25">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
+                            <Label x:Name="lblApr" Content="A" HorizontalAlignment="Left" Margin="76,159,0,0" VerticalAlignment="Top" Background="White" Width="21" Height="25"/>
+                            <Label x:Name="lblAug" Content="A" HorizontalAlignment="Left" Margin="158,159,0,0" VerticalAlignment="Top" Background="White" Width="20" Height="25"/>
+                            <Label x:Name="lblJul" Content="J" HorizontalAlignment="Left" Margin="138,159,0,0" VerticalAlignment="Top" Width="20" Height="25">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
+                            <Label x:Name="lblOkt" Content="O" HorizontalAlignment="Left" Margin="198,159,0,0" VerticalAlignment="Top" Background="White" Width="20" Height="25"/>
+                            <Label x:Name="lblDec" Content="D" HorizontalAlignment="Left" Margin="236,159,10,0" VerticalAlignment="Top" Background="White" Width="20" Height="25"/>
+                            <Label x:Name="lblNov" Content="N" HorizontalAlignment="Left" Margin="216,159,0,0" VerticalAlignment="Top" Width="20" Height="25">
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
+                            <Label x:Name="lblM2PerUur" Content="Aantal m²/u" Margin="8,220,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="68" BorderBrush="Black" BorderThickness="1,1,1,1" >
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
                             <TextBox 
                                 Text="{Binding NewBeheerM2U, Mode=TwoWay}"
                                 x:Name="txtAantaVierkanteMeterPerUur" 
                                 HorizontalAlignment="Left" 
-                                Margin="80,225,0,0" 
-                                TextWrapping="Wrap" 
+                                Margin="96,220,0,0" 
+                                TextWrapping="Wrap"  BorderBrush="Black" BorderThickness="1,1,1,1" 
                                 VerticalAlignment="Top" 
-                                Width="120"/>
-                            <Label x:Name="lblPerAantalJaar" Content="Frequentie per x jaar" HorizontalAlignment="Left" Margin="281,170,0,0" VerticalAlignment="Top"/>
+                                Width="155" Height="27"/>
+                            <Label x:Name="lblPerAantalJaar" Content="Frequentie per x jaar" HorizontalAlignment="Left" Margin="281,170,0,0" VerticalAlignment="Top"
+                                    BorderBrush="Black" BorderThickness="1,1,1,1" >
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
                             <TextBox 
                                 Text="{Binding NewBeheerFrequentie, Mode=TwoWay}"
                                 x:Name="txtPerAantalJaar" 
                                 HorizontalAlignment="Left" 
-                                Margin="410,175,0,0" 
-                                TextWrapping="Wrap"
+                                Margin="410,171,0,0" 
+                                TextWrapping="Wrap" BorderBrush="Black" BorderThickness="1,1,1,1" 
                                 VerticalAlignment="Top" 
-                                Width="33"/>
-                            <Label x:Name="lblVoegHandelingToe" Content="Voeg beheershandeling toe" HorizontalAlignment="Left" Margin="-1,8,0,0" VerticalAlignment="Top"/>
+                                Width="95" Height="25"/>
+                            <Label x:Name="lblVoegHandelingToe" Content="Voeg beheershandeling toe" HorizontalAlignment="Left" Margin="7,8,0,0" VerticalAlignment="Top"
+                                    BorderBrush="Black" BorderThickness="1,1,1,1" >
+                                <Label.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
                             <TextBox 
                                 Text="{Binding NewBeheerOmschrijving, Mode=TwoWay}"
                                 x:Name="txtOpmerking"
                                 HorizontalAlignment="Left"
-                                Margin="5,294,0,70"
+                                Margin="5,294,0,70" BorderBrush="Black" BorderThickness="1,1,1,1" 
                                 TextWrapping="Wrap" 
                                 Width="539"/>
                             <Button 
@@ -830,21 +1260,36 @@
                                 x:Name="btnVoegBeheerbehandelingToe" 
                                 Content="Voeg beheerdaad toe" 
                                 HorizontalAlignment="Left" 
-                                Margin="23,522,0,0"
-                                VerticalAlignment="Top"/>
+                                Margin="210,518,0,0" BorderBrush="Black" BorderThickness="1,1,1,1" 
+                                VerticalAlignment="Top" Height="31" Width="125">
+                                <Button.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"/>
+                                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Button.Background>
+                            </Button>
                         </Grid>
                     </ScrollViewer>
                 </TabItem>
-                <TabItem x:Name="tabEditBeheerbehandeling" Header="Bestaande behandeling" HorizontalAlignment="Center" Height="20" VerticalAlignment="Top" Width="139" Margin="0,-1,0,0">
-                    <Grid Background="#FFE5E5E5" Height="466" VerticalAlignment="Top" Margin="23,0,33,0">
+                <TabItem x:Name="tabEditBeheerbehandeling" Header="Bestaande behandeling" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" Width="152" Margin="-4,0,0,0">
+                    <Grid Background="#FFA8ABBB" Height="466" VerticalAlignment="Top" Margin="23,0,33,0">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
+                            <ColumnDefinition Width="436*"/>
+                            <ColumnDefinition Width="173*"/>
                         </Grid.ColumnDefinitions>
-                        <Label x:Name="lblBestaandehandelingView" Content="BeheerHandeling" HorizontalAlignment="Left" Margin="14,10,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="lblBestaandehandelingView" Content="BeheerHandeling" HorizontalAlignment="Left" Margin="17,11,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1,1,1,1">
+                            <Label.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="White"/>
+                                    <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Label.Background>
+                        </Label>
                         <ComboBox
                             ItemsSource="{Binding EditBeheerDaden}"
                             SelectedItem="{Binding EditBeheerSelectedDaden}"
-                            DisplayMemberPath="Beheerdaad"
+                            DisplayMemberPath="Beheerdaad" BorderBrush="Black" BorderThickness="1,1,1,1"
                             SelectedValuePath="Id"
                             x:Name="cbxBeheerHandelingView" 
                             HorizontalAlignment="Left"
@@ -855,32 +1300,39 @@
                         <TextBox
                             Text="{Binding EditBeheerOmschrijving, Mode=TwoWay}"
                             x:Name="txtOpmerkingEdit" 
-                            HorizontalAlignment="Stretch" 
-                            Margin="5,200,0,0" 
+                            Margin="38,200,33,0" 
                             TextWrapping="Wrap" 
                             Width="539"
                             Height="200" 
-                            VerticalAlignment="Top"/>
-                        <Label x:Name="lblOmschrijving_Copy" Content="Omschrijving" HorizontalAlignment="Left" Margin="37,167,0,0" VerticalAlignment="Top"/>
+                            BorderBrush="Black" BorderThickness="1,1,1,1"
+                            VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                        <Label x:Name="lblOmschrijving_Copy" Content="Omschrijving" HorizontalAlignment="Left" Margin="37,167,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1,1,1,1">
+                            <Label.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="White"/>
+                                    <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Label.Background>
+                        </Label>
                         <CheckBox
                             IsChecked="{Binding EditBeheerSelectedJan}"
                             x:Name="CheckJanEdit"
                             Content=""
-                            HorizontalAlignment="Left"
+                            HorizontalAlignment="Left" BorderBrush="Black" BorderThickness="1,1,1,1"
                             Margin="19,100,0,0"
                             VerticalAlignment="Top"/>
                         <CheckBox
                             IsChecked="{Binding EditBeheerSelectedFeb}"
                             x:Name="CheckFebEdit"
                             Content="" 
-                            HorizontalAlignment="Left"
+                            HorizontalAlignment="Left" BorderBrush="Black" BorderThickness="1,1,1,1"
                             Margin="39,100,0,0"
                             VerticalAlignment="Top"/>
                         <CheckBox 
                             IsChecked="{Binding EditBeheerSelectedMrt}"
                             x:Name="CheckMrtEdit" 
                             Content="" 
-                            HorizontalAlignment="Left" 
+                            HorizontalAlignment="Left" BorderBrush="Black" BorderThickness="1,1,1,1"
                             Margin="59,100,0,0"
                             VerticalAlignment="Top"/>
                         <CheckBox 
@@ -888,7 +1340,7 @@
                             x:Name="CheckOktEdit"
                             Content="" 
                             HorizontalAlignment="Left"
-                            Margin="199,100,0,0" 
+                            Margin="199,100,0,0" BorderBrush="Black" BorderThickness="1,1,1,1"
                             VerticalAlignment="Top"/>
                         <CheckBox 
                             IsChecked="{Binding EditBeheerSelectedNov}"
@@ -896,128 +1348,247 @@
                             Content="" 
                             HorizontalAlignment="Left"
                             Margin="219,100,0,0" 
-                            VerticalAlignment="Top" 
+                            VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1,1,1,1"
                             RenderTransformOrigin="0.512,0.452"/>
                         <CheckBox
                             IsChecked="{Binding EditBeheerSelectedJul}"
                             x:Name="CheckJulEdit"
                             Content=""
-                            HorizontalAlignment="Left"
+                            HorizontalAlignment="Left" BorderBrush="Black" BorderThickness="1,1,1,1"
                             Margin="139,100,0,0"
                             VerticalAlignment="Top"/>
                         <CheckBox 
                             IsChecked="{Binding EditBeheerSelectedDec}"
                             x:Name="CheckDecEdit" 
                             Content=""
-                            Margin="239,100,329,0" 
+                            Margin="239,100,156,0" 
+                            BorderBrush="Black" BorderThickness="1,1,1,1"
                             VerticalAlignment="Top"/>
                         <CheckBox
                             IsChecked="{Binding EditBeheerSelectedApr}"
                             x:Name="CheckAprEdit"
                             Content="" 
-                            HorizontalAlignment="Left"
+                            HorizontalAlignment="Left" BorderBrush="Black" BorderThickness="1,1,1,1"
                             Margin="79,100,0,0"
                             VerticalAlignment="Top"/>
                         <CheckBox 
                             IsChecked="{Binding EditBeheerSelectedMei}"
                             x:Name="CheckMeiEdit"
                             Content="" 
-                            HorizontalAlignment="Left" 
+                            HorizontalAlignment="Left" BorderBrush="Black" BorderThickness="1,1,1,1"
                             Margin="99,100,0,0"
                             VerticalAlignment="Top"/>
                         <CheckBox
                             IsChecked="{Binding EditBeheerSelectedSept}"
                             x:Name="CheckSeptEdit"
                             Content="" 
-                            HorizontalAlignment="Left" 
+                            HorizontalAlignment="Left" BorderBrush="Black" BorderThickness="1,1,1,1"
                             Margin="179,100,0,0" 
                             VerticalAlignment="Top"/>
                         <CheckBox
                             IsChecked="{Binding EditBeheerSelectedJun}"
                             x:Name="CheckJunEdit"
                             Content=""
-                            HorizontalAlignment="Left"
+                            HorizontalAlignment="Left" BorderBrush="Black" BorderThickness="1,1,1,1"
                             Margin="119,100,0,0"
                             VerticalAlignment="Top"/>
                         <CheckBox 
                             IsChecked="{Binding EditBeheerSelectedAug}"
                             x:Name="CheckAugEdit" 
                             Content=""
-                            HorizontalAlignment="Left"
+                            HorizontalAlignment="Left" BorderBrush="Black" BorderThickness="1,1,1,1"
                             Margin="159,100,0,0" 
                             VerticalAlignment="Top"/>
-                        <Label x:Name="lblJan_Copy" Content="J" HorizontalAlignment="Left" Margin="20,75,0,0" VerticalAlignment="Top"/>
-                        <Label x:Name="lblFeb_Copy" Content="F" HorizontalAlignment="Left" Margin="40,75,0,0" VerticalAlignment="Top"/>
-                        <Label x:Name="lblMaa_Copy" Content="M" HorizontalAlignment="Left" Margin="58,75,0,0" VerticalAlignment="Top"/>
-                        <Label x:Name="lblMei_Copy" Content="M" HorizontalAlignment="Left" Margin="98,75,0,0" VerticalAlignment="Top"/>
-                        <Label x:Name="lblJun_Copy" Content="J" HorizontalAlignment="Left" Margin="121,75,0,0" VerticalAlignment="Top"/>
-                        <Label x:Name="lnlSep_Copy" Content="S" HorizontalAlignment="Left" Margin="179,75,0,0" VerticalAlignment="Top"/>
-                        <Label x:Name="lblApr_Copy" Content="A" HorizontalAlignment="Left" Margin="79,75,0,0" VerticalAlignment="Top"/>
-                        <Label x:Name="lblAug_Copy" Content="A" HorizontalAlignment="Left" Margin="159,75,0,0" VerticalAlignment="Top"/>
-                        <Label x:Name="lblJul_Copy" Content="J" HorizontalAlignment="Left" Margin="140,75,0,0" VerticalAlignment="Top"/>
-                        <Label x:Name="lblOkt_Copy" Content="O" HorizontalAlignment="Left" Margin="199,75,0,0" VerticalAlignment="Top"/>
-                        <Label x:Name="lblDec_Copy" Content="D" HorizontalAlignment="Left" Margin="239,75,0,0" VerticalAlignment="Top"/>
-                        <Label x:Name="lblNov_Copy" Content="N" HorizontalAlignment="Left" Margin="218,75,0,0" VerticalAlignment="Top"/>
-                        <Label x:Name="lblM2PerUur_Copy" Content="Aantal m²/u" Margin="4,130,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="77"/>
+                        <Label x:Name="lblJan_Copy" Content="J" HorizontalAlignment="Left" Margin="18,75,0,0" VerticalAlignment="Top" Width="20" Height="25">
+                            <Label.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="White"/>
+                                    <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Label.Background>
+                        </Label>
+                        <Label x:Name="lblFeb_Copy" Content="F" HorizontalAlignment="Left" Margin="38,75,0,0" VerticalAlignment="Top" Background="White" Width="20" Height="25"/>
+                        <Label x:Name="lblMaa_Copy" Content="M" HorizontalAlignment="Left" Margin="57,75,0,0" VerticalAlignment="Top" Width="20" Height="25">
+                            <Label.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="White"/>
+                                    <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Label.Background>
+                        </Label>
+                        <Label x:Name="lblMei_Copy" Content="M" HorizontalAlignment="Left" Margin="95,75,0,0" VerticalAlignment="Top" Width="21" Height="25">
+                            <Label.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="White"/>
+                                    <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Label.Background>
+                        </Label>
+                        <Label x:Name="lblJun_Copy" Content="J" HorizontalAlignment="Left" Margin="116,75,0,0" VerticalAlignment="Top" Width="21" Height="25">
+                            <Label.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="White"/>
+                                    <GradientStop Color="White" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Label.Background>
+                        </Label>
+                        <Label x:Name="lnlSep_Copy" Content="S" HorizontalAlignment="Left" Margin="177,75,0,0" VerticalAlignment="Top" Width="20" Height="25">
+                            <Label.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="White"/>
+                                    <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Label.Background>
+                        </Label>
+                        <Label x:Name="lblApr_Copy" Content="A" HorizontalAlignment="Left" Margin="77,75,0,0" VerticalAlignment="Top" Background="White" Width="20" Height="25"/>
+                        <Label x:Name="lblAug_Copy" Content="A" HorizontalAlignment="Left" Margin="156,75,0,0" VerticalAlignment="Top" Background="White" Width="21" Height="25"/>
+                        <Label x:Name="lblJul_Copy" Content="J" HorizontalAlignment="Left" Margin="136,75,0,0" VerticalAlignment="Top" Width="20" Height="25">
+                            <Label.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="White"/>
+                                    <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Label.Background>
+                        </Label>
+                        <Label x:Name="lblOkt_Copy" Content="O" HorizontalAlignment="Left" Margin="196,75,0,0" VerticalAlignment="Top" Width="20" Height="25">
+                            <Label.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="White"/>
+                                    <GradientStop Color="White" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Label.Background>
+                        </Label>
+                        <Label x:Name="lblDec_Copy" Content="D" HorizontalAlignment="Left" Margin="236,75,0,0" VerticalAlignment="Top" Background="White" Width="20" Height="25"/>
+                        <Label x:Name="lblNov_Copy" Content="N" HorizontalAlignment="Left" Margin="216,75,0,0" VerticalAlignment="Top" Width="20" Height="25">
+                            <Label.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="White"/>
+                                    <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Label.Background>
+                        </Label>
+                        <Label x:Name="lblM2PerUur_Copy" Content="Aantal m²/u" Margin="14,130,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1,1,1,1" HorizontalAlignment="Left" Width="77">
+                            <Label.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="White"/>
+                                    <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Label.Background>
+                        </Label>
                         <TextBox
                             Text="{Binding EditBeheerM2U}"
                             x:Name="txtAantaVierkanteMeterPerUurEdit" 
                             HorizontalAlignment="Left" 
-                            Margin="90,135,0,0" 
+                            Margin="114,131,0,0" 
                             TextWrapping="Wrap" 
                             VerticalAlignment="Top"
-                            Width="120"/>
-                        <Label x:Name="lblPerAantalJaar_Copy" Content="Frequentie per x jaar" HorizontalAlignment="Left" Margin="281,90,0,0" VerticalAlignment="Top"/>
+                            BorderBrush="Black" BorderThickness="1,1,1,1"
+                            Width="120" Height="26"/>
+                        <Label x:Name="lblPerAantalJaar_Copy" Content="Frequentie per x jaar" HorizontalAlignment="Left" Margin="281,90,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1,1,1,1">
+                            <Label.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="White"/>
+                                    <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Label.Background>
+                        </Label>
                         <TextBox
                             Text="{Binding EditBeheerFrequentie}"
                             x:Name="txtPerAantalJaarEdit" 
                             HorizontalAlignment="Left" 
-                            Margin="410,95,0,0" 
+                            Margin="410,92,0,0" 
                             TextWrapping="Wrap" 
                             VerticalAlignment="Top"
-                            Width="33"/>
+                            BorderBrush="Black" BorderThickness="1,1,1,1"
+                            Width="98" Height="24" Grid.ColumnSpan="2"/>
                         <Button
                             Command="{Binding Path=EditBeheerWijzigingenOpslaanCommand}"
                             Content="Wijzigingen opslaan"
                             HorizontalAlignment="Left"
-                            Margin="15,435,0,0"
-                            VerticalAlignment="Top"/>
+                            Margin="90,422,0,0"
+                            VerticalAlignment="Top"
+                            BorderBrush="Black" BorderThickness="1,1,1,1" Height="27" Width="123">
+                            <Button.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="White"/>
+                                    <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Button.Background>
+                        </Button>
                         <Button
                             Command="{Binding Path=EditBeheerVerwijderenCommand}"
                             x:Name="btnBehandelingVerwijderen" 
                             Content="Verwijder beheerbehandeling" 
                             HorizontalAlignment="Left" 
-                            Margin="174,435,0,0" 
-                            VerticalAlignment="Top"/>
+                            Margin="286,423,0,0" 
+                            VerticalAlignment="Top"
+                            BorderBrush="Black" BorderThickness="1,1,1,1" Height="27" Grid.ColumnSpan="2">
+                            <Button.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="White"/>
+                                    <GradientStop Color="#FFC7FF00" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Button.Background>
+                        </Button>
                     </Grid>
                 </TabItem>
             </TabControl>
             <Button x:Name="btnStartOpnieuw" 
                     Command="{Binding Path=BackCommand}"
                     CommandParameter="{Binding ElementName=EditScherm}"
-                    Content="Terug" HorizontalAlignment="Left" Margin="14,602,0,0" VerticalAlignment="Top" Width="50" Height="20"/>
+                    Content="Terug" HorizontalAlignment="Left" Margin="21,590,0,0" VerticalAlignment="Top" Width="65" Height="30">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
             <Button x:Name="btnOpslaan"  Content="Opslaan"
                     Command="{Binding Path=OpslaanCommand}"
-                    HorizontalAlignment="Left" Margin="209,602,0,0" VerticalAlignment="Top" Width="50" Height="20"/>
-            <Label Content="Plantdichtheid Min" HorizontalAlignment="Left" Margin="14,504,0,0" VerticalAlignment="Top"/>
-            <Label Content="Plantdichtheid Max" HorizontalAlignment="Left" Margin="14,535,0,0" VerticalAlignment="Top"/>
+                    HorizontalAlignment="Left" Margin="195,590,0,0" VerticalAlignment="Top" Width="61" Height="30">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Label Content="Plantdichtheid Min" HorizontalAlignment="Left" Margin="26,376,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1,1,1,1" >
+                <Label.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFFDFDFD"/>
+                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                    </LinearGradientBrush>
+                </Label.Background>
+            </Label>
+            <Label Content="Plantdichtheid Max" HorizontalAlignment="Left" Margin="26,421,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1,1,1,1">
+                <Label.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="#FFC7FF00" Offset="1"/>
+                    </LinearGradientBrush>
+                </Label.Background>
+            </Label>
             <TextBox 
                 Text="{Binding PlantdichtheidMin, Mode=TwoWay}"
                 x:Name="txtBoxPlantdichtheidMin" 
                 HorizontalAlignment="Left" 
-                Margin="139,508,0,0" 
+                Margin="168,377,0,0" 
                 TextWrapping="Wrap" 
                 VerticalAlignment="Top" 
-                Width="41"
-                RenderTransformOrigin="0.097,1.277"/>
+                BorderBrush="Black" BorderThickness="1,1,1,1"
+                Width="69"
+                RenderTransformOrigin="0.097,1.277" Height="28"/>
             <TextBox 
                 Text="{Binding PlantdichtheidMax, Mode=TwoWay}"
                 x:Name="txtBoxPlantdichtheidMax" 
                 HorizontalAlignment="Left"
-                Margin="139,539,0,0"
+                Margin="165,421,0,0"
                 TextWrapping="Wrap"
                 VerticalAlignment="Top"
-                Width="41"/>
+                BorderBrush="Black" BorderThickness="1,1,1,1"
+                Width="69" Height="28"/>
         </Grid>
     </Viewbox>
 </Window>

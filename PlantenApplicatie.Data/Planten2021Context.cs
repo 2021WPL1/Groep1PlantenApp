@@ -557,7 +557,7 @@ namespace PlantenApplicatie.Data
 
                 entity.Property(e => e.Levensvorm)
                     .HasColumnName("levensvorm")
-                    .HasMaxLength(50);
+                    .HasMaxLength(100);
 
                 entity.Property(e => e.MaxBladhoogte).HasColumnName("maxBladhoogte");
 
