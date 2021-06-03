@@ -16,7 +16,7 @@ namespace PlantenApplicatie.UI.ViewModel
     class ResultatenViewModel : ViewModelBase
     {
         //Senne & Hermes
-        public ICommand EditSchermCommand { get; set; }
+        public RelayCommand<Window> EditSchermCommand { get; set; }
         //Jelle & Hemen 
         //Command maken voor form te sluiten
         public RelayCommand<Window> CloseResultCommand { get; private set; }
@@ -73,7 +73,7 @@ namespace PlantenApplicatie.UI.ViewModel
 
             //Senne & Hermes
             //Om commands via buttons door te geven
-            this.EditSchermCommand = new DelegateCommand(EditScherm);
+            EditSchermCommand = new RelayCommand<Window>(this.EditScherm);
 
             //Jelle & Stephanie
             //Instellen van nieuwe ObservableCollections voor gebruik om informatie weer te geven in de UI
@@ -88,10 +88,11 @@ namespace PlantenApplicatie.UI.ViewModel
 
         //Senne & Hermes
         //Opent een nieuw scherm naar Edit pagina.
-        private void EditScherm()
+        private void EditScherm(Window window)
         {
-            EditWindow window = new EditWindow(_plantenResultaat);
-            window.ShowDialog();
+            EditWindow Edit = new EditWindow(_plantenResultaat);
+            window.Close();
+            Edit.ShowDialog();
         }
 
         //Stephanie & Maarten
@@ -202,7 +203,9 @@ namespace PlantenApplicatie.UI.ViewModel
         {
             if (window != null)
             {
+                MainWindow main = new MainWindow();
                 window.Close();
+                main.ShowDialog();
             }
         }
 

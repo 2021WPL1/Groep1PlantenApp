@@ -26,7 +26,7 @@ namespace PlantenApplicatie.UI.ViewModel
 
         //Jelle & Hemen
         //Command om resultatenscherm op te roepen
-        public ICommand ResultaatSchermCommand { get; set; }
+        public RelayCommand<Window> ResultaatSchermCommand { get; set; }
 
         //boolean die ervoor zorgt dat de geselecteerde filters niet leeggemaakt worden
         private bool _loadCheck;
@@ -79,7 +79,7 @@ namespace PlantenApplicatie.UI.ViewModel
             //Stephanie, Hermes
             ClearResultCommand = new DelegateCommand(ClearResult);
 
-            ResultaatSchermCommand = new DelegateCommand(ResultaatScherm);
+            ResultaatSchermCommand = new RelayCommand<Window>(this.ResultaatScherm);
 
             //Senne, Maarten, Hermes
             TfgsvTypes = new ObservableCollection<TfgsvType>();
@@ -114,12 +114,13 @@ namespace PlantenApplicatie.UI.ViewModel
         }
 
         //Jelle & Hemen
-        public void ResultaatScherm()
+        public void ResultaatScherm(Window window)
         {
             if (_selectedPlant != null)
             {
-                ResultatenWindow window = new ResultatenWindow(_selectedPlant);
-                window.ShowDialog();
+                ResultatenWindow Resultaat = new ResultatenWindow(_selectedPlant);
+                window.Close();
+                Resultaat.ShowDialog();
             }
             else
             {

@@ -27,5 +27,6 @@ namespace PlantenApplicatie.UI.View
             viewModel.fillLabels(plant);
             viewModel.LoadLists();
         }
+      
     }
 }
