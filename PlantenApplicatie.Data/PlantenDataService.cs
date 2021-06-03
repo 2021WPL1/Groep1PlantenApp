@@ -611,6 +611,8 @@ namespace PlantenApplicatie.Data
         public void EditPlantFenoMulti(long plantId, FenoMaand bladMaxMaand, FenoMaand bloeiMinMaand, FenoMaand bloeiMaxMaand, FenoMaand bladMaand,
             FenoKleur bladKleur, FenoMaand bloeiMaand, FenoKleur bloeiKleur)
         {
+            long fenoId = context.FenotypeMulti.Max(f => f.Id) + 1;
+
             var dbBladMax = context.FenotypeMulti.Where(f => f.Eigenschap == "blad-max")
                 .FirstOrDefault(f => f.PlantId == plantId);
             var dbBloeiMin = context.FenotypeMulti.Where(f => f.Eigenschap == "bloei-min")
@@ -621,48 +623,102 @@ namespace PlantenApplicatie.Data
                 .FirstOrDefault(f => f.PlantId == plantId);
             var dbBloei = context.FenotypeMulti.Where(f => f.Eigenschap == "bloei")
                 .FirstOrDefault(f => f.PlantId == plantId);
-            if (dbBladMax!=null)
+            if (bladMaxMaand==null)
             {
-                dbBladMax.Maand = bladMaxMaand.Maand;
+                bladMaxMaand = new FenoMaand() {Maand = null};
+            }
+            if (bloeiMinMaand == null)
+            {
+                bloeiMinMaand = new FenoMaand() { Maand = null };
+            }
+            if (bloeiMaxMaand == null)
+            {
+                bloeiMaxMaand = new FenoMaand() { Maand = null };
+            }
+            if (bladMaand == null)
+            {
+                bladMaand = new FenoMaand() { Maand = null };
+            }
+            if (bladKleur==null)
+            {
+                bladKleur = new FenoKleur() {NaamKleur = null};
+            }
+            if (bloeiMaand == null)
+            {
+                bloeiMaand = new FenoMaand() { Maand = null };
+            }
+            if (bloeiKleur == null)
+            {
+                bloeiKleur = new FenoKleur() { NaamKleur = null };
+            }
 
-                dbBloeiMin.Maand = bloeiMinMaand.Maand;
-
-                dbBloeiMax.Maand = bloeiMaxMaand.Maand;
-
-                dbBlad.Maand = bladMaand.Maand;
-                dbBlad.Waarde = bladKleur.NaamKleur;
-
-                dbBloei.Maand = bloeiMaand.Maand;
-                dbBloei.Waarde = bloeiKleur.NaamKleur;
+            if (dbBladMax==null)
+            {
+                context.FenotypeMulti.Add(new FenotypeMulti()
+                    { Id = fenoId, PlantId = plantId, Eigenschap = "blad-max", Maand = bladMaxMaand.Maand });
+                fenoId++;
             }
             else
             {
-                long fenoId = context.FenotypeMulti.Max(f => f.Id) + 1;
+                dbBladMax.Maand = bladMaxMaand.Maand;
+            }
 
+            if (dbBloeiMin==null)
+            {
                 context.FenotypeMulti.Add(new FenotypeMulti()
-                    {Id = fenoId, PlantId = plantId, Eigenschap = "blad-max", Maand = bladMaxMaand.Maand});
+                    { Id = fenoId, PlantId = plantId, Eigenschap = "bloei-min", Maand = bloeiMinMaand.Maand });
                 fenoId++;
+            }
+            else
+            {
+                dbBloeiMin.Maand = bloeiMinMaand.Maand;
+            }
 
+            if (dbBloeiMax==null)
+            {
                 context.FenotypeMulti.Add(new FenotypeMulti()
-                    {Id = fenoId, PlantId = plantId, Eigenschap = "bloei-min", Maand = bloeiMinMaand.Maand});
+                    { Id = fenoId, PlantId = plantId, Eigenschap = "bloei-max", Maand = bloeiMaxMaand.Maand });
                 fenoId++;
+            }
+            else
+            {
+                dbBloeiMax.Maand = bloeiMaxMaand.Maand;
 
-                context.FenotypeMulti.Add(new FenotypeMulti()
-                    {Id = fenoId, PlantId = plantId, Eigenschap = "bloei-max", Maand = bloeiMaxMaand.Maand});
-                fenoId++;
+            }
 
+            if (dbBlad==null)
+            {
                 context.FenotypeMulti.Add(new FenotypeMulti()
                 {
-                    Id = fenoId, PlantId = plantId, Eigenschap = "blad", Maand = bladMaand.Maand,
+                    Id = fenoId,
+                    PlantId = plantId,
+                    Eigenschap = "blad",
+                    Maand = bladMaand.Maand,
                     Waarde = bladKleur.NaamKleur
                 });
                 fenoId++;
+            }
+            else
+            {
+                dbBlad.Maand = bladMaand.Maand;
+                dbBlad.Waarde = bladKleur.NaamKleur;
+            }
 
+            if (dbBloei==null)
+            {
                 context.FenotypeMulti.Add(new FenotypeMulti()
                 {
-                    Id = fenoId, PlantId = plantId, Eigenschap = "bloei", Maand = bloeiMaand.Maand,
+                    Id = fenoId,
+                    PlantId = plantId,
+                    Eigenschap = "bloei",
+                    Maand = bloeiMaand.Maand,
                     Waarde = bloeiKleur.NaamKleur
                 });
+            }
+            else
+            {
+                dbBloei.Maand = bloeiMaand.Maand;
+                dbBloei.Waarde = bloeiKleur.NaamKleur;
             }
         }
 
