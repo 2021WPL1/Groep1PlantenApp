@@ -38,7 +38,6 @@ namespace PlantenApplicatie.UI.ViewModel
         //Plant voor in labels
         private Plant _plantenResultaat;
         //Maarten & Stephanie
-        private Foto _foto;
         private PlantenDataService _plantenDataService;
         private Fenotype _fenotype;
         private Abiotiek _abiotiek;
@@ -61,6 +60,33 @@ namespace PlantenApplicatie.UI.ViewModel
         private List<CommensalismeMulti> _getSelectedPlantCommMulti = new List<CommensalismeMulti>();
         private List<FenotypeMulti> _fenotypeMulti = new List<FenotypeMulti>();
         private List<AbiotiekMulti> _abiotiekMulti = new List<AbiotiekMulti>();
+
+
+        //Jelle
+        public Gebruiker LoggedInGebruiker { get; set; }
+        public void LoadLoggedInUser(Gebruiker gebruiker)
+        {
+            LoggedInGebruiker = gebruiker;
+        }
+        public Visibility RolButtonsVisibility { get; set; }
+        public void EnableRolButtons()
+        {
+            switch (LoggedInGebruiker.Rol)
+            {
+                case "Gebruiker":
+                    RolButtonsVisibility = Visibility.Hidden;
+                    break;
+                case "Data-collector":
+                    RolButtonsVisibility = Visibility.Visible;
+                    break;
+                case "Manager":
+                    RolButtonsVisibility = Visibility.Visible;
+                    break;
+                default:
+                    break;
+            }
+        }
+
 
         //Jelle
         private List<BeheerMaand> _getSelectedBeheerMaand = new List<BeheerMaand>();
@@ -91,28 +117,15 @@ namespace PlantenApplicatie.UI.ViewModel
         //Opent een nieuw scherm naar Edit pagina.
         private void EditScherm()
         {
-            EditWindow window = new EditWindow(_plantenResultaat);
+            EditWindow window = new EditWindow(_plantenResultaat, LoggedInGebruiker);
             window.ShowDialog();
         }
+        //Maarten
+        public string Foto { get; set; }
 
         //Stephanie & Maarten
         //Geeft de data van de plant door
-        public Foto Foto
-        {
-            get { return _foto; }
-            set
-            {
-                _foto = value;
-            }
-        }
-        public Fenotype Fenotype
-        {
-            get { return _fenotype; }
-            set
-            {
-                _fenotype = value;
-            }
-        }
+        public Fenotype Fenotype { get; set; }
 
         public Abiotiek Abiotiek
         {
@@ -225,10 +238,13 @@ namespace PlantenApplicatie.UI.ViewModel
             Abiotiek = _plantenDataService.GetAbiotiek(plant.PlantId);
             Commensalisme = _plantenDataService.GetCommensalisme(plant.PlantId);
             ExtraEigenschap = _plantenDataService.GetExtraEigenschap(plant.PlantId);
-            Foto = _plantenDataService.getFotoViaPlantId(plant.PlantId);
-            var Path = System.IO.Directory.GetCurrentDirectory();
-            var aangepastPath = Path.Replace("bin\\Debug\\netcoreapp3.1", Foto.UrlLocatie);
-            Foto.UrlLocatie = aangepastPath;
+            var foto = _plantenDataService.getFotoViaPlantId(plant.PlantId);
+            if (foto != null)
+            {
+                var Path = System.IO.Directory.GetCurrentDirectory();
+                var aangepastPath = Path.Replace("bin\\Debug\\netcoreapp3.1", foto.UrlLocatie);
+                Foto = aangepastPath;
+            }
             // BeheerMaand = _plantenDataService.GetBeheerMaand(plant.PlantId);
 
             //Jelle
