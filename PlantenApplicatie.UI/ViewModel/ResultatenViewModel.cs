@@ -38,6 +38,8 @@ namespace PlantenApplicatie.UI.ViewModel
         //Plant voor in labels
         private Plant _plantenResultaat;
         //Maarten & Stephanie
+        private Foto _foto;
+        private string _selectedError;
         private PlantenDataService _plantenDataService;
         private Fenotype _fenotype;
         private Abiotiek _abiotiek;
@@ -119,6 +121,23 @@ namespace PlantenApplicatie.UI.ViewModel
             }
         }
 
+        //Maarten
+        public Foto Foto
+        {
+            get { return _foto; }
+            set
+            {
+                _foto = value;
+            }
+        }
+        public string SelectedError
+        {
+            get { return _selectedError; }
+            set
+            {
+                _selectedError = value;
+            }
+        }
         //Stephanie & Maarten
         //Geeft de data van de plant door
         public Fenotype Fenotype
@@ -241,6 +260,19 @@ namespace PlantenApplicatie.UI.ViewModel
             Abiotiek = _plantenDataService.GetAbiotiek(plant.PlantId);
             Commensalisme = _plantenDataService.GetCommensalisme(plant.PlantId);
             ExtraEigenschap = _plantenDataService.GetExtraEigenschap(plant.PlantId);
+            Foto = _plantenDataService.getFotoViaPlantId(plant.PlantId);
+            
+            if (Foto != null)
+            {
+                var Path = System.IO.Directory.GetCurrentDirectory();
+                var aangepastPath = Path.Replace("bin\\Debug\\netcoreapp3.1", Foto.UrlLocatie);
+                Foto.UrlLocatie = aangepastPath;
+            }
+            else
+            {
+                SelectedError = "Geen foto bestaand";
+            }
+            
             // BeheerMaand = _plantenDataService.GetBeheerMaand(plant.PlantId);
 
             //Jelle

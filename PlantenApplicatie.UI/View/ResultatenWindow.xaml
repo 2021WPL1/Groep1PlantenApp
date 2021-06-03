@@ -18,8 +18,12 @@
             <ImageBrush ImageSource="Images/AchtergrondSchermen.jpg"/>
         </Grid.Background>
         <Viewbox Margin="98,132,196,82" Grid.Row="1">
-            <Grid>
-                <TabControl Height="331" Margin="-16,0,-88,0">
+            <Grid Width="560">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="14*"/>
+                    <RowDefinition Height="317*"/>
+                </Grid.RowDefinitions>
+                <TabControl Height="331" Margin="-16,0,0,0" Grid.RowSpan="2">
                     <TabItem Header="Hoofdinfo" Margin="-2,-2,-12,-1">
                         <TabItem.Background>
                             <LinearGradientBrush EndPoint="0,1">
@@ -28,7 +32,7 @@
                                 <GradientStop Color="#FFEFEFEF" Offset="0.081"/>
                             </LinearGradientBrush>
                         </TabItem.Background>
-                        <Grid Margin="0,0,128,0">
+                        <Grid Margin="0,0,124,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="88*"/>
                                 <ColumnDefinition Width="21*"/>
@@ -90,13 +94,24 @@
                                     </LinearGradientBrush>
                                 </Label.Background>
                             </Label>
-                            <Label Content="{Binding PlantenResultaat.Type, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="41,15,0,0" Height="28" Grid.Column="2"/>
+                            <Label Content="{Binding PlantenResultaat.Type, Mode=OneWay}"  VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="41,15,104,0" Height="28" Grid.Column="2"/>
                             <Label Content="{Binding PlantenResultaat.Familie, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="41,50,0,0" Height="28" Grid.Column="2"/>
                             <Label Content="{Binding PlantenResultaat.Geslacht, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="41,85,0,0" Height="28" Grid.Column="2"/>
                             <Label Content="{Binding PlantenResultaat.Soort, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="41,120,0,0" Height="28" Grid.Column="2"/>
                             <Label Content="{Binding PlantenResultaat.Variant, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="41,155,0,0" Height="28" Grid.Column="2"/>
                             <Label Content="{Binding PlantenResultaat.PlantdichtheidMin, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="41,190,0,0" Height="28" Grid.Column="2"/>
                             <Label Content="{Binding PlantenResultaat.PlantdichtheidMax, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="41,225,0,0" Height="28" Grid.Column="2"/>
+                            <Label Content="{Binding SelectedError}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" FontSize="10" Grid.Column="2" Height="57" Margin="246,204,0,0" RenderTransformOrigin="0.5,0.5" Foreground="#FFFF0202" >
+                                <Label.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="1"/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Label.RenderTransform>
+                            </Label>
+
                         </Grid>
                     </TabItem>
                     <TabItem Header="Fenotype" Margin="9,-2,-8,-1">
@@ -316,8 +331,8 @@
                         <Grid Margin="0,0,99,0">
                             <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="156*"/>
-                                    <ColumnDefinition Width="317*"/>
+                                    <ColumnDefinition Width="117*"/>
+                                    <ColumnDefinition Width="40*"/>
                                 </Grid.ColumnDefinitions>
 
                                 <Label Content="Ontwikkelingssnelheid" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,15,0,0" Height="28">
@@ -330,7 +345,7 @@
                                 </Label>
                                 <ListBox x:Name="listboxSociabiliteit" 
                                          ItemsSource="{Binding GetSelectedPlantSociabiliteit}"
-                                         Margin="150,51,0,221" BorderThickness="1,1,1,1" BorderBrush="#FF01040E" RenderTransformOrigin="0.5,0.5" FontSize="15">
+                                         Margin="150,51,1,221" BorderThickness="1,1,1,1" BorderBrush="#FF01040E" RenderTransformOrigin="0.5,0.5" FontSize="15">
                                     <ListBox.RenderTransform>
                                         <TransformGroup>
                                             <SkewTransform/>
@@ -356,9 +371,9 @@
                                         </LinearGradientBrush>
                                     </Label.Background>
                                 </Label>
-                                <Label Content="{Binding Commensalisme.Ontwikkelsnelheid, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,15,0,0" Height="28" Grid.ColumnSpan="3"/>
+                                <Label Content="{Binding Commensalisme.Ontwikkelsnelheid, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,15,0,0" Height="28"/>
                                 <Label Content="{Binding Commensalisme.Strategie, Mode=OneWay}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="150,87,0,0" Height="28"/>
-                                <Label Content="Levensvorm" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="124" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,124,0,0" Height="28">
+                                <Label Content="Levensvorm" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="341" BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,124,0,0" Height="28">
                                     <Label.Background>
                                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                             <GradientStop Color="White"/>
@@ -368,7 +383,7 @@
                                 </Label>
                                 <ListBox x:Name="listboxLevensVorm" 
                                          ItemsSource="{Binding GetSelectedPlantLevensvorm}"
-                                         Margin="150,124,0,147" BorderThickness="1,1,1,1" BorderBrush="#FF01040E" RenderTransformOrigin="0.5,0.5" FontSize="15">
+                                         Margin="10,157,1,23" BorderThickness="1,1,1,1" BorderBrush="#FF01040E" RenderTransformOrigin="0.5,0.5">
                                     <ListBox.RenderTransform>
                                         <TransformGroup>
                                             <SkewTransform/>
@@ -468,7 +483,7 @@
                             </Grid>
                         </Grid>
                     </TabItem>
-                    <TabItem Header="Onderhoud plant" Margin="47,-2,-70,-1">
+                    <TabItem Header="Onderhoud plant" Margin="47,-2,-68,-1">
                         <TabItem.Background>
                             <LinearGradientBrush EndPoint="0,1">
                                 <GradientStop Color="White"/>
@@ -518,7 +533,7 @@
                 <Button Content="Terug" 
                         Command="{Binding Path=CloseResultCommand, Mode=OneWay}"
                         CommandParameter="{Binding ElementName=ResultatenScherm}"
-                        Margin="459,290,-63,12" >
+                        Margin="431,278,25,10" Grid.Row="1" >
                     <Button.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="White"/>
@@ -529,7 +544,7 @@
                 <Button Content="Aanpassen" 
                         Command="{Binding Path=EditSchermCommand}"
                         Visibility="{Binding Path=RolButtonsVisibility}"
-                        Margin="354,290,0,12" HorizontalAlignment="Left" Width="80" >
+                        Margin="346,278,0,10" HorizontalAlignment="Left" Width="80" Grid.Row="1" >
                     <Button.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="White"/>
@@ -537,10 +552,7 @@
                         </LinearGradientBrush>
                     </Button.Background>
                 </Button>
-                <Image HorizontalAlignment="Left" Height="67" VerticalAlignment="Top" Width="74" Source="Images/pluim.jpg" Margin="400,38,0,0"/>
-                <Image HorizontalAlignment="Left" Height="67" VerticalAlignment="Top" Width="74" Source="Images/pluim.jpg" Margin="400,119,0,0"/>
-                <Image HorizontalAlignment="Left" Height="67" VerticalAlignment="Top" Width="74" Source="Images/pluim.jpg" Margin="400,207,0,0"/>
-
+                <Image HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="165" Source="{Binding Foto.UrlLocatie}" Margin="378,96,0,0" Grid.Row="1"/>
             </Grid>
         </Viewbox>
     </Grid>

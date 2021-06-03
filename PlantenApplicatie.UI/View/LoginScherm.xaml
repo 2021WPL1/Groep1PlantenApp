@@ -25,8 +25,8 @@
                 <Label Content="Emailadres:" HorizontalAlignment="Left" Margin="128,217,0,0" VerticalAlignment="Top" Background="White" BorderBrush="Black" BorderThickness="2" Height="42" Width="157" FontSize="20" FontFamily="Arial Black"/>
                 <Label Content="Wachtwoord:" HorizontalAlignment="Left" Margin="128,281,0,0" VerticalAlignment="Top" Background="White" BorderBrush="Black" BorderThickness="2" FontSize="20" FontFamily="Arial Black"/>
                 <TextBox Text="{Binding Path=EmailInput, Mode=TwoWay}" x:Name="EmailAdres" HorizontalAlignment="Left" Margin="308,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="312" Height="42" BorderBrush="Black" BorderThickness="2" FontSize="20"/>
-                <TextBox Text="{Binding Path=WachtwoordInput, Mode=TwoWay}" x:Name="Wachtwoord" HorizontalAlignment="Left" Margin="308,278,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="312" Height="42" BorderBrush="Black" BorderThickness="2" FontSize="20"/>
-                <Button Command="{Binding CloseWindowCommand, Mode=OneWay}" CommandParameter="{Binding ElementName=LoginWindow}" Content="Log In" HorizontalAlignment="Left" Margin="463,346,0,0" VerticalAlignment="Top" Height="56" Width="157" FontSize="30" BorderBrush="Black" BorderThickness="2">
+                <TextBox FontFamily="ms-appx:///Assets/PassDot.ttf#PassDot" Text="{Binding Path=WachtwoordInput, Mode=TwoWay}" x:Name="Wachtwoord" HorizontalAlignment="Left" Margin="308,278,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="312" Height="42" BorderBrush="Black" BorderThickness="2" FontSize="20"/>
+                <Button Command="{Binding CloseWindowCommand, Mode=OneWay}" CommandParameter="{Binding ElementName=LoginWindow}" Content="Log In" HorizontalAlignment="Center" Margin="0,356,0,0" VerticalAlignment="Top" Height="56" Width="156" FontSize="30" BorderBrush="Black" BorderThickness="2">
                     <Button.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="White"/>
