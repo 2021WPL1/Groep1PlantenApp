@@ -17,6 +17,7 @@ using System.Windows.Media.Imaging;
 using GalaSoft.MvvmLight.Command;
 using PlantenApplicatie.Data;
 using PlantenApplicatie.Domain.Models;
+using PlantenApplicatie.UI.View;
 using Prism.Commands;
 using Window = System.Windows.Window;
 
@@ -26,10 +27,13 @@ namespace PlantenApplicatie.UI.ViewModel
     {//Senne & Hermes
         private PlantenDataService _plantenDataService;
         private long _plantId;
+        private Window _editScherm;
 
         //Command voor opslaan
         public ICommand OpslaanCommand { get; set; }
         public RelayCommand<Window> BackCommand { get; private set; }
+        public ICommand ClearSoortCommand { get; set; }
+        public ICommand ClearVariantCommand { get; set; }
         public ICommand HabitatToevoegenCommand { get; set; }
         public ICommand HabitatVerwijderenCommand { get; set; }
         public ICommand LevensduurToevoegenCommand { get; set; }
@@ -165,6 +169,7 @@ namespace PlantenApplicatie.UI.ViewModel
         private FenoBloeiwijze _fenoselectedBloeiwijze;
         private ImageSource _fenoselectedBloeiwijzeImage;
         private FenoHabitus _fenoselectedHabitus;
+        private FenoBladgrootte _fenoselectedBladGrootteTot;
         private FenoBladgrootte _fenoselectedMaxBladgrootte;
         private FenoMaand _fenoselectedMaxBladgrootteMaand;
         private FenoBladgrootte _fenoselectedMaxBloeihoogte;
@@ -241,13 +246,16 @@ namespace PlantenApplicatie.UI.ViewModel
         private string _editbeheerFrequentie;
         private string _editbeheerM2U;
 
-        public EditViewModel(PlantenDataService plantenDataService)
+        public EditViewModel(PlantenDataService plantenDataService, Window window)
         {
             //Senne & Hermes
             this._plantenDataService = plantenDataService;
+            _editScherm = window;
 
             OpslaanCommand = new DelegateCommand(Opslaan);
             BackCommand = new RelayCommand<Window>(Back);
+            ClearSoortCommand = new DelegateCommand(ClearSoort);
+            ClearVariantCommand = new DelegateCommand(ClearVariant);
             HabitatToevoegenCommand = new DelegateCommand(HabitatToevoegen);
             HabitatVerwijderenCommand = new DelegateCommand(HabitatVerwijderen);
             LevensduurToevoegenCommand = new DelegateCommand(LevensduurToevoegen);
@@ -314,9 +322,12 @@ namespace PlantenApplicatie.UI.ViewModel
             FilterSelectedGeslacht = _filtergeslachten.FirstOrDefault(f =>
                 f.Geslachtnaam == _plantenDataService.GetFilterGeslacht(plant.GeslachtId)
                     .Geslachtnaam);
-            FilterSelectedSoort = _filtersoorten.FirstOrDefault(f =>
-                f.Soortnaam == _plantenDataService.GetFilterSoort(plant.SoortId).Soortnaam);
+            if (_plantenDataService.GetFilterSoort(plant.SoortId)!=null)
+            {
+                FilterSelectedSoort = _filtersoorten.FirstOrDefault(f =>
+                    f.Soortnaam == _plantenDataService.GetFilterSoort(plant.SoortId).Soortnaam);
 
+            }
             if ( _plantenDataService.GetFilterVariant(plant.VariantId) != null)
             {
                 FilterSelectedVariant = _filtervarianten.FirstOrDefault(f =>
@@ -338,6 +349,11 @@ namespace PlantenApplicatie.UI.ViewModel
             {
                 FenoSelectedHabitus =
                     _fenoHabitus.FirstOrDefault(f => f.Naam == _plantenDataService.GetFenotype(plant.PlantId).Habitus);
+            }
+            if (_plantenDataService.GetFenoBladgrootteTot(plant.PlantId)!=null)
+            {
+                FenoSelectedBladgrootteTot = _fenoBladgrootte.FirstOrDefault(f =>
+                    f.Bladgrootte == _plantenDataService.GetFenoBladgrootteTot(plant.PlantId));
             }
             if (_plantenDataService.GetFenoMaxBladHoogte(plant.PlantId) != null)
             {
@@ -499,25 +515,160 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         private void Opslaan()
         {//Senne & Hermes
-            /* TEST -> werkt nog niet
-            //Filters
-            var filterselectedType = FilterSelectedType.Planttypenaam;
-            var filterselectedFamilie = FilterSelectedFamilie.Familienaam;
-            var filterselectedGeslacht = FilterSelectedGeslacht.Geslachtnaam;
-            var filterselectedSoort = FilterSelectedSoort.Soortnaam;
-            var filterselectedVariant = FilterSelectedVariant.Variantnaam;
-            //Fenotype
-            //Abio
-            var abioselectedBezonning = AbioSelectedBezonning.Naam;
-            var abioselectedGrondsoort = AbioSelectedGrondsoort.Grondsoort;
-            var abioselectedVoedingbehoefte = AbioSelectedVoedingsbehoefte.Voedingsbehoefte;
-            var abioselectedVochtbehoefte = AbioSelectedVochtbehoefte.Vochtbehoefte;
-            var abioselectedReactie = AbioSelectedReactie.Antagonie;
-            var abioselectedHabitats = AbioAddedHabitats.Select(x => x.Afkorting).ToList();
-            //Commersialisme
-            //Extra Eigenschappen
-            //Beheer Eigenschappen
-            */
+            List<FenotypeMulti> fenotypeMulti;
+
+            if (_filterselectedSoort==null)
+            {
+                _filterselectedSoort = new TfgsvSoort() {Soortnaam = null, Soortid = 0};
+            }
+
+            if (_filterselectedVariant==null)
+            {
+                _filterselectedVariant = new TfgsvVariant() {Variantnaam = null, VariantId = 0};
+            }
+
+            Fenotype fenotype = _plantenDataService.OpslaanGetFenotype(_plantId);
+
+            if (_fenoselectedBladGrootteTot != null)
+            {
+                fenotype.Bladgrootte = int.Parse(_fenoselectedBladGrootteTot.Bladgrootte);
+            }
+
+            if (_fenoselectedBladvorm != null)
+            {
+                fenotype.Bladvorm = _fenoselectedBladvorm.Vorm;
+            }
+
+            if (_fenoselectedRatio != null)
+            {
+                fenotype.RatioBloeiBlad = _fenoselectedRatio.Waarde;
+            }
+
+            if (_fenoselectedSpruit != null)
+            {
+                fenotype.Spruitfenologie = _fenoselectedSpruit.Fenologie;
+            }
+
+            if (_fenoselectedBloeiwijze != null)
+            {
+                fenotype.Bloeiwijze = _fenoselectedBloeiwijze.Naam;
+            }
+
+            if (_fenoselectedHabitus != null)
+            {
+                fenotype.Habitus = _fenoselectedHabitus.Naam;
+            }
+
+            if (_fenoselectedLevensvorm != null)
+            {
+                fenotype.Levensvorm = _fenoselectedLevensvorm.Levensvorm;
+            }
+
+            if (_fenoselectedMaxBladgrootte != null)
+            {
+                fenotype.MaxBladhoogte = int.Parse(_fenoselectedMaxBladgrootte.Bladgrootte);
+            }
+
+            if (_fenoselectedMinBloeihoogte != null)
+            {
+                fenotype.MinBloeihoogte = int.Parse(_fenoselectedMinBloeihoogte.Bladgrootte);
+            }
+
+            if (_fenoselectedMaxBloeihoogte != null)
+            {
+                fenotype.MaxBloeihoogte = int.Parse(_fenoselectedMaxBloeihoogte.Bladgrootte);
+            }
+            
+
+            fenotypeMulti = _plantenDataService.EditPlantFenoMulti(_plantId, _fenoselectedMaxBladgrootteMaand, _fenoselectedMinBloeihoogteMaand,
+                _fenoselectedMaxBloeihoogteMaand, _fenoselectedBladKleurMaand, _fenoselectedBladKleur,
+                _fenoselectedBloeiKleurMaand, _fenoselectedBloeiKleur);
+
+            Abiotiek abiotiek = _plantenDataService.GetAbiotiek(_plantId);
+
+            if (_abioselectedBezonning != null)
+            {
+                abiotiek.Bezonning = _abioselectedBezonning.Naam;
+            }
+
+            if (_abioselectedGrondsoort != null)
+            {
+                abiotiek.Grondsoort = _abioselectedGrondsoort.Grondsoort;
+            }
+
+            if (_abioselectedVochtbehoefte != null)
+            {
+                abiotiek.Vochtbehoefte = _abioselectedVochtbehoefte.Vochtbehoefte;
+            }
+
+            if (_abioselectedVoedingsbehoefte != null)
+            {
+                abiotiek.Voedingsbehoefte = _abioselectedVoedingsbehoefte.Voedingsbehoefte;
+            }
+
+            if (_abioselectedVoedingsbehoefte != null)
+            {
+                abiotiek.Voedingsbehoefte = _abioselectedVoedingsbehoefte.Voedingsbehoefte;
+            }
+
+            if (_abioselectedReactie != null)
+            {
+                abiotiek.AntagonischeOmgeving = _abioselectedReactie.Antagonie;
+            }
+
+            List<AbiotiekMulti> abiotiekMulti = new List<AbiotiekMulti>();
+            foreach (var habitat in _abioAddedHabitats)
+            {
+                abiotiekMulti.Add(new AbiotiekMulti()
+                    {Eigenschap = "habitat", PlantId = _plantId, Waarde = habitat.Afkorting});
+            }
+
+            List<Commensalisme> commensalisme = new List<Commensalisme>();
+            long commId = _plantenDataService.NewCommId();
+
+            if (_commAddedStrategies.Count == 0  || _commselectedOntwikkelSnelheid == null)
+            {
+                MessageBox.Show("Gelieve een ontwikkelsnelheid en strategie in te vullen");
+                return;
+            }
+            foreach (var strategy in _commAddedStrategies)
+            {
+                commensalisme.Add(new Commensalisme()
+                {
+                    Id = commId,
+                    PlantId = _plantId, Ontwikkelsnelheid = _commselectedOntwikkelSnelheid.Snelheid,
+                    Strategie = strategy.Strategie
+                });
+                commId++;
+            }
+
+            ExtraEigenschap extraEigenschap = _plantenDataService.GetExtraEigenschap(_plantId);
+            extraEigenschap.PlantId = _plantId;
+
+            if (_extraselectedNectarwaarde != null)
+            {
+                extraEigenschap.Nectarwaarde = _extraselectedNectarwaarde.Waarde;
+            }
+
+            if (_extraselectedPollenwaarde != null)
+            {
+                extraEigenschap.Pollenwaarde = _extraselectedPollenwaarde.Waarde;
+            }
+
+            extraEigenschap.Bijvriendelijke = _extraselectedBijvriendelijk;
+            extraEigenschap.Vlindervriendelijk = _extraselectedVlindervriendelijk;
+            extraEigenschap.Eetbaar = _extraselectedEetbaar;
+            extraEigenschap.Kruidgebruik = _extraselectedKruidGebruik;
+            extraEigenschap.Geurend = _extraselectedGeurend;
+            extraEigenschap.Vorstgevoelig = _extraselectedVorstgevoelig;
+
+            MessageBox.Show(_plantenDataService.EditPlantData(_plantId, fenotype, fenotypeMulti, abiotiek, abiotiekMulti,
+                commensalisme,
+                _commAddedSocialbiliteit, _commAddedLevensvorm, extraEigenschap, _filterselectedType,
+                _filterselectedFamilie, _filterselectedGeslacht, _filterselectedSoort, _filterselectedVariant,
+                _plantdichtheidMin, _plantdichtheidMax));
+
+            Back(_editScherm);
         }
         private void Back(Window window)
         {
@@ -525,6 +676,14 @@ namespace PlantenApplicatie.UI.ViewModel
             {
                 window.Close();
             }
+        }
+        private void ClearSoort()
+        {
+            FilterSelectedSoort = null;
+        }
+        private void ClearVariant()
+        {
+            FilterSelectedVariant = null;
         }
         //Habitat toevoegen aan listbox (die moeten toegevoegd worden aan de plant)
         private void HabitatToevoegen()
@@ -597,7 +756,7 @@ namespace PlantenApplicatie.UI.ViewModel
                 }
                 else
                 {
-                    MessageBox.Show("Socialbiliteit is al toegevoegd");
+                    MessageBox.Show("Sociabiliteit is al toegevoegd");
                 }
             }
             ReloadSocialbiliteit();
@@ -1382,6 +1541,15 @@ namespace PlantenApplicatie.UI.ViewModel
             set
             {
                 _fenoselectedHabitus = value;
+                OnPropertyChanged();
+            }
+        }
+        public FenoBladgrootte FenoSelectedBladgrootteTot
+        {
+            get {return _fenoselectedBladGrootteTot; }
+            set
+            {
+                _fenoselectedBladGrootteTot = value;
                 OnPropertyChanged();
             }
         }

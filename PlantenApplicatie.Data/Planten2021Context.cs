@@ -60,7 +60,7 @@ namespace PlantenApplicatie.Data
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer(Constant.CONNECTION_STRING);
+                optionsBuilder.EnableSensitiveDataLogging().UseSqlServer(Constant.CONNECTION_STRING);
             }
         }
 
@@ -313,7 +313,7 @@ namespace PlantenApplicatie.Data
                 entity.Property(e => e.Ontwikkelsnelheid)
                     .IsRequired()
                     .HasColumnName("ontwikkelsnelheid")
-                    .HasMaxLength(10);
+                    .HasMaxLength(20);
 
                 entity.Property(e => e.PlantId).HasColumnName("plant_id");
 
@@ -510,7 +510,7 @@ namespace PlantenApplicatie.Data
 
                 entity.Property(e => e.Maand)
                     .HasColumnName("maand")
-                    .HasMaxLength(3);
+                    .HasMaxLength(5);
             });
 
             modelBuilder.Entity<FenoRatioBloeiBlad>(entity =>
@@ -553,11 +553,11 @@ namespace PlantenApplicatie.Data
 
                 entity.Property(e => e.Habitus)
                     .HasColumnName("habitus")
-                    .HasMaxLength(20);
+                    .HasMaxLength(30);
 
                 entity.Property(e => e.Levensvorm)
                     .HasColumnName("levensvorm")
-                    .HasMaxLength(50);
+                    .HasMaxLength(100);
 
                 entity.Property(e => e.MaxBladhoogte).HasColumnName("maxBladhoogte");
 

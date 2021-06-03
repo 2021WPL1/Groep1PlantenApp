@@ -7,22 +7,31 @@ using System.Net.Mime;
 
 namespace PlantenApplicatie.UI.MailService
 {
-    public class SMTPMailService
+    //Jelle & Stephanie
+    public class SMTPMailMessage
     {
         private SmtpClient smtpClient { get; set; }
         public SMTPMailService(string username, string wachtwoord, string host)
         {
-           smtpClient = new SmtpClient();
-            //
-          //  smtpClient.UseDefaultCredentials = false;
+            smtpClient = new SmtpClient();
+
+            //Authenticatie voor de Email verstuurd wordt namens de "Client"
+            //"True" als de default credentials gebruikt worden, anders false. de standaard waarde is "false"
+            //smtpClient.UseDefaultCredentials = false;
+
+            //De Ethereal server is een beveiligde server; dus er moet worden ingelogd
+            //daarvoor zijn de credentials nodig om de gebruiker te authenticeren
             smtpClient.Credentials = new NetworkCredential(username, wachtwoord);
-            smtpClient.Host = host;
-            smtpClient.Port = 587;
+            //De server die we gebruiken om onze mail "te versturen"
+            smtpClient.Host = host
+            //SMTP server om te verzenden
             smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+            //Best practice om SSL te gebruiken
             smtpClient.EnableSsl = true;
-            
-        }//
-        //Maakt een normale mail
+            smtpClient.UseDefaultCredentials = false;
+
+        //Het aanmaken van een gewone Email
+        //We geven de ontvanger mee, de html content en een onderwerp
         public MailMessage CreateMail(string ReceiverAdress, string htmlContent, string subject)
         {
             var from = new MailAddress("jelle.dispersyn@student.vives.be", "Plantify");
@@ -35,7 +44,7 @@ namespace PlantenApplicatie.UI.MailService
             return message;
         }
 
-        //Verstuurt de mail
+        //Bericht versturen
         public MailResult sendMessage(MailMessage msg)
         {
             var result = new MailResult() { Status = MailSendingStatus.OK };

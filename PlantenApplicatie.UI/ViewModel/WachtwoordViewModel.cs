@@ -15,13 +15,17 @@ using System.Windows.Input;
 
 namespace PlantenApplicatie.UI.ViewModel
 {
+    //Jelle & Stephanie
     public class WachtwoordViewModel : ViewModelBase
     {
+        //Eigen api key om mails te sturen via Ethereal
+        private static SMTPMailMessage sMTPMailMessage = new SMTPMailMessage();
         //Eigen api key voor mails te sturen via sendgrid
         //private static SMTPMailMessage sMTPMailMessage = new SMTPMailMessage();
-        private  SMTPMailService sMTPMailService = new SMTPMailService("gunnar.fritsch31@ethereal.email",
+        private SMTPMailService sMTPMailService = new SMTPMailService("gunnar.fritsch31@ethereal.email",
             "9kSgGREuC3rf6N9PxJ",
-            "smtp.ethereal.email");
+            "smtp.ethereal.email");*/
+
         private PlantenDataService _plantenDataService;
         public RelayCommand<Window> CloseResultCommand { get; set; }
         public ICommand MailCodeSending { get; set; }
@@ -85,6 +89,7 @@ namespace PlantenApplicatie.UI.ViewModel
         private string _passwordInput2;
         private string _code;
 
+        //constructor
         public WachtwoordViewModel(PlantenDataService plantenDataService)
         {
             this.CloseResultCommand = new RelayCommand<Window>(this.CloseWindow);
@@ -94,7 +99,7 @@ namespace PlantenApplicatie.UI.ViewModel
             this._plantenDataService = plantenDataService;
         }
 
-
+        //Email properties een waarde geven
         public string EmailInput
         {
             get { return _emailInput; }
@@ -128,6 +133,7 @@ namespace PlantenApplicatie.UI.ViewModel
             }
         }
 
+        //venster sluiten
         public void CloseWindow(Window window)
         {
             window.Close();
@@ -182,6 +188,7 @@ namespace PlantenApplicatie.UI.ViewModel
             }
         }
 
+        //Wachtwoord check voor het wijzigen van het "vergeten" wachtwoord
         public void CreateNewPassword(Window window)
         {
             if (PasswordInput1 != null && PasswordInput1 != "" && PasswordInput2 != null && PasswordInput2 != null)

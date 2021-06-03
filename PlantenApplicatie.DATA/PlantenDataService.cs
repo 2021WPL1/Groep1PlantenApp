@@ -42,11 +42,11 @@ namespace PlantenApplicatie.Data
         }
         public List<TfgsvSoort> GetTfgsvSoorten()
         {
-            return context.TfgsvSoort.ToList();
+            return context.TfgsvSoort.Where(t=>t.Soortnaam!=null).ToList();
         }
         public List<TfgsvVariant> GetTfgsvVarianten()
         {
-            return context.TfgsvVariant.ToList();
+            return context.TfgsvVariant.Where(t => t.Variantnaam != null).ToList();
         }
 
         //Hier worden aan de hand van TFGSV de juiste onderdelen gefilterd voor het zoekscherm
@@ -160,7 +160,7 @@ namespace PlantenApplicatie.Data
         //Geeft de plant en zijn ontwikkelsnelheid & strategie
         public Commensalisme GetCommensalisme(long Id)
         {
-            return context.Commensalisme.SingleOrDefault(c => c.PlantId == Id);
+            return context.Commensalisme.FirstOrDefault(c => c.PlantId == Id);
         }
 
         //Geeft de plant & zijn specifieke eigenschappen
@@ -237,6 +237,15 @@ namespace PlantenApplicatie.Data
             return context.Plant.FirstOrDefault(p => p.PlantId == plantId).PlantdichtheidMin.ToString();
         }
         //Fenotype
+        public string GetFenoBladgrootteTot(long plantId)
+        {
+            if (context.Fenotype.FirstOrDefault(f=>f.PlantId==plantId)==null)
+            {
+                return null;
+            }
+
+            return context.Fenotype.FirstOrDefault(f => f.PlantId == plantId).Bladgrootte.ToString();
+        }
         public string GetFenoMaxBladHoogte(long id)
         {
             if (context.Fenotype.FirstOrDefault(f => f.PlantId == id) == null)
@@ -403,6 +412,11 @@ namespace PlantenApplicatie.Data
         public List<CommStrategie> GetCommStrategie()
         {
             return context.CommStrategie.ToList();
+        }
+
+        public long NewCommId()
+        {
+            return context.Commensalisme.Max(c => c.Id) + 1;
         }
         //Extra Eigenschappen
         public List<ExtraNectarwaarde> GetExtraNectarwaarde()
@@ -594,23 +608,246 @@ namespace PlantenApplicatie.Data
         }
 
         //Opslaan
-        public string EditPlantData(Abiotiek abiotiek, AbiotiekMulti abiotiekMulti, Fenotype fenotype,
-            FenotypeMulti fenotypeMulti, Commensalisme commensalisme, CommensalismeMulti commensalismeMulti,
-            ExtraEigenschap extraEigenschap, TfgsvType type, TfgsvFamilie familie, TfgsvGeslacht geslacht,
-            TfgsvSoort soort, TfgsvVariant variant)
+        public List<FenotypeMulti> EditPlantFenoMulti(long plantId, FenoMaand bladMaxMaand, FenoMaand bloeiMinMaand, FenoMaand bloeiMaxMaand, FenoMaand bladMaand,
+            FenoKleur bladKleur, FenoMaand bloeiMaand, FenoKleur bloeiKleur)
         {
-            string result = null;
-            var dbAbiotiek = context.Abiotiek.FirstOrDefault(a => a.Id == abiotiek.Id);
-            //abmulti = meerdere habitus
-            var dbFenotype = context.Fenotype.FirstOrDefault(f => f.Id == fenotype.Id);
-            //fenomulti = meerdere waarden
-            var dbCommensalisme = context.Commensalisme.FirstOrDefault(c => c.Id == commensalisme.Id);
-            //commmulti = meerdere waarden
-            var dbExtra = context.ExtraEigenschap.FirstOrDefault(e => e.Id == extraEigenschap.Id);
+            long fenoId = context.FenotypeMulti.Max(f => f.Id) + 1;
+            List<FenotypeMulti> resultList = new List<FenotypeMulti>();
 
+            var dbBladMax = context.FenotypeMulti.Where(f => f.Eigenschap == "blad-max")
+                .FirstOrDefault(f => f.PlantId == plantId);
+            var dbBloeiMin = context.FenotypeMulti.Where(f => f.Eigenschap == "bloei-min")
+                .FirstOrDefault(f => f.PlantId == plantId);
+            var dbBloeiMax = context.FenotypeMulti.Where(f => f.Eigenschap == "bloei-max")
+                .FirstOrDefault(f => f.PlantId == plantId);
+            var dbBlad = context.FenotypeMulti.Where(f => f.Eigenschap == "blad")
+                .FirstOrDefault(f => f.PlantId == plantId);
+            var dbBloei = context.FenotypeMulti.Where(f => f.Eigenschap == "bloei")
+                .FirstOrDefault(f => f.PlantId == plantId);
+            if (bladMaxMaand==null)
+            {
+                bladMaxMaand = new FenoMaand() {Maand = null};
+            }
+            if (bloeiMinMaand == null)
+            {
+                bloeiMinMaand = new FenoMaand() { Maand = null };
+            }
+            if (bloeiMaxMaand == null)
+            {
+                bloeiMaxMaand = new FenoMaand() { Maand = null };
+            }
+            if (bladMaand == null)
+            {
+                bladMaand = new FenoMaand() { Maand = null };
+            }
+            if (bladKleur==null)
+            {
+                bladKleur = new FenoKleur() {NaamKleur = null};
+            }
+            if (bloeiMaand == null)
+            {
+                bloeiMaand = new FenoMaand() { Maand = null };
+            }
+            if (bloeiKleur == null)
+            {
+                bloeiKleur = new FenoKleur() { NaamKleur = null };
+            }
+
+            if (dbBladMax==null)
+            {
+                resultList.Add(new FenotypeMulti()
+                    { Id = fenoId, PlantId = plantId, Eigenschap = "blad-max", Maand = bladMaxMaand.Maand });
+                fenoId++;
+            }
+            else
+            {
+                dbBladMax.Maand = bladMaxMaand.Maand;
+            }
+
+            if (dbBloeiMin==null)
+            {
+                resultList.Add(new FenotypeMulti()
+                    { Id = fenoId, PlantId = plantId, Eigenschap = "bloei-min", Maand = bloeiMinMaand.Maand });
+                fenoId++;
+            }
+            else
+            {
+                dbBloeiMin.Maand = bloeiMinMaand.Maand;
+            }
+
+            if (dbBloeiMax==null)
+            {
+                resultList.Add(new FenotypeMulti()
+                    { Id = fenoId, PlantId = plantId, Eigenschap = "bloei-max", Maand = bloeiMaxMaand.Maand });
+                fenoId++;
+            }
+            else
+            {
+                dbBloeiMax.Maand = bloeiMaxMaand.Maand;
+
+            }
+
+            if (dbBlad==null)
+            {
+                resultList.Add(new FenotypeMulti()
+                {
+                    Id = fenoId,
+                    PlantId = plantId,
+                    Eigenschap = "blad",
+                    Maand = bladMaand.Maand,
+                    Waarde = bladKleur.NaamKleur
+                });
+                fenoId++;
+            }
+            else
+            {
+                dbBlad.Maand = bladMaand.Maand;
+                dbBlad.Waarde = bladKleur.NaamKleur;
+            }
+
+            if (dbBloei==null)
+            {
+                resultList.Add(new FenotypeMulti()
+                {
+                    Id = fenoId,
+                    PlantId = plantId,
+                    Eigenschap = "bloei",
+                    Maand = bloeiMaand.Maand,
+                    Waarde = bloeiKleur.NaamKleur
+                });
+            }
+            else
+            {
+                dbBloei.Maand = bloeiMaand.Maand;
+                dbBloei.Waarde = bloeiKleur.NaamKleur;
+            }
+
+            return resultList;
+        }
+
+        public string EditPlantData(long plantId, Fenotype fenotype, List<FenotypeMulti> fenotypeMulti ,Abiotiek abiotiek,
+            List<AbiotiekMulti> abiotiekMulti,
+            List<Commensalisme> commensalisme, List<CommSocialbiliteit> commSocialbiliteit, List<CommLevensvorm> commLevensvorm, ExtraEigenschap extraEigenschap,
+            TfgsvType type, TfgsvFamilie familie, TfgsvGeslacht geslacht,
+            TfgsvSoort soort, TfgsvVariant variant, string plantDichtheidMin, string plantDichtheidMax)
+        {
+            string result = "Plant werd aangepast";
+            try
+            {
+                //fenotype
+                var dbFenotype = context.Fenotype.FirstOrDefault(f => f.PlantId == fenotype.PlantId);
+                dbFenotype = fenotype;
+
+                //abiotiek
+                var dbAbiotiek = context.Abiotiek.FirstOrDefault(a => a.PlantId == abiotiek.PlantId);
+                dbAbiotiek = abiotiek;
+                
+                context.AbiotiekMulti.RemoveRange(GetAbiotiekMulti(plantId));
+                context.AbiotiekMulti.AddRange(abiotiekMulti);
+                //commensalisme
+                context.Commensalisme.RemoveRange(GetCommStrategieFromPlant(plantId));
+                context.Commensalisme.AddRange(commensalisme);
+
+                var dbSocial = context.CommensalismeMulti.Where(c => c.Eigenschap == "Sociabiliteit");
+                var dbLeven = context.CommensalismeMulti.Where(c => c.Eigenschap == "Levensvorm");
+
+                context.CommensalismeMulti.RemoveRange(dbSocial.Where(c => c.PlantId == plantId));
+                context.CommensalismeMulti.RemoveRange(dbLeven.Where(c => c.PlantId == plantId));
+
+                foreach (var socialbiliteit in commSocialbiliteit)
+                {
+                    context.CommensalismeMulti.Add(new CommensalismeMulti()
+                        { PlantId = plantId, Eigenschap = "Sociabiliteit", Waarde = socialbiliteit.Sociabiliteit });
+                }
+
+                foreach (var levensvorm in commLevensvorm)
+                {
+                    context.CommensalismeMulti.Add(new CommensalismeMulti()
+                        { PlantId = plantId, Eigenschap = "Levensvorm", Waarde = levensvorm.Levensvorm });
+                }
+                //extra eigenschappen
+                var dbExtra = context.ExtraEigenschap.FirstOrDefault(e => e.PlantId == extraEigenschap.PlantId);
+                dbExtra = extraEigenschap;
+
+                //plant
+                var dbPlant = GetPlantWithId(plantId);
+                dbPlant.Type = type.Planttypenaam;
+                dbPlant.Familie = familie.Familienaam;
+                dbPlant.Geslacht = geslacht.Geslachtnaam;
+                dbPlant.Soort = soort.Soortnaam;
+                dbPlant.Variant = variant.Variantnaam;
+
+                string fgsv = familie.Familienaam + " " + geslacht.Geslachtnaam;
+                if (soort.Soortnaam != null)
+                {
+                    fgsv += " " + soort.Soortnaam;
+                }
+
+                if (variant.Variantnaam!=null)
+                {
+                    fgsv += " " + variant.Variantnaam;
+                }
+                dbPlant.Fgsv = fgsv;
+
+                if (plantDichtheidMin==String.Empty)
+                {
+                    dbPlant.PlantdichtheidMin = null;
+                }
+                else
+                {
+                    dbPlant.PlantdichtheidMin = short.Parse(plantDichtheidMin);
+                }
+                if (plantDichtheidMax == String.Empty)
+                {
+                    dbPlant.PlantdichtheidMax = null;
+                }
+                else
+                {
+                    dbPlant.PlantdichtheidMax = short.Parse(plantDichtheidMax);
+                }
+
+                dbPlant.TypeId = (int?) type.Planttypeid;
+                dbPlant.FamilieId = (int?) familie.FamileId;
+                if (soort.Soortid==0)
+                {
+                    dbPlant.SoortId = null;
+                }
+                else
+                {
+                    dbPlant.SoortId = (int?) soort.Soortid;
+                }
+
+                if (variant.VariantId==0)
+                {
+                    dbPlant.VariantId = null;
+                }
+                else
+                {
+                    dbPlant.VariantId = (int?) variant.VariantId;
+                }
+
+                context.FenotypeMulti.AddRange(fenotypeMulti);
+                context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                result = e +"\nEr is een fout opgetreden tijdens het opslaan, gelieve contact op te nemen met de beheerders van Plantify";
+            }
+            
             return result;
         }
 
+        public Fenotype OpslaanGetFenotype(long id)
+        {
+            if (GetFenotype(id)!=null)
+            {
+                return GetFenotype(id);
+            }
+
+            context.Fenotype.Add(new Fenotype() {PlantId = id});
+            context.SaveChanges();
+            return GetFenotype(id);
+        }
         //Hemen &Maarten 
         public Gebruiker addGebruiker(string rol, string email, byte[] HashPaswoord,string voornaam , string achternaam, string vivesnr)
         {
