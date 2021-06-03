@@ -15,20 +15,16 @@ using System.Windows.Shapes;
 namespace PlantenApplicatie.UI.View
 {
     /// <summary>
-    /// Interaction logic for CreateGebruiker.xaml
-    /// Maarten &Hemen 
+    /// Interaction logic for WachtwoordVergeten.xaml
     /// </summary>
-    public partial class CreateGebruiker : Window
+    public partial class WachtwoordVergetenWindow : Window
     {
-        private CreateGebruikerViewModel viewModel;
-        public CreateGebruiker()
+        private WachtwoordViewModel viewModel;
+        public WachtwoordVergetenWindow()
         {
-            viewModel = new CreateGebruikerViewModel(PlantenDataService.Instance());
-            DataContext = viewModel;
-            viewModel.addRollen();
             InitializeComponent();
+            viewModel = new WachtwoordViewModel(PlantenDataService.Instance());
+            DataContext = viewModel;
         }
-
-       
     }
 }

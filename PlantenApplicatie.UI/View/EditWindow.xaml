@@ -1019,7 +1019,7 @@
             <Button x:Name="btnStartOpnieuw" 
                     Command="{Binding Path=BackCommand}"
                     CommandParameter="{Binding ElementName=EditScherm}"
-                    Content="Back" HorizontalAlignment="Left" Margin="14,602,0,0" VerticalAlignment="Top" Width="50" Height="20"/>
+                    Content="Terug" HorizontalAlignment="Left" Margin="14,602,0,0" VerticalAlignment="Top" Width="50" Height="20"/>
             <Button x:Name="btnOpslaan"  Content="Opslaan"
                     Command="{Binding Path=OpslaanCommand}"
                     HorizontalAlignment="Left" Margin="209,602,0,0" VerticalAlignment="Top" Width="50" Height="20"/>

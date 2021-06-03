@@ -870,11 +870,28 @@ namespace PlantenApplicatie.Data
         {
             return context.Gebruiker.SingleOrDefault(g => g.Emailadres == email);
         }
+        public List<Gebruiker> GetAllUsers()
+        {
+            return context.Gebruiker.ToList();
+        }
+        public Gebruiker verwijderGebruiker(string email)
+        {
+            var gebruiker = getGebruikerViaEmail(email);
+            context.Gebruiker.Remove(gebruiker);
+            context.SaveChanges();
+            return gebruiker;
+        }
 
         //Jelle & Stephanie
         public List<CommensalismeMulti> GetCommMulti(long plantId)
         {
             return context.CommensalismeMulti.Where(p => p.PlantId == plantId).ToList();
+        }
+
+        public void ChangeGebruikerPassword(Gebruiker gebruiker, byte[] password)
+        {
+            gebruiker.HashPaswoord = password;
+            context.SaveChanges();
         }
     }
 }

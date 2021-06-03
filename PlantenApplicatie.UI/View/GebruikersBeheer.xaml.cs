@@ -15,20 +15,27 @@ using System.Windows.Shapes;
 namespace PlantenApplicatie.UI.View
 {
     /// <summary>
-    /// Interaction logic for CreateGebruiker.xaml
-    /// Maarten &Hemen 
+    /// Interaction logic for GebruikersBeheer.xaml
     /// </summary>
-    public partial class CreateGebruiker : Window
+    public partial class GebruikersBeheer : Window
     {
-        private CreateGebruikerViewModel viewModel;
-        public CreateGebruiker()
+        private GebruikersBeheerViewModel viewModel;
+        public GebruikersBeheer()
         {
-            viewModel = new CreateGebruikerViewModel(PlantenDataService.Instance());
+            viewModel = new GebruikersBeheerViewModel(PlantenDataService.Instance());
             DataContext = viewModel;
-            viewModel.addRollen();
+          //  viewModel.ShowAllUser();
             InitializeComponent();
+            
+
+        }
+        // hemen &maarten 
+        //in de plaats van refresh
+        protected override void OnActivated(EventArgs eventArgs)
+        {
+            base.OnActivated(eventArgs);
+            viewModel.ShowAllUser();
         }
 
-       
     }
 }
