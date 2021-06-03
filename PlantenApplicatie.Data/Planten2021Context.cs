@@ -313,7 +313,7 @@ namespace PlantenApplicatie.Data
                 entity.Property(e => e.Ontwikkelsnelheid)
                     .IsRequired()
                     .HasColumnName("ontwikkelsnelheid")
-                    .HasMaxLength(10);
+                    .HasMaxLength(20);
 
                 entity.Property(e => e.PlantId).HasColumnName("plant_id");
 
@@ -510,7 +510,7 @@ namespace PlantenApplicatie.Data
 
                 entity.Property(e => e.Maand)
                     .HasColumnName("maand")
-                    .HasMaxLength(3);
+                    .HasMaxLength(5);
             });
 
             modelBuilder.Entity<FenoRatioBloeiBlad>(entity =>
@@ -553,7 +553,7 @@ namespace PlantenApplicatie.Data
 
                 entity.Property(e => e.Habitus)
                     .HasColumnName("habitus")
-                    .HasMaxLength(20);
+                    .HasMaxLength(30);
 
                 entity.Property(e => e.Levensvorm)
                     .HasColumnName("levensvorm")

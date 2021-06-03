@@ -515,6 +515,8 @@ namespace PlantenApplicatie.UI.ViewModel
         }
         private void Opslaan()
         {//Senne & Hermes
+            List<FenotypeMulti> fenotypeMulti;
+
             if (_filterselectedSoort==null)
             {
                 _filterselectedSoort = new TfgsvSoort() {Soortnaam = null, Soortid = 0};
@@ -578,7 +580,7 @@ namespace PlantenApplicatie.UI.ViewModel
             }
             
 
-            _plantenDataService.EditPlantFenoMulti(_plantId, _fenoselectedMaxBladgrootteMaand, _fenoselectedMinBloeihoogteMaand,
+            fenotypeMulti = _plantenDataService.EditPlantFenoMulti(_plantId, _fenoselectedMaxBladgrootteMaand, _fenoselectedMinBloeihoogteMaand,
                 _fenoselectedMaxBloeihoogteMaand, _fenoselectedBladKleurMaand, _fenoselectedBladKleur,
                 _fenoselectedBloeiKleurMaand, _fenoselectedBloeiKleur);
 
@@ -624,7 +626,7 @@ namespace PlantenApplicatie.UI.ViewModel
             List<Commensalisme> commensalisme = new List<Commensalisme>();
             long commId = _plantenDataService.NewCommId();
 
-            if (_commAddedStrategies == null || _commselectedOntwikkelSnelheid == null)
+            if (_commAddedStrategies.Count == 0  || _commselectedOntwikkelSnelheid == null)
             {
                 MessageBox.Show("Gelieve een ontwikkelsnelheid en strategie in te vullen");
                 return;
@@ -660,7 +662,7 @@ namespace PlantenApplicatie.UI.ViewModel
             extraEigenschap.Geurend = _extraselectedGeurend;
             extraEigenschap.Vorstgevoelig = _extraselectedVorstgevoelig;
 
-            MessageBox.Show(_plantenDataService.EditPlantData(_plantId, fenotype, abiotiek, abiotiekMulti,
+            MessageBox.Show(_plantenDataService.EditPlantData(_plantId, fenotype, fenotypeMulti, abiotiek, abiotiekMulti,
                 commensalisme,
                 _commAddedSocialbiliteit, _commAddedLevensvorm, extraEigenschap, _filterselectedType,
                 _filterselectedFamilie, _filterselectedGeslacht, _filterselectedSoort, _filterselectedVariant,
