@@ -14,6 +14,11 @@ namespace PlantenApplicatie.UI.MailService.Classes
         public SMTPMailMessage()
         {
             smtpClient = new SmtpClient();
+
+            //Authenticatie voor de Email verstuurd wordt namens de "Client"
+            //"True" als de default credentials gebruikt worden, anders false. de standaard waarde is "false"
+            //smtpClient.UseDefaultCredentials = false;
+
             //De Ethereal server is een beveiligde server; dus er moet worden ingelogd
             //daarvoor zijn de credentials nodig om de gebruiker te authenticeren
             smtpClient.Credentials = new NetworkCredential("gunnar.fritsch31@ethereal.email", "9kSgGREuC3rf6N9PxJ");
@@ -25,8 +30,6 @@ namespace PlantenApplicatie.UI.MailService.Classes
             smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
             //Best practice om SSL te gebruiken
             smtpClient.EnableSsl = true;
-            //Authenticatie gebruiken
-            smtpClient.UseDefaultCredentials = false;
         }
 
         //Het aanmaken van een gewone Email
