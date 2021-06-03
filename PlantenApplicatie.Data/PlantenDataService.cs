@@ -889,10 +889,7 @@ namespace PlantenApplicatie.Data
             context.SaveChanges();
             return gebruiker;
         }
-        public Foto getFotoViaPlantId(long Id)
-        {
-            return context.Foto.SingleOrDefault(f => f.Plant == Id);
-        }
+       
 
         //Jelle & Stephanie
         public List<CommensalismeMulti> GetCommMulti(long plantId)
