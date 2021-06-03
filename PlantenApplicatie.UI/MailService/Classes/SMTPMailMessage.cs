@@ -7,20 +7,30 @@ using System.Net.Mime;
 
 namespace PlantenApplicatie.UI.MailService.Classes
 {
+    //Jelle & Stephanie
     public class SMTPMailMessage
     {
         private SmtpClient smtpClient { get; set; }
         public SMTPMailMessage()
         {
-            smtpClient = new SmtpClient(); 
+            smtpClient = new SmtpClient();
+            //De Ethereal server is een beveiligde server; dus er moet worden ingelogd
+            //daarvoor zijn de credentials nodig om de gebruiker te authenticeren
             smtpClient.Credentials = new NetworkCredential("gunnar.fritsch31@ethereal.email", "9kSgGREuC3rf6N9PxJ");
+            //De server die we gebruiken om onze mail "te versturen"
             smtpClient.Host = "smtp.ethereal.email";
+            //TCP/IP Port
             smtpClient.Port = 587;
+            //SMTP server om te verzenden
             smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+            //Best practice om SSL te gebruiken
             smtpClient.EnableSsl = true;
+            //Authenticatie gebruiken
             smtpClient.UseDefaultCredentials = false;
         }
-        //Maakt een normale mail
+
+        //Het aanmaken van een gewone Email
+        //We geven de ontvanger mee, de html content en een onderwerp
         public MailMessage CreateMail(string ReceiverAdress, string htmlContent, string subject)
         {
             var from = new MailAddress("jelle.dispersyn@student.vives.be", "Plantify");
@@ -33,7 +43,7 @@ namespace PlantenApplicatie.UI.MailService.Classes
             return message;
         }
 
-        //Verstuurt de mail
+        //Bericht versturen
         public MailResult sendMessage(MailMessage msg)
         {
             var result = new MailResult() { Status = MailSendingStatus.OK };
