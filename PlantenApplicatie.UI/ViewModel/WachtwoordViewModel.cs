@@ -144,10 +144,11 @@ namespace PlantenApplicatie.UI.ViewModel
                 {
                     _code += r.Next(0, 9).ToString();
                 }
-                //string fileName = "MailMessage.html";
-                //string path = Path.Combine(Environment.CurrentDirectory, fileName);
-                //string html = File.ReadAllText(path);
-                string body = String.Format($"Beste Meneer / Mevrouw,\r\nUw code voor uw wachtwoord te resetten is {_code}.\r\n Vriendlijke groeten, Plantify");
+                string fileName = "MailMessage.html";
+                string path = Environment.CurrentDirectory.Replace("\\bin\\Debug\\netcoreapp3.1", "") + $"\\MailService\\Files\\{fileName}";
+                string html = File.ReadAllText(path);
+                //string body = String.Format($"Beste Meneer / Mevrouw,\r\nUw code voor uw wachtwoord te resetten is {_code}.\r\n Vriendlijke groeten, Plantify");
+                string body = String.Format(html, _code);
                 var msg = sMTPMailMessage.CreateMail(EmailInput, body, "Wachtwoord reset");
                 var result = sMTPMailMessage.sendMessage(msg);
                 if (result.Status == MailSendingStatus.OK)
