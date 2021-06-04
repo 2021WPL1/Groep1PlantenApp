@@ -9,7 +9,7 @@
         Title="WachtwoordVergeten" WindowState="Maximized" Height="450" Width="800">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/View/AchtergrondSchermen.jpg"/>
+            <ImageBrush ImageSource="Images/AchtergrondSchermen.jpg"/>
         </Grid.Background>
         <Viewbox>
             <Grid Width="568">
