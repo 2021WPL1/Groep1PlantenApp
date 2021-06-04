@@ -45,7 +45,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="View\AchtergrondSchermen.jpg" />
     <Resource Include="View\Images\AchtergrondSchermen.jpg" />
     <Resource Include="View\Images\aar.jpg" />
     <Resource Include="View\Images\pluim.jpg" />
@@ -56,7 +55,6 @@
     <Resource Include="View\Images\scherm.jpg" />
     <Resource Include="View\Images\smalle pluim.jpg" />
     <Resource Include="View\Images\Wit.jpg" />
-    <Resource Include="View\Plantify.png" />
   </ItemGroup>
 
 </Project>
