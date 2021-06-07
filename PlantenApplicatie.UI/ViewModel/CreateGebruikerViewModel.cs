@@ -62,7 +62,15 @@ namespace PlantenApplicatie.UI.ViewModel
         public string AchterNaamInput { get; set; }
 
         public string VivesNrInput { get; set; }
-        public string SelectedError { get; set; }
+        private string _selectedError;
+        public string SelectedError 
+        { get { return _selectedError; }
+            set
+            {
+                _selectedError = value;
+                OnPropertyChanged();
+            }
+        }
         private void closeAddGebruiker(Window window)
         {
             GebruikersBeheer beheer = new GebruikersBeheer(LoggedInGebruiker);
@@ -75,35 +83,44 @@ namespace PlantenApplicatie.UI.ViewModel
         {
             try
             {
-                if (EmailInput.Contains("vives.be") && EmailInput.Contains("@") && VoorNaamInput != null && AchterNaamInput != null && VivesNrInput != null)
+                if (EmailInput != null && VoorNaamInput != null && AchterNaamInput != null && VivesNrInput != null)
                 {
-                    var gebruiker = _dataservice.getGebruikerViaEmail(EmailInput);
-                    if (gebruiker == null)
+                    if (EmailInput.Contains("vives.be") && EmailInput.Contains("@"))
                     {
-                        if (WachtwoordBevestigen == WachtwoordInput)
+
+
+                        var gebruiker = _dataservice.getGebruikerViaEmail(EmailInput);
+                        if (gebruiker == null)
                         {
-                            using (var sha256 = SHA256.Create())
+                            if (WachtwoordBevestigen == WachtwoordInput)
                             {
-                                GebruikersBeheer beheer = new GebruikersBeheer(LoggedInGebruiker);
-                                var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(WachtwoordInput));
-                                _dataservice.addGebruiker(SelectedRol.Omschrijving, EmailInput, hashedBytes, VoorNaamInput, AchterNaamInput, VivesNrInput);
-                                closeWindow.Close();
-                                beheer.ShowDialog();
+                                using (var sha256 = SHA256.Create())
+                                {
+                                    GebruikersBeheer beheer = new GebruikersBeheer(LoggedInGebruiker);
+                                    var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(WachtwoordInput));
+                                    _dataservice.addGebruiker(SelectedRol.Omschrijving, EmailInput, hashedBytes, VoorNaamInput, AchterNaamInput, VivesNrInput);
+                                    closeWindow.Close();
+                                    beheer.ShowDialog();
+                                }
+                            }
+                            else
+                            {
+                                SelectedError = "wachtwoord is niet hetzelfde";
                             }
                         }
                         else
                         {
-                            SelectedError = "wachtwoord is niet hetzelfde";
+                            SelectedError = "Het emailadres bestaat al";
                         }
                     }
                     else
                     {
-                        SelectedError = "Het emailadres bestaat al";
+                        SelectedError = "Het emailadres moet 'vives.be' bevatten";
                     }
                 }
                 else
                 {
-                    SelectedError = "emailadres moet 'vives.be' bevatten";
+                    SelectedError = "Er zijn velden niet ingevuld";
                 }
             }
             catch (Exception)
