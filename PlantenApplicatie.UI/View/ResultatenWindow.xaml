@@ -542,7 +542,7 @@
                         </LinearGradientBrush>
                     </Button.Background>
                 </Button>
-                <Image HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="165" Source="{Binding Foto}" Margin="378,96,0,0" Grid.Row="1"/>
+                <Image HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="152" Source="{Binding Foto}" Margin="373,93,0,0" Grid.Row="1"/>
             </Grid>
         </Viewbox>
     </Grid>
